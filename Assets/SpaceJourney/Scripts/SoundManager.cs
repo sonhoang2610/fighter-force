@@ -1,0 +1,187 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using EazyEngine.Tools;
+
+public enum TypeNotifySfx { TurnSound, TurnMusic, PlaySound, PlayMusic }
+public struct SfxNotifi
+{
+    public object value;
+    public TypeNotifySfx type;
+    public SfxNotifi(TypeNotifySfx pType, object pValue)
+    {
+        value = pValue;
+        type = pType;
+    }
+}
+
+public class SoundManager : PersistentSingleton<SoundManager>
+{
+
+    [Header("Music")]
+    public bool musicOn = true;
+    /// the music volume
+    [Range(0, 1)]
+    public float MusicVolume = 0.3f;
+
+    [Header("Sound Effects")]
+    public bool sfxOn = true;
+    /// the sound fx volume
+    [Range(0, 1)]
+    public float SfxVolume = 1f;
+
+    public AudioSource _backgroundMusic;
+    protected override void Awake()
+    {
+        base.Awake();
+        SfxOn = PlayerPrefs.GetInt("Sound", 1) == 1 ? true : false;
+        MusicOn = PlayerPrefs.GetInt("Music", 1) == 1 ? true : false;
+
+    }
+    public bool SfxOn
+    {
+        get
+        {
+            return sfxOn;
+        }
+
+        set
+        {
+            bool isChange = false;
+            if (sfxOn != value)
+            {
+                isChange = true;
+            }
+            sfxOn = value;
+            PlayerPrefs.SetInt("Sound", sfxOn ? 1 : 0);
+            if (isChange)
+            {
+                EzEventManager.TriggerEvent(new SfxNotifi(TypeNotifySfx.TurnSound, value));
+            }
+        }
+    }
+
+    public bool MusicOn
+    {
+        get
+        {
+            return musicOn;
+        }
+
+        set
+        {
+            bool isChange = false;
+            if (musicOn != value)
+            {
+                isChange = true;
+            }
+            musicOn = value;
+            PlayerPrefs.SetInt("Music", musicOn ? 1 : 0);
+            if (isChange)
+            {
+                EzEventManager.TriggerEvent(new SfxNotifi(TypeNotifySfx.TurnMusic, value));
+            }
+            if (!value)
+            {
+                var audios = GameObject.FindObjectsOfType<AudioSource>();
+                foreach (var pAudio in audios)
+                {
+                    pAudio.Stop();
+                }
+            }
+            else
+            {
+                var audios = GameObject.FindObjectsOfType<AudioSource>();
+                foreach (var pAudio in audios)
+                {
+                    pAudio.Play();
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Plays a background music.
+    /// Only one background music can be active at a time.
+    /// </summary>
+    /// <param name="Clip">Your audio clip.</param>
+    public virtual void PlayBackgroundMusic(AudioSource Music)
+    {
+        // if the music's been turned off, we do nothing and exit
+        if (!MusicOn)
+            return;
+        if (_backgroundMusic != null && _backgroundMusic.clip.name == Music.clip.name)
+        {
+            return;
+        }
+        // if we already had a background music playing, we stop it
+        if (_backgroundMusic != null)
+            _backgroundMusic.Stop();
+        // we set the background music clip
+        _backgroundMusic = Music;
+        // we set the music's volume
+        _backgroundMusic.volume = MusicVolume;
+        // we set the loop setting to true, the music will loop forever
+        _backgroundMusic.loop = true;
+        // we start playing the background music
+        _backgroundMusic.Play();
+    }
+    List<GameObject> sounds = new List<GameObject>();
+    /// <summary>
+    /// Plays a sound
+    /// </summary>
+    /// <returns>An audiosource</returns>
+    /// <param name="sfx">The sound clip you want to play.</param>
+    /// <param name="location">The location of the sound.</param>
+    /// <param name="loop">If set to true, the sound will loop.</param>
+    public virtual AudioSource PlaySound(AudioClip sfx, Vector3 location, bool loop = false)
+    {
+        if (!SfxOn || !sfx)
+            return null;
+        // we create a temporary game object to host our audio source
+        GameObject temporaryAudioHost = new GameObject(sfx.name);
+        // we set the temp audio's position
+        temporaryAudioHost.transform.position = location;
+        // we add an audio source to that host
+        AudioSource audioSource = temporaryAudioHost.AddComponent<AudioSource>() as AudioSource;
+        // we set that audio source clip to the one in paramaters
+        audioSource.clip = sfx;
+        // we set the audio source volume to the one in parameters
+        audioSource.volume = SfxVolume;
+        // we set our loop setting
+        audioSource.loop = loop;
+        // we start playing the sound
+        audioSource.Play();
+
+        if (!loop)
+        {
+            // we destroy the host after the clip has played
+            Destroy(temporaryAudioHost, sfx.length);
+        }
+
+        // we return the audiosource reference
+        return audioSource;
+    }
+
+    /// <summary>
+    /// Stops the looping sounds if there are any
+    /// </summary>
+    /// <param name="source">Source.</param>
+    public virtual void StopLoopingSound(AudioSource source)
+    {
+        if (source != null)
+        {
+            Destroy(source.gameObject);
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (_backgroundMusic && MusicOn && !_backgroundMusic.isPlaying)
+        {
+            AudioSource oldMusic = _backgroundMusic;
+            _backgroundMusic = Instantiate(_backgroundMusic.gameObject, _backgroundMusic.transform.parent).GetComponent<AudioSource>();
+            Destroy(oldMusic.gameObject);
+        }
+    }
+}

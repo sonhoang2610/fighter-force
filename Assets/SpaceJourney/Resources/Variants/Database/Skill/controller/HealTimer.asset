@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d31b62ec9d586a4e94389d9071559ca, type: 3}
+  m_Name: HealTimer
+  m_EditorClassIdentifier: 
+  _serializedGraph: '{"version":2.92,"type":"FlowCanvas.FlowScript","translation":{"x":-40.0,"y":-291.0},"zoomFactor":0.9999554,"nodes":[{"_position":{"x":623.0,"y":220.0},"$type":"FlowCanvas.Nodes.EnableEvent","$id":"2"},{"_method":{"_baseInfo":"EazyEngine.Space.Health|healHealthTime|System.Void","_paramsInfo":"System.Single|System.Int32"},"_callable":true,"_inputPortValues":{},"_position":{"x":931.0,"y":309.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"3"},{"_inputPortValues":{},"_position":{"x":1331.0,"y":379.0},"$type":"FlowCanvas.Nodes.Finish","$id":"6"},{"value":{"_name":"Info"},"_position":{"x":497.0,"y":431.0},"$type":"FlowCanvas.Nodes.GetVariable`1[[EazyEngine.Space.ItemGame,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"8"},{"fieldName":"duration","targetType":"EazyEngine.Space.ItemGame","_inputPortValues":{},"_position":{"x":652.0,"y":427.0},"$type":"FlowCanvas.Nodes.ReflectedFieldNodeWrapper","$id":"10"},{"_method":{"_baseInfo":"EazyEngine.Tools.Singleton`1[[EazyEngine.Space.LevelManger,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]|get_Instance|EazyEngine.Space.LevelManger","_paramsInfo":""},"_position":{"x":-258.0,"y":330.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"12"},{"_method":{"_baseInfo":"EazyEngine.Space.LevelManger|get_CurrentPlayer|EazyEngine.Space.Character","_paramsInfo":""},"_inputPortValues":{},"_position":{"x":204.0,"y":330.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"14"},{"fieldName":"MaxiumHealth","targetType":"EazyEngine.Space.Health","_inputPortValues":{},"_position":{"x":442.0,"y":538.0},"$type":"FlowCanvas.Nodes.ReflectedFieldNodeWrapper","$id":"17"},{"_simplexNode":{},"_inputPortValues":{},"_position":{"x":724.0,"y":542.0},"$type":"FlowCanvas.Nodes.SimplexNodeWrapper`1[[FlowCanvas.Nodes.FloatMultiply,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"19"},{"value":{"_name":"percentHeal"},"_position":{"x":189.0,"y":664.0},"$type":"FlowCanvas.Nodes.GetVariable`1[[EazyEngine.Space.UnitDefineLevel,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"22"},{"_simplexNode":{},"_inputPortValues":{"b":{"$content":100.0,"$type":"System.Single"}},"_position":{"x":475.0,"y":667.0},"$type":"FlowCanvas.Nodes.SimplexNodeWrapper`1[[FlowCanvas.Nodes.FloatDivide,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"24"}],"connections":[{"_sourcePortName":"Out","_targetPortName":"
+    ","_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"
+    ","_targetPortName":"In","_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"6"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"Value","_targetPortName":"ItemGame","_sourceNode":{"$ref":"8"},"_targetNode":{"$ref":"10"},"$type":"FlowCanvas.BinderConnection`1[[EazyEngine.Space.ItemGame,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"Value","_targetPortName":"pTime","_sourceNode":{"$ref":"10"},"_targetNode":{"$ref":"3"},"$type":"FlowCanvas.BinderConnection`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"Value","_targetPortName":"LevelManger","_sourceNode":{"$ref":"12"},"_targetNode":{"$ref":"14"},"$type":"FlowCanvas.BinderConnection`1[[EazyEngine.Space.LevelManger,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"Value","_targetPortName":"Health","_sourceNode":{"$ref":"14"},"_targetNode":{"$ref":"17"},"$type":"FlowCanvas.BinderConnection`1[[EazyEngine.Space.Health,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"Value","_targetPortName":"Health","_sourceNode":{"$ref":"14"},"_targetNode":{"$ref":"3"},"$type":"FlowCanvas.BinderConnection`1[[EazyEngine.Space.Health,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"Value","_targetPortName":"a","_sourceNode":{"$ref":"17"},"_targetNode":{"$ref":"19"},"$type":"FlowCanvas.BinderConnection`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"Value","_targetPortName":"pHealth","_sourceNode":{"$ref":"19"},"_targetNode":{"$ref":"3"},"$type":"FlowCanvas.BinderConnection`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"Value","_targetPortName":"a","_sourceNode":{"$ref":"22"},"_targetNode":{"$ref":"24"},"$type":"FlowCanvas.BinderConnection`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"Value","_targetPortName":"b","_sourceNode":{"$ref":"24"},"_targetNode":{"$ref":"19"},"$type":"FlowCanvas.BinderConnection`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}],"localBlackboard":{"_name":"Local
+    Blackboard","_variables":{}}}'
+  _objectReferences: []
+  _deserializationFailed: 0

@@ -1,0 +1,373 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e29c2181177b4b545a0268854813e7b9, type: 3}
+  m_Name: MiniBoss3
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  info:
+    preview: {fileID: 2800000, guid: 797e44bcc124f9844a75bb664e9cd2ee, type: 3}
+    easy:
+      target: {fileID: 6434266160877196158, guid: 0fc7032c767297f429d47d5398dc5c9c,
+        type: 3}
+      Health: 600000
+      DamgageBasic: 400
+      Defense: 200
+      weapon:
+      - desWeapon: 
+        target: {fileID: 3238630830516024119, guid: 414351cf9ba216d429c1fd2b8bdcc81b,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 350
+        propEdits: []
+        bullets:
+        - prefab: {fileID: 7856084060703962862, guid: 53c79769a7bf7fe4881675e031dabcb2,
+            type: 3}
+          speedBullet: 6
+          propEdits: []
+      - desWeapon: 
+        target: {fileID: 2543445838789729672, guid: 6f66c5c9355f56d4fac7fc5bb38ae794,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 20000
+        propEdits:
+        - nameProp: laser time / 10
+          propEdits:
+          - nameProp: 
+            value: 30
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 4304872381580784011, guid: 6f66c5c9355f56d4fac7fc5bb38ae794,
+              type: 3}
+            component: 'WeaponAmmo.initStorage:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+          - nameProp: 
+            value: 30
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 4304872381580784011, guid: 6f66c5c9355f56d4fac7fc5bb38ae794,
+              type: 3}
+            component: 'WeaponAmmo.quantityRestoreEachTime:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+        bullets: []
+      - desWeapon: 
+        target: {fileID: 4345011466945616671, guid: 658a5230e04ef7f4985902bf4c6cfc89,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 20000
+        propEdits:
+        - nameProp: laser time /10
+          propEdits:
+          - nameProp: 
+            value: 20
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2647356767981811484, guid: 658a5230e04ef7f4985902bf4c6cfc89,
+              type: 3}
+            component: 'WeaponAmmo.initStorage:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+          - nameProp: 
+            value: 20
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2647356767981811484, guid: 658a5230e04ef7f4985902bf4c6cfc89,
+              type: 3}
+            component: 'WeaponAmmo.quantityRestoreEachTime:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+        bullets: []
+      - desWeapon: 
+        target: {fileID: 1534493933415171191, guid: 00dc04cfdc749384facbea3ace6da3e2,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 400
+        propEdits: []
+        bullets:
+        - prefab: {fileID: 4978765762718284869, guid: 74cb141d6a7d1fd46a77a8a70aff44fb,
+            type: 3}
+          speedBullet: 12
+          propEdits: []
+        - prefab: {fileID: 4978765762718284869, guid: 74cb141d6a7d1fd46a77a8a70aff44fb,
+            type: 3}
+          speedBullet: 12
+          propEdits: []
+      - desWeapon: 
+        target: {fileID: 1534493933415171191, guid: 59f0d1688c24d0143a0ee37e7d6431c0,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 400
+        propEdits: []
+        bullets:
+        - prefab: {fileID: 7856084060703962862, guid: 682d0596078cf1146bb3fbf00b992d8e,
+            type: 3}
+          speedBullet: 5
+          propEdits: []
+      propEdits: []
+    medium:
+      target: {fileID: 2311993597435855058, guid: 78b6ef1014ec05e4783d674a410003a1,
+        type: 3}
+      Health: 9000000
+      DamgageBasic: 650
+      Defense: 350
+      weapon:
+      - desWeapon: 
+        target: {fileID: 3238630830516024119, guid: 414351cf9ba216d429c1fd2b8bdcc81b,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 350
+        propEdits: []
+        bullets:
+        - prefab: {fileID: 7856084060703962862, guid: 53c79769a7bf7fe4881675e031dabcb2,
+            type: 3}
+          speedBullet: 7
+          propEdits: []
+      - desWeapon: 
+        target: {fileID: 2543445838789729672, guid: 6f66c5c9355f56d4fac7fc5bb38ae794,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 30000
+        propEdits:
+        - nameProp: laser time / 10
+          propEdits:
+          - nameProp: 
+            value: 30
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 4304872381580784011, guid: 6f66c5c9355f56d4fac7fc5bb38ae794,
+              type: 3}
+            component: 'WeaponAmmo.initStorage:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+          - nameProp: 
+            value: 30
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 4304872381580784011, guid: 6f66c5c9355f56d4fac7fc5bb38ae794,
+              type: 3}
+            component: 'WeaponAmmo.quantityRestoreEachTime:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+        bullets: []
+      - desWeapon: 
+        target: {fileID: 4345011466945616671, guid: 658a5230e04ef7f4985902bf4c6cfc89,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 30000
+        propEdits:
+        - nameProp: laser time /10
+          propEdits:
+          - nameProp: 
+            value: 20
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2647356767981811484, guid: 658a5230e04ef7f4985902bf4c6cfc89,
+              type: 3}
+            component: 'WeaponAmmo.initStorage:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+          - nameProp: 
+            value: 20
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2647356767981811484, guid: 658a5230e04ef7f4985902bf4c6cfc89,
+              type: 3}
+            component: 'WeaponAmmo.quantityRestoreEachTime:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+        bullets: []
+      - desWeapon: 
+        target: {fileID: 1534493933415171191, guid: 00dc04cfdc749384facbea3ace6da3e2,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 500
+        propEdits: []
+        bullets:
+        - prefab: {fileID: 4978765762718284869, guid: 74cb141d6a7d1fd46a77a8a70aff44fb,
+            type: 3}
+          speedBullet: 12
+          propEdits: []
+        - prefab: {fileID: 4978765762718284869, guid: 74cb141d6a7d1fd46a77a8a70aff44fb,
+            type: 3}
+          speedBullet: 12
+          propEdits: []
+      - desWeapon: 
+        target: {fileID: 1534493933415171191, guid: 59f0d1688c24d0143a0ee37e7d6431c0,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 500
+        propEdits: []
+        bullets:
+        - prefab: {fileID: 7856084060703962862, guid: 682d0596078cf1146bb3fbf00b992d8e,
+            type: 3}
+          speedBullet: 5
+          propEdits: []
+      propEdits: []
+    hard:
+      target: {fileID: 1058423172725382960, guid: 184652e93f4eef14293307feb6d3bdba,
+        type: 3}
+      Health: 1300000
+      DamgageBasic: 900
+      Defense: 600
+      weapon:
+      - desWeapon: 
+        target: {fileID: 3238630830516024119, guid: 414351cf9ba216d429c1fd2b8bdcc81b,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 550
+        propEdits: []
+        bullets:
+        - prefab: {fileID: 7856084060703962862, guid: 53c79769a7bf7fe4881675e031dabcb2,
+            type: 3}
+          speedBullet: 7
+          propEdits: []
+      - desWeapon: 
+        target: {fileID: 2543445838789729672, guid: 6f66c5c9355f56d4fac7fc5bb38ae794,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 40000
+        propEdits:
+        - nameProp: laser time / 10
+          propEdits:
+          - nameProp: 
+            value: 30
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 4304872381580784011, guid: 6f66c5c9355f56d4fac7fc5bb38ae794,
+              type: 3}
+            component: 'WeaponAmmo.initStorage:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+          - nameProp: 
+            value: 30
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 4304872381580784011, guid: 6f66c5c9355f56d4fac7fc5bb38ae794,
+              type: 3}
+            component: 'WeaponAmmo.quantityRestoreEachTime:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+        bullets: []
+      - desWeapon: 
+        target: {fileID: 4345011466945616671, guid: 658a5230e04ef7f4985902bf4c6cfc89,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 40000
+        propEdits:
+        - nameProp: laser time /10
+          propEdits:
+          - nameProp: 
+            value: 20
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2647356767981811484, guid: 658a5230e04ef7f4985902bf4c6cfc89,
+              type: 3}
+            component: 'WeaponAmmo.initStorage:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+          - nameProp: 
+            value: 20
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2647356767981811484, guid: 658a5230e04ef7f4985902bf4c6cfc89,
+              type: 3}
+            component: 'WeaponAmmo.quantityRestoreEachTime:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+        bullets: []
+      - desWeapon: 
+        target: {fileID: 1534493933415171191, guid: 00dc04cfdc749384facbea3ace6da3e2,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 850
+        propEdits: []
+        bullets:
+        - prefab: {fileID: 4978765762718284869, guid: 74cb141d6a7d1fd46a77a8a70aff44fb,
+            type: 3}
+          speedBullet: 12
+          propEdits: []
+        - prefab: {fileID: 4978765762718284869, guid: 74cb141d6a7d1fd46a77a8a70aff44fb,
+            type: 3}
+          speedBullet: 12
+          propEdits: []
+      - desWeapon: 
+        target: {fileID: 1534493933415171191, guid: 59f0d1688c24d0143a0ee37e7d6431c0,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 850
+        propEdits: []
+        bullets:
+        - prefab: {fileID: 7856084060703962862, guid: 682d0596078cf1146bb3fbf00b992d8e,
+            type: 3}
+          speedBullet: 5
+          propEdits: []
+      propEdits: []

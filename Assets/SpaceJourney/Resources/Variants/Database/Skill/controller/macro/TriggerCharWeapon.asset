@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 625114ef92abc6f4d98f906588e93662, type: 3}
+  m_Name: TriggerCharWeapon
+  m_EditorClassIdentifier: 
+  _serializedGraph: '{"version":2.92,"type":"FlowCanvas.Macros.Macro","translation":{"x":78.0,"y":-54.0},"nodes":[{"_position":{"x":-32.0,"y":271.0},"$type":"FlowCanvas.Macros.MacroInputNode","$id":"2"},{"_method":{"_baseInfo":"EazyEngine.Space.CharacterHandleWeapon|triggerAndGetReactionWeapon|EazyEngine.Space.Weapon[]","_paramsInfo":"System.String"},"_inputPortValues":{},"_position":{"x":342.0,"y":418.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"3"},{"_inputPortValues":{},"_position":{"x":956.0,"y":271.0},"$type":"FlowCanvas.Macros.MacroOutputNode","$id":"6"},{"_method":{"_baseInfo":"EazyEngine.Space.CharacterHandleWeapon|triggerHandleWepaon|System.Void","_paramsInfo":"System.String"},"_callable":true,"_inputPortValues":{},"_position":{"x":375.0,"y":280.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"8"}],"connections":[{"_sourcePortName":"9094ee99-2076-466f-b0a3-fb7d6b88653d","_targetPortName":"CharacterHandleWeapon","_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"FlowCanvas.BinderConnection`1[[EazyEngine.Space.CharacterHandleWeapon,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"6823e71f-6220-4d14-ba35-2d733e2451ce","_targetPortName":"pTrigger","_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"FlowCanvas.BinderConnection`1[[System.String,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"d7e2d2dd-008a-49da-aa92-85196e1fb431","_targetPortName":"
+    ","_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"8"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"6823e71f-6220-4d14-ba35-2d733e2451ce","_targetPortName":"pTrigger","_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"8"},"$type":"FlowCanvas.BinderConnection`1[[System.String,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"9094ee99-2076-466f-b0a3-fb7d6b88653d","_targetPortName":"CharacterHandleWeapon","_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"8"},"$type":"FlowCanvas.BinderConnection`1[[EazyEngine.Space.CharacterHandleWeapon,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"Value","_targetPortName":"f69f4fcf-2a49-4cf9-9f02-c6a069ca3e0d","_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"6"},"$type":"FlowCanvas.BinderConnection`1[[System.Collections.Generic.List`1[[EazyEngine.Space.Weapon,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib,
+    Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"
+    ","_targetPortName":"36c01348-9be9-4581-b674-bfa65b56b16e","_sourceNode":{"$ref":"8"},"_targetNode":{"$ref":"6"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"CharacterHandleWeapon","_targetPortName":"d88ebf9a-0104-4b37-9c3d-815a08956ea9","_sourceNode":{"$ref":"8"},"_targetNode":{"$ref":"6"},"$type":"FlowCanvas.BinderConnection`1[[EazyEngine.Space.CharacterHandleWeapon,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}],"localBlackboard":{"_name":"Local
+    Blackboard","_variables":{}},"derivedData":{"inputDefinitions":[{"_ID":"d7e2d2dd-008a-49da-aa92-85196e1fb431","_name":"In","_type":"FlowCanvas.Flow"},{"_ID":"9094ee99-2076-466f-b0a3-fb7d6b88653d","_name":"target","_type":"EazyEngine.Space.CharacterHandleWeapon"},{"_ID":"6823e71f-6220-4d14-ba35-2d733e2451ce","_name":"trigger","_type":"System.String"}],"outputDefinitions":[{"_ID":"36c01348-9be9-4581-b674-bfa65b56b16e","_name":"Out","_type":"FlowCanvas.Flow"},{"_ID":"d88ebf9a-0104-4b37-9c3d-815a08956ea9","_name":"value","_type":"EazyEngine.Space.CharacterHandleWeapon"},{"_ID":"f69f4fcf-2a49-4cf9-9f02-c6a069ca3e0d","_name":"List
+    (Weapon) Output","_type":"System.Collections.Generic.List`1[[EazyEngine.Space.Weapon,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}],"$type":"FlowCanvas.Macros.Macro+DerivedSerializationData"}}'
+  _objectReferences: []
+  _deserializationFailed: 0
+  inputDefinitions:
+  - _ID: d7e2d2dd-008a-49da-aa92-85196e1fb431
+    _name: In
+    _type: FlowCanvas.Flow
+  - _ID: 9094ee99-2076-466f-b0a3-fb7d6b88653d
+    _name: target
+    _type: EazyEngine.Space.CharacterHandleWeapon
+  - _ID: 6823e71f-6220-4d14-ba35-2d733e2451ce
+    _name: trigger
+    _type: System.String
+  outputDefinitions:
+  - _ID: 36c01348-9be9-4581-b674-bfa65b56b16e
+    _name: Out
+    _type: FlowCanvas.Flow
+  - _ID: d88ebf9a-0104-4b37-9c3d-815a08956ea9
+    _name: value
+    _type: EazyEngine.Space.CharacterHandleWeapon
+  - _ID: f69f4fcf-2a49-4cf9-9f02-c6a069ca3e0d
+    _name: List (Weapon) Output
+    _type: System.Collections.Generic.List`1[[EazyEngine.Space.Weapon, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]

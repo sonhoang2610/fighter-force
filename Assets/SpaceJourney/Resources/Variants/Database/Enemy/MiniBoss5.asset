@@ -1,0 +1,463 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e29c2181177b4b545a0268854813e7b9, type: 3}
+  m_Name: MiniBoss5
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  info:
+    preview: {fileID: 2800000, guid: b384ca3e6de9d7941b41d817e08fde57, type: 3}
+    easy:
+      target: {fileID: 6434266160877196158, guid: 42e207560e6126b4caed2d856f6f3c44,
+        type: 3}
+      Health: 1000000
+      DamgageBasic: 0
+      Defense: 200
+      weapon:
+      - desWeapon: 
+        target: {fileID: 2716795537203685341, guid: 85f933d4a010d4f44b0713499a335590,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 0
+        propEdits:
+        - nameProp: delay to
+          propEdits:
+          - nameProp: 
+            value: 0
+            valueVector: {x: 0.6, y: 0.6}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2715724407745995169, guid: 85f933d4a010d4f44b0713499a335590,
+              type: 3}
+            component: 'WeaponAmmo.randomTimeRestore:'
+            ApplyTargetNow: 0
+            typeConfig: 1
+          - nameProp: lan dau
+            value: 0.4
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2715724407745995169, guid: 85f933d4a010d4f44b0713499a335590,
+              type: 3}
+            component: 'Weapon.timeReloadFirst:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+          - nameProp: 
+            value: 0.6
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2715724407745995169, guid: 85f933d4a010d4f44b0713499a335590,
+              type: 3}
+            component: 'Weapon.randomTo:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+        - nameProp: delay nho
+          propEdits:
+          - nameProp: 
+            value: 0.1
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2715724407745995169, guid: 85f933d4a010d4f44b0713499a335590,
+              type: 3}
+            component: 'Weapon.timeReload:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+        - nameProp: so luong dan
+          propEdits:
+          - nameProp: 
+            value: 12
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2715724407745995169, guid: 85f933d4a010d4f44b0713499a335590,
+              type: 3}
+            component: 'WeaponAmmo.initStorage:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+          - nameProp: 
+            value: 12
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2715724407745995169, guid: 85f933d4a010d4f44b0713499a335590,
+              type: 3}
+            component: 'WeaponAmmo.quantityRestoreEachTime:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+        bullets:
+        - prefab: {fileID: 8269517097850452423, guid: e8b124eb87bb74b4aa07d6747c44359d,
+            type: 3}
+          speedBullet: 5
+          propEdits: []
+      - desWeapon: 
+        target: {fileID: 386972646583227866, guid: 29f86044aff06ee4188709b9da07853e,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 0
+        propEdits: []
+        bullets:
+        - prefab: {fileID: 7856084060703962862, guid: d052eda30a0256745b21099011e2f469,
+            type: 3}
+          speedBullet: 7
+          propEdits: []
+      - desWeapon: 
+        target: {fileID: 2108423186238463638, guid: 9cfe3ed7d60d89844912d50561b60bc1,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 0
+        propEdits: []
+        bullets:
+        - prefab: {fileID: 7856084060703962862, guid: 00545f7bc3d0d8c49b5ad009c929a97d,
+            type: 3}
+          speedBullet: 7
+          propEdits: []
+      - desWeapon: 
+        target: {fileID: 2716795537203685341, guid: 79adac925b9086d4ca640e6ca7b887f3,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 0
+        propEdits: []
+        bullets:
+        - prefab: {fileID: 8269517097850452423, guid: 861d01b6a8e3222438ca9f9e27e297c2,
+            type: 3}
+          speedBullet: 5
+          propEdits: []
+      - desWeapon: 
+        target: {fileID: 2108423186238463638, guid: 71387dc6380369e4888433293403c8bc,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 0
+        propEdits: []
+        bullets:
+        - prefab: {fileID: 8269517097850452423, guid: 9583250e1d2dcf543828f46d6d0c701d,
+            type: 3}
+          speedBullet: 7
+          propEdits: []
+      propEdits: []
+    medium:
+      target: {fileID: 8897217092925319505, guid: ed45249e6d0910f44b30aa427beddc2a,
+        type: 3}
+      Health: 1000000
+      DamgageBasic: 0
+      Defense: 200
+      weapon:
+      - desWeapon: 
+        target: {fileID: 2716795537203685341, guid: 85f933d4a010d4f44b0713499a335590,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 0
+        propEdits:
+        - nameProp: delay to
+          propEdits:
+          - nameProp: 
+            value: 0
+            valueVector: {x: 0.6, y: 0.6}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2715724407745995169, guid: 85f933d4a010d4f44b0713499a335590,
+              type: 3}
+            component: 'WeaponAmmo.randomTimeRestore:'
+            ApplyTargetNow: 0
+            typeConfig: 1
+          - nameProp: lan dau
+            value: 0.4
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2715724407745995169, guid: 85f933d4a010d4f44b0713499a335590,
+              type: 3}
+            component: 'Weapon.timeReloadFirst:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+          - nameProp: 
+            value: 0.6
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2715724407745995169, guid: 85f933d4a010d4f44b0713499a335590,
+              type: 3}
+            component: 'Weapon.randomTo:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+        - nameProp: delay nho
+          propEdits:
+          - nameProp: 
+            value: 0.1
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2715724407745995169, guid: 85f933d4a010d4f44b0713499a335590,
+              type: 3}
+            component: 'Weapon.timeReload:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+        - nameProp: so luong dan
+          propEdits:
+          - nameProp: 
+            value: 12
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2715724407745995169, guid: 85f933d4a010d4f44b0713499a335590,
+              type: 3}
+            component: 'WeaponAmmo.initStorage:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+          - nameProp: 
+            value: 12
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2715724407745995169, guid: 85f933d4a010d4f44b0713499a335590,
+              type: 3}
+            component: 'WeaponAmmo.quantityRestoreEachTime:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+        bullets:
+        - prefab: {fileID: 8269517097850452423, guid: e8b124eb87bb74b4aa07d6747c44359d,
+            type: 3}
+          speedBullet: 5
+          propEdits: []
+      - desWeapon: 
+        target: {fileID: 386972646583227866, guid: 29f86044aff06ee4188709b9da07853e,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 0
+        propEdits: []
+        bullets:
+        - prefab: {fileID: 7856084060703962862, guid: d052eda30a0256745b21099011e2f469,
+            type: 3}
+          speedBullet: 7
+          propEdits: []
+      - desWeapon: 
+        target: {fileID: 2108423186238463638, guid: 9cfe3ed7d60d89844912d50561b60bc1,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 0
+        propEdits: []
+        bullets:
+        - prefab: {fileID: 7856084060703962862, guid: 00545f7bc3d0d8c49b5ad009c929a97d,
+            type: 3}
+          speedBullet: 7
+          propEdits: []
+      - desWeapon: 
+        target: {fileID: 2716795537203685341, guid: 79adac925b9086d4ca640e6ca7b887f3,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 0
+        propEdits: []
+        bullets:
+        - prefab: {fileID: 8269517097850452423, guid: 861d01b6a8e3222438ca9f9e27e297c2,
+            type: 3}
+          speedBullet: 5
+          propEdits: []
+      - desWeapon: 
+        target: {fileID: 2108423186238463638, guid: 71387dc6380369e4888433293403c8bc,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 0
+        propEdits: []
+        bullets:
+        - prefab: {fileID: 8269517097850452423, guid: 9583250e1d2dcf543828f46d6d0c701d,
+            type: 3}
+          speedBullet: 7
+          propEdits: []
+      propEdits: []
+    hard:
+      target: {fileID: 4897446304692379598, guid: 5e83d79761bbfbb49928067902478cba,
+        type: 3}
+      Health: 1000000
+      DamgageBasic: 0
+      Defense: 200
+      weapon:
+      - desWeapon: 
+        target: {fileID: 2716795537203685341, guid: 85f933d4a010d4f44b0713499a335590,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 0
+        propEdits:
+        - nameProp: delay to
+          propEdits:
+          - nameProp: 
+            value: 0
+            valueVector: {x: 0.6, y: 0.6}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2715724407745995169, guid: 85f933d4a010d4f44b0713499a335590,
+              type: 3}
+            component: 'WeaponAmmo.randomTimeRestore:'
+            ApplyTargetNow: 0
+            typeConfig: 1
+          - nameProp: lan dau
+            value: 0.4
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2715724407745995169, guid: 85f933d4a010d4f44b0713499a335590,
+              type: 3}
+            component: 'Weapon.timeReloadFirst:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+          - nameProp: 
+            value: 0.6
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2715724407745995169, guid: 85f933d4a010d4f44b0713499a335590,
+              type: 3}
+            component: 'Weapon.randomTo:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+        - nameProp: delay nho
+          propEdits:
+          - nameProp: 
+            value: 0.1
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2715724407745995169, guid: 85f933d4a010d4f44b0713499a335590,
+              type: 3}
+            component: 'Weapon.timeReload:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+        - nameProp: so luong dan
+          propEdits:
+          - nameProp: 
+            value: 12
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2715724407745995169, guid: 85f933d4a010d4f44b0713499a335590,
+              type: 3}
+            component: 'WeaponAmmo.initStorage:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+          - nameProp: 
+            value: 12
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2715724407745995169, guid: 85f933d4a010d4f44b0713499a335590,
+              type: 3}
+            component: 'WeaponAmmo.quantityRestoreEachTime:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+        bullets:
+        - prefab: {fileID: 8269517097850452423, guid: e8b124eb87bb74b4aa07d6747c44359d,
+            type: 3}
+          speedBullet: 5
+          propEdits: []
+      - desWeapon: 
+        target: {fileID: 386972646583227866, guid: 29f86044aff06ee4188709b9da07853e,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 0
+        propEdits: []
+        bullets:
+        - prefab: {fileID: 7856084060703962862, guid: d052eda30a0256745b21099011e2f469,
+            type: 3}
+          speedBullet: 7
+          propEdits: []
+      - desWeapon: 
+        target: {fileID: 2108423186238463638, guid: 9cfe3ed7d60d89844912d50561b60bc1,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 0
+        propEdits: []
+        bullets:
+        - prefab: {fileID: 7856084060703962862, guid: 00545f7bc3d0d8c49b5ad009c929a97d,
+            type: 3}
+          speedBullet: 7
+          propEdits: []
+      - desWeapon: 
+        target: {fileID: 2716795537203685341, guid: 79adac925b9086d4ca640e6ca7b887f3,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 0
+        propEdits: []
+        bullets:
+        - prefab: {fileID: 8269517097850452423, guid: 861d01b6a8e3222438ca9f9e27e297c2,
+            type: 3}
+          speedBullet: 5
+          propEdits: []
+      - desWeapon: 
+        target: {fileID: 2108423186238463638, guid: 71387dc6380369e4888433293403c8bc,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 0
+        propEdits: []
+        bullets:
+        - prefab: {fileID: 8269517097850452423, guid: 9583250e1d2dcf543828f46d6d0c701d,
+            type: 3}
+          speedBullet: 7
+          propEdits: []
+      propEdits: []

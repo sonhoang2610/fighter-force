@@ -1,0 +1,374 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1372654459884197616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8911298003319650857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96310e2dd4bed0d46b0a3a6a9448b2e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boosterInfos: []
+  typeFire: 1
+  startWithReloadFirst: 0
+  timeReloadFirst: 0.1
+  randomReloadFirst: 0
+  randomTo: 0.1
+  prepareBulletWhenReload: 0
+  needTargetToFire: 0
+  anchorRotation: {fileID: 0}
+  rotationSpeedd: 0.5
+  defaultFace: {x: 0, y: 1}
+  directionTargetDefault: {x: 0, y: 1}
+  comebackDefaultWhenStop: 0
+  stopTargetingWhenstop: 0
+  allowRotationStart: 0
+  restartOnRestoreAmmo: 0
+  initialOffset: {x: 0, y: 0}
+  typeBehaviour: 0
+  isRamdomTimeReload: 0
+  reloadRamdom: {x: 0.1, y: 0.2}
+  timeReload: 0.5
+  machine:
+    AnimUse: Shoot
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    AnimReload: Reload
+    onReload:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    TriggerShoot: Shoot
+    onListenShoot:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    TriggerShootDone: ShootDone
+    onListenShootDone:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    TriggerReloadDone: ReloadDone
+    onListenReloadDone:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  firstMachine:
+    AnimUse: Shoot
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    AnimReload: Reload
+    onReload:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    TriggerShoot: Shoot
+    onListenShoot:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    TriggerShootDone: ShootDone
+    onListenShootDone:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    TriggerReloadDone: ReloadDone
+    onListenReloadDone:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  reactiveMachine:
+    AnimUse: Shoot
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    AnimReload: Reload
+    onReload:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    TriggerShoot: Shoot
+    onListenShoot:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    TriggerShootDone: ShootDone
+    onListenShootDone:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    TriggerReloadDone: ReloadDone
+    onListenReloadDone:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  fixDamage: 0
+  extraDamage:
+    type: 0
+    damageExtra: 0
+  onStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: EazyEngine.Space.UnityEventBool, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  particleEffects: []
+  _listIgnoreObject: []
+  _ammo: {fileID: 0}
+  targetDirection: []
+  factorSpeed: 1
+  factorSpeedWeapon: 1
+  factorDamage: 1
+  lightningTracker: {fileID: 5138947200767208115}
+  lightning: {fileID: 3218035513562951007}
+  damage: 90
+  dameTaken: 0
+--- !u!114 &3969429744626316124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8911298003319650857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2e992bb6adc484288e83c01ef40f61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons: []
+  TargetLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  onFindTarget:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &5138947200767208115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8911298003319650857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc4b565bc130b92468e53331b582bb5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LightningScript: {fileID: 3218035513562951007}
+  StartTarget: {fileID: 0}
+  EndTarget: {fileID: 0}
+  ScaleLimit:
+    Minimum: 0.1
+    Maximum: 10
+--- !u!1001 &6398615856087442972
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8909913384689018561}
+    m_Modifications:
+    - target: {fileID: 8387023052519080669, guid: 8cdf696c58715d1489e35c904eec360a,
+        type: 3}
+      propertyPath: m_Name
+      value: LightningBoltPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387023052519345251, guid: 8cdf696c58715d1489e35c904eec360a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387023052519345251, guid: 8cdf696c58715d1489e35c904eec360a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387023052519345251, guid: 8cdf696c58715d1489e35c904eec360a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387023052519345251, guid: 8cdf696c58715d1489e35c904eec360a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387023052519345251, guid: 8cdf696c58715d1489e35c904eec360a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387023052519345251, guid: 8cdf696c58715d1489e35c904eec360a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387023052519345251, guid: 8cdf696c58715d1489e35c904eec360a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387023052519345251, guid: 8cdf696c58715d1489e35c904eec360a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387023052519345251, guid: 8cdf696c58715d1489e35c904eec360a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387023052519345251, guid: 8cdf696c58715d1489e35c904eec360a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387023052519345251, guid: 8cdf696c58715d1489e35c904eec360a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387023052525062979, guid: 8cdf696c58715d1489e35c904eec360a,
+        type: 3}
+      propertyPath: UseWorldSpace
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387023052525062979, guid: 8cdf696c58715d1489e35c904eec360a,
+        type: 3}
+      propertyPath: CompensateForParentTransform
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387023052525062979, guid: 8cdf696c58715d1489e35c904eec360a,
+        type: 3}
+      propertyPath: ManualMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387023052525062979, guid: 8cdf696c58715d1489e35c904eec360a,
+        type: 3}
+      propertyPath: CountRange.Minimum
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387023052525062979, guid: 8cdf696c58715d1489e35c904eec360a,
+        type: 3}
+      propertyPath: CountRange.Maximum
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387023052525062979, guid: 8cdf696c58715d1489e35c904eec360a,
+        type: 3}
+      propertyPath: DurationRange.Minimum
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387023052525062979, guid: 8cdf696c58715d1489e35c904eec360a,
+        type: 3}
+      propertyPath: DurationRange.Maximum
+      value: 0.2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8cdf696c58715d1489e35c904eec360a, type: 3}
+--- !u!114 &3218035513562951007 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8387023052525062979, guid: 8cdf696c58715d1489e35c904eec360a,
+    type: 3}
+  m_PrefabInstance: {fileID: 6398615856087442972}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73e36b9ad63e5de4391fbd5982a475c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &8910518655354321495
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1072918119399550, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
+      propertyPath: m_Name
+      value: WeaponLigthning
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6359240301430102800, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
+    - {fileID: 114506514760959066, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
+--- !u!1 &8911298003319650857 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1072918119399550, guid: 407911a24b2f1ed42b7ee796c89befc9,
+    type: 3}
+  m_PrefabInstance: {fileID: 8910518655354321495}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8909913384689018561 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9,
+    type: 3}
+  m_PrefabInstance: {fileID: 8910518655354321495}
+  m_PrefabAsset: {fileID: 0}

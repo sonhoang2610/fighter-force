@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d31b62ec9d586a4e94389d9071559ca, type: 3}
+  m_Name: Timer
+  m_EditorClassIdentifier: 
+  _serializedGraph: '{"version":2.92,"type":"FlowCanvas.FlowScript","translation":{"x":61.0,"y":-229.0},"nodes":[{"_position":{"x":304.0,"y":315.0},"$type":"FlowCanvas.Nodes.EnableEvent","$id":"2"},{"_simplexNode":{},"_inputPortValues":{},"_position":{"x":536.0,"y":358.0},"$type":"FlowCanvas.Nodes.SimplexNodeWrapper`1[[FlowCanvas.Nodes.Wait,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"3"},{"_inputPortValues":{"Success":{"$content":true,"$type":"System.Boolean"}},"_position":{"x":795.0,"y":365.0},"$type":"FlowCanvas.Nodes.Finish","$id":"6"},{"value":{"_name":"Info","_targetVariableID":"5b8965ef-364a-4efa-8232-6f19803950a9"},"_position":{"x":58.0,"y":499.0},"$type":"FlowCanvas.Nodes.GetVariable`1[[EazyEngine.Space.ItemGame,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"8"},{"_method":{"_baseInfo":"EazyEngine.Space.ItemGame|get_CoolDownTime|System.Single","_paramsInfo":""},"_inputPortValues":{},"_position":{"x":218.0,"y":448.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"10"}],"connections":[{"_sourcePortName":"Out","_targetPortName":"In","_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"Done","_targetPortName":"In","_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"6"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"Value","_targetPortName":"ItemGame","_sourceNode":{"$ref":"8"},"_targetNode":{"$ref":"10"},"$type":"FlowCanvas.BinderConnection`1[[EazyEngine.Space.ItemGame,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"Value","_targetPortName":"time","_sourceNode":{"$ref":"10"},"_targetNode":{"$ref":"3"},"$type":"FlowCanvas.BinderConnection`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}],"localBlackboard":{"_name":"Local
+    Blackboard","_variables":{}}}'
+  _objectReferences: []
+  _deserializationFailed: 0

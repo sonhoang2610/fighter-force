@@ -1,0 +1,195 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using EazyEngine.Tools;
+using UnityEngine;
+
+namespace EazyEngine.Space.UI
+{
+    public class BoxChoosePlane : BaseBox<ItemBtnChoosePlane,PlaneInfoConfig>
+    {
+        public EazyGroupTabNGUI group;
+        public GameObject attachMentModel;
+        public UIWidget compareRender;
+        public UIButton btnNext, btnPrevious;
+
+        protected int currentPage = 0;
+
+        public void updatePage()
+        {
+            btnNext.isEnabled = true;
+            btnPrevious .isEnabled = true;
+            if (currentPage >= DataSource.Count-1) {
+                currentPage = DataSource.Count - 1;
+                btnNext.isEnabled = false;
+            }
+            if (currentPage <=0 )
+            {
+                currentPage =  0;
+                btnPrevious.isEnabled = false;
+            }
+            group.changeTab(currentPage);
+        }
+
+        public void nextPage()
+        {
+            currentPage++;
+            updatePage();
+        }
+
+        public void previousPage()
+        {
+            currentPage--;
+            updatePage();
+        }
+
+        protected Dictionary<string, GameObject> cacheModel = new Dictionary<string, GameObject>();
+        public override ObservableList<PlaneInfoConfig> DataSource { get => base.DataSource;
+            set {
+                bool isChange = false;
+                if(value != this.DataSource)
+                {
+                    isChange = true;
+                }
+                group.GroupTab.Clear();
+                for (int i = 0; i < group.GroupLayer.Count; ++i)
+                {
+                    group.GroupLayer[i].gameObject.SetActive(false);
+                }
+                group.GroupLayer.Clear();
+      
+                base.DataSource = value;
+                if (isChange) {
+                    for (int i = 0; i < items.Count; ++i)
+                    {
+                        group.GroupTab.Add(items[i].GetComponent<EazyTabNGUI>());
+                        GameObject pObjectNew = null;
+                        if (cacheModel.ContainsKey(items[i].Data.Info.itemID))
+                        {
+                            pObjectNew = cacheModel[items[i].Data.Info.itemID];
+                        }
+                        else
+                        {
+                            pObjectNew = Instantiate(items[i].Data.Info.model, attachMentModel.transform);
+                            cacheModel.Add(items[i].Data.Info.itemID, pObjectNew);
+
+                        }
+             
+                
+                        pObjectNew.SetLayerRecursively(attachMentModel.layer);
+                        pObjectNew.GetComponentInChildren<RenderQueueModifier>().setTarget(compareRender);
+                        group.GroupLayer.Add(pObjectNew.transform);
+                    }
+              
+              
+                }
+                group.reloadTabs();
+                for (int i = 0; i < DataSource.Count; ++i)
+                {
+                    if ((currentIndexTab == 0 && DataSource[i].Info.itemID == GameManager.Instance.Database.selectedMainPlane) || (currentIndexTab == 1 && DataSource[i].Info.itemID == GameManager.Instance.Database.selectedSupportPlane1))
+                    {
+                        currentPage = i;
+                    }
+                }
+                updatePage();
+
+            }
+        }
+        public int findIndex<T>(List<T> pList,BaseItemGame pItem) where T : PlaneInfoConfig
+        {
+            for(int i = 0; i < pList.Count; ++i)
+            {
+                if(pList[i].Info == pItem)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        protected int currentIndexTab = 0;
+        public void reloadIndex(int pIndex)
+        {
+            currentIndexTab = pIndex;
+            List<PlaneInfoConfig> pInfos = new List<PlaneInfoConfig>();
+            if(pIndex == 0)
+            {
+               var pItems = GameDatabase.Instance.getAllItem(CategoryItem.PLANE);
+                var pItemExists = GameManager.Instance.Database.planes;
+                foreach (var pItem in pItems)
+                {
+                    int index = -1;
+                    if ((index = findIndex(pItemExists, pItem)) >=0)
+                    {
+                        pInfos.Add(pItemExists[index]);
+                    }
+                    else
+                    {
+                        var pInfo =   new PlaneInfoConfig() {info = (PlaneInfo)pItem, CurrentLevel = 0 };
+                        GameManager.Instance.Database.planes.Add(pInfo);
+                        pInfos.Add(pInfo);
+                    }
+                }
+                DataSource = pInfos.ToObservableList();
+            }
+            else
+            {
+                var pItems = GameDatabase.Instance.getAllItem(CategoryItem.SP_PLANE);
+                var pItemExists = GameManager.Instance.Database.spPlanes;
+                foreach (var pItem in pItems)
+                {
+                    int index = -1;
+                    if ((index = findIndex(pItemExists, pItem)) >= 0)
+                    {
+                        pInfos.Add(pItemExists[index]);
+                    }
+                    else
+                    {
+                        var pInfo = new PlaneInfoConfig() { info = (PlaneInfo)pItem, CurrentLevel = 0 };
+                        GameManager.Instance.Database.planes.Add(pInfo);
+                        pInfos.Add(pInfo);
+                    }
+                }
+                DataSource = pInfos.ToObservableList();
+            }
+        }
+
+        public void choosedPlane(int index)
+        {
+
+            if (index >= group.GroupLayer.Count) return;
+            currentPage = index;
+            btnNext.isEnabled = true;
+            btnPrevious.isEnabled = true;
+            if (currentPage >= DataSource.Count - 1)
+            {
+                currentPage = DataSource.Count - 1;
+                btnNext.isEnabled = false;
+            }
+            if (currentPage <= 0)
+            {
+                currentPage = 0;
+                btnPrevious.isEnabled = false;
+            }
+            LayerUpgrade.Instance.setDataMainPlane(group.GroupTab[index].GetComponent<ItemBtnChoosePlane>().Data);
+            var pAni = group.GroupLayer[index].GetComponentInChildren<Animator>();
+            if (!pAni) return;
+            pAni.SetTrigger("Preview");
+        }
+
+  
+
+
+
+        // Start is called before the first frame update
+        void Start()
+        {
+       
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+    }
+}

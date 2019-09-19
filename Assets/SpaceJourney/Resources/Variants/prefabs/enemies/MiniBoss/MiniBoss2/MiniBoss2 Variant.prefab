@@ -1,0 +1,174 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7611030392499002815
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6434266160877196158, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: m_Name
+      value: MiniBoss2 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439808527979714236, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439808527979714236, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439808527979714236, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439808527979714236, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439808527979714236, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439808527979714236, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439808527979714236, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439808527979714236, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439808527979714236, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439808527979714236, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439808527979714236, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021873981470971478, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: boundGraphSerialization
+      value: '{"version":2.92,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","translation":{"x":-1351.0,"y":-809.0},"zoomFactor":0.7877591,"nodes":[{"_position":{"x":435.0,"y":128.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"2"},{"_position":{"x":124.0,"y":377.0},"$type":"NodeCanvas.BehaviourTrees.Parallel","$id":"3"},{"repeaterMode":"RepeatForever","repeatTimes":{"_value":1},"_position":{"x":-402.0,"y":500.0},"$type":"NodeCanvas.BehaviourTrees.Repeater","$id":"4"},{"_position":{"x":-402.0,"y":580.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"6"},{"_condition":{"eventName":{"_value":"Next"},"saveEventValue":{"_name":""},"$type":"NodeCanvas.Tasks.Conditions.CheckEvent`1[[System.String,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"_position":{"x":-546.0,"y":685.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"7"},{"_action":{"valueA":{"_name":"state","_targetVariableID":"0ed80453-bf34-418e-bc37-58e6e361ce3e"},"Operation":"Add","valueB":{"_value":1},"$type":"NodeCanvas.Tasks.Actions.SetInt"},"_position":{"x":-227.0,"y":700.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"11"},{"_position":{"x":510.0,"y":569.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"15"},{"_action":{"messCompare":"Start","$type":"EazyEngine.Space.WaitEventGame"},"_position":{"x":349.0,"y":710.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"16"},{"repeaterMode":"RepeatForever","repeatTimes":{"_value":1},"_position":{"x":694.0,"y":677.0},"$type":"NodeCanvas.BehaviourTrees.Repeater","$id":"18"},{"_position":{"x":694.0,"y":757.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"20"},{"dynamic":true,"_position":{"x":-224.0,"y":943.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"21"},{"_condition":{"valueA":{"_name":"state","_targetVariableID":"0ed80453-bf34-418e-bc37-58e6e361ce3e"},"valueB":{},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[System.Int32,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"_position":{"x":-458.0,"y":1085.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"22"},{"_action":{"waitTime":{"_value":1.25},"$type":"NodeCanvas.Tasks.Actions.Wait"},"_position":{"x":-293.0,"y":1081.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"26"},{"_position":{"x":-172.0,"y":1109.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"29"},{"repeatTimes":{"_value":5},"_position":{"x":-269.0,"y":1210.0},"$type":"NodeCanvas.BehaviourTrees.Repeater","$id":"30"},{"_position":{"x":-269.0,"y":1290.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"32"},{"_action":{"actions":[{"method":{"_baseInfo":"EazyEngine.Space.CharacterHandleWeapon|triggerHandleWepaon|System.Void","_paramsInfo":"System.String"},"parameters":[{"_type":"System.String","_value":{"$content":"Attack1","$type":"System.String"}}],"parameterIsByRef":[false],"returnValue":{},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},{"method":{"_baseInfo":"EazyEngine.Space.CharacterHandleWeapon|ShootStart|System.Void","_paramsInfo":""},"parameters":[],"parameterIsByRef":[],"returnValue":{},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"}],"$type":"NodeCanvas.Framework.ActionList"},"_position":{"x":-561.0,"y":1477.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"33"},{"_action":{"waitTime":{"_value":0.2},"$type":"NodeCanvas.Tasks.Actions.Wait"},"_position":{"x":-163.0,"y":1502.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"47"},{"_action":{"waitTime":{"_value":1.5},"$type":"NodeCanvas.Tasks.Actions.Wait"},"_position":{"x":-14.0,"y":1270.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"50"},{"dynamic":true,"_position":{"x":524.0,"y":928.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"53"},{"_condition":{"valueA":{"_name":"state","_targetVariableID":"0ed80453-bf34-418e-bc37-58e6e361ce3e"},"valueB":{"_value":1},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[System.Int32,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"_position":{"x":291.0,"y":1070.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"54"},{"_action":{"waitTime":{"_value":1.25},"$type":"NodeCanvas.Tasks.Actions.Wait"},"_position":{"x":455.0,"y":1072.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"58"},{"_position":{"x":576.0,"y":1094.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"61"},{"repeatTimes":{"_value":5},"_position":{"x":416.0,"y":1178.0},"$type":"NodeCanvas.BehaviourTrees.Repeater","$id":"62"},{"_position":{"x":416.0,"y":1258.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"64"},{"_action":{"actions":[{"method":{"_baseInfo":"EazyEngine.Space.CharacterHandleWeapon|triggerHandleWepaon|System.Void","_paramsInfo":"System.String"},"parameters":[{"_type":"System.String","_value":{"$content":"Attack2","$type":"System.String"}}],"parameterIsByRef":[false],"returnValue":{},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},{"method":{"_baseInfo":"EazyEngine.Space.CharacterHandleWeapon|ShootStart|System.Void","_paramsInfo":""},"parameters":[],"parameterIsByRef":[],"returnValue":{},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"}],"$type":"NodeCanvas.Framework.ActionList"},"_position":{"x":220.0,"y":1405.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"65"},{"_action":{"waitTime":{"_value":0.2},"$type":"NodeCanvas.Tasks.Actions.Wait"},"_position":{"x":547.0,"y":1423.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"79"},{"_action":{"waitTime":{"_value":1.5},"$type":"NodeCanvas.Tasks.Actions.Wait"},"_position":{"x":734.0,"y":1255.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"82"},{"dynamic":true,"_position":{"x":1065.0,"y":918.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"85"},{"_condition":{"valueA":{"_name":"state","_targetVariableID":"0ed80453-bf34-418e-bc37-58e6e361ce3e"},"valueB":{"_value":2},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[System.Int32,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"_position":{"x":899.0,"y":1078.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"86"},{"_action":{"waitTime":{"_value":1.25},"$type":"NodeCanvas.Tasks.Actions.Wait"},"_position":{"x":1112.0,"y":1064.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"90"},{"_position":{"x":1231.0,"y":1082.0},"$type":"NodeCanvas.BehaviourTrees.Parallel","$id":"93"},{"repeatTimes":{"_value":5},"_position":{"x":975.0,"y":1247.0},"$type":"NodeCanvas.BehaviourTrees.Repeater","$id":"94"},{"_position":{"x":975.0,"y":1327.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"96"},{"_action":{"actions":[{"method":{"_baseInfo":"EazyEngine.Space.CharacterHandleWeapon|triggerHandleWepaon|System.Void","_paramsInfo":"System.String"},"parameters":[{"_type":"System.String","_value":{"$content":"Attack3","$type":"System.String"}}],"parameterIsByRef":[false],"returnValue":{},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},{"method":{"_baseInfo":"EazyEngine.Space.CharacterHandleWeapon|ShootStart|System.Void","_paramsInfo":""},"parameters":[],"parameterIsByRef":[],"returnValue":{},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"}],"$type":"NodeCanvas.Framework.ActionList"},"_position":{"x":779.0,"y":1474.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"97"},{"_action":{"waitTime":{"_value":0.2},"$type":"NodeCanvas.Tasks.Actions.Wait"},"_position":{"x":1106.0,"y":1492.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"111"},{"repeatTimes":{"_value":5},"_position":{"x":1521.0,"y":1249.0},"$type":"NodeCanvas.BehaviourTrees.Repeater","$id":"114"},{"_position":{"x":1521.0,"y":1329.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"116"},{"_action":{"actions":[{"method":{"_baseInfo":"EazyEngine.Space.CharacterHandleWeapon|triggerHandleWepaon|System.Void","_paramsInfo":"System.String"},"parameters":[{"_type":"System.String","_value":{"$content":"Mid","$type":"System.String"}}],"parameterIsByRef":[false],"returnValue":{},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},{"method":{"_baseInfo":"EazyEngine.Space.CharacterHandleWeapon|ShootStart|System.Void","_paramsInfo":""},"parameters":[],"parameterIsByRef":[],"returnValue":{},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"}],"$type":"NodeCanvas.Framework.ActionList"},"_position":{"x":1324.0,"y":1463.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"117"},{"_action":{"waitTime":{"_value":0.2},"$type":"NodeCanvas.Tasks.Actions.Wait"},"_position":{"x":1678.0,"y":1479.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"131"},{"dynamic":true,"_position":{"x":2147.0,"y":934.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"134"},{"_condition":{"valueA":{"_name":"state","_targetVariableID":"0ed80453-bf34-418e-bc37-58e6e361ce3e"},"valueB":{"_value":3},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[System.Int32,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"_position":{"x":1913.0,"y":1076.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"135"},{"_action":{"waitTime":{"_value":1.25},"$type":"NodeCanvas.Tasks.Actions.Wait"},"_position":{"x":2075.0,"y":1084.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"139"},{"_position":{"x":2199.0,"y":1100.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"142"},{"repeatTimes":{"_value":5},"_position":{"x":2039.0,"y":1184.0},"$type":"NodeCanvas.BehaviourTrees.Repeater","$id":"143"},{"_position":{"x":2039.0,"y":1264.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"145"},{"_action":{"actions":[{"method":{"_baseInfo":"EazyEngine.Space.CharacterHandleWeapon|triggerHandleWepaon|System.Void","_paramsInfo":"System.String"},"parameters":[{"_type":"System.String","_value":{"$content":"Attack4","$type":"System.String"}}],"parameterIsByRef":[false],"returnValue":{},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},{"method":{"_baseInfo":"EazyEngine.Space.CharacterHandleWeapon|ShootStart|System.Void","_paramsInfo":""},"parameters":[],"parameterIsByRef":[],"returnValue":{},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"}],"$type":"NodeCanvas.Framework.ActionList"},"_position":{"x":1843.0,"y":1411.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"146"},{"_action":{"waitTime":{"_value":0.2},"$type":"NodeCanvas.Tasks.Actions.Wait"},"_position":{"x":2170.0,"y":1429.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"160"},{"_action":{"waitTime":{"_value":1.5},"$type":"NodeCanvas.Tasks.Actions.Wait"},"_position":{"x":2357.0,"y":1261.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"163"},{"dynamic":true,"_position":{"x":3094.0,"y":982.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"166"},{"_condition":{"valueA":{"_name":"state","_targetVariableID":"0ed80453-bf34-418e-bc37-58e6e361ce3e"},"valueB":{"_value":4},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[System.Int32,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"_position":{"x":2561.0,"y":1128.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"167"},{"_action":{"waitTime":{"_value":1.25},"$type":"NodeCanvas.Tasks.Actions.Wait"},"_position":{"x":2779.0,"y":1133.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"171"},{"repeaterMode":"RepeatForever","repeatTimes":{"_value":1},"_position":{"x":3194.0,"y":1091.0},"$type":"NodeCanvas.BehaviourTrees.Repeater","$id":"174"},{"_position":{"x":3194.0,"y":1171.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"176"},{"_condition":{"method":{"_baseInfo":"EazyEngine.Space.Health|get_PercentageHealth|System.Single","_paramsInfo":""},"checkValue":{"_type":"System.Single","_value":{"$content":0.5,"$type":"System.Single"}},"comparison":"GreaterOrEqualTo","$type":"NodeCanvas.Tasks.Conditions.CheckProperty_Multiplatform"},"_position":{"x":2875.0,"y":1458.0},"$type":"NodeCanvas.BehaviourTrees.ConditionalEvaluator","$id":"177"},{"_position":{"x":2941.0,"y":1659.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"181"},{"repeatTimes":{"_value":15},"_position":{"x":2812.0,"y":1759.0},"$type":"NodeCanvas.BehaviourTrees.Repeater","$id":"182"},{"_position":{"x":2812.0,"y":1839.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"184"},{"_action":{"actions":[{"method":{"_baseInfo":"EazyEngine.Space.CharacterHandleWeapon|triggerHandleWepaon|System.Void","_paramsInfo":"System.String"},"parameters":[{"_type":"System.String","_value":{"$content":"Mid","$type":"System.String"}}],"parameterIsByRef":[false],"returnValue":{},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},{"method":{"_baseInfo":"EazyEngine.Space.CharacterHandleWeapon|ShootStart|System.Void","_paramsInfo":""},"parameters":[],"parameterIsByRef":[],"returnValue":{},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"}],"$type":"NodeCanvas.Framework.ActionList"},"_position":{"x":2616.0,"y":1986.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"185"},{"_action":{"waitTime":{"_value":0.1},"$type":"NodeCanvas.Tasks.Actions.Wait"},"_position":{"x":2943.0,"y":2004.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"199"},{"_action":{"waitTime":{"_value":2.5},"$type":"NodeCanvas.Tasks.Actions.Wait"},"_position":{"x":3130.0,"y":1836.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"202"},{"_condition":{"method":{"_baseInfo":"EazyEngine.Space.Health|get_PercentageHealth|System.Single","_paramsInfo":""},"checkValue":{"_type":"System.Single","_value":{"$content":0.5,"$type":"System.Single"}},"comparison":"LessThan","$type":"NodeCanvas.Tasks.Conditions.CheckProperty_Multiplatform"},"_position":{"x":3419.0,"y":1476.0},"$type":"NodeCanvas.BehaviourTrees.ConditionalEvaluator","$id":"205"},{"_position":{"x":3523.0,"y":1654.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"209"},{"repeatTimes":{"_value":25},"_position":{"x":3407.0,"y":1759.0},"$type":"NodeCanvas.BehaviourTrees.Repeater","$id":"210"},{"_position":{"x":3407.0,"y":1839.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"212"},{"_action":{"actions":[{"method":{"_baseInfo":"EazyEngine.Space.CharacterHandleWeapon|triggerHandleWepaon|System.Void","_paramsInfo":"System.String"},"parameters":[{"_type":"System.String","_value":{"$content":"Mid","$type":"System.String"}}],"parameterIsByRef":[false],"returnValue":{},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},{"method":{"_baseInfo":"EazyEngine.Space.CharacterHandleWeapon|ShootStart|System.Void","_paramsInfo":""},"parameters":[],"parameterIsByRef":[],"returnValue":{},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"}],"$type":"NodeCanvas.Framework.ActionList"},"_position":{"x":3211.0,"y":1986.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"213"},{"_action":{"waitTime":{"_value":0.1},"$type":"NodeCanvas.Tasks.Actions.Wait"},"_position":{"x":3538.0,"y":2004.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"227"},{"_action":{"waitTime":{"_value":2.5},"$type":"NodeCanvas.Tasks.Actions.Wait"},"_position":{"x":3725.0,"y":1836.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"230"}],"connections":[{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"15"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"6"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"7"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"11"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"15"},"_targetNode":{"$ref":"16"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"15"},"_targetNode":{"$ref":"18"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"18"},"_targetNode":{"$ref":"20"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"20"},"_targetNode":{"$ref":"21"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"20"},"_targetNode":{"$ref":"53"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"20"},"_targetNode":{"$ref":"85"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"20"},"_targetNode":{"$ref":"134"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"20"},"_targetNode":{"$ref":"166"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"21"},"_targetNode":{"$ref":"22"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"21"},"_targetNode":{"$ref":"26"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"21"},"_targetNode":{"$ref":"29"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"29"},"_targetNode":{"$ref":"30"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"29"},"_targetNode":{"$ref":"50"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"30"},"_targetNode":{"$ref":"32"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"32"},"_targetNode":{"$ref":"33"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"32"},"_targetNode":{"$ref":"47"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"53"},"_targetNode":{"$ref":"54"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"53"},"_targetNode":{"$ref":"58"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"53"},"_targetNode":{"$ref":"61"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"61"},"_targetNode":{"$ref":"62"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"61"},"_targetNode":{"$ref":"82"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"62"},"_targetNode":{"$ref":"64"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"64"},"_targetNode":{"$ref":"65"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"64"},"_targetNode":{"$ref":"79"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"85"},"_targetNode":{"$ref":"86"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"85"},"_targetNode":{"$ref":"90"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"85"},"_targetNode":{"$ref":"93"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"93"},"_targetNode":{"$ref":"94"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"93"},"_targetNode":{"$ref":"114"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"94"},"_targetNode":{"$ref":"96"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"96"},"_targetNode":{"$ref":"97"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"96"},"_targetNode":{"$ref":"111"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"114"},"_targetNode":{"$ref":"116"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"116"},"_targetNode":{"$ref":"117"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"116"},"_targetNode":{"$ref":"131"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"134"},"_targetNode":{"$ref":"135"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"134"},"_targetNode":{"$ref":"139"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"134"},"_targetNode":{"$ref":"142"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"142"},"_targetNode":{"$ref":"143"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"142"},"_targetNode":{"$ref":"163"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"143"},"_targetNode":{"$ref":"145"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"145"},"_targetNode":{"$ref":"146"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"145"},"_targetNode":{"$ref":"160"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"166"},"_targetNode":{"$ref":"167"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"166"},"_targetNode":{"$ref":"171"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"166"},"_targetNode":{"$ref":"174"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"174"},"_targetNode":{"$ref":"176"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"176"},"_targetNode":{"$ref":"177"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"176"},"_targetNode":{"$ref":"205"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"177"},"_targetNode":{"$ref":"181"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"181"},"_targetNode":{"$ref":"182"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"181"},"_targetNode":{"$ref":"202"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"182"},"_targetNode":{"$ref":"184"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"184"},"_targetNode":{"$ref":"185"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"184"},"_targetNode":{"$ref":"199"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"205"},"_targetNode":{"$ref":"209"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"209"},"_targetNode":{"$ref":"210"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"209"},"_targetNode":{"$ref":"230"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"210"},"_targetNode":{"$ref":"212"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"212"},"_targetNode":{"$ref":"213"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"212"},"_targetNode":{"$ref":"227"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"canvasGroups":[],"localBlackboard":{"_name":"Local
+        Blackboard","_variables":{}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021873981470971478, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: _graph
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6018345262942380019, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 6018345262942380019, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+    - target: {fileID: 3734450229395289968, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: MaxiumHealth
+      value: 250000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3734450229395289968, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: InitialHealth
+      value: 250000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1322359296570085328, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: MaxiumHealth
+      value: 250000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1322359296570085328, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: InitialHealth
+      value: 250000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203167722554587686, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: MaxiumHealth
+      value: 250000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203167722554587686, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: InitialHealth
+      value: 250000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1983432334359063022, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: MaxiumHealth
+      value: 250000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1983432334359063022, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: InitialHealth
+      value: 250000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2636824737653832235, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: _graph
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745927119551171618, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: _graph
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420199283508538656, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517511437478505898, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042203530911097508, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3157801258753698885, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8441060547339374475, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7443692969090009901, guid: d32c58e6a9e8c1e43bbf9a974a4edde7,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d32c58e6a9e8c1e43bbf9a974a4edde7, type: 3}

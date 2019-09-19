@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d31b62ec9d586a4e94389d9071559ca, type: 3}
+  m_Name: BigLaser
+  m_EditorClassIdentifier: 
+  _serializedGraph: '{"version":2.92,"type":"FlowCanvas.FlowScript","translation":{"x":-70.0,"y":-90.0},"nodes":[{"_position":{"x":423.0,"y":366.0},"$type":"FlowCanvas.Nodes.EnableEvent","$id":"2"},{"_macro":1,"_inputPortValues":{},"_position":{"x":739.0,"y":378.0},"$type":"FlowCanvas.Macros.MacroNodeWrapper","$id":"3"},{"_inputPortValues":{},"_position":{"x":1053.0,"y":482.0},"$type":"FlowCanvas.Nodes.ForEach`1[[EazyEngine.Space.Weapon,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"5"},{"_method":{"_baseInfo":"EazyEngine.Space.Weapon|removeExtraDamge|System.Void","_paramsInfo":"System.String"},"_callable":true,"_inputPortValues":{},"_position":{"x":1298.0,"y":500.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"7"},{"_method":{"_baseInfo":"EazyEngine.Space.Weapon|addDamageExtra|System.Void","_paramsInfo":"EazyEngine.Space.DamageExtra[]|System.String"},"_callable":true,"_inputPortValues":{},"_position":{"x":1711.0,"y":501.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"10"},{"_simplexNode":{},"_inputPortValues":{},"_position":{"x":1882.0,"y":242.0},"$type":"FlowCanvas.Nodes.SimplexNodeWrapper`1[[FlowCanvas.Nodes.Wait,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"13"},{"_method":{"_baseInfo":"EazyEngine.Space.CharacterHandleWeapon|triggerChangeWeapon|System.Void","_paramsInfo":"System.String"},"_callable":true,"_inputPortValues":{"pTrigger":{"$content":"Default","$type":"System.String"}},"_position":{"x":2218.0,"y":394.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"16"},{"_inputPortValues":{"Success":{"$content":true,"$type":"System.Boolean"}},"_position":{"x":2414.0,"y":274.0},"$type":"FlowCanvas.Nodes.Finish","$id":"19"},{"value":{"_name":"Info"},"_position":{"x":-80.0,"y":574.0},"$type":"FlowCanvas.Nodes.GetVariable`1[[EazyEngine.Space.BaseItemGame,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"21"},{"fieldName":"itemID","targetType":"EazyEngine.Space.BaseItemGame","_inputPortValues":{},"_position":{"x":334.0,"y":599.0},"$type":"FlowCanvas.Nodes.ReflectedFieldNodeWrapper","$id":"23"},{"_method":{"_baseInfo":"EazyEngine.Space.ItemGame|get_Duration|System.Single","_paramsInfo":""},"_inputPortValues":{},"_position":{"x":682.0,"y":163.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"25"},{"value":{"_name":"extraDamges"},"_position":{"x":1033.0,"y":794.0},"$type":"FlowCanvas.Nodes.GetVariable`1[[EazyEngine.Space.DamageExtraVariants,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"28"},{"_method":{"_baseInfo":"EazyEngine.Space.DamageExtraVariants|toNormalArray|EazyEngine.Space.DamageExtra[]","_paramsInfo":""},"_inputPortValues":{},"_position":{"x":1287.0,"y":716.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"30"}],"connections":[{"_sourcePortName":"Out","_targetPortName":"d7e2d2dd-008a-49da-aa92-85196e1fb431","_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"f69f4fcf-2a49-4cf9-9f02-c6a069ca3e0d","_targetPortName":"Value","_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"5"},"$type":"FlowCanvas.BinderConnection`1[[System.Collections.Generic.IEnumerable`1[[EazyEngine.Space.Weapon,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib,
+    Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"36c01348-9be9-4581-b674-bfa65b56b16e","_targetPortName":"In","_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"5"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"Current","_targetPortName":"Weapon","_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"7"},"$type":"FlowCanvas.BinderConnection`1[[EazyEngine.Space.Weapon,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"Do","_targetPortName":"
+    ","_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"7"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"Done","_targetPortName":"In","_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"13"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"
+    ","_targetPortName":" ","_sourceNode":{"$ref":"7"},"_targetNode":{"$ref":"10"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"Weapon","_targetPortName":"Weapon","_sourceNode":{"$ref":"7"},"_targetNode":{"$ref":"10"},"$type":"FlowCanvas.BinderConnection`1[[EazyEngine.Space.Weapon,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"Done","_targetPortName":"
+    ","_sourceNode":{"$ref":"13"},"_targetNode":{"$ref":"16"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"Out","_targetPortName":"In","_sourceNode":{"$ref":"13"},"_targetNode":{"$ref":"19"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"Value","_targetPortName":"BaseItemGame","_sourceNode":{"$ref":"21"},"_targetNode":{"$ref":"23"},"$type":"FlowCanvas.BinderConnection`1[[EazyEngine.Space.BaseItemGame,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"Value","_targetPortName":"ItemGame","_sourceNode":{"$ref":"21"},"_targetNode":{"$ref":"25"},"$type":"FlowCanvas.BinderConnection`1[[EazyEngine.Space.ItemGame,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"Value","_targetPortName":"6823e71f-6220-4d14-ba35-2d733e2451ce","_sourceNode":{"$ref":"23"},"_targetNode":{"$ref":"3"},"$type":"FlowCanvas.BinderConnection`1[[System.String,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"Value","_targetPortName":"pStr","_sourceNode":{"$ref":"23"},"_targetNode":{"$ref":"10"},"$type":"FlowCanvas.BinderConnection`1[[System.String,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"Value","_targetPortName":"pID","_sourceNode":{"$ref":"23"},"_targetNode":{"$ref":"7"},"$type":"FlowCanvas.BinderConnection`1[[System.String,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"Value","_targetPortName":"time","_sourceNode":{"$ref":"25"},"_targetNode":{"$ref":"13"},"$type":"FlowCanvas.BinderConnection`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"Value","_targetPortName":"DamageExtraVariants","_sourceNode":{"$ref":"28"},"_targetNode":{"$ref":"30"},"$type":"FlowCanvas.BinderConnection`1[[EazyEngine.Space.DamageExtraVariants,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"Value","_targetPortName":"extra","_sourceNode":{"$ref":"30"},"_targetNode":{"$ref":"10"},"$type":"FlowCanvas.BinderConnection`1[[EazyEngine.Space.DamageExtra[],
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}],"localBlackboard":{"_name":"Local
+    Blackboard","_variables":{}}}'
+  _objectReferences:
+  - {fileID: 0}
+  - {fileID: 11400000, guid: e2604fd77238f9c4ea87656ef9f4ee85, type: 2}
+  _deserializationFailed: 0

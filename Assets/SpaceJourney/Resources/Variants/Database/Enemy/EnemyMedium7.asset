@@ -1,0 +1,261 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e29c2181177b4b545a0268854813e7b9, type: 3}
+  m_Name: EnemyMedium7
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  info:
+    preview: {fileID: 2800000, guid: a2781c76f939eeb468345a7cfaaded93, type: 3}
+    easy:
+      target: {fileID: 8591550201151429216, guid: d2f0316ca3c6f1442bfeab78326c9907,
+        type: 3}
+      Health: 28000
+      DamgageBasic: 300
+      Defense: 0
+      weapon:
+      - desWeapon: "b\u1EAFn gi\u1EEFa 1 tia 3 vi\xEAn 1 \u0111\u1EE3t"
+        target: {fileID: 2109083374620563600, guid: 71ec9a6c380355842a4028035ea06e19,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 300
+        propEdits:
+        - nameProp: "delay l\u1EDBn"
+          propEdits:
+          - nameProp: delay
+            value: 0
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2109716488403967724, guid: 71ec9a6c380355842a4028035ea06e19,
+              type: 3}
+            component: 'WeaponAmmo.randomTimeRestore:'
+            ApplyTargetNow: 1
+            typeConfig: 1
+        - nameProp: "delay nh\u1ECF"
+          propEdits:
+          - nameProp: delay
+            value: 0
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2109716488403967724, guid: 71ec9a6c380355842a4028035ea06e19,
+              type: 3}
+            component: 'Weapon.timeReload:'
+            ApplyTargetNow: 1
+            typeConfig: 0
+        bullets:
+        - prefab: {fileID: 8269517097850452423, guid: e2805d51749d6114e9756cb38dc6015b,
+            type: 3}
+          speedBullet: 5
+          propEdits: []
+      - desWeapon: "b\u1EAFn t\u1ECFa 4"
+        target: {fileID: 2109083374620563600, guid: 124767c59db706b4aace1777d1562cba,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 350
+        propEdits:
+        - nameProp: delay
+          propEdits:
+          - nameProp: delay
+            value: 0
+            valueVector: {x: 3, y: 3.5}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2109716488403967724, guid: 124767c59db706b4aace1777d1562cba,
+              type: 3}
+            component: 'Weapon.reloadRamdom:'
+            ApplyTargetNow: 0
+            typeConfig: 1
+        bullets:
+        - prefab: {fileID: 8269517097850452423, guid: fe97f8b00051a6f4187a4d0dee3cfaf7,
+            type: 3}
+          speedBullet: 4.5
+          propEdits: []
+      propEdits: []
+    medium:
+      target: {fileID: 8591550201151429216, guid: 735d8254594a70144876c99d8ca29c82,
+        type: 3}
+      Health: 40000
+      DamgageBasic: 450
+      Defense: 500
+      weapon:
+      - desWeapon: "b\u1EAFn  gi\u1EEFa 5 vi\xEAn 1 \u0111\u1EE3t"
+        target: {fileID: 2109083374620563600, guid: b566fce0fed9c91408422a83b1ebbaf4,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 450
+        propEdits:
+        - nameProp: delay lon
+          propEdits:
+          - nameProp: delay
+            value: 0
+            valueVector: {x: 1.2, y: 1.8}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2109716488403967724, guid: b566fce0fed9c91408422a83b1ebbaf4,
+              type: 3}
+            component: 'WeaponAmmo.randomTimeRestore:'
+            ApplyTargetNow: 0
+            typeConfig: 1
+        - nameProp: "delay nh\u1ECF"
+          propEdits:
+          - nameProp: delay
+            value: 0.2
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2109716488403967724, guid: b566fce0fed9c91408422a83b1ebbaf4,
+              type: 3}
+            component: 'Weapon.timeReload:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+        bullets:
+        - prefab: {fileID: 8269517097850452423, guid: e2805d51749d6114e9756cb38dc6015b,
+            type: 3}
+          speedBullet: 5.5
+          propEdits: []
+      - desWeapon: "b\u1EAFn t\u1ECFa 4"
+        target: {fileID: 2109083374620563600, guid: 9a4f030ec81d6cf4eb37e0ca685d74a8,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 500
+        propEdits:
+        - nameProp: delay
+          propEdits:
+          - nameProp: delay
+            value: 0
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2109716488403967724, guid: 9a4f030ec81d6cf4eb37e0ca685d74a8,
+              type: 3}
+            component: 'Weapon.reloadRamdom:'
+            ApplyTargetNow: 1
+            typeConfig: 1
+        bullets:
+        - prefab: {fileID: 8269517097850452423, guid: fe97f8b00051a6f4187a4d0dee3cfaf7,
+            type: 3}
+          speedBullet: 6.5
+          propEdits: []
+      propEdits: []
+    hard:
+      target: {fileID: 8591550201151429216, guid: 2ee2c5a304aa57848ad0c1dcbd28edbb,
+        type: 3}
+      Health: 62000
+      DamgageBasic: 600
+      Defense: 1000
+      weapon:
+      - desWeapon: "b\u1EAFn  gi\u1EEFa 5 vi\xEAn 1 \u0111\u1EE3t"
+        target: {fileID: 2109083374620563600, guid: b566fce0fed9c91408422a83b1ebbaf4,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 650
+        propEdits:
+        - nameProp: delay lon
+          propEdits:
+          - nameProp: delay
+            value: 0
+            valueVector: {x: 0.8, y: 1.2}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2109716488403967724, guid: b566fce0fed9c91408422a83b1ebbaf4,
+              type: 3}
+            component: 'WeaponAmmo.randomTimeRestore:'
+            ApplyTargetNow: 0
+            typeConfig: 1
+        - nameProp: "delay nh\u1ECF"
+          propEdits:
+          - nameProp: delay
+            value: 0.2
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2109716488403967724, guid: b566fce0fed9c91408422a83b1ebbaf4,
+              type: 3}
+            component: 'Weapon.timeReload:'
+            ApplyTargetNow: 0
+            typeConfig: 0
+        bullets:
+        - prefab: {fileID: 8269517097850452423, guid: e2805d51749d6114e9756cb38dc6015b,
+            type: 3}
+          speedBullet: 7.5
+          propEdits: []
+      - desWeapon: "B\u1EAFn 4 t\u1ECFa"
+        target: {fileID: 2109083374620563600, guid: e4399a1a82a92504c98ab9caf771eee2,
+          type: 3}
+        extraDamge:
+          type: 0
+          damageExtra: 650
+        propEdits:
+        - nameProp: "delay l\u1EDBn"
+          propEdits:
+          - nameProp: delay
+            value: 0
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2109716488403967724, guid: e4399a1a82a92504c98ab9caf771eee2,
+              type: 3}
+            component: 'WeaponAmmo.randomTimeRestore:'
+            ApplyTargetNow: 1
+            typeConfig: 1
+        - nameProp: "delay nh\u1ECF"
+          propEdits:
+          - nameProp: 
+            value: 0
+            valueVector: {x: 0, y: 0}
+            newTarget:
+              parrent: {fileID: 0}
+              target: {fileID: 0}
+              path: 
+            target: {fileID: 2109716488403967724, guid: e4399a1a82a92504c98ab9caf771eee2,
+              type: 3}
+            component: 'Weapon.timeReload:'
+            ApplyTargetNow: 1
+            typeConfig: 0
+        bullets:
+        - prefab: {fileID: 8269517097850452423, guid: fe97f8b00051a6f4187a4d0dee3cfaf7,
+            type: 3}
+          speedBullet: 7.5
+          propEdits: []
+      propEdits: []

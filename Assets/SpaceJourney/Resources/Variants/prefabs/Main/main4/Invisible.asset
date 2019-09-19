@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d31b62ec9d586a4e94389d9071559ca, type: 3}
+  m_Name: Invisible
+  m_EditorClassIdentifier: 
+  _serializedGraph: '{"version":2.92,"type":"FlowCanvas.FlowScript","translation":{"x":-1194.0,"y":-217.0},"nodes":[{"_position":{"x":453.0,"y":336.0},"$type":"FlowCanvas.Nodes.EnableEvent","$id":"2"},{"fieldName":"a","targetType":"UnityEngine.Color","accessMode":"SetField","_inputPortValues":{"Value":{"$content":0.3,"$type":"System.Single"}},"_position":{"x":664.0,"y":355.0},"$type":"FlowCanvas.Nodes.ReflectedFieldNodeWrapper","$id":"3"},{"_method":{"_baseInfo":"UnityEngine.SpriteRenderer|set_color|System.Void","_paramsInfo":"UnityEngine.Color"},"_callable":true,"_inputPortValues":{},"_position":{"x":859.0,"y":337.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"5"},{"_method":{"_baseInfo":"UnityEngine.SpriteRenderer|set_color|System.Void","_paramsInfo":"UnityEngine.Color"},"_callable":true,"_inputPortValues":{},"_position":{"x":1068.0,"y":379.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"8"},{"fieldName":"overrideDisabled","targetType":"Spine.Unity.Modules.SkeletonRendererCustomMaterials+AtlasMaterialOverride","accessMode":"SetField","_inputPortValues":{},"_position":{"x":1425.0,"y":387.0},"$type":"FlowCanvas.Nodes.ReflectedFieldNodeWrapper","$id":"11"},{"_method":{"_baseInfo":"System.Collections.Generic.List`1[[Spine.Unity.Modules.SkeletonRendererCustomMaterials+AtlasMaterialOverride,
+    spine-unity, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]|set_Item|System.Void","_paramsInfo":"System.Int32|Spine.Unity.Modules.SkeletonRendererCustomMaterials+AtlasMaterialOverride"},"_callable":true,"_inputPortValues":{"index":{"$content":1,"$type":"System.Int32"}},"_position":{"x":1644.0,"y":461.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"13"},{"_method":{"_baseInfo":"Spine.Unity.Modules.SkeletonRendererCustomMaterials|SetCustomMaterialOverridesPublic|System.Void","_paramsInfo":""},"_callable":true,"_inputPortValues":{},"_position":{"x":1878.0,"y":419.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"16"},{"value":{"_name":"wing1","_targetVariableID":"dfb3a584-099d-4d2f-b953-7dd2b2b9f75e"},"_position":{"x":275.0,"y":522.0},"$type":"FlowCanvas.Nodes.GetVariable`1[[UnityEngine.GameObject,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"19"},{"_selectedInstanceMembers":["color"],"_inputPortValues":{},"_position":{"x":489.0,"y":511.0},"$type":"FlowCanvas.Nodes.ReflectedExtractorNodeWrapper`1[[UnityEngine.SpriteRenderer,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"21"},{"value":{"_name":"wing2","_targetVariableID":"da9147c3-3c2c-496d-8335-6e993c6ec0ce"},"_position":{"x":822.0,"y":479.0},"$type":"FlowCanvas.Nodes.GetVariable`1[[UnityEngine.GameObject,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"24"},{"value":{"_name":"model","_targetVariableID":"5cd98090-f57f-4edd-a86b-ef6c7d02d3d8"},"_position":{"x":554.0,"y":641.0},"$type":"FlowCanvas.Nodes.GetVariable`1[[UnityEngine.GameObject,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"26"},{"_method":{"_baseInfo":"Spine.Unity.Modules.SkeletonRendererCustomMaterials|get_CustomMaterialOverrides|System.Collections.Generic.List`1[[Spine.Unity.Modules.SkeletonRendererCustomMaterials+AtlasMaterialOverride,
+    spine-unity, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","_paramsInfo":""},"_inputPortValues":{},"_position":{"x":781.0,"y":653.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"28"},{"_method":{"_baseInfo":"System.Collections.Generic.List`1[[Spine.Unity.Modules.SkeletonRendererCustomMaterials+AtlasMaterialOverride,
+    spine-unity, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]|get_Item|Spine.Unity.Modules.SkeletonRendererCustomMaterials+AtlasMaterialOverride","_paramsInfo":"System.Int32"},"_inputPortValues":{"index":{"$content":1,"$type":"System.Int32"}},"_position":{"x":1129.0,"y":533.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"31"}],"connections":[{"_sourcePortName":"Out","_targetPortName":"
+    ","_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"Color","_targetPortName":"value","_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"5"},"$type":"FlowCanvas.BinderConnection`1[[UnityEngine.Color,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"
+    ","_targetPortName":" ","_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"5"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"Color","_targetPortName":"value","_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"8"},"$type":"FlowCanvas.BinderConnection`1[[UnityEngine.Color,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"
+    ","_targetPortName":" ","_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"8"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"
+    ","_targetPortName":" ","_sourceNode":{"$ref":"8"},"_targetNode":{"$ref":"11"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"AtlasMaterialOverride","_targetPortName":"value","_sourceNode":{"$ref":"11"},"_targetNode":{"$ref":"13"},"$type":"FlowCanvas.BinderConnection`1[[Spine.Unity.Modules.SkeletonRendererCustomMaterials+AtlasMaterialOverride,
+    spine-unity, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"
+    ","_targetPortName":" ","_sourceNode":{"$ref":"11"},"_targetNode":{"$ref":"13"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"
+    ","_targetPortName":" ","_sourceNode":{"$ref":"13"},"_targetNode":{"$ref":"16"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"Value","_targetPortName":"Instance","_sourceNode":{"$ref":"19"},"_targetNode":{"$ref":"21"},"$type":"FlowCanvas.BinderConnection`1[[UnityEngine.SpriteRenderer,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"Value","_targetPortName":"SpriteRenderer","_sourceNode":{"$ref":"19"},"_targetNode":{"$ref":"5"},"$type":"FlowCanvas.BinderConnection`1[[UnityEngine.SpriteRenderer,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"color","_targetPortName":"Color","_sourceNode":{"$ref":"21"},"_targetNode":{"$ref":"3"},"$type":"FlowCanvas.BinderConnection`1[[UnityEngine.Color,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"Value","_targetPortName":"SpriteRenderer","_sourceNode":{"$ref":"24"},"_targetNode":{"$ref":"8"},"$type":"FlowCanvas.BinderConnection`1[[UnityEngine.SpriteRenderer,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"Value","_targetPortName":"SkeletonRendererCustomMaterials","_sourceNode":{"$ref":"26"},"_targetNode":{"$ref":"28"},"$type":"FlowCanvas.BinderConnection`1[[Spine.Unity.Modules.SkeletonRendererCustomMaterials,
+    spine-unity, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"Value","_targetPortName":"SkeletonRendererCustomMaterials","_sourceNode":{"$ref":"26"},"_targetNode":{"$ref":"16"},"$type":"FlowCanvas.BinderConnection`1[[Spine.Unity.Modules.SkeletonRendererCustomMaterials,
+    spine-unity, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"Value","_targetPortName":"List
+    (AtlasMaterialOverride)","_sourceNode":{"$ref":"28"},"_targetNode":{"$ref":"31"},"$type":"FlowCanvas.BinderConnection`1[[System.Collections.Generic.List`1[[Spine.Unity.Modules.SkeletonRendererCustomMaterials+AtlasMaterialOverride,
+    spine-unity, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib,
+    Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"Value","_targetPortName":"List
+    (AtlasMaterialOverride)","_sourceNode":{"$ref":"28"},"_targetNode":{"$ref":"13"},"$type":"FlowCanvas.BinderConnection`1[[System.Collections.Generic.List`1[[Spine.Unity.Modules.SkeletonRendererCustomMaterials+AtlasMaterialOverride,
+    spine-unity, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib,
+    Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"Value","_targetPortName":"AtlasMaterialOverride","_sourceNode":{"$ref":"31"},"_targetNode":{"$ref":"11"},"$type":"FlowCanvas.BinderConnection`1[[Spine.Unity.Modules.SkeletonRendererCustomMaterials+AtlasMaterialOverride,
+    spine-unity, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}],"localBlackboard":{"_name":"Local
+    Blackboard","_variables":{}}}'
+  _objectReferences: []
+  _deserializationFailed: 0

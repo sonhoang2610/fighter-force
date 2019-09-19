@@ -1,0 +1,192 @@
+﻿using EazyEngine.Timer;
+using FlowCanvas;
+using NodeCanvas.Framework;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using DG.Tweening;
+
+namespace EazyEngine.Space.UI
+{
+
+    public class EazyNode
+    {
+        public FlowScript flow;
+        public MissionItemInstanced misson;
+        public bool isSuccess = false;
+        public System.Action<EazyNode> onFinishEvent;
+        protected FlowScript currentInstance;
+        public void runGraph(System.Action<EazyNode> pFinish)
+        {
+            onFinishEvent = pFinish;
+            currentInstance = Graph.Clone<FlowScript>(flow);
+            currentInstance.StartGraph(LevelManger.Instance.GetComponent<NodeCanvas.BehaviourTrees.BehaviourTreeOwner>(), LevelManger.Instance.GetComponent<IBlackboard>(), true, onFinish);
+        }
+        public void  onFinish(bool pBool)
+        {
+            isSuccess = pBool;
+            onFinishEvent(this);     
+        }
+      
+    }
+    public class BoxResult : MonoBehaviour
+    {
+        public UILabel stage, level,coinTaken,quantityDestroy,time,score;
+        public GameObject win, lose;
+        public BoxMissionLevel boxMission;
+        List<EazyNode> pNodes = new List<EazyNode>();
+
+        public void showTestWin()
+        {
+            gameObject.SetActive(true);
+            showResult(true);
+        }
+        int timeShowLose = 0;
+        public void showResult(bool pWin)
+        {
+          
+            if (!pWin && timeShowLose == 0) {
+                TimeKeeper.Instance.getTimer("Global").TimScale = 0;
+                timeShowLose++;
+                HUDLayer.Instance.boxReborn.show();
+                GameManager.Instance.showBannerAds(true);
+                return;
+            }
+            GameManager.Instance.showInterstitialAds();
+            LevelManger.Instance.IsPlaying = false;
+            TimeKeeper.Instance.getTimer("Global").TimScale = 0;
+            GameManager.Instance.Database.getComonItem("Coin").Quantity += LevelManger.Instance._infoLevel.goldTaken;
+            if (pWin) {
+                GameManager.Instance.wincount++;
+                win.SetActive(true);
+                lose.SetActive(false);
+                LevelManger.Instance._infoLevel.score = 596000;
+                for (int i = 0; i < LevelManger.Instance._infoLevel.missions.Count; ++i)
+                {
+                    var pNode = new EazyNode() { flow = LevelManger.Instance._infoLevel.missions[i].mission.checkComplete,
+                        misson = LevelManger.Instance._infoLevel.missions[i]
+                    };
+                    pNodes.Add(pNode);
+                    pNode.runGraph(onFinishNode);
+                }
+                if (GameManager.Instance.ChoosedLevel == GameManager.Instance.Database.currentUnlockLevel)
+                {
+                    GameManager.Instance.Database.currentUnlockLevel++;
+                    GameManager.Instance.Database.lastPlayLevel++;
+                    GameManager.Instance.SaveGame();
+                }
+            }
+            else
+            {
+                win.SetActive(false);
+                lose.SetActive(true);    
+                GameManager.Instance.SaveLevel();
+            }
+            stage.text = GameManager.Instance.ChoosedLevel.ToString();
+            string[] pStrs = new string[3] { "ui/normal", "ui/hard", "ui/normal" };
+            level.text = I2.Loc.LocalizationManager.GetTranslation(pStrs[GameManager.Instance.ChoosedHard]);
+            coinTaken.text = StringUtils.addDotMoney(LevelManger.Instance._infoLevel.goldTaken);
+            boxMission.DataSource = LevelManger.Instance._infoLevel.missions.ToObservableList();  
+            time.text = LevelManger.Instance.CurrentTime.ToString(@"mm\:ss");
+            quantityDestroy.text = LevelManger.Instance._infoLevel.enemyKill.ToString();
+      
+            gameObject.SetActive(true);
+        }
+
+        public void watch()
+        {
+            GameManager.Instance.showRewardAds("WatchX2WinGame", delegate (bool pSucess)
+            {
+                if (pSucess)
+                {
+                    
+                    var pItem = GameManager.Instance.Database.getComonItem("Coin");
+                    pItem.Quantity += LevelManger.Instance._infoLevel.goldTaken;
+                    GameManager.Instance.SaveGame();
+                }
+                Debug.Log("Watach X2 " + pSucess.ToString());
+            });
+        }
+        protected int scoreCount;
+        public int getScore()
+        {
+            return scoreCount;
+        }
+        public void setScore(int pScore)
+        {
+            scoreCount = pScore;
+            this.score.text = pScore.ToString();
+        }
+        public void onFinishNode(EazyNode pNode)
+        {
+            pNodes.Remove(pNode);
+            if (pNode.isSuccess)
+            {
+                if (pNode.misson.process != 1)
+                {
+                    GameManager.Instance.Database.getComonItem("Star").Quantity++;
+                }
+                pNode.misson.process = 1;
+            }
+            if(pNodes.Count == 0)
+            {
+                boxMission.DataSource = LevelManger.Instance._infoLevel.missions.ToObservableList();
+                boxMission.reloadData();
+                for(int i = 0; i < boxMission.items.Count; ++i)
+                {
+                    Sequence pSeq = DOTween.Sequence();
+                    pSeq.AppendInterval(1.2f+ (i * 0.2f));
+                    pSeq.Append(boxMission.items[i].transform.DOScale(1.1f, 0.25f));
+                    pSeq.Append(boxMission.items[i].transform.DOScale(1, 0.25f));
+                    pSeq.Play();
+                }
+                Sequence pSeq1 = DOTween.Sequence();
+                pSeq1.AppendInterval(1.6f);
+                pSeq1.Append(DOTween.To(getScore, setScore, LevelManger.Instance._infoLevel.score, 0.5f).From(0));
+                pSeq1.Play();
+                Sequence pSeq2 = DOTween.Sequence();
+                int pGold = 0;
+                pSeq2.AppendInterval(1.6f);
+                pSeq2.Append(DOTween.To(()=> pGold, x => {
+                    pGold = x;
+                    coinTaken.text = x.ToString();
+                }, LevelManger.Instance._infoLevel.goldTaken, 0.5f).From(0));
+                pSeq2.Play();
+                GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard).infos = LevelManger.Instance._infoLevel;
+                GameManager.Instance.SaveLevel();
+            }
+        
+        }
+        private void OnDisable()
+        {
+            TimeKeeper.Instance.getTimer("Global").TimScale = 1;
+            GameManager.Instance.showBannerAds(false);
+        }
+        public void Home()
+        {
+            PlayerEnviroment.clear();
+            TimeKeeper.Instance.getTimer("Global").TimScale = 1;
+            LevelManger.InstanceRaw = null;
+            SceneManager.Instance.loadScene("Main");
+        }
+
+        public void Replay()
+        {
+            PlayerEnviroment.clear();
+            TimeKeeper.Instance.getTimer("Global").TimScale = 1;
+            LevelManger.InstanceRaw = null;
+            GameManager.Instance.LoadLevel(GameManager.Instance.Database.lastPlayLevel);
+        }
+        // Start is called before the first frame update
+        void Start()
+        {
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+   
+        }
+    }
+}

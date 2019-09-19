@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-2032301853651111265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4196491648044185365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7475999c1eecd874fb84ef29b215f7f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initStorage: 10
+  storageBullet: 0
+  isRandomTimeRestore: 1
+  timeToRestore: 0.2
+  randomTimeRestore: {x: 1, y: 2}
+  quantityRestoreEachTime: 10
+  limitRestore: 999999
+  conditonRestore: 1
+  _weapon: {fileID: 0}
+  onEmptyStorage:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onStartRestore:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onNotEnough:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!1001 &8970444939788773580
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5062471280400162777, guid: 2a33a6766ed28d1419999dd9a0d235a1,
+        type: 3}
+      propertyPath: m_Name
+      value: laserorange Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065590373259051825, guid: 2a33a6766ed28d1419999dd9a0d235a1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065590373259051825, guid: 2a33a6766ed28d1419999dd9a0d235a1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065590373259051825, guid: 2a33a6766ed28d1419999dd9a0d235a1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065590373259051825, guid: 2a33a6766ed28d1419999dd9a0d235a1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065590373259051825, guid: 2a33a6766ed28d1419999dd9a0d235a1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065590373259051825, guid: 2a33a6766ed28d1419999dd9a0d235a1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065590373259051825, guid: 2a33a6766ed28d1419999dd9a0d235a1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065590373259051825, guid: 2a33a6766ed28d1419999dd9a0d235a1,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065590373259051825, guid: 2a33a6766ed28d1419999dd9a0d235a1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065590373259051825, guid: 2a33a6766ed28d1419999dd9a0d235a1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065590373259051825, guid: 2a33a6766ed28d1419999dd9a0d235a1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823053295550772186, guid: 2a33a6766ed28d1419999dd9a0d235a1,
+        type: 3}
+      propertyPath: restartOnRestoreAmmo
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a33a6766ed28d1419999dd9a0d235a1, type: 3}
+--- !u!1 &4196491648044185365 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5062471280400162777, guid: 2a33a6766ed28d1419999dd9a0d235a1,
+    type: 3}
+  m_PrefabInstance: {fileID: 8970444939788773580}
+  m_PrefabAsset: {fileID: 0}
