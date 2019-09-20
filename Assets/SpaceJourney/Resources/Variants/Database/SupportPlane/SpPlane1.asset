@@ -16,7 +16,9 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 11400000, guid: 4584cc3953a4eaf4aad83f88b36cbdc2, type: 2}
+    - {fileID: 11400000, guid: c49efe006f5756e439b3b13234c1e911, type: 2}
+    - {fileID: 11400000, guid: 22b1f62913d0fde46b968f10a64c97cc, type: 2}
+    - {fileID: 11400000, guid: 4de3c295b5488824fa06e9ca2c4511b8, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -31,7 +33,7 @@ MonoBehaviour:
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 3
     - Name: 
       Entry: 7
       Data: 1|EazyEngine.Space.SkillInfoInstance, Assembly-CSharp
@@ -51,7 +53,37 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: damageBooster
+    - Name: $v
+      Entry: 7
+      Data: 4|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 10
+    - Name: algrothimTypeUpgrade
+      Entry: 3
       Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 10
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -64,6 +96,136 @@ MonoBehaviour:
     - Name: limitUpgrade
       Entry: 3
       Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 5|EazyEngine.Space.SkillInfoInstance, Assembly-CSharp
+    - Name: info
+      Entry: 10
+      Data: 1
+    - Name: skillBlackBoard
+      Entry: 7
+      Data: 6|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 7|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: damageBooster
+    - Name: $v
+      Entry: 7
+      Data: 8|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 100
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: requireLevelUnlock
+      Entry: 3
+      Data: 0
+    - Name: limitUpgrade
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 9|EazyEngine.Space.SkillInfoInstance, Assembly-CSharp
+    - Name: info
+      Entry: 10
+      Data: 2
+    - Name: skillBlackBoard
+      Entry: 7
+      Data: 10|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 11|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: damageBooster
+    - Name: $v
+      Entry: 7
+      Data: 12|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 10
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 10
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: requireLevelUnlock
+      Entry: 3
+      Data: 0
+    - Name: limitUpgrade
+      Entry: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -124,14 +286,17 @@ MonoBehaviour:
     quantityRequire: 0
   configRank:
   - levelUpRank: 20
-    condition:
-      craftItem: {fileID: 0}
-      quantityRequire: 0
   - levelUpRank: 40
-    condition:
-      craftItem: {fileID: 0}
-      quantityRequire: 0
   - levelUpRank: 60
-    condition:
-      craftItem: {fileID: 0}
-      quantityRequire: 0
+  upgradeRateCriticalConfig:
+    startUnit: 0
+    algrothimTypeUpgrade: 0
+    stepUnit: 0
+    isSpecifiedUnit: 0
+    unitDefines: []
+  upgradeIncreaseRate:
+    startUnit: 0
+    algrothimTypeUpgrade: 0
+    stepUnit: 0
+    isSpecifiedUnit: 0
+    unitDefines: []

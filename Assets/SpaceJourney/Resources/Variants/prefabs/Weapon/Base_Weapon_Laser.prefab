@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4180916872256662}
   - component: {fileID: 1797525370415852669}
   - component: {fileID: 602811784460712783}
+  - component: {fileID: -8961915195382884879}
   m_Layer: 0
   m_Name: Base_Weapon_Laser
   m_TagString: Untagged
@@ -46,48 +47,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boosterInfos: []
-  anchorRotation: {fileID: 0}
+  transitionAction: []
   typeFire: 0
   startWithReloadFirst: 0
   timeReloadFirst: 0.1
+  randomReloadFirst: 0
+  randomTo: 0.1
   prepareBulletWhenReload: 0
+  sizeRemoveTarget: -1
   needTargetToFire: 0
+  forceDirectionFollowGun: 0
+  requireFaceTargetToFire: 0
+  onStartRotate:
+    m_PersistentCalls:
+      m_Calls: []
+  anchorRotation: {fileID: 0}
+  rotationSpeedUnlock: 0.5
+  rotationSpeedd: 0.5
+  defaultFace: {x: 0, y: 1}
+  directionTargetDefault: {x: 0, y: 1}
+  comebackDefaultWhenStop: 0
+  stopTargetingWhenstop: 0
+  allowRotationStart: 0
   restartOnRestoreAmmo: 1
   initialOffset: {x: 0, y: 0}
   typeBehaviour: 1
+  isRamdomTimeReload: 0
+  reloadRamdom: {x: 0.1, y: 0.2}
   timeReload: 0.1
-  indepentMachineForTheFirst: 1
   machine:
     AnimUse: 
     onUse:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
     AnimReload: 
     onReload:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
     TriggerShoot: 
     onListenShoot:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
     TriggerShootDone: 
     onListenShootDone:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
     TriggerReloadDone: 
     onListenReloadDone:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
   firstMachine:
     AnimUse: Shoot
     onUse:
@@ -104,51 +112,76 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
     AnimReload: 
     onReload:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
     TriggerShoot: Shoot
     onListenShoot:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
     TriggerShootDone: 
     onListenShootDone:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
     TriggerReloadDone: 
     onListenReloadDone:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+  reactiveMachine:
+    AnimUse: Shoot
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
+    AnimReload: Reload
+    onReload:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShoot: Shoot
+    onListenShoot:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShootDone: ShootDone
+    onListenShootDone:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerReloadDone: ReloadDone
+    onListenReloadDone:
+      m_PersistentCalls:
+        m_Calls: []
+  fixDamage: 0
+  extraDamage:
+  - type: 0
+    damageExtra: 0
   onStartEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: EazyEngine.Space.UnityEventBool, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  onUse:
+    m_PersistentCalls:
+      m_Calls: []
+  onIdle:
+    m_PersistentCalls:
+      m_Calls: []
   particleEffects: []
   _listIgnoreObject: []
+  _currentState: 0
   _ammo: {fileID: 0}
   targetDirection: []
   factorSpeed: 1
   factorSpeedWeapon: 1
   factorDamage: 1
+  prepareLine: {fileID: 0}
   lineLaser: {fileID: 8604969448180366642}
   targetMask:
     serializedVersion: 2
     m_Bits: 4352
-  endPoint: {fileID: 0}
+  poolerEndPoint: {fileID: -8961915195382884879}
   startPoint: {fileID: 0}
+  levelLaser: 0
+  maxLength: 30
+  lineElement: []
   damagePerSec: 500
+  Infinite: 0
 --- !u!114 &602811784460712783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,10 +196,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initStorage: 15
   storageBullet: 0
+  isRandomTimeRestore: 0
   timeToRestore: 4.3
+  randomTimeRestore: {x: 0.1, y: 0.2}
   quantityRestoreEachTime: 15
+  limitRestore: 999999
   conditonRestore: 1
   _weapon: {fileID: 0}
+  onEmptyStorage:
+    m_PersistentCalls:
+      m_Calls: []
+  onStartRestore:
+    m_PersistentCalls:
+      m_Calls: []
+  onNotEnough:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-8961915195382884879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072918119399550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30599d570c93524c810714c5a2f7583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObjectToPool: {fileID: 0}
+  PoolSize: 20
+  PoolCanExpand: 1
+  dontDestroyOnload: 0
 --- !u!1 &4948705162286998352
 GameObject:
   m_ObjectHideFlags: 0

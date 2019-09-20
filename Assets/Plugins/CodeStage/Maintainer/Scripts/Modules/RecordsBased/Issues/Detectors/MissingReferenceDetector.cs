@@ -148,7 +148,7 @@ namespace CodeStage.Maintainer.Issues.Detectors
 
 				var modeValue = (PersistentListenerMode)mode.enumValueIndex;
 
-				var dummyEvent = GetDummyEvent(property);
+                UnityEventBase dummyEvent = null;// GetDummyEvent(property);
 				if (dummyEvent == null)
 				{
 					Maintainer.ConstructReportWarning("Couldn't get something from GetDummyEvent!", IssuesFinder.ModuleName);

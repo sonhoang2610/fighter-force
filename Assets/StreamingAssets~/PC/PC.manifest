@@ -1,0 +1,188 @@
+ManifestFileVersion: 0
+CRC: 714833828
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: assetmanager
+      Dependencies: {}
+    Info_1:
+      Name: resources/texture/core
+      Dependencies: {}
+    Info_2:
+      Name: resources/texture/play
+      Dependencies: {}
+    Info_3:
+      Name: resources/texture/mainplane
+      Dependencies: {}
+    Info_4:
+      Name: resources/texture/ui
+      Dependencies: {}
+    Info_5:
+      Name: resources/material/core
+      Dependencies:
+        Dependency_0: resources/texture/core
+        Dependency_1: resources/texture/play
+        Dependency_2: resources/texture/mainplane
+        Dependency_3: resources/texture/ui
+    Info_6:
+      Name: resources/spine/mainplane
+      Dependencies:
+        Dependency_0: resources/texture/core
+        Dependency_1: resources/spine/core
+    Info_7:
+      Name: resources/spine/spplane
+      Dependencies:
+        Dependency_0: resources/spine/core
+    Info_8:
+      Name: resources/spine/core
+      Dependencies: {}
+    Info_9:
+      Name: resources/spine/enemy
+      Dependencies:
+        Dependency_0: resources/spine/core
+    Info_10:
+      Name: resources/prefab/fx
+      Dependencies:
+        Dependency_0: resources/texture/core
+        Dependency_1: resources/texture/play
+        Dependency_2: resources/material/core
+        Dependency_3: resources/model/core
+    Info_11:
+      Name: resources/model/core
+      Dependencies: {}
+    Info_12:
+      Name: resources/prefab/enemy
+      Dependencies:
+        Dependency_0: resources/texture/core
+        Dependency_1: resources/texture/play
+        Dependency_2: resources/texture/mainplane
+        Dependency_3: resources/texture/ui
+        Dependency_4: resources/material/core
+        Dependency_5: resources/spine/enemy
+        Dependency_6: resources/prefab/fx
+        Dependency_7: resources/model/core
+        Dependency_8: resources/prefab/core
+        Dependency_9: resources/flow/core
+    Info_13:
+      Name: resources/prefab/core
+      Dependencies:
+        Dependency_0: resources/texture/core
+        Dependency_1: resources/texture/play
+        Dependency_2: resources/texture/ui
+        Dependency_3: resources/material/core
+        Dependency_4: resources/prefab/fx
+        Dependency_5: resources/model/core
+        Dependency_6: resources/prefab/enemy
+        Dependency_7: resources/prefab/mainplane
+        Dependency_8: resources/flow/core
+    Info_14:
+      Name: resources/spine/ui
+      Dependencies:
+        Dependency_0: resources/spine/core
+    Info_15:
+      Name: resources/prefab/mainplane
+      Dependencies:
+        Dependency_0: resources/texture/core
+        Dependency_1: resources/texture/mainplane
+        Dependency_2: resources/material/core
+        Dependency_3: resources/spine/mainplane
+        Dependency_4: resources/prefab/fx
+        Dependency_5: resources/model/core
+        Dependency_6: resources/prefab/core
+        Dependency_7: resources/flow/core
+    Info_16:
+      Name: resources/flow/core
+      Dependencies:
+        Dependency_0: resources/prefab/core
+        Dependency_1: resources/prefab/ui
+    Info_17:
+      Name: resources/prefab/spplane
+      Dependencies:
+        Dependency_0: resources/texture/play
+        Dependency_1: resources/material/core
+        Dependency_2: resources/spine/spplane
+        Dependency_3: resources/prefab/fx
+        Dependency_4: resources/prefab/core
+        Dependency_5: resources/flow/core
+    Info_18:
+      Name: resources/prefab/ui
+      Dependencies:
+        Dependency_0: resources/texture/play
+        Dependency_1: resources/texture/ui
+        Dependency_2: resources/material/core
+        Dependency_3: resources/prefab/fx
+        Dependency_4: resources/prefab/core
+        Dependency_5: resources/spine/ui
+        Dependency_6: resources/font
+    Info_19:
+      Name: resources/font
+      Dependencies: {}
+    Info_20:
+      Name: resources/scripttableobject/core
+      Dependencies:
+        Dependency_0: resources/texture/ui
+        Dependency_1: resources/flow/core
+        Dependency_2: resources/prefab/ui
+    Info_21:
+      Name: resources/scripttableobject/container
+      Dependencies:
+        Dependency_0: resources/texture/ui
+        Dependency_1: resources/prefab/enemy
+        Dependency_2: resources/scripttableobject/core
+        Dependency_3: resources/scripttableobject/enemy
+        Dependency_4: resources/scripttableobject/skill
+        Dependency_5: resources/scripttableobject/mainplane
+        Dependency_6: resources/scripttableobject/spplane
+    Info_22:
+      Name: resources/scripttableobject/enemy
+      Dependencies:
+        Dependency_0: resources/texture/play
+        Dependency_1: resources/prefab/enemy
+        Dependency_2: resources/prefab/core
+    Info_23:
+      Name: resources/scripttableobject/skill
+      Dependencies:
+        Dependency_0: resources/texture/core
+        Dependency_1: resources/texture/ui
+        Dependency_2: resources/prefab/mainplane
+        Dependency_3: resources/flow/core
+    Info_24:
+      Name: resources/scripttableobject/mainplane
+      Dependencies:
+        Dependency_0: resources/texture/ui
+        Dependency_1: resources/prefab/core
+        Dependency_2: resources/prefab/mainplane
+        Dependency_3: resources/scripttableobject/core
+        Dependency_4: resources/scripttableobject/skill
+    Info_25:
+      Name: resources/scripttableobject/spplane
+      Dependencies:
+        Dependency_0: resources/texture/ui
+        Dependency_1: resources/prefab/spplane
+        Dependency_2: resources/scripttableobject/core
+        Dependency_3: resources/scripttableobject/skill
+    Info_26:
+      Name: resources/prefab/container
+      Dependencies:
+        Dependency_0: resources/prefab/fx
+        Dependency_1: resources/prefab/core
+    Info_27:
+      Name: resources/prefab/states
+      Dependencies:
+        Dependency_0: resources/prefab/fx
+        Dependency_1: resources/prefab/enemy
+        Dependency_2: resources/prefab/core
+        Dependency_3: resources/prefab/container
+    Info_28:
+      Name: resources/scenes
+      Dependencies:
+        Dependency_0: resources/texture/core
+        Dependency_1: resources/texture/ui
+        Dependency_2: resources/material/core
+        Dependency_3: resources/prefab/fx
+        Dependency_4: resources/prefab/core
+        Dependency_5: resources/spine/ui
+        Dependency_6: resources/flow/core
+        Dependency_7: resources/prefab/ui
+        Dependency_8: resources/font
+        Dependency_9: resources/scripttableobject/core

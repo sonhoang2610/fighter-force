@@ -74,10 +74,11 @@ namespace EazyEngine.Space
         public void loadAllGame()
         {
             if (SceneManager.Instance.isLocal)
-            {             
-               StartCoroutine(delayAction(0.1f,delegate {
-                   objectPlanInstiate.Add(Resources.Load<GameObject>("Variants/prefabs/others/GameManager"));
-                   objectPlanInstiate.Add(Resources.Load<GameObject>("Variants/prefabs/others/HUD"));
+            {
+                Instantiate(Resources.Load<GameObject>("Variants/Database/GameManager"));
+                StartCoroutine(delayAction(0.1f,delegate {
+
+                    Instantiate(Resources.Load<GameObject>("Variants/prefabs/ui/HUD"));
                    loadScene("SpaceJourney/Scene/variant/Main");
                }));
             }
@@ -155,31 +156,34 @@ namespace EazyEngine.Space
                 yield return loader.DownloadAndCache(pUrl, queue[i].nameModule);
                 if (loader.result != null && !BUNDLES.ContainsKey(pUrl + queue[i].nameModule))
                 {
-                    //if (queue[i].nameModule.Contains("material"))
-                    //{
-                    //    var materials = loader.result.LoadAllAssets<Material>();
-                    //    foreach (Material m in materials)
-                    //    {
-                    //        var shaderName = m.shader.name;
-                    //        var newShader = Shader.Find(shaderName);
-                    //        if (newShader != null)
-                    //        {
-                    //            m.shader = newShader;
-                    //        }
-                    //        else
-                    //        {
-                    //            Debug.LogWarning("unable to refresh shader: " + shaderName + " in material " + m.name);
-                    //        }
-                    //    }
-                    //}
+                    if (queue[i].nameModule.Contains("material"))
+                    {
+                        var materials = loader.result.LoadAllAssets<Material>();
+                        foreach (Material m in materials)
+                        {
+                            var shaderName = m.shader.name;
+                            var newShader = Shader.Find(shaderName);
+                            if (newShader != null)
+                            {
+                                m.shader = newShader;
+                                Debug.Log("refresh material success");
+                            }
+                            else
+                            {
+                                Debug.LogWarning("unable to refresh shader: " + shaderName + " in material " + m.name);
+                            }
+                        }
+                    }
 
                     BUNDLES.Add(pUrl + queue[i].nameModule, loader.result);
                 }
                 percent += queue[i].Percent;
                 DOTween.To(() => process.fillAmount, x => process.fillAmount = x, percent, 0.2f);
             }
-            objectPlanInstiate.Add((GameObject)BUNDLES[pUrl + "resources/prefab/core"].LoadAsset("HUD"));
-            objectPlanInstiate.Add((GameObject)BUNDLES[pUrl + "resources/prefab/core"].LoadAsset("GameManager"));
+
+            Instantiate((GameObject)BUNDLES[pUrl + "resources/scripttableobject/container"].LoadAsset("GameManager"));
+            yield return new WaitForSeconds(0.25f);
+            Instantiate((GameObject)BUNDLES[pUrl + "resources/prefab/ui"].LoadAsset("HUD"));
             yield return new WaitForSeconds(0.25f);
 
             process.fillAmount = 0;

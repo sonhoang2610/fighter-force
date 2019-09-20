@@ -319,9 +319,14 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     [HideInEditorMode]
     public void SaveGame()
     {
-        fileSaveGame = null;
+        if (fileSaveGame != null)
+        {
+            fileSaveGame.Close();
+            fileSaveGame = null;
+        }
         try
         {
+        
             string destination = Application.persistentDataPath + "/GameInfo.dat";
             if (File.Exists(destination)) fileSaveGame = File.OpenWrite(destination);
             else fileSaveGame = File.Create(destination);
@@ -366,6 +371,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             if (fileSaveGame != null)
             {
                 fileSaveGame.Close();
+                fileSaveGame = null;
             }
       
         }
@@ -375,6 +381,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         if (fileSaveGame != null)
         {
             fileSaveGame.Close();
+            fileSaveGame = null;
         }
     }
     [Button("Load Game")]
@@ -613,6 +620,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     }
     private void Update()
     {
+        if (first) return;
         for (int i = timer.Count - 1; i >= 0; --i)
         {
 
