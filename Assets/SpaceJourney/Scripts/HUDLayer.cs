@@ -46,7 +46,11 @@ namespace EazyEngine.Space.UI {
         public void rebornWatchAds()
         {
             TimeKeeper.Instance.getTimer("Global").TimScale = 1;
-            reviePlayer();
+	     
+	        boxReborn.close();
+	        GameManager.Instance.showRewardAds(boxReborn.GetComponent<BoxReborn>().itemExchange,delegate(bool pBool){
+		        reviePlayer();
+	        });
             //GameManager.Instance.
         }
 
@@ -73,7 +77,6 @@ namespace EazyEngine.Space.UI {
                 btn.isEnabled = true;
             }
         }
-
         public void skipReborn()
         {
             boxReborn.close();
