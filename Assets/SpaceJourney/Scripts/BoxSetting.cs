@@ -36,10 +36,11 @@ namespace EazyEngine.Space.UI
 
         public void replay()
         {
+            GameManager.Instance.planNextLevel = true;
             PlayerEnviroment.clear();
             Time.timeScale = 1;
             LevelManger.InstanceRaw = null;
-            GameManager.Instance.LoadLevel(GameManager.Instance.Database.lastPlayLevel);
+            SceneManager.Instance.loadScene("Main");
         }
 
         public void Home()

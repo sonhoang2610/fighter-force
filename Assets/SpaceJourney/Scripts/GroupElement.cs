@@ -4,7 +4,7 @@ using UnityEngine;
 using EazyEngine.Tools.Space;
 namespace EazyEngine.Space
 {
-    public class GroupElement : MonoBehaviour,IRespawn
+    public class GroupElement : TimeControlBehavior,IRespawn
     {
     
         [HideInInspector]
@@ -120,14 +120,14 @@ namespace EazyEngine.Space
                     {
                         Vector3 pRotationVec = objectAnchor.transform.localRotation.eulerAngles;
                         pRotationVec.z += 180;
-                        transform.localRotation = Quaternion.RotateTowards(transform.localRotation, Quaternion.Euler(pRotationVec), Time.deltaTime* RotationSpeed);
-                        transform.localPosition = Vector2.MoveTowards(transform.localPosition, targetPoint, speedSpringPoss * Time.deltaTime);
+                        transform.localRotation = Quaternion.RotateTowards(transform.localRotation, Quaternion.Euler(pRotationVec), time.deltaTime* RotationSpeed);
+                        transform.localPosition = Vector2.MoveTowards(transform.localPosition, targetPoint, speedSpringPoss * time.deltaTime);
                        // transform.localPosition = targetPoint;
                     }
                     else if (objectAnchor._moveInfo.lookType == TypeLook.LookDown)
                     {
                         transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
-                        transform.localPosition = Vector2.MoveTowards(transform.localPosition, targetPoint, speedSpringPoss * Time.deltaTime);
+                        transform.localPosition = Vector2.MoveTowards(transform.localPosition, targetPoint, speedSpringPoss * time.deltaTime);
                     }
                     else if (objectAnchor._moveInfo.lookType == TypeLook.LookMainPlayer)
                     {
@@ -136,12 +136,12 @@ namespace EazyEngine.Space
                         var angle = Mathf.Atan2(newDirection.y, newDirection.x) * Mathf.Rad2Deg;
                         angle += 90;
                         Quaternion newPoint = Quaternion.AngleAxis(angle, Vector3.forward);
-                        transform.rotation = Quaternion.RotateTowards(transform.rotation, newPoint, RotationSpeed *Time.deltaTime);
-                        transform.localPosition = Vector2.MoveTowards(transform.localPosition, targetPoint, speedSpringPoss * Time.deltaTime);
+                        transform.rotation = Quaternion.RotateTowards(transform.rotation, newPoint, RotationSpeed * time.deltaTime);
+                        transform.localPosition = Vector2.MoveTowards(transform.localPosition, targetPoint, speedSpringPoss * time.deltaTime);
                     }
                     else
                     {
-                        transform.localPosition = Vector2.MoveTowards(transform.localPosition, targetPoint, speedSpringPoss * Time.deltaTime);
+                        transform.localPosition = Vector2.MoveTowards(transform.localPosition, targetPoint, speedSpringPoss * time.deltaTime);
                     }
                     if(Vector3.Distance( transform.localPosition,targetPoint) <= 0.01f)
                     {

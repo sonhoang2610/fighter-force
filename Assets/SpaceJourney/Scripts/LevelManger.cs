@@ -219,8 +219,9 @@ namespace EazyEngine.Space
         protected override void Awake()
         {
             base.Awake();
-       
-            GameManager.Instance.Database.getComonItem("Energy").Quantity--;
+            GameManager.Instance.inGame = true;
+            GameManager.Instance.planNextLevel = false;
+
             var psate = LoadAssets.loadAsset<GameObject>("States"+ GameManager.Instance.ChoosedLevel + "_" + GameManager.Instance.ChoosedHard, "Variants/States/");
             Instantiate(psate);
             _infoLevel = GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard).infos.CloneData();

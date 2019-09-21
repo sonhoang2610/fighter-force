@@ -213,7 +213,10 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
 
     public List<GameObject> objectExcludes;
     public prefabBulletGroup[] groupPrefabBullet;
-
+    [System.NonSerialized]
+    public bool planNextLevel = false;
+    [System.NonSerialized]
+    public bool inGame = false;
     public prefabBulletGroup getGroupPrefab(GameObject pObject)
     {
         for (int i = 0; i < groupPrefabBullet.Length; ++i)
@@ -595,6 +598,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     }
     public void LoadLevel(int pIndex)
     {
+  
         var pEnergy = GameManager.Instance.Database.getComonItem("Energy");
         if (pEnergy.quantity <= 0)
         {
@@ -604,6 +608,10 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                 HUDLayer.Instance.boxDialog.close();
             });
             return;
+        }
+        else
+        {
+            pEnergy.Quantity--;
         }
         //  Database.selectedMainPlane = 6;
         Database.lastPlayLevel = pIndex;
@@ -616,7 +624,18 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             pItem.Quantity--;
         }
         SaveGame();
-        SceneManager.Instance.loadScene(GameDatabase.Instance.LevelScene(pIndex));
+        MainScene.Instance.block.gameObject.SetActive(true);
+        StartCoroutine(delayAction(0.75f, delegate
+        {
+            SceneManager.Instance.loadScene(GameDatabase.Instance.LevelScene(pIndex));
+        }));
+
+    }
+
+    IEnumerator delayAction(float pDelay, System.Action action)
+    {
+        yield return new WaitForSeconds(pDelay);
+        action();
     }
     private void Update()
     {

@@ -42,6 +42,12 @@ namespace EazyEngine.Space.UI
             showResult(true);
         }
         int timeShowLose = 0;
+
+        public void nextPlay()
+        {
+            GameManager.Instance.planNextLevel = true;
+            Home();
+        }
         public void showResult(bool pWin)
         {
           
@@ -54,6 +60,7 @@ namespace EazyEngine.Space.UI
             }
             GameManager.Instance.showInterstitialAds();
             LevelManger.Instance.IsPlaying = false;
+            GameManager.Instance.inGame = false;
             TimeKeeper.Instance.getTimer("Global").TimScale = 0;
             GameManager.Instance.Database.getComonItem("Coin").Quantity += LevelManger.Instance._infoLevel.goldTaken;
             if (pWin) {
@@ -73,6 +80,7 @@ namespace EazyEngine.Space.UI
                 {
                     GameManager.Instance.Database.currentUnlockLevel++;
                     GameManager.Instance.Database.lastPlayLevel++;
+                    GameManager.Instance.ChoosedLevel++;
                     GameManager.Instance.SaveGame();
                 }
             }
@@ -172,6 +180,7 @@ namespace EazyEngine.Space.UI
 
         public void Replay()
         {
+            GameManager.Instance.planNextLevel = true;
             PlayerEnviroment.clear();
             TimeKeeper.Instance.getTimer("Global").TimScale = 1;
             LevelManger.InstanceRaw = null;

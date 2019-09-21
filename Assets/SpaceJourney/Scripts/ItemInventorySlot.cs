@@ -5,12 +5,18 @@ using UnityEngine.Events;
 using EazyEngine.Tools;
 using Sirenix.OdinInspector;
 using DG.Tweening;
+using UnityEngine.Events;
 
 namespace EazyEngine.Space.UI
 {
     public interface IConvertBaseItemGameInstanced<T> where T : BaseItemGameInstanced
     {
         T convertFromBaseItemGameInstanced(BaseItemGameInstanced pObject);
+    }
+    [System.Serializable]
+    public class GameDatabaseInventoryEventUnity : UnityEvent<GameDatabaseInventoryEvent>
+    {
+
     }
     public class ItemInventorySlotGeneric<T> : BaseItem<T>, EzEventListener<GameDatabaseInventoryEvent> where T : BaseItemGameInstanced, new()
     {
@@ -20,16 +26,22 @@ namespace EazyEngine.Space.UI
         public UIButton btnAddMore;
         public bool EffectOnShow = false;
         public bool autoSelfLoad = true;
+        public GameDatabaseInventoryEventUnity onChange;
+
         [ShowIf("autoSelfLoad")]
         public BaseItemGame itemToLoad;
 
         public List<EventDelegate> onAddMore = new List<EventDelegate>();
         protected bool isInit = false;
+
+   
         public override T Data
         {
 	        get {return base.Data;}
 	        set
             {
+           
+             
                 base.Data = value;
                 icon.sprite2D = value.item.CateGoryIcon;
                 quantity.text = value.Quantity.ToString();
@@ -60,7 +72,13 @@ namespace EazyEngine.Space.UI
         {
             if (eventType.item.item == itemToLoad && isInit)
             {
+           
                 //quantity.text = eventType.item.quantity.ToString();
+                if(onChange != null)
+                {
+                    onChange.Invoke(eventType);
+                }
+          
                 reloadData();
 
             }

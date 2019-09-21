@@ -30,7 +30,7 @@ namespace EazyEngine.Space.UI {
     }
     public class HUDLayer : PersistentSingleton<HUDLayer>
     {
-        public UIElement boxDialog,boxReborn,boxRate,boxSetting;
+        public UIElement boxDialog,boxReborn,boxRate;
         [HideInInspector]
         public List<IBackBehavior> _onBacks = new List<IBackBehavior>();
         public void rebornCrystal()
@@ -61,7 +61,8 @@ namespace EazyEngine.Space.UI {
 
             LevelManger.Instance.CurrentPlayer.GetComponent<Health>().Revive();
             LevelManger.Instance.CurrentPlayer.GetComponent<CharacterHandleWeapon>().ShootStart();
-            LevelManger.Instance.CurrentPlayer.GetComponent<CharacterHandleWeapon>().booster("booster3");
+            LevelManger.Instance.CurrentPlayer.GetComponent<Character>().machine.SetTrigger("Start");
+           LevelManger.Instance.CurrentPlayer.GetComponent<CharacterHandleWeapon>().booster("booster3");
             GUIManager.Instance.setHealthMainPlane(LevelManger.Instance.CurrentPlayer.GetComponent<Health>().currentHealth, LevelManger.Instance.CurrentPlayer.GetComponent<Health>().MaxiumHealth);
         }
 

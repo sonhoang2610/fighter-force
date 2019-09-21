@@ -34,7 +34,9 @@ namespace EazyEngine.Space.UI
                         buttonBuy.gameObject.SetActive(true);
                         btnOpen.gameObject.SetActive(false);
                     }
+                 
                 }
+                buttonBuy.transform.parent.SendMessage("Reposition");
             }
         }
         

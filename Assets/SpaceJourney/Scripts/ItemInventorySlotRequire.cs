@@ -4,7 +4,7 @@ using UnityEngine;
 namespace EazyEngine.Space.UI
 {
     [System.Serializable]
-    public class ItemRequireInfo : BaseItemGameInstanced,IConvertBaseItemGameInstanced<ItemRequireInfo>
+    public class ItemRequireInfo : BaseItemGameInstanced, IConvertBaseItemGameInstanced<ItemRequireInfo>
     {
         public int quantityRequire;
 
@@ -14,15 +14,21 @@ namespace EazyEngine.Space.UI
             {
                 GameManager.Instance.Database.reupdateTimerCount();
             }
-            return new ItemRequireInfo() { quantity = pObject.quantity, item = pObject.item, quantityRequire = pObject.item.limitModule != null ? pObject.item.limitModule.limitInInventory:0 };
+            return new ItemRequireInfo() { quantity = pObject.quantity, item = pObject.item, quantityRequire = pObject.item.limitModule != null ? pObject.item.limitModule.limitInInventory : 0 };
         }
         //public static implicit operator ItemRequireInfo(BaseItemGameInstanced obj2)
         //{
         //    return new ItemRequireInfo() { quantity = obj2.quantity, item = obj2.item, quantityRequire = obj2.item.limitInInventory };
         //}
     }
+    [System.Serializable]
+    public class ItemRequireInfoUnityEvent : UnityEngine.Events.UnityEvent<ItemRequireInfo>
+    {
+
+    }
     public class ItemInventorySlotRequire : ItemInventorySlotGeneric<ItemRequireInfo>
     {
+        public ItemRequireInfoUnityEvent onFillData;
         protected bool isAddTimer = false;
         public override void reloadData()
         {
@@ -46,6 +52,7 @@ namespace EazyEngine.Space.UI
             base.OnEnable();
             if (isInit)
             {
+             
                 reloadData();
                 isAddTimer = false;
                 if (Data != null && Data.item != null && Data.item.limitModule != null)
@@ -75,6 +82,10 @@ namespace EazyEngine.Space.UI
         }
         public override ItemRequireInfo Data { get => base.Data; set {
                 base.Data = value;
+                if (onFillData != null)
+                {
+                    onFillData.Invoke(value);
+                }
                 quantity.text = value.quantity.ToString() +( value.quantityRequire != 0 ?( "/ " + value.quantityRequire) : "");
             } }
 

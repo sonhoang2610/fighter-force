@@ -14,13 +14,15 @@ namespace EazyEngine.Space.UI
     {
     
         public BoxInfoPlane boxInfo;
+        public UIElement boxSetting;
         public BoxDailyGift boxdailyGift;
         public ItemStorageRequire requireUnlock;
         public UIButton btnUnlock, btnFreePlay;
         public GameObject boxRank;
         public UIButton btnFight;
         public UILabel nameUser,idUser;
-        protected List<BoxBasePlane> selectedBoxPlane = new List<BoxBasePlane>();
+        public GameObject block;
+       protected List<BoxBasePlane> selectedBoxPlane = new List<BoxBasePlane>();
         protected PlaneInfoConfig selectedPlane;
 
         protected List<string> stateGames = new List<string>();
@@ -45,6 +47,7 @@ namespace EazyEngine.Space.UI
                 }
       
         }
+
         // Subscribe to events in the OnEnable method of a MonoBehavior script
         void OnEnable()
         {
@@ -149,7 +152,7 @@ namespace EazyEngine.Space.UI
 
         public void showBoxSetting()
         {
-            HUDLayer.Instance.boxSetting.show();
+            boxSetting.show();
         }
         public void setDataMainPlane(PlaneInfoConfig pInfo)
         {
@@ -201,6 +204,7 @@ namespace EazyEngine.Space.UI
         public void test()
         {
             GameManager.Instance.LoadLevel(GameManager.Instance.ChoosedLevel);
+                
         }
 
 
@@ -251,10 +255,19 @@ namespace EazyEngine.Space.UI
                 nameUser.text = "GUEST";
                 idUser.text = "UNKNOW";
             }
+            if (GameManager.Instance.planNextLevel)
+            {
+                choosedMap();
+                StartCoroutine(delayAction(0.25f, preparePlay));
+            }   
         }
 
 
-
+        IEnumerator delayAction(float pDelay ,System.Action action)
+        {
+            yield return new WaitForSeconds(pDelay);
+            action();
+        }
 
         public void loginGameService()
         {

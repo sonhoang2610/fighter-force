@@ -343,10 +343,18 @@ namespace EazyEngine.Space
             }
         }
 
-        public int Quantity { get => quantity;
+        public virtual int Quantity { get => quantity;
             set {
+                if (item.limitModule != null)
+                {
+                    if (value > item.limitModule.limitInInventory)
+                    {
+                        value = item.limitModule.limitInInventory;
+                    }
+                }
                 changeQuantity = value - quantity;      
                 quantity = value;
+                
                 if (changeQuantity != 0)
                 {
                     EzEventManager.TriggerEvent(new GameDatabaseInventoryEvent(BehaviorDatabase.CHANGE_QUANTITY_ITEM, this));

@@ -7,10 +7,12 @@ using EazyEngine.Space.UI;
 
 namespace EazyEngine.Space
 {
-    public class GUIManager : Singleton<GUIManager>,EzEventListener<UIMessEvent>, EzEventListener<MessageGamePlayEvent>
+    public class GUIManager : Singleton<GUIManager>, EzEventListener<UIMessEvent>, EzEventListener<MessageGamePlayEvent>
     {
         [SerializeField]
         private Camera camGUI;
+        [SerializeField]
+        private UIElement boxsetting;
         [SerializeField]
         protected UI2DSprite dangerImage;
         [SerializeField]
@@ -24,7 +26,7 @@ namespace EazyEngine.Space
         [SerializeField]
         protected GameObject containerHandle;
         [SerializeField]
-        protected GameObject posLeft, posRight,control1;
+        protected GameObject posLeft, posRight, control1;
         public BoxResult boxResult;
 
         public Camera CamGUI { get => camGUI; set => camGUI = value; }
@@ -42,7 +44,16 @@ namespace EazyEngine.Space
             Time.timeScale = 0;
 
             LevelManger.Instance.IsMatching = false;
-            HUDLayer.Instance.boxSetting.show();
+            boxsetting.show();
+        }
+
+        public void resumeGame()
+        {
+            if (LevelManger.InstanceRaw == null) return;
+            Time.timeScale = 1;
+
+            LevelManger.Instance.IsMatching = true;
+            boxsetting.close();
         }
         public void setIconPlane(Sprite pSprite)
         {
@@ -50,15 +61,15 @@ namespace EazyEngine.Space
         }
         private void OnEnable()
         {
-       
-            EzEventManager.AddListener< UIMessEvent>(this);
+
+            EzEventManager.AddListener<UIMessEvent>(this);
             EzEventManager.AddListener<MessageGamePlayEvent>(this);
         }
 
-        
+
         private void OnDisable()
         {
-            EzEventManager.RemoveListener< UIMessEvent>(this);
+            EzEventManager.RemoveListener<UIMessEvent>(this);
             EzEventManager.RemoveListener<MessageGamePlayEvent>(this);
         }
         public void setGoldScore(int pGold)
@@ -79,12 +90,13 @@ namespace EazyEngine.Space
             healImage.gameObject.SetActive(false);
             healImage.gameObject.SetActive(true);
         }
-        public void showResult(bool pBool) {
+        public void showResult(bool pBool)
+        {
             boxResult.showResult(pBool);
         }
-        public void setHealthMainPlane(int pCurrent,int pMax)
+        public void setHealthMainPlane(int pCurrent, int pMax)
         {
-            hpBarImage.fillAmount = (  (float)pCurrent / (float)pMax);
+            hpBarImage.fillAmount = ((float)pCurrent / (float)pMax);
         }
 
 

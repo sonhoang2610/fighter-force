@@ -78,7 +78,7 @@ namespace EazyEngine.Space
                 Instantiate(Resources.Load<GameObject>("Variants/Database/GameManager"));
                 StartCoroutine(delayAction(0.1f,delegate {
 
-                    Instantiate(Resources.Load<GameObject>("Variants/prefabs/ui/HUD"));
+                    Instantiate(Resources.Load<GameObject>("Variants/prefabs/ui/HUD"),transform);
                    loadScene("SpaceJourney/Scene/variant/Main");
                }));
             }
@@ -183,7 +183,7 @@ namespace EazyEngine.Space
 
             Instantiate((GameObject)BUNDLES[pUrl + "resources/scripttableobject/container"].LoadAsset("GameManager"));
             yield return new WaitForSeconds(0.25f);
-            Instantiate((GameObject)BUNDLES[pUrl + "resources/prefab/ui"].LoadAsset("HUD"));
+            Instantiate((GameObject)BUNDLES[pUrl + "resources/prefab/ui"].LoadAsset("HUD"),transform);
             yield return new WaitForSeconds(0.25f);
 
             process.fillAmount = 0;

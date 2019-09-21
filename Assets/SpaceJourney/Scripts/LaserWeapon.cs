@@ -101,6 +101,7 @@ namespace EazyEngine.Space
         }
         public void disableEnpoints()
         {
+            if (!GameManager.Instance.inGame || !LevelManger.InstanceRaw) return;
             for (int i = 0; i < dictEndpoint.Count; ++i)
             {
                 dictEndpoint.ElementAt(i).Value.gameObject.SetActive(false) ;
