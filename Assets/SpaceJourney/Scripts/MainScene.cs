@@ -23,6 +23,7 @@ namespace EazyEngine.Space.UI
         public UILabel nameUser,idUser;
         public GameObject block;
        protected List<BoxBasePlane> selectedBoxPlane = new List<BoxBasePlane>();
+        public EazyGroupTabNGUI chooseHardMode;
         protected PlaneInfoConfig selectedPlane;
 
         protected List<string> stateGames = new List<string>();
@@ -215,7 +216,12 @@ namespace EazyEngine.Space.UI
         }
         public void preparePlay()
         {
-           
+            int pMode = GameManager.Instance.ChoosedHard;
+            StartCoroutine(delayAction(0.25f, delegate
+            {
+                chooseHardMode.changeTab(pMode);
+            }));
+       
             GameManager.Instance.ConfigLevel = new LevelConfig();
             stateGames.Add("Play");
             EzEventManager.TriggerEvent(new UIMessEvent("Play"));

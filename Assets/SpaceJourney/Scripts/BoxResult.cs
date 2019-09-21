@@ -91,7 +91,7 @@ namespace EazyEngine.Space.UI
                 GameManager.Instance.SaveLevel();
             }
             stage.text = GameManager.Instance.ChoosedLevel.ToString();
-            string[] pStrs = new string[3] { "ui/normal", "ui/hard", "ui/normal" };
+            string[] pStrs = new string[3] { "ui/normal", "ui/hard", "ui/super_hard" };
             level.text = I2.Loc.LocalizationManager.GetTranslation(pStrs[GameManager.Instance.ChoosedHard]);
             coinTaken.text = StringUtils.addDotMoney(LevelManger.Instance._infoLevel.goldTaken);
             boxMission.DataSource = LevelManger.Instance._infoLevel.missions.ToObservableList();  
@@ -184,7 +184,7 @@ namespace EazyEngine.Space.UI
             PlayerEnviroment.clear();
             TimeKeeper.Instance.getTimer("Global").TimScale = 1;
             LevelManger.InstanceRaw = null;
-            GameManager.Instance.LoadLevel(GameManager.Instance.Database.lastPlayLevel);
+            SceneManager.Instance.loadScene("Main");
         }
         // Start is called before the first frame update
         void Start()
