@@ -27,12 +27,11 @@ namespace EazyEngine.Space.UI
         protected PlaneInfoConfig selectedPlane;
 
         protected List<string> stateGames = new List<string>();
-
         protected override void Awake()
         {
             base.Awake();
             stateGames.Add("Main");
-           if( GameManager.Instance.Database.lastOnline.Date != System.DateTime.Now.Date && GameManager.Instance.wincount == 1)
+            if ( GameManager.Instance.Database.lastOnline.Date != System.DateTime.Now.Date && GameManager.Instance.wincount == 1)
             {
                 GameManager.Instance.Database.lastOnline = System.DateTime.Now;
                 if (StoreReview.CanRequestRating())
@@ -204,6 +203,7 @@ namespace EazyEngine.Space.UI
 
         public void test()
         {
+        
             GameManager.Instance.LoadLevel(GameManager.Instance.ChoosedLevel);
                 
         }
@@ -216,10 +216,22 @@ namespace EazyEngine.Space.UI
         }
         public void preparePlay()
         {
-            int pMode = GameManager.Instance.ChoosedHard;
+ 
             StartCoroutine(delayAction(0.25f, delegate
             {
-                chooseHardMode.changeTab(pMode);
+                //for(int i = 0; i <3; ++i)
+                //{
+                //   var pLevel = GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, i);
+                //    if(pLevel.isLocked)
+                //    {
+                //        chooseHardMode.GroupTab[i].GetComponent<UIButton>().isEnabled = false;
+                //    }
+                //    else
+                //    {
+                //        chooseHardMode.GroupTab[i].GetComponent<UIButton>().isEnabled = true;
+                //    }
+                //}
+                chooseHardMode.changeTab(GameManager.Instance.ChoosedLevel == GameManager.Instance.Database.lastPlayStage.x ?  GameManager.Instance.Database.lastPlayStage.y : 0);
             }));
        
             GameManager.Instance.ConfigLevel = new LevelConfig();
@@ -228,8 +240,7 @@ namespace EazyEngine.Space.UI
         }
 
         public void upgrade()
-        {
-            
+        {           
             stateGames.Add("Upgrade");
             EzEventManager.TriggerEvent(new UIMessEvent("Upgrade"));
         }

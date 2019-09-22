@@ -14,6 +14,7 @@ public class EazyTabNGUI : MonoBehaviour
 
     bool _pressed = false;
     public GameObject target;
+    public bool ignoreColor = false;
     public Color colorNormal = Color.white;
     public Color colorPressed = Color.white;
     public Sprite normalSprite2D;
@@ -55,8 +56,12 @@ public class EazyTabNGUI : MonoBehaviour
         set
         {
             this._pressed = value;
-            Widget.color = value ? colorPressed : colorNormal;
-            Button.defaultColor = value ? colorPressed : colorNormal;
+            if (!ignoreColor)
+            {
+                Widget.color = value ? colorPressed : colorNormal;
+                Button.defaultColor = value ? colorPressed : colorNormal;
+            }
+   
             if (includeChild)
             {
                 var widgets = GetComponentsInChildren<UIWidget>();

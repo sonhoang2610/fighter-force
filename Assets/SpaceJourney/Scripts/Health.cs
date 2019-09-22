@@ -62,7 +62,13 @@ namespace EazyEngine.Space
 	    protected float currentDurationResetDamaged = 0;
 	    protected int indexDamaged = 0;
         protected Health parentHealth;
-
+        private void Awake()
+        {
+            if (DeathEffect && GameManager.Instance.inGame)
+            {
+                ParticleEnviroment.Instance.preloadEffect(5, DeathEffect, transform.position, 1);
+            }
+        }
         public Health[] getAllAvailableHealth()
         {
             List<Health> pHealths = new List<Health>();

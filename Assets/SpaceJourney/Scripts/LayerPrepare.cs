@@ -13,6 +13,7 @@ namespace EazyEngine.Space.UI
     public class LayerPrepare : BaseItem<MapInfoInstanced>
     {
         public UILabel level, highScore;
+        public UIButton btnPlay;
         public override MapInfoInstanced Data { get => base.Data; set {
                 base.Data = value;
                 level.text = "[FFDC00]MAP " + value.level.ToString()+":[-]" + value.nameMap;
@@ -32,6 +33,8 @@ namespace EazyEngine.Space.UI
 
         public void chooseHardMode(int index)
         {
+           var pLevelInfo =  GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, index);
+            btnPlay.isEnabled = !pLevelInfo.isLocked;
             showInfo(GameManager.Instance.ChoosedLevel, index);
         }
 

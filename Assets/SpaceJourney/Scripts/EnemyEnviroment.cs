@@ -17,11 +17,16 @@ public class EnemyEnviroment : PoolManagerGeneric<EnemyEnviroment>
         var pChar =   pObject.GetComponent<Character>();
         pChar.originalPreb = pOriginal;
         var pAsset = LoadAssets.loadAsset<EazySpaceConfigDatabase>("EnemyConfig", "Variants/Database/");
-        foreach(var pEnemy  in pAsset.smallEnemiesObs)
+        int[] scoreSmall = new int[] { 50,100,180};
+        int[] scoremedium = new int[] {200,350,600 };
+        int[] scoreBoss = new int[] {10000,18000,30000 };
+        foreach (var pEnemy  in pAsset.smallEnemiesObs)
         {
             if(pEnemy.info.elements[GameManager.Instance.ChoosedHard].target == pOriginal)
             {
-                pChar.setDataConfig(pEnemy.info.elements[GameManager.Instance.ChoosedHard]);
+                var pInfo = pEnemy.info.elements[GameManager.Instance.ChoosedHard];
+                pInfo.score = scoreSmall[GameManager.Instance.ChoosedHard];
+                pChar.setDataConfig(pInfo);
                 return;
             }
         }
@@ -29,7 +34,9 @@ public class EnemyEnviroment : PoolManagerGeneric<EnemyEnviroment>
         {
             if (pEnemy.info.elements[GameManager.Instance.ChoosedHard].target == pOriginal)
             {
-                pChar.setDataConfig(pEnemy.info.elements[GameManager.Instance.ChoosedHard]);
+                var pInfo = pEnemy.info.elements[GameManager.Instance.ChoosedHard];
+                pInfo.score = scoremedium[GameManager.Instance.ChoosedHard];
+                pChar.setDataConfig(pInfo);
                 return;
             }
         }
@@ -37,7 +44,9 @@ public class EnemyEnviroment : PoolManagerGeneric<EnemyEnviroment>
         {
             if (pEnemy.info.elements[GameManager.Instance.ChoosedHard].target == pOriginal)
             {
-                pChar.setDataConfig(pEnemy.info.elements[GameManager.Instance.ChoosedHard]);
+                var pInfo = pEnemy.info.elements[GameManager.Instance.ChoosedHard];
+                pInfo.score = scoreBoss[GameManager.Instance.ChoosedHard];
+                pChar.setDataConfig(pInfo);
                 return;
             }
         }
@@ -45,7 +54,9 @@ public class EnemyEnviroment : PoolManagerGeneric<EnemyEnviroment>
         {
             if (pEnemy.info.elements[GameManager.Instance.ChoosedHard].target == pOriginal)
             {
-                pChar.setDataConfig(pEnemy.info.elements[GameManager.Instance.ChoosedHard]);
+                var pInfo = pEnemy.info.elements[GameManager.Instance.ChoosedHard];
+                pInfo.score = scoreBoss[GameManager.Instance.ChoosedHard];
+                pChar.setDataConfig(pInfo);
                 return;
             }
         }

@@ -21,6 +21,7 @@ namespace EazyEngine.Space.UI
                 iconComplete.SetActive(value.process >= 1);
                 rewardLayer.SetActive(value.process < 1);
                 iconReward.sprite2D = value.rewards[0].item.iconShop;
+                rewardQuantity.text =StringUtils.addDotMoney( value.rewards[0].quantity);
             }
         }
         // Start is called before the first frame update

@@ -58,7 +58,7 @@ namespace EazyEngine.Space.UI
                 }
                 level.GetComponent<FontSelector>().setFontIndex(0);
                 levelBoss.GetComponent<FontSelector>().setFontIndex(0);
-                if (GameManager.Instance.Database.currentUnlockLevel < Index + 1)
+                if (GameManager.Instance.CurrentLevelUnlock < Index + 1)
                 {
                     level.GetComponent<FontSelector>().setFontIndex(1);
                     levelBoss.GetComponent<FontSelector>().setFontIndex(1);

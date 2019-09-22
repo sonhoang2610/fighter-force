@@ -15,6 +15,13 @@ public class PickAbleItem : SerializedMonoBehaviour
     public FlowCanvas.FlowScript mainBehaviorEffect;
     public LayerMask _layerCanPick;
     public Dictionary<string, object> Variables = new Dictionary<string, object>();
+    private void Awake()
+    {
+        if (effectOnPick && && GameManager.Instance.inGame)
+        {
+            ParticleEnviroment.Instance.preloadEffect(3, effectOnPick, transform.position, 1);
+        }
+    }
     public void onPicked()
     {
         gameObject.SetActive(false);

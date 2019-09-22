@@ -86,6 +86,8 @@ public class CharacterInstancedConfig
     public float Health;
     public float DamgageBasic;
     public float Defense;
+    [System.NonSerialized]
+    public int score;
 
     public WeaponInstancedConfig[] weapon;
     [OnValueChanged("addProp")]

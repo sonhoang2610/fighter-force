@@ -798,12 +798,16 @@ namespace EazyEngine.Space
                 if(!isSupering)
                 {
                     triggerChangeWeapon("Booster" + startLevelBooster);
-                    EzEventManager.TriggerEvent(new MessageGamePlayEvent("Normal" , gameObject));
                     EzEventManager.TriggerEvent(new MessageGamePlayEvent("Booster" + startLevelBooster, gameObject));
                 }
                 if (planSupering)
                 {
                     isSupering = true;
+              
+                }
+                if(!isSupering)
+                {
+                    EzEventManager.TriggerEvent(new MessageGamePlayEvent("Normal", gameObject));
                 }
             }
         }

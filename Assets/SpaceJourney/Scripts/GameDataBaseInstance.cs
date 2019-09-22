@@ -162,9 +162,7 @@ namespace EazyEngine.Space
         public string selectedMainPlane = "";
         public string selectedSupportPlane1 = "";
         public string selectedSupportPlane2 = "";
-        public int lastPlayLevel = 0;
-        public int lastPLayMode = 0;
-        public int currentUnlockLevel = 1; 
+        public Pos lastPlayStage = Pos.Zero;
         [HideInInspector]
         public int currentLevelWheel = 0;
         [HideInInspector]

@@ -17,10 +17,8 @@ namespace EazyEngine.Space.UI
         public void chooseMap(int index)
         {
             GameManager.Instance.ChoosedLevel = index +1;
-            GameManager.Instance.ChoosedHard = 0;
             select.transform.parent = Item[DataSource[index]].transform;
             select.transform.localPosition = Vector3.zero;
-           // MainScene.Instance.preparePlay();
         }
         public override void Awake()
         {
@@ -67,18 +65,18 @@ namespace EazyEngine.Space.UI
                     pLineRender.width = (int)pDistance;
                     // pLineRender.transform.transform.localScale = pScale;
                     pLineRender.transform.RotationDirect2D(items[i + 1].transform.localPosition - items[i].transform.localPosition);
-                    if(GameManager.Instance.Database.currentUnlockLevel -1 <= i)
+                    if(GameManager.Instance.CurrentLevelUnlock -1 <= i)
                     {
                         pLineRender.GetComponent<EazyFrameCache>().setFrameIndex(1);
                     }
                 }
                 group.GroupTab.Add(items[i].GetComponent<EazyTabNGUI>());
                 group.reloadTabs();
-                if (GameManager.Instance.Database.lastPlayLevel == 0)
+                if (GameManager.Instance.Database.lastPlayStage.x == 0)
                 {
-                    GameManager.Instance.Database.lastPlayLevel = 1;
+                    GameManager.Instance.Database.lastPlayStage = new Pos(1,GameManager.Instance.ChoosedHard);
                 }
-                group.changeTab(GameManager.Instance.Database.lastPlayLevel - 1);
+                group.changeTab(GameManager.Instance.Database.lastPlayStage.x - 1);
 
             }
             //GetComponentInChildren<UIScrollView>().ResetPosition();
@@ -135,13 +133,13 @@ namespace EazyEngine.Space.UI
                 {
                     GetComponentInChildren<UICenterOnChild>().enabled = false;
                 };
-                if(GameManager.Instance.Database.lastPlayLevel == 0)
+                if (GameManager.Instance.Database.lastPlayStage.x == 0)
                 {
-                    GameManager.Instance.Database.lastPlayLevel = 1;
+                    GameManager.Instance.Database.lastPlayStage = new Pos(1, GameManager.Instance.ChoosedHard);
                 }
-                if (GameManager.Instance.Database.lastPlayLevel > 5)
+                if (GameManager.Instance.Database.lastPlayStage.x > 5)
                 {
-                    GetComponentInChildren<UICenterOnChild>().CenterOn(items[GameManager.Instance.Database.lastPlayLevel - 1].transform);
+                    GetComponentInChildren<UICenterOnChild>().CenterOn(items[GameManager.Instance.Database.lastPlayStage.x - 1].transform);
                 }
                 firstLateUpdate = false;
             }

@@ -102,9 +102,12 @@ namespace EazyEngine.Space
     
 
         }
+        [System.NonSerialized]
+        public CharacterInstancedConfig mainInfo;
         public void setDataConfig(CharacterInstancedConfig pInfo)
         {
             if (!_health) _health = GetComponent<Health>();
+            mainInfo = pInfo;
             _health.InitialHealth =(int) pInfo.Health;
             _health.MaxiumHealth = (int)pInfo.Health;
             _health.Deffense =(int) pInfo.Defense;

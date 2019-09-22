@@ -46,8 +46,14 @@ namespace EazyEngine.Space.UI
         public void nextPlay()
         {
             GameManager.Instance.planNextLevel = true;
+            LevelInfoInstance pLevelInfo = GameManager.Instance.container.getLevelInfo(GameManager.Instance.Database.lastPlayStage.x + 1, GameManager.Instance.ChoosedHard);
+            if (pLevelInfo.isLocked)
+            {
+                GameManager.Instance.ChoosedHard = 0;
+            }
+            GameManager.Instance.Database.lastPlayStage = new Pos(GameManager.Instance.Database.lastPlayStage.x + 1, GameManager.Instance.ChoosedHard);
             Home();
-        }
+        }   
         public void showResult(bool pWin)
         {
           
@@ -63,25 +69,34 @@ namespace EazyEngine.Space.UI
             GameManager.Instance.inGame = false;
             TimeKeeper.Instance.getTimer("Global").TimScale = 0;
             GameManager.Instance.Database.getComonItem("Coin").Quantity += LevelManger.Instance._infoLevel.goldTaken;
+            LevelManger.Instance._infoLevel.score = 0;
             if (pWin) {
                 GameManager.Instance.wincount++;
                 win.SetActive(true);
                 lose.SetActive(false);
-                LevelManger.Instance._infoLevel.score = 596000;
+                LevelManger.Instance._infoLevel.score += (600- (int)LevelManger.Instance.CurrentTime.TotalSeconds)*50 + LevelManger.Instance._infoLevel.goldTaken*5 + LevelManger.Instance.CurrentPlayer._health.CurrentHealth*3;
+ 
+                if(GameManager.Instance.ChoosedHard < 2)
+                {
+                    GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard + 1).isLocked = false;
+                }
+                if (GameManager.Instance.ChoosedLevel == GameManager.Instance.CurrentLevelUnlock)
+                {
+               
+                    GameManager.Instance.CurrentLevelUnlock++;
+                    GameManager.Instance.Database.lastPlayStage = new Pos(GameManager.Instance.Database.lastPlayStage.x,0);
+                    GameManager.Instance.ChoosedLevel++;
+                    GameManager.Instance.SaveGame();
+                }
                 for (int i = 0; i < LevelManger.Instance._infoLevel.missions.Count; ++i)
                 {
-                    var pNode = new EazyNode() { flow = LevelManger.Instance._infoLevel.missions[i].mission.checkComplete,
+                    var pNode = new EazyNode()
+                    {
+                        flow = LevelManger.Instance._infoLevel.missions[i].mission.checkComplete,
                         misson = LevelManger.Instance._infoLevel.missions[i]
                     };
                     pNodes.Add(pNode);
                     pNode.runGraph(onFinishNode);
-                }
-                if (GameManager.Instance.ChoosedLevel == GameManager.Instance.Database.currentUnlockLevel)
-                {
-                    GameManager.Instance.Database.currentUnlockLevel++;
-                    GameManager.Instance.Database.lastPlayLevel++;
-                    GameManager.Instance.ChoosedLevel++;
-                    GameManager.Instance.SaveGame();
                 }
             }
             else

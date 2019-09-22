@@ -41,7 +41,7 @@ namespace EazyEngine.Space
     {
         public int level = 0;
         public int hard = 0;
-  
+        public bool isLocked = true;
         public LevelInfo infos = new LevelInfo();
     }
     [System.Serializable]
@@ -106,7 +106,6 @@ namespace EazyEngine.Space
         [System.NonSerialized]
         public List<GameObject> pullObject = new List<GameObject>();
         public List<ConnectLayerTrigger> ignoreObjects = new List<ConnectLayerTrigger>();
-
         public ConnectLayerTrigger checkAssignedObject(GameObject pObject)
         {
             for(int i = ignoreObjects.Count-1; i >= 0; --i)
@@ -157,6 +156,10 @@ namespace EazyEngine.Space
         public void OnEzEvent(DamageTakenEvent eventType)
         {
             if (eventType.AffectedCharacter == null) return;
+            if(eventType.CurrentHealth <= 0 && eventType.Instigator == CurrentPlayer.gameObject)
+            {
+                _infoLevel.score += eventType.AffectedCharacter.mainInfo.score;
+            }
             if(eventType.CurrentHealth <= 0 && LevelManger.Instance.BornEnemy.Contains(eventType.AffectedCharacter.gameObject))
             {
                 LevelManger.Instance.BornEnemy.Remove(eventType.AffectedCharacter.gameObject);
@@ -219,7 +222,7 @@ namespace EazyEngine.Space
         protected override void Awake()
         {
             base.Awake();
-            GameManager.Instance.inGame = true;
+ 
             GameManager.Instance.planNextLevel = false;
 
             var psate = LoadAssets.loadAsset<GameObject>("States"+ GameManager.Instance.ChoosedLevel + "_" + GameManager.Instance.ChoosedHard, "Variants/States/");

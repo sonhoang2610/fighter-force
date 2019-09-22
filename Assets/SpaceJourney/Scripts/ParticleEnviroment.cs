@@ -42,4 +42,35 @@ public class ParticleEnviroment : PoolManagerGeneric<ParticleEnviroment>
     }
 
 
+    public void preloadEffect(int pCount,GameObject pObject, Vector3 pos, int orderLayer = 0, bool isLocal = false)
+    {
+        List<GameObject> pTemplePlist = new List<GameObject>();
+        for(int i = 0; i < pCount; ++i)
+        { 
+            GameObject pNewObject = getObjectFromPool(pObject);
+            if (!isLocal)
+            {
+                pNewObject.transform.position = pos;
+            }
+            else
+            {
+                pNewObject.transform.localPosition = pos;
+            }
+            if (orderLayer != 0)
+            {
+                var renders = pNewObject.GetComponentsInChildren<ParticleSystemRenderer>();
+                foreach (var pRender in renders)
+                {
+                    pRender.sortingOrder = orderLayer;
+                }
+            }
+            pNewObject.SetActive(true);
+            pTemplePlist.Add(pNewObject);
+        }
+        foreach(var pObject1 in pTemplePlist)
+        {
+            pObject1.gameObject.SetActive(false);
+        }
+    }
+
 }

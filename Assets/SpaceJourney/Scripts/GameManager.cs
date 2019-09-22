@@ -232,6 +232,46 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     public bool isPlaying = false;
     [Sirenix.OdinInspector.ReadOnly]
     public LevelContainer container;
+
+    public int CurrentLevelUnlock
+    {
+        get
+        {
+            int levelUnlock = 0;
+            for(int i = 0;i < container.levels.Count; ++i)
+            {
+                if(container.levels[i].level > levelUnlock && !container.levels[i].isLocked)
+                {
+                    levelUnlock = container.levels[i].level;
+                }
+            }
+            if(levelUnlock == 0)
+            {
+                for (int i = 0; i < container.levels.Count; ++i)
+                {
+                    if (container.levels[i].level == 1 && container.levels[i].hard == 0)
+                    {
+                        container.levels[i].isLocked = false;
+                    }
+                }
+                levelUnlock = 1;
+            }
+            return levelUnlock;
+        }
+        set
+        {
+            if(value> CurrentLevelUnlock)
+            {
+                for (int i = 0; i < container.levels.Count; ++i)
+                {
+                    if (container.levels[i].level == value && container.levels[i].hard == 0)
+                    {
+                        container.levels[i].isLocked = false;
+                    }
+                }
+            }
+        }
+    }
     protected int choosedLevel;
     protected int choosedHard;
     public int ChoosedLevel
@@ -364,19 +404,15 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
 
             }
         }
-        catch (SerializationException e)
+        catch(System.Exception e)
         {
-            Debug.Log(e.Message);
-            throw;
-        }
-        finally
-        {
+            Debug.Log(e);
+        }finally{
             if (fileSaveGame != null)
             {
                 fileSaveGame.Close();
                 fileSaveGame = null;
             }
-      
         }
     }
     private void OnDestroy()
@@ -598,7 +634,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     }
     public void LoadLevel(int pIndex)
     {
-  
+        inGame = true;
         var pEnergy = GameManager.Instance.Database.getComonItem("Energy");
         if (pEnergy.quantity <= 0)
         {
@@ -614,7 +650,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             pEnergy.Quantity--;
         }
         //  Database.selectedMainPlane = 6;
-        Database.lastPlayLevel = pIndex;
+        Database.lastPlayStage = new Pos(pIndex,GameManager.Instance.ChoosedHard);
         var pInfo = container.getLevelInfo(pIndex, 0).infos;
         pInfo.InputConfig = ConfigLevel;
         isPlaying = true;

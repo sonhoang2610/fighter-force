@@ -5,6 +5,7 @@
 
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 /// <summary>
 /// Similar to UIButtonColor, but adds a 'disabled' state based on whether the collider is enabled or not.
@@ -42,12 +43,13 @@ public class UIButton : UIButtonColor
 	/// </summary>
 
 	public string disabledSprite;
+    public UnityEvent onEnableButton;
+    public UnityEvent onDisableButton;
+    /// <summary>
+    /// Name of the hover state sprite.
+    /// </summary>
 
-	/// <summary>
-	/// Name of the hover state sprite.
-	/// </summary>
-
-	public UnityEngine.Sprite hoverSprite2D;
+    public UnityEngine.Sprite hoverSprite2D;
 
 	/// <summary>
 	/// Name of the pressed sprite.
@@ -256,8 +258,18 @@ public class UIButton : UIButtonColor
 
 	public override void SetState (State state, bool immediate)
 	{
+        if(mState  != state)
+        {
+            if(state == State.Disabled)
+            {
+                onDisableButton.Invoke();
+            }else if(mState == State.Disabled)
+            {
+                onEnableButton.Invoke();
+            }
+        }
 		base.SetState(state, immediate);
-
+    
 		if (mSprite != null)
 		{
 			switch (state)
