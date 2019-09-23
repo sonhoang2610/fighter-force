@@ -35,11 +35,14 @@ namespace EazyEngine.Space
         public float TimeToRestore { get { return RestoreTimeReal; } set => timeToRestore = value; }
 
         public int TotalRestore { get => totalRestore; set => totalRestore = value; }
+        public int QuantityRestoreEachTime { get => quantityRestoreEachTime; set => quantityRestoreEachTime = value; }
+        public int InitStorage { get => initStorage; set => initStorage = value; }
+        public int CountBullet { set { InitStorage = value;QuantityRestoreEachTime = value; } }
 
         bool idle = true;
         private void Awake()
         {
-            storageBullet = initStorage;
+            storageBullet = InitStorage;
             _weapon = GetComponent<Weapon>();
             RestoreTimeReal = isRandomTimeRestore ? Random.Range(randomTimeRestore.x,randomTimeRestore.y) : timeToRestore;
         }
@@ -66,7 +69,7 @@ namespace EazyEngine.Space
             {
                 return;
             }
-            if((storageBullet < initStorage && conditonRestore == ConditionRestoreAmmo.SmallerStorage)  || (storageBullet <= 0))
+            if((storageBullet < InitStorage && conditonRestore == ConditionRestoreAmmo.SmallerStorage)  || (storageBullet <= 0))
             {
                 if (idle)
                 {
@@ -77,9 +80,9 @@ namespace EazyEngine.Space
                 if(currentRestoreTime >= TimeToRestore)
                 {
                     currentRestoreTime = 0;
-                    TotalRestore += quantityRestoreEachTime;
-                    storageBullet+=  quantityRestoreEachTime;
-                    _weapon.onRestoreAmmo(quantityRestoreEachTime);
+                    TotalRestore += QuantityRestoreEachTime;
+                    storageBullet+=  QuantityRestoreEachTime;
+                    _weapon.onRestoreAmmo(QuantityRestoreEachTime);
                 }
                 idle = false;
             }
@@ -91,7 +94,7 @@ namespace EazyEngine.Space
 
         public void onRespawn()
         {
-            storageBullet = initStorage;
+            storageBullet = InitStorage;
             TotalRestore = 0;
             idle = true;
             currentRestoreTime = 0;

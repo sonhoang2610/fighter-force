@@ -33,6 +33,7 @@ namespace EazyEngine.Space
 
         GameObject[] IgnoreObjects { get; set; }
     }
+
     [System.Serializable]
     public class UnityEventBool : UnityEvent<bool>
     {
@@ -146,7 +147,7 @@ namespace EazyEngine.Space
         [HideLabel]
         public AnimationMachine machine;
 
-    
+            
 
         [FoldoutGroup("typeBehaviour/First"), ShowIfGroup("typeBehaviour", BehaviourType.AnimationWait)]
 
@@ -163,6 +164,8 @@ namespace EazyEngine.Space
         public int fixDamage = 0;
         public List<DamageExtra> extraDamage =  new  List < DamageExtra >() { new DamageExtra() { damageExtra = 0, type = DamageType.Normal } };
         protected Dictionary<string, Vector2> extraDamageDict = new Dictionary<string, Vector2>();
+
+      
         protected WeaponGroup weaponParrent;
         public virtual void addDamageExtra(DamageExtra[] extra,string pStr ="")
         {
@@ -965,6 +968,12 @@ namespace EazyEngine.Space
                 }
             }
             boosterInfos[index].actions.Invoke();
+            Blackboard pBlackBoard = GetComponent<Blackboard>();
+            GraphOwner pGraph = GetComponent<GraphOwner>();
+           if(pBlackBoard && pGraph) {
+                pBlackBoard.SetValue("FlowAction", boosterInfos[index].flow);
+                pGraph.SendEvent("Excute");
+            }
         }
     }
 }
