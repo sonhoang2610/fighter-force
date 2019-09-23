@@ -81,7 +81,7 @@ namespace NodeCanvas.BehaviourTrees
 
             BehaviourTree instance = null;
             if ( !instances.TryGetValue(subTree, out instance) ) {
-                instance = Graph.Clone<BehaviourTree>(subTree);
+                instance = Graph.Clone<BehaviourTree>(subTree, this.graph);
                 instances[subTree] = instance;
             }
 

@@ -289,12 +289,20 @@ namespace FlowCanvas
             get { return GetObjectValue(); }
         }
 
+        ///Convenience method to set default port value and serialized port value, which should be the same value in any case.
         public ValueInput SetDefaultAndSerializedValue(object v) {
             this.defaultValue = v;
             this.serializedValue = v;
             return this;
         }
 
+        ///Convenience method to make the port skip self object assigment if it was a valid candidate in the first place.
+        public ValueInput SkipSelfInstanceAssignment(bool skip) {
+            this.skipSelfInstanceAssignment = skip;
+            return this;
+        }
+
+        public bool skipSelfInstanceAssignment { get; set; }
         abstract public object defaultValue { get; set; }
         abstract public object serializedValue { get; set; }
         abstract public bool isDefaultValue { get; }
@@ -357,7 +365,7 @@ namespace FlowCanvas
 
         ///Returns if the serializedValue is equal to the default value, usually simply default(T)
         public override bool isDefaultValue {
-            get { return Equals(serializedValue, defaultValue); }
+            get { return ObjectUtils.TrueEquals(serializedValue, defaultValue); }
         }
 
         ///The port value type which is always of type T

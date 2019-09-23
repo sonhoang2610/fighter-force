@@ -45,6 +45,10 @@ namespace NodeCanvas.BehaviourTrees
                 return Status.Optional;
             }
 
+            if ( status == Status.Resting ) {
+                condition.Enable(agent, blackboard);
+            }
+
             if ( dynamic || status == Status.Resting ) {
                 var lastIndex = succeedIndex;
                 succeedIndex = condition.CheckCondition(agent, blackboard) ? 0 : 1;
@@ -54,6 +58,10 @@ namespace NodeCanvas.BehaviourTrees
             }
 
             return outConnections[succeedIndex].Execute(agent, blackboard);
+        }
+
+        protected override void OnReset() {
+            if ( condition != null ) { condition.Disable(); }
         }
 
 

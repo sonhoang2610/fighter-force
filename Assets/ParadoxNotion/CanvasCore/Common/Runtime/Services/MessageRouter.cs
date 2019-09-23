@@ -78,9 +78,7 @@ namespace ParadoxNotion.Services
         public void OnPointerClick(PointerEventData eventData) {
             Dispatch("OnPointerClick", eventData);
         }
-        public void OnDrag()
-        {
-        }
+
         public void OnDrag(PointerEventData eventData) {
             Dispatch("OnDrag", eventData);
         }
@@ -95,11 +93,6 @@ namespace ParadoxNotion.Services
 
         public void OnUpdateSelected(BaseEventData eventData) {
             Dispatch("OnUpdateSelected", eventData);
-        }
-
-        public void OnSelect(bool pBool)
-        {
-
         }
 
         public void OnSelect(BaseEventData eventData) {
@@ -197,90 +190,51 @@ namespace ParadoxNotion.Services
         //-------------------------------------------------
         void OnCollisionEnter(Collision collisionInfo) {
             Dispatch("OnCollisionEnter", collisionInfo);
-            EnsureListInstance<Collision>(ref collisionStayObjects3D);
-            collisionStayObjects3D.Add(collisionInfo);
         }
 
         void OnCollisionExit(Collision collisionInfo) {
             Dispatch("OnCollisionExit", collisionInfo);
-            EnsureListInstance<Collision>(ref collisionStayObjects3D);
-            collisionStayObjects3D.Remove(collisionInfo);
+        }
+
+        void OnCollisionStay(Collision collisionInfo) {
+            Dispatch("OnCollisionStay", collisionInfo);
         }
 
         void OnCollisionEnter2D(Collision2D collisionInfo) {
             Dispatch("OnCollisionEnter2D", collisionInfo);
-            EnsureListInstance<Collision2D>(ref collisionStayObjects2D);
-            collisionStayObjects2D.Add(collisionInfo);
         }
 
         void OnCollisionExit2D(Collision2D collisionInfo) {
             Dispatch("OnCollisionExit2D", collisionInfo);
-            EnsureListInstance<Collision2D>(ref collisionStayObjects2D);
-            collisionStayObjects2D.Remove(collisionInfo);
+        }
+
+        void OnCollisionStay2D(Collision2D collisionInfo) {
+            Dispatch("OnCollisionStay2D", collisionInfo);
         }
 
         //-------------------------------------------------
         void OnTriggerEnter(Collider other) {
             Dispatch("OnTriggerEnter", other);
-            EnsureListInstance<Collider>(ref triggerStayObjects3D);
-            triggerStayObjects3D.Add(other);
         }
 
         void OnTriggerExit(Collider other) {
             Dispatch("OnTriggerExit", other);
-            EnsureListInstance<Collider>(ref triggerStayObjects3D);
-            triggerStayObjects3D.Remove(other);
+        }
+
+        void OnTriggerStay(Collider other) {
+            Dispatch("OnTriggerStay", other);
         }
 
         void OnTriggerEnter2D(Collider2D other) {
             Dispatch("OnTriggerEnter2D", other);
-            EnsureListInstance<Collider2D>(ref triggerStayObjects2D);
-            triggerStayObjects2D.Add(other);
         }
 
         void OnTriggerExit2D(Collider2D other) {
             Dispatch("OnTriggerExit2D", other);
-            EnsureListInstance<Collider2D>(ref triggerStayObjects2D);
-            triggerStayObjects2D.Remove(other);
         }
 
-        ///----------------------------------------------------------------------------------------------
-
-        private List<Collider> triggerStayObjects3D;
-        private List<Collider2D> triggerStayObjects2D;
-        private List<Collision> collisionStayObjects3D;
-        private List<Collision2D> collisionStayObjects2D;
-
-        ///Utility used above.
-        void EnsureListInstance<T>(ref List<T> list) {
-            if ( list == null ) { list = new List<T>(); }
-        }
-
-        ///Trigger and Collision Stay callbacks happen this way so that the callback is in sync with normal update loop instead of physics loop, which is more convenient.
-        void Update() {
-            if ( triggerStayObjects3D != null ) {
-                for ( var i = 0; i < triggerStayObjects3D.Count; i++ ) {
-                    Dispatch("OnTriggerStay", triggerStayObjects3D[i]);
-                }
-            }
-
-            if ( triggerStayObjects2D != null ) {
-                for ( var i = 0; i < triggerStayObjects2D.Count; i++ ) {
-                    Dispatch("OnTriggerStay2D", triggerStayObjects2D[i]);
-                }
-            }
-
-            if ( collisionStayObjects3D != null ) {
-                for ( var i = 0; i < collisionStayObjects3D.Count; i++ ) {
-                    Dispatch("OnCollisionStay", collisionStayObjects3D[i]);
-                }
-            }
-
-            if ( collisionStayObjects2D != null ) {
-                for ( var i = 0; i < collisionStayObjects2D.Count; i++ ) {
-                    Dispatch("OnCollisionStay2D", collisionStayObjects2D[i]);
-                }
-            }
+        void OnTriggerStay2D(Collider2D other) {
+            Dispatch("OnTriggerStay2D", other);
         }
 
         ///----------------------------------------------------------------------------------------------
@@ -294,16 +248,23 @@ namespace ParadoxNotion.Services
 
             for ( var i = 0; i < messages.Length; i++ ) {
 
-                var method = target.GetType().GetMethod(messages[i], METHOD_FLAGS);
+                var message = messages[i];
+
+                if ( string.IsNullOrEmpty(message) ) {
+                    Logger.LogError("Registration message name is null or empty.", "Events", target);
+                    continue;
+                }
+
+                var method = target.GetType().GetMethod(message, METHOD_FLAGS);
                 if ( method == null ) {
-                    Logger.LogError(string.Format("Type '{0}' does not implement a method named '{1}', for the registered event to use.", target.GetType().FriendlyName(), messages[i]), "Events", target);
+                    Logger.LogError(string.Format("Type '{0}' does not implement a method named '{1}', for the registered event to use.", target.GetType().FriendlyName(), message), "Events", target);
                     continue;
                 }
 
                 List<object> targetObjects = null;
-                if ( !listeners.TryGetValue(messages[i], out targetObjects) ) {
+                if ( !listeners.TryGetValue(message, out targetObjects) ) {
                     targetObjects = new List<object>();
-                    listeners[messages[i]] = targetObjects;
+                    listeners[message] = targetObjects;
                 }
 
                 if ( !targetObjects.Contains(target) ) {
@@ -316,6 +277,12 @@ namespace ParadoxNotion.Services
         public void RegisterCallback(string message, Action callback) { Internal_RegisterCallback(message, callback); }
         public void RegisterCallback<T>(string message, Action<T> callback) { Internal_RegisterCallback(message, callback); }
         void Internal_RegisterCallback(string message, Delegate callback) {
+
+            if ( string.IsNullOrEmpty(message) ) {
+                Logger.LogError("Registration message name is null or empty.", "Events");
+                return;
+            }
+
             List<object> targetObjects = null;
             if ( !listeners.TryGetValue(message, out targetObjects) ) {
                 targetObjects = new List<object>();
@@ -361,7 +328,7 @@ namespace ParadoxNotion.Services
             for ( var i = 0; i < messages.Length; i++ ) {
 
                 var message = messages[i];
-                if ( !listeners.ContainsKey(message) ) {
+                if ( string.IsNullOrEmpty(message) || !listeners.ContainsKey(message) ) {
                     continue;
                 }
 
@@ -389,6 +356,11 @@ namespace ParadoxNotion.Services
 
             if ( sender == null ) {
                 sender = this;
+            }
+
+            if ( string.IsNullOrEmpty(message) ) {
+                Logger.LogError("Dispatch message name is null or empty.", "Events", sender);
+                return false;
             }
 
             List<object> targets;

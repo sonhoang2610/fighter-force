@@ -126,6 +126,7 @@ namespace NodeCanvas.Framework
         public void EndAction(bool? success) {
 
             if ( status != Status.Running ) {
+                OnForcedStop();
                 return;
             }
 
@@ -159,6 +160,9 @@ namespace NodeCanvas.Framework
 
         ///Called whenever the action ends due to any reason.
         virtual protected void OnStop() { }
+
+        ///Called if EndAction is called while the action was not running anyways. Could be called multiple times.
+        virtual protected void OnForcedStop() { }
 
         ///Called when the action gets paused
         virtual protected void OnPause() { }

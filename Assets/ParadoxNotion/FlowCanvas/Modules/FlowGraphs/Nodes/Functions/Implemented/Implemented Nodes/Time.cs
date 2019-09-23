@@ -8,16 +8,14 @@ namespace FlowCanvas.Nodes
 
     [Category("Time")]
     [Description("Wait for a certain amount of time before continueing")]
-    public class Wait : LatentActionNode<float,TimeControlBehavior>
+    public class Wait : LatentActionNode<float>
     {
         public float timeLeft { get; private set; }
-        public TimeControlBehavior timecustom { get; private set; }
         public float normalized { get; private set; }
-        public override IEnumerator Invoke(float time = 1f,TimeControlBehavior pTimeCustom = null) {
+        public override IEnumerator Invoke(float time = 1f) {
             timeLeft = time;
-            timecustom = pTimeCustom;
             while ( timeLeft > 0 ) {
-                timeLeft -= timecustom == null ? Time.deltaTime: timecustom.time.deltaTime;
+                timeLeft -= Time.deltaTime;
                 timeLeft = Mathf.Max(timeLeft, 0);
                 normalized = timeLeft / time;
                 yield return null;

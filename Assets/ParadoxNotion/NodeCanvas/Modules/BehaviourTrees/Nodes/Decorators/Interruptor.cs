@@ -28,16 +28,27 @@ namespace NodeCanvas.BehaviourTrees
 
         protected override Status OnExecute(Component agent, IBlackboard blackboard) {
 
-            if ( decoratedConnection == null )
+            if ( decoratedConnection == null ) {
                 return Status.Optional;
+            }
 
-            if ( condition == null || condition.CheckCondition(agent, blackboard) == false )
+            if ( status == Status.Resting ) {
+                condition.Enable(agent, blackboard);
+            }
+
+            if ( condition == null || condition.CheckCondition(agent, blackboard) == false ) {
                 return decoratedConnection.Execute(agent, blackboard);
+            }
 
-            if ( decoratedConnection.status == Status.Running )
+            if ( decoratedConnection.status == Status.Running ) {
                 decoratedConnection.Reset();
+            }
 
             return Status.Failure;
+        }
+
+        protected override void OnReset() {
+            if ( condition != null ) { condition.Disable(); }
         }
     }
 }

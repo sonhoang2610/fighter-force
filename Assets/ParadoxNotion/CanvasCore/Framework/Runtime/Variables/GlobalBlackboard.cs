@@ -87,14 +87,7 @@ namespace NodeCanvas.Framework
         }
 
         bool IsUnique() {
-            for(int i = allGlobals.Count-1; i >= 0; --i)
-            {
-                if(allGlobals[i] == null)
-                {
-                    allGlobals.RemoveAt(i);
-                }
-            }
-            return allGlobals.Find(b => b  != null && b.name == this.name && b != this) == null;
+            return allGlobals.Find(b => b.name == this.name && b != this) == null;
         }
 
 

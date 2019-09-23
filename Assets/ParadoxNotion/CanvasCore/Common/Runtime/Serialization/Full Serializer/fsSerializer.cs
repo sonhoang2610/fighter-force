@@ -187,7 +187,6 @@ namespace ParadoxNotion.Serialization.FullSerializer
 
             _processors = new List<fsObjectProcessor>();
 
-            Context = new fsContext();
             Config = new fsConfig();
 
             //DirectConverters. Add manually for performance
@@ -202,8 +201,8 @@ namespace ParadoxNotion.Serialization.FullSerializer
             AddConverter(new Rect_DirectConverter());
         }
 
-        /// A context object that fsConverters can use to customize how they operate.
-        public fsContext Context;
+        /// A UnityObject references database for serializtion/deserialization
+        public List<UnityEngine.Object> ReferencesDatabase;
         /// Configuration options. Also see fsGlobalConfig.
         public fsConfig Config;
 

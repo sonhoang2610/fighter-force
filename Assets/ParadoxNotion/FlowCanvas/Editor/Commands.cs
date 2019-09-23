@@ -31,6 +31,11 @@ namespace FlowCanvas.Editor
             GraphFinder.ShowWindow();
         }
 
+        [MenuItem("Tools/ParadoxNotion/FlowCanvas/Active Owners Overview")]
+        public static void OpenOwnersOverview() {
+            ActiveOwnersOverview.ShowWindow();
+        }
+
         [MenuItem("Tools/ParadoxNotion/FlowCanvas/External Inspector Panel")]
         public static void ShowExternalInspector() {
             ExternalInspectorWindow.ShowWindow();

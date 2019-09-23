@@ -3,7 +3,6 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 namespace FlowCanvas.Macros
 {
 
@@ -121,6 +120,43 @@ namespace FlowCanvas.Macros
             }
             return null;
         }
+
+        ///----------------------------------------------------------------------------------------------
+
+        /// Set a value input of type T of the Macro to a certain value.
+        /// Only use to interface with the Macro from code.
+        public void SetValueInput<T>(string name, T value) {
+            var def = inputDefinitions.FirstOrDefault(d => d.name == name && d.type == typeof(T));
+            if ( def == null ) {
+                ParadoxNotion.Services.Logger.LogError(string.Format("Input of name {0} and type {1}, does not exist within the list of Macro Inputs", name, typeof(T)), "Execution", entry);
+                return;
+            }
+            entryFunctionMap[def.ID] = () => { return value; };
+        }
+
+        /// Call a Flow Input of the Macro.
+        /// Only use to interface with the Macro from code.
+        public void CallFlowInput(string name) {
+            var def = inputDefinitions.FirstOrDefault(d => d.name == name && d.type == typeof(Flow));
+            if ( def == null ) {
+                ParadoxNotion.Services.Logger.LogError(string.Format("Input of name {0} and type Flow, does not exist within the list of Macro Inputs", name), "Execution", entry);
+                return;
+            }
+            entryActionMap[def.ID](new Flow());
+        }
+
+        /// Get the value output of type T of the Macro.
+        /// Only use to interface with the Macro from code.
+        public T GetValueOutput<T>(string name) {
+            var def = outputDefinitions.FirstOrDefault(d => d.name == name && d.type == typeof(T));
+            if ( def == null ) {
+                ParadoxNotion.Services.Logger.LogError(string.Format("Input of name {0} and type {1} do not exist within the list of Macro Outputs", name, typeof(T)), "Execution", exit);
+                return default(T);
+            }
+            return (T)exitFunctionMap[def.ID]();
+        }
+
+        ///----------------------------------------------------------------------------------------------
 
         ///----------------------------------------------------------------------------------------------
         ///---------------------------------------UNITY EDITOR-------------------------------------------

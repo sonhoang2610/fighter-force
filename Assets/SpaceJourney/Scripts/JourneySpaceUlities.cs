@@ -15,7 +15,7 @@ namespace EazyEngine.Tools.Space
             {
                 if (!pBlackBoardClone.variables.ContainsKey(pBlackBoardOriginal.variables.ElementAt(i).Key))
                 {
-                    pBlackBoardClone.AddVariable(pBlackBoardOriginal.variables.ElementAt(i).Key, pBlackBoardOriginal.variables.ElementAt(i).Value);
+                    pBlackBoardClone.AddVariable(pBlackBoardOriginal.variables.ElementAt(i).Key, pBlackBoardOriginal.variables.ElementAt(i).Value.value);
                 }
             }
         }

@@ -157,7 +157,7 @@ namespace NodeCanvas.Editor
                 var typeName = child.reference.GetType().FriendlyName();
                 var searchText = toString + " " + typeName;
 
-                if ( string.IsNullOrEmpty(search) || ParadoxNotion. StringUtils.SearchMatch(search, searchText) ) {
+                if ( string.IsNullOrEmpty(search) || ParadoxNotion.StringUtils.SearchMatch(search, searchText) ) {
 
                     GUI.color = EditorGUIUtility.isProSkin ? Color.white : Colors.Grey(0.8f);
                     GUILayout.BeginHorizontal("box");

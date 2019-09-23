@@ -783,20 +783,12 @@ namespace NodeCanvas.Framework
         }
 
 
-        //Editor. Sorts the connections based on the child nodes and this node X position. Possible only when not in play mode.
+        //Editor. Sorts the parent node connections based on all child nodes X position. Possible only when not in play mode.
         public void TrySortConnectionsByPositionX() {
             if ( !Application.isPlaying && graph != null && graph.isTree ) {
-
-                if ( isChecked ) {
-                    return;
-                }
-
-                isChecked = true;
-                outConnections = outConnections.OrderBy(c => c.targetNode.rect.center.x).ToList();
                 foreach ( var connection in inConnections.ToArray() ) {
-                    connection.sourceNode.TrySortConnectionsByPositionX();
+                    connection.sourceNode.outConnections = connection.sourceNode.outConnections.OrderBy(c => c.targetNode.rect.center.x).ToList();
                 }
-                isChecked = false;
             }
         }
 

@@ -39,6 +39,11 @@ namespace NodeCanvas.Editor
             GraphFinder.ShowWindow();
         }
 
+        [MenuItem("Tools/ParadoxNotion/NodeCanvas/Active Owners Overview")]
+        public static void OpenOwnersOverview() {
+            ActiveOwnersOverview.ShowWindow();
+        }
+
         [MenuItem("Tools/ParadoxNotion/NodeCanvas/External Inspector Panel")]
         public static void ShowExternalInspector() {
             ExternalInspectorWindow.ShowWindow();
@@ -48,7 +53,7 @@ namespace NodeCanvas.Editor
 
         [MenuItem("Tools/ParadoxNotion/NodeCanvas/Welcome Window")]
         public static void ShowWelcome() {
-            WelcomeWindow.ShowWindow(null);
+            WelcomeWindow.ShowWindow(typeof(NodeCanvas.BehaviourTrees.BehaviourTree));
         }
 
         [MenuItem("Tools/ParadoxNotion/NodeCanvas/Visit Website")]

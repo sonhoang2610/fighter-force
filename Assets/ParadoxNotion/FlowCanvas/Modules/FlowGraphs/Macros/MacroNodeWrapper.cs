@@ -53,7 +53,7 @@ namespace FlowCanvas.Macros
 
             if ( !instantiated ) {
                 instantiated = true;
-                macro = Graph.Clone<Macro>(macro);
+                macro = Graph.Clone<Macro>(macro, this.graph);
             }
         }
 

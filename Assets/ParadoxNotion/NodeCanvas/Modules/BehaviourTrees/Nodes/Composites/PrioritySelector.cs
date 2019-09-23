@@ -67,8 +67,9 @@ namespace NodeCanvas.BehaviourTrees
         }
 
         protected override void OnNodeInspectorGUI() {
-            for ( var i = 0; i < priorities.Count; i++ )
+            for ( var i = 0; i < priorities.Count; i++ ) {
                 priorities[i] = (BBParameter<float>)NodeCanvas.Editor.BBParameterEditor.ParameterField("Priority Weight", priorities[i]);
+            }
         }
 
 #endif

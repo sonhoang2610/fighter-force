@@ -7,80 +7,82 @@ using ParadoxNotion;
 using ParadoxNotion.Design;
 using UnityEngine;
 
-namespace FlowCanvas.Nodes{
+namespace FlowCanvas.Nodes
+{
 
-	///Task Action is used to run ActionTasks within the flowscript in a simplified manner without exposing ports
-	[Description("Execute an encapsulated action without exposing any value ports")]
-	public class TaskAction : FlowNode, ITaskAssignable<ActionTask> {
+    ///Task Action is used to run ActionTasks within the flowscript in a simplified manner without exposing ports
+    [Description("Execute an encapsulated action without exposing any value ports")]
+    public class TaskAction : FlowNode, ITaskAssignable<ActionTask>
+    {
 
-		[SerializeField]
-		private ActionTask _action;
+        [SerializeField]
+        private ActionTask _action;
 
-		private FlowOutput fOut;
-		private Coroutine coroutine;
+        private FlowOutput fOut;
+        private Coroutine coroutine;
 
-		public override string name{
-			get {return action != null? action.name : "Action";}
-		}
+        public override string name {
+            get { return action != null ? action.name : "Action"; }
+        }
 
-		public ActionTask action{
-			get {return _action;}
-			set
-			{
-				if (_action != value){
-					_action = value;
-					GatherPorts();
-				}
-			}
-		}
+        public ActionTask action {
+            get { return _action; }
+            set
+            {
+                if ( _action != value ) {
+                    _action = value;
+                    GatherPorts();
+                }
+            }
+        }
 
-		public Task task{
-			get {return action;}
-			set {action = (ActionTask)value;}
-		}
+        public Task task {
+            get { return action; }
+            set { action = (ActionTask)value; }
+        }
 
-		public override void OnGraphStarted(){ coroutine = null; }
-		public override void OnGraphStoped(){
-			if (coroutine != null){
-				StopCoroutine(coroutine);
-				coroutine = null;
-			}
+        public override void OnGraphStarted() { coroutine = null; }
+        public override void OnGraphStoped() {
+            if ( coroutine != null ) {
+                StopCoroutine(coroutine);
+                coroutine = null;
+            }
 
-			if (action != null){
-				action.EndAction(null);
-			}
-		}
+            if ( action != null ) {
+                action.EndAction(null);
+            }
+        }
 
-		public override void OnGraphPaused(){
-			if (action != null){
-				action.PauseAction();
-			}
-		}
+        public override void OnGraphPaused() {
+            if ( action != null ) {
+                action.PauseAction();
+            }
+        }
 
-		protected override void RegisterPorts(){
-			fOut = AddFlowOutput(" ");
-			AddFlowInput(" ", (f)=>
-			{
-				if (action == null){
-					fOut.Call(f);
-					return;
-				}
+        protected override void RegisterPorts() {
+            fOut = AddFlowOutput(" ");
+            AddFlowInput(" ", (f) =>
+            {
+                if ( action == null ) {
+                    fOut.Call(f);
+                    return;
+                }
 
-				if (coroutine == null){
-					coroutine = StartCoroutine(DoUpdate(f));
-				}
-			});
-		}
+                if ( coroutine == null ) {
+                    coroutine = StartCoroutine(DoUpdate(f));
+                }
+            });
+        }
 
-		IEnumerator DoUpdate(Flow f){
-			SetStatus(Status.Running);
-			while(graph.isPaused || action.ExecuteAction(graphAgent, graphBlackboard) == Status.Running){
-				yield return null;
-			}
-			
-			coroutine = null;
-			fOut.Call(f);
-			SetStatus(Status.Resting);
-		}
-	}
+        IEnumerator DoUpdate(Flow f) {
+            SetStatus(Status.Running);
+            while ( graph.isPaused || action.ExecuteAction(graphAgent, graphBlackboard) == Status.Running ) {
+                yield return null;
+            }
+
+            coroutine = null;
+            fOut.Call(f);
+            SetStatus(Status.Resting);
+        }
+    }
 }

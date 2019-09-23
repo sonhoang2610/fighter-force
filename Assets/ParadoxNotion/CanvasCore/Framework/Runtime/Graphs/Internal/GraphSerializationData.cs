@@ -9,7 +9,7 @@ namespace NodeCanvas.Framework.Internal
     public class GraphSerializationData
     {
 
-        public const float FRAMEWORK_VERSION = 2.92f;
+        public const float FRAMEWORK_VERSION = 2.96f;
 
         public float version;
         public System.Type type;

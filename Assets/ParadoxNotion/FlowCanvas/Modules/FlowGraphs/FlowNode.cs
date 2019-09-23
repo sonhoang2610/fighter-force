@@ -75,6 +75,11 @@ namespace FlowCanvas
 
         ///----------------------------------------------------------------------------------------------
 
+        ///Ignore the Self Instance Object feature altogether for the the node
+        virtual public bool ignoreSelfInstancePortAssignment { get { return false; } }
+
+        ///----------------------------------------------------------------------------------------------
+
         ///Store the changed input port values.
         void ISerializationCallbackReceiver.OnBeforeSerialize() {
             if ( inputPorts != null ) {
@@ -203,7 +208,8 @@ namespace FlowCanvas
         ///By convention, the instance port is always considered to be the first.
         ///Called from Graph when started.
         public void AssignSelfInstancePort() {
-            var instanceInput = inputPorts.Values.OfType<ValueInput>().FirstOrDefault();
+            if ( ignoreSelfInstancePortAssignment ) { return; }
+            var instanceInput = inputPorts.Values.OfType<ValueInput>().FirstOrDefault(p => p.IsUnitySceneObject() && !p.skipSelfInstanceAssignment);
             if ( instanceInput != null && !instanceInput.isConnected && instanceInput.isDefaultValue ) {
                 var instance = flowGraph.GetAgentComponent(instanceInput.type);
                 if ( instance != null ) {
@@ -216,13 +222,18 @@ namespace FlowCanvas
         public void GatherPorts() {
             inputPorts = new Dictionary<string, Port>(StringComparer.Ordinal);
             outputPorts = new Dictionary<string, Port>(StringComparer.Ordinal);
-            RegisterPorts();
-            DeserializeInputPortValues();
-
+            try {
+                RegisterPorts();
 #if UNITY_EDITOR && DO_EDITOR_BINDING
-            OnPortsGatheredInEditor();
-            ValidateConnections();
+                ValidateConnections();
 #endif
+            }
+            finally {
+                DeserializeInputPortValues();
+#if UNITY_EDITOR && DO_EDITOR_BINDING
+                OnPortsGatheredInEditor();
+#endif
+            }
         }
 
         ///Override for registration/definition of ports.
@@ -596,7 +607,7 @@ namespace FlowCanvas
         void OnPortsGatheredInEditor() {
             orderedInputs = inputPorts.Values.OrderBy(p => p is FlowInput ? 0 : 1).ToArray();
             orderedOutputs = outputPorts.Values.OrderBy(p => p is FlowOutput || p.IsDelegate() ? 0 : 1).ToArray();
-            selfInstancePort = orderedInputs.OfType<ValueInput>().FirstOrDefault(p => p.IsUnitySceneObject());
+            selfInstancePort = ignoreSelfInstancePortAssignment ? null : orderedInputs.OfType<ValueInput>().FirstOrDefault(p => p.IsUnitySceneObject() && !p.skipSelfInstanceAssignment);
         }
 
         //Seal it...

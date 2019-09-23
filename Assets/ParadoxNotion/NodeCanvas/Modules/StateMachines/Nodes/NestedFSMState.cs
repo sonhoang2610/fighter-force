@@ -42,6 +42,7 @@ namespace NodeCanvas.StateMachines
 
             currentInstance = CheckInstance();
             currentInstance.StartGraph(graphAgent, graphBlackboard, false, Finish);
+            OnUpdate();
         }
 
         protected override void OnUpdate() {
@@ -68,7 +69,7 @@ namespace NodeCanvas.StateMachines
 
             FSM instance = null;
             if ( !instances.TryGetValue(nestedFSM, out instance) ) {
-                instance = Graph.Clone<FSM>(nestedFSM);
+                instance = Graph.Clone<FSM>(nestedFSM, this.graph);
                 instances[nestedFSM] = instance;
             }
 

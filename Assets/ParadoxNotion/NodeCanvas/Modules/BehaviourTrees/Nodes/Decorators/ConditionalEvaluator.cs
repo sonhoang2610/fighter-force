@@ -39,6 +39,10 @@ namespace NodeCanvas.BehaviourTrees
                 return decoratedConnection.Execute(agent, blackboard);
             }
 
+            if ( status == Status.Resting ) {
+                condition.Enable(agent, blackboard);
+            }
+
             if ( isDynamic ) {
                 if ( condition.CheckCondition(agent, blackboard) ) {
                     return decoratedConnection.Execute(agent, blackboard);
@@ -55,6 +59,7 @@ namespace NodeCanvas.BehaviourTrees
         }
 
         protected override void OnReset() {
+            if ( condition != null ) { condition.Disable(); }
             accessed = false;
         }
 

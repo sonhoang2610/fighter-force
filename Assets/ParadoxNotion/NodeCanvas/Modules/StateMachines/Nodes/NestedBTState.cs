@@ -68,6 +68,7 @@ namespace NodeCanvas.StateMachines
             currentInstance.repeat = ( executionMode == BTExecutionMode.Repeat );
             currentInstance.updateInterval = 0;
             currentInstance.StartGraph(graphAgent, graphBlackboard, false, OnFinish);
+            OnUpdate();
         }
 
         protected override void OnUpdate() {
@@ -122,7 +123,7 @@ namespace NodeCanvas.StateMachines
 
             BehaviourTree instance = null;
             if ( !instances.TryGetValue(nestedBT, out instance) ) {
-                instance = Graph.Clone<BehaviourTree>(nestedBT);
+                instance = Graph.Clone<BehaviourTree>(nestedBT, this.graph);
                 instances[nestedBT] = instance;
             }
 

@@ -127,6 +127,11 @@ namespace NodeCanvas.Editor
             if ( owner.graphIsBound ) {
                 owner.graph.comments = GUILayout.TextArea(owner.graph.comments, GUILayout.Height(45));
                 EditorUtils.TextFieldComment(owner.graph.comments, "Graph comments...");
+            } else {
+                // GUILayout.Label(owner.graph.comments, GUILayout.Height(45));
+                GUI.enabled = false;
+                GUILayout.TextArea(owner.graph.comments, GUILayout.Height(45));
+                GUI.enabled = true;
             }
 
             //Open behaviour
@@ -160,6 +165,8 @@ namespace NodeCanvas.Editor
                         }
                     }
                 }
+
+                // owner.blackboard = (IBlackboard)EditorGUILayout.ObjectField("Blackboard", (Blackboard)owner.blackboard, typeof(Blackboard), true);
             }
 
 

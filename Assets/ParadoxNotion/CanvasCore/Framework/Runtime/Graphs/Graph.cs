@@ -218,9 +218,10 @@ namespace NodeCanvas.Framework
         }
 
         ///Clones the graph and returns the new one. Currently exactly the same as Instantiate, but could change in the future
-        public static T Clone<T>(T graph) where T : Graph {
+        public static T Clone<T>(T graph, Graph parentGraph) where T : Graph {
             var newGraph = (T)Instantiate(graph);
             newGraph.name = newGraph.name.Replace("(Clone)", string.Empty);
+            newGraph.parentGraph = parentGraph;
             return (T)newGraph;
         }
 
@@ -305,6 +306,9 @@ namespace NodeCanvas.Framework
         abstract public bool canAcceptVariableDrops { get; }
 
         ///----------------------------------------------------------------------------------------------
+
+        ///The parent Graph if any when this graph is a nested one. Set in runtime only after the nested graph (this) is instantiated.
+        public Graph parentGraph { get; private set; }
 
         ///The friendly title name of the graph
         new public string name {

@@ -604,6 +604,11 @@ namespace FlowCanvas
                 foreach ( var _bbVar in pair.Value ) {
                     var bb = pair.Key;
                     var bbVar = _bbVar;
+
+                    if ( bbVar.value is VariableSeperator ) {
+                        continue;
+                    }
+
                     var category = baseCategory + "Blackboard/" + ( bb == graph.blackboard ? "" : bb.name + "/" );
                     var fullName = bb == graph.blackboard ? bbVar.name : string.Format("{0}/{1}", bb.name, bbVar.name);
 

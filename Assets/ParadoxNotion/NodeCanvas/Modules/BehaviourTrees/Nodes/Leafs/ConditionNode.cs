@@ -33,7 +33,16 @@ namespace NodeCanvas.BehaviourTrees
             if ( condition == null ) {
                 return Status.Optional;
             }
+
+            if ( status == Status.Resting ) {
+                condition.Enable(agent, blackboard);
+            }
+
             return condition.CheckCondition(agent, blackboard) ? Status.Success : Status.Failure;
+        }
+
+        protected override void OnReset() {
+            if ( condition != null ) { condition.Disable(); }
         }
     }
 }

@@ -161,7 +161,7 @@ namespace ParadoxNotion.Design
                 callback((FieldInfo)selectedField);
             };
 
-            foreach ( var field in type.GetFields(flags).Where(field => fieldType.IsAssignableFrom(field.FieldType)  || field.FieldType ==  typeof(object)) ) {
+            foreach ( var field in type.GetFields(flags).Where(field => fieldType.IsAssignableFrom(field.FieldType)) ) {
                 var inherited = field.DeclaringType != type;
                 var category = inherited ? subMenu + type.FriendlyName() + "/Inherited" : subMenu + type.FriendlyName();
                 menu.AddItem(new GUIContent(string.Format("{0}/{1} : {2}", category, field.Name, field.FieldType.FriendlyName())), false, Selected, field);
@@ -206,7 +206,8 @@ namespace ParadoxNotion.Design
                 if ( !prop.CanWrite && mustWrite ) {
                     continue;
                 }
-                if ( (!propType.IsAssignableFrom(prop.PropertyType) && !propType.IsArray ) || (propType.IsArray && !propType.IsAssignableFrom(propType.GetElementType()))) {
+
+                if ( !propType.IsAssignableFrom(prop.PropertyType) ) {
                     continue;
                 }
 
@@ -274,7 +275,7 @@ namespace ParadoxNotion.Design
                 }
 
                 if ( parameters.Length > 0 ) {
-                    if ( parameters.Any(param => !acceptedParamsType.IsAssignableFrom(param.ParameterType)) ) {
+                    if ( acceptedParamsType != typeof(object) && parameters.Any(param => !acceptedParamsType.IsAssignableFrom(param.ParameterType)) ) {
                         continue;
                     }
                 }

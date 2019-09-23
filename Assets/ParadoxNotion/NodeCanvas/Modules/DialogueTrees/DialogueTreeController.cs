@@ -34,7 +34,13 @@ namespace NodeCanvas.DialogueTrees
             StartDialogue(instigator, null);
         }
 
-        ///Start the DialogueTree with provded actor as instigator and callback
+        ///Assign a new DialogueTree and Start it
+        public void StartDialogue(DialogueTree newTree, IDialogueActor instigator, Action<bool> callback) {
+            graph = newTree;
+            StartDialogue(instigator, callback);
+        }
+
+        ///Start the already assgined DialogueTree with provided actor as instigator and callback
         public void StartDialogue(IDialogueActor instigator, Action<bool> callback) {
             graph = GetInstance(graph);
             graph.StartGraph(instigator is Component ? (Component)instigator : instigator.transform, blackboard, true, callback);

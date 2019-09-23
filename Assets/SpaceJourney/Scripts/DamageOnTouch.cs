@@ -45,7 +45,7 @@ namespace EazyEngine.Space {
         }
         public override string ToString()
         {
-            return valueExtra.ToString();
+            return valueExtra!= null ?valueExtra.ToString() : "";
         }
 
     }

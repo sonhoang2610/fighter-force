@@ -19,7 +19,7 @@ namespace EazyEngine.Space.UI
         public void runGraph(System.Action<EazyNode> pFinish)
         {
             onFinishEvent = pFinish;
-            currentInstance = Graph.Clone<FlowScript>(flow);
+            currentInstance = Graph.Clone<FlowScript>(flow, LevelManger.Instance.GetComponent<NodeCanvas.BehaviourTrees.BehaviourTreeOwner>().graph);
             currentInstance.StartGraph(LevelManger.Instance.GetComponent<NodeCanvas.BehaviourTrees.BehaviourTreeOwner>(), LevelManger.Instance.GetComponent<IBlackboard>(), true, onFinish);
         }
         public void  onFinish(bool pBool)

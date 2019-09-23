@@ -108,7 +108,7 @@ namespace NodeCanvas.DialogueTrees
 
             DialogueTree instance = null;
             if ( !instances.TryGetValue(subTree, out instance) ) {
-                instance = Graph.Clone<DialogueTree>(subTree);
+                instance = Graph.Clone<DialogueTree>(subTree, this.graph);
                 instances[subTree] = instance;
             }
 
