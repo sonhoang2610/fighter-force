@@ -86,6 +86,11 @@ public class DictionnaryPrefabInfo
     {
         this[key] = pInfo;
     }
+    public void Remove(GameObject key)
+    {
+        int index = _array.FindIndex(x => x.key == key);
+        _array.RemoveAt(index);
+    }
 }
 public class PoolManagerGeneric<T> : Singleton<T> where T : Component
 {
@@ -117,6 +122,10 @@ public class PoolManagerGeneric<T> : Singleton<T> where T : Component
   
     public GameObject getObjectFromPool(GameObject pObject)
     {
+        if(_storage.ContainsKey(pObject) && _storage[pObject].pooler == null)
+        {
+            _storage.Remove(pObject);
+        }
         if (!_storage.ContainsKey(pObject))
         {
             GameObject pObjectNew = new GameObject();
@@ -131,6 +140,7 @@ public class PoolManagerGeneric<T> : Singleton<T> where T : Component
             _storage.Add(pObject, new PrefabInfoMain());
             _storage[pObject].pooler = pooler;
         }
+
         return _storage[pObject].pooler.GetPooledGameObject();
     }
 }

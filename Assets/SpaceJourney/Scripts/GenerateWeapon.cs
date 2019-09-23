@@ -121,8 +121,8 @@ public class GenerateWeapon : MonoBehaviour
             }
             pAmmo.isRandomTimeRestore = true;
             pAmmo.randomTimeRestore = randomReloadTine;
-            pAmmo.quantityRestoreEachTime = attachMent.Count* countEachSemi;
-            pAmmo.initStorage = attachMent.Count * countEachSemi;
+            pAmmo.QuantityRestoreEachTime = attachMent.Count* countEachSemi;
+            pAmmo.InitStorage = attachMent.Count * countEachSemi;
         }
         else
         {
