@@ -18,6 +18,12 @@ public class UnityEventGameObject : UnityEvent<GameObject>
 
 }
 
+[System.Serializable]
+public class UnityEvent2GameObject : UnityEvent<GameObject,GameObject>
+{
+
+}
+
 [System.Flags]
 [System.Serializable]
 public enum EnemyType

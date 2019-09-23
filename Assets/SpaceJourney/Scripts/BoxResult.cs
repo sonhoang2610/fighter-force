@@ -91,6 +91,8 @@ namespace EazyEngine.Space.UI
                     pNodes.Add(pNode);
                     pNode.runGraph(onFinishNode);
                 }
+                GameManager.Instance.SaveGame();
+                GameManager.Instance.SaveLevel();
             }
             else
             {
@@ -105,7 +107,7 @@ namespace EazyEngine.Space.UI
             boxMission.DataSource = LevelManger.Instance._infoLevel.missions.ToObservableList();  
             time.text = LevelManger.Instance.CurrentTime.ToString(@"mm\:ss");
             quantityDestroy.text = LevelManger.Instance._infoLevel.enemyKill.ToString();
-      
+        
             gameObject.SetActive(true);
         }
 
@@ -175,9 +177,9 @@ namespace EazyEngine.Space.UI
                     GameManager.Instance.CurrentLevelUnlock++;
                     GameManager.Instance.Database.lastPlayStage = new Pos(GameManager.Instance.Database.lastPlayStage.x, 0);
                     GameManager.Instance.ChoosedLevel++;
-                    GameManager.Instance.SaveGame();
+         
                 }
-                GameManager.Instance.SaveLevel();
+   
             }
         
         }

@@ -2,12 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using EazyEngine.Space;
+using NodeCanvas.Framework;
+using System.Linq;
 
 namespace EazyEngine.Tools.Space
 {
     public static class JourneySpaceUlities 
     {
-
+        public static void PassVariables(Blackboard pBlackBoardOriginal,Blackboard pBlackBoardClone)
+        {
+            for(int i = 0; i < pBlackBoardOriginal.variables.Count; ++i)
+            {
+                if (!pBlackBoardClone.variables.ContainsKey(pBlackBoardOriginal.variables.ElementAt(i).Key))
+                {
+                    pBlackBoardClone.AddVariable(pBlackBoardOriginal.variables.ElementAt(i).Key, pBlackBoardOriginal.variables.ElementAt(i).Value);
+                }
+            }
+        }
         public static Vector2[] posArray(Vector2 sizeDomain,Vector2 cellgrid, int pQuantity)
         {
             int pCol =(int)( sizeDomain.x / cellgrid.x);

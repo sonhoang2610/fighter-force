@@ -127,6 +127,12 @@ MonoBehaviour:
   hoverSprite: 
   pressedSprite: 
   disabledSprite: 
+  onEnableButton:
+    m_PersistentCalls:
+      m_Calls: []
+  onDisableButton:
+    m_PersistentCalls:
+      m_Calls: []
   hoverSprite2D: {fileID: 0}
   pressedSprite2D: {fileID: 0}
   disabledSprite2D: {fileID: 0}
@@ -6441,61 +6447,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3325762684410616564, guid: cdb9f7e44c49bb04caf5d3df095eb559,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3325762684410616564, guid: cdb9f7e44c49bb04caf5d3df095eb559,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3325762684410616564, guid: cdb9f7e44c49bb04caf5d3df095eb559,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3325762684410616564, guid: cdb9f7e44c49bb04caf5d3df095eb559,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3325762684410616564, guid: cdb9f7e44c49bb04caf5d3df095eb559,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3325762684410616564, guid: cdb9f7e44c49bb04caf5d3df095eb559,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3325762684410616564, guid: cdb9f7e44c49bb04caf5d3df095eb559,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3325762684410616564, guid: cdb9f7e44c49bb04caf5d3df095eb559,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3325762684410616564, guid: cdb9f7e44c49bb04caf5d3df095eb559,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3325762684410616564, guid: cdb9f7e44c49bb04caf5d3df095eb559,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3325762684410616564, guid: cdb9f7e44c49bb04caf5d3df095eb559,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 813533093139768798, guid: cdb9f7e44c49bb04caf5d3df095eb559,
         type: 3}
       propertyPath: onEnableEvent.m_PersistentCalls.m_Calls.Array.size
@@ -6560,6 +6511,61 @@ PrefabInstance:
         type: 3}
       propertyPath: onDisableEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3325762684410616564, guid: cdb9f7e44c49bb04caf5d3df095eb559,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3325762684410616564, guid: cdb9f7e44c49bb04caf5d3df095eb559,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3325762684410616564, guid: cdb9f7e44c49bb04caf5d3df095eb559,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3325762684410616564, guid: cdb9f7e44c49bb04caf5d3df095eb559,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3325762684410616564, guid: cdb9f7e44c49bb04caf5d3df095eb559,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3325762684410616564, guid: cdb9f7e44c49bb04caf5d3df095eb559,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3325762684410616564, guid: cdb9f7e44c49bb04caf5d3df095eb559,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3325762684410616564, guid: cdb9f7e44c49bb04caf5d3df095eb559,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3325762684410616564, guid: cdb9f7e44c49bb04caf5d3df095eb559,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3325762684410616564, guid: cdb9f7e44c49bb04caf5d3df095eb559,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3325762684410616564, guid: cdb9f7e44c49bb04caf5d3df095eb559,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2118792072891973187, guid: cdb9f7e44c49bb04caf5d3df095eb559,
         type: 3}

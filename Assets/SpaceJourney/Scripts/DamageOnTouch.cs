@@ -43,6 +43,11 @@ namespace EazyEngine.Space {
         {
             return new DamageExtra[] { new DamageExtra() { damageExtra = valueExtra, type = this.type } };
         }
+        public override string ToString()
+        {
+            return valueExtra.ToString();
+        }
+
     }
     [System.Serializable]
     public class DamageExtraVariants : List<DamageExtraVariant> , ILevelSetter
@@ -124,7 +129,23 @@ namespace EazyEngine.Space {
             }
         }
         [ShowInInspector]
-        public DamageExtra[] ExtraDamge { get => extraDamge; set => extraDamge = value; }
+        public DamageExtra[] ExtraDamge { get => extraDamge; set {
+                tableExtraDamage.Clear();
+                extraDamge = value;
+            } }
+        protected Dictionary<string, int> tableExtraDamage = new Dictionary<string, int>();
+        public void addExtraDamge(DamageExtra pDamage,string pID)
+        {
+            if (tableExtraDamage.ContainsKey(pID))
+            {
+                if (tableExtraDamage[pID] >= extraDamge.Length) return;
+                extraDamge[tableExtraDamage[pID]] = pDamage;
+                return;
+            }
+            System.Array.Resize(ref extraDamge, extraDamge.Length + 1);
+            extraDamge[extraDamge.Length - 1] = pDamage;
+            tableExtraDamage.Add(pID, extraDamge.Length - 1);
+        }
         public List<DamageExtra> PExtras { get {
                 if (pExtras == null) pExtras = new List<DamageExtra>();
                 if (extraDamageSelf != null && ExtraDamge != null && pExtras.Count != extraDamageSelf.Length + ExtraDamge.Length)

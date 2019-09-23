@@ -1,5 +1,6 @@
 ﻿using EazyEngine.Tools;
 using EazyEngine.Tools.Space;
+using NodeCanvas.Framework;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using System;
@@ -563,13 +564,12 @@ namespace EazyEngine.Space
                 _currentWeapons[i].onTrigger(pEvent.stringParameter);
             }
         }
-
-        public Weapon[] triggerAndGetReactionWeapon(string pTrigger)
+        public Weapon[] triggerAndGetReactionWeapon(string pTrigger,Blackboard pParentVars = null)
         {
             List<Weapon> pWeapons = new List<Weapon>();
             for (int i = _currentWeapons.Count - 1; i >= 0; --i)
             {
-               var pBool =  _currentWeapons[i].boosterGetReaction(pTrigger);
+                var pBool = _currentWeapons[i].boosterGetReaction(pTrigger, pParentVars);
                 if (pBool)
                 {
                     pWeapons.Add(_currentWeapons[i]);
@@ -579,19 +579,23 @@ namespace EazyEngine.Space
             {
                 if (!_currentWeapons.Contains(holdWeapon[i]))
                 {
-                    var pBool = holdWeapon[i].boosterGetReaction(pTrigger);
+                    var pBool = holdWeapon[i].boosterGetReaction(pTrigger, pParentVars);
                     if (pBool)
                     {
                         pWeapons.Add(holdWeapon[i]);
                     }
                 }
-               
+
             }
             for (int i = 0; i < handleChilds.Count; ++i)
             {
-                pWeapons.AddRange( handleChilds[i].triggerAndGetReactionWeapon(pTrigger));
+                pWeapons.AddRange(handleChilds[i].triggerAndGetReactionWeapon(pTrigger, pParentVars));
             }
             return pWeapons.ToArray();
+        }
+        public Weapon[] triggerAndGetReactionWeapon(string pTrigger)
+        {
+            return triggerAndGetReactionWeapon(pTrigger, null);
         }
         [System.NonSerialized]
         [ShowInInspector]

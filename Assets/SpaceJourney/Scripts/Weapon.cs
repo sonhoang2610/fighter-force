@@ -8,6 +8,8 @@ using Sirenix.Serialization;
 using FlowCanvas;
 using NodeCanvas.Framework;
 using System.Linq;
+using NodeCanvas.BehaviourTrees;
+using EazyEngine.Tools.Space;
 
 namespace EazyEngine.Space
 {
@@ -23,7 +25,7 @@ namespace EazyEngine.Space
         [ShowIf("@!string.IsNullOrEmpty( resuseAction)")]
         public bool includeChild ;
         public UnityEvent actions;
-        public FlowScriptController flow;
+        public FlowScript flow;
     }
     
 
@@ -898,10 +900,9 @@ namespace EazyEngine.Space
 
         public virtual int FixDamage { get => fixDamage; set => fixDamage = value; }
         public WeaponGroup WeaponParrent { get => weaponParrent; set => weaponParrent = value; }
-
-        public bool boosterGetReaction(string pTrigger)
+        public bool boosterGetReaction(string pTrigger,Blackboard pParrentVars)
         {
-            if (flow)
+            if (flow && !string.IsNullOrEmpty(pTrigger) && pTrigger.StartsWith("Booster"))
             {
                 flow.SendEvent<string>("Booster", pTrigger);
             }
@@ -929,10 +930,14 @@ namespace EazyEngine.Space
             layerManager[layer] = pTrigger;
             if (index >= 0 && index < boosterInfos.Length)
             {
-                executeAction(index);
+                executeAction(index, pParrentVars);
                 return true;
             }
             return false;
+        }
+        public bool boosterGetReaction(string pTrigger)
+        {
+            return boosterGetReaction(pTrigger, null);
         }
 
         public Dictionary<int, string> layerManager = new Dictionary<int, string>();
@@ -969,13 +974,12 @@ namespace EazyEngine.Space
                 executeAction(index);
             }
         }
-
-        public void executeAction(int index)
+        public void executeAction(int index,Blackboard pParrentVars = null)
         {
-            if (!string.IsNullOrEmpty( boosterInfos[index].resuseAction))
+            if (!string.IsNullOrEmpty(boosterInfos[index].resuseAction))
             {
                 var pActions = boosterInfos[index].resuseAction.Split('+');
-                for(int i = 0; i < pActions.Length; ++i)
+                for (int i = 0; i < pActions.Length; ++i)
                 {
                     for (int j = 0; j < boosterInfos.Length; ++j)
                     {
@@ -996,11 +1000,20 @@ namespace EazyEngine.Space
             }
             boosterInfos[index].actions.Invoke();
             Blackboard pBlackBoard = GetComponent<Blackboard>();
-            GraphOwner pGraph = GetComponent<GraphOwner>();
-           if(pBlackBoard && pGraph && boosterInfos[index].flow) {
+            BehaviourTreeOwner pGraph = GetComponent<BehaviourTreeOwner>();
+            if (pBlackBoard && pGraph && boosterInfos[index].flow)
+            {
+                if (pParrentVars)
+                {
+                    JourneySpaceUlities.PassVariables(pParrentVars, pBlackBoard);
+                }
                 pBlackBoard.SetValue("FlowAction", boosterInfos[index].flow);
                 pGraph.SendEvent("Excute");
             }
+        }
+        public void executeAction(int index)
+        {
+            executeAction(index, null);
         }
     }
 }

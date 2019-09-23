@@ -45,7 +45,7 @@ namespace EazyEngine.Space
         protected Dictionary<GameObject, GameObject> prepareBullet = new Dictionary<GameObject, GameObject>();
         public WeaponTrajectorPath trajectorPath;
         public UnityEventGameObject onFireAttachMent;
-
+        public UnityEvent2GameObject onFire;
         [HideInInspector]
         public UnityEvent onUseEvent;
         [HideInInspector]
@@ -313,6 +313,7 @@ namespace EazyEngine.Space
                                  }
                                
                                  onFireAttachMent.Invoke(attachMentPosStart[pI]);
+                                 onFire.Invoke(attachMentPosStart[pI], proj.gameObject);
                              }
                              else
                              {
@@ -361,7 +362,7 @@ namespace EazyEngine.Space
         protected IEnumerator delayActive(float pDelay,GameObject pObject,GameObject pAttachMent,int index )
         {
             yield return new WaitForSeconds(pDelay);
-            onFireAttachMent.Invoke(pObject);
+            onFireAttachMent.Invoke(pAttachMent);
             if (posStartAtAttachMent)
             {
                 pObject.transform.position = pAttachMent.transform.position;
@@ -372,6 +373,7 @@ namespace EazyEngine.Space
             }
             pObject.SetActive(true);
            var proj = pObject.GetComponent<Projectile>();
+            onFire.Invoke(pAttachMent, pObject);
             if(proj)
             proj.onIndexBullet.Invoke(index);
         }
