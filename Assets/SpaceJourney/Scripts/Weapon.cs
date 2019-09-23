@@ -997,7 +997,7 @@ namespace EazyEngine.Space
             boosterInfos[index].actions.Invoke();
             Blackboard pBlackBoard = GetComponent<Blackboard>();
             GraphOwner pGraph = GetComponent<GraphOwner>();
-           if(pBlackBoard && pGraph) {
+           if(pBlackBoard && pGraph && boosterInfos[index].flow) {
                 pBlackBoard.SetValue("FlowAction", boosterInfos[index].flow);
                 pGraph.SendEvent("Excute");
             }
