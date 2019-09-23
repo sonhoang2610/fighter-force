@@ -80,14 +80,7 @@ namespace EazyEngine.Space.UI
                 {
                     GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard + 1).isLocked = false;
                 }
-                if (GameManager.Instance.ChoosedLevel == GameManager.Instance.CurrentLevelUnlock)
-                {
-               
-                    GameManager.Instance.CurrentLevelUnlock++;
-                    GameManager.Instance.Database.lastPlayStage = new Pos(GameManager.Instance.Database.lastPlayStage.x,0);
-                    GameManager.Instance.ChoosedLevel++;
-                    GameManager.Instance.SaveGame();
-                }
+              
                 for (int i = 0; i < LevelManger.Instance._infoLevel.missions.Count; ++i)
                 {
                     var pNode = new EazyNode()
@@ -176,6 +169,14 @@ namespace EazyEngine.Space.UI
                 }, LevelManger.Instance._infoLevel.goldTaken, 0.5f).From(0));
                 pSeq2.Play();
                 GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard).infos = LevelManger.Instance._infoLevel;
+                if (GameManager.Instance.ChoosedLevel == GameManager.Instance.CurrentLevelUnlock)
+                {
+
+                    GameManager.Instance.CurrentLevelUnlock++;
+                    GameManager.Instance.Database.lastPlayStage = new Pos(GameManager.Instance.Database.lastPlayStage.x, 0);
+                    GameManager.Instance.ChoosedLevel++;
+                    GameManager.Instance.SaveGame();
+                }
                 GameManager.Instance.SaveLevel();
             }
         

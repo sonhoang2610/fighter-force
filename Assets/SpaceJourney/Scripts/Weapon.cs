@@ -7,6 +7,7 @@ using EazyEngine.Tools;
 using Sirenix.Serialization;
 using FlowCanvas;
 using NodeCanvas.Framework;
+using System.Linq;
 
 namespace EazyEngine.Space
 {
@@ -376,7 +377,33 @@ namespace EazyEngine.Space
             }
         }
 
-        public float FactorSpeed { get => factorSpeed; set { factorSpeed = value; } }
+        public float FactorSpeed { get {
+                float factor = factorSpeed;
+                for(int i = 0; i < factorTable.Count; ++i)
+                {
+                    factor += factorTable.Values.ElementAt(i);
+                }
+                return factor;
+            } set { factorSpeed = value; } }
+        Dictionary<string, float> factorTable = new Dictionary<string, float>();
+        public void setSpeedFactor(string pId,float factor)
+        {
+            if (factorTable.ContainsKey(pId))
+            {
+                factorTable[pId] = factor;
+            }
+            else
+            {
+                factorTable.Add(pId, factor);
+            }
+        }
+        public void removeSpeedFactor(string pId)
+        {
+            if (factorTable.ContainsKey(pId))
+            {
+                factorTable.Remove(pId);
+            }
+        }
         public float FactorSpeedWeapon { get => factorSpeedWeapon; set => factorSpeedWeapon = value; }
         public AnimationMachine Machine { get { return IsFirstActive  ? firstMachine : (ReActive ? reactiveMachine :  machine); }  set => machine = value; }
 

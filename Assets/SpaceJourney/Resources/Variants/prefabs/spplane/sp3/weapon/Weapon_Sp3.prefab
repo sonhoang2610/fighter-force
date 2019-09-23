@@ -1,5 +1,58 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4002717118920490629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808199644221779580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b5c3ebb24c97464da319951cafe5a47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boundGraphSerialization: '{"version":2.92,"type":"FlowCanvas.FlowScript","translation":{"x":-1264.0,"y":-319.0},"nodes":[{"eventName":{"_value":"Booster"},"target":{},"targets":{},"_position":{"x":500.0,"y":479.0},"$type":"FlowCanvas.Nodes.CustomEvent`1[[System.String,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]","$id":"2"},{"_inputPortValues":{},"_position":{"x":1073.0,"y":480.0},"$type":"FlowCanvas.Nodes.SwitchBool","$id":"6"},{"_inputPortValues":{},"_position":{"x":1584.0,"y":489.0},"$type":"FlowCanvas.Nodes.SwitchBool","$id":"8"},{"_inputPortValues":{},"_color":{"r":0.7490196,"g":0.4980392,"b":1.0,"a":1.0},"_position":{"x":1849.0,"y":488.0},"$type":"FlowCanvas.Nodes.SwitchBool","$id":"10"},{"_method":{"_baseInfo":"EazyEngine.Space.Weapon|removeSpeedFactor|System.Void","_paramsInfo":"System.String"},"_callable":true,"_inputPortValues":{"pId":{"$content":"Booster2","$type":"System.String"}},"_position":{"x":2075.0,"y":484.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"12"},{"_method":{"_baseInfo":"EazyEngine.Space.Weapon|setSpeedFactor|System.Void","_paramsInfo":"System.String|System.Single"},"_callable":true,"_inputPortValues":{"pId":{"$content":"Booster2","$type":"System.String"},"factor":{"$content":0.1,"$type":"System.Single"}},"_position":{"x":2392.0,"y":482.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"15"},{"_method":{"_baseInfo":"EazyEngine.Space.Weapon|removeSpeedFactor|System.Void","_paramsInfo":"System.String"},"_callable":true,"_inputPortValues":{"pId":{"$content":"Booster2","$type":"System.String"}},"_position":{"x":2060.0,"y":631.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"18"},{"_method":{"_baseInfo":"System.String|StartsWith|System.Boolean","_paramsInfo":"System.String"},"_inputPortValues":{"value":{"$content":"Booster","$type":"System.String"}},"_position":{"x":845.0,"y":612.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"21"},{"_method":{"_baseInfo":"System.String|Substring|System.String","_paramsInfo":"System.Int32|System.Int32"},"_inputPortValues":{"startIndex":{"$content":7,"$type":"System.Int32"}},"_position":{"x":1195.0,"y":608.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"24"},{"_method":{"_baseInfo":"System.Int32|TryParse|System.Boolean","_paramsInfo":"System.String|System.Int32&"},"_inputPortValues":{},"_position":{"x":1399.0,"y":607.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"27"},{"_simplexNode":{},"_inputPortValues":{"b":{"$content":1,"$type":"System.Int32"}},"_position":{"x":1713.0,"y":622.0},"$type":"FlowCanvas.Nodes.SimplexNodeWrapper`1[[FlowCanvas.Nodes.IntegerGreaterThan,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"30"},{"_selectedInstanceMembers":["Length"],"_inputPortValues":{},"_position":{"x":840.0,"y":752.0},"$type":"FlowCanvas.Nodes.ReflectedExtractorNodeWrapper`1[[System.String,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]","$id":"33"},{"_simplexNode":{},"_inputPortValues":{"b":{"$content":7,"$type":"System.Int32"}},"_position":{"x":1094.0,"y":799.0},"$type":"FlowCanvas.Nodes.SimplexNodeWrapper`1[[FlowCanvas.Nodes.IntegerSubtract,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"36"}],"connections":[{"_sourcePortName":"Received","_targetPortName":"In","_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"6"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"Event
+    Value","_targetPortName":"String","_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"21"},"$type":"FlowCanvas.BinderConnection`1[[System.String,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"Event
+    Value","_targetPortName":"String","_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"24"},"$type":"FlowCanvas.BinderConnection`1[[System.String,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"Event
+    Value","_targetPortName":"Instance","_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"33"},"$type":"FlowCanvas.BinderConnection`1[[System.String,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"True","_targetPortName":"In","_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"8"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"True","_targetPortName":"In","_sourceNode":{"$ref":"8"},"_targetNode":{"$ref":"10"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"True","_targetPortName":"
+    ","_sourceNode":{"$ref":"10"},"_targetNode":{"$ref":"12"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"False","_targetPortName":"
+    ","_sourceNode":{"$ref":"10"},"_targetNode":{"$ref":"18"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"
+    ","_targetPortName":" ","_sourceNode":{"$ref":"12"},"_targetNode":{"$ref":"15"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"Value","_targetPortName":"Condition","_sourceNode":{"$ref":"21"},"_targetNode":{"$ref":"6"},"$type":"FlowCanvas.BinderConnection`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"Value","_targetPortName":"s","_sourceNode":{"$ref":"24"},"_targetNode":{"$ref":"27"},"$type":"FlowCanvas.BinderConnection`1[[System.String,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"Value","_targetPortName":"Condition","_sourceNode":{"$ref":"27"},"_targetNode":{"$ref":"8"},"$type":"FlowCanvas.BinderConnection`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"result","_targetPortName":"a","_sourceNode":{"$ref":"27"},"_targetNode":{"$ref":"30"},"$type":"FlowCanvas.BinderConnection`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"Value","_targetPortName":"Condition","_sourceNode":{"$ref":"30"},"_targetNode":{"$ref":"10"},"$type":"FlowCanvas.BinderConnection`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"Length","_targetPortName":"a","_sourceNode":{"$ref":"33"},"_targetNode":{"$ref":"36"},"$type":"FlowCanvas.BinderConnection`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"Value","_targetPortName":"length","_sourceNode":{"$ref":"36"},"_targetNode":{"$ref":"24"},"$type":"FlowCanvas.BinderConnection`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}],"localBlackboard":{"_name":"Local
+    Blackboard","_variables":{}}}'
+  boundGraphObjectReferences: []
+  enableAction: 0
+  disableAction: 0
+  _graph: {fileID: 0}
+  _blackboard: {fileID: 6288282375580836355}
+--- !u!114 &6288282375580836355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808199644221779580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _serializedBlackboard: '{"_variables":{}}'
+  _objectReferences: []
 --- !u!114 &6581399780282726741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,6 +123,61 @@ PrefabInstance:
     - target: {fileID: 1072918119399550, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
       propertyPath: m_Name
       value: Weapon_Sp3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114506514760959066, guid: 407911a24b2f1ed42b7ee796c89befc9,
+        type: 3}
+      propertyPath: GameObjectToPool
+      value: 
+      objectReference: {fileID: 7295823032135244976, guid: 6ecba3ebd6ff0b64f893d2fb9b41a55b,
+        type: 3}
+    - target: {fileID: 114506514760959066, guid: 407911a24b2f1ed42b7ee796c89befc9,
+        type: 3}
+      propertyPath: PoolSize
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6359240301430102800, guid: 407911a24b2f1ed42b7ee796c89befc9,
         type: 3}
@@ -560,61 +668,6 @@ PrefabInstance:
         type: 3}
       propertyPath: boosterInfos.Array.data[2].includeChild
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114506514760959066, guid: 407911a24b2f1ed42b7ee796c89befc9,
-        type: 3}
-      propertyPath: GameObjectToPool
-      value: 
-      objectReference: {fileID: 7295823032135244976, guid: 6ecba3ebd6ff0b64f893d2fb9b41a55b,
-        type: 3}
-    - target: {fileID: 114506514760959066, guid: 407911a24b2f1ed42b7ee796c89befc9,
-        type: 3}
-      propertyPath: PoolSize
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
