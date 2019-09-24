@@ -26,7 +26,7 @@ namespace EazyEngine.Tools
         /// if true, the pool will automatically add objects to the itself if needed
         public bool PoolCanExpand = true;
         public bool dontDestroyOnload = false;
-
+        protected List<GameObject> _cachePreloadObject = new List<GameObject>();
         /// the actual object pool
         protected List<GameObject> _pooledGameObjects;
 
@@ -113,7 +113,8 @@ namespace EazyEngine.Tools
                 return null;
             }
             GameObject newGameObject = (GameObject)Instantiate(GameObjectToPool);
-            if(onNewGameObjectCreated != null)
+            _cachePreloadObject.Add(newGameObject);
+            if (onNewGameObjectCreated != null)
             {
                 onNewGameObjectCreated(newGameObject,GameObjectToPool);
             }

@@ -256,6 +256,7 @@ namespace EazyEngine.Space
         public List<GameObject> _listIgnoreObject = new List<GameObject>();
    
         protected Character _owner;
+        [ShowInInspector]
         protected float _currentTimReload;
         [SerializeField]
         [HideInEditorMode]
@@ -458,6 +459,10 @@ namespace EazyEngine.Space
             get
             {
                 return (IsFirstActive && startWithReloadFirst) ? timeReloadFirst : (isRamdomTimeReload ? Random.Range(reloadRamdom.x, reloadRamdom.y) : timeReload);
+            }
+            set
+            {
+                timeReload = value;
             }
         }
 
@@ -742,6 +747,10 @@ namespace EazyEngine.Space
                 {
                     changeState(WeaponState.WeaponStop);
                 }
+                else
+                {
+                    WaitingTarget = true;
+                }    
                 return;
             }
 
@@ -881,9 +890,9 @@ namespace EazyEngine.Space
                         targetDirection.RemoveAt(i);
                     }
                 }
-                if (WaitingTarget && targetDirection.Count > 0)
+                if (WaitingTarget && targetDirection.Count > 0 && !requireFaceTargetToFire)
                 {
-                    WaitingTarget = true;
+                    WaitingTarget = false;
                     ShootRequest();
                 }
             }

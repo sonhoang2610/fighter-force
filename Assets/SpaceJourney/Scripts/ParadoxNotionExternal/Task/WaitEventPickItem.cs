@@ -19,13 +19,12 @@ namespace EazyEngine.Space{
 
         public void OnEzEvent(PickEvent eventType)
         {
-            if (eventType._owner == ownerAgent.gameObject)
+            if (eventType._owner == ownerAgent.gameObject  && !isComplete)
             {
                 nameItem.value = eventType._nameItem;
                 quantity.value = eventType._quantityItem;
                 flow.value = eventType.flow;
-                isComplete = true;
-                EndAction(true);
+                isComplete = true;             
                 if (eventType.Variables != null)
                 {
                     for (int i = 0; i < eventType.Variables.Count; ++i)
@@ -33,6 +32,7 @@ namespace EazyEngine.Space{
                         ownerBlackboard.AddVariable(eventType.Variables.Keys.ElementAt(i), eventType.Variables[eventType.Variables.Keys.ElementAt(i)]);
                     }
                 }
+                EndAction(true);
             }
         }
         protected override string OnInit(){

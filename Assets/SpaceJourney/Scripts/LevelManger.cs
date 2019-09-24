@@ -355,6 +355,7 @@ namespace EazyEngine.Space
         private float currentTime = 0;
         private void Update()
         {
+ 
             if (startTime)
             {
                 currentTime += Time.deltaTime;

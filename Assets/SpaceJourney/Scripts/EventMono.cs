@@ -5,8 +5,8 @@ using UnityEngine.Events;
 
 public class EventMono : MonoBehaviour {
     [SerializeField]
-    UnityEvent  _onAwake,_onEnable,_onStart, _onDisable,_onTrigger2D;
-
+    UnityEvent  _onAwake,_onEnable,_onStart, _onDisable,_onTrigger2D,_onFirstLateUpdate;
+    bool isFirst = true;
     private void Awake()
     {
         _onAwake.Invoke();
@@ -26,7 +26,14 @@ public class EventMono : MonoBehaviour {
     {
         _onDisable.Invoke();
     }
-
+    private void LateUpdate()
+    {
+        if (isFirst)
+        {
+            _onFirstLateUpdate.Invoke();
+            isFirst = false;
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         _onTrigger2D.Invoke();

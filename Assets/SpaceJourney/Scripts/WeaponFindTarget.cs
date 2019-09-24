@@ -83,26 +83,36 @@ public class WeaponFindTarget : MonoBehaviour,EzEventListener<CharacterChangeSta
     }
     protected List<FoundInfo> foundTarget = new List<FoundInfo>();
     protected List<Character> charInside = new List<Character>();
+
+    public FoundInfo[] findTargetFromPos (Vector2 pos,float pRange =-1,bool refreshchar = false)
+    {
+        List<FoundInfo> pFounds = new List<FoundInfo>();
+        var pListchar = refreshchar ? findChar() : charInside.ToArray();
+        for (int i = 0; i < pListchar.Length; ++i)
+        {
+            if (!pListchar[i].gameObject.activeSelf) continue;
+            if (foundObject(pListchar[i].gameObject) >= 0 && !refreshchar) continue;
+            var pTargets = pListchar[i].AvailableTargets;
+            foreach (var pTarget in pTargets)
+            {
+                float pDistance = Vector2.Distance(pTarget.transform.position, pos);
+                var insideScreen = LevelManger.Instance.mainPlayCamera.Rect(1).Contains(pTarget.transform.position);
+                if (Layers.LayerInLayerMask(pTarget.gameObject.layer, TargetLayer) && insideScreen && (pRange ==-1 || pDistance <=  pRange))
+                {
+                    pFounds.Add(new FoundInfo(pDistance, pTarget.gameObject));
+                    
+                }
+            }
+
+        }
+        return pFounds.ToArray();
+    }
     public virtual void findTargetMinDistance(Weapon pWeapon)
     {
         if (isDirty)
-        {
-            for (int i = 0; i < charInside.Count; ++i)
-            {
-                if (!charInside[i].gameObject.activeSelf) continue;
-                if (foundObject(charInside[i].gameObject) >= 0) continue;
-                var pTargets = charInside[i].AvailableTargets;
-                foreach(var pTarget in pTargets)
-                {
-                    float pDistance = Vector2.Distance(pTarget.transform.position, transform.position);
-                    var insideScreen = LevelManger.Instance.mainPlayCamera.Rect(0.95f).Contains(pTarget.transform.position);
-                    if (Layers.LayerInLayerMask(pTarget.gameObject.layer, TargetLayer) && insideScreen)
-                    {
-                        foundTarget.Add(new FoundInfo(pDistance, pTarget.gameObject));
-                    }
-                }
-             
-            }
+        {      
+             var pFound = findTargetFromPos(transform.position);
+            foundTarget.AddRange(pFound);
             isDirty = false;
             isFirst = false;
             charInside.Clear();

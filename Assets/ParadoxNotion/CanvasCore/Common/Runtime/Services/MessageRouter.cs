@@ -82,6 +82,10 @@ namespace ParadoxNotion.Services
         public void OnDrag(PointerEventData eventData) {
             Dispatch("OnDrag", eventData);
         }
+        public void OnDrag(Vector2 eventData)
+        {
+            
+        }
 
         public void OnDrop(BaseEventData eventData) {
             Dispatch("OnDrop", eventData);
@@ -98,7 +102,10 @@ namespace ParadoxNotion.Services
         public void OnSelect(BaseEventData eventData) {
             Dispatch("OnSelect", eventData);
         }
-
+        public void OnSelect(bool pBool)
+        {
+          
+        }
         public void OnDeselect(BaseEventData eventData) {
             Dispatch("OnDeselect", eventData);
         }

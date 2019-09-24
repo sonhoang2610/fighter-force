@@ -175,7 +175,7 @@ namespace DigitalRuby.ThunderAndLightning
                     p.CustomTransform = (CustomTransformHandler == null ? (System.Action<LightningCustomTransformStateInfo>)null : CustomTransform);
                     p.CustomTransform += delegate (LightningCustomTransformStateInfo pState)
                     {
-                        if (pState.State == LightningCustomTransformState.Ended)
+                        if (pState.State == LightningCustomTransformState.Ended && ManualMode)
                         {
                             pCount--;
                             if (pCount == 0)
