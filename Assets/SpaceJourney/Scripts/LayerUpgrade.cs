@@ -51,7 +51,7 @@ namespace EazyEngine.Space.UI
                 HUDLayer.Instance.showDialogNotEnoughMoney(pExist.item.displayNameItem.Value, delegate
                 {
 	                ShopManager.Instance.showBoxShop(pExist.item.categoryItem.ToString());
-                    HUDLayer.Instance.boxDialog.close();
+                    HUDLayer.Instance.BoxDialog.close();
                 });
             }
             GameManager.Instance.SaveGame();
@@ -81,7 +81,7 @@ namespace EazyEngine.Space.UI
                         HUDLayer.Instance.showDialogNotEnoughMoney(pExist1.item.displayNameItem.Value, delegate
                         {
                             ShopManager.Instance.showBoxShop(pExist1.item.categoryItem.ToString());
-                            HUDLayer.Instance.boxDialog.close();
+                            HUDLayer.Instance.BoxDialog.close();
                         });
                         return;
                     }
@@ -102,7 +102,7 @@ namespace EazyEngine.Space.UI
                 HUDLayer.Instance.showDialogNotEnoughMoney(pExist.item.displayNameItem.Value, delegate
                 {
 	                ShopManager.Instance.showBoxShop(pExist.item.categoryItem.ToString());
-                    HUDLayer.Instance.boxDialog.close();
+                    HUDLayer.Instance.BoxDialog.close();
                 });
             }
             GameManager.Instance.SaveGame();
@@ -162,14 +162,14 @@ namespace EazyEngine.Space.UI
                     HUDLayer.Instance.showDialogNotEnoughMoney(pExist1.item.displayNameItem.Value, delegate
                     {
 	                    ShopManager.Instance.showBoxShop(pExist1.item.categoryItem.ToString());
-                        HUDLayer.Instance.boxDialog.close();
+                        HUDLayer.Instance.BoxDialog.close();
                     });
                 }else if(pExist2 != null)
                 {
                     HUDLayer.Instance.showDialogNotEnoughMoney(pExist2.item.displayNameItem.Value, delegate
                     {
 	                    ShopManager.Instance.showBoxShop(pExist2.item.categoryItem.ToString());
-                        HUDLayer.Instance.boxDialog.close();
+                        HUDLayer.Instance.BoxDialog.close();
                     });
                 }
             
@@ -227,7 +227,7 @@ namespace EazyEngine.Space.UI
                     HUDLayer.Instance.showDialogNotEnoughMoney(pExist1.item.displayNameItem.Value, delegate
                     {
 	                    ShopManager.Instance.showBoxShop(pExist1.item.categoryItem.ToString());
-                        HUDLayer.Instance.boxDialog.close();
+                        HUDLayer.Instance.BoxDialog.close();
                     });
                 }
                 else if (pExist2 != null)
@@ -235,7 +235,7 @@ namespace EazyEngine.Space.UI
                     HUDLayer.Instance.showDialogNotEnoughMoney(pExist2.item.displayNameItem.Value, delegate
                     {
 	                    ShopManager.Instance.showBoxShop(pExist2.item.categoryItem.ToString());
-                        HUDLayer.Instance.boxDialog.close();
+                        HUDLayer.Instance.BoxDialog.close();
                     });
                 }
             

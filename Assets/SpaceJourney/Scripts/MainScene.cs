@@ -36,7 +36,7 @@ namespace EazyEngine.Space.UI
                 GameManager.Instance.Database.lastOnline = System.DateTime.Now;
                 if (StoreReview.CanRequestRating())
                 {
-                    HUDLayer.Instance.boxRate.gameObject.SetActive(true);
+                    HUDLayer.Instance.BoxRate.gameObject.SetActive(true);
                 }               
             }
             bool isConnected = false;
@@ -48,6 +48,7 @@ namespace EazyEngine.Space.UI
       
         }
 
+   
         // Subscribe to events in the OnEnable method of a MonoBehavior script
         void OnEnable()
         {
@@ -61,6 +62,8 @@ namespace EazyEngine.Space.UI
             GameServices.UserLoginSucceeded -= OnUserLoginSucceeded;
             GameServices.UserLoginFailed -= OnUserLoginFailed;
         }
+
+        
         IEnumerator checkInternetConnection(Action<bool> action)
         {
             UnityWebRequest www = new UnityWebRequest("http://google.com");
@@ -208,6 +211,11 @@ namespace EazyEngine.Space.UI
                 
         }
 
+        public void freePlay()
+        {
+            GameManager.Instance.ChoosedLevel = -1;
+            GameManager.Instance.LoadLevel(GameManager.Instance.ChoosedLevel);
+        }
 
         public void choosedMap()
         {          

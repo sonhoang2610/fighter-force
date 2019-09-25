@@ -30,7 +30,13 @@ namespace EazyEngine.Space
         public BoxResult boxResult;
 
         public Camera CamGUI { get => camGUI; set => camGUI = value; }
-
+        public bool isPlaying
+        {
+            get
+            {
+                return LevelManger.InstanceRaw && LevelManger.InstanceRaw.IsPlaying;
+            }
+        }
         public void stopDrag()
         {
             if (PlayerPrefs.GetInt("Control", 1) == 1)

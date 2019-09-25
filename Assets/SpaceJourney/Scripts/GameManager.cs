@@ -300,6 +300,8 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     [HideInEditorMode]
     public GameDatabase databaseGame;
     public int wincount = 0;
+    [System.NonSerialized]
+    public bool isFree = false;
     protected override void Awake()
     {
         base.Awake();
@@ -641,7 +643,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             HUDLayer.Instance.showDialogNotEnoughMoney(pEnergy.item.displayNameItem.Value, delegate
             {
                 ShopManager.Instance.showBoxShop(pEnergy.item.categoryItem.ToString());
-                HUDLayer.Instance.boxDialog.close();
+                HUDLayer.Instance.BoxDialog.close();
             });
             return;
         }

@@ -167,7 +167,7 @@ namespace EazyEngine.Space.UI
                         HUDLayer.Instance.showDialogNotEnoughMoney(pItem.item.displayNameItem.Value, delegate
                         {
                             ShopManager.Instance.showBoxShop(pItem.item.categoryItem.ToString());
-                            HUDLayer.Instance.boxDialog.close();
+                            HUDLayer.Instance.BoxDialog.close();
                         });
                     }
                   
@@ -194,6 +194,7 @@ namespace EazyEngine.Space.UI
             }
             GameManager.Instance.SaveGame();
             updateTime();
+            Data = Data;
         }
 
         public virtual void watch()

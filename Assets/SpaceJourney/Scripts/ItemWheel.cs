@@ -30,7 +30,7 @@ namespace EazyEngine.Space.UI
                 quantity.text = "X " + value.infos[randomIndex].Quantity.ToString();
                 if (rate)
                 {
-                    rate.text = (value.infos[randomIndex].percent * 10).ToString() + "%";
+                    rate.text = (value.infos[randomIndex].percent ).ToString() + "%";
                 }
             }
         }

@@ -30,9 +30,18 @@ namespace EazyEngine.Space.UI {
     }
     public class HUDLayer : PersistentSingleton<HUDLayer>
     {
-        public UIElement boxDialog,boxReborn,boxRate;
+        public string boxDialogName, boxRebornName, boxRateName;
+        private UIElement boxRate;
+
         [HideInInspector]
         public List<IBackBehavior> _onBacks = new List<IBackBehavior>();
+        private BoxDialog boxDialog;
+        private UIElement boxReborn;
+
+        public BoxDialog BoxDialog { get => boxDialog; set => boxDialog = value; }
+        public UIElement BoxReborn { get => boxReborn; set => boxReborn = value; }
+        public UIElement BoxRate { get => boxRate; set => boxRate = value; }
+
         public void rebornCrystal()
         {
             var pItem = GameManager.Instance.Database.getComonItem("Crystal");
@@ -47,8 +56,8 @@ namespace EazyEngine.Space.UI {
         {
             TimeKeeper.Instance.getTimer("Global").TimScale = 1;
 	     
-	        boxReborn.close();
-	        GameManager.Instance.showRewardAds(boxReborn.GetComponent<BoxReborn>().itemExchange,delegate(bool pBool){
+	        BoxReborn.close();
+	        GameManager.Instance.showRewardAds(BoxReborn.GetComponent<BoxReborn>().itemExchange,delegate(bool pBool){
 		        reviePlayer();
 	        });
             //GameManager.Instance.
@@ -57,7 +66,7 @@ namespace EazyEngine.Space.UI {
        public void reviePlayer()
         {
 
-            HUDLayer.Instance.boxReborn.close();
+            HUDLayer.Instance.BoxReborn.close();
 
             LevelManger.Instance.CurrentPlayer.GetComponent<Health>().Revive();
             LevelManger.Instance.CurrentPlayer.GetComponent<CharacterHandleWeapon>().ShootStart();
@@ -80,7 +89,7 @@ namespace EazyEngine.Space.UI {
         }
         public void skipReborn()
         {
-            boxReborn.close();
+            BoxReborn.close();
             GUIManager.Instance.boxResult.showResult(false);
         }
         public int compareBack(IBackBehavior pBack1, IBackBehavior pBack2)
@@ -101,6 +110,9 @@ namespace EazyEngine.Space.UI {
         protected override void Awake()
         {
             base.Awake();
+            BoxDialog = transform.Find(boxDialogName).GetComponent<BoxDialog>();
+            BoxReborn = transform.Find(boxRebornName).GetComponent<UIElement>();
+            BoxRate = transform.Find(boxRateName).GetComponent<UIElement>();
         }
         public void onBack()
         {
@@ -115,11 +127,11 @@ namespace EazyEngine.Space.UI {
 
         public void showDialog(string pTitle,string pContent, ButtonInfo pAction1 =  null, ButtonInfo pAction2 = null)
         {
-            ((BoxDialog)boxDialog).Title = pTitle;
-            ((BoxDialog)boxDialog).Content = pContent;
-            ((BoxDialog)boxDialog).setButton1Info(pAction1);
-            ((BoxDialog)boxDialog).setButton2Info(pAction2);
-            boxDialog.show();
+            ((BoxDialog)BoxDialog).Title = pTitle;
+            ((BoxDialog)BoxDialog).Content = pContent;
+            ((BoxDialog)BoxDialog).setButton1Info(pAction1);
+            ((BoxDialog)BoxDialog).setButton2Info(pAction2);
+            BoxDialog.show();
         }
 
         public void showDialogTag(string pTagTitle, string pTagContent, ButtonInfo pAction1 = null, ButtonInfo pAction2 = null)

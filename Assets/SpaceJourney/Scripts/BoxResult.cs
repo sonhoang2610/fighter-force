@@ -60,7 +60,7 @@ namespace EazyEngine.Space.UI
             if (!pWin && timeShowLose == 0) {
                 TimeKeeper.Instance.getTimer("Global").TimScale = 0;
                 timeShowLose++;
-                HUDLayer.Instance.boxReborn.show();
+                HUDLayer.Instance.BoxReborn.show();
                 GameManager.Instance.showBannerAds(true);
                 return;
             }
@@ -68,7 +68,7 @@ namespace EazyEngine.Space.UI
             LevelManger.Instance.IsPlaying = false;
             GameManager.Instance.inGame = false;
             TimeKeeper.Instance.getTimer("Global").TimScale = 0;
-            GameManager.Instance.Database.getComonItem("Coin").Quantity += LevelManger.Instance._infoLevel.goldTaken;
+      
             LevelManger.Instance._infoLevel.score = 0;
             if (pWin) {
                 GameManager.Instance.wincount++;
@@ -76,10 +76,7 @@ namespace EazyEngine.Space.UI
                 lose.SetActive(false);
                 LevelManger.Instance._infoLevel.score += (600- (int)LevelManger.Instance.CurrentTime.TotalSeconds)*50 + LevelManger.Instance._infoLevel.goldTaken*5 + LevelManger.Instance.CurrentPlayer._health.CurrentHealth*3;
  
-                if(GameManager.Instance.ChoosedHard < 2)
-                {
-                    GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard + 1).isLocked = false;
-                }
+           
               
                 for (int i = 0; i < LevelManger.Instance._infoLevel.missions.Count; ++i)
                 {
@@ -110,18 +107,27 @@ namespace EazyEngine.Space.UI
             gameObject.SetActive(true);
             if (pWin)
             {
-                GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard).infos = LevelManger.Instance._infoLevel;
-                if (GameManager.Instance.ChoosedLevel == GameManager.Instance.CurrentLevelUnlock)
+                if (!GameManager.Instance.isFree)
                 {
+                    GameManager.Instance.Database.getComonItem("Coin").Quantity += LevelManger.Instance._infoLevel.goldTaken;
+                    if (GameManager.Instance.ChoosedHard < 2)
+                    {
+                        GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard + 1).isLocked = false;
+                    }
+                    GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard).infos = LevelManger.Instance._infoLevel;
+                    if (GameManager.Instance.ChoosedLevel == GameManager.Instance.CurrentLevelUnlock)
+                    {
 
-                    GameManager.Instance.CurrentLevelUnlock++;
-                    GameManager.Instance.Database.lastPlayStage = new Pos(GameManager.Instance.Database.lastPlayStage.x, 0);
-                    GameManager.Instance.ChoosedLevel++;
+                        GameManager.Instance.CurrentLevelUnlock++;
+                        GameManager.Instance.Database.lastPlayStage = new Pos(GameManager.Instance.Database.lastPlayStage.x, 0);
+                        GameManager.Instance.ChoosedLevel++;
 
+                    }
+
+                    GameManager.Instance.SaveGame();
+                    GameManager.Instance.SaveLevel();
                 }
-
-                GameManager.Instance.SaveGame();
-                GameManager.Instance.SaveLevel();
+              
             }
         }
 

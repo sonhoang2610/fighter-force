@@ -36,7 +36,7 @@ namespace EazyEngine.Space.UI
                     }
                  
                 }
-                buttonBuy.transform.parent.SendMessage("Reposition");
+                buttonBuy.transform.parent.gameObject.SendMessage("Reposition", SendMessageOptions.DontRequireReceiver);
             }
         }
         

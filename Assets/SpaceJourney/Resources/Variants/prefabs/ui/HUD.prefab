@@ -94,9 +94,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f06e48c3f73df94c9d7426d91675734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxDialog: {fileID: 4040770899438611613}
-  boxReborn: {fileID: 1691805794178790367}
-  boxRate: {fileID: 1691805793382277639}
+  boxDialogName: BoxDialog
+  boxRebornName: BoxReborn
+  boxRateName: BoxRate
 --- !u!1 &4057514114930862549
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,11 +719,6 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 66
       objectReference: {fileID: 0}
-    - target: {fileID: 6465232924857693767, guid: 59335d092617b884a9f8d88ce9e2de4b,
-        type: 3}
-      propertyPath: m_Layer
-      value: 18
-      objectReference: {fileID: 0}
     - target: {fileID: 6680673838999151384, guid: 59335d092617b884a9f8d88ce9e2de4b,
         type: 3}
       propertyPath: mSprite
@@ -794,6 +789,11 @@ PrefabInstance:
         type: 3}
       propertyPath: dirtyChange
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465232924857693767, guid: 59335d092617b884a9f8d88ce9e2de4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59335d092617b884a9f8d88ce9e2de4b, type: 3}
@@ -1080,21 +1080,6 @@ PrefabInstance:
       propertyPath: dirtyChange
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4815503637281105240, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-        type: 3}
-      propertyPath: mGUI_ShowTems
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815503637281105240, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-        type: 3}
-      propertyPath: mTerm
-      value: text/reborn
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815503637281105240, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-        type: 3}
-      propertyPath: mLocalizeTarget
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5183413200115577788, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
         type: 3}
       propertyPath: mSprite
@@ -1160,6 +1145,21 @@ PrefabInstance:
         type: 3}
       propertyPath: aspectRatio
       value: 3.5384614
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815503637281105240, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: mGUI_ShowTems
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815503637281105240, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: mTerm
+      value: text/reborn
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815503637281105240, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: mLocalizeTarget
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4815503636191778440, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
         type: 3}
@@ -1480,6 +1480,11 @@ PrefabInstance:
       propertyPath: mText
       value: Rate Us
       objectReference: {fileID: 0}
+    - target: {fileID: 1970795024871837829, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -19661
+      objectReference: {fileID: 0}
     - target: {fileID: 4815503637281105255, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
         type: 3}
       propertyPath: aspectRatio
@@ -1512,6 +1517,16 @@ PrefabInstance:
       propertyPath: mSpacingY
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 721711037950089084, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: startingRenderQueue
+      value: 3003
+      objectReference: {fileID: 0}
+    - target: {fileID: 1096234820872194033, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4815503637281105241, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1532,15 +1547,40 @@ PrefabInstance:
       propertyPath: mLocalizeTarget
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1970795024871837850, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: mWidth
+      value: 864
+      objectReference: {fileID: 0}
+    - target: {fileID: 1970795024871837850, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: mHeight
+      value: 1536
+      objectReference: {fileID: 0}
     - target: {fileID: 8486530169676885399, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
         type: 3}
       propertyPath: m_Size.x
-      value: 1080
+      value: 864
       objectReference: {fileID: 0}
     - target: {fileID: 8486530169676885399, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
         type: 3}
       propertyPath: m_Size.y
-      value: 1920
+      value: 1536
+      objectReference: {fileID: 0}
+    - target: {fileID: 7802534471808424533, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: dirtyChange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084639573213704564, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: mText
+      value: Yes
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084639571685646111, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: mText
+      value: No
       objectReference: {fileID: 0}
     - target: {fileID: 4815503637281105240, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
         type: 3}
@@ -1556,16 +1596,6 @@ PrefabInstance:
         type: 3}
       propertyPath: mLocalizeTarget
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1084639573213704564, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-        type: 3}
-      propertyPath: mText
-      value: Yes
-      objectReference: {fileID: 0}
-    - target: {fileID: 1084639571685646111, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-        type: 3}
-      propertyPath: mText
-      value: No
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e9851e33ccfd0a47b7153b8543aba9d, type: 3}

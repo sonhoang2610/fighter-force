@@ -85,7 +85,7 @@ namespace EazyEngine.Space.UI
                 HUDLayer.Instance.showDialogNotEnoughMoney(pItemStorage.item.displayNameItem.Value, delegate
                 {
                     ShopManager.Instance.showBoxShop(pItemStorage.item.categoryItem.ToString());
-                    HUDLayer.Instance.boxDialog.close();
+                    HUDLayer.Instance.BoxDialog.close();
                 });
             }
         }

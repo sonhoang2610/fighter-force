@@ -222,7 +222,7 @@ namespace EazyEngine.Space.UI
                 HUDLayer.Instance.showDialogNotEnoughMoney(pMoney.item.displayNameItem.Value, delegate
                 {
                     ShopManager.Instance.showBoxShop(pMoney.item.categoryItem.ToString());
-                    HUDLayer.Instance.boxDialog.close();
+                    HUDLayer.Instance.BoxDialog.close();
                 });
             }
            

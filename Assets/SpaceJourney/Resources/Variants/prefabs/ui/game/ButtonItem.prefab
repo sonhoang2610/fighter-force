@@ -294,6 +294,8 @@ GameObject:
   - component: {fileID: 9003683400589920400}
   - component: {fileID: 8143704212174274881}
   - component: {fileID: 5656322611705261044}
+  - component: {fileID: 2053641381636067270}
+  - component: {fileID: 1271632648221394534}
   m_Layer: 5
   m_Name: ButtonItem
   m_TagString: Untagged
@@ -370,11 +372,11 @@ MonoBehaviour:
   mHeight: 100
   mDepth: 0
   mMat: {fileID: 0}
-  autoResizeBoxCollider: 0
+  autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 1
-  dirtyChange: 0
+  dirtyChange: 1
   mType: 0
   mFillDirection: 4
   mFillAmount: 1
@@ -394,3 +396,52 @@ MonoBehaviour:
   mFixedAspect: 0
   mPixelSize: 1
   nextSprite: {fileID: 0}
+--- !u!65 &2053641381636067270
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8143704212174274883}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 100, y: 100, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1271632648221394534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8143704212174274883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdca5042b1d12a4890ec1bd4f04290d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTarget: {fileID: 8143704212174274883}
+  hover: {r: 0.88235295, g: 0.78431374, b: 0.5882353, a: 1}
+  pressed: {r: 0.7176471, g: 0.6392157, b: 0.48235294, a: 1}
+  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  duration: 0.2
+  dragHighlight: 0
+  hoverSprite: 
+  pressedSprite: 
+  disabledSprite: 
+  onEnableButton:
+    m_PersistentCalls:
+      m_Calls: []
+  onDisableButton:
+    m_PersistentCalls:
+      m_Calls: []
+  hoverSprite2D: {fileID: 0}
+  pressedSprite2D: {fileID: 0}
+  disabledSprite2D: {fileID: 0}
+  pixelSnap: 0
+  onClick:
+  - mTarget: {fileID: 8143704212174274881}
+    mMethodName: useController
+    mParameters: []
+    oneShot: 0
