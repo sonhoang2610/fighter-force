@@ -53,12 +53,19 @@ namespace EazyEngine.Space.UI {
             }
         }
         public void rebornWatchAds()
-        {
-            TimeKeeper.Instance.getTimer("Global").TimScale = 1;
-	     
-	        BoxReborn.close();
+        {   	     
 	        GameManager.Instance.showRewardAds(BoxReborn.GetComponent<BoxReborn>().itemExchange,delegate(bool pBool){
-		        reviePlayer();
+                BoxReborn.close();
+                if (pBool)
+                {
+                    TimeKeeper.Instance.getTimer("Global").TimScale = 1;
+                    reviePlayer();
+                }
+                else
+                {
+                    skipReborn();
+                }
+       
 	        });
             //GameManager.Instance.
         }

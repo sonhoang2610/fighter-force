@@ -8,28 +8,24 @@ namespace EazyEngine.Space.UI
     public class BoxSpPlaneMain : BoxBasePlane
     {
         public int indexBox = 0;
-        protected override void Start()
+
+        public void refreshData()
         {
-      
             PlaneInfo[] pInfos = (PlaneInfo[])GameDatabase.Instance.getAllItem(CategoryItem.SP_PLANE);
             List<PlaneInfoConfig> pInfoIntanceds = new List<PlaneInfoConfig>();
-            //  if (GameManager.Instance.Database.selectedSupportPlane1 < 0) return;
             for (int i = 0; i < GameManager.Instance.Database.spPlanes.Count; ++i)
             {
                 if (GameManager.Instance.Database.spPlanes[i].CurrentLevel > 0)
                 {
                     pInfoIntanceds.Add(GameManager.Instance.Database.spPlanes[i]);
                 }
-                //if (indexBox == 0)
-                //{
-                //    pInfoIntanceds.Add(GameManager.Instance.Database.spPlanes[GameManager.Instance.Database.selectedSupportPlane1]);
-                //}
-                //else
-                //{
-                //    pInfoIntanceds.Add(GameManager.Instance.Database.spPlanes[GameManager.Instance.Database.selectedSupportPlane2]);
-                //}
             }
-             DataSource = pInfoIntanceds.ToObservableList();
+            DataSource = pInfoIntanceds.ToObservableList();
+        }
+        protected override void Start()
+        {
+
+            refreshData();
             for (int i = 0; i < DataSource.Count; ++i)
             {
                 if (DataSource[i].Info.itemID == GameManager.Instance.Database.selectedSupportPlane1)
@@ -45,6 +41,7 @@ namespace EazyEngine.Space.UI
         {
             if (DataSource != null && DataSource.Count > 0)
             {
+                refreshData();
                 for (int i = 0; i < DataSource.Count; ++i)
                 {
                     if (DataSource[i].Info.itemID == GameManager.Instance.Database.selectedMainPlane)

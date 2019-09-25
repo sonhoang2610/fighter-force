@@ -54,7 +54,7 @@ namespace EazyEngine.Space.UI
             icon.sprite2D = eventType.item.item.CateGoryIcon;
             boxExtract.gameObject.SetActive(false);
             layerNormal.SetActive(false);
-            if (typeof(IExtractItem).IsAssignableFrom(eventType.item.item.GetType()))
+            if (typeof(IExtractItem).IsAssignableFrom(eventType.item.item.GetType()) && eventType.item.Quantity == 1)
             {
                 boxExtract.gameObject.SetActive(true);
                 itemPackage = eventType.item.item;

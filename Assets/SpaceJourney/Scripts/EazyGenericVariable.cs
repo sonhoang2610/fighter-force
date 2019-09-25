@@ -86,6 +86,7 @@ public class CharacterInstancedConfig
     public float Health;
     public float DamgageBasic;
     public float Defense;
+    public float DamgeSelf = -1;
     [System.NonSerialized]
     public int score;
 

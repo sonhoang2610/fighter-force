@@ -124,7 +124,14 @@ namespace EazyEngine.Space
                     pProp.setValue(gameObject);
                 }
             }
-
+            if (pInfo.DamgeSelf > 0)
+            {
+                var pDamage = GetComponent<DamageOnTouch>();
+                {
+                    if(pDamage)
+                         pDamage.DamageCaused =(int) pInfo.DamgeSelf;
+                };
+            }
         }
         public AbilityConfig getAbility(string pID,List<AbilityConfig> abilities)
         {

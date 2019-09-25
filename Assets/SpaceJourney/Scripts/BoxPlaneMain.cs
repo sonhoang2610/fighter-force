@@ -108,6 +108,7 @@ namespace EazyEngine.Space.UI
         {
             if(DataSource!= null && DataSource.Count > 0)
             {
+                refreshData();
                 for (int i = 0; i < DataSource.Count; ++i)
                 {
                     if (DataSource[i].Info.itemID == GameManager.Instance.Database.selectedMainPlane)
@@ -119,15 +120,14 @@ namespace EazyEngine.Space.UI
             }
         
         }
-        // Start is called before the first frame update
-        protected override void Start()
+
+        public void refreshData()
         {
-           // ShopDatabase.
-           PlaneInfo[] pInfos = (PlaneInfo[]) GameDatabase.Instance.getAllItem(CategoryItem.PLANE);
+            PlaneInfo[] pInfos = (PlaneInfo[])GameDatabase.Instance.getAllItem(CategoryItem.PLANE);
             List<PlaneInfoConfig> pInfoIntanceds = new List<PlaneInfoConfig>();
             for (int i = 0; i < pInfos.Length; ++i)
             {
-               var pInfoConfig =  GameManager.Instance.Database.getPlane(pInfos[i].itemID);
+                var pInfoConfig = GameManager.Instance.Database.getPlane(pInfos[i].itemID);
                 if (pInfoConfig != null)
                 {
                     //if (pInfoConfig == null)
@@ -139,6 +139,12 @@ namespace EazyEngine.Space.UI
             }
             //pInfoIntanceds.Sort(sortPlane);
             DataSource = pInfoIntanceds.ToObservableList();
+        }
+        // Start is called before the first frame update
+        protected override void Start()
+        {
+            // ShopDatabase.
+            refreshData();
             for (int i = 0; i < DataSource.Count; ++i) {
                 if(DataSource[i].Info.itemID == GameManager.Instance.Database.selectedMainPlane)
                 {
