@@ -57,7 +57,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4040770899566866161}
-  - component: {fileID: 4382692851263095553}
+  - component: {fileID: 5532907282980989096}
   m_Layer: 18
   m_Name: HUD
   m_TagString: Untagged
@@ -82,7 +82,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4382692851263095553
+--- !u!114 &5532907282980989096
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -703,7 +703,7 @@ PrefabInstance:
         type: 3}
       propertyPath: onClick.Array.data[0].mTarget
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5532907282980989096}
     - target: {fileID: 4498282656874678097, guid: 59335d092617b884a9f8d88ce9e2de4b,
         type: 3}
       propertyPath: onClick.Array.data[0].mMethodName
@@ -823,7 +823,7 @@ PrefabInstance:
     - target: {fileID: 3416318824023844951, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
         type: 3}
       propertyPath: onEnableEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3416318824023844951, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
         type: 3}
@@ -839,7 +839,7 @@ PrefabInstance:
         type: 3}
       propertyPath: onEnableEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5532907282980989096}
     - target: {fileID: 3416318824023844951, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
         type: 3}
       propertyPath: onEnableEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -855,46 +855,6 @@ PrefabInstance:
       propertyPath: onEnableEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 2100652309712063613}
-    - target: {fileID: 2680969560822331806, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-        type: 3}
-      propertyPath: onClick.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2680969560822331806, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-        type: 3}
-      propertyPath: onClick.Array.data[0].mTarget
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2680969560822331806, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-        type: 3}
-      propertyPath: onClick.Array.data[0].mMethodName
-      value: skipReborn
-      objectReference: {fileID: 0}
-    - target: {fileID: 2680969559295350773, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-        type: 3}
-      propertyPath: onClick.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2680969559295350773, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-        type: 3}
-      propertyPath: onClick.Array.data[0].mTarget
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2680969559295350773, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-        type: 3}
-      propertyPath: onClick.Array.data[0].mMethodName
-      value: rebornCrystal
-      objectReference: {fileID: 0}
-    - target: {fileID: 1970795024603502600, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-        type: 3}
-      propertyPath: mText
-      value: Reborn
-      objectReference: {fileID: 0}
-    - target: {fileID: 1970795024603502600, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-        type: 3}
-      propertyPath: dirtyChange
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 721711037950089085, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -948,6 +908,46 @@ PrefabInstance:
     - target: {fileID: 721711037950089085, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680969560822331806, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: onClick.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680969560822331806, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: onClick.Array.data[0].mTarget
+      value: 
+      objectReference: {fileID: 5532907282980989096}
+    - target: {fileID: 2680969560822331806, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: onClick.Array.data[0].mMethodName
+      value: skipReborn
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680969559295350773, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: onClick.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680969559295350773, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: onClick.Array.data[0].mTarget
+      value: 
+      objectReference: {fileID: 5532907282980989096}
+    - target: {fileID: 2680969559295350773, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: onClick.Array.data[0].mMethodName
+      value: rebornCrystal
+      objectReference: {fileID: 0}
+    - target: {fileID: 1970795024603502600, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: mText
+      value: Reborn
+      objectReference: {fileID: 0}
+    - target: {fileID: 1970795024603502600, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: dirtyChange
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1970795024871837829, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
@@ -1294,6 +1294,11 @@ PrefabInstance:
       propertyPath: aspectRatio
       value: 5.5
       objectReference: {fileID: 0}
+    - target: {fileID: -1010430226507416536, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: _isRunOnRealTime
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1050379437918092828, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
         type: 3}
       propertyPath: onClick.Array.data[0].mTarget
@@ -1302,11 +1307,6 @@ PrefabInstance:
     - target: {fileID: 4815503637281105240, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
         type: 3}
       propertyPath: mGUI_ShowTems
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -1010430226507416536, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-        type: 3}
-      propertyPath: _isRunOnRealTime
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -1390,41 +1390,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2680969560822331806, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-        type: 3}
-      propertyPath: onClick.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2680969560822331806, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-        type: 3}
-      propertyPath: onClick.Array.data[0].mTarget
-      value: 
-      objectReference: {fileID: 1691805793382277639}
-    - target: {fileID: 2680969560822331806, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-        type: 3}
-      propertyPath: onClick.Array.data[0].mMethodName
-      value: close
-      objectReference: {fileID: 0}
-    - target: {fileID: 2680969559295350773, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-        type: 3}
-      propertyPath: onClick.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2680969559295350773, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-        type: 3}
-      propertyPath: onClick.Array.data[0].mTarget
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2680969559295350773, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-        type: 3}
-      propertyPath: onClick.Array.data[0].mMethodName
-      value: rating
-      objectReference: {fileID: 0}
-    - target: {fileID: 1970795024603502600, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-        type: 3}
-      propertyPath: mText
-      value: Rate Us
-      objectReference: {fileID: 0}
     - target: {fileID: 721711037950089085, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1479,6 +1444,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680969560822331806, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: onClick.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680969560822331806, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: onClick.Array.data[0].mTarget
+      value: 
+      objectReference: {fileID: 1691805793382277639}
+    - target: {fileID: 2680969560822331806, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: onClick.Array.data[0].mMethodName
+      value: close
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680969559295350773, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: onClick.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680969559295350773, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: onClick.Array.data[0].mTarget
+      value: 
+      objectReference: {fileID: 5532907282980989096}
+    - target: {fileID: 2680969559295350773, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: onClick.Array.data[0].mMethodName
+      value: rating
+      objectReference: {fileID: 0}
+    - target: {fileID: 1970795024603502600, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: mText
+      value: Rate Us
       objectReference: {fileID: 0}
     - target: {fileID: 4815503637281105255, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
         type: 3}

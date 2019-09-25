@@ -91,8 +91,7 @@ namespace EazyEngine.Space.UI
                     pNodes.Add(pNode);
                     pNode.runGraph(onFinishNode);
                 }
-                GameManager.Instance.SaveGame();
-                GameManager.Instance.SaveLevel();
+
             }
             else
             {
@@ -109,6 +108,21 @@ namespace EazyEngine.Space.UI
             quantityDestroy.text = LevelManger.Instance._infoLevel.enemyKill.ToString();
         
             gameObject.SetActive(true);
+            if (pWin)
+            {
+                GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard).infos = LevelManger.Instance._infoLevel;
+                if (GameManager.Instance.ChoosedLevel == GameManager.Instance.CurrentLevelUnlock)
+                {
+
+                    GameManager.Instance.CurrentLevelUnlock++;
+                    GameManager.Instance.Database.lastPlayStage = new Pos(GameManager.Instance.Database.lastPlayStage.x, 0);
+                    GameManager.Instance.ChoosedLevel++;
+
+                }
+
+                GameManager.Instance.SaveGame();
+                GameManager.Instance.SaveLevel();
+            }
         }
 
         public void watch()
@@ -170,16 +184,7 @@ namespace EazyEngine.Space.UI
                     coinTaken.text = x.ToString();
                 }, LevelManger.Instance._infoLevel.goldTaken, 0.5f).From(0));
                 pSeq2.Play();
-                GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard).infos = LevelManger.Instance._infoLevel;
-                if (GameManager.Instance.ChoosedLevel == GameManager.Instance.CurrentLevelUnlock)
-                {
-
-                    GameManager.Instance.CurrentLevelUnlock++;
-                    GameManager.Instance.Database.lastPlayStage = new Pos(GameManager.Instance.Database.lastPlayStage.x, 0);
-                    GameManager.Instance.ChoosedLevel++;
-         
-                }
-   
+               
             }
         
         }

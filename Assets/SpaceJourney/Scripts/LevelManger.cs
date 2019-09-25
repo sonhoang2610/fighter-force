@@ -97,8 +97,9 @@ namespace EazyEngine.Space
                 return (players != null && currentPlayerIndex < players.Length) ? players[currentPlayerIndex] : null;
             }
         }
-        [HideInInspector]
+        [HideInEditorMode]
         [System.NonSerialized]
+        [ShowInInspector]
         public LevelInfo _infoLevel;
 
         [HideInEditorMode]
