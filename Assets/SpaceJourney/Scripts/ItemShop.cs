@@ -28,8 +28,9 @@ namespace EazyEngine.Space.UI
         public UIButton btnBuyFree;
         [ShowIf("timerFree")]
         public GameObject boxTimer;
-        
 
+
+        protected float delayInit = 0.2f;
         public bool useIfClaim = true;
         public override ShopItemInfo Data
         {
@@ -183,8 +184,7 @@ namespace EazyEngine.Space.UI
         {
             if (useIfClaim)
             {
-                TopLayer.Instance.boxReward.show();
-                EzEventManager.TriggerEvent(new RewardEvent(new BaseItemGameInstanced() { quantity = 1, item = item.itemSell }));
+                claim();
             }
             var pTimer = GameManager.Instance.Database.timers.getTimer(nameTargetShop + "/" + itemIDToLoad);
             if (pTimer == null)
@@ -310,10 +310,23 @@ namespace EazyEngine.Space.UI
             }
         }
         protected TimeSpan timeCountDown;
+        protected bool isInit = false;
+        private void LateUpdate()
+        {
+            delayInit -= Time.deltaTime;
+        }
         private void OnEnable()
         {
+         
             EzEventManager.AddListener(this);
             updateTime();
+            if (delayInit <= 0)
+            {
+                if (Data != null)
+                {
+                    Data = Data;
+                }
+            }
         }
 
         private void OnDisable()

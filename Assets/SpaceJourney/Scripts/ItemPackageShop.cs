@@ -16,6 +16,7 @@ namespace EazyEngine.Space.UI
     {
         public UILabel labelQuantity;
         public UIButton btnOpen;
+
         public override ShopItemInfo Data { get => base.Data;
             set {
                 base.Data = value;
@@ -44,10 +45,8 @@ namespace EazyEngine.Space.UI
         {
           var pItem =  GameManager.Instance.Database.getComonItem(Data.itemSell.itemID);
             pItem.Quantity--;
+            claim();
             Data = Data;
-            TopLayer.Instance.boxReward.show();
-            EzEventManager.TriggerEvent(new RewardEvent(new BaseItemGameInstanced() { quantity = 1, item = Data.itemSell }));
-            GameManager.Instance.SaveGame();
         }
 
         // Start is called before the first frame update

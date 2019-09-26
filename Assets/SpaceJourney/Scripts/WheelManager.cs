@@ -119,6 +119,10 @@ namespace EazyEngine.Space.UI
             TopLayer.Instance.boxReward.show();
             var pStorage = GameManager.Instance.Database.getComonItem(data.infos[cacheResult].item.itemID);
             pStorage.Quantity+= data.infos[cacheResult].Quantity;
+            if (typeof(IExtractItem).IsAssignableFrom(data.infos[cacheResult].item.GetType()))
+            {
+                ((IExtractItem)data.infos[cacheResult].item).disableExtracItem();
+            }
             EzEventManager.TriggerEvent(new RewardEvent() { item = new BaseItemGameInstanced() { item = data.infos[cacheResult].item,quantity = data.infos[cacheResult].Quantity} });
         }
         bool isRolling = false;

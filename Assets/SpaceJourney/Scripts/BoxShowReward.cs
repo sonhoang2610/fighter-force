@@ -54,7 +54,7 @@ namespace EazyEngine.Space.UI
             icon.sprite2D = eventType.item.item.CateGoryIcon;
             boxExtract.gameObject.SetActive(false);
             layerNormal.SetActive(false);
-            if (typeof(IExtractItem).IsAssignableFrom(eventType.item.item.GetType()) && eventType.item.Quantity == 1)
+            if (typeof(IExtractItem).IsAssignableFrom(eventType.item.item.GetType()) && eventType.item.Quantity == 1 && ((IExtractItem)eventType.item.item).CacheExtraItemCount() > 0)
             {
                 boxExtract.gameObject.SetActive(true);
                 itemPackage = eventType.item.item;
@@ -107,7 +107,7 @@ namespace EazyEngine.Space.UI
         {
             if(pEvent.stringParameter == "Extract" && itemPackage)
             {
-                BaseItemGameInstanced[] pItems = ((IExtractItem)itemPackage).ExtractHere();
+                BaseItemGameInstanced[] pItems = ((IExtractItem)itemPackage).ExtractHere(false);
                 boxExtract.DataSource = pItems.ToObservableList();
             }
         }

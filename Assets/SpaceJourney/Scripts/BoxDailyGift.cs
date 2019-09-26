@@ -96,6 +96,10 @@ namespace EazyEngine.Space.UI
                 pReward.Quantity += pData.mainData.quantity;
                 pData.status = 1;
                 TopLayer.Instance.boxReward.show();
+                if (typeof(IExtractItem).IsAssignableFrom(pData.mainData.item.GetType()))
+                {
+                    ((IExtractItem)pData.mainData.item).disableExtracItem();
+                }
                 EzEventManager.TriggerEvent(new RewardEvent() { item = pData.mainData });
                 GameManager.Instance.dailyGiftModule.lastDate = System.DateTime.Now.DayOfYear;
                 GameManager.Instance.dailyGiftModule.currentDay++;         
@@ -122,6 +126,10 @@ namespace EazyEngine.Space.UI
                     pReward.Quantity += pData.mainData.quantity * 2;
                     pData.status = 1;
                     TopLayer.Instance.boxReward.show();
+                    if (typeof(IExtractItem).IsAssignableFrom(pData.mainData.item.GetType()))
+                    {
+                        ((IExtractItem)pData.mainData.item).disableExtracItem();
+                    }
                     EzEventManager.TriggerEvent(new RewardEvent() { item = new BaseItemGameInstanced() { item = pData.mainData.item, quantity = pData.mainData.quantity * 2 } });
                     GameManager.Instance.dailyGiftModule.lastDate = System.DateTime.Now.DayOfYear;
                     GameManager.Instance.dailyGiftModule.currentDay++;

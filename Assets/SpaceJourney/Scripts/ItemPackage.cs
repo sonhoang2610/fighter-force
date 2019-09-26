@@ -31,6 +31,8 @@ namespace EazyEngine.Space
     public interface IExtractItem
     {
         BaseItemGameInstanced[] ExtractHere(bool isNew = true);
+        int CacheExtraItemCount();
+        void disableExtracItem();
         bool alwayExtra();
     }
     [System.Serializable]
@@ -101,6 +103,16 @@ namespace EazyEngine.Space
             } while (pCount > 0);
             cacheExtra = pItemResult.ToArray();
            return pItemResult.ToArray();
+        }
+
+        public int CacheExtraItemCount()
+        {
+            return cacheExtra== null ? 0: cacheExtra.Length;
+        }
+
+        public void disableExtracItem()
+        {
+            cacheExtra = null;
         }
     }
 }
