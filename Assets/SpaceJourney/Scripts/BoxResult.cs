@@ -163,6 +163,11 @@ namespace EazyEngine.Space.UI
                 if (pNode.misson.process != 1)
                 {
                     GameManager.Instance.Database.getComonItem("Star").Quantity++;
+                   for(int i  = 0; i < pNode.misson.rewards.Length; ++i)
+                    {
+                      var pStorage =  GameManager.Instance.Database.getComonItem(pNode.misson.rewards[i].item);
+                        pStorage.Quantity += pNode.misson.rewards[i].quantity;
+                    }
                 }
                 pNode.misson.process = 1;
             }

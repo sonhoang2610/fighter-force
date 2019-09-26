@@ -57,7 +57,7 @@ public class NguiAnchor : MonoBehaviour {
             Widget.bottomAnchor.target = null;
         }
     }
-
+    [ContextMenu("test")]
     void mathAchorPoint()
     {
         Widget.leftAnchor.target = mainTarget ? mainTarget: targetLeft;

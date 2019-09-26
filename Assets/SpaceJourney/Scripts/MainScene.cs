@@ -40,7 +40,7 @@ namespace EazyEngine.Space.UI
                 }               
             }
             bool isConnected = false;
-            var pDateTime = TimeExtension.GetNetTime(ref isConnected);
+              var pDateTime = TimeExtension.GetNetTime(ref isConnected);
                 if (isConnected && GameManager.Instance.dailyGiftModule.lastDate != pDateTime.DayOfYear && GameManager.Instance.dailyGiftModule.currentDay < GameDatabase.Instance.databaseDailyGift.item.Count)
                 {
                     boxdailyGift.GetComponent<UIElement>().show();

@@ -78,7 +78,7 @@ namespace EazyEngine.Space.UI {
             LevelManger.Instance.CurrentPlayer.GetComponent<Health>().Revive();
             LevelManger.Instance.CurrentPlayer.GetComponent<CharacterHandleWeapon>().ShootStart();
             LevelManger.Instance.CurrentPlayer.GetComponent<Character>().machine.SetTrigger("Start");
-           LevelManger.Instance.CurrentPlayer.GetComponent<CharacterHandleWeapon>().booster("booster3");
+           LevelManger.Instance.CurrentPlayer.GetComponent<CharacterHandleWeapon>().booster("Booster3");
             GUIManager.Instance.setHealthMainPlane(LevelManger.Instance.CurrentPlayer.GetComponent<Health>().currentHealth, LevelManger.Instance.CurrentPlayer.GetComponent<Health>().MaxiumHealth);
         }
 

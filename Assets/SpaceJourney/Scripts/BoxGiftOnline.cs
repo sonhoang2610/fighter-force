@@ -41,6 +41,7 @@ namespace EazyEngine.Space.UI
         public string id;
         public float onlineTime;
         public int calimedIndex = -1;
+        public int DateInYear = 0;
     }
 
     public class BoxGiftOnline : BaseBox<ItemGiftOnline, ItemGiftOnlineInfo>

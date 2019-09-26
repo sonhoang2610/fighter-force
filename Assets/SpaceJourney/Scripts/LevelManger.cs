@@ -211,12 +211,14 @@ namespace EazyEngine.Space
             ObjectPooler.poolManager.Clear();
         }
 
-        public Vector2 CurrentRateCoin
+        public float CurrentRateCoin
         {
             get
             {
                 var pConfig = GameDatabase.Instance.dropMonyeconfig[GameManager.Instance.ChoosedLevel - 1][GameManager.Instance.ChoosedHard];
-                return new Vector2(pConfig.totalMoney.x/ pConfig.totalCoin.x, pConfig.totalMoney.y / pConfig.totalCoin.y);
+                int pRandomTotal = UnityEngine.Random.Range((int)pConfig.totalMoney.x,(int) pConfig.totalMoney.y);
+                int pRandomTotalCoin = UnityEngine.Random.Range((int)pConfig.totalCoin.x, (int)pConfig.totalCoin.y);
+                return pRandomTotal / pRandomTotalCoin; 
             }
         }
 
@@ -321,7 +323,7 @@ namespace EazyEngine.Space
             {
                 if (eventType._nameItem == "Coin")
                 {
-                    _infoLevel.goldTaken +=(int)( UnityEngine.Random.Range((int)CurrentRateCoin.x, (int)CurrentRateCoin.y) * eventType._owner.GetComponent<Character>().getFactorWithItem("Coin"));
+                    _infoLevel.goldTaken +=(int)CurrentRateCoin * (int)eventType._owner.GetComponent<Character>().getFactorWithItem("Coin");
                     GUIManager.Instance.setGoldScore(_infoLevel.goldTaken);
                 }
             }

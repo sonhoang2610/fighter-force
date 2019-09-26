@@ -189,6 +189,12 @@ namespace EazyEngine.Space
             {
                 if(giftOnlineModules[i].id == pId)
                 {
+                    if(giftOnlineModules[i].DateInYear != System.DateTime.Now.DayOfYear)
+                    {
+                        giftOnlineModules[i].calimedIndex = -1;
+                        giftOnlineModules[i].onlineTime = 0;
+                        giftOnlineModules[i].DateInYear = System.DateTime.Now.DayOfYear;
+                    }
                     return giftOnlineModules[i];
                 }
             }

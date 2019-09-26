@@ -53,6 +53,10 @@ namespace EazyEngine.Space.UI
             DataSource[index].info.LimitUpgrade = pItemShop.limitUpgrade;
             desChoosedSkill.text = DataSource[index].info.Info.Desc;
             layerAbleUpgradeSkill.gameObject.SetActive(true);
+            if(DataSource[index].info.CurrentLevelPlane <= 0)
+            {
+                layerAbleUpgradeSkill.gameObject.SetActive(false);
+            }
             layerLimitSkill.gameObject.SetActive(true);
             if (layerAbleUpgradeSkill)
             {
