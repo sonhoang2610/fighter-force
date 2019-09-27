@@ -3,6 +3,7 @@ using ParadoxNotion.Design;
 using FlowCanvas.Macros;
 using EazyEngine.Tools;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace EazyEngine.Space{
 
@@ -16,24 +17,34 @@ namespace EazyEngine.Space{
         public BBParameter<string> nameItem;
         public BBParameter<int> quantity;
         public BBParameter<FlowCanvas.FlowScript> flow;
-
         public void OnEzEvent(PickEvent eventType)
         {
-            if (eventType._owner == ownerAgent.gameObject  && !isComplete)
+            if (ownerAgent == null) EndAction(false);
+            if (eventType._owner == ownerAgent.gameObject && !isComplete)
             {
-                nameItem.value = eventType._nameItem;
-                quantity.value = eventType._quantityItem;
-                flow.value = eventType.flow;
-                isComplete = true;             
-                if (eventType.Variables != null)
-                {
-                    for (int i = 0; i < eventType.Variables.Count; ++i)
-                    {
-                        ownerBlackboard.AddVariable(eventType.Variables.Keys.ElementAt(i), eventType.Variables[eventType.Variables.Keys.ElementAt(i)]);
-                    }
-                }
-                EndAction(true);
+                executeEvent(eventType);
+       
             }
+        }
+
+        protected void executeEvent(PickEvent eventType)
+        {
+            nameItem.value = eventType._nameItem;
+            quantity.value = eventType._quantityItem;
+            if (eventType.flow != null)
+            {
+                flow.value = eventType.flow;
+            }
+
+            isComplete = true;
+            if (eventType.Variables != null)
+            {
+                for (int i = 0; i < eventType.Variables.Count; ++i)
+                {
+                    ownerBlackboard.AddVariable(eventType.Variables.Keys.ElementAt(i), eventType.Variables[eventType.Variables.Keys.ElementAt(i)]);
+                }
+            }
+            EndAction(eventType.flow);
         }
         protected override string OnInit(){
 			return null;
@@ -41,9 +52,11 @@ namespace EazyEngine.Space{
 
         protected override void OnExecute()
         {
-            isComplete = false;
-            EzEventManager.AddListener(this);
             base.OnExecute();
+                isComplete = false;
+                EzEventManager.AddListener(this);
+       
+       
         }
         protected override void OnUpdate()
         {
@@ -51,7 +64,8 @@ namespace EazyEngine.Space{
         }
         protected override void OnStop()
         {
-            EzEventManager.RemoveListener(this);
+                EzEventManager.RemoveListener(this);
+          
             base.OnStop();
         }
     }

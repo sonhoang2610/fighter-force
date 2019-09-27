@@ -212,6 +212,13 @@ namespace EazyEngine.Space
                 fixDamage = value;
             }
         }
+
+        public int CacheLevelBooster { get => cacheLevelBooster; set {
+                cacheLevelBooster = value;
+                EzEventManager.TriggerEvent<MessageGamePlayEvent>(new MessageGamePlayEvent("ChangeBooster", gameObject, value));
+            }
+        }
+
         public void setTarget(GameObject pTargetDirection)
         {
             _targetDirection = pTargetDirection;
@@ -235,10 +242,10 @@ namespace EazyEngine.Space
             {
                 if(startLevelBooster == 6)
                 {
-                    cacheLevelBooster--;
-                    if(cacheLevelBooster <=0)
+                    CacheLevelBooster--;
+                    if(CacheLevelBooster <=0)
                     {
-                        cacheLevelBooster = 0;
+                        CacheLevelBooster = 0;
                     }
                 }
                 else
@@ -755,7 +762,7 @@ namespace EazyEngine.Space
                             if (!isSupering)
                             {
                                 setFactorSpeedWeapon(factorSpeed + (pLevelBooster / 2 + pLevelBooster % 2) * 0.2f + 0.2f);
-                                cacheLevelBooster = startLevelBooster;
+                                CacheLevelBooster = startLevelBooster;
                             }
                         }
                         else
@@ -774,7 +781,7 @@ namespace EazyEngine.Space
                     }
                     else if(pLevelBooster != 6)
                     {
-                        cacheLevelBooster = pLevelBooster;
+                        CacheLevelBooster = pLevelBooster;
                     }
                 
                  
@@ -784,18 +791,20 @@ namespace EazyEngine.Space
                 {
                     if(isSupering)
                     {
-                        cacheLevelBooster++;
-                        if(cacheLevelBooster > 5)
+                        CacheLevelBooster++;
+                        if(CacheLevelBooster > 5)
                         {
-                            cacheLevelBooster = 5;
+                            CacheLevelBooster = 5;
                         }
                         return;
                     }
                     startLevelBooster++;
+           
                     if (startLevelBooster > 5)
                     {
                         startLevelBooster = 5;
                     }
+                    CacheLevelBooster = startLevelBooster;
                     setFactorSpeedWeapon(factorSpeed + (startLevelBooster / 2 + startLevelBooster % 2) * 0.2f);
                 }
        
@@ -886,7 +895,7 @@ namespace EazyEngine.Space
                 if(currentDurationSuper > 5)
                 {
                     isSupering = false;
-                    booster("Booster" + cacheLevelBooster);
+                    booster("Booster" + CacheLevelBooster);
                 }
             }
             if(holdWeapon.Count >0)
