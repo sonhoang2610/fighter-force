@@ -52,10 +52,14 @@ MonoBehaviour:
   onEndLifeTime:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   lifeTime: 2
+  lifeTimeRandomTo: 0
+  ignoreLiveTime: 0
+  onIndexBullet:
+    m_PersistentCalls:
+      m_Calls: []
   Speed: 10
+  delayMove: 0
   _SpeedConstraint: 1
   SpeedStart: 0
   durationToMax: 1
@@ -83,10 +87,45 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  Direction: {x: 0, y: 0}
-  moveNextGen: 0
+  childs: []
   ignoreMove: 0
   currentSpeed: 0
+  MovetoTarget: 0
+  onMoveToTarget:
+    m_PersistentCalls:
+      m_Calls: []
+  target: {x: 0, y: 0}
+  moveSin: 0
+  frequency: 5
+  magnitude: 0.1
+  isAngularX: 0
+  delayX: 0
+  velocityXRandom: {x: 1, y: 1}
+  timeVelocityX: {x: 0.5, y: 0.5}
+  curveVelocityX:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!61 &61016229988584332
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -147,24 +186,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  Invulnerable: 0
+  invulnerable: 0
+  InvulnerableIfOutSide: 1
+  invuOnStart: 0
+  timeInvuAfterRevie: 0
+  disableParrentOnDeath: 0
+  disableOnDeath: 1
+  deffense: 0
   MaxiumHealth: 10
   InitialHealth: 10
   containerHealthBar: {fileID: 0}
   HealthBar: {fileID: 0}
   DamageSfx: {fileID: 0}
   DeathEffect: {fileID: 152634, guid: c816e04fdd948ef479558e37f6acc4ae, type: 3}
+  DamagedEffect: {fileID: 0}
   HealingEffect: {fileID: 0}
+  HealingEffectTimer: {fileID: 0}
+  subHealth: 0
+  countChildMin: 0
+  childHealth: []
+  onMinChild:
+    m_PersistentCalls:
+      m_Calls: []
   onDeath:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onTakenDamage:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  onRevie:
+    m_PersistentCalls:
+      m_Calls: []
+  animDeath: 0
+  triggerAnimDeath: 
+  listenerDeathAnimFinish: 
 --- !u!114 &114159071385699954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,11 +237,18 @@ MonoBehaviour:
     m_Bits: 256
   ignoreOnDamaged: 0
   DamageCaused: 10
+  damagedEffect: {fileID: 0}
   durationForNextDame: 0.1
+  TakenDamageMask:
+    serializedVersion: 2
+    m_Bits: 2096951
   DamageTakenWithEveryThing: 10
   parentDamage: {fileID: 0}
   _health: {fileID: 0}
   damageChilds: []
+  factorDamage: 1
+  factorDamageSelfConfig: 1
+  extraDamageSelf: []
   _listIgnoreObject: []
 --- !u!114 &7760926256660066388
 MonoBehaviour:
@@ -204,6 +266,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   _countTriggerBoder: 0
+  active: 0
 --- !u!1 &1553217896020558016
 GameObject:
   m_ObjectHideFlags: 0
