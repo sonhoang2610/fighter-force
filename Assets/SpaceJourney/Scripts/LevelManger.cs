@@ -227,7 +227,8 @@ namespace EazyEngine.Space
             base.Awake();
  
             GameManager.Instance.planNextLevel = false;
-
+            GUIManager.Instance.enableEnergy(false);
+            GUIManager.Instance.setBarBooster(0);
             var psate = LoadAssets.loadAsset<GameObject>("States"+ GameManager.Instance.ChoosedLevel + "_" + GameManager.Instance.ChoosedHard, "Variants/States/");
             Instantiate(psate);
             _infoLevel = GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard).infos.CloneData();
@@ -405,6 +406,9 @@ namespace EazyEngine.Space
             else if (eventType._message.StartsWith( "Result"))
             {
                 TimeKeeper.Instance.getTimer("Global").TimScale = 0;
+            }else if (eventType._message.StartsWith("ChangeBooster") && (GameObject)eventType._objects[0] == CurrentPlayer.gameObject)
+            {
+                GUIManager.Instance.setBarBooster((float)((int)eventType._objects[1]) / 5);
             }
         }
 

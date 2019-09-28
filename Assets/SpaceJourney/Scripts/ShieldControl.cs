@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
@@ -28,45 +29,47 @@ namespace EazyEngine.Space
 
         public void activeShield()
         {
-            if (currentShield)
-            {
-            }
-            else
+            if (!currentShield)
             {
                 currentShield = Instantiate(shieldObject);
             }
             currentDuration = duration;
             currentShield.transform.position = transform.position;
+            if (currentShield && !currentShield.activeSelf)
+            {
+                invu++;
+            }
             currentShield.gameObject.SetActive(true);
             var pPos = currentShield.GetComponent<PositionConstraint>();
             pPos.SetSource(0, new ConstraintSource() { sourceTransform = transform,weight =1 });
             pPos.constraintActive = true;
-            invu++;
+         
             var pHealth = GetComponent<Health>();
             if (pHealth)
             {
                 pHealth.Invulnerable = true;
             }
         }
+        [ShowInInspector]
         int invu = 0;
         public void activeShieldExtra(int index,float pDuration)
         {
             var pShield = extraShield[index];
             pShield.duration = pDuration;
-            if (pShield.currentShield)
-            {
-            }
-            else
+            if (!pShield.currentShield)
             {
                 pShield.currentShield = Instantiate(pShield.shieldObject);
             }
             pShield.currentDuration = pShield.duration;
             pShield.currentShield.transform.position = transform.position;
+            if (pShield.currentShield && !pShield.currentShield.activeSelf)
+            {
+                invu++;
+            }        
             pShield.currentShield.gameObject.SetActive(true);
             var pPos = pShield.currentShield.GetComponent<PositionConstraint>();
             pPos.SetSource(0, new ConstraintSource() { sourceTransform = transform, weight = 1 });
             pPos.constraintActive = true;
-            invu++;
             var pHealth = GetComponent<Health>();
             if (pHealth)
             {
@@ -123,8 +126,9 @@ namespace EazyEngine.Space
                     invu--;
                 }
             }
-            if(invu == 0)
+            if(invu <= 0)
             {
+                invu = 0;
                 GetComponent<Health>().Invulnerable = false;
             }
         }

@@ -18,9 +18,9 @@ namespace NodeCanvas.BehaviourTrees
 
         [SerializeField]
         [ExposeField]
-        private BBParameter<FlowScript> _flowScript = null;
+        protected BBParameter<FlowScript> _flowScript = null;
         private Dictionary<FlowScript, FlowScript> instances = new Dictionary<FlowScript, FlowScript>();
-        private FlowScript currentInstance = null;
+        protected FlowScript currentInstance = null;
 
         public FlowScript flowScript {
             get { return _flowScript.value; }
@@ -54,7 +54,7 @@ namespace NodeCanvas.BehaviourTrees
             return status;
         }
 
-        void OnFlowScriptFinished(bool success) {
+        protected virtual void OnFlowScriptFinished(bool success) {
             if ( status == Status.Running ) {
                 status = success ? Status.Success : Status.Failure;
             }
@@ -78,7 +78,7 @@ namespace NodeCanvas.BehaviourTrees
             }
         }
 
-        FlowScript CheckInstance() {
+        protected FlowScript CheckInstance() {
 
             if ( flowScript == currentInstance ) {
                 return currentInstance;

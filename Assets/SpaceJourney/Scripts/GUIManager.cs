@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using EazyEngine.Tools;
 using EazyEngine.Space.UI;
+using DG.Tweening;
 
 namespace EazyEngine.Space
 {
@@ -19,6 +20,10 @@ namespace EazyEngine.Space
         protected UI2DSprite healImage;
         [SerializeField]
         protected UI2DSprite hpBarImage;
+        [SerializeField]
+        protected UI2DSprite EnergyBar;
+        [SerializeField]
+        protected UI2DSprite BoosterBar;
         [SerializeField]
         protected UI2DSprite iconPlane;
         [SerializeField]
@@ -36,6 +41,46 @@ namespace EazyEngine.Space
             {
                 return LevelManger.InstanceRaw && LevelManger.InstanceRaw.IsPlaying;
             }
+        }
+        public void enableEnergy(bool pBool)
+        {
+            EnergyBar.transform.parent.gameObject.SetActive(pBool);
+        }
+        Tween tweenEnergy;
+        public void setEnergy(float percent)
+        {
+            if(percent< 0)
+            {
+                percent = 0;
+            }
+            if(percent > 1)
+            {
+                percent = 1;
+            }
+            if(tweenEnergy != null)
+            {
+                tweenEnergy.Kill();
+                tweenEnergy = null;
+            }
+            EnergyBar.GetComponent<EazyFrameCache>().setFrameIndex(0);
+            tweenEnergy = DOTween.To(() => EnergyBar.fillAmount, x => EnergyBar.fillAmount = x, percent, 0.25f);
+            tweenEnergy.Play();
+        }
+
+        public void cooldownEnergy(float cooldown)
+        {
+            if (tweenEnergy != null)
+            {
+                tweenEnergy.Kill();
+                tweenEnergy = null;
+            }
+            EnergyBar.GetComponent<EazyFrameCache>().setFrameIndex(1);
+            tweenEnergy = DOTween.To(() => EnergyBar.fillAmount, x => EnergyBar.fillAmount = x, 0, cooldown).From(1);
+            tweenEnergy.Play();
+        }
+        public void setBarBooster(float percent)
+        {
+            BoosterBar.fillAmount = percent;
         }
         public void stopDrag()
         {
