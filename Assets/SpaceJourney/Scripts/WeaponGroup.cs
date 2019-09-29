@@ -155,6 +155,7 @@ namespace EazyEngine.Space
                 weapons[i].init();
                 weapons[i].WeaponParrent = this;
                 weapons[i].BlockState = true;
+                weapons[i].initDone();
             }
             for(int i = 0; i < dataWeapons.Length; ++i)
             {
@@ -163,6 +164,7 @@ namespace EazyEngine.Space
                 pweaon.init();
                 pweaon.WeaponParrent = this;
                 pweaon.BlockState = true;
+                pweaon.initDone();
             }
         }
         

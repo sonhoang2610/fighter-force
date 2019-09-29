@@ -141,7 +141,12 @@ namespace EazyEngine.Space
             {
                 foreach(var pWeapon in weaponChilds)
                 {
-                    pWeapon.init();
+                    pWeapon.initWithInfo(gameObject);
+                    if (pWeapon.Owner)
+                    {
+                        pWeapon.initDone();
+                    }
+                
                 }
             }
             if (delayMove == 0)
@@ -221,10 +226,6 @@ namespace EazyEngine.Space
                 }
             }
             cachePos = transform.position;
-            if (transform.GetComponent<HomeMissile>())
-            {
-                Debug.Log("Debug");
-            }
             transform.RotationDirect2D(direction, TranformExtension.FacingDirection.DOWN);
             Direction = direction.normalized;
             velocityX = UnityEngine.Random.Range(velocityXRandom.x, velocityXRandom.y);
@@ -277,7 +278,16 @@ namespace EazyEngine.Space
             {
                 foreach (var pWeapon in weaponChilds)
                 {
+                    bool init = false;
+                    if (!pWeapon.Owner)
+                    {
+                        init = true;
+                    }
                     pWeapon.Owner = pOwner;
+                    if (init && gameObject.activeSelf)
+                    {
+                        pWeapon.initDone();
+                    }
                 }
             }
             foreach (var proj in childs)

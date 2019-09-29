@@ -310,6 +310,7 @@ namespace EazyEngine.Space
                         {
                             
                             pWeapon = Instantiate(pWeaponInstanced.IntialWeapon, pWeaponInstanced.AttachmentWeapon.transform);
+                            pWeapon.name = pWeaponInstanced.IntialWeapon.name;
                             weaponPaths.Add(pWeapon, pWeaponInstanced.IntialWeapon);
                         }
                         if (cacheWeaponData != null)
@@ -338,6 +339,7 @@ namespace EazyEngine.Space
                             _currentWeapons.Add(pWeapon);
                         }
                         pWeapons.Add(pWeapon);
+                        pWeapon.initDone();
                     }
                     _storageWeapons.Add(pWeapons.ToArray());
                 }

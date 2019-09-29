@@ -50,7 +50,7 @@ namespace EazyEngine.Space
         public UnityEvent onUseEvent;
         [HideInInspector]
         public UnityEvent onPrepareBullet;
-     
+
         public override void init()
         {
             base.init();

@@ -247,6 +247,8 @@ namespace EazyEngine.Space
         public UnityEvent onUse;
         [FoldoutGroup("Event Setting")]
         public UnityEvent onIdle;
+        [FoldoutGroup("Event Setting")]
+        public UnityEvent onInitDone;
 
         public EffectInfo[] particleEffects;
 
@@ -421,6 +423,13 @@ namespace EazyEngine.Space
         {
             FactorDamage += pFactor;
         }
+        [System.NonSerialized]
+        public bool isInitialized = false;
+        public void initDone()
+        {
+            isInitialized = true;
+            onInitDone.Invoke();
+        }
         public virtual void init()
         {
            
@@ -429,7 +438,7 @@ namespace EazyEngine.Space
 
         public virtual void initWithInfo(GameObject prop)
         {
-            _ammo = GetComponent<WeaponAmmo>();
+            init();
             Owner = prop.GetComponent<Projectile>().Owner;
         }
 

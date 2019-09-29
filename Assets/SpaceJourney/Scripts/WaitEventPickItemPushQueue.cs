@@ -19,6 +19,12 @@ namespace EazyEngine.Space{
         protected bool init = false;
         public void OnEzEvent(PickEvent eventType)
         {
+            if(graphAgent== null)
+            {
+                init = false;
+                EzEventManager.RemoveListener(this);
+                return;
+            }
             if (eventType._owner == graphAgent.gameObject)
             {
                 events.Add(eventType);
