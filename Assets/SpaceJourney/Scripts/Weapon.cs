@@ -475,11 +475,15 @@ namespace EazyEngine.Space
             }
         }
 
-        public bool InputStartResult(ref int pCount)
+        public bool InputStartResult(ref List<Weapon> pCount)
         {
             if (CurrentState != WeaponState.WeaponIdle) return false;
             if (!gameObject.activeSelf || !gameObject.activeInHierarchy) return false;
-            pCount++;
+            if (!pCount.Contains(this))
+            {
+                pCount.Add(this);
+            }
+         
             InputStart();
             return true;
         }
@@ -818,6 +822,7 @@ namespace EazyEngine.Space
         protected virtual void LateUpdate()
         {
             if (BlockState) return;
+        
             if(targetDirection.Count > 0 && sizeRemoveTarget > 0)
             {
                 for(int i = targetDirection.Count -1; i >= 0; --i)
@@ -865,7 +870,7 @@ namespace EazyEngine.Space
                 }
                 anchorRotation.transform.localRotation = Quaternion.Euler(0, 0, Mathf.LerpAngle(from, to, time.deltaTime * pSpeed));
                var dir =  (Vector2)(Quaternion.Euler(0, 0, anchorRotation.transform.localRotation.eulerAngles.z) * defaultFace);
-                if (!UnlockFire && WaitingRotate)
+                if (!UnlockFire && WaitingRotate && CurrentState != WeaponState.WeaponIdle)
                 {
                     var hits = MMDebug.RayCastAll(anchorRotation.transform.position, dir.normalized, 20, LayerMask.GetMask("Player"), Color.red, true);
                     for (int i = 0; i < hits.Length; ++i)
@@ -889,6 +894,7 @@ namespace EazyEngine.Space
                     }
                 }
             }
+            if (CurrentState == WeaponState.WeaponIdle) return;
             if (needTargetToFire)
             {
             
