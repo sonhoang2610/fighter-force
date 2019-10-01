@@ -72,19 +72,19 @@ namespace EazyEngine.Space
         EnableSkill,
         DisableSkill,
     }
-    public class CharacterHandleWeapon : CharacrerAbility, IListenerTriggerAnimator, IRespawn, EzEventListener<MessageGamePlayEvent>,EzEventListener<CharacterChangeState>
+    public class CharacterHandleWeapon : CharacrerAbility, IListenerTriggerAnimator, IRespawn, EzEventListener<MessageGamePlayEvent>, EzEventListener<CharacterChangeState>
     {
         public bool registerDamagedDownBooster = false;
         public bool registerListenAnimatorTrigger = false;
         public bool registerMessEvent = false;
         [ShowIf("registerMessEvent")]
-        public bool registerMessGameChangeWeapon = false; 
+        public bool registerMessGameChangeWeapon = false;
         public bool shoortOnStart = false;
         public bool insideScreenRequire = false;
         public float factorDamage = 1;
         public float factorSpeed = 1;
         public ChangeWeaponCondition conditionChangeWeapon = ChangeWeaponCondition.NeverChange;
-        [ListDrawerSettings(ShowIndexLabels = true,ListElementLabelName = "nameLabel")]
+        [ListDrawerSettings(ShowIndexLabels = true, ListElementLabelName = "nameLabel")]
         public WeaponGroupIntance[] DatabaseWeapon;
 
         protected bool isShooting = false;
@@ -135,7 +135,7 @@ namespace EazyEngine.Space
                 }
             }
         }
-        
+
         public WeaponInstanceInfo[] InitialWeapons
         {
             get
@@ -157,12 +157,12 @@ namespace EazyEngine.Space
             {
                 ShootStop();
             }
-            for(int i = 0; i < _storageWeapons.Count; ++i)
+            for (int i = 0; i < _storageWeapons.Count; ++i)
             {
-                for(int j =0;j < _storageWeapons[i].Length; ++j)
+                for (int j = 0; j < _storageWeapons[i].Length; ++j)
                 {
                     var pRess = _storageWeapons[i][j].GetComponents<IRespawn>();
-                    foreach(var pRes in pRess)
+                    foreach (var pRes in pRess)
                     {
                         pRes.onRespawn();
                     }
@@ -190,7 +190,10 @@ namespace EazyEngine.Space
                 return _isRandom;
             }
         }
-        public int FixDamage { get => fixDamage; set {
+        public int FixDamage
+        {
+            get => fixDamage; set
+            {
                 if (_storageWeapons != null && value != 0)
                 {
                     for (int j = 0; j < _storageWeapons.Count; ++j)
@@ -201,7 +204,7 @@ namespace EazyEngine.Space
                         }
                     }
                 }
-                for(int i = 0; i < damageOnTouchExtension.Length; ++i)
+                for (int i = 0; i < damageOnTouchExtension.Length; ++i)
                 {
                     var pDamages = damageOnTouchExtension[i].GetComponentsInChildren<DamageOnTouch>();
                     foreach (var pDamage in pDamages)
@@ -213,7 +216,10 @@ namespace EazyEngine.Space
             }
         }
 
-        public int CacheLevelBooster { get => cacheLevelBooster; set {
+        public int CacheLevelBooster
+        {
+            get => cacheLevelBooster; set
+            {
                 cacheLevelBooster = value;
                 EzEventManager.TriggerEvent<MessageGamePlayEvent>(new MessageGamePlayEvent("ChangeBooster", gameObject, value));
             }
@@ -238,12 +244,12 @@ namespace EazyEngine.Space
 
         public void onDamaged(int pDamaged)
         {
-            if(pDamaged  > 0)
+            if (pDamaged > 0)
             {
-                if(startLevelBooster == 6)
+                if (startLevelBooster == 6)
                 {
                     CacheLevelBooster--;
-                    if(CacheLevelBooster <=0)
+                    if (CacheLevelBooster <= 0)
                     {
                         CacheLevelBooster = 0;
                     }
@@ -251,11 +257,11 @@ namespace EazyEngine.Space
                 else
                 {
                     int pLEvel = startLevelBooster - 1;
-                    if(pLEvel <= 0)
+                    if (pLEvel <= 0)
                     {
                         pLEvel = 0;
                     }
-                    booster("Booster"+ pLEvel);
+                    booster("Booster" + pLEvel);
                 }
             }
         }
@@ -308,7 +314,7 @@ namespace EazyEngine.Space
                         var pWeapon = pWeaponInstanced.IntialWeapon;
                         if (pWeaponInstanced.IntialWeapon.transform.parent == null)
                         {
-                            
+
                             pWeapon = Instantiate(pWeaponInstanced.IntialWeapon, pWeaponInstanced.AttachmentWeapon.transform);
                             pWeapon.name = pWeaponInstanced.IntialWeapon.name;
                             weaponPaths.Add(pWeapon, pWeaponInstanced.IntialWeapon);
@@ -363,7 +369,7 @@ namespace EazyEngine.Space
                     }
                 }
             }
-      
+
 
             if (shoortOnStart && !insideScreenRequire)
             {
@@ -376,11 +382,11 @@ namespace EazyEngine.Space
             if (pWeapon.parrentGroup == null) return;
             if (!_currentWeapons.Contains(pWeapon)) return;
             if (!countShooting.Contains(pWeapon)) return;
-            if (countShooting.Count > 0  )
+            if (countShooting.Count > 0)
             {
                 if (name.StartsWith("MainPlane6"))
                 {
-                    Debug.Log("here + "+ countShooting.Count + "a" + _currentWeapons.Count);
+                    Debug.Log("here + " + countShooting.Count + "a" + _currentWeapons.Count);
                 }
 
                 if (pWeapon.parrentGroup.removeOnStop)
@@ -392,7 +398,8 @@ namespace EazyEngine.Space
                     pWeapon.parrentGroup.onStop.Invoke();
                 }
                 countShooting.Remove(pWeapon);
-                if (countShooting.Count != _currentWeapons.Count && name.StartsWith("MainPlane6")) {
+                if (countShooting.Count != _currentWeapons.Count && name.StartsWith("MainPlane6"))
+                {
                     Debug.Log("here");
                 }
 
@@ -403,7 +410,7 @@ namespace EazyEngine.Space
                         ShootStopComon();
                     }
                 }
-                else if(countShooting.Count <= 0)
+                else if (countShooting.Count <= 0)
                 {
                     int pBreak = 0;
                     do
@@ -487,7 +494,7 @@ namespace EazyEngine.Space
             if (_currentWeapons.Count > 0)
             {
                 isShooting = true;
-                for (int i = _currentWeapons.Count -1; i >= 0; --i)
+                for (int i = _currentWeapons.Count - 1; i >= 0; --i)
                 {
                     bool result = _currentWeapons[i].InputStartResult(ref countShooting);
                 }
@@ -581,7 +588,7 @@ namespace EazyEngine.Space
                 _currentWeapons[i].onTrigger(pEvent.stringParameter);
             }
         }
-        public Weapon[] triggerAndGetReactionWeapon(string pTrigger,Blackboard pParentVars = null)
+        public Weapon[] triggerAndGetReactionWeapon(string pTrigger, Blackboard pParentVars = null)
         {
             List<Weapon> pWeapons = new List<Weapon>();
             for (int i = _currentWeapons.Count - 1; i >= 0; --i)
@@ -688,7 +695,7 @@ namespace EazyEngine.Space
                             _currentWeapons.Add(pWeapon);
                             if (isShooting)
                             {
-                                 bool  pResult = pWeapon.InputStartResult(ref countShooting);
+                                bool pResult = pWeapon.InputStartResult(ref countShooting);
                             }
                         }
                     }
@@ -708,7 +715,7 @@ namespace EazyEngine.Space
                     ShootStart();
                 }
             }
-            for(int i = 0; i < handleChilds.Count; ++i)
+            for (int i = 0; i < handleChilds.Count; ++i)
             {
                 handleChilds[i].triggerHandleWepaon(pTrigger);
             }
@@ -745,7 +752,8 @@ namespace EazyEngine.Space
                 bool planSupering = false;
                 string pBoosterString = pID.Remove(0, 7);
                 int pLevelBooster = startLevelBooster;
-                if (!isSupering) {
+                if (!isSupering)
+                {
                     if (startLevelBooster > 0)
                     {
                         factorSpeed -= (startLevelBooster / 2 + startLevelBooster % 2) * 0.2f;
@@ -755,7 +763,7 @@ namespace EazyEngine.Space
                         }
                     }
                 }
-              
+
                 if (!string.IsNullOrEmpty(pBoosterString) && int.TryParse(pBoosterString, out pLevelBooster))
                 {
 
@@ -765,47 +773,41 @@ namespace EazyEngine.Space
                         {
                             planSupering = true;
                             currentDurationSuper = 0;
-                            if (!isSupering)
-                            {
-                                setFactorSpeedWeapon(factorSpeed + (pLevelBooster / 2 + pLevelBooster % 2) * 0.2f + 0.2f);
-                                CacheLevelBooster = startLevelBooster;
-                            }
+                            setFactorSpeedWeapon(factorSpeed + (pLevelBooster / 2 + pLevelBooster % 2) * 0.2f + 0.2f);
+                     
                         }
                         else
                         {
                             setFactorSpeedWeapon(factorSpeed + (pLevelBooster / 2 + pLevelBooster % 2) * 0.2f);
-                        }
-                        startLevelBooster = pLevelBooster;
-                        if (pLevelBooster == 0)
-                        {
-                            triggerChangeWeapon("Booster" + startLevelBooster);
-                            EzEventManager.TriggerEvent(new MessageGamePlayEvent("Normal", gameObject));
-                            EzEventManager.TriggerEvent(new MessageGamePlayEvent("Booster" + startLevelBooster, gameObject));
-                            return;
+                            CacheLevelBooster = pLevelBooster;
 
                         }
+             
+                        startLevelBooster = pLevelBooster;
                     }
-                    else if(pLevelBooster != 6)
+                    else if (pLevelBooster == 6)
+                    {
+                        currentDurationSuper = 0;
+                    }
+                    else
                     {
                         CacheLevelBooster = pLevelBooster;
                     }
-                
-                 
-              
+                  
                 }
                 else
                 {
-                    if(isSupering)
+                    if (isSupering)
                     {
                         CacheLevelBooster++;
-                        if(CacheLevelBooster > 5)
+                        if (CacheLevelBooster > 5)
                         {
                             CacheLevelBooster = 5;
                         }
                         return;
                     }
                     startLevelBooster++;
-           
+
                     if (startLevelBooster > 5)
                     {
                         startLevelBooster = 5;
@@ -813,8 +815,9 @@ namespace EazyEngine.Space
                     CacheLevelBooster = startLevelBooster;
                     setFactorSpeedWeapon(factorSpeed + (startLevelBooster / 2 + startLevelBooster % 2) * 0.2f);
                 }
-       
-                if(!isSupering)
+
+
+                if (!isSupering)
                 {
                     triggerChangeWeapon("Booster" + startLevelBooster);
                     EzEventManager.TriggerEvent(new MessageGamePlayEvent("Booster" + startLevelBooster, gameObject));
@@ -822,16 +825,16 @@ namespace EazyEngine.Space
                 if (planSupering)
                 {
                     isSupering = true;
-              
+
                 }
-                if(!isSupering)
+                if (!isSupering)
                 {
                     EzEventManager.TriggerEvent(new MessageGamePlayEvent("Normal", gameObject));
                 }
             }
         }
 
-       
+
         private void OnEnable()
         {
             if (registerMessEvent)
@@ -851,7 +854,7 @@ namespace EazyEngine.Space
         }
         public void OnEzEvent(MessageGamePlayEvent eventType)
         {
-            if (eventType._objects == null ||( eventType._objects.Length > 0 && (GameObject)eventType._objects[0] == gameObject))
+            if (eventType._objects == null || (eventType._objects.Length > 0 && (GameObject)eventType._objects[0] == gameObject))
             {
                 if (eventType._message.StartsWith("Booster"))
                 {
@@ -869,8 +872,13 @@ namespace EazyEngine.Space
                             startLevelBooster = 3;
                         }
                     }
+                    if (startLevelBooster != 6)
+                    {
+                        CacheLevelBooster = startLevelBooster;
+                    }
                     triggerChangeWeapon("Booster" + startLevelBooster);
-                }else
+                }
+                else
                 if (registerMessGameChangeWeapon)
                 {
                     triggerChangeWeapon(eventType._message);
@@ -895,16 +903,16 @@ namespace EazyEngine.Space
         protected bool isSupering = false;
         private void LateUpdate()
         {
-            if(isSupering)
+            if (isSupering)
             {
                 currentDurationSuper += Time.deltaTime;
-                if(currentDurationSuper > 5)
+                if (currentDurationSuper > 5)
                 {
                     isSupering = false;
                     booster("Booster" + CacheLevelBooster);
                 }
             }
-            if(holdWeapon.Count >0)
+            if (holdWeapon.Count > 0)
             {
                 holdWeapon.Clear();
             }
@@ -912,9 +920,9 @@ namespace EazyEngine.Space
 
         public void OnEzEvent(CharacterChangeState eventType)
         {
-           if(eventType.target!= null && eventType.target.gameObject == gameObject)
+            if (eventType.target != null && eventType.target.gameObject == gameObject)
             {
-                if(eventType.target.CurrentState == StateCharacter.AliveOutSide && isShooting)
+                if (eventType.target.CurrentState == StateCharacter.AliveOutSide && isShooting)
                 {
                     ShootStop();
                 }
