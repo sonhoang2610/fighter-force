@@ -15,6 +15,8 @@ namespace EazyEngine.Space
         [SerializeField]
         private UIElement boxsetting;
         [SerializeField]
+        private BoxStatusPlane boxStatus;
+        [SerializeField]
         protected UI2DSprite dangerImage;
         [SerializeField]
         protected UI2DSprite healImage;
@@ -123,6 +125,12 @@ namespace EazyEngine.Space
             EzEventManager.RemoveListener<UIMessEvent>(this);
             EzEventManager.RemoveListener<MessageGamePlayEvent>(this);
         }
+
+        public void addStatus(string pID,float pDuration)
+        {
+            boxStatus.addStatus(pID, pDuration);
+        }
+
         public void setGoldScore(int pGold)
         {
             goldScore.text = pGold.ToString();
