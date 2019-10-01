@@ -221,12 +221,18 @@ namespace EazyEngine.Space
                 return pRandomTotal / pRandomTotalCoin; 
             }
         }
-
+        protected float cacheVolum;
+        public void turnOnVolume()
+        {
+            AudioListener.volume = cacheVolum;
+        }
         protected override void Awake()
         {
             base.Awake();
- 
-            GameManager.Instance.planNextLevel = false;
+            cacheVolum = AudioListener.volume;
+            AudioListener.volume = 0;
+            Invoke("turnOnVolume", 1);      
+            GameManager.Instance.scehduleUI = ScheduleUIMain.NONE;
             GUIManager.Instance.enableEnergy(false);
             GUIManager.Instance.setBarBooster(0);
             var psate = LoadAssets.loadAsset<GameObject>("States"+ GameManager.Instance.ChoosedLevel + "_" + GameManager.Instance.ChoosedHard, "Variants/States/");

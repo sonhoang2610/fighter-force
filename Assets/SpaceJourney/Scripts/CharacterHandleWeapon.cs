@@ -88,7 +88,7 @@ namespace EazyEngine.Space
         public WeaponGroupIntance[] DatabaseWeapon;
 
         protected bool isShooting = false;
-        protected int countShooting = 0;
+        protected List<Weapon> countShooting = new List<Weapon>();
         [EazyEngine.Tools.ReadOnly]
         [ListDrawerSettings(HideAddButton = true)]
         public List<Weapon> _currentWeapons;
@@ -375,9 +375,14 @@ namespace EazyEngine.Space
         {
             if (pWeapon.parrentGroup == null) return;
             if (!_currentWeapons.Contains(pWeapon)) return;
-            if (countShooting > 0  )
+            if (!countShooting.Contains(pWeapon)) return;
+            if (countShooting.Count > 0  )
             {
-                countShooting--;
+                if (name.StartsWith("MainPlane6"))
+                {
+                    Debug.Log("here + "+ countShooting.Count + "a" + _currentWeapons.Count);
+                }
+
                 if (pWeapon.parrentGroup.removeOnStop)
                 {
                     _currentWeapons.Remove(pWeapon);
@@ -386,16 +391,19 @@ namespace EazyEngine.Space
                 {
                     pWeapon.parrentGroup.onStop.Invoke();
                 }
-          
-            
+                countShooting.Remove(pWeapon);
+                if (countShooting.Count != _currentWeapons.Count && name.StartsWith("MainPlane6")) {
+                    Debug.Log("here");
+                }
+
                 if (conditionChangeWeapon != ChangeWeaponCondition.ChangeWhenAllStopAttack)
                 {
-                    if (countShooting <= 0)
+                    if (countShooting.Count <= 0)
                     {
                         ShootStopComon();
                     }
                 }
-                else if(countShooting <= 0)
+                else if(countShooting.Count <= 0)
                 {
                     int pBreak = 0;
                     do
@@ -419,8 +427,7 @@ namespace EazyEngine.Space
                             _currentWeapons.Add(pWeapon1);
                             if (isShooting)
                             {
-                                countShooting++;
-                                pWeapon1.InputStart();
+                                pWeapon1.InputStartResult(ref countShooting);
                             }
                         }
                     }
@@ -432,10 +439,11 @@ namespace EazyEngine.Space
         public void triggerNotEngough(Weapon pWeapon)
         {
             if (!_currentWeapons.Contains(pWeapon)) return;
+            if (!countShooting.Contains(pWeapon)) return;
             if (conditionChangeWeapon == ChangeWeaponCondition.ChangeWhenNotEnough)
             {
                 _currentWeapons.Remove(pWeapon);
-                countShooting--;
+                countShooting.Remove(pWeapon);
                 if (_currentWeapons.Count == 0)
                 {
                     for (int i = 0; i < _storageWeapons.Count; ++i)
@@ -489,7 +497,7 @@ namespace EazyEngine.Space
         public void ShootStopComon()
         {
             if (_currentWeapons == null) return;
-            countShooting = 0;
+            countShooting.Clear();
             isShooting = false;
             EzEventManager.TriggerEvent(new AttackEvent(AttackStatus.Complete, gameObject));
         }
@@ -642,14 +650,11 @@ namespace EazyEngine.Space
                     }
                 }
             }
-            bool isDisable = false;
             for (int i = _currentWeapons.Count - 1; i >= 0; --i)
             {
                 if (_currentWeapons[i].parrentGroup.triggerToForceDisable.Contains(pTrigger))
                 {
                     _currentWeapons[i].InputStop();
-                    isDisable = true;
-                    // _currentWeapons.RemoveAt(i);
                 }
             }
             result |= TriggerWeaponState.DisableSkill;
@@ -694,7 +699,6 @@ namespace EazyEngine.Space
                 if (_currentWeapons[i].parrentGroup.triggerToForceDisable.Contains(pTrigger))
                 {
                     _currentWeapons[i].InputStop();
-                   // _currentWeapons.RemoveAt(i);
                 }
             }
             if (shoortOnStart && _currentWeapons.Count > 0)

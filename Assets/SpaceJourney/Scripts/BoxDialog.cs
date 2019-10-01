@@ -51,6 +51,13 @@ namespace EazyEngine.Space.UI
             }
         }
 
+        public BoxDialog disableButton(bool pBool)
+        {
+            btn1.gameObject.SetActive(!pBool);
+            btn2.gameObject.SetActive(!pBool);
+            return this;
+        }
+
         public void setButton1Info(ButtonInfo pInfo)
         {
             if(pInfo == null)

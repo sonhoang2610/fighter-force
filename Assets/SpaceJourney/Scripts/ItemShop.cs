@@ -43,6 +43,10 @@ namespace EazyEngine.Space.UI
                 {
                     price.text = value.FormartString.ToString();
                 }
+                if(payment.item.itemID == "IAP")
+                {
+                    price.text = LoadAssets.loadAsset<IAPSetting>("IAPSetting", "Variants/Database/").getInfo(value.itemSell.itemID).Price;
+                }
                 if (itemExchangeIcon)
                 {
                     itemExchangeIcon.sprite2D = payment.item.iconShop;
@@ -78,17 +82,6 @@ namespace EazyEngine.Space.UI
                       //  buttonBuy.isEnabled = false;
                     }
                 }
-                //if (!loadBySelf)
-                //{
-                //    var pShop = LoadAssets.LoadShop(nameTargetShop);
-                //    var pShopItem = pShop.getInfoItem(itemIDToLoad);
-                //    if (pShopItem != null)
-                //    {
-                //        item = pShopItem;
-                //        shop = pShop;
-                //        Data = pShopItem;
-                //    }
-                //}
             }
         }
 

@@ -45,7 +45,7 @@ namespace EazyEngine.Space.UI
 
         public void nextPlay()
         {
-            GameManager.Instance.planNextLevel = true;
+            GameManager.Instance.scehduleUI = ScheduleUIMain.GAME_IMEDIATELY;
             LevelInfoInstance pLevelInfo = GameManager.Instance.container.getLevelInfo(GameManager.Instance.Database.lastPlayStage.x + 1, GameManager.Instance.ChoosedHard);
             if (pLevelInfo.isLocked)
             {
@@ -214,7 +214,16 @@ namespace EazyEngine.Space.UI
 
         public void Replay()
         {
-            GameManager.Instance.planNextLevel = true;
+            GameManager.Instance.scehduleUI = ScheduleUIMain.GAME_IMEDIATELY;
+            PlayerEnviroment.clear();
+            TimeKeeper.Instance.getTimer("Global").TimScale = 1;
+            LevelManger.InstanceRaw = null;
+            SceneManager.Instance.loadScene("Main");
+        }
+
+        public void Upgrade()
+        {
+            GameManager.Instance.scehduleUI = ScheduleUIMain.UPGRADE;
             PlayerEnviroment.clear();
             TimeKeeper.Instance.getTimer("Global").TimScale = 1;
             LevelManger.InstanceRaw = null;

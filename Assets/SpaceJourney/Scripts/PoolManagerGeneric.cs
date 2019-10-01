@@ -135,7 +135,7 @@ public class PoolManagerGeneric<T> : Singleton<T> where T : Component
             var pooler = pObjectNew.AddComponent<SimpleObjectPooler>();
             pooler.onNewGameObjectCreated = (onNewCreateObject);
             pooler.GameObjectToPool = pObject;
-            pooler.PoolSize = 3;
+            pooler.PoolSize =1;
             pooler.FillObjectPool();
             _storage.Add(pObject, new PrefabInfoMain());
             _storage[pObject].pooler = pooler;

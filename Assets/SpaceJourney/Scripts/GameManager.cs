@@ -207,14 +207,19 @@ public class prefabBulletGroup
 {
     public List<GameObject> prefabBullet = new List<GameObject>();
 }
-
+public enum ScheduleUIMain
+{
+    NONE,
+    GAME_IMEDIATELY,
+    UPGRADE
+}
 public class GameManager : PersistentSingleton<GameManager>, EzEventListener<GameDatabaseInventoryEvent>
 {
 
     public List<GameObject> objectExcludes;
     public prefabBulletGroup[] groupPrefabBullet;
     [System.NonSerialized]
-    public bool planNextLevel = false;
+    public ScheduleUIMain scehduleUI = ScheduleUIMain.NONE;
     [System.NonSerialized]
     public bool inGame = false;
     public prefabBulletGroup getGroupPrefab(GameObject pObject)

@@ -132,12 +132,13 @@ namespace EazyEngine.Space.UI {
             }
         }
 
-        public void showDialog(string pTitle,string pContent, ButtonInfo pAction1 =  null, ButtonInfo pAction2 = null)
+        public void showDialog(string pTitle, string pContent, ButtonInfo pAction1 = null, ButtonInfo pAction2 = null, bool showButton = true)
         {
             ((BoxDialog)BoxDialog).Title = pTitle;
             ((BoxDialog)BoxDialog).Content = pContent;
             ((BoxDialog)BoxDialog).setButton1Info(pAction1);
             ((BoxDialog)BoxDialog).setButton2Info(pAction2);
+            ((BoxDialog)BoxDialog).disableButton(!showButton);
             BoxDialog.show();
         }
 
@@ -149,7 +150,11 @@ namespace EazyEngine.Space.UI {
 
         public void showDialogNotEnoughMoney(string pItemNameNotEnough, UnityAction pAction1 = null, UnityAction pAction2 = null)
         {
-            showDialog(I2.Loc.LocalizationManager.GetTranslation("ui/notice"),string.Format( I2.Loc.LocalizationManager.GetTranslation("text/not_enough_money"), pItemNameNotEnough),  new ButtonInfo() {str = "ui/yes",isTag = true,action = pAction1 }, new ButtonInfo() { str = "ui/no", isTag = true, action = pAction2 });
+            showDialog(I2.Loc.LocalizationManager.GetTranslation("ui/notice"),string.Format( I2.Loc.LocalizationManager.GetTranslation("text/not_enough_money"), pItemNameNotEnough),  new ButtonInfo() {str = "ui/yes",isTag = true,action = pAction1 }, new ButtonInfo() { str = "ui/no", isTag = true, action = pAction2 }, true);
+        }
+        public void showDialogNotEnoughCantBuy(string pItemNameNotEnough, UnityAction pAction1 = null, UnityAction pAction2 = null)
+        {
+            showDialog(I2.Loc.LocalizationManager.GetTranslation("ui/notice"), string.Format(I2.Loc.LocalizationManager.GetTranslation("text/not_enough_cant_buy"), pItemNameNotEnough), new ButtonInfo() { str = "ui/yes", isTag = true, action = pAction1 }, new ButtonInfo() { str = "ui/no", isTag = true, action = pAction2 }, false);
         }
         // Start is called before the first frame update
         void Start()

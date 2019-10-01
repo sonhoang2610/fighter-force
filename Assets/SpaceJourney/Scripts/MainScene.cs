@@ -280,11 +280,14 @@ namespace EazyEngine.Space.UI
                 nameUser.text = "GUEST";
                 idUser.text = "UNKNOW";
             }
-            if (GameManager.Instance.planNextLevel)
+            if (GameManager.Instance.scehduleUI == ScheduleUIMain.GAME_IMEDIATELY)
             {
                 choosedMap();
                 StartCoroutine(delayAction(0.25f, preparePlay));
-            }   
+            }else if(GameManager.Instance.scehduleUI == ScheduleUIMain.UPGRADE)
+            {
+                upgrade();
+            }
         }
 
 

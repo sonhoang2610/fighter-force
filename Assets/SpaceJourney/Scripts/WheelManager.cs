@@ -108,7 +108,7 @@ namespace EazyEngine.Space.UI
             limit.text = GameManager.Instance.Database.CurrentWheelToday.ToString() + "/"+ "10";
             exp.text = GameManager.Instance.Database.CurrentExpWheel.ToString() + "/" + GameDatabase.Instance.WheelLevelExp[GameManager.Instance.Database.CurrentLevelWheel + 1].ToString();
             expprocess.fillAmount = (float)GameManager.Instance.Database.CurrentExpWheel / (float)GameDatabase.Instance.WheelLevelExp[GameManager.Instance.Database.CurrentLevelWheel + 1];
-            level.text = GameManager.Instance.Database.CurrentLevelWheel.ToString();
+            level.text = (GameManager.Instance.Database.CurrentLevelWheel+1).ToString();
         }
 
         public void onStopRoll()
@@ -181,7 +181,7 @@ namespace EazyEngine.Space.UI
             limit.text = GameManager.Instance.Database.CurrentWheelToday.ToString() + "/" + "10";
             exp.text = GameManager.Instance.Database.CurrentExpWheel.ToString() + "/" + GameDatabase.Instance.WheelLevelExp[GameManager.Instance.Database.CurrentLevelWheel + 1].ToString();
             expprocess.fillAmount = (float)GameManager.Instance.Database.CurrentExpWheel / (float)GameDatabase.Instance.WheelLevelExp[GameManager.Instance.Database.CurrentLevelWheel + 1];
-            level.text = GameManager.Instance.Database.CurrentLevelWheel.ToString();
+            level.text = (GameManager.Instance.Database.CurrentLevelWheel+1).ToString();
            // btnRoll.isEnabled = pItemExchange.Quantity > 0 ||(GameManager.Instance.Database.CurrentWheelToday < 10  && pItemCoin.Quantity >=  GameDatabase.Instance.ConfigWheelGold[GameManager.Instance.Database.CurrentWheelToday]);
             layerTicket.gameObject.SetActive(false);
             layerGold.gameObject.SetActive(false);

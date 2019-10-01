@@ -11,7 +11,6 @@ public class CropCamera : MonoBehaviour
     public void cropCamera()
     {
       var pCam =  GetComponent<Camera>();
-        Debug.Log(pCam.rect);
         var pRoot = root.GetComponent<UIRoot>();
         var pRealRatio = (float)realRatio.x / (float)realRatio.y;
         float ratio = root.GetViewSize().x / root.GetViewSize().y;

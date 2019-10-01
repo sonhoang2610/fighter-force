@@ -3,6 +3,7 @@ using NodeCanvas.BehaviourTrees;
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace EazyEngine.Space{
@@ -27,12 +28,19 @@ namespace EazyEngine.Space{
             }
             if (eventType._owner == graphAgent.gameObject)
             {
+                for (int i = 0; i < eventType.Variables.Count; ++i)
+                {
+                    if (!graph.blackboard.variables.ContainsKey(eventType.Variables.ElementAt(i).Key))
+                    {
+                        graph.blackboard.AddVariable(eventType.Variables.ElementAt(i).Key, eventType.Variables.ElementAt(i).Value);
+                    }
+                    else
+                    {
+                        graph.blackboard.SetValue(eventType.Variables.ElementAt(i).Key, eventType.Variables.ElementAt(i).Value);
+                    }
+                }
                 events.Add(eventType);
             }           
-        }
-        protected override void OnNodePicked()
-        {
-            base.OnNodePicked();
         }
         protected override Status OnExecute(Component agent, IBlackboard blackboard)
         {

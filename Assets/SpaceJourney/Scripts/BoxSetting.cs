@@ -36,7 +36,7 @@ namespace EazyEngine.Space.UI
 
         public void replay()
         {
-            GameManager.Instance.planNextLevel = true;
+            GameManager.Instance.scehduleUI = ScheduleUIMain.GAME_IMEDIATELY;
             PlayerEnviroment.clear();
             Time.timeScale = 1;
             LevelManger.InstanceRaw = null;
