@@ -17,13 +17,12 @@ namespace EazyEngine.Space.UI
         public UIScrollView scroll;
         public ItemInventorySlotRequire slot;
         public UILabel[] priceLabels;
-        public UILabel priceLabelsOneWay;
-        public UILabel labelRequire;
+	    public UILabel labelRequire;
 	    public GameObject attachMentSorting;
         public GameObject boxRank;
         public GameObject layerAbleUpgradePlane;
         public GameObject layerLimitSkillPlane;
-        public GameObject layerOneWay, layerTwoWay;
+
         public void OnEzEvent(UIMessEvent eventType)
         {
             if (eventType.Event.StartsWith("ChangeLanguage"))
@@ -64,6 +63,8 @@ namespace EazyEngine.Space.UI
                 des.text = value.Info.Desc;
  
                 boxSkill.targetShop = targetShopUpgradeSkill;
+                Debug.Log("Plane Name :" + value.Info.displayNameItem.value);
+                Debug.Log("Skill Count :" + value.Info.skills.Count);
                 List<SkillInfoInstanced> pDatas = new List<SkillInfoInstanced>();
                 for(int i = 0; i < value.Info.skills.Count; ++i)
                 {
@@ -107,31 +108,10 @@ namespace EazyEngine.Space.UI
                  
                     var pItem = pShop.getInfoItem(value.info.itemID);
                     var paymentInfos = pItem.getPrice(value.CurrentLevel + 1);
-                    layerOneWay.gameObject.SetActive(false);
-                    layerTwoWay.gameObject.SetActive(false);
-                    if (paymentInfos.Length > 1)
+                    for (int i = 0; i < priceLabels.Length; ++i)
                     {
-                        layerTwoWay.gameObject.SetActive(true);
-                        for (int i = 0; i < priceLabels.Length; ++i)
-                        {
-                            priceLabels[i].text = paymentInfos[i][0].quantity.ToString();
-                        }
+                        priceLabels[i].text = paymentInfos[i][0].quantity.ToString();
                     }
-                    else if (paymentInfos.Length == 1)
-                    {
-                        layerOneWay.gameObject.SetActive(true);
-                        if (paymentInfos[0][0].item.categoryItem == CategoryItem.IAP)
-                        {
-                            var shop = LoadAssets.loadAsset<IAPSetting>("IAPSetting", "Variants/Database/");
-                            priceLabelsOneWay.text = shop.getInfo(paymentInfos[0][0].item.itemID).Price;
-                        }
-                        else
-                        {
-                            priceLabelsOneWay.text = paymentInfos[0][0].quantity.ToString();
-                        }
-                    
-                    }
-             
                     bool pUprank = false;
                     int requireCraft = 0;
                     if(paymentInfos[0].Length > 1)

@@ -83,6 +83,7 @@ namespace EazyEngine.Space
         public int CurrentLevel { get => currentLevel;
             set {
                 currentLevel = value;
+                Debug.Log(itemID);
                 for(int i = 0; i < VariableDict.Count; ++i)
                 {
                     if (VariableDict.Values.ElementAt(i) == null) continue;

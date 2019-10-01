@@ -32,7 +32,6 @@ namespace EazyEngine.Space
             if (!currentShield)
             {
                 currentShield = Instantiate(shieldObject);
-                currentShield.SetActive(false);
             }
             currentDuration = duration;
             currentShield.transform.position = transform.position;
@@ -60,7 +59,6 @@ namespace EazyEngine.Space
             if (!pShield.currentShield)
             {
                 pShield.currentShield = Instantiate(pShield.shieldObject);
-                pShield.currentShield.gameObject.SetActive(false);
             }
             pShield.currentDuration = pShield.duration;
             pShield.currentShield.transform.position = transform.position;

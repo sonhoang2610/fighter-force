@@ -91,17 +91,5 @@ namespace EazyEngine.Tools
     {
         [ListDrawerSettings(ShowIndexLabels =true,ListElementLabelName = "Name")]
         public IAPItem[] items;
-
-        public IAPItem getInfo(string itemId)
-        {
-            for(int i = 0; i < items.Length; ++i)
-            {
-                if (items[i].Id.ToLower() == itemId.ToLower())
-                {
-                    return items[i];
-                }
-            }
-            return null;
-        }
     }
 }

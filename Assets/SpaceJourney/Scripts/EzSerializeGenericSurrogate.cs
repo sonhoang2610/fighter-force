@@ -15,7 +15,9 @@ public class EzSerializeGenericSurrogate<T> : ISerializationSurrogate where T : 
     public virtual void GetObjectData(object obj, SerializationInfo info, StreamingContext context)
     {
         T pMainObject = (T)obj;
+        Debug.Log(pMainObject);
         string path = DatabaseReference.Instance.getUnique(pMainObject);
+        Debug.Log(path);
         info.AddValue("path", path);
         //var pFields =  pMainObject.GetType().GetFields().Where(field => ((field.IsDefined(typeof(EzSerializeField), false) || field.IsPublic) && ((!field.FieldType.IsArray && !field.FieldType.IsSubclassOf(typeof(EzScriptTableObject))) || (field.FieldType.IsArray && !field.FieldType.GetElementType().IsSubclassOf(typeof(EzScriptTableObject))))));
         //foreach(var pField in pFields)
