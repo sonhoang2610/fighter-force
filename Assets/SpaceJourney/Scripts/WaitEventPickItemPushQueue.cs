@@ -30,10 +30,6 @@ namespace EazyEngine.Space{
                 events.Add(eventType);
             }           
         }
-        protected override void OnNodePicked()
-        {
-            base.OnNodePicked();
-        }
         protected override Status OnExecute(Component agent, IBlackboard blackboard)
         {
             if (!init)
