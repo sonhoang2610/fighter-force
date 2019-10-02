@@ -44,7 +44,7 @@ namespace EazyEngine.Space.UI
              
                 base.Data = value;
                 icon.sprite2D = value.item.CateGoryIcon;
-                quantity.text = value.Quantity.ToString();
+                quantity.text = StringUtils.addDotMoney(value.quantity);
                 if (iconCateGory)
                 {
                     if (value.item.categoryItem == CategoryItem.CRAFT)

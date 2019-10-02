@@ -825,6 +825,7 @@ namespace EazyEngine.Space
                 if (planSupering)
                 {
                     isSupering = true;
+                    GUIManager.Instance.addStatus("Super",5- currentDurationSuper);
 
                 }
                 if (!isSupering)

@@ -74,10 +74,7 @@ namespace EazyEngine.Space.UI
                 GameManager.Instance.wincount++;
                 win.SetActive(true);
                 lose.SetActive(false);
-                LevelManger.Instance._infoLevel.score += (600- (int)LevelManger.Instance.CurrentTime.TotalSeconds)*50 + LevelManger.Instance._infoLevel.goldTaken*5 + LevelManger.Instance.CurrentPlayer._health.CurrentHealth*3;
- 
-           
-              
+                LevelManger.Instance._infoLevel.score += (600- (int)LevelManger.Instance.CurrentTime.TotalSeconds)*50 + LevelManger.Instance._infoLevel.goldTaken*5 + LevelManger.Instance.CurrentPlayer._health.CurrentHealth*3;       
                 for (int i = 0; i < LevelManger.Instance._infoLevel.missions.Count; ++i)
                 {
                     var pNode = new EazyNode()
@@ -127,7 +124,11 @@ namespace EazyEngine.Space.UI
                     GameManager.Instance.SaveGame();
                     GameManager.Instance.SaveLevel();
                 }
-              
+            }
+            else
+            {
+                GameManager.Instance.Database.getComonItem("Coin").Quantity += LevelManger.Instance._infoLevel.goldTaken;
+                GameManager.Instance.SaveGame();
             }
         }
 
@@ -142,7 +143,6 @@ namespace EazyEngine.Space.UI
                     pItem.Quantity += LevelManger.Instance._infoLevel.goldTaken;
                     GameManager.Instance.SaveGame();
                 }
-                Debug.Log("Watach X2 " + pSucess.ToString());
             });
         }
         protected int scoreCount;

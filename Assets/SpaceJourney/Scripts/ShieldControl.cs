@@ -39,6 +39,7 @@ namespace EazyEngine.Space
             if (currentShield && !currentShield.activeSelf)
             {
                 invu++;
+                GUIManager.Instance.addStatus("Shield", duration);
             }
             currentShield.gameObject.SetActive(true);
             var pPos = currentShield.GetComponent<PositionConstraint>();
