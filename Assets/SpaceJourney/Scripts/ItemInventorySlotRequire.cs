@@ -31,6 +31,7 @@ namespace EazyEngine.Space.UI
         public ItemRequireInfoUnityEvent onFillData;
         public UILabel labelTimer;
         protected bool isAddTimer = false;
+        bool addLabel;
         public override void reloadData()
         {
             Data = new ItemRequireInfo().convertFromBaseItemGameInstanced(GameManager.Instance.Database.getComonItem(Data.item));
@@ -50,6 +51,7 @@ namespace EazyEngine.Space.UI
                     {
                         labelTimer.gameObject.SetActive(true);
                         pTime.LabelTimer.Add(labelTimer);
+                        addLabel = true;
                     }
                     isAddTimer = GameManager.Instance.addTimer(pTime);
                 }
@@ -76,6 +78,7 @@ namespace EazyEngine.Space.UI
                         {
                             labelTimer.gameObject.SetActive(true);
                             pTime.LabelTimer.Add(labelTimer);
+                            addLabel = true;
                         }
                         isAddTimer = GameManager.Instance.addTimer(pTime);
                     }
@@ -94,6 +97,11 @@ namespace EazyEngine.Space.UI
                 {                  
                     GameManager.Instance.removeTimer(pTime);
                 }
+            }
+            if (labelTimer)
+            {
+                var pTime = GameManager.Instance.Database.getTimerCountdownRestoreModule(Data.item);
+                pTime.LabelTimer.Remove(labelTimer);
             }
         }
         public override ItemRequireInfo Data { get => base.Data; set {
