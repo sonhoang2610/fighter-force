@@ -27,7 +27,7 @@ namespace EazyEngine.Space.UI
                 base.Data = value;
                 int randomIndex = Random.Range(0, value.infos.Length);
                 icon .sprite2D= value.infos[randomIndex].item.CateGoryIcon;
-                quantity.text = "X " + value.infos[randomIndex].Quantity.ToString();
+                quantity.text = "X " + StringUtils.addDotMoney( value.infos[randomIndex].Quantity);
                 if (rate)
                 {
                     rate.text = (value.infos[randomIndex].percent ).ToString() + "%";
@@ -40,7 +40,7 @@ namespace EazyEngine.Space.UI
             if (isFixed) return;
             int randomIndex = Random.Range(0, Data.infos.Length);
             icon.sprite2D = Data.infos[randomIndex].item.CateGoryIcon;
-            quantity.text = "X " + Data.infos[randomIndex].Quantity.ToString();
+            quantity.text = "X " + StringUtils.addDotMoney( Data.infos[randomIndex].Quantity);
         }
 
 

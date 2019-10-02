@@ -65,7 +65,7 @@ namespace EazyEngine.Space
         }
         public override ItemGiftOnlineInfo Data { get { return base.Data; } set {
                 iconItem.mainTexture = value.mainData.item.iconShop.texture;
-                quantity.text = value.mainData.quantity.ToString();
+                quantity.text = StringUtils.addDotMoney( value.mainData.quantity);
                 iconCateGory.sprite2D = value.mainData.item.CateGoryIcon;
                 iconStatus.sprite2D = statusSprites[value.status];
                 if (value.isNext)
