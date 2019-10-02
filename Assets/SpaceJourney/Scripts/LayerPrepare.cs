@@ -17,7 +17,7 @@ namespace EazyEngine.Space.UI
         public override MapInfoInstanced Data { get => base.Data; set {
                 base.Data = value;
                 level.text = "[FFDC00]MAP " + value.level.ToString()+":[-]" + value.nameMap;
-                highScore.text = value.highScore.ToString();
+                highScore.text = StringUtils.addDotMoney( value.highScore);
             }
         }
         private void OnEnable()

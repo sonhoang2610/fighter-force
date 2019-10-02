@@ -87,7 +87,7 @@ namespace EazyEngine.Space.UI
                 for (int j = 0; j < paymentInfos[i].Length; ++j)
                 {
                     infoTrade[i].items[j].quantity.gameObject.SetActive(true);
-                    infoTrade[i].items[j].quantity.text =( paymentInfos[i][j].isRequire ? I2.Loc.LocalizationManager.GetTranslation("text/require") : "" ) + " "+  paymentInfos[i][j].quantity.ToString();
+                    infoTrade[i].items[j].quantity.text =( paymentInfos[i][j].isRequire ? I2.Loc.LocalizationManager.GetTranslation("text/require") : "" ) + " "+ StringUtils.addDotMoney( paymentInfos[i][j].quantity);
                     infoTrade[i].items[j].exchangeIcon.sprite2D = paymentInfos[i][j].item.iconShop;
                 }
             }

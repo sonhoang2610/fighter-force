@@ -25,7 +25,7 @@ namespace EazyEngine.Space
         [SerializeField]
         protected UI2DSprite EnergyBar;
         [SerializeField]
-        protected UI2DSprite BoosterBar;
+        protected ProgressBarInt BoosterBar;
         [SerializeField]
         protected UI2DSprite iconPlane;
         [SerializeField]
@@ -80,9 +80,9 @@ namespace EazyEngine.Space
             tweenEnergy = DOTween.To(() => EnergyBar.fillAmount, x => EnergyBar.fillAmount = x, 0, cooldown).From(1);
             tweenEnergy.Play();
         }
-        public void setBarBooster(float percent)
+        public void setBarBooster(int percent)
         {
-            BoosterBar.fillAmount = percent;
+            BoosterBar.setProcessInt(percent);
         }
         public void stopDrag()
         {

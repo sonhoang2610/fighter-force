@@ -114,7 +114,7 @@ namespace EazyEngine.Space.UI
                         layerTwoWay.gameObject.SetActive(true);
                         for (int i = 0; i < priceLabels.Length; ++i)
                         {
-                            priceLabels[i].text = paymentInfos[i][0].quantity.ToString();
+                            priceLabels[i].text = StringUtils.addDotMoney(paymentInfos[i][0].quantity);
                         }
                     }
                     else if (paymentInfos.Length == 1)
@@ -127,7 +127,7 @@ namespace EazyEngine.Space.UI
                         }
                         else
                         {
-                            priceLabelsOneWay.text = paymentInfos[0][0].quantity.ToString();
+                            priceLabelsOneWay.text = StringUtils.addDotMoney( paymentInfos[0][0].quantity);
                         }
                     
                     }

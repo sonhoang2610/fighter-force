@@ -414,7 +414,7 @@ namespace EazyEngine.Space
                 TimeKeeper.Instance.getTimer("Global").TimScale = 0;
             }else if (eventType._message.StartsWith("ChangeBooster") && (GameObject)eventType._objects[0] == CurrentPlayer.gameObject)
             {
-                GUIManager.Instance.setBarBooster((float)((int)eventType._objects[1]) / 5);
+                GUIManager.Instance.setBarBooster((int)eventType._objects[1]);
             }
         }
 

@@ -46,6 +46,21 @@ namespace EazyEngine.Space
         public System.DateTime lastimeWheelFree;
         [System.NonSerialized]
         public object tartget;
+        [System.NonSerialized]
+        protected List<UILabel> labeltimers = new List<UILabel>();
+        public List<UILabel> LabelTimer
+        {
+            get {
+                if(labeltimers == null)
+                {
+                    labeltimers = new List<UILabel>();
+                }
+                return labeltimers;
+            }
+            set {
+                labeltimers = value;
+            }
+        }
     }
 
     public static class GameDataBaseSupport
@@ -175,7 +190,8 @@ namespace EazyEngine.Space
         public System.DateTime lastGoldWheel;
         [HideInInspector]
         public int currentWheelToday = 0;
-        [HideInInspector]
+     //   [HideInInspector]
+        [SerializeField]
         public List<TimeCountDown> timers = new List<TimeCountDown>();
 
         public List<BaseItemGameInstanced> items = new List<BaseItemGameInstanced>();

@@ -13,7 +13,7 @@ namespace EazyEngine.Space.UI
         public override AbilityConfig Data { get => base.Data; set {
                 base.Data = value;
                 label.text = value._ability.displayNameItem.Value;
-                current.text = value.CurrentUnit.ToString();
+                current.text = StringUtils.addDotMoney( value.CurrentUnit);
                 var percent = (float)value.CurrentUnit / (float)value.limitUnit;
                 DOTween.To(() => process.fillAmount, x => process.fillAmount = x, percent, 0.25f);
             } }

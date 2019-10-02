@@ -29,6 +29,7 @@ namespace EazyEngine.Space.UI
     public class ItemInventorySlotRequire : ItemInventorySlotGeneric<ItemRequireInfo>
     {
         public ItemRequireInfoUnityEvent onFillData;
+        public UILabel labelTimer;
         protected bool isAddTimer = false;
         public override void reloadData()
         {
@@ -38,11 +39,18 @@ namespace EazyEngine.Space.UI
         {
             base.Start();
             isAddTimer = false;
+            if (labelTimer)
+                labelTimer.gameObject.SetActive(false);
             if (Data != null && Data.item != null && Data.item.limitModule != null)
             {
                 var pTime = GameManager.Instance.Database.getTimerCountdownRestoreModule(Data.item);
                 if (pTime != null)
                 {
+                    if (labelTimer && !pTime.LabelTimer.Contains(labelTimer))
+                    {
+                        labelTimer.gameObject.SetActive(true);
+                        pTime.LabelTimer.Add(labelTimer);
+                    }
                     isAddTimer = GameManager.Instance.addTimer(pTime);
                 }
             }
@@ -55,12 +63,20 @@ namespace EazyEngine.Space.UI
              
                 reloadData();
                 isAddTimer = false;
+                if (labelTimer)
+                     labelTimer.gameObject.SetActive(false);
                 if (Data != null && Data.item != null && Data.item.limitModule != null)
                 {
                     GameManager.Instance.Database.reupdateTimerCount();
                     var pTime = GameManager.Instance.Database.getTimerCountdownRestoreModule(Data.item);
+               
                     if (pTime != null)
                     {
+                        if (labelTimer && !pTime.LabelTimer.Contains(labelTimer))
+                        {
+                            labelTimer.gameObject.SetActive(true);
+                            pTime.LabelTimer.Add(labelTimer);
+                        }
                         isAddTimer = GameManager.Instance.addTimer(pTime);
                     }
                 }
@@ -75,7 +91,7 @@ namespace EazyEngine.Space.UI
             {
                 var pTime = GameManager.Instance.Database.getTimerCountdownRestoreModule(Data.item);
                 if (pTime != null)
-                {
+                {                  
                     GameManager.Instance.removeTimer(pTime);
                 }
             }

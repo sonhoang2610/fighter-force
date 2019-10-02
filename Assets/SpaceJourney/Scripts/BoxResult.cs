@@ -153,7 +153,7 @@ namespace EazyEngine.Space.UI
         public void setScore(int pScore)
         {
             scoreCount = pScore;
-            this.score.text = pScore.ToString();
+            this.score.text =StringUtils.addDotMoney(pScore);
         }
         public void onFinishNode(EazyNode pNode)
         {

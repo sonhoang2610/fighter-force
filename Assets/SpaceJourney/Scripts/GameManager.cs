@@ -243,14 +243,14 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         get
         {
             int levelUnlock = 0;
-            for(int i = 0;i < container.levels.Count; ++i)
+            for (int i = 0; i < container.levels.Count; ++i)
             {
-                if(container.levels[i].level > levelUnlock && !container.levels[i].isLocked)
+                if (container.levels[i].level > levelUnlock && !container.levels[i].isLocked)
                 {
                     levelUnlock = container.levels[i].level;
                 }
             }
-            if(levelUnlock == 0)
+            if (levelUnlock == 0)
             {
                 for (int i = 0; i < container.levels.Count; ++i)
                 {
@@ -265,7 +265,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         }
         set
         {
-            if(value> CurrentLevelUnlock)
+            if (value > CurrentLevelUnlock)
             {
                 for (int i = 0; i < container.levels.Count; ++i)
                 {
@@ -365,59 +365,73 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
 
     public LevelConfig ConfigLevel { get => configLevel; set => configLevel = value; }
     protected FileStream fileSaveGame;
+
+    protected bool saveGameAgain = false;
+
+    protected float delaySave = 0;
     [Button("Save Game")]
     [HideInEditorMode]
     public void SaveGame()
     {
-        if (fileSaveGame != null)
+        if (delaySave > 0)
         {
-            fileSaveGame.Close();
-            fileSaveGame = null;
+            saveGameAgain = true;
+            return;
+        }
+        else
+        {
+            saveGameAgain = false;
+            delaySave = 0.1f;
         }
         try
         {
-        
+
             string destination = Application.persistentDataPath + "/GameInfo.dat";
             if (File.Exists(destination)) fileSaveGame = File.OpenWrite(destination);
             else fileSaveGame = File.Create(destination);
             if (fileSaveGame != null)
             {
-                var formatter = new BinaryFormatter();
-                SurrogateSelector ss = new SurrogateSelector();
-                PlaneInfoSerialize planeinfo = new PlaneInfoSerialize();
-                ss.AddSurrogate(typeof(PlaneInfo),
-                                new StreamingContext(StreamingContextStates.All),
-                                planeinfo);
-                BaseItemSerialize baseInfo = new BaseItemSerialize();
-                ss.AddSurrogate(typeof(BaseItemGame),
-                                new StreamingContext(StreamingContextStates.All),
-                                baseInfo);
-                ItemGameSerialize iteomGameInfo = new ItemGameSerialize();
-                ss.AddSurrogate(typeof(ItemGame),
-                                new StreamingContext(StreamingContextStates.All),
-                                iteomGameInfo);
-                SkillInfoSerialize skill = new SkillInfoSerialize();
-                ss.AddSurrogate(typeof(SkillInfo),
-                                new StreamingContext(StreamingContextStates.All),
-                                skill);
-                PackageInfoSerialize pack = new PackageInfoSerialize();
-                ss.AddSurrogate(typeof(ItemPackage),
-                                new StreamingContext(StreamingContextStates.All),
-                                pack);
-                // 2. Have the formatter use our surrogate selector
-                formatter.SurrogateSelector = ss;
-
-                formatter.Serialize(fileSaveGame, _databaseInstanced);
-
+                //using (var memoryStream = new MemoryStream())
+                //{
+                    // Serialize to memory instead of to file
+                    var formatter = new BinaryFormatter();
+                    SurrogateSelector ss = new SurrogateSelector();
+                    PlaneInfoSerialize planeinfo = new PlaneInfoSerialize();
+                    ss.AddSurrogate(typeof(PlaneInfo),
+                                    new StreamingContext(StreamingContextStates.All),
+                                    planeinfo);
+                    BaseItemSerialize baseInfo = new BaseItemSerialize();
+                    ss.AddSurrogate(typeof(BaseItemGame),
+                                    new StreamingContext(StreamingContextStates.All),
+                                    baseInfo);
+                    ItemGameSerialize iteomGameInfo = new ItemGameSerialize();
+                    ss.AddSurrogate(typeof(ItemGame),
+                                    new StreamingContext(StreamingContextStates.All),
+                                    iteomGameInfo);
+                    SkillInfoSerialize skill = new SkillInfoSerialize();
+                    ss.AddSurrogate(typeof(SkillInfo),
+                                    new StreamingContext(StreamingContextStates.All),
+                                    skill);
+                    PackageInfoSerialize pack = new PackageInfoSerialize();
+                    ss.AddSurrogate(typeof(ItemPackage),
+                                    new StreamingContext(StreamingContextStates.All),
+                                    pack);
+     
+                    // 2. Have the formatter use our surrogate selector
+                    formatter.SurrogateSelector = ss;
+                    formatter.Serialize(fileSaveGame, _databaseInstanced);
             }
         }
-        catch(System.Exception e)
+        catch (System.Exception e)
         {
             Debug.Log(e);
-        }finally{
+        }
+        finally
+        {
             if (fileSaveGame != null)
             {
-                fileSaveGame.Close();
+                fileSaveGame.Flush();
+                fileSaveGame.Close();            
                 fileSaveGame = null;
             }
         }
@@ -442,6 +456,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             file = File.OpenRead(destination);
             if (file != null)
             {
+
                 var formatter = new BinaryFormatter();
                 SurrogateSelector ss = new SurrogateSelector();
                 PlaneInfoSerialize planeinfo = new PlaneInfoSerialize();
@@ -657,7 +672,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             pEnergy.Quantity--;
         }
         //  Database.selectedMainPlane = 6;
-        Database.lastPlayStage = new Pos(pIndex,GameManager.Instance.ChoosedHard);
+        Database.lastPlayStage = new Pos(pIndex, GameManager.Instance.ChoosedHard);
         var pInfo = container.getLevelInfo(pIndex, 0).infos;
         pInfo.InputConfig = ConfigLevel;
         isPlaying = true;
@@ -683,12 +698,28 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     private void Update()
     {
         if (first) return;
+        if(delaySave> 0)
+        {
+            delaySave = Time.deltaTime;
+            if (delaySave <= 0)
+            {
+                if (saveGameAgain)
+                {
+                    SaveGame();
+                }
+            }
+        }
         for (int i = timer.Count - 1; i >= 0; --i)
         {
 
             if (timer[i].tartget == null) { timer.RemoveAt(i); continue; }
             var pSec = (System.DateTime.Now - timer[i].lastimeWheelFree).TotalSeconds;
+
             var pItem = (BaseItemGame)timer[i].tartget;
+            foreach (var pLabel in timer[i].LabelTimer)
+            {
+                pLabel.text = System.TimeSpan.FromSeconds(pItem.limitModule.timeToRestore - pSec).ToString(@"hh\:mm\:ss");
+            }
             if (pSec >= pItem.limitModule.timeToRestore)
             {
                 GameManager.Instance.Database.reupdateTimerCount();
@@ -949,12 +980,14 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     {
         if (eventType.item.item.limitModule != null && eventType.item.item.limitModule.isRestoreAble)
         {
+            bool dirty = false;
             if (eventType.item.changeQuantity < 0)
             {
                 bool pCounting = GameManager.Instance.Database.checkTimerCountdownResotreModule(eventType.item.item);
                 if (!pCounting)
                 {
                     GameManager.Instance.Database.timers.Add(new TimeCountDown() { key = "MainInventory/" + eventType.item.item.itemID, lastimeWheelFree = System.DateTime.Now });
+                    dirty = true;
                 }
             }
             if (eventType.item.quantity >= eventType.item.item.limitModule.limitInInventory)
@@ -964,10 +997,19 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                     var pTime = GameManager.Instance.Database.timers[i];
                     if (pTime.key == "MainInventory/" + eventType.item.item.itemID)
                     {
-                        GameManager.Instance.Database.timers.Remove(pTime);
+                        foreach (var pLabel in pTime.LabelTimer)
+                        {
+                            pLabel.gameObject.SetActive(false);
+                        }
+                        GameManager.Instance.Database.timers.Remove(pTime);                    
                         GameManager.Instance.removeTimer(pTime);
+                        dirty = true;
                     }
                 }
+            }
+            if (dirty)
+            {
+                GameManager.Instance.SaveGame();
             }
         }
     }
