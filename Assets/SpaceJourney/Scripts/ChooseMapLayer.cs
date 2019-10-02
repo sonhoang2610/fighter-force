@@ -136,10 +136,15 @@ namespace EazyEngine.Space.UI
                 if (GameManager.Instance.Database.lastPlayStage.x == 0)
                 {
                     GameManager.Instance.Database.lastPlayStage = new Pos(1, GameManager.Instance.ChoosedHard);
+         
                 }
                 if (GameManager.Instance.Database.lastPlayStage.x > 5)
                 {
                     GetComponentInChildren<UICenterOnChild>().CenterOn(items[GameManager.Instance.Database.lastPlayStage.x - 1].transform);
+                }
+                else
+                {
+                    GetComponentInChildren<UICenterOnChild>().enabled = false;
                 }
                 firstLateUpdate = false;
             }
