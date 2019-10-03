@@ -116,7 +116,10 @@ public class SoundManager : PersistentSingleton<SoundManager>
         }
         // if we already had a background music playing, we stop it
         if (_backgroundMusic != null)
+        {
+            _backgroundMusic.clip.UnloadAudioData();
             _backgroundMusic.Stop();
+        }
         // we set the background music clip
         _backgroundMusic = Music;
         // we set the music's volume
@@ -177,11 +180,11 @@ public class SoundManager : PersistentSingleton<SoundManager>
 
     private void LateUpdate()
     {
-        if (_backgroundMusic && MusicOn && !_backgroundMusic.isPlaying)
-        {
-            AudioSource oldMusic = _backgroundMusic;
-            _backgroundMusic = Instantiate(_backgroundMusic.gameObject, _backgroundMusic.transform.parent).GetComponent<AudioSource>();
-            Destroy(oldMusic.gameObject);
-        }
+        //if (_backgroundMusic && MusicOn && !_backgroundMusic.isPlaying)
+        //{
+        //    AudioSource oldMusic = _backgroundMusic;
+        //    _backgroundMusic = Instantiate(_backgroundMusic.gameObject, _backgroundMusic.transform.parent).GetComponent<AudioSource>();
+        //    Destroy(oldMusic.gameObject);
+        //}
     }
 }

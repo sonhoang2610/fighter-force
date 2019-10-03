@@ -4793,6 +4793,7 @@ GameObject:
   - component: {fileID: 19895602}
   - component: {fileID: 19938356}
   - component: {fileID: 1314195135946803734}
+  - component: {fileID: 1244009457214488237}
   m_Layer: 0
   m_Name: BeamLaserEndPurple
   m_TagString: Untagged
@@ -4809,7 +4810,7 @@ Transform:
   m_GameObject: {fileID: 169194}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -10.868, y: 4.38, z: -0.0053438344}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 444480}
   - {fileID: 488084}
@@ -9534,6 +9535,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orderLayer: 4
+--- !u!114 &1244009457214488237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aeda789381d84c49be952b5d7ab0e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audios:
+  - {fileID: 8300000, guid: cb790af9385b6234988ca29931707c1b, type: 3}
+  randomAudio:
+    x: 0
+    y: 0
+  backGroundMusic: {fileID: 0}
+  playOnAwake: 1
+  isLoop: 1
+  delay: 0
 --- !u!1 &178368
 GameObject:
   m_ObjectHideFlags: 0

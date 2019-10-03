@@ -222,6 +222,8 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     public ScheduleUIMain scehduleUI = ScheduleUIMain.NONE;
     [System.NonSerialized]
     public bool inGame = false;
+	public AudioSource[] backgroundStage;
+	public AudioSource[] bossStage;
     public prefabBulletGroup getGroupPrefab(GameObject pObject)
     {
         for (int i = 0; i < groupPrefabBullet.Length; ++i)
@@ -307,6 +309,10 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     public int wincount = 0;
     [System.NonSerialized]
     public bool isFree = false;
+    [System.NonSerialized]
+    public string freePlaneChoose = "";
+    [System.NonSerialized]
+    public string freeSpPlaneChoose = "";
     protected override void Awake()
     {
         base.Awake();
@@ -657,22 +663,26 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     public void LoadLevel(int pIndex)
     {
         inGame = true;
-        var pEnergy = GameManager.Instance.Database.getComonItem("Energy");
-        if (pEnergy.quantity <= 0)
-        {
-            HUDLayer.Instance.showDialogNotEnoughMoney(pEnergy.item.displayNameItem.Value, delegate
-            {
-                ShopManager.Instance.showBoxShop(pEnergy.item.categoryItem.ToString());
-                HUDLayer.Instance.BoxDialog.close();
-            });
-            return;
-        }
-        else
-        {
-            pEnergy.Quantity--;
-        }
+       
         //  Database.selectedMainPlane = 6;
-        Database.lastPlayStage = new Pos(pIndex, GameManager.Instance.ChoosedHard);
+        if (!GameManager.Instance.isFree) {
+            var pEnergy = GameManager.Instance.Database.getComonItem("Energy");
+            if (pEnergy.quantity <= 0)
+            {
+                HUDLayer.Instance.showDialogNotEnoughMoney(pEnergy.item.displayNameItem.Value, delegate
+                {
+                    ShopManager.Instance.showBoxShop(pEnergy.item.categoryItem.ToString());
+                    HUDLayer.Instance.BoxDialog.close();
+                });
+                return;
+            }
+            else
+            {
+                pEnergy.Quantity--;
+            }
+            Database.lastPlayStage = new Pos(pIndex, GameManager.Instance.ChoosedHard);
+        }
+
         var pInfo = container.getLevelInfo(pIndex, 0).infos;
         pInfo.InputConfig = ConfigLevel;
         isPlaying = true;

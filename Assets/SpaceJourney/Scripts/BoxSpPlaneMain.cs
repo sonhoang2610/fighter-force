@@ -87,6 +87,7 @@ namespace EazyEngine.Space.UI
         {
             base.updatePage();
             GameManager.Instance.Database.selectedSupportPlane1 = DataSource[currentPage].Info.itemID;
+            GameManager.Instance.freeSpPlaneChoose = DataSource[currentPage].Info.itemID;
         }
         // Update is called once per frame
         void Update()

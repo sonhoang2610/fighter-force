@@ -16,6 +16,10 @@ namespace EazyEngine.Space.UI
 
         public void chooseMap(int index)
         {
+            if(index< 0)
+            {
+                index = 0;
+            }
             GameManager.Instance.ChoosedLevel = index +1;
             select.transform.parent = Item[DataSource[index]].transform;
             select.transform.localPosition = Vector3.zero;

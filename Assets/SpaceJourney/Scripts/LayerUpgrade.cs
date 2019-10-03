@@ -23,6 +23,14 @@ namespace EazyEngine.Space.UI
             var pItem = pShopPlane.getInfoItem(selectedPlane.info.itemID);
             pInfo.LimitUpgrade = pItem.limitUpgrade;
 	        boxInfo.Data = pInfo;
+            if(pInfo.info.categoryItem == CategoryItem.SP_PLANE)
+            {
+                GameManager.Instance.freeSpPlaneChoose = pInfo.info.itemID;
+            }
+            else
+            {
+                GameManager.Instance.freePlaneChoose = pInfo.info.itemID;
+            }
         }
 
         public void chooseSkill(object pSkill)

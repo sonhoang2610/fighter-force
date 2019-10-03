@@ -141,6 +141,7 @@ namespace EazyEngine.Space
             if (!dangerImage) return;
             dangerImage.gameObject.SetActive(false);
             dangerImage.gameObject.SetActive(true);
+            SoundManager.Instance.PlayBackgroundMusic(GameManager.Instance.bossStage[GameManager.Instance.ChoosedHard]);
         }
 
         public void showHealEffect()

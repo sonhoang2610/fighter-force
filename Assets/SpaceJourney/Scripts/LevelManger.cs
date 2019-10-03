@@ -215,7 +215,12 @@ namespace EazyEngine.Space
         {
             get
             {
-                var pConfig = GameDatabase.Instance.dropMonyeconfig[GameManager.Instance.ChoosedLevel - 1][GameManager.Instance.ChoosedHard];
+                int pSelectDrop = GameManager.Instance.ChoosedLevel - 1;
+                if (GameManager.Instance.isFree)
+                {
+                    pSelectDrop = 0;
+                }
+                var pConfig = GameDatabase.Instance.dropMonyeconfig[pSelectDrop][GameManager.Instance.ChoosedHard];
                 int pRandomTotal = UnityEngine.Random.Range((int)pConfig.totalMoney.x,(int) pConfig.totalMoney.y);
                 int pRandomTotalCoin = UnityEngine.Random.Range((int)pConfig.totalCoin.x, (int)pConfig.totalCoin.y);
                 return pRandomTotal / pRandomTotalCoin; 
@@ -225,17 +230,22 @@ namespace EazyEngine.Space
         public void turnOnVolume()
         {
             AudioListener.volume = cacheVolum;
+      
+            SoundManager.Instance.PlayBackgroundMusic(GameManager.Instance.backgroundStage[GameManager.Instance.ChoosedHard]);
         }
         protected override void Awake()
         {
             base.Awake();
             cacheVolum = AudioListener.volume;
             AudioListener.volume = 0;
+            GameManager.Instance.backgroundStage[GameManager.Instance.ChoosedHard].gameObject.SetActive(true);
+            GameManager.Instance.bossStage[GameManager.Instance.ChoosedHard].gameObject.SetActive(true);
             Invoke("turnOnVolume", 1);      
             GameManager.Instance.scehduleUI = ScheduleUIMain.NONE;
             GUIManager.Instance.enableEnergy(false);
             GUIManager.Instance.setBarBooster(0);
-            var psate = LoadAssets.loadAsset<GameObject>("States"+ GameManager.Instance.ChoosedLevel + "_" + GameManager.Instance.ChoosedHard, "Variants/States/");
+            string stringState = GameManager.Instance.isFree ? "Statesfree" : "States" + GameManager.Instance.ChoosedLevel + "_" + GameManager.Instance.ChoosedHard ;
+            var psate = LoadAssets.loadAsset<GameObject>(stringState, "Variants/States/");
             Instantiate(psate);
             _infoLevel = GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard).infos.CloneData();
             List<ItemGame> pItem = new List<ItemGame>();
@@ -266,10 +276,10 @@ namespace EazyEngine.Space
                 }
             }
             BoxItemInGame.Instance.DataSource = pItems.ToObservableList();
-            int pSelectedPlane = 0;
+            int pSelectedPlane = -1;
             for(int i = 0; i < GameManager.Instance.Database.planes.Count; ++i)
             {
-                if(GameManager.Instance.Database.planes[i].info.itemID == GameManager.Instance.Database.selectedMainPlane)
+                if(GameManager.Instance.Database.planes[i].info.itemID == ((!GameManager.Instance.isFree || string.IsNullOrEmpty(GameManager.Instance.freePlaneChoose) ? GameManager.Instance.Database.selectedMainPlane : GameManager.Instance.freePlaneChoose)))
                 {
                     pSelectedPlane = i;
                     break;
@@ -277,8 +287,19 @@ namespace EazyEngine.Space
             }
             players = new Character[1];
             players[0] = Instantiate<Character>(GameManager.Instance.Database.planes[pSelectedPlane].Info.modelPlane);
-            players[0].setData(GameManager.Instance.Database.planes[pSelectedPlane]);
-            GUIManager.Instance.setIconPlane(GameManager.Instance.Database.planes[pSelectedPlane].info.iconGame);
+            var pDataPlane = pSelectedPlane >=0 ? GameManager.Instance.Database.planes[pSelectedPlane] : null;
+            if (pDataPlane == null) {
+                var pAllItem = GameDatabase.Instance.getAllItem(CategoryItem.PLANE);
+                foreach(var pItemPlane in pAllItem)
+                {
+                   if( pItemPlane.itemID == GameManager.Instance.freePlaneChoose)
+                    {
+                        pDataPlane = PlaneInfoConfig.CloneDefault((PlaneInfo) pItemPlane);
+                    }
+                }
+            }
+            players[0].setData(pDataPlane);
+            GUIManager.Instance.setIconPlane(pDataPlane.info.iconGame);
             List<SkillInputData> skills = new List<SkillInputData>();
             skills.AddRange(convert(players[0]._info.Info.skills.ToArray(), players[0]));
             int pSelectedspPlane = 0;

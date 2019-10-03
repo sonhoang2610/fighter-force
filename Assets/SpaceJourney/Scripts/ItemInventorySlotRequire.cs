@@ -101,7 +101,10 @@ namespace EazyEngine.Space.UI
             if (labelTimer)
             {
                 var pTime = GameManager.Instance.Database.getTimerCountdownRestoreModule(Data.item);
-                pTime.LabelTimer.Remove(labelTimer);
+                if (pTime != null)
+                {
+                    pTime.LabelTimer.Remove(labelTimer);
+                }
             }
         }
         public override ItemRequireInfo Data { get => base.Data; set {

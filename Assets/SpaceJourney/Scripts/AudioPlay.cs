@@ -15,7 +15,7 @@ public class AudioPlay : MonoBehaviour {
     bool isLoop = true;
     [SerializeField]
     float delay = 0;
-
+    protected List<AudioSource> cacheAudios = new List<AudioSource>();
     public void pauseBackGroundMusic()
     {
         backGroundMusic.Pause();
@@ -42,8 +42,27 @@ public class AudioPlay : MonoBehaviour {
         pAction();
 
     }
-    
 
+    private void OnDestroy()
+    {
+        if (backGroundMusic)
+        {
+            backGroundMusic.Stop();
+            backGroundMusic.clip.UnloadAudioData();
+        }
+    }
+
+    private void OnDisable()
+    {
+        for(int i = cacheAudios.Count -1; i >= 0; --i)
+        {
+            if (cacheAudios[i].clip != null)
+            {
+                Destroy(cacheAudios[i], cacheAudios[i].clip.length);
+            }
+        }
+        cacheAudios.Clear();
+    }
     private void OnEnable()
     {
 
@@ -58,13 +77,21 @@ public class AudioPlay : MonoBehaviour {
                 //}
                 if (delay == 0)
                 {
-                    SoundManager.Instance.PlaySound(audios[Random.Range(randomAudio.x,randomAudio.y)], Vector3.zero);
+                   var pAudio = SoundManager.Instance.PlaySound(audios[Random.Range(randomAudio.x,randomAudio.y)], Vector3.zero,isLoop);
+                    if (isLoop && pAudio && !cacheAudios.Contains(pAudio))
+                    {
+                        cacheAudios.Add(pAudio);
+                    }
                 }
                 else
                 {
                     StartCoroutine(delayAction(delay, delegate
                     {
-                        SoundManager.Instance.PlaySound(audios[Random.Range(randomAudio.x, randomAudio.y)], Vector3.zero);
+                        var pAudio = SoundManager.Instance.PlaySound(audios[Random.Range(randomAudio.x, randomAudio.y)], Vector3.zero,isLoop);
+                        if (isLoop && pAudio && !cacheAudios.Contains(pAudio))
+                        {
+                            cacheAudios.Add(pAudio);
+                        }
                     }));
                 }
             }

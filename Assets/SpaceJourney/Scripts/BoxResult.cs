@@ -45,19 +45,28 @@ namespace EazyEngine.Space.UI
 
         public void nextPlay()
         {
-            GameManager.Instance.scehduleUI = ScheduleUIMain.GAME_IMEDIATELY;
-            LevelInfoInstance pLevelInfo = GameManager.Instance.container.getLevelInfo(GameManager.Instance.Database.lastPlayStage.x + 1, GameManager.Instance.ChoosedHard);
-            if (pLevelInfo.isLocked)
+            if (!GameManager.Instance.isFree)
             {
-                GameManager.Instance.ChoosedHard = 0;
+                GameManager.Instance.scehduleUI = ScheduleUIMain.GAME_IMEDIATELY;
+                LevelInfoInstance pLevelInfo = GameManager.Instance.container.getLevelInfo(GameManager.Instance.Database.lastPlayStage.x + 1, GameManager.Instance.ChoosedHard);
+                if (pLevelInfo.isLocked)
+                {
+                    GameManager.Instance.ChoosedHard = 0;
+                }
+                GameManager.Instance.Database.lastPlayStage = new Pos(GameManager.Instance.Database.lastPlayStage.x + 1, GameManager.Instance.ChoosedHard);
             }
-            GameManager.Instance.Database.lastPlayStage = new Pos(GameManager.Instance.Database.lastPlayStage.x + 1, GameManager.Instance.ChoosedHard);
             Home();
         }   
         public void showResult(bool pWin)
         {
           
             if (!pWin && timeShowLose == 0) {
+                if (GameManager.Instance.isFree)
+                {
+                    timeShowLose++;
+                    showResult(pWin);
+                    return;
+                }
                 TimeKeeper.Instance.getTimer("Global").TimScale = 0;
                 timeShowLose++;
                 HUDLayer.Instance.BoxReborn.show();
@@ -125,7 +134,7 @@ namespace EazyEngine.Space.UI
                     GameManager.Instance.SaveLevel();
                 }
             }
-            else
+            else if (!GameManager.Instance.isFree)
             {
                 GameManager.Instance.Database.getComonItem("Coin").Quantity += LevelManger.Instance._infoLevel.goldTaken;
                 GameManager.Instance.SaveGame();
@@ -134,7 +143,8 @@ namespace EazyEngine.Space.UI
 
         public void watch()
         {
-            GameManager.Instance.showRewardAds("WatchX2WinGame", delegate (bool pSucess)
+            if (GameManager.Instance.isFree) return;
+                GameManager.Instance.showRewardAds("WatchX2WinGame", delegate (bool pSucess)
             {
                 if (pSucess)
                 {

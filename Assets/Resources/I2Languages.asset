@@ -15,7 +15,7 @@ MonoBehaviour:
   mSource:
     UserAgreesToHaveItOnTheScene: 0
     UserAgreesToHaveItInsideThePluginsFolder: 0
-    GoogleLiveSyncIsUptoDate: 1
+    GoogleLiveSyncIsUptoDate: 0
     mTerms:
     - Term: BoxElitePack1
       TermType: 0
@@ -109,16 +109,16 @@ MonoBehaviour:
       TermType: 5
       Description: 
       Languages:
-      - Variants/ui/variant/home/btn_shop[btn_shop]
-      - Variants/ui/variant/home/btn_shop_vi[btn_shop_vi]
+      - ui/home/btn_shop[btn_shop]
+      - ui/home/btn_shop_vi[btn_shop_vi]
       Flags: 0000
       Languages_Touch: []
     - Term: btn_upgrade
       TermType: 5
       Description: 
       Languages:
-      - Variants/ui/variant/home/btn_upgrade[btn_upgrade]
-      - Variants/ui/variant/home/btn_upgrade_vi[btn_upgrade_vi]
+      - ui/home/btn_upgrade[btn_upgrade]
+      - ui/home/btn_upgrade_vi[btn_upgrade_vi]
       Flags: 0000
       Languages_Touch: []
     - Term: flag
@@ -191,6 +191,16 @@ MonoBehaviour:
         cho skill n\u1ED9i t\u1EA1i"
       Flags: 0000
       Languages_Touch: []
+    - Term: plane/OnBreakShieldActiveOrb
+      TermType: 0
+      Description: 
+      Languages:
+      - Create a Shield and 3 Energy Balls that protect you and fire back at enemies
+      - "T\u1EA1o ra 1 v\xF2ng tr\xF2n b\u1EA3o v\u1EC7 k\xE8m 3 qu\u1EA3 c\u1EA7u
+        n\u0103ng l\u01B0\u1EE3ng  b\u1EAFn ra  c\xE1c lo\u1EA1i \u0111\u1EA1n \u0111\u1EB7c
+        bi\u1EC7t b\u1EA3o v\u1EC7 m\xE1y bay"
+      Flags: 0000
+      Languages_Touch: []
     - Term: plane/OnBreakShieldCrazyRocket
       TermType: 0
       Description: 
@@ -235,6 +245,14 @@ MonoBehaviour:
       Languages:
       - When taken damage will active a shield
       - "Khi b\u1ECB s\xE1t th\u01B0\u01A1ng s\u1EBD k\xEDch ho\u1EA1t khi\xEAn"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: plane/TakenDameHealTimer
+      TermType: 0
+      Description: 
+      Languages:
+      - When taken damage will heal $percentHeal % HP
+      - "Khi b\u1ECB s\xE1t th\u01B0\u01A1ng s\u1EBD h\u1ED3i $percentHeal % m\xE1u"
       Flags: 0000
       Languages_Touch: []
     - Term: plane/TakenDameInvisible
@@ -284,6 +302,14 @@ MonoBehaviour:
       Languages:
       - Shiny Butterfly
       - "H\u1ED3 quang \u0111i\u1EC7p"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: plane/main_plane6
+      TermType: 0
+      Description: 
+      Languages:
+      - The Emperor of the Sands
+      - "Ho\xE0ng \u0111\u1EBF sa m\u1EA1c"
       Flags: 0000
       Languages_Touch: []
     - Term: plane/plane1_info
@@ -376,12 +402,32 @@ MonoBehaviour:
       - "B\u1EAFn lo\u1EA1t \u0111\u1EA1n theo h\xE0ng ngang"
       Flags: 0000
       Languages_Touch: []
+    - Term: plane/plane6_skill1
+      TermType: 0
+      Description: 
+      Languages:
+      - Summon three rays of destruction that eliminate all enemies and bullets on
+        the screen
+      - "G\u1ECDi ra 3 tia n\u0103ng l\u01B0\u1EE3ng h\xECnh m\u0169i t\xEAn ti\xEAu
+        di\u1EC7t h\u1EBFt qu\xE1i v\xE0 \u0111\u1EA1n tr\xEAn \u0111\u01B0\u1EDDng
+        \u0111i"
+      Flags: 0000
+      Languages_Touch: []
     - Term: plane/plane_info5
       TermType: 0
       Description: 
       Languages:
       - Fire series bullet in a cone
       - "B\u1EAFn lo\u1EA1n \r\u0111\u1EA1n trong m\u1ED9t h\xECnh n\xF3n"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: plane/plane_info6
+      TermType: 0
+      Description: 
+      Languages:
+      - Shoot powerful bullets forward and missiles
+      - "B\u1EAFn lo\u1EA1t \u0111\u1EA1n c\u1EF1c m\u1EA1nh v\u1EC1 ph\xEDa tr\u01B0\u1EDBc
+        k\xE8m theo t\xEAn l\u1EEDa"
       Flags: 0000
       Languages_Touch: []
     - Term: plane/sp_plane1
@@ -648,6 +694,378 @@ MonoBehaviour:
         d\xE0ng h\u01A1n"
       Flags: 0000
       Languages_Touch: []
+    - Term: text/item_sp1
+      TermType: 0
+      Description: 
+      Languages:
+      - Activate an Energy Ring that destroy enemies and their bullets
+      - "K\xEDch ho\u1EA1t t\u1EA1o ra m\u1ED9t v\xF2ng tr\xF2n n\u0103ng l\u01B0\u1EE3ng
+        ti\xEAu di\u1EC7t k\u1EBB th\xF9 v\xE0 \u0111\u1EA1n c\u1EE7a ch\xFAng"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/item_sp2
+      TermType: 0
+      Description: 
+      Languages:
+      - Activate a Shield that absorb all damages for 5 seconds
+      - "K\xEDch ho\u1EA1t t\u1EA1o ra l\u1EDBp khi\xEAn n\u0103ng l\u01B0\u1EE3ng
+        b\u1EA3o v\u1EC7 m\xE1y bay trong 5s"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/item_sp3
+      TermType: 0
+      Description: 
+      Languages:
+      - Double HP limit
+      - "T\u0103ng g\u1EA5p \u0111\xF4i gi\u1EDBi h\u1EA1n m\xE1u"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/item_sp4
+      TermType: 0
+      Description: 
+      Languages:
+      - Maximum the power of Magnet
+      - "T\u1ED1i \u0111a s\u1EE9c m\u1EA1nh c\u1EE7a nam ch\xE2m "
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/item_sp5
+      TermType: 0
+      Description: 
+      Languages:
+      - Double the Coin received
+      - "Nh\xE2n \u0111\xF4i ti\u1EC1n nh\u1EADn \u0111\u01B0\u1EE3c trong m\xE0n
+        ch\u01A1i"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/item_sp6
+      TermType: 0
+      Description: 
+      Languages:
+      - Start level with the power of 3
+      - "B\u1EAFt \u0111\u1EA7u m\xE0n ch\u01A1i v\u1EDBi s\u1EE9c m\u1EA1nh l\xE0
+        3"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name1
+      TermType: 0
+      Description: 
+      Languages:
+      - Andromeda 1
+      - "Ti\xEAn N\u1EEF 1"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name10
+      TermType: 0
+      Description: 
+      Languages:
+      - Coma Berenices 5
+      - "H\u1EADu Ph\xE1t 5"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name11
+      TermType: 0
+      Description: 
+      Languages:
+      - Sculptor 1
+      - "Ng\u1ECDc Phu 1"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name12
+      TermType: 0
+      Description: 
+      Languages:
+      - Sculptor 2
+      - "Ng\u1ECDc Phu 2"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name13
+      TermType: 0
+      Description: 
+      Languages:
+      - Sculptor 3
+      - "Ng\u1ECDc Phu 3"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name14
+      TermType: 0
+      Description: 
+      Languages:
+      - Sculptor 4
+      - "Ng\u1ECDc Phu 4"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name15
+      TermType: 0
+      Description: 
+      Languages:
+      - Sculptor 5
+      - "Ng\u1ECDc Phu 5"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name16
+      TermType: 0
+      Description: 
+      Languages:
+      - Serpens 1
+      - "C\u1EF1 X\xE0 1"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name17
+      TermType: 0
+      Description: 
+      Languages:
+      - Serpens 2
+      - "C\u1EF1 X\xE0 2"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name18
+      TermType: 0
+      Description: 
+      Languages:
+      - Serpens 3
+      - "C\u1EF1 X\xE0 3"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name19
+      TermType: 0
+      Description: 
+      Languages:
+      - Serpens 4
+      - "C\u1EF1 X\xE0 4"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name2
+      TermType: 0
+      Description: 
+      Languages:
+      - Andromeda 2
+      - "Ti\xEAn N\u1EEF 2"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name20
+      TermType: 0
+      Description: 
+      Languages:
+      - Serpens 5
+      - "C\u1EF1 X\xE0 5"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name21
+      TermType: 0
+      Description: 
+      Languages:
+      - Ursa Major 1
+      - "\u0110\u1EA1i H\xF9ng 1"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name22
+      TermType: 0
+      Description: 
+      Languages:
+      - Ursa Major 2
+      - "\u0110\u1EA1i H\xF9ng 2"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name23
+      TermType: 0
+      Description: 
+      Languages:
+      - Ursa Major 3
+      - "\u0110\u1EA1i H\xF9ng 3"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name24
+      TermType: 0
+      Description: 
+      Languages:
+      - Ursa Major 4
+      - "\u0110\u1EA1i H\xF9ng 4"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name25
+      TermType: 0
+      Description: 
+      Languages:
+      - Ursa Major 5
+      - "\u0110\u1EA1i H\xF9ng 5"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name26
+      TermType: 0
+      Description: 
+      Languages:
+      - Virgo 1
+      - "X\u1EED N\u1EEF 1"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name27
+      TermType: 0
+      Description: 
+      Languages:
+      - Virgo 2
+      - "X\u1EED N\u1EEF 2"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name28
+      TermType: 0
+      Description: 
+      Languages:
+      - Virgo 3
+      - "X\u1EED N\u1EEF 3"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name29
+      TermType: 0
+      Description: 
+      Languages:
+      - Virgo 4
+      - "X\u1EED N\u1EEF 4"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name3
+      TermType: 0
+      Description: 
+      Languages:
+      - Andromeda 3
+      - "Ti\xEAn N\u1EEF 3"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name30
+      TermType: 0
+      Description: 
+      Languages:
+      - Virgo 5
+      - "X\u1EED N\u1EEF 5"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name31
+      TermType: 0
+      Description: 
+      Languages:
+      - Canum Venaticorum 1
+      - "L\u1EA1p Khuy\u1EC3n 1"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name32
+      TermType: 0
+      Description: 
+      Languages:
+      - Canum Venaticorum 2
+      - "L\u1EA1p Khuy\u1EC3n 2"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name33
+      TermType: 0
+      Description: 
+      Languages:
+      - Canum Venaticorum 3
+      - "L\u1EA1p Khuy\u1EC3n 3"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name34
+      TermType: 0
+      Description: 
+      Languages:
+      - Canum Venaticorum 4
+      - "L\u1EA1p Khuy\u1EC3n 4"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name35
+      TermType: 0
+      Description: 
+      Languages:
+      - Canum Venaticorum 5
+      - "L\u1EA1p Khuy\u1EC3n 5"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name36
+      TermType: 0
+      Description: 
+      Languages:
+      - Sextans 1
+      - "L\u1EE5c Ph\xE2n Nghi 1"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name37
+      TermType: 0
+      Description: 
+      Languages:
+      - Sextans 2
+      - "L\u1EE5c Ph\xE2n Nghi 2"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name38
+      TermType: 0
+      Description: 
+      Languages:
+      - Sextans 3
+      - "L\u1EE5c Ph\xE2n Nghi 3"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name39
+      TermType: 0
+      Description: 
+      Languages:
+      - Sextans 4
+      - "L\u1EE5c Ph\xE2n Nghi 4"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name4
+      TermType: 0
+      Description: 
+      Languages:
+      - Andromeda 4
+      - "Ti\xEAn N\u1EEF 4"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name40
+      TermType: 0
+      Description: 
+      Languages:
+      - Sextans 5
+      - "L\u1EE5c Ph\xE2n Nghi 5"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name5
+      TermType: 0
+      Description: 
+      Languages:
+      - Andromeda 5
+      - "Ti\xEAn N\u1EEF 5"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name6
+      TermType: 0
+      Description: 
+      Languages:
+      - Coma Berenices 1
+      - "H\u1EADu Ph\xE1t 1"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name7
+      TermType: 0
+      Description: 
+      Languages:
+      - Coma Berenices 2
+      - "H\u1EADu Ph\xE1t 2"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name8
+      TermType: 0
+      Description: 
+      Languages:
+      - Coma Berenices 3
+      - "H\u1EADu Ph\xE1t 3"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name9
+      TermType: 0
+      Description: 
+      Languages:
+      - Coma Berenices 4
+      - "H\u1EADu Ph\xE1t 4"
+      Flags: 0000
+      Languages_Touch: []
     - Term: text/maxEnergy
       TermType: 0
       Description: 
@@ -713,6 +1131,70 @@ MonoBehaviour:
       Languages:
       - '[FFA100]Require more craft plane: [-][FFFF00]{0}[-]'
       - "[FFA100]Y\xEAu c\u1EA7u th\xEAm m\u1EA3nh: [-][FFFF00]{0}[-]"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/zone_name1
+      TermType: 0
+      Description: 
+      Languages:
+      - Andromeda
+      - "Ti\xEAn N\u1EEF"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/zone_name2
+      TermType: 0
+      Description: 
+      Languages:
+      - Black Eye
+      - "M\u1EAFt \u0110en"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/zone_name3
+      TermType: 0
+      Description: 
+      Languages:
+      - Comet
+      - "Sao Ch\u1ED5i"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/zone_name4
+      TermType: 0
+      Description: 
+      Languages:
+      - Hoag's Object
+      - "V\u1EADt Th\u1EC3 Hoag"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/zone_name5
+      TermType: 0
+      Description: 
+      Languages:
+      - Mayall Asteroid
+      - "Thi\xEAn th\u1EC3 Mayall"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/zone_name6
+      TermType: 0
+      Description: 
+      Languages:
+      - Sombrero
+      - "M\u0169 V\xE0nh R\u1ED9ng"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/zone_name7
+      TermType: 0
+      Description: 
+      Languages:
+      - Helianthus
+      - "Hoa H\u01B0\u1EDBng D\u01B0\u01A1ng"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/zone_name8
+      TermType: 0
+      Description: 
+      Languages:
+      - Cosmos Redshift 7
+      - Cosmos Redshift 7
       Flags: 0000
       Languages_Touch: []
     - Term: ui/BoxComonPack1
@@ -1409,488 +1891,6 @@ MonoBehaviour:
       Languages:
       - Yes
       - "C\xF3"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: plane/OnBreakShieldActiveOrb
-      TermType: 0
-      Description: 
-      Languages:
-      - Create a Shield and 3 Energy Balls that protect you and fire back at enemies
-      - "T\u1EA1o ra 1 v\xF2ng tr\xF2n b\u1EA3o v\u1EC7 k\xE8m 3 qu\u1EA3 c\u1EA7u
-        n\u0103ng l\u01B0\u1EE3ng  b\u1EAFn ra  c\xE1c lo\u1EA1i \u0111\u1EA1n \u0111\u1EB7c
-        bi\u1EC7t b\u1EA3o v\u1EC7 m\xE1y bay"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: plane/TakenDameHealTimer
-      TermType: 0
-      Description: 
-      Languages:
-      - When taken damage will heal $percentHeal % HP
-      - "Khi b\u1ECB s\xE1t th\u01B0\u01A1ng s\u1EBD h\u1ED3i $percentHeal % m\xE1u"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: plane/plane6_skill1
-      TermType: 0
-      Description: 
-      Languages:
-      - Summon three rays of destruction that eliminate all enemies and bullets on
-        the screen
-      - "G\u1ECDi ra 3 tia n\u0103ng l\u01B0\u1EE3ng h\xECnh m\u0169i t\xEAn ti\xEAu
-        di\u1EC7t h\u1EBFt qu\xE1i v\xE0 \u0111\u1EA1n tr\xEAn \u0111\u01B0\u1EDDng
-        \u0111i"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: plane/main_plane6
-      TermType: 0
-      Description: 
-      Languages:
-      - The Emperor of the Sands
-      - "Ho\xE0ng \u0111\u1EBF sa m\u1EA1c"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: plane/plane_info6
-      TermType: 0
-      Description: 
-      Languages:
-      - Shoot powerful bullets forward and missiles
-      - "B\u1EAFn lo\u1EA1t \u0111\u1EA1n c\u1EF1c m\u1EA1nh v\u1EC1 ph\xEDa tr\u01B0\u1EDBc
-        k\xE8m theo t\xEAn l\u1EEDa"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/item_sp1
-      TermType: 0
-      Description: 
-      Languages:
-      - Activate an Energy Ring that destroy enemies and their bullets
-      - "K\xEDch ho\u1EA1t t\u1EA1o ra m\u1ED9t v\xF2ng tr\xF2n n\u0103ng l\u01B0\u1EE3ng
-        ti\xEAu di\u1EC7t k\u1EBB th\xF9 v\xE0 \u0111\u1EA1n c\u1EE7a ch\xFAng"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/item_sp2
-      TermType: 0
-      Description: 
-      Languages:
-      - Activate a Shield that absorb all damages for 5 seconds
-      - "K\xEDch ho\u1EA1t t\u1EA1o ra l\u1EDBp khi\xEAn n\u0103ng l\u01B0\u1EE3ng
-        b\u1EA3o v\u1EC7 m\xE1y bay trong 5s"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/item_sp3
-      TermType: 0
-      Description: 
-      Languages:
-      - Double HP limit
-      - "T\u0103ng g\u1EA5p \u0111\xF4i gi\u1EDBi h\u1EA1n m\xE1u"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/item_sp4
-      TermType: 0
-      Description: 
-      Languages:
-      - Maximum the power of Magnet
-      - "T\u1ED1i \u0111a s\u1EE9c m\u1EA1nh c\u1EE7a nam ch\xE2m "
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/item_sp5
-      TermType: 0
-      Description: 
-      Languages:
-      - Double the Coin received
-      - "Nh\xE2n \u0111\xF4i ti\u1EC1n nh\u1EADn \u0111\u01B0\u1EE3c trong m\xE0n
-        ch\u01A1i"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/item_sp6
-      TermType: 0
-      Description: 
-      Languages:
-      - Start level with the power of 3
-      - "B\u1EAFt \u0111\u1EA7u m\xE0n ch\u01A1i v\u1EDBi s\u1EE9c m\u1EA1nh l\xE0
-        3"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name1
-      TermType: 0
-      Description: 
-      Languages:
-      - Andromeda 1
-      - "Ti\xEAn N\u1EEF 1"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name2
-      TermType: 0
-      Description: 
-      Languages:
-      - Andromeda 2
-      - "Ti\xEAn N\u1EEF 2"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name3
-      TermType: 0
-      Description: 
-      Languages:
-      - Andromeda 3
-      - "Ti\xEAn N\u1EEF 3"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name4
-      TermType: 0
-      Description: 
-      Languages:
-      - Andromeda 4
-      - "Ti\xEAn N\u1EEF 4"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name5
-      TermType: 0
-      Description: 
-      Languages:
-      - Andromeda 5
-      - "Ti\xEAn N\u1EEF 5"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name6
-      TermType: 0
-      Description: 
-      Languages:
-      - Coma Berenices 1
-      - "H\u1EADu Ph\xE1t 1"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name7
-      TermType: 0
-      Description: 
-      Languages:
-      - Coma Berenices 2
-      - "H\u1EADu Ph\xE1t 2"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name8
-      TermType: 0
-      Description: 
-      Languages:
-      - Coma Berenices 3
-      - "H\u1EADu Ph\xE1t 3"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name9
-      TermType: 0
-      Description: 
-      Languages:
-      - Coma Berenices 4
-      - "H\u1EADu Ph\xE1t 4"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name10
-      TermType: 0
-      Description: 
-      Languages:
-      - Coma Berenices 5
-      - "H\u1EADu Ph\xE1t 5"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name11
-      TermType: 0
-      Description: 
-      Languages:
-      - Sculptor 1
-      - "Ng\u1ECDc Phu 1"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name12
-      TermType: 0
-      Description: 
-      Languages:
-      - Sculptor 2
-      - "Ng\u1ECDc Phu 2"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name13
-      TermType: 0
-      Description: 
-      Languages:
-      - Sculptor 3
-      - "Ng\u1ECDc Phu 3"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name14
-      TermType: 0
-      Description: 
-      Languages:
-      - Sculptor 4
-      - "Ng\u1ECDc Phu 4"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name15
-      TermType: 0
-      Description: 
-      Languages:
-      - Sculptor 5
-      - "Ng\u1ECDc Phu 5"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name16
-      TermType: 0
-      Description: 
-      Languages:
-      - Serpens 1
-      - "C\u1EF1 X\xE0 1"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name17
-      TermType: 0
-      Description: 
-      Languages:
-      - Serpens 2
-      - "C\u1EF1 X\xE0 2"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name18
-      TermType: 0
-      Description: 
-      Languages:
-      - Serpens 3
-      - "C\u1EF1 X\xE0 3"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name19
-      TermType: 0
-      Description: 
-      Languages:
-      - Serpens 4
-      - "C\u1EF1 X\xE0 4"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name20
-      TermType: 0
-      Description: 
-      Languages:
-      - Serpens 5
-      - "C\u1EF1 X\xE0 5"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name21
-      TermType: 0
-      Description: 
-      Languages:
-      - Ursa Major 1
-      - "\u0110\u1EA1i H\xF9ng 1"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name22
-      TermType: 0
-      Description: 
-      Languages:
-      - Ursa Major 2
-      - "\u0110\u1EA1i H\xF9ng 2"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name23
-      TermType: 0
-      Description: 
-      Languages:
-      - Ursa Major 3
-      - "\u0110\u1EA1i H\xF9ng 3"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name24
-      TermType: 0
-      Description: 
-      Languages:
-      - Ursa Major 4
-      - "\u0110\u1EA1i H\xF9ng 4"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name25
-      TermType: 0
-      Description: 
-      Languages:
-      - Ursa Major 5
-      - "\u0110\u1EA1i H\xF9ng 5"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name26
-      TermType: 0
-      Description: 
-      Languages:
-      - Virgo 1
-      - "X\u1EED N\u1EEF 1"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name27
-      TermType: 0
-      Description: 
-      Languages:
-      - Virgo 2
-      - "X\u1EED N\u1EEF 2"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name28
-      TermType: 0
-      Description: 
-      Languages:
-      - Virgo 3
-      - "X\u1EED N\u1EEF 3"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name29
-      TermType: 0
-      Description: 
-      Languages:
-      - Virgo 4
-      - "X\u1EED N\u1EEF 4"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name30
-      TermType: 0
-      Description: 
-      Languages:
-      - Virgo 5
-      - "X\u1EED N\u1EEF 5"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name31
-      TermType: 0
-      Description: 
-      Languages:
-      - Canum Venaticorum 1
-      - "L\u1EA1p Khuy\u1EC3n 1"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name32
-      TermType: 0
-      Description: 
-      Languages:
-      - Canum Venaticorum 2
-      - "L\u1EA1p Khuy\u1EC3n 2"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name33
-      TermType: 0
-      Description: 
-      Languages:
-      - Canum Venaticorum 3
-      - "L\u1EA1p Khuy\u1EC3n 3"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name34
-      TermType: 0
-      Description: 
-      Languages:
-      - Canum Venaticorum 4
-      - "L\u1EA1p Khuy\u1EC3n 4"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name35
-      TermType: 0
-      Description: 
-      Languages:
-      - Canum Venaticorum 5
-      - "L\u1EA1p Khuy\u1EC3n 5"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name36
-      TermType: 0
-      Description: 
-      Languages:
-      - Sextans 1
-      - "L\u1EE5c Ph\xE2n Nghi 1"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name37
-      TermType: 0
-      Description: 
-      Languages:
-      - Sextans 2
-      - "L\u1EE5c Ph\xE2n Nghi 2"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name38
-      TermType: 0
-      Description: 
-      Languages:
-      - Sextans 3
-      - "L\u1EE5c Ph\xE2n Nghi 3"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name39
-      TermType: 0
-      Description: 
-      Languages:
-      - Sextans 4
-      - "L\u1EE5c Ph\xE2n Nghi 4"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name40
-      TermType: 0
-      Description: 
-      Languages:
-      - Sextans 5
-      - "L\u1EE5c Ph\xE2n Nghi 5"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/zone_name1
-      TermType: 0
-      Description: 
-      Languages:
-      - Andromeda
-      - "Ti\xEAn N\u1EEF"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/zone_name2
-      TermType: 0
-      Description: 
-      Languages:
-      - Black Eye
-      - "M\u1EAFt \u0110en"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/zone_name3
-      TermType: 0
-      Description: 
-      Languages:
-      - Comet
-      - "Sao Ch\u1ED5i"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/zone_name4
-      TermType: 0
-      Description: 
-      Languages:
-      - Hoag's Object
-      - "V\u1EADt Th\u1EC3 Hoag"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/zone_name5
-      TermType: 0
-      Description: 
-      Languages:
-      - Mayall Asteroid
-      - "Thi\xEAn th\u1EC3 Mayall"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/zone_name6
-      TermType: 0
-      Description: 
-      Languages:
-      - Sombrero
-      - "M\u0169 V\xE0nh R\u1ED9ng"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/zone_name7
-      TermType: 0
-      Description: 
-      Languages:
-      - Helianthus
-      - "Hoa H\u01B0\u1EDBng D\u01B0\u01A1ng"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/zone_name8
-      TermType: 0
-      Description: 
-      Languages:
-      - Cosmos Redshift 7
-      - Cosmos Redshift 7
       Flags: 0000
       Languages_Touch: []
     CaseInsensitiveTerms: 0

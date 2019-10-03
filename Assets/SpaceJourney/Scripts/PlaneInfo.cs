@@ -63,6 +63,24 @@ namespace EazyEngine.Space {
         [ShowInInspector]
         public Dictionary<string, int[]> upgradeExtraAbility = new Dictionary<string, int[]>();
 
+        public static PlaneInfoConfig CloneDefault(PlaneInfo pInfo)
+        {
+             Dictionary<string, int> pUpgradeSkill = new Dictionary<string, int>();
+            for(int i = 0; i < pInfo.skills.Count; ++i)
+            {
+                pUpgradeSkill.Add(pInfo.skills[i].Info.itemID, 1);
+            }
+            var pInfoPlane  = new PlaneInfoConfig()
+            {
+                info = pInfo,
+                limitUpgrade = 80,
+                currentLevel = 1,
+                upgradeSkill = pUpgradeSkill
+            };
+            pInfoPlane.ExtraInfo();
+            return pInfoPlane;
+        }
+
         public int getNextStepAbilityUpgrade(string pID)
         {
             for(int i = 0; i < info.currentAbility.Count; ++i)

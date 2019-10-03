@@ -170,6 +170,11 @@ namespace EazyEngine.Space.UI
                 currentPage = 0;
                 btnPrevious.isEnabled = false;
             }
+            //for(int i  = 0; i < onDataAction.Count; ++i)
+            //{
+            //    onDataAction[i].parameters[0].value = DataSource[index];
+            //}
+            //EventDelegate.Execute(onDataAction);
             LayerUpgrade.Instance.setDataMainPlane(group.GroupTab[index].GetComponent<ItemBtnChoosePlane>().Data);
             var pAni = group.GroupLayer[index].GetComponentInChildren<Animator>();
             if (!pAni) return;

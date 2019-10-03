@@ -213,6 +213,8 @@ namespace EazyEngine.Space.UI
 
         public void freePlay()
         {
+            GameManager.Instance.isFree = true;
+            GameManager.Instance.ConfigLevel = new LevelConfig();
             GameManager.Instance.ChoosedLevel = -1;
             GameManager.Instance.LoadLevel(GameManager.Instance.ChoosedLevel);
         }

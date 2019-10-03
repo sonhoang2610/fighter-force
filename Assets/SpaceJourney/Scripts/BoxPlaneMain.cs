@@ -187,6 +187,7 @@ namespace EazyEngine.Space.UI
         {
             base.updatePage();
             GameManager.Instance.Database.selectedMainPlane = DataSource[currentPage].Info.itemID;
+            GameManager.Instance.freePlaneChoose = DataSource[currentPage].Info.itemID;
         }
     }
 }
