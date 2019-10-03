@@ -50,7 +50,7 @@ namespace EazyEngine.Space.UI
                     if (value.item.categoryItem == CategoryItem.CRAFT)
                     {
                         icon.sprite2D = value.item.iconShop;
-                        iconCateGory.gameObject.SetActive(true);
+                      //  iconCateGory.gameObject.SetActive(true);
                         iconCateGory.sprite2D = value.item.CateGoryIcon;
                     }
                     else
