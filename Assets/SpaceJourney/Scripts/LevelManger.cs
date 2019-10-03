@@ -279,7 +279,7 @@ namespace EazyEngine.Space
             int pSelectedPlane = -1;
             for(int i = 0; i < GameManager.Instance.Database.planes.Count; ++i)
             {
-                if(GameManager.Instance.Database.planes[i].info.itemID == ((!GameManager.Instance.isFree || string.IsNullOrEmpty(GameManager.Instance.freePlaneChoose) ? GameManager.Instance.Database.selectedMainPlane : GameManager.Instance.freePlaneChoose)))
+                if(GameManager.Instance.Database.planes[i].info.itemID == ((!GameManager.Instance.isFree || string.IsNullOrEmpty(GameManager.Instance.freePlaneChoose) ? GameManager.Instance.Database.SelectedMainPlane : GameManager.Instance.freePlaneChoose)))
                 {
                     pSelectedPlane = i;
                     break;
@@ -302,29 +302,41 @@ namespace EazyEngine.Space
             GUIManager.Instance.setIconPlane(pDataPlane.info.iconGame);
             List<SkillInputData> skills = new List<SkillInputData>();
             skills.AddRange(convert(players[0]._info.Info.skills.ToArray(), players[0]));
-            int pSelectedspPlane = 0;
+            int pSelectedspPlane =-1;
             for (int i = 0; i < GameManager.Instance.Database.spPlanes.Count; ++i)
             {
-                if (GameManager.Instance.Database.spPlanes[i].info.itemID == GameManager.Instance.Database.selectedSupportPlane1)
+                if (GameManager.Instance.Database.spPlanes[i].info.itemID == ((!GameManager.Instance.isFree || string.IsNullOrEmpty(GameManager.Instance.freeSpPlaneChoose) ? GameManager.Instance.Database.SelectedSupportPlane1 : GameManager.Instance.freeSpPlaneChoose)))
                 {
                     pSelectedspPlane = i;
                     break;
                 }
             }
             int pSelectedSPPlane1 = pSelectedspPlane;
-            if (pSelectedSPPlane1 >= 0)
+            var pDataSpPlane = pSelectedSPPlane1 >= 0 ? GameManager.Instance.Database.spPlanes[pSelectedSPPlane1] : null;
+            if (pDataSpPlane == null)
             {
-                var spPlane1 = Instantiate(GameManager.Instance.Database.spPlanes[pSelectedSPPlane1].Info.modelPlane);
-                spPlane1.setData(GameManager.Instance.Database.spPlanes[pSelectedSPPlane1]);
+                var pAllItem = GameDatabase.Instance.getAllItem(CategoryItem.SP_PLANE);
+                foreach (var pItemPlane in pAllItem)
+                {
+                    if (pItemPlane.itemID == GameManager.Instance.freeSpPlaneChoose)
+                    {
+                        pDataSpPlane = SupportPlaneInfoConfig.CloneDefaultSp((PlaneInfo)pItemPlane);
+                    }
+                }
+            }
+            if (pDataSpPlane != null)
+            {
+              
+                var spPlane1 = Instantiate(pDataSpPlane.Info.modelPlane);
+                spPlane1.setData(pDataSpPlane);
                 spPlane1.GetComponent<FollowerMainPlayer>().OffsetSupportPlane = players[0].transform.Find("slot1").transform.localPosition;
                 players[0].addChild(spPlane1);
                 skills.AddRange(convert(spPlane1._info.Info.skills.ToArray(), spPlane1));
             }
-            int pSelectedSPPlane2 = pSelectedspPlane;
-            if (pSelectedSPPlane2 >= 0)
+            if (pDataSpPlane != null)
             {
-                var spPlane2 = Instantiate(GameManager.Instance.Database.spPlanes[pSelectedSPPlane2].Info.modelPlane);
-                spPlane2.setData(GameManager.Instance.Database.spPlanes[pSelectedSPPlane2]);
+                var spPlane2 = Instantiate(pDataSpPlane.Info.modelPlane);
+                spPlane2.setData(pDataSpPlane);
                 spPlane2.GetComponent<FollowerMainPlayer>().OffsetSupportPlane = players[0].transform.Find("slot2").transform.localPosition;
                 spPlane2.GetComponent<CharacterHandleWeapon>().DatabaseWeapon[0].weapons[0].AttachmentWeapon.transform.localScale = new Vector3(-1, 1, 1);
                  players[0].addChild(spPlane2);
@@ -343,6 +355,13 @@ namespace EazyEngine.Space
                 players[0].machine.SetTrigger("Start");
             });
             pSeq.Play();
+            if (GameManager.Instance.isFree)
+            {
+                GameManager.Instance.Database.SelectedMainPlane = GameManager.Instance.Database.CacheSelectedMainPlane;
+                GameManager.Instance.Database.SelectedSupportPlane1 = GameManager.Instance.Database.CacheSelectedSpPlane;
+                GameManager.Instance.SaveGame();
+            }
+           
         }
 
         public void OnEzEvent(PickEvent eventType)

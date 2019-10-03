@@ -642,7 +642,7 @@ namespace NodeCanvas.Framework
             } else {
                 OnGraphUnpaused();
             }
-
+            Debug.Log(newAgent.name);
             for ( var i = 0; i < allNodes.Count; i++ ) {
                 if ( !isPaused ) {
                     allNodes[i].OnGraphStarted();

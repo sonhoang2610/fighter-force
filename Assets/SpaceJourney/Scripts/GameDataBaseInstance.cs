@@ -292,7 +292,42 @@ namespace EazyEngine.Space
         }
 
         public int CurrentLevelWheel { get => currentLevelWheel; set => currentLevelWheel = value; }
-
+        public string CacheSelectedMainPlane { get; set; }
+        public string SelectedMainPlane { get => selectedMainPlane; set {
+                if (string.IsNullOrEmpty(value))
+                {
+                    return;
+                }
+                if(value != selectedMainPlane)
+                {
+                    CacheSelectedMainPlane = value;
+                }
+                selectedMainPlane = value;
+            }
+        }
+        public string CacheSelectedSpPlane { get; set; }
+        public string SelectedSupportPlane1 { get => selectedSupportPlane1; set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    return;
+                }
+                if (value != selectedSupportPlane1)
+                {
+                    CacheSelectedSpPlane = value;
+                }
+                selectedSupportPlane1 = value;
+            }
+        }
+        public string SelectedSupportPlane2 { get => selectedSupportPlane2; set
+            {
+                if (value != selectedSupportPlane2)
+                {
+                    CacheSelectedSpPlane = value;
+                }
+                selectedSupportPlane2 = value;
+            }
+        }
         public PlaneInfoConfig getPlane(string pID)
         {
             for(int i = 0; i < planes.Count; ++i)
