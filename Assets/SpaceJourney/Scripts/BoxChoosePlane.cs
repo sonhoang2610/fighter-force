@@ -85,7 +85,7 @@ namespace EazyEngine.Space.UI
                 group.reloadTabs();
                 for (int i = 0; i < DataSource.Count; ++i)
                 {
-                    if ((currentIndexTab == 0 && DataSource[i].Info.itemID == GameManager.Instance.Database.selectedMainPlane) || (currentIndexTab == 1 && DataSource[i].Info.itemID == GameManager.Instance.Database.selectedSupportPlane1))
+                    if ((currentIndexTab == 0 && DataSource[i].Info.itemID == GameManager.Instance.Database.SelectedMainPlane) || (currentIndexTab == 1 && DataSource[i].Info.itemID == GameManager.Instance.Database.SelectedSupportPlane1))
                     {
                         currentPage = i;
                     }

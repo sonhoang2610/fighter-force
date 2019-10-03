@@ -74,7 +74,7 @@ namespace EazyEngine.Space {
             {
                 info = pInfo,
                 limitUpgrade = 80,
-                currentLevel = 1,
+                currentLevel = 10,
                 upgradeSkill = pUpgradeSkill
             };
             pInfoPlane.ExtraInfo();
@@ -212,7 +212,22 @@ namespace EazyEngine.Space {
     [System.Serializable]
     public class SupportPlaneInfoConfig : PlaneInfoConfig
     {
-    
+        public static SupportPlaneInfoConfig CloneDefaultSp(PlaneInfo pInfo)
+        {
+            Dictionary<string, int> pUpgradeSkill = new Dictionary<string, int>();
+            for (int i = 0; i < pInfo.skills.Count; ++i)
+            {
+                pUpgradeSkill.Add(pInfo.skills[i].Info.itemID, 1);
+            }
+            var pInfoPlane = new SupportPlaneInfoConfig()
+            {
+                info = pInfo,
+                currentLevel = 10,
+                upgradeSkill = pUpgradeSkill
+            };
+            pInfoPlane.ExtraInfo();
+            return pInfoPlane;
+        }
     }
     [System.Serializable]
     public struct EzBool

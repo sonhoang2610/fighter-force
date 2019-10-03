@@ -111,7 +111,7 @@ namespace EazyEngine.Space.UI
                 refreshData();
                 for (int i = 0; i < DataSource.Count; ++i)
                 {
-                    if (DataSource[i].Info.itemID == GameManager.Instance.Database.selectedMainPlane)
+                    if (DataSource[i].Info.itemID == GameManager.Instance.Database.SelectedMainPlane)
                     {
                         currentPage = i;
                     }
@@ -128,12 +128,13 @@ namespace EazyEngine.Space.UI
             for (int i = 0; i < pInfos.Length; ++i)
             {
                 var pInfoConfig = GameManager.Instance.Database.getPlane(pInfos[i].itemID);
+                if (pInfoConfig == null)
+                {
+                    pInfoConfig = new PlaneInfoConfig() { Info = pInfos[i], CurrentLevel = 0 };
+                }
                 if (pInfoConfig != null)
                 {
-                    //if (pInfoConfig == null)
-                    //{
-                    //    pInfoConfig = new PlaneInfoConfig() { Info = pInfos[i], CurrentLevel = 0 };
-                    //}
+    
                     pInfoIntanceds.Add(pInfoConfig);
                 }
             }
@@ -146,7 +147,7 @@ namespace EazyEngine.Space.UI
             // ShopDatabase.
             refreshData();
             for (int i = 0; i < DataSource.Count; ++i) {
-                if(DataSource[i].Info.itemID == GameManager.Instance.Database.selectedMainPlane)
+                if(DataSource[i].Info.itemID == GameManager.Instance.Database.SelectedMainPlane)
                 {
                     currentPage = i;
                 }
@@ -164,7 +165,7 @@ namespace EazyEngine.Space.UI
                 {
                     for (int i = 0; i < DataSource.Count; ++i)
                     {
-                        if (DataSource[i].Info.itemID == GameManager.Instance.Database.selectedMainPlane)
+                        if (DataSource[i].Info.itemID == GameManager.Instance.Database.SelectedMainPlane)
                         {
                             currentPage = i;
                         }
@@ -186,7 +187,7 @@ namespace EazyEngine.Space.UI
         public override void updatePage()
         {
             base.updatePage();
-            GameManager.Instance.Database.selectedMainPlane = DataSource[currentPage].Info.itemID;
+            GameManager.Instance.Database.SelectedMainPlane = DataSource[currentPage].Info.itemID;
             GameManager.Instance.freePlaneChoose = DataSource[currentPage].Info.itemID;
         }
     }

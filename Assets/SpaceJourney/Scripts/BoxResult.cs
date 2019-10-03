@@ -224,6 +224,11 @@ namespace EazyEngine.Space.UI
 
         public void Replay()
         {
+            if (GameManager.Instance.isFree)
+            {
+                Home();
+                return;
+            }
             GameManager.Instance.scehduleUI = ScheduleUIMain.GAME_IMEDIATELY;
             PlayerEnviroment.clear();
             TimeKeeper.Instance.getTimer("Global").TimScale = 1;
@@ -233,6 +238,11 @@ namespace EazyEngine.Space.UI
 
         public void Upgrade()
         {
+            if (GameManager.Instance.isFree)
+            {
+                Home();
+                return;
+            }
             GameManager.Instance.scehduleUI = ScheduleUIMain.UPGRADE;
             PlayerEnviroment.clear();
             TimeKeeper.Instance.getTimer("Global").TimScale = 1;
