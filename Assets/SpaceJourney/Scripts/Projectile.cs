@@ -105,7 +105,7 @@ namespace EazyEngine.Space
                 damage.FactorDamage = FactorDamage;
                 if (damageBasic != 0)
                 {
-                    damage.DamageCaused = damageBasic;
+                    damage.DamageCausedProp = damageBasic;
                 }
                 damage.ExtraDamge = extras;
                 if(weaponChilds != null)

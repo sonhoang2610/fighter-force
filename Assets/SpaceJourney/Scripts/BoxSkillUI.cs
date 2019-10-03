@@ -34,6 +34,7 @@ namespace EazyEngine.Space.UI
 
         public EazyGroupTabNGUI group;
         public UILabel desChoosedSkill;
+        public UILabel labelRequireLevel;
         public UIProgressBar progress;
         public bool ableUpgrade = false;
         [ShowIf("ableUpgrade")]
@@ -44,6 +45,13 @@ namespace EazyEngine.Space.UI
         protected bool initData = false;
         public GameObject  layerAbleUpgradeSkill;
         public GameObject  layerLimitSkill;
+
+
+        protected PlaneInfoConfig owner;
+        public void setOwner(PlaneInfoConfig pInfo)
+        {
+            owner = pInfo;
+        }
         public void chooseIndex(int index)
         {
             IndexChoosed = 0;
@@ -53,10 +61,17 @@ namespace EazyEngine.Space.UI
             DataSource[index].info.LimitUpgrade = pItemShop.limitUpgrade;
             desChoosedSkill.text = DataSource[index].info.Info.Desc;
             layerAbleUpgradeSkill.gameObject.SetActive(true);
-            if(DataSource[index].info.CurrentLevelPlane <= 0)
+            labelRequireLevel.gameObject.SetActive(false);
+            if (DataSource[index].info.CurrentLevelPlane <= 0 || DataSource[index].info.CurrentLevelSkill <= 0)
             {
                 layerAbleUpgradeSkill.gameObject.SetActive(false);
+                if(DataSource[index].info.CurrentLevelPlane < owner.info.skills[index].requireLevelUnlock)
+                {
+                    labelRequireLevel.gameObject.SetActive(true);
+                    labelRequireLevel.text = string.Format(I2.Loc.LocalizationManager.GetTranslation("text/require_skill"), owner.info.skills[index].requireLevelUnlock);
+                }
             }
+            
             layerLimitSkill.gameObject.SetActive(true);
             if (layerAbleUpgradeSkill)
             {

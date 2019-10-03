@@ -209,7 +209,7 @@ namespace EazyEngine.Space
                     var pDamages = damageOnTouchExtension[i].GetComponentsInChildren<DamageOnTouch>();
                     foreach (var pDamage in pDamages)
                     {
-                        pDamage.DamageCaused = value;
+                        pDamage.DamageCausedProp = value;
                     }
                 }
                 fixDamage = value;
@@ -278,7 +278,7 @@ namespace EazyEngine.Space
                 foreach (var pDamage in pDamages)
                 {
                     pDamage.FactorDamage = factorDamage;
-                    pDamage.DamageCaused = FixDamage;
+                    pDamage.DamageCausedProp = FixDamage;
                 }
             }
             if (_currentWeapons == null)

@@ -95,8 +95,10 @@ namespace EazyEngine.Space.UI
                 {
                     boxSkill.IndexChoosed = indexSkillChoosed;
                 }
-            
-	            boxSkill.DataSource = pDatas.ToObservableList();
+                boxSkill.setOwner(value);
+
+
+                boxSkill.DataSource = pDatas.ToObservableList();
 	            if(attachMentSorting){
 		            attachMentSorting.SendMessage("Reposition",SendMessageOptions.DontRequireReceiver);
 	            }

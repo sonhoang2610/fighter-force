@@ -710,7 +710,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         if (first) return;
         if(delaySave> 0)
         {
-            delaySave = Time.deltaTime;
+            delaySave -= Time.deltaTime;
             if (delaySave <= 0)
             {
                 if (saveGameAgain)

@@ -56,6 +56,14 @@ public class SoundManager : PersistentSingleton<SoundManager>
             PlayerPrefs.SetInt("Sound", sfxOn ? 1 : 0);
             if (isChange)
             {
+                if (!value)
+                {
+                    if (_backgroundMusic != null)
+                    {
+                        _backgroundMusic.clip.UnloadAudioData();
+                        _backgroundMusic.Stop();
+                    }
+                }
                 EzEventManager.TriggerEvent(new SfxNotifi(TypeNotifySfx.TurnSound, value));
             }
         }
@@ -108,7 +116,7 @@ public class SoundManager : PersistentSingleton<SoundManager>
     public virtual void PlayBackgroundMusic(AudioSource Music)
     {
         // if the music's been turned off, we do nothing and exit
-        if (!MusicOn)
+        if (!sfxOn)
             return;
         if (_backgroundMusic != null && _backgroundMusic.clip.name == Music.clip.name)
         {

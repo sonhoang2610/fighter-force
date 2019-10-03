@@ -73,7 +73,7 @@ namespace EazyEngine.Space {
     public class DamageOnTouch : TimeControlBehavior,IRespawn, IgnoreObject
     {
         public LayerMask TargetMaskLayer;
-        public bool ignoreOnDamaged = false;   
+        public bool ignoreOnDamaged = false;
         public int DamageCaused = 10;
         public GameObject damagedEffect;
         public float durationForNextDame = 0.1f;
@@ -157,6 +157,11 @@ namespace EazyEngine.Space {
                 return pExtras;
                     } set => pExtras = value; }
 
+        public int DamageCausedProp { get => DamageCaused; set {
+                DamageCaused = value;
+            }
+        }
+
         private void Update()
         {
              for(int i = nextDamageSameObject.Count -1; i >= 0; --i)
@@ -238,7 +243,7 @@ namespace EazyEngine.Space {
                 nextDamageSameObject.Add(new GameObjectIgnoreTime() { pObject = collision.gameObject,duration = durationForNextDame});
             }
             float pExtraDamage = 0;
-            float pCurrentDamge = (DamageCaused * FactorDamage * factorDamageSelfConfig);
+            float pCurrentDamge = (DamageCausedProp * FactorDamage * factorDamageSelfConfig);
             for (int i  =0; i < PExtras.Count; ++i)
             {
                 pExtraDamage += PExtras[i].type == DamageType.Normal ? PExtras[i].damageExtra :

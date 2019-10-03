@@ -161,7 +161,7 @@ namespace EazyEngine.Space.UI
         {
             selectedPlane = pInfo;
             boxInfo.Data = pInfo;
-            btnUnlock.gameObject.SetActive(!(pInfo.CurrentLevel > 0));
+         //   btnUnlock.gameObject.SetActive(!(pInfo.CurrentLevel > 0));
             btnFreePlay.gameObject.SetActive(!(pInfo.CurrentLevel > 0));
             boxRank.gameObject.SetActive((pInfo.CurrentLevel > 0));
             boxRank.GetComponentInChildren<EazyFrameCache>().setFrameIndex(pInfo.Rank);

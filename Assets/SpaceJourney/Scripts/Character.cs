@@ -129,7 +129,7 @@ namespace EazyEngine.Space
                 var pDamage = GetComponent<DamageOnTouch>();
                 {
                     if(pDamage)
-                         pDamage.DamageCaused =(int) pInfo.DamgeSelf;
+                         pDamage.DamageCausedProp =(int) pInfo.DamgeSelf;
                 };
             }
         }

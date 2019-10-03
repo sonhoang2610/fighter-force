@@ -64,7 +64,7 @@ MonoBehaviour:
   TargetMaskLayer:
     serializedVersion: 2
     m_Bits: 256
-  ignoreOnDamaged: 1
+  ignoreOnDamaged: 0
   DamageCaused: 0
   damagedEffect: {fileID: 0}
   durationForNextDame: 0.1
@@ -10122,85 +10122,45 @@ PrefabInstance:
       propertyPath: ignoreMove
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
+    - target: {fileID: 1593635695235905622, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
-        type: 3}
-      propertyPath: m_LocalRotation.w
+      propertyPath: damageChilds.Array.size
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
+    - target: {fileID: 1593635695235905622, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
-      propertyPath: m_RootOrder
-      value: 0
+      propertyPath: TakenDamageMask.m_Bits
+      value: 256
       objectReference: {fileID: 0}
-    - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
+    - target: {fileID: 1593635695235905622, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
+    - target: {fileID: 1593635695235905622, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      propertyPath: DamageCaused
+      value: 10000
       objectReference: {fileID: 0}
-    - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
+    - target: {fileID: 1593635695235905622, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      propertyPath: ignoreOnDamaged
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
+    - target: {fileID: 1593635695235905622, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
+      propertyPath: DamageTakenWithEveryThing
+      value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
+    - target: {fileID: 1593635695235905622, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
+      propertyPath: damageChilds.Array.data[0]
+      value: 
+      objectReference: {fileID: 7367037711126746366}
+    - target: {fileID: 1593635695235905622, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1987057550204000798, guid: 29dd208871ea98a48afc6b178a355927,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.42
-      objectReference: {fileID: 0}
-    - target: {fileID: 1987057550204000798, guid: 29dd208871ea98a48afc6b178a355927,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.41
+      propertyPath: TargetMaskLayer.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 1874432911900596458, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
@@ -10423,45 +10383,85 @@ PrefabInstance:
       propertyPath: onRevie.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    - target: {fileID: 1593635695235905622, guid: 29dd208871ea98a48afc6b178a355927,
+    - target: {fileID: 1987057550204000798, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
-      propertyPath: damageChilds.Array.size
+      propertyPath: m_Size.x
+      value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987057550204000798, guid: 29dd208871ea98a48afc6b178a355927,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
+        type: 3}
+      propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1593635695235905622, guid: 29dd208871ea98a48afc6b178a355927,
+    - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
-      propertyPath: TakenDamageMask.m_Bits
-      value: 256
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1593635695235905622, guid: 29dd208871ea98a48afc6b178a355927,
+    - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
-      propertyPath: m_Enabled
-      value: 1
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1593635695235905622, guid: 29dd208871ea98a48afc6b178a355927,
+    - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
-      propertyPath: DamageCaused
-      value: 10000
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1593635695235905622, guid: 29dd208871ea98a48afc6b178a355927,
+    - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
-      propertyPath: ignoreOnDamaged
-      value: 1
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1593635695235905622, guid: 29dd208871ea98a48afc6b178a355927,
+    - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
-      propertyPath: DamageTakenWithEveryThing
-      value: 10
+      propertyPath: m_LocalScale.x
+      value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1593635695235905622, guid: 29dd208871ea98a48afc6b178a355927,
+    - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
-      propertyPath: damageChilds.Array.data[0]
-      value: 
-      objectReference: {fileID: 7367037711126746366}
-    - target: {fileID: 1593635695235905622, guid: 29dd208871ea98a48afc6b178a355927,
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
-      propertyPath: TargetMaskLayer.m_Bits
-      value: 256
+      propertyPath: m_LocalScale.z
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29dd208871ea98a48afc6b178a355927, type: 3}
