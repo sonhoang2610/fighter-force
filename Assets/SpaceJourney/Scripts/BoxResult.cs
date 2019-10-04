@@ -106,6 +106,7 @@ namespace EazyEngine.Space.UI
             string[] pStrs = new string[3] { "ui/normal", "ui/hard", "ui/super_hard" };
             level.text = I2.Loc.LocalizationManager.GetTranslation(pStrs[GameManager.Instance.ChoosedHard]);
             coinTaken.text = StringUtils.addDotMoney(LevelManger.Instance._infoLevel.goldTaken);
+            currentCoin = LevelManger.Instance._infoLevel.goldTaken;
             boxMission.DataSource = LevelManger.Instance._infoLevel.missions.ToObservableList();  
             time.text = LevelManger.Instance.CurrentTime.ToString(@"mm\:ss");
             quantityDestroy.text = LevelManger.Instance._infoLevel.enemyKill.ToString();
@@ -143,6 +144,13 @@ namespace EazyEngine.Space.UI
                 GameManager.Instance.SaveGame();
             }
         }
+        protected float currentCoin;
+        public void setGold(float pCoin)
+        {
+            currentCoin = pCoin;
+            coinTaken.text = StringUtils.addDotMoney((int)pCoin);
+        }
+        
 
         public void watch()
         {
@@ -151,9 +159,11 @@ namespace EazyEngine.Space.UI
             {
                 if (pSucess)
                 {
-                    
+            
                     var pItem = GameManager.Instance.Database.getComonItem("Coin");
                     pItem.Quantity += LevelManger.Instance._infoLevel.goldTaken;
+                    int pTo = LevelManger.Instance._infoLevel.goldTaken * 2;
+                    DOTween.To(() => currentCoin, setGold, pTo, 0.5f);
                     GameManager.Instance.SaveGame();
                 }
             });
