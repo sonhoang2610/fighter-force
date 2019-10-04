@@ -32,6 +32,7 @@ namespace EazyEngine.Space.UI
                     {
                         tweenDuration.Kill();
                     }
+                    fill.fillAmount = value.CurrentDuration / value.Duration;
                     tweenDuration = DOTween.To(() => fill.fillAmount, x => fill.fillAmount = x,0, value.CurrentDuration).From(value.CurrentDuration / value.Duration);
                     tweenDuration.Play();
                 }
