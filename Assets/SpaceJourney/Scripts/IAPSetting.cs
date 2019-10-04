@@ -55,7 +55,7 @@ namespace EazyEngine.Tools
         [EnableIf("isCustom")]
         [ShowInInspector]
         public string Price { get {
-                if ((isCustom || item == null || item.item == null))
+                if (isLoadLocalize || isCustom || item == null || item.item == null)
                 {
                     return price;
                 }
@@ -83,6 +83,8 @@ namespace EazyEngine.Tools
         [ShowInInspector]
         [EnableIf("isCustom")]
         public string Des { get => (isCustom || item == null || item.item == null) ? des : item.item.descriptionItem.Value; set => des = value; }
+
+        public bool isLoadLocalize { get; set; }
     }
 
 

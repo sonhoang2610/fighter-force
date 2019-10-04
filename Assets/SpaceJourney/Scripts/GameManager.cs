@@ -343,6 +343,10 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             Database.dailyGiftModules.Add(dailyGiftModule);
             Database.clearDailyModules(currentModuleDailyGift.moduleClearID);
         }
+        if (!InAppPurchasing.IsInitialized())
+        {
+            InAppPurchasing.InitializePurchasing();
+        }
     }
     bool first = true;
     private void LateUpdate()
@@ -805,13 +809,40 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     {
         SceneManager.Instance.loadScene(pScene);
     }
+    public void initFailed()
+    {
+        if (!InAppPurchasing.IsInitialized())
+        {
+            StartCoroutine(delayAction(5, delegate
+            {
+                InAppPurchasing.InitializePurchasing();
+            }));
+        }
 
+    }
+    public void initIAPSuccess()
+    {
 
+        var pIAPSetting = LoadAssets.loadAsset<IAPSetting>("IAPSetting", "Variants/Database/");
+        var products = pIAPSetting.items;
+        foreach (var product in products)
+        {
+            ProductMetadata data = InAppPurchasing.GetProductLocalizedData(product.Id.ToLower());
+
+            if (data != null)
+            {
+                product.Price = data.localizedPriceString;
+                product.isLoadLocalize = true;
+            }
+        }
+    }
     void OnEnable()
     {
 
         InAppPurchasing.PurchaseCompleted += PurchaseCompletedHandler;
         InAppPurchasing.PurchaseFailed += PurchaseFailedHandler;
+        InAppPurchasing.InitializeSucceeded += initIAPSuccess;
+        InAppPurchasing.InitializeFailed += initFailed;
         GameServices.UserLoginSucceeded += OnUserLoginSucceeded;
         GameServices.UserLoginFailed += OnUserLoginFailed;
         Advertising.RewardedAdCompleted += onRewardedAdComplete;
@@ -845,6 +876,8 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         InAppPurchasing.PurchaseFailed -= PurchaseFailedHandler;
         GameServices.UserLoginSucceeded -= OnUserLoginSucceeded;
         GameServices.UserLoginFailed -= OnUserLoginFailed;
+        InAppPurchasing.InitializeSucceeded -= initIAPSuccess;
+        InAppPurchasing.InitializeFailed -= initFailed;
         EzEventManager.RemoveListener(this);
     }
     void onRewardedAdComplete(RewardedAdNetwork pNetWork, AdPlacement placement)
