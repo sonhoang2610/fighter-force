@@ -165,6 +165,7 @@ namespace EazyEngine.Space
         }
         public void addAttachMentIndex(int index)
         {
+            if (cacchePosAttachment.Contains(AttachMentPosStartNew[index])) return;
             cacchePosAttachment.Add(AttachMentPosStartNew[index]);
         }
         public void addAttachMentIndexString(string pStr)

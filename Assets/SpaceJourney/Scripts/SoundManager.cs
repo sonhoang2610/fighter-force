@@ -48,24 +48,9 @@ public class SoundManager : PersistentSingleton<SoundManager>
         set
         {
             bool isChange = false;
-            if (sfxOn != value)
-            {
-                isChange = true;
-            }
             sfxOn = value;
             PlayerPrefs.SetInt("Sound", sfxOn ? 1 : 0);
-            if (isChange)
-            {
-                if (!value)
-                {
-                    if (_backgroundMusic != null)
-                    {
-                        _backgroundMusic.clip.UnloadAudioData();
-                        _backgroundMusic.Stop();
-                    }
-                }
-                EzEventManager.TriggerEvent(new SfxNotifi(TypeNotifySfx.TurnSound, value));
-            }
+            AudioListener.volume =value ? 1 :0;
         }
     }
 
@@ -137,7 +122,7 @@ public class SoundManager : PersistentSingleton<SoundManager>
         // we start playing the background music
         _backgroundMusic.Play();
     }
-    List<GameObject> sounds = new List<GameObject>();
+    //Dictionary<AudioClip,GameObject> sounds = new List<AudioClip,GameObject>();
     /// <summary>
     /// Plays a sound
     /// </summary>
@@ -173,7 +158,11 @@ public class SoundManager : PersistentSingleton<SoundManager>
         // we return the audiosource reference
         return audioSource;
     }
-
+    public IEnumerator delayAction(float pDelay , System.Action pAction)
+    {
+        yield return new WaitForSeconds(pDelay);
+        pAction();
+    }
     /// <summary>
     /// Stops the looping sounds if there are any
     /// </summary>

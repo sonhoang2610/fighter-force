@@ -229,7 +229,7 @@ namespace EazyEngine.Space
         protected float cacheVolum;
         public void turnOnVolume()
         {
-            AudioListener.volume = cacheVolum;
+            AudioListener.volume = SoundManager.Instance.SfxOn ? 1: 0;
       
             SoundManager.Instance.PlayBackgroundMusic(GameManager.Instance.backgroundStage[GameManager.Instance.ChoosedHard]);
         }
@@ -240,7 +240,7 @@ namespace EazyEngine.Space
             AudioListener.volume = 0;
             GameManager.Instance.backgroundStage[GameManager.Instance.ChoosedHard].gameObject.SetActive(true);
             GameManager.Instance.bossStage[GameManager.Instance.ChoosedHard].gameObject.SetActive(true);
-            Invoke("turnOnVolume", 1);      
+            Invoke("turnOnVolume", 2);      
             GameManager.Instance.scehduleUI = ScheduleUIMain.NONE;
             GUIManager.Instance.enableEnergy(false);
             GUIManager.Instance.setBarBooster(0);
