@@ -20,16 +20,19 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
+    SerializationNodes:
+    - Name: limitModule
+      Entry: 6
+      Data: 
   itemID: BoosterHp
   displayNameItem:
     normalString: 
     isI2String: 0
     value: 
   descriptionItem:
-    normalString: 
-    isI2String: 0
-    value: 
+    normalString: text/item_sp3
+    isI2String: 1
+    value: "T\u0103ng g\u1EA5p \u0111\xF4i gi\u1EDBi h\u1EA1n m\xE1u"
   categoryItem: 2
   iconShop: {fileID: 21300000, guid: 904355db2dba1cd42957ae2027fd5379, type: 3}
   iconShopDisable: {fileID: 21300000, guid: 70e23e23e3926d2458e9157b1e735d21, type: 3}
@@ -37,7 +40,17 @@ MonoBehaviour:
   iconGameDisable: {fileID: 21300000, guid: 70e23e23e3926d2458e9157b1e735d21, type: 3}
   model: {fileID: 4228777324327856508, guid: 2fd91f20afbd81a4b8f018a0f12eeafa, type: 3}
   isActive: 0
-  coolDownTime: 10
-  duration: 5
+  coolDownTime:
+    startUnit: 10
+    algrothimTypeUpgrade: 0
+    stepUnit: 0
+    isSpecifiedUnit: 0
+    unitDefines: []
+  duration:
+    startUnit: 5
+    algrothimTypeUpgrade: 0
+    stepUnit: 0
+    isSpecifiedUnit: 0
+    unitDefines: []
   controller: {fileID: 0}
   condition: {fileID: 0}

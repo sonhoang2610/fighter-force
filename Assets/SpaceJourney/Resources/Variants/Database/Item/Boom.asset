@@ -20,16 +20,20 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
+    SerializationNodes:
+    - Name: limitModule
+      Entry: 6
+      Data: 
   itemID: Boom
   displayNameItem:
     normalString: 
     isI2String: 0
     value: 
   descriptionItem:
-    normalString: 
-    isI2String: 0
-    value: 
+    normalString: text/item_sp1
+    isI2String: 1
+    value: "K\xEDch ho\u1EA1t t\u1EA1o ra m\u1ED9t v\xF2ng tr\xF2n n\u0103ng l\u01B0\u1EE3ng
+      ti\xEAu di\u1EC7t k\u1EBB th\xF9 v\xE0 \u0111\u1EA1n c\u1EE7a ch\xFAng"
   categoryItem: 2
   iconShop: {fileID: 21300000, guid: faf314f8b3806934eba13d29a55c1c56, type: 3}
   iconShopDisable: {fileID: 21300000, guid: 74026cf668b083e418cc8c0bb45c5135, type: 3}
@@ -37,7 +41,17 @@ MonoBehaviour:
   iconGameDisable: {fileID: 21300000, guid: 74026cf668b083e418cc8c0bb45c5135, type: 3}
   model: {fileID: 4228777324327856508, guid: fe1f1099e9ebe564789b0dd46314ad90, type: 3}
   isActive: 1
-  coolDownTime: 10
-  duration: 5
+  coolDownTime:
+    startUnit: 10
+    algrothimTypeUpgrade: 0
+    stepUnit: 0
+    isSpecifiedUnit: 0
+    unitDefines: []
+  duration:
+    startUnit: 5
+    algrothimTypeUpgrade: 0
+    stepUnit: 0
+    isSpecifiedUnit: 0
+    unitDefines: []
   controller: {fileID: 11400000, guid: f258f53eb3dc72742bf9db4a986b888f, type: 2}
   condition: {fileID: 0}
