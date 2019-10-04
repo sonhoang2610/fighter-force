@@ -48,6 +48,12 @@ namespace EazyEngine.Space.UI
             claim();
             Data = Data;
         }
+        public BoxPackageInfo boxInfo;
+        public void showInfo(object pData)
+        {
+            boxInfo.GetComponent<UIElement>().show();
+            boxInfo.setData((ItemPackage) ((ShopItemInfo)pData).itemSell);
+        }
 
         // Start is called before the first frame update
         void Start()

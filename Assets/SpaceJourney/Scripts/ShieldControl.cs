@@ -27,6 +27,24 @@ namespace EazyEngine.Space
 
         public ShieldInfo[] extraShield;
 
+        private void Awake()
+        {
+            if (!currentShield)
+            {
+                currentShield = Instantiate(shieldObject);
+                currentShield.SetActive(false);
+            }
+            for(int i  =0; i < extraShield.Length; ++i)
+            {
+                var pShield = extraShield[i];
+                if (!pShield.currentShield)
+                {
+                    pShield.currentShield = Instantiate(pShield.shieldObject);
+                    pShield.currentShield.gameObject.SetActive(false);
+                }
+            }
+        }
+
         public void activeShield()
         {
             if (!currentShield)

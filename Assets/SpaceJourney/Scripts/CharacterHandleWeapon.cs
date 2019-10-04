@@ -384,11 +384,6 @@ namespace EazyEngine.Space
             if (!countShooting.Contains(pWeapon)) return;
             if (countShooting.Count > 0)
             {
-                if (name.StartsWith("MainPlane6"))
-                {
-                    Debug.Log("here + " + countShooting.Count + "a" + _currentWeapons.Count);
-                }
-
                 if (pWeapon.parrentGroup.removeOnStop)
                 {
                     _currentWeapons.Remove(pWeapon);
@@ -398,11 +393,6 @@ namespace EazyEngine.Space
                     pWeapon.parrentGroup.onStop.Invoke();
                 }
                 countShooting.Remove(pWeapon);
-                if (countShooting.Count != _currentWeapons.Count && name.StartsWith("MainPlane6"))
-                {
-                    Debug.Log("here");
-                }
-
                 if (conditionChangeWeapon != ChangeWeaponCondition.ChangeWhenAllStopAttack)
                 {
                     if (countShooting.Count <= 0)
@@ -745,7 +735,6 @@ namespace EazyEngine.Space
         }
         public void booster(string pID)
         {
-            Debug.Log(pID);
 
             if (pID.StartsWith("Booster"))
             {

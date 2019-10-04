@@ -147,7 +147,6 @@ namespace EazyEngine.Space
         {
             StopAllCoroutines();
             cacchePosAttachment.Clear();
-            Debug.Log(index + "hehe");
            cacchePosAttachment.Add(AttachMentPosStartNew[index]);
         }
         public void setAttachMentIndexString(string pStr)

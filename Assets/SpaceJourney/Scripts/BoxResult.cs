@@ -111,11 +111,14 @@ namespace EazyEngine.Space.UI
             quantityDestroy.text = LevelManger.Instance._infoLevel.enemyKill.ToString();
         
             gameObject.SetActive(true);
+            var pdrop = GameDatabase.Instance.dropMonyeconfig[GameManager.Instance.ChoosedLevel-1][GameManager.Instance.ChoosedHard];
+            int pStarNotEngough = pdrop.requireStar - GameManager.Instance.Database.getComonItem("Star").Quantity;
+            float percent = 1 - (pStarNotEngough <= 0 ? 0 : (pStarNotEngough * 0.2f > 0.6f ? 0.6f : pStarNotEngough * 0.2f));
             if (pWin)
             {
                 if (!GameManager.Instance.isFree)
                 {
-                    GameManager.Instance.Database.getComonItem("Coin").Quantity += LevelManger.Instance._infoLevel.goldTaken;
+                    GameManager.Instance.Database.getComonItem("Coin").Quantity +=(int)( LevelManger.Instance._infoLevel.goldTaken* percent);
                     if (GameManager.Instance.ChoosedHard < 2)
                     {
                         GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard + 1).isLocked = false;
@@ -136,7 +139,7 @@ namespace EazyEngine.Space.UI
             }
             else if (!GameManager.Instance.isFree)
             {
-                GameManager.Instance.Database.getComonItem("Coin").Quantity += LevelManger.Instance._infoLevel.goldTaken;
+                GameManager.Instance.Database.getComonItem("Coin").Quantity += (int)(LevelManger.Instance._infoLevel.goldTaken * percent);
                 GameManager.Instance.SaveGame();
             }
         }

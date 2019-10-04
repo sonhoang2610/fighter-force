@@ -13,6 +13,7 @@ namespace EazyEngine.Space.UI
     public class ItemWheel : BaseItem<BaseItemGameInstancedArray>
     {
         public UI2DSprite icon;
+        public UI2DSprite iconShop;
         public UILabel quantity;
         public UILabel rate;
 
@@ -27,6 +28,11 @@ namespace EazyEngine.Space.UI
                 base.Data = value;
                 int randomIndex = Random.Range(0, value.infos.Length);
                 icon .sprite2D= value.infos[randomIndex].item.CateGoryIcon;
+                if (iconShop)
+                {
+                    iconShop.sprite2D = value.infos[randomIndex].item.iconShop;
+                }
+
                 quantity.text = "X " + StringUtils.addDotMoney( value.infos[randomIndex].Quantity);
                 if (rate)
                 {
@@ -48,6 +54,10 @@ namespace EazyEngine.Space.UI
         {
             isFixed = true;
             icon.sprite2D = Data.infos[index].item.CateGoryIcon;
+            if (iconShop)
+            {
+                iconShop.sprite2D = Data.infos[index].item.iconShop;
+            }
             quantity.text = "X " + Data.infos[index].Quantity.ToString();
         }
         // Start is called before the first frame update

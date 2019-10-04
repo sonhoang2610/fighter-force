@@ -33,6 +33,7 @@ namespace EazyEngine.Space
         public GameObject containerHealthBar;
         public Image HealthBar;
         public AudioClip DamageSfx;
+        public int preloadDeathEffect = 5;
         public GameObject DeathEffect;
         public GameObject DamagedEffect;
         public GameObject HealingEffect;
@@ -66,7 +67,7 @@ namespace EazyEngine.Space
         {
             if (DeathEffect && GameManager.Instance.inGame)
             {
-                ParticleEnviroment.Instance.preloadEffect(5, DeathEffect, transform.position, 1);
+                ParticleEnviroment.Instance.preloadEffect(preloadDeathEffect, DeathEffect, transform.position, 1);
             }
         }
         public Health[] getAllAvailableHealth()

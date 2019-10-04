@@ -22,8 +22,9 @@ namespace EazyEngine.Space.UI
         public UIButton btnFight;
         public UILabel nameUser,idUser;
         public GameObject block;
-       protected List<BoxBasePlane> selectedBoxPlane = new List<BoxBasePlane>();
+        protected List<BoxBasePlane> selectedBoxPlane = new List<BoxBasePlane>();
         public EazyGroupTabNGUI chooseHardMode;
+        public UILabel desItemSp;
         protected PlaneInfoConfig selectedPlane;
 
         protected List<string> stateGames = new List<string>();
@@ -260,12 +261,15 @@ namespace EazyEngine.Space.UI
         {
             if (pObject == null) return;
             var pItem = (BaseItemGameInstanced)pObject;
+            desItemSp.text = pItem.item.descriptionItem.Value;
             if (GameManager.Instance.ConfigLevel.itemUsed.Contains( (ItemGame) pItem.item))
             {
+                desItemSp.gameObject.SetActive(false);
                 GameManager.Instance.ConfigLevel.itemUsed.Remove((ItemGame)pItem.item);
             }
             else
             {
+                desItemSp.gameObject.SetActive(true);
                 GameManager.Instance.ConfigLevel.itemUsed.Add((ItemGame)pItem.item);
             }
         }

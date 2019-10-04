@@ -486,7 +486,7 @@ MonoBehaviour:
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 1.1287879
-  dirtyChange: 0
+  dirtyChange: 1
   mType: 0
   mFillDirection: 4
   mFillAmount: 1
@@ -518,7 +518,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b24411ce19a532747a360bc26efa2466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onData: []
+  onData:
+  - mTarget: {fileID: 4432865059829514994}
+    mMethodName: showInfo
+    mParameters:
+    - obj: {fileID: 0}
+      field: 
+    oneShot: 0
   _data:
     idCategoryInShop: Common
     isVisible: 1
@@ -558,6 +564,7 @@ MonoBehaviour:
   useIfClaim: 1
   labelQuantity: {fileID: 1583244583054069876}
   btnOpen: {fileID: 12701210813498815}
+  boxInfo: {fileID: 0}
 --- !u!1 &8305626013667777467
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,32 +1034,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 16
       objectReference: {fileID: 0}
-    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
-        type: 3}
-      propertyPath: mDepth
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
-        type: 3}
-      propertyPath: mSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: a1e80fbc41f435146b3f3bdef8e72f72,
-        type: 3}
-    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
-        type: 3}
-      propertyPath: mWidth
-      value: 48
-      objectReference: {fileID: 0}
-    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
-        type: 3}
-      propertyPath: mHeight
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
-        type: 3}
-      propertyPath: aspectRatio
-      value: 0.96
-      objectReference: {fileID: 0}
     - target: {fileID: 3346290375905700156, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1107,6 +1088,47 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952205297065852993, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+        type: 3}
+      propertyPath: onClick.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952205297065852993, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+        type: 3}
+      propertyPath: onClick.Array.data[0].mTarget
+      value: 
+      objectReference: {fileID: 4432865059829514994}
+    - target: {fileID: 6952205297065852993, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+        type: 3}
+      propertyPath: onClick.Array.data[0].mMethodName
+      value: onExecute
+      objectReference: {fileID: 0}
+    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+        type: 3}
+      propertyPath: mDepth
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+        type: 3}
+      propertyPath: mSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a1e80fbc41f435146b3f3bdef8e72f72,
+        type: 3}
+    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+        type: 3}
+      propertyPath: mWidth
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+        type: 3}
+      propertyPath: mHeight
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+        type: 3}
+      propertyPath: aspectRatio
+      value: 0.96
       objectReference: {fileID: 0}
     - target: {fileID: 2539561911282382920, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
         type: 3}

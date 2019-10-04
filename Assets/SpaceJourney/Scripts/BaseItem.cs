@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BaseItem<T> : MonoBehaviour where T  : class
 {
-    [HideInInspector]
+   // [HideInInspector]
     public List<EventDelegate> onData; 
     public T _data;
     [HideInInspector]
