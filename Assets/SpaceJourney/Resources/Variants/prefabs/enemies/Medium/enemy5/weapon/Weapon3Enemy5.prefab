@@ -16,11 +16,20 @@ MonoBehaviour:
   storageBullet: 0
   isRandomTimeRestore: 1
   timeToRestore: 2
-  randomTimeRestore: {x: 1.3, y: 2.2}
+  randomTimeRestore: {x: 1.6, y: 2.2}
   quantityRestoreEachTime: 6
   limitRestore: 999999
   conditonRestore: 1
   _weapon: {fileID: 0}
+  onEmptyStorage:
+    m_PersistentCalls:
+      m_Calls: []
+  onStartRestore:
+    m_PersistentCalls:
+      m_Calls: []
+  onNotEnough:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3910332536057199174
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,11 +149,6 @@ PrefabInstance:
       propertyPath: timeReload
       value: 0.15
       objectReference: {fileID: 0}
-    - target: {fileID: 1930181967980925157, guid: 2874c1af8f7d48e4da308bafe7aea49a,
-        type: 3}
-      propertyPath: _groupName
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 114506514760959066, guid: 2874c1af8f7d48e4da308bafe7aea49a,
         type: 3}
       propertyPath: GameObjectToPool
@@ -193,6 +197,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4180916872256662, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1930181967980925157, guid: 2874c1af8f7d48e4da308bafe7aea49a,
+        type: 3}
+      propertyPath: _groupName
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
