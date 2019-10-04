@@ -278,8 +278,8 @@ namespace EazyEngine.Space.UI
         {
             if (GameServices.LocalUser != null)
             {
-                nameUser.text = GameServices.LocalUser.userName;
-                idUser.text = GameServices.LocalUser.id;
+                nameUser.text = GameServices.LocalUser.userName.Length < 10 ? GameServices.LocalUser.userName : (GameServices.LocalUser.userName.Substring(0, 7) + "...");
+                idUser.text = GameServices.LocalUser.id.Length < 10 ? GameServices.LocalUser.id : (GameServices.LocalUser.id.Substring(0, 7) + "...");
             }
             else
             {
@@ -319,8 +319,8 @@ namespace EazyEngine.Space.UI
         {
             if (GameServices.LocalUser != null)
             {
-                nameUser.text = GameServices.LocalUser.userName;
-                idUser.text = GameServices.LocalUser.id;
+                nameUser.text = GameServices.LocalUser.userName.Length< 10 ? GameServices.LocalUser.userName :  (GameServices.LocalUser.userName.Substring(0,7) + "...");
+                idUser.text = GameServices.LocalUser.id.Length < 10 ? GameServices.LocalUser.id : (GameServices.LocalUser.id.Substring(0, 7) + "..."); 
             }
             else
             {

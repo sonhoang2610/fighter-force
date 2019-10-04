@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using EasyMobile;
 
 namespace EazyEngine.Space.UI
 {
@@ -124,7 +125,25 @@ namespace EazyEngine.Space.UI
                     {
                         GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard + 1).isLocked = false;
                     }
+                    var pOldLevelInfo = GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard);
+                    bool newbest = false;
+                    if(pOldLevelInfo.infos.score > LevelManger.Instance._infoLevel.score)
+                    {
+                        LevelManger.Instance._infoLevel.score = pOldLevelInfo.infos.score;
+                        newbest = true;
+                    }
                     GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard).infos = LevelManger.Instance._infoLevel;
+                    if (newbest)
+                    {
+                        int pScore = 0;
+                        for (int i = 0; i < GameManager.Instance.container.levels.Count; ++i)
+                        {
+                            pScore += GameManager.Instance.container.levels[i].infos.score;
+                        }
+                        GameServices.ReportScore(pScore, EM_GameServicesConstants.Leaderboard_Top_Fighter);
+                    }
+              
+                  
                     if (GameManager.Instance.ChoosedLevel == GameManager.Instance.CurrentLevelUnlock)
                     {
 
