@@ -35,12 +35,12 @@ namespace EasyMobile
         /// The frames of this clip.
         /// </summary>
         /// <value>The frames.</value>
-        public RenderTexture[] Frames { get; private set; }
+        public Texture[] Frames { get; private set; }
 
         // Whether this object is disposed.
         private bool isDisposed = false;
 
-        public AnimatedClip(int width, int height, int fps, RenderTexture[] frames)
+        public AnimatedClip(int width, int height, int fps, Texture[] frames)
         {
             this.Width = width;
             this.Height = height;
@@ -49,9 +49,19 @@ namespace EasyMobile
             this.Length = (float)frames.Length / fps;
         }
 
+        /// <summary>
+        /// Sets filter mode for all texture frames of the clip.
+        /// </summary>
+        /// <param name="filterMode"></param>
+        public void SetFilterMode(FilterMode filterMode)
+        {
+            foreach (var tex in Frames)
+                tex.filterMode = filterMode;
+        }
+
         ~AnimatedClip()
         {
-            Action cleanAction = () => Cleanup(Frames); 
+            Action cleanAction = () => Cleanup(Frames);
             RuntimeHelper.RunOnMainThread(cleanAction);
         }
 
@@ -77,7 +87,7 @@ namespace EasyMobile
             isDisposed = true;
         }
 
-        private void Cleanup(RenderTexture[] frames)
+        private void Cleanup(Texture[] frames)
         {
             if (frames == null)
                 return;
@@ -86,11 +96,11 @@ namespace EasyMobile
             {
                 if (rt != null)
                 {
-                    rt.Release();
+                    if (rt is RenderTexture)
+                        (rt as RenderTexture).Release();
                     UnityEngine.Object.Destroy(rt);
                 }
             }
-            frames = null;
         }
     }
 }

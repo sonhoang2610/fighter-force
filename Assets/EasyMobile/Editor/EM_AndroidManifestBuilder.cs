@@ -155,10 +155,10 @@ namespace EasyMobile.Editor
                     string actualOutputPath = '"' + outputPath + '"';
                     string actualJavaPath = '"' + javaPath + '"';
 
-                    startInfo.FileName = "cmd.exe";
-                    string command = String.Format("\"{0} -cp .\\ManifMerger\\* com.android.manifmerger.Merger --main {1}{2} --out {3}\"", 
-                        actualJavaPath, actualTemplatePath, libsPathsStr, actualOutputPath);    // it's vital to wrap the whole command in double quotes
-                    startInfo.Arguments = "/C " + command;
+                    startInfo.FileName = javaPath;
+                    string command = String.Format(" -cp .\\ManifMerger\\* com.android.manifmerger.Merger --main {1}{2} --out {3}", 
+                        actualJavaPath, actualTemplatePath, libsPathsStr, actualOutputPath);
+                    startInfo.Arguments = command;
 #else
                     // Fix issue if paths contain spaces.
                     string actualTemplatePath = "'" + templatePath + "'";

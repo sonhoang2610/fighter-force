@@ -52,7 +52,7 @@ namespace EasyMobile.Editor
             // Get the window and make sure it will be opened in the same panel with inspector window.
             Type inspectorType = EM_EditorUtil.GetInspectorWindowType();
             var window = GetWindow<EM_SettingsWindow>(new Type[] { inspectorType });
-            window.titleContent = new GUIContent(Title, EM_GUIStyleManager.EasyMobileSmallIcon);
+            window.titleContent = new GUIContent(Title);
 
             return window;
         }

@@ -561,7 +561,6 @@ namespace EasyMobile
             }
             else // Custom rewarded ad...
             {
-                
                 return mIsLoadingCustomRewardedAd &&
                 mLoadingCustomRewardedAdPlacement != null &&
                 mLoadingCustomRewardedAdPlacement.Equals(placement) &&
@@ -885,6 +884,7 @@ namespace EasyMobile
         private void HandleAdMobBannerAdLoaded(object sender, EventArgs args)
         {
             Debug.Log("AdMob banner ad has been loaded successfully.");
+
             if (OnBannerAdLoaded != null)
                 OnBannerAdLoaded.Invoke(sender, args);
         }

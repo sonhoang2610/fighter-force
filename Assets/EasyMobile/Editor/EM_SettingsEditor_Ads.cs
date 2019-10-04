@@ -17,12 +17,7 @@ namespace EasyMobile.Editor
         const string AdColonyAvailMsg = "AdColony plugin was imported.";
         const string AdMobImportInstruction = "Google Mobile Ads (AdMob) plugin not found. Please download and import it to show ads from AdMob.";
         const string AdMobAvailMsg = "Google Mobile Ads (AdMob) plugin was imported.";
-        const string AdMobIosAddIdMsg = "When building for iOS, the iOS App ID will be added to the Xcode project's Info.plist automatically with the GADApplicationIdentifier " +
-                                        "key as required by the Google Mobile Ads iOS SDK.";
-        const string AdMobAndroidAddIdMsg = "Click the below button to add the Android App ID into Google Mobile Ads' AndroidManifest.xml. " +
-                                            "This step is required as of Google Mobile Ads Android SDK version 17.0.0. " +
-                                            "Failure to do this results in a crash with the message " +
-                                            "\"The Google Mobile Ads SDK was initialized incorrectly\".";
+        const string SetupGoogleMobileAdsMsg = "Click the below button to setup the Google Mobile Ads plugin with your App IDs. The entered IDs will be reflected here. IMPORTANT: failure to do this will cause AdMob ads to not function properly.";
         const string AppLovinImportInstruction = "AppLovin plugin not found. Please download and import it to show ads from AppLovin.";
         const string AppLovinAvailMsg = "AppLovin plugin was imported.";
         const string ChartboostImportInstruction = "Chartboost plugin not found. Please download and import it to show ads from Chartboost.";
@@ -237,21 +232,32 @@ namespace EasyMobile.Editor
                         EM_ExternalPluginManager.DownloadGoogleMobileAdsPlugin();
                     }
 
-                    // App ID.
+                    // Setup GoogleMobileAds.
                     EditorGUILayout.Space();
-                    EditorGUILayout.LabelField("App ID", EditorStyles.boldLabel);
+                    EditorGUILayout.LabelField("Setup", EditorStyles.boldLabel);
+                    EditorGUILayout.HelpBox(SetupGoogleMobileAdsMsg, MessageType.Info);
+
+                    // Get the App IDs from GoogleMobileAdsSettings.
+                    var iOSAppId = GoogleMobileAds.Editor.GoogleMobileAdsSettings.Instance.AdMobIOSAppId;
+                    var androidAppId = GoogleMobileAds.Editor.GoogleMobileAdsSettings.Instance.AdMobAndroidAppId;
+
+                    if (!EM_Settings.Advertising.AdMob.AppId.IosId.Equals(iOSAppId) ||
+                    !EM_Settings.Advertising.AdMob.AppId.AndroidId.Equals(androidAppId))
+                        EM_Settings.Advertising.AdMob.AppId = new AdId(iOSAppId, androidAppId);
+
+                    // Display the App IDs as readonly.
+                    EditorGUI.BeginDisabledGroup(true);
                     EditorGUI.indentLevel++;
                     EditorGUILayout.PropertyField(AdProperties.admobAppId.property, AdProperties.admobAppId.content, true);
                     EditorGUI.indentLevel--;
+                    EditorGUI.EndDisabledGroup();
 
-                    // Note about iOS App ID being addded into Info.plist.
                     EditorGUILayout.Space();
-                    EditorGUILayout.HelpBox(AdMobIosAddIdMsg, MessageType.Info);
-
-                    // Add App Id to AdMob manifest.
-                    EditorGUILayout.HelpBox(AdMobAndroidAddIdMsg, MessageType.Info);
-                    if (GUILayout.Button("Update Android Manifest"))
-                        UpdateAdMobAppIdInManifest();
+                    if (GUILayout.Button("Setup Google Mobile Ads", GUILayout.Height(EM_GUIStyleManager.buttonHeight)))
+                    {
+                        GoogleMobileAds.Editor.GoogleMobileAdsSettingsEditor.OpenInspector();
+                        EditorWindow.GetWindow(EM_EditorUtil.GetInspectorWindowType()).Focus();
+                    }
 
                     // Default placements.
                     EditorGUILayout.Space();

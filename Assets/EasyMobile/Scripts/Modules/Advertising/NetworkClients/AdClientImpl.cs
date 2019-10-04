@@ -377,10 +377,7 @@ namespace EasyMobile
         {
             LoadRewardedAd(AdPlacement.Default);
         }
-        public bool AutoLoadInit
-        {
-            get;set;
-        }
+
         /// <summary>
         /// Loads the rewarded ad at the specified placement.
         /// </summary>

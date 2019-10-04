@@ -56,17 +56,17 @@ namespace EasyMobile
 
         // Required
         [SerializeField]
-        public string _name = null;
+        private string _name = null;
         [SerializeField]
-        public IAPProductType _type = IAPProductType.Consumable;
+        private IAPProductType _type = IAPProductType.Consumable;
         [SerializeField]
-        public string _id = null;
+        private string _id = null;
 
         // Optional
         [SerializeField]
-        public string _price = null;
+        private string _price = null;
         [SerializeField]
-        public string _description = null;
+        private string _description = null;
         [SerializeField]
         private StoreSpecificId[] _storeSpecificIds = null;
 

@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using EasyMobile.Internal.Gif;
 
 #if UNITY_IOS
 using EasyMobile.Internal.Gif.iOS;
@@ -22,7 +23,7 @@ namespace EasyMobile
     public class Gif : MonoBehaviour
     {
         public static Gif Instance
-        { 
+        {
             get
             {
                 if (_instance == null)
@@ -40,6 +41,10 @@ namespace EasyMobile
         private static Dictionary<int, GifExportTask> gifExportTasks = new Dictionary<int, GifExportTask>();
         private static int curExportId = 0;
 
+#if !UNITY_EDITOR && (UNITY_IOS || UNITY_ANDROID)
+        private static int curDecodeId = 0;
+#endif
+
         #region Public API
 
         /// <summary>
@@ -49,7 +54,7 @@ namespace EasyMobile
         public static void StartRecording(Recorder recorder)
         {
             if (recorder == null)
-            { 
+            {
                 Debug.LogError("StartRecording FAILED: recorder is null.");
                 return;
             }
@@ -204,6 +209,80 @@ namespace EasyMobile
             Instance.StartCoroutine(CRExportGif(clip, filename, loop, quality, threadPriority, exportProgressCallback, exportCompletedCallback));
         }
 
+        /// <summary>
+        /// Decodes the GIF file at the provided filepath into an <see cref="AnimatedClip"/> object.
+        /// </summary>
+        /// <param name="filepath"></param>
+        /// <param name="threadPriority"></param>
+        /// <param name="completeCallback"></param>
+        public static void DecodeGif(string filepath, System.Threading.ThreadPriority threadPriority, Action<AnimatedClip> completeCallback)
+        {
+            DecodeGif(filepath, -1, threadPriority, completeCallback);  // framesToRead == -1: read the whole GIF
+        }
+        /// <summary>
+        /// Decodes the GIF file at the provided filepath into an <see cref="AnimatedClip"/> object.
+        /// If framesToRead is smaller than 1 or bigger than the total number of frames in the GIF, the whole file will be read.
+        /// Otherwise, only the number of frames determined by framesToRead will be decoded.
+        /// </summary>
+        /// <param name="filepath"></param>
+        /// <param name="framesToRead"></param>
+        /// <param name="threadPriority"></param>
+        /// <param name="completeCallback"></param>
+        public static void DecodeGif(string filepath, int framesToRead, System.Threading.ThreadPriority threadPriority, Action<AnimatedClip> completeCallback)
+        {
+#if UNITY_EDITOR
+            Debug.LogWarning("DecodeGif is not supported in Unity editor. Please test on an iOS or Android device.");
+#elif UNITY_IOS
+            // Read the GIF partially.
+            iOSNativeGif.DecodeGif(curDecodeId++, filepath, framesToRead, threadPriority,
+                (int taskId, GifMetadata gifMetadata, GifFrameMetadata[] gifFrameMetadata, Color32[][] imageData) =>
+                {
+                    if (completeCallback != null)
+                        completeCallback(ToAnimatedClip(gifMetadata, gifFrameMetadata, imageData));
+                });
+#elif UNITY_ANDROID
+            // Read the GIF partially.
+            AndroidNativeGif.DecodeGif(curDecodeId++, filepath, framesToRead, threadPriority,
+                (int taskId, GifMetadata gifMetadata, GifFrameMetadata[] gifFrameMetadata, Color32[][] imageData) =>
+                {
+                    if (completeCallback != null)
+                        completeCallback(ToAnimatedClip(gifMetadata, gifFrameMetadata, imageData));
+                });
+#endif
+        }
+
+        /// <summary>
+        /// Decodes the GIF file at the provided filepath into an array to textures.
+        /// If framesToRead is smaller than 1 or bigger than the total number of frames in the GIF, the whole file will be read.
+        /// Otherwise, only the number of frames determined by framesToRead will be decoded.
+        /// </summary>
+        /// <param name="filepath"></param>
+        /// <param name="framesToRead"></param>
+        /// <param name="threadPriority"></param>
+        /// <param name="completeCallback"></param>
+        public static void DecodeGif(string filepath, int framesToRead, System.Threading.ThreadPriority threadPriority, Action<Texture[]> completeCallback)
+        {
+#if UNITY_EDITOR
+            Debug.LogWarning("DecodeGif is not supported in Unity editor. Please test on an iOS or Android device.");
+#elif UNITY_IOS
+            // Read the GIF partially.
+            iOSNativeGif.DecodeGif(curDecodeId++, filepath, framesToRead, threadPriority,
+                (int taskId, GifMetadata gifMetadata, GifFrameMetadata[] gifFrameMetadata, Color32[][] imageData) =>
+                {
+                    if (completeCallback != null)
+                        completeCallback(ToTextureArray(gifMetadata, gifFrameMetadata, imageData));
+                });
+#elif UNITY_ANDROID
+            // Read the GIF partially.
+            AndroidNativeGif.DecodeGif(curDecodeId++, filepath, framesToRead, threadPriority,
+                (int taskId, GifMetadata gifMetadata, GifFrameMetadata[] gifFrameMetadata, Color32[][] imageData) =>
+                {
+                    if (completeCallback != null)
+                        completeCallback(ToTextureArray(gifMetadata, gifFrameMetadata, imageData));
+                });
+#endif
+        }
+
         #endregion
 
         #region Unity events
@@ -223,24 +302,24 @@ namespace EasyMobile
 
         void OnEnable()
         {
-            #if UNITY_IOS
+#if UNITY_IOS
             iOSNativeGif.GifExportProgress += OnGifExportProgress;
             iOSNativeGif.GifExportCompleted += OnGifExportCompleted;
-            #elif UNITY_ANDROID
+#elif UNITY_ANDROID
             AndroidNativeGif.GifExportProgress += OnGifExportProgress;
             AndroidNativeGif.GifExportCompleted += OnGifExportCompleted;
-            #endif
+#endif
         }
 
         void OnDisable()
         {
-            #if UNITY_IOS
+#if UNITY_IOS
             iOSNativeGif.GifExportProgress -= OnGifExportProgress;
             iOSNativeGif.GifExportCompleted -= OnGifExportCompleted;
-            #elif UNITY_ANDROID
+#elif UNITY_ANDROID
             AndroidNativeGif.GifExportProgress -= OnGifExportProgress;
             AndroidNativeGif.GifExportCompleted -= OnGifExportCompleted;
-            #endif
+#endif
         }
 
         void OnDestroy()
@@ -293,7 +372,7 @@ namespace EasyMobile
             if (gifExportTasks.ContainsKey(taskId))
             {
                 gifExportTasks[taskId].progress = progress * 0.5f; // consider the pre-processing as taking up first 50% of the whole procedure  
-            }   
+            }
         }
 
         static void OnGifExportProgress(int taskId, float progress)
@@ -330,11 +409,11 @@ namespace EasyMobile
             // Construct filepath
             string folder;
 
-            #if UNITY_EDITOR
+#if UNITY_EDITOR
             folder = Application.dataPath; // Assets folder
-            #else
-            folder = Application.persistentDataPath;
-            #endif
+#else
+			folder = Application.persistentDataPath;
+#endif
 
             string filepath = System.IO.Path.Combine(folder, filename + ".gif");
 
@@ -343,7 +422,7 @@ namespace EasyMobile
             exportTask.taskId = curExportId++;  // assign this task a unique id
             exportTask.clip = clip;
             exportTask.imageData = null;
-            exportTask.filepath = filepath;  
+            exportTask.filepath = filepath;
             exportTask.loop = loop;
             exportTask.sampleFac = sampleFac;
             exportTask.exportProgressCallback = exportProgressCallback;
@@ -367,16 +446,28 @@ namespace EasyMobile
 
             // On iOS and Android, the GIF encoding is done in native code.
             // In Unity editor (and other platforms), we use Moments encoder for testing purpose.
-            #if UNITY_EDITOR || (!UNITY_IOS && !UNITY_ANDROID)
+#if UNITY_EDITOR || (!UNITY_IOS && !UNITY_ANDROID)
             // Converts to GIF frames
             List<GifFrame> frames = new List<GifFrame>(clip.Frames.Length);
             for (int i = 0; i < clip.Frames.Length; i++)
             {
-                RenderTexture source = clip.Frames[i];
-                RenderTexture.active = source;
-                temp.ReadPixels(new Rect(0, 0, source.width, source.height), 0, 0);
-                temp.Apply();
-                RenderTexture.active = null;
+                if (clip.Frames[i] is RenderTexture)
+                {
+                    RenderTexture source = clip.Frames[i] as RenderTexture;
+                    RenderTexture.active = source;
+                    temp.ReadPixels(new Rect(0, 0, source.width, source.height), 0, 0);
+                    temp.Apply();
+                    RenderTexture.active = null;
+                }
+                else if (clip.Frames[i] is Texture2D)
+                {
+                    temp = clip.Frames[i] as Texture2D;
+                }
+                else
+                {
+                    Debug.LogError("AnimatedClip contains an unrecognized texture. Aborting...");
+                    yield break;
+                }
 
                 GifFrame frame = new GifFrame() { Width = temp.width, Height = temp.height, Data = temp.GetPixels32() };
                 frames.Add(frame);
@@ -389,16 +480,16 @@ namespace EasyMobile
             GifEncoder encoder = new GifEncoder(loop, sampleFac);
             encoder.SetDelay(Mathf.RoundToInt(1000f / clip.FramePerSecond));
             Worker worker = new Worker(
-                                exportTask.taskId, 
-                                threadPriority, 
-                                frames, 
-                                encoder, 
-                                filepath, 
-                                OnGifExportProgress, 
+                                exportTask.taskId,
+                                threadPriority,
+                                frames,
+                                encoder,
+                                filepath,
+                                OnGifExportProgress,
                                 OnGifExportCompleted);
-            
+
             worker.Start();
-            #else
+#else
 
             // Allocate an array to hold the serialized image data
             exportTask.imageData = new Color32[clip.Frames.Length][];
@@ -406,11 +497,23 @@ namespace EasyMobile
             // Construct the serialized image data, note that texture data is layered down-top, so flip it
             for (int i = 0; i < clip.Frames.Length; i++)
             {
-                var source = clip.Frames[i];
-                RenderTexture.active = source;
-                temp.ReadPixels(new Rect(0, 0, source.width, source.height), 0, 0);
-                temp.Apply();
-                RenderTexture.active = null;
+                if (clip.Frames[i] is RenderTexture)
+                {
+                    RenderTexture source = clip.Frames[i] as RenderTexture;
+                    RenderTexture.active = source;
+                    temp.ReadPixels(new Rect(0, 0, source.width, source.height), 0, 0);
+                    temp.Apply();
+                    RenderTexture.active = null;
+                }
+                else if (clip.Frames[i] is Texture2D)
+                {
+                    temp = clip.Frames[i] as Texture2D;
+                }
+                else
+                {
+                    Debug.LogError("AnimatedClip contains an unrecognized texture. Aborting...");
+                    yield break;
+                }
 
                 // Get the frame's pixel data
                 exportTask.imageData[i] = temp.GetPixels32();
@@ -421,17 +524,55 @@ namespace EasyMobile
 
                 yield return null;
             }
-              
-            #if UNITY_IOS
-            iOSNativeGif.ExportGif(exportTask);
-            #elif UNITY_ANDROID
-            AndroidNativeGif.ExportGif(exportTask);
-            #endif
 
-            #endif  // UNITY_EDITOR || (!UNITY_IOS && !UNITY_ANDROID)
+#if UNITY_IOS
+            iOSNativeGif.ExportGif(exportTask);
+#elif UNITY_ANDROID
+            AndroidNativeGif.ExportGif(exportTask);
+#endif
+
+#endif  // UNITY_EDITOR || (!UNITY_IOS && !UNITY_ANDROID)
 
             // Dispose the temporary texture
             Destroy(temp);
+        }
+
+        static Texture[] ToTextureArray(GifMetadata gifMetadata, GifFrameMetadata[] gifFrameMetadata, Color32[][] imageData)
+        {
+            if (gifFrameMetadata == null || imageData == null)
+                return new Texture[0];
+
+            var frames = new Texture[imageData.Length];
+            int width = gifMetadata.width, height = gifMetadata.height;
+
+            for (int i = 0; i < imageData.Length; i++)
+            {
+                // Create a texture and fill it with pixel data.
+                Texture2D tex = new Texture2D(width, height, TextureFormat.RGBA32, false);
+                tex.hideFlags = HideFlags.HideAndDontSave;
+                tex.wrapMode = TextureWrapMode.Clamp;
+                tex.filterMode = FilterMode.Bilinear;
+                tex.anisoLevel = 0;
+                tex.SetPixels32(imageData[i]);
+                tex.Apply(false, false);
+
+                frames[i] = tex;
+            }
+
+            return frames;
+        }
+
+        static AnimatedClip ToAnimatedClip(GifMetadata gifMetadata, GifFrameMetadata[] gifFrameMetadata, Color32[][] imageData)
+        {
+            if (gifFrameMetadata == null)
+                return null;
+
+            int width = gifMetadata.width, height = gifMetadata.height;
+            // pre-display delay is in 0.01sec units
+            // we're not supporting delay time variance so just take the value of first frame.
+            int fps = (int)(1 / (gifFrameMetadata[0].delayTime * 0.01f));
+            var frames = ToTextureArray(gifMetadata, gifFrameMetadata, imageData);
+            return frames != null && frames.Length > 0 ? new AnimatedClip(width, height, fps, frames) : null;
         }
 
         #endregion

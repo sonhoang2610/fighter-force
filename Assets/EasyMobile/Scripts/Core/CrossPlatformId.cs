@@ -11,9 +11,11 @@ namespace EasyMobile
     [Serializable]
     public class CrossPlatformId
     {
-        [SerializeField][Rename("iOS ID")]
+        [SerializeField]
+        [Rename("iOS ID")]
         protected string mIosId;
-        [SerializeField][Rename("Android ID")]
+        [SerializeField]
+        [Rename("Android ID")]
         protected string mAndroidId;
 
         /// <summary>
@@ -25,12 +27,13 @@ namespace EasyMobile
         {
             get
             {
-                if (Application.platform == RuntimePlatform.Android)
-                    return AndroidId;
-                else if (Application.platform == RuntimePlatform.IPhonePlayer)
-                    return IosId;
-                else
-                    return string.Empty;
+#if UNITY_ANDROID
+                return AndroidId;
+#elif UNITY_IOS
+                return IosId;
+#else
+                return string.Empty;
+#endif
             }
         }
 

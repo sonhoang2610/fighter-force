@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
-using EazyEngine.Space;
 
 #if EM_UIAP
 using UnityEngine.Purchasing;
@@ -182,22 +181,7 @@ namespace EasyMobile
 
             // Create a builder, first passing in a suite of Unity provided stores.
             sBuilder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
-            int pIndex = 0;
-            var products = EM_Settings.InAppPurchasing.Products;
-            foreach (var pProduct in GameDatabase.Instance.IAPSetting.items)
-            {
-                pIndex++;               
-                System.Array.Resize(ref products, pIndex);
-                IAPProduct productIAP = new IAPProduct() {
-                    _name = pProduct.Name,
-                    _description = pProduct.Des,
-                    _id = pProduct.Id.ToLower(),
-                    _price = pProduct.Price,
-                    _type = IAPProductType.Consumable
-                };
-                products[pIndex - 1] = productIAP;
-            }
-            EM_Settings.InAppPurchasing.Products = products;
+
             // Add products
             foreach (IAPProduct pd in EM_Settings.InAppPurchasing.Products)
             {
