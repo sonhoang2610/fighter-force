@@ -5,7 +5,7 @@ using EazyEngine.Tools;
 
 namespace EazyEngine.Space.UI
 {
-    public class BoxPackageInfo : BaseBox<ItemWheel, BaseItemGameInstancedArray>
+    public class BoxPackageInfo : BaseBox<ItemRateDrop, ItemRateDropInfo>
     {
         public UI2DSprite icon;
         public UILabel title;
@@ -13,11 +13,11 @@ namespace EazyEngine.Space.UI
         {
             title.text = pPack.displayNameItem.Value;
             icon.sprite2D = pPack.iconShop;
-            List<BaseItemGameInstancedArray> pDatas = new List<BaseItemGameInstancedArray>();
+            List<ItemRateDropInfo> pDatas = new List<ItemRateDropInfo>();
             for(int i  = 0; i < pPack.items.Length; ++i)
             {
                 var pItemDrop = pPack.items[i];
-                pDatas.Add(new BaseItemGameInstancedArray() { infos = new ItemWheelInfoConfig[] { new ItemWheelInfoConfig() { item = pItemDrop .item,percent = pItemDrop.percent,quantityStart =(int) pItemDrop.quantity.x} } });
+                pDatas.Add(pItemDrop);
             }
             DataSource = pDatas.ToObservableList();
         }
