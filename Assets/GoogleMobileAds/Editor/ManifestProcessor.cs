@@ -5,11 +5,12 @@ using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 
-using UnityEditor;
-using UnityEditor.Build;
 #if UNITY_2018_1_OR_NEWER
 using UnityEditor.Build.Reporting;
+#else
+using UnityEditor;
 #endif
+using UnityEditor.Build;
 using UnityEngine;
 
 using GoogleMobileAds.Editor;
@@ -49,27 +50,25 @@ public class ManifestProcessor : IPreprocessBuild
         catch (IOException e)
         #pragma warning restore 0168
         {
-            StopBuildWithMessage("AndroidManifest.xml is missing. Try re-importing the plugin.");
+            Debug.LogError(
+                    "[GoogleMobileAds] AndroidManifest.xml is missing. Try re-importing the plugin.");
+            return;
         }
 
         XElement elemManifest = manifest.Element("manifest");
         if (elemManifest == null)
         {
-            StopBuildWithMessage("AndroidManifest.xml is not valid. Try re-importing the plugin.");
+            Debug.LogError(
+                    "[GoogleMobileAds] AndroidManifest.xml is not valid. Try re-importing the plugin.");
+            return;
         }
 
         XElement elemApplication = elemManifest.Element("application");
         if (elemApplication == null)
         {
-            StopBuildWithMessage("AndroidManifest.xml is not valid. Try re-importing the plugin.");
-        }
-
-        bool IsAdManagerEnabled = GoogleMobileAdsSettings.Instance.IsAdManagerEnabled;
-
-        if (!GoogleMobileAdsSettings.Instance.IsAdManagerEnabled && !GoogleMobileAdsSettings.Instance.IsAdMobEnabled)
-        {
-            GoogleMobileAdsSettingsEditor.OpenInspector();
-            StopBuildWithMessage("Neither AdManager nor AdMob is enabled yet.");
+            Debug.LogError(
+                    "[GoogleMobileAds] AndroidManifest.xml is not valid. Try re-importing the plugin.");
+            return;
         }
 
         IEnumerable<XElement> metas = elemApplication.Descendants()
@@ -102,8 +101,8 @@ public class ManifestProcessor : IPreprocessBuild
 
             if (appId.Length == 0)
             {
-                StopBuildWithMessage(
-                    "Android AdMob app ID is empty. Please enter a valid app ID to run ads properly.");
+                Debug.LogError(
+                        "Android AdMob app ID is empty. Please enter a valid app ID to run ads properly.");
             }
 
             if (elemAdMobEnabled == null)
@@ -168,18 +167,6 @@ public class ManifestProcessor : IPreprocessBuild
             }
         }
         return null;
-    }
-
-    private void StopBuildWithMessage(string message)
-    {
-        string prefix = "[GoogleMobileAds] ";
-#if UNITY_2017_1_OR_NEWER
-        throw new BuildPlayerWindow.BuildMethodException(prefix + message);
-#else
-        // Unity 5.6 or lower does not support BuildMethodException.
-        // Log an error log instead.
-        Debug.LogError(prefix + message);
-#endif
     }
 }
 
