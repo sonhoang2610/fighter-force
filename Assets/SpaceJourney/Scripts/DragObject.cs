@@ -10,7 +10,8 @@ public class DragObject : MonoBehaviour
     public float Speed = 100;
     Collider2D _collider2D;
     RectTransform rect;
-
+    [HideInInspector]
+    public bool EnableDrag;
     bool beganTouch = false;
    // Vector2 oldPos;
     private void Awake()
