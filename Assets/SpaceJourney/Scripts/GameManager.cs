@@ -832,9 +832,10 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                 Debug.Log("IAP Init Success" + product.Id.ToLower());
                 if (data != null)
                 {
-                Debug.Log("IAP Init Success" + data.localizedPriceString);
-                product.Price = data.localizedPriceString;
-                product.isLoadLocalize = true;
+                    Debug.Log("IAP Init Success" + data.localizedPriceString);
+                    product.Price = data.localizedPriceString;
+                    product.isLoadLocalize = true;
+                }
             }
         }
     }
