@@ -885,6 +885,66 @@ public static class SpriteExtends
 }
 public static class StringUtils
 {
+    public static string convertMoneyAndAddDot(long i)
+    {
+
+        string money = i.ToString();
+        int pCounterDot = (money.Length - 1) / 3;
+        if (i < 0)
+        {
+            pCounterDot = (money.Length - 2) / 3;
+        }
+
+        int pIndex = money.Length;
+        string newStrMoney = "";
+        while (pCounterDot > 0)
+        {
+            newStrMoney = "." + money.Substring(pIndex - 3, 3) + newStrMoney;
+            pCounterDot--;
+            pIndex -= 3;
+        }
+        newStrMoney = money.Substring(0, pIndex) + newStrMoney;
+        return newStrMoney;
+    }
+    //support for 0 -> 999.999.999.999
+    public static string convertMoneyAndAddText(long i)
+    {
+        string newString = "";
+        long intOrigin = i;
+        long intExcess = 0;
+        int level = 0;
+        if (intOrigin < 10000)
+        {
+            return convertMoneyAndAddDot(intOrigin);
+        }
+        while (intOrigin >= 1000)
+        {
+            intExcess = intOrigin % 1000;
+            intOrigin /= 1000;
+            level++;
+        }
+        newString += intOrigin.ToString();
+        if (intExcess >= 10)
+        {
+            string stringExecess = ((long)(intExcess / 10)).ToString();
+            newString += "." + (stringExecess.Length == 1 ? "0" + stringExecess : stringExecess);
+        }
+        switch (level)
+        {
+            case 1:
+                newString += "K";
+                break;
+            case 2:
+                newString += "M";
+                break;
+            case 3:
+                newString += "B";
+                break;
+            default:
+                return i.ToString();
+        }
+        return newString;
+    }
     public static string addDotMoney(double money)
     {
         if (money.ToString().Length < 4)

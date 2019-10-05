@@ -54,6 +54,7 @@ public class AudioPlay : MonoBehaviour {
 
     private void OnDisable()
     {
+        if (!GameManager.Instance.inGame) return;
         for(int i = cacheAudios.Count -1; i >= 0; --i)
         {
             if (cacheAudios[i].clip != null)
