@@ -74,7 +74,7 @@ namespace EazyEngine.Space {
             {
                 info = pInfo,
                 limitUpgrade = 80,
-                currentLevel = 10,
+                currentLevel =20,
                 upgradeSkill = pUpgradeSkill
             };
             pInfoPlane.ExtraInfo();
@@ -222,7 +222,7 @@ namespace EazyEngine.Space {
             var pInfoPlane = new SupportPlaneInfoConfig()
             {
                 info = pInfo,
-                currentLevel = 10,
+                currentLevel = 20,
                 upgradeSkill = pUpgradeSkill
             };
             pInfoPlane.ExtraInfo();

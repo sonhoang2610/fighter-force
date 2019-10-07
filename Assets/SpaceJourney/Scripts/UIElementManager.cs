@@ -41,7 +41,7 @@ public class UIElementManager : Singleton<UIElementManager>
         return null;
     }
 
-    public bool doAction(UIElement pElement,bool isActive)
+    public bool doAction(UIElement pElement,bool isActive,System.Action pComplete = null)
     {
         bool pAction = false;
         if (pElement.cateGory.Contains("Fade"))
@@ -49,7 +49,8 @@ public class UIElementManager : Singleton<UIElementManager>
             pAction = true;
             var pSprites = pElement.gameObject.GetComponentsInChildren<SpriteRenderer>();
             var pSkes = pElement.gameObject.GetComponentsInChildren<SkeletonMecanim>();
-            System.Action<float> pUpdateExtension = delegate (float pFloat)
+
+            void PUpdateExtension(float pFloat)
             {
                 foreach (var pSprite in pSprites)
                 {
@@ -57,19 +58,23 @@ public class UIElementManager : Singleton<UIElementManager>
                     pColor.a = pFloat;
                     pSprite.color = pColor;
                 }
+
                 foreach (var pSke in pSkes)
                 {
                     pSke.Skeleton.A = pFloat;
                 }
-            };
+            }
+
             if (isActive)
             {
    
-                RootMotionController.runAction(pElement.gameObject, ((EazyFloatAction) getTween("FadeIn")).setUpdateEvent(pUpdateExtension));
+                RootMotionController.runAction(pElement.gameObject,Sequences.create  (((EazyFloatAction) getTween("FadeIn")).setUpdateEvent(PUpdateExtension),CallFunc.create(
+                    () => pComplete?.Invoke())));
             }
             else
             {
-                RootMotionController.runAction(pElement.gameObject,Sequences.create( ((EazyFloatAction)getTween("FadeOut")).setUpdateEvent(pUpdateExtension), CallFunc.create(delegate {
+                RootMotionController.runAction(pElement.gameObject,Sequences.create( ((EazyFloatAction)getTween("FadeOut")).setUpdateEvent(PUpdateExtension), CallFunc.create(delegate {
+                    pComplete?.Invoke();
                     pElement.gameObject.SetActive(false);
                 })));
             }
@@ -93,18 +98,21 @@ public class UIElementManager : Singleton<UIElementManager>
             if (isActive)
             {
                 pElement.transform.localPosition = pPos+ new Vector3(root.GetWindowSize().x * pSide,0,0);
-                RootMotionController.runAction(pElement.gameObject,EazyMove.to(pPos,0.75f).setEase(EaseCustomType.easeOutExpo));
+                RootMotionController.runAction(pElement.gameObject,Sequences.create  (EazyMove.to(pPos,0.75f).setEase(EaseCustomType.easeOutExpo),CallFunc.create(
+                    () => pComplete?.Invoke())));
             }
             else
             {
                 RootMotionController.runAction(pElement.gameObject,Sequences.create( EazyMove.to(pPos + new Vector3(root.GetWindowSize().x * pSide, 0, 0), 0.75f).setEase(EaseCustomType.easeOutExpo),CallFunc.create(delegate {
+                    pComplete?.Invoke();
                     pElement.gameObject.SetActive(false);
                 })));
             }
         }
         return pAction;
     }
-    Dictionary<UIElement, Vector3> cachePos = new Dictionary<UIElement, Vector3>();
+
+    protected Dictionary<UIElement, Vector3> cachePos = new Dictionary<UIElement, Vector3>();
     // Start is called before the first frame update
     void Start()
     {

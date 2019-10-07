@@ -44,7 +44,8 @@ namespace EazyEngine.Space.UI
               var pDateTime = TimeExtension.GetNetTime(ref isConnected);
                 if (isConnected && GameManager.Instance.dailyGiftModule.lastDate != pDateTime.DayOfYear && GameManager.Instance.dailyGiftModule.currentDay < GameDatabase.Instance.databaseDailyGift.item.Count)
                 {
-                    if (PlayerPrefs.GetInt("firstGame", 0) <2) return;
+                    int pStepGame = PlayerPrefs.GetInt("firstGame", 0);
+                    if (pStepGame <2) return;
                     boxdailyGift.GetComponent<UIElement>().show();
                 }
       
@@ -285,7 +286,7 @@ namespace EazyEngine.Space.UI
             else
             {
                 nameUser.text = "GUEST";
-                idUser.text = "UNKNOW";
+                idUser.text = "UNKNOWN";
             }
             if (GameManager.Instance.scehduleUI == ScheduleUIMain.GAME_IMEDIATELY)
             {
@@ -309,8 +310,11 @@ namespace EazyEngine.Space.UI
                 EzEventManager.TriggerEvent(new GuideEvent("SecondGame" + ((GameManager.Instance.lastResultWin == 1)  ? "Win" :  "Lose"),
                     delegate
                     {
+              
                         PlayerPrefs.SetInt("firstGame", 2); 
-                    },false));
+                        MainScene.Instance.upgrade();
+              
+                    },true));
               
             }
         }
@@ -344,7 +348,7 @@ namespace EazyEngine.Space.UI
             else
             {
                 nameUser.text = "GUEST";
-                idUser.text = "UNKNOW";
+                idUser.text = "UNKNOWN";
             }
         }
 
