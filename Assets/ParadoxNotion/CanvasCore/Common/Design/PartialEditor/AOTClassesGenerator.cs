@@ -60,7 +60,7 @@ namespace ParadoxNotion.Design
             }
 
             var spoofTypes = defaultSpoofTypes;
-            spoofTypes.AddRange(targetTypes.Where(t =>!t.IsStatic()&& !spoofTypes.Contains(t)));
+            spoofTypes.AddRange(targetTypes.Where(t =>t.IsValueType && !spoofTypes.Contains(t)));
             spoofTypes = spoofTypes.Distinct().ToList();
             var types = ReflectionTools.GetAllTypes(true).Where(t => t.IsDefined(typeof(SpoofAOTAttribute), true)).Distinct().ToList();
 
