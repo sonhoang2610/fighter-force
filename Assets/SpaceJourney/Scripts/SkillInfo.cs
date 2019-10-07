@@ -103,6 +103,7 @@ namespace EazyEngine.Space
     [System.Serializable]
     public class SkillInfoInstance
     {
+        [InlineEditor]
         public SkillInfo info;
         [OdinSerialize]
         public Dictionary<string, object> skillBlackBoard = new Dictionary<string, object>();
