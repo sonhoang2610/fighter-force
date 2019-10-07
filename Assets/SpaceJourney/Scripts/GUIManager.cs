@@ -175,12 +175,12 @@ namespace EazyEngine.Space
             if (PlayerPrefs.GetInt("Control", 1) == 0)
             {
                 control1.gameObject.SetActive(false);
-                LevelManger.Instance.CurrentPlayer.GetComponent<DragObject>().enabled = true;
+                LevelManger.Instance.CurrentPlayer.GetComponent<DragObjectAOT>().enabled = true;
             }
             else
             {
                 control1.gameObject.SetActive(true);
-                LevelManger.Instance.CurrentPlayer.GetComponent<DragObject>().enabled = false;
+                LevelManger.Instance.CurrentPlayer.GetComponent<DragObjectAOT>().enabled = false;
             }
         }
 
@@ -208,12 +208,12 @@ namespace EazyEngine.Space
                 if (eventType.Event.Contains("1"))
                 {
                     control1.gameObject.SetActive(true);
-                    LevelManger.Instance.CurrentPlayer.GetComponent<DragObject>().enabled = false;
+                    LevelManger.Instance.CurrentPlayer.GetComponent<DragObjectAOT>().enabled = false;
                 }
                 else
                 {
                     control1.gameObject.SetActive(false);
-                    LevelManger.Instance.CurrentPlayer.GetComponent<DragObject>().enabled = true;
+                    LevelManger.Instance.CurrentPlayer.GetComponent<DragObjectAOT>().enabled = true;
                 }
             }
         }

@@ -39,6 +39,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_BinderConnection_EazyEngine_Space_DamageExtraVariant : FlowCanvas.BinderConnection<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_BinderConnection_EazyEngine_Space_DamageExtraVariants : FlowCanvas.BinderConnection<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_BinderConnection_EazyEngine_Space_DamageOnTouch : FlowCanvas.BinderConnection<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_BinderConnection_EazyEngine_Space_DragObjectAOT : FlowCanvas.BinderConnection<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_BinderConnection_EazyEngine_Space_GroupElement : FlowCanvas.BinderConnection<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_BinderConnection_EazyEngine_Space_GroupManager : FlowCanvas.BinderConnection<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_BinderConnection_EazyEngine_Space_GUIManager : FlowCanvas.BinderConnection<EazyEngine.Space.GUIManager>{}
@@ -129,6 +130,7 @@ namespace ParadoxNotion.Internal{
 			FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtraVariant> _FlowCanvas_ValueHandler_EazyEngine_Space_DamageExtraVariant = default(FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtraVariant>);
 			FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtraVariants> _FlowCanvas_ValueHandler_EazyEngine_Space_DamageExtraVariants = default(FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtraVariants>);
 			FlowCanvas.ValueHandler<EazyEngine.Space.DamageOnTouch> _FlowCanvas_ValueHandler_EazyEngine_Space_DamageOnTouch = default(FlowCanvas.ValueHandler<EazyEngine.Space.DamageOnTouch>);
+			FlowCanvas.ValueHandler<EazyEngine.Space.DragObjectAOT> _FlowCanvas_ValueHandler_EazyEngine_Space_DragObjectAOT = default(FlowCanvas.ValueHandler<EazyEngine.Space.DragObjectAOT>);
 			FlowCanvas.ValueHandler<EazyEngine.Space.GroupElement> _FlowCanvas_ValueHandler_EazyEngine_Space_GroupElement = default(FlowCanvas.ValueHandler<EazyEngine.Space.GroupElement>);
 			FlowCanvas.ValueHandler<EazyEngine.Space.GroupManager> _FlowCanvas_ValueHandler_EazyEngine_Space_GroupManager = default(FlowCanvas.ValueHandler<EazyEngine.Space.GroupManager>);
 			FlowCanvas.ValueHandler<EazyEngine.Space.GUIManager> _FlowCanvas_ValueHandler_EazyEngine_Space_GUIManager = default(FlowCanvas.ValueHandler<EazyEngine.Space.GUIManager>);
@@ -219,6 +221,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_ValueInput_EazyEngine_Space_DamageExtraVariant : FlowCanvas.ValueInput<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_ValueInput_EazyEngine_Space_DamageExtraVariants : FlowCanvas.ValueInput<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_ValueInput_EazyEngine_Space_DamageOnTouch : FlowCanvas.ValueInput<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_ValueInput_EazyEngine_Space_DragObjectAOT : FlowCanvas.ValueInput<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_ValueInput_EazyEngine_Space_GroupElement : FlowCanvas.ValueInput<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_ValueInput_EazyEngine_Space_GroupManager : FlowCanvas.ValueInput<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_ValueInput_EazyEngine_Space_GUIManager : FlowCanvas.ValueInput<EazyEngine.Space.GUIManager>{}
@@ -308,6 +311,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_ValueOutput_EazyEngine_Space_DamageExtraVariant : FlowCanvas.ValueOutput<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_ValueOutput_EazyEngine_Space_DamageExtraVariants : FlowCanvas.ValueOutput<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_ValueOutput_EazyEngine_Space_DamageOnTouch : FlowCanvas.ValueOutput<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_ValueOutput_EazyEngine_Space_DragObjectAOT : FlowCanvas.ValueOutput<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_ValueOutput_EazyEngine_Space_GroupElement : FlowCanvas.ValueOutput<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_ValueOutput_EazyEngine_Space_GroupManager : FlowCanvas.ValueOutput<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_ValueOutput_EazyEngine_Space_GUIManager : FlowCanvas.ValueOutput<EazyEngine.Space.GUIManager>{}
@@ -397,6 +401,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_AddDictionaryItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.AddDictionaryItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_AddDictionaryItem_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.AddDictionaryItem<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_AddDictionaryItem_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.AddDictionaryItem<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_AddDictionaryItem_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.AddDictionaryItem<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_AddDictionaryItem_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.AddDictionaryItem<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_AddDictionaryItem_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.AddDictionaryItem<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_AddDictionaryItem_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.AddDictionaryItem<EazyEngine.Space.GUIManager>{}
@@ -486,6 +491,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_AddListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.AddListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_AddListItem_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.AddListItem<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_AddListItem_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.AddListItem<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_AddListItem_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.AddListItem<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_AddListItem_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.AddListItem<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_AddListItem_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.AddListItem<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_AddListItem_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.AddListItem<EazyEngine.Space.GUIManager>{}
@@ -575,6 +581,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_Buffer_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.Buffer<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_Buffer_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.Buffer<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_Buffer_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.Buffer<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_Buffer_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.Buffer<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_Buffer_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.Buffer<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_Buffer_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.Buffer<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_Buffer_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.Buffer<EazyEngine.Space.GUIManager>{}
@@ -664,6 +671,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_Cache_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.Cache<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_Cache_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.Cache<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_Cache_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.Cache<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_Cache_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.Cache<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_Cache_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.Cache<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_Cache_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.Cache<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_Cache_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.Cache<EazyEngine.Space.GUIManager>{}
@@ -753,6 +761,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_Cast_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.Cast<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_Cast_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.Cast<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_Cast_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.Cast<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_Cast_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.Cast<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_Cast_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.Cast<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_Cast_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.Cast<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_Cast_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.Cast<EazyEngine.Space.GUIManager>{}
@@ -809,184 +818,6 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_Cast_UnityEngine_UI_Button : FlowCanvas.Nodes.Cast<UnityEngine.UI.Button>{}
 		class FlowCanvas_Nodes_Cast_UnityEngine_UI_Slider : FlowCanvas.Nodes.Cast<UnityEngine.UI.Slider>{}
 
-		class FlowCanvas_Nodes_CastTo_System_Boolean : FlowCanvas.Nodes.CastTo<System.Boolean>{}
-		class FlowCanvas_Nodes_CastTo_System_Single : FlowCanvas.Nodes.CastTo<System.Single>{}
-		class FlowCanvas_Nodes_CastTo_System_Int32 : FlowCanvas.Nodes.CastTo<System.Int32>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_Vector2 : FlowCanvas.Nodes.CastTo<UnityEngine.Vector2>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_Vector3 : FlowCanvas.Nodes.CastTo<UnityEngine.Vector3>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_Vector4 : FlowCanvas.Nodes.CastTo<UnityEngine.Vector4>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_Quaternion : FlowCanvas.Nodes.CastTo<UnityEngine.Quaternion>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_Keyframe : FlowCanvas.Nodes.CastTo<UnityEngine.Keyframe>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_Bounds : FlowCanvas.Nodes.CastTo<UnityEngine.Bounds>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_Color : FlowCanvas.Nodes.CastTo<UnityEngine.Color>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_Rect : FlowCanvas.Nodes.CastTo<UnityEngine.Rect>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_ContactPoint : FlowCanvas.Nodes.CastTo<UnityEngine.ContactPoint>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_ContactPoint2D : FlowCanvas.Nodes.CastTo<UnityEngine.ContactPoint2D>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_Collision : FlowCanvas.Nodes.CastTo<UnityEngine.Collision>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_Collision2D : FlowCanvas.Nodes.CastTo<UnityEngine.Collision2D>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_RaycastHit : FlowCanvas.Nodes.CastTo<UnityEngine.RaycastHit>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.CastTo<UnityEngine.RaycastHit2D>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_Ray : FlowCanvas.Nodes.CastTo<UnityEngine.Ray>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_Space : FlowCanvas.Nodes.CastTo<UnityEngine.Space>{}
-		class FlowCanvas_Nodes_CastTo_DragObject : FlowCanvas.Nodes.CastTo<DragObject>{}
-		class FlowCanvas_Nodes_CastTo_PoolManagerComon : FlowCanvas.Nodes.CastTo<PoolManagerComon>{}
-		class FlowCanvas_Nodes_CastTo_WeaponInstancedConfig : FlowCanvas.Nodes.CastTo<WeaponInstancedConfig>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_AbilityInfo : FlowCanvas.Nodes.CastTo<EazyEngine.Space.AbilityInfo>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_AIBrain : FlowCanvas.Nodes.CastTo<EazyEngine.Space.AIBrain>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_AIElement : FlowCanvas.Nodes.CastTo<EazyEngine.Space.AIElement>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_AIMachine : FlowCanvas.Nodes.CastTo<EazyEngine.Space.AIMachine>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_BaseItemGame : FlowCanvas.Nodes.CastTo<EazyEngine.Space.BaseItemGame>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_Character : FlowCanvas.Nodes.CastTo<EazyEngine.Space.Character>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_CharacterHandleWeapon : FlowCanvas.Nodes.CastTo<EazyEngine.Space.CharacterHandleWeapon>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.CastTo<EazyEngine.Space.DamageExtra>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.CastTo<EazyEngine.Space.DamageExtraVariant>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.CastTo<EazyEngine.Space.DamageExtraVariants>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.CastTo<EazyEngine.Space.DamageOnTouch>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.CastTo<EazyEngine.Space.GroupElement>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.CastTo<EazyEngine.Space.GroupManager>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.CastTo<EazyEngine.Space.GUIManager>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_Health : FlowCanvas.Nodes.CastTo<EazyEngine.Space.Health>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_ItemGame : FlowCanvas.Nodes.CastTo<EazyEngine.Space.ItemGame>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_LaserWeapon : FlowCanvas.Nodes.CastTo<EazyEngine.Space.LaserWeapon>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_LevelManger : FlowCanvas.Nodes.CastTo<EazyEngine.Space.LevelManger>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.CastTo<EazyEngine.Space.PickEvent>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_Projectile : FlowCanvas.Nodes.CastTo<EazyEngine.Space.Projectile>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_ProjectileMultipeWeapon : FlowCanvas.Nodes.CastTo<EazyEngine.Space.ProjectileMultipeWeapon>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_ShieldControl : FlowCanvas.Nodes.CastTo<EazyEngine.Space.ShieldControl>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_SkillInfo : FlowCanvas.Nodes.CastTo<EazyEngine.Space.SkillInfo>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.CastTo<EazyEngine.Space.TriggerWeaponState>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_UnitDefineLevel : FlowCanvas.Nodes.CastTo<EazyEngine.Space.UnitDefineLevel>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_Weapon : FlowCanvas.Nodes.CastTo<EazyEngine.Space.Weapon>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_WeaponAmmo : FlowCanvas.Nodes.CastTo<EazyEngine.Space.WeaponAmmo>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_WeaponGroup : FlowCanvas.Nodes.CastTo<EazyEngine.Space.WeaponGroup>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_WeaponGroupIntance : FlowCanvas.Nodes.CastTo<EazyEngine.Space.WeaponGroupIntance>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_WeaponInstanceInfo : FlowCanvas.Nodes.CastTo<EazyEngine.Space.WeaponInstanceInfo>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_WeaponIntanceAttachMent : FlowCanvas.Nodes.CastTo<EazyEngine.Space.WeaponIntanceAttachMent>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_WeaponLightning : FlowCanvas.Nodes.CastTo<EazyEngine.Space.WeaponLightning>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Tools_MultipleObjectPooler : FlowCanvas.Nodes.CastTo<EazyEngine.Tools.MultipleObjectPooler>{}
-		class FlowCanvas_Nodes_CastTo_EazyEngine_Tools_SimpleObjectPooler : FlowCanvas.Nodes.CastTo<EazyEngine.Tools.SimpleObjectPooler>{}
-		class FlowCanvas_Nodes_CastTo_FlowCanvas_FlowScript : FlowCanvas.Nodes.CastTo<FlowCanvas.FlowScript>{}
-		class FlowCanvas_Nodes_CastTo_FlowCanvas_Nodes_Random : FlowCanvas.Nodes.CastTo<FlowCanvas.Nodes.Random>{}
-		class FlowCanvas_Nodes_CastTo_NodeCanvas_Framework_Blackboard : FlowCanvas.Nodes.CastTo<NodeCanvas.Framework.Blackboard>{}
-		class FlowCanvas_Nodes_CastTo_NodeCanvas_Framework_Internal_BlackboardSource : FlowCanvas.Nodes.CastTo<NodeCanvas.Framework.Internal.BlackboardSource>{}
-		class FlowCanvas_Nodes_CastTo_System_Object : FlowCanvas.Nodes.CastTo<System.Object>{}
-		class FlowCanvas_Nodes_CastTo_System_String : FlowCanvas.Nodes.CastTo<System.String>{}
-		class FlowCanvas_Nodes_CastTo_System_Type : FlowCanvas.Nodes.CastTo<System.Type>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_AnimationClip : FlowCanvas.Nodes.CastTo<UnityEngine.AnimationClip>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_AnimationCurve : FlowCanvas.Nodes.CastTo<UnityEngine.AnimationCurve>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_Animator : FlowCanvas.Nodes.CastTo<UnityEngine.Animator>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_AudioClip : FlowCanvas.Nodes.CastTo<UnityEngine.AudioClip>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_AudioSource : FlowCanvas.Nodes.CastTo<UnityEngine.AudioSource>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_Camera : FlowCanvas.Nodes.CastTo<UnityEngine.Camera>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_CharacterController : FlowCanvas.Nodes.CastTo<UnityEngine.CharacterController>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_Collider : FlowCanvas.Nodes.CastTo<UnityEngine.Collider>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_Collider2D : FlowCanvas.Nodes.CastTo<UnityEngine.Collider2D>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_GameObject : FlowCanvas.Nodes.CastTo<UnityEngine.GameObject>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_LayerMask : FlowCanvas.Nodes.CastTo<UnityEngine.LayerMask>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_Light : FlowCanvas.Nodes.CastTo<UnityEngine.Light>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_Material : FlowCanvas.Nodes.CastTo<UnityEngine.Material>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_Object : FlowCanvas.Nodes.CastTo<UnityEngine.Object>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_Renderer : FlowCanvas.Nodes.CastTo<UnityEngine.Renderer>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_Rigidbody : FlowCanvas.Nodes.CastTo<UnityEngine.Rigidbody>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_Rigidbody2D : FlowCanvas.Nodes.CastTo<UnityEngine.Rigidbody2D>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_Sprite : FlowCanvas.Nodes.CastTo<UnityEngine.Sprite>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_TextAsset : FlowCanvas.Nodes.CastTo<UnityEngine.TextAsset>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_Texture2D : FlowCanvas.Nodes.CastTo<UnityEngine.Texture2D>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_Transform : FlowCanvas.Nodes.CastTo<UnityEngine.Transform>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_AI_NavMeshAgent : FlowCanvas.Nodes.CastTo<UnityEngine.AI.NavMeshAgent>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_Audio_AudioMixer : FlowCanvas.Nodes.CastTo<UnityEngine.Audio.AudioMixer>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_UI_Button : FlowCanvas.Nodes.CastTo<UnityEngine.UI.Button>{}
-		class FlowCanvas_Nodes_CastTo_UnityEngine_UI_Slider : FlowCanvas.Nodes.CastTo<UnityEngine.UI.Slider>{}
-
-		class FlowCanvas_Nodes_CodeEvent_System_Boolean : FlowCanvas.Nodes.CodeEvent<System.Boolean>{}
-		class FlowCanvas_Nodes_CodeEvent_System_Single : FlowCanvas.Nodes.CodeEvent<System.Single>{}
-		class FlowCanvas_Nodes_CodeEvent_System_Int32 : FlowCanvas.Nodes.CodeEvent<System.Int32>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Vector2 : FlowCanvas.Nodes.CodeEvent<UnityEngine.Vector2>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Vector3 : FlowCanvas.Nodes.CodeEvent<UnityEngine.Vector3>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Vector4 : FlowCanvas.Nodes.CodeEvent<UnityEngine.Vector4>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Quaternion : FlowCanvas.Nodes.CodeEvent<UnityEngine.Quaternion>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Keyframe : FlowCanvas.Nodes.CodeEvent<UnityEngine.Keyframe>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Bounds : FlowCanvas.Nodes.CodeEvent<UnityEngine.Bounds>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Color : FlowCanvas.Nodes.CodeEvent<UnityEngine.Color>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Rect : FlowCanvas.Nodes.CodeEvent<UnityEngine.Rect>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_ContactPoint : FlowCanvas.Nodes.CodeEvent<UnityEngine.ContactPoint>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_ContactPoint2D : FlowCanvas.Nodes.CodeEvent<UnityEngine.ContactPoint2D>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Collision : FlowCanvas.Nodes.CodeEvent<UnityEngine.Collision>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Collision2D : FlowCanvas.Nodes.CodeEvent<UnityEngine.Collision2D>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_RaycastHit : FlowCanvas.Nodes.CodeEvent<UnityEngine.RaycastHit>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.CodeEvent<UnityEngine.RaycastHit2D>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Ray : FlowCanvas.Nodes.CodeEvent<UnityEngine.Ray>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Space : FlowCanvas.Nodes.CodeEvent<UnityEngine.Space>{}
-		class FlowCanvas_Nodes_CodeEvent_DragObject : FlowCanvas.Nodes.CodeEvent<DragObject>{}
-		class FlowCanvas_Nodes_CodeEvent_PoolManagerComon : FlowCanvas.Nodes.CodeEvent<PoolManagerComon>{}
-		class FlowCanvas_Nodes_CodeEvent_WeaponInstancedConfig : FlowCanvas.Nodes.CodeEvent<WeaponInstancedConfig>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_AbilityInfo : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.AbilityInfo>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_AIBrain : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.AIBrain>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_AIElement : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.AIElement>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_AIMachine : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.AIMachine>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_BaseItemGame : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.BaseItemGame>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_Character : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.Character>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_CharacterHandleWeapon : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.CharacterHandleWeapon>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.DamageExtra>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.DamageExtraVariant>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.DamageExtraVariants>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.DamageOnTouch>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.GroupElement>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.GroupManager>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.GUIManager>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_Health : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.Health>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_ItemGame : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.ItemGame>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_LaserWeapon : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.LaserWeapon>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_LevelManger : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.LevelManger>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.PickEvent>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_Projectile : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.Projectile>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_ProjectileMultipeWeapon : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.ProjectileMultipeWeapon>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_ShieldControl : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.ShieldControl>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_SkillInfo : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.SkillInfo>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.TriggerWeaponState>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_UnitDefineLevel : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.UnitDefineLevel>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_Weapon : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.Weapon>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_WeaponAmmo : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.WeaponAmmo>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_WeaponGroup : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.WeaponGroup>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_WeaponGroupIntance : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.WeaponGroupIntance>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_WeaponInstanceInfo : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.WeaponInstanceInfo>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_WeaponIntanceAttachMent : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.WeaponIntanceAttachMent>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_WeaponLightning : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.WeaponLightning>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Tools_MultipleObjectPooler : FlowCanvas.Nodes.CodeEvent<EazyEngine.Tools.MultipleObjectPooler>{}
-		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Tools_SimpleObjectPooler : FlowCanvas.Nodes.CodeEvent<EazyEngine.Tools.SimpleObjectPooler>{}
-		class FlowCanvas_Nodes_CodeEvent_FlowCanvas_FlowScript : FlowCanvas.Nodes.CodeEvent<FlowCanvas.FlowScript>{}
-		class FlowCanvas_Nodes_CodeEvent_FlowCanvas_Nodes_Random : FlowCanvas.Nodes.CodeEvent<FlowCanvas.Nodes.Random>{}
-		class FlowCanvas_Nodes_CodeEvent_NodeCanvas_Framework_Blackboard : FlowCanvas.Nodes.CodeEvent<NodeCanvas.Framework.Blackboard>{}
-		class FlowCanvas_Nodes_CodeEvent_NodeCanvas_Framework_Internal_BlackboardSource : FlowCanvas.Nodes.CodeEvent<NodeCanvas.Framework.Internal.BlackboardSource>{}
-		class FlowCanvas_Nodes_CodeEvent_System_Object : FlowCanvas.Nodes.CodeEvent<System.Object>{}
-		class FlowCanvas_Nodes_CodeEvent_System_String : FlowCanvas.Nodes.CodeEvent<System.String>{}
-		class FlowCanvas_Nodes_CodeEvent_System_Type : FlowCanvas.Nodes.CodeEvent<System.Type>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_AnimationClip : FlowCanvas.Nodes.CodeEvent<UnityEngine.AnimationClip>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_AnimationCurve : FlowCanvas.Nodes.CodeEvent<UnityEngine.AnimationCurve>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Animator : FlowCanvas.Nodes.CodeEvent<UnityEngine.Animator>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_AudioClip : FlowCanvas.Nodes.CodeEvent<UnityEngine.AudioClip>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_AudioSource : FlowCanvas.Nodes.CodeEvent<UnityEngine.AudioSource>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Camera : FlowCanvas.Nodes.CodeEvent<UnityEngine.Camera>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_CharacterController : FlowCanvas.Nodes.CodeEvent<UnityEngine.CharacterController>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Collider : FlowCanvas.Nodes.CodeEvent<UnityEngine.Collider>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Collider2D : FlowCanvas.Nodes.CodeEvent<UnityEngine.Collider2D>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_GameObject : FlowCanvas.Nodes.CodeEvent<UnityEngine.GameObject>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_LayerMask : FlowCanvas.Nodes.CodeEvent<UnityEngine.LayerMask>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Light : FlowCanvas.Nodes.CodeEvent<UnityEngine.Light>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Material : FlowCanvas.Nodes.CodeEvent<UnityEngine.Material>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Object : FlowCanvas.Nodes.CodeEvent<UnityEngine.Object>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Renderer : FlowCanvas.Nodes.CodeEvent<UnityEngine.Renderer>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Rigidbody : FlowCanvas.Nodes.CodeEvent<UnityEngine.Rigidbody>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Rigidbody2D : FlowCanvas.Nodes.CodeEvent<UnityEngine.Rigidbody2D>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Sprite : FlowCanvas.Nodes.CodeEvent<UnityEngine.Sprite>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_TextAsset : FlowCanvas.Nodes.CodeEvent<UnityEngine.TextAsset>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Texture2D : FlowCanvas.Nodes.CodeEvent<UnityEngine.Texture2D>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Transform : FlowCanvas.Nodes.CodeEvent<UnityEngine.Transform>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_AI_NavMeshAgent : FlowCanvas.Nodes.CodeEvent<UnityEngine.AI.NavMeshAgent>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Audio_AudioMixer : FlowCanvas.Nodes.CodeEvent<UnityEngine.Audio.AudioMixer>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_UI_Button : FlowCanvas.Nodes.CodeEvent<UnityEngine.UI.Button>{}
-		class FlowCanvas_Nodes_CodeEvent_UnityEngine_UI_Slider : FlowCanvas.Nodes.CodeEvent<UnityEngine.UI.Slider>{}
-
 		class FlowCanvas_Nodes_CreateCollection_System_Boolean : FlowCanvas.Nodes.CreateCollection<System.Boolean>{}
 		class FlowCanvas_Nodes_CreateCollection_System_Single : FlowCanvas.Nodes.CreateCollection<System.Single>{}
 		class FlowCanvas_Nodes_CreateCollection_System_Int32 : FlowCanvas.Nodes.CreateCollection<System.Int32>{}
@@ -1020,6 +851,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_CreateCollection_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.CreateCollection<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_CreateCollection_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.CreateCollection<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_CreateCollection_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.CreateCollection<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_CreateCollection_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.CreateCollection<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_CreateCollection_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.CreateCollection<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_CreateCollection_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.CreateCollection<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_CreateCollection_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.CreateCollection<EazyEngine.Space.GUIManager>{}
@@ -1109,6 +941,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_CreateDictionary_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.CreateDictionary<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_CreateDictionary_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.CreateDictionary<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_CreateDictionary_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.CreateDictionary<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_CreateDictionary_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.CreateDictionary<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_CreateDictionary_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.CreateDictionary<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_CreateDictionary_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.CreateDictionary<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_CreateDictionary_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.CreateDictionary<EazyEngine.Space.GUIManager>{}
@@ -1198,6 +1031,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_CustomEvent_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.CustomEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_CustomEvent_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.CustomEvent<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_CustomEvent_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.CustomEvent<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_CustomEvent_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.CustomEvent<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_CustomEvent_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.CustomEvent<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_CustomEvent_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.CustomEvent<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_CustomEvent_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.CustomEvent<EazyEngine.Space.GUIManager>{}
@@ -1287,6 +1121,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_DictionaryContainsKey_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.DictionaryContainsKey<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_DictionaryContainsKey_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.DictionaryContainsKey<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_DictionaryContainsKey_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.DictionaryContainsKey<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_DictionaryContainsKey_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.DictionaryContainsKey<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_DictionaryContainsKey_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.DictionaryContainsKey<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_DictionaryContainsKey_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.DictionaryContainsKey<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_DictionaryContainsKey_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.DictionaryContainsKey<EazyEngine.Space.GUIManager>{}
@@ -1376,6 +1211,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_ForEach_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.ForEach<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_ForEach_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.ForEach<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_ForEach_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.ForEach<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_ForEach_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.ForEach<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_ForEach_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.ForEach<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_ForEach_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.ForEach<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_ForEach_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.ForEach<EazyEngine.Space.GUIManager>{}
@@ -1465,6 +1301,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetDictionaryItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.GetDictionaryItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_GetDictionaryItem_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.GetDictionaryItem<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_GetDictionaryItem_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.GetDictionaryItem<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_GetDictionaryItem_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.GetDictionaryItem<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_GetDictionaryItem_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.GetDictionaryItem<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_GetDictionaryItem_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.GetDictionaryItem<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_GetDictionaryItem_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.GetDictionaryItem<EazyEngine.Space.GUIManager>{}
@@ -1554,6 +1391,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetFirstListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.GetFirstListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_GetFirstListItem_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.GetFirstListItem<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_GetFirstListItem_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.GetFirstListItem<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_GetFirstListItem_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.GetFirstListItem<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_GetFirstListItem_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.GetFirstListItem<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_GetFirstListItem_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.GetFirstListItem<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_GetFirstListItem_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.GetFirstListItem<EazyEngine.Space.GUIManager>{}
@@ -1643,6 +1481,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetLastListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.GetLastListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_GetLastListItem_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.GetLastListItem<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_GetLastListItem_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.GetLastListItem<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_GetLastListItem_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.GetLastListItem<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_GetLastListItem_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.GetLastListItem<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_GetLastListItem_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.GetLastListItem<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_GetLastListItem_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.GetLastListItem<EazyEngine.Space.GUIManager>{}
@@ -1732,6 +1571,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.GetListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_GetListItem_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.GetListItem<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_GetListItem_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.GetListItem<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_GetListItem_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.GetListItem<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_GetListItem_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.GetListItem<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_GetListItem_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.GetListItem<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_GetListItem_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.GetListItem<EazyEngine.Space.GUIManager>{}
@@ -1821,6 +1661,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetOtherVariable_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.GetOtherVariable<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_GetOtherVariable_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.GetOtherVariable<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_GetOtherVariable_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.GetOtherVariable<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_GetOtherVariable_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.GetOtherVariable<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_GetOtherVariable_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.GetOtherVariable<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_GetOtherVariable_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.GetOtherVariable<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_GetOtherVariable_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.GetOtherVariable<EazyEngine.Space.GUIManager>{}
@@ -1910,6 +1751,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetRandomListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.GetRandomListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_GetRandomListItem_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.GetRandomListItem<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_GetRandomListItem_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.GetRandomListItem<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_GetRandomListItem_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.GetRandomListItem<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_GetRandomListItem_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.GetRandomListItem<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_GetRandomListItem_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.GetRandomListItem<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_GetRandomListItem_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.GetRandomListItem<EazyEngine.Space.GUIManager>{}
@@ -1999,6 +1841,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetVariable_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.GetVariable<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_GetVariable_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.GetVariable<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_GetVariable_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.GetVariable<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_GetVariable_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.GetVariable<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_GetVariable_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.GetVariable<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_GetVariable_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.GetVariable<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_GetVariable_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.GetVariable<EazyEngine.Space.GUIManager>{}
@@ -2088,6 +1931,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_Identity_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.Identity<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_Identity_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.Identity<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_Identity_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.Identity<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_Identity_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.Identity<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_Identity_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.Identity<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_Identity_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.Identity<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_Identity_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.Identity<EazyEngine.Space.GUIManager>{}
@@ -2177,6 +2021,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_InsertListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.InsertListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_InsertListItem_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.InsertListItem<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_InsertListItem_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.InsertListItem<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_InsertListItem_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.InsertListItem<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_InsertListItem_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.InsertListItem<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_InsertListItem_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.InsertListItem<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_InsertListItem_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.InsertListItem<EazyEngine.Space.GUIManager>{}
@@ -2233,95 +2078,6 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_InsertListItem_UnityEngine_UI_Button : FlowCanvas.Nodes.InsertListItem<UnityEngine.UI.Button>{}
 		class FlowCanvas_Nodes_InsertListItem_UnityEngine_UI_Slider : FlowCanvas.Nodes.InsertListItem<UnityEngine.UI.Slider>{}
 
-		class FlowCanvas_Nodes_PickValue_System_Boolean : FlowCanvas.Nodes.PickValue<System.Boolean>{}
-		class FlowCanvas_Nodes_PickValue_System_Single : FlowCanvas.Nodes.PickValue<System.Single>{}
-		class FlowCanvas_Nodes_PickValue_System_Int32 : FlowCanvas.Nodes.PickValue<System.Int32>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_Vector2 : FlowCanvas.Nodes.PickValue<UnityEngine.Vector2>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_Vector3 : FlowCanvas.Nodes.PickValue<UnityEngine.Vector3>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_Vector4 : FlowCanvas.Nodes.PickValue<UnityEngine.Vector4>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_Quaternion : FlowCanvas.Nodes.PickValue<UnityEngine.Quaternion>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_Keyframe : FlowCanvas.Nodes.PickValue<UnityEngine.Keyframe>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_Bounds : FlowCanvas.Nodes.PickValue<UnityEngine.Bounds>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_Color : FlowCanvas.Nodes.PickValue<UnityEngine.Color>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_Rect : FlowCanvas.Nodes.PickValue<UnityEngine.Rect>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_ContactPoint : FlowCanvas.Nodes.PickValue<UnityEngine.ContactPoint>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_ContactPoint2D : FlowCanvas.Nodes.PickValue<UnityEngine.ContactPoint2D>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_Collision : FlowCanvas.Nodes.PickValue<UnityEngine.Collision>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_Collision2D : FlowCanvas.Nodes.PickValue<UnityEngine.Collision2D>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_RaycastHit : FlowCanvas.Nodes.PickValue<UnityEngine.RaycastHit>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.PickValue<UnityEngine.RaycastHit2D>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_Ray : FlowCanvas.Nodes.PickValue<UnityEngine.Ray>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_Space : FlowCanvas.Nodes.PickValue<UnityEngine.Space>{}
-		class FlowCanvas_Nodes_PickValue_DragObject : FlowCanvas.Nodes.PickValue<DragObject>{}
-		class FlowCanvas_Nodes_PickValue_PoolManagerComon : FlowCanvas.Nodes.PickValue<PoolManagerComon>{}
-		class FlowCanvas_Nodes_PickValue_WeaponInstancedConfig : FlowCanvas.Nodes.PickValue<WeaponInstancedConfig>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_AbilityInfo : FlowCanvas.Nodes.PickValue<EazyEngine.Space.AbilityInfo>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_AIBrain : FlowCanvas.Nodes.PickValue<EazyEngine.Space.AIBrain>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_AIElement : FlowCanvas.Nodes.PickValue<EazyEngine.Space.AIElement>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_AIMachine : FlowCanvas.Nodes.PickValue<EazyEngine.Space.AIMachine>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_BaseItemGame : FlowCanvas.Nodes.PickValue<EazyEngine.Space.BaseItemGame>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_Character : FlowCanvas.Nodes.PickValue<EazyEngine.Space.Character>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_CharacterHandleWeapon : FlowCanvas.Nodes.PickValue<EazyEngine.Space.CharacterHandleWeapon>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.PickValue<EazyEngine.Space.DamageExtra>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.PickValue<EazyEngine.Space.DamageExtraVariant>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.PickValue<EazyEngine.Space.DamageExtraVariants>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.PickValue<EazyEngine.Space.DamageOnTouch>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.PickValue<EazyEngine.Space.GroupElement>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.PickValue<EazyEngine.Space.GroupManager>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.PickValue<EazyEngine.Space.GUIManager>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_Health : FlowCanvas.Nodes.PickValue<EazyEngine.Space.Health>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_ItemGame : FlowCanvas.Nodes.PickValue<EazyEngine.Space.ItemGame>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_LaserWeapon : FlowCanvas.Nodes.PickValue<EazyEngine.Space.LaserWeapon>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_LevelManger : FlowCanvas.Nodes.PickValue<EazyEngine.Space.LevelManger>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.PickValue<EazyEngine.Space.PickEvent>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_Projectile : FlowCanvas.Nodes.PickValue<EazyEngine.Space.Projectile>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_ProjectileMultipeWeapon : FlowCanvas.Nodes.PickValue<EazyEngine.Space.ProjectileMultipeWeapon>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_ShieldControl : FlowCanvas.Nodes.PickValue<EazyEngine.Space.ShieldControl>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_SkillInfo : FlowCanvas.Nodes.PickValue<EazyEngine.Space.SkillInfo>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.PickValue<EazyEngine.Space.TriggerWeaponState>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_UnitDefineLevel : FlowCanvas.Nodes.PickValue<EazyEngine.Space.UnitDefineLevel>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_Weapon : FlowCanvas.Nodes.PickValue<EazyEngine.Space.Weapon>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_WeaponAmmo : FlowCanvas.Nodes.PickValue<EazyEngine.Space.WeaponAmmo>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_WeaponGroup : FlowCanvas.Nodes.PickValue<EazyEngine.Space.WeaponGroup>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_WeaponGroupIntance : FlowCanvas.Nodes.PickValue<EazyEngine.Space.WeaponGroupIntance>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_WeaponInstanceInfo : FlowCanvas.Nodes.PickValue<EazyEngine.Space.WeaponInstanceInfo>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_WeaponIntanceAttachMent : FlowCanvas.Nodes.PickValue<EazyEngine.Space.WeaponIntanceAttachMent>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_WeaponLightning : FlowCanvas.Nodes.PickValue<EazyEngine.Space.WeaponLightning>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Tools_MultipleObjectPooler : FlowCanvas.Nodes.PickValue<EazyEngine.Tools.MultipleObjectPooler>{}
-		class FlowCanvas_Nodes_PickValue_EazyEngine_Tools_SimpleObjectPooler : FlowCanvas.Nodes.PickValue<EazyEngine.Tools.SimpleObjectPooler>{}
-		class FlowCanvas_Nodes_PickValue_FlowCanvas_FlowScript : FlowCanvas.Nodes.PickValue<FlowCanvas.FlowScript>{}
-		class FlowCanvas_Nodes_PickValue_FlowCanvas_Nodes_Random : FlowCanvas.Nodes.PickValue<FlowCanvas.Nodes.Random>{}
-		class FlowCanvas_Nodes_PickValue_NodeCanvas_Framework_Blackboard : FlowCanvas.Nodes.PickValue<NodeCanvas.Framework.Blackboard>{}
-		class FlowCanvas_Nodes_PickValue_NodeCanvas_Framework_Internal_BlackboardSource : FlowCanvas.Nodes.PickValue<NodeCanvas.Framework.Internal.BlackboardSource>{}
-		class FlowCanvas_Nodes_PickValue_System_Object : FlowCanvas.Nodes.PickValue<System.Object>{}
-		class FlowCanvas_Nodes_PickValue_System_String : FlowCanvas.Nodes.PickValue<System.String>{}
-		class FlowCanvas_Nodes_PickValue_System_Type : FlowCanvas.Nodes.PickValue<System.Type>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_AnimationClip : FlowCanvas.Nodes.PickValue<UnityEngine.AnimationClip>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_AnimationCurve : FlowCanvas.Nodes.PickValue<UnityEngine.AnimationCurve>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_Animator : FlowCanvas.Nodes.PickValue<UnityEngine.Animator>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_AudioClip : FlowCanvas.Nodes.PickValue<UnityEngine.AudioClip>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_AudioSource : FlowCanvas.Nodes.PickValue<UnityEngine.AudioSource>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_Camera : FlowCanvas.Nodes.PickValue<UnityEngine.Camera>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_CharacterController : FlowCanvas.Nodes.PickValue<UnityEngine.CharacterController>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_Collider : FlowCanvas.Nodes.PickValue<UnityEngine.Collider>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_Collider2D : FlowCanvas.Nodes.PickValue<UnityEngine.Collider2D>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_GameObject : FlowCanvas.Nodes.PickValue<UnityEngine.GameObject>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_LayerMask : FlowCanvas.Nodes.PickValue<UnityEngine.LayerMask>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_Light : FlowCanvas.Nodes.PickValue<UnityEngine.Light>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_Material : FlowCanvas.Nodes.PickValue<UnityEngine.Material>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_Object : FlowCanvas.Nodes.PickValue<UnityEngine.Object>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_Renderer : FlowCanvas.Nodes.PickValue<UnityEngine.Renderer>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_Rigidbody : FlowCanvas.Nodes.PickValue<UnityEngine.Rigidbody>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_Rigidbody2D : FlowCanvas.Nodes.PickValue<UnityEngine.Rigidbody2D>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_Sprite : FlowCanvas.Nodes.PickValue<UnityEngine.Sprite>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_TextAsset : FlowCanvas.Nodes.PickValue<UnityEngine.TextAsset>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_Texture2D : FlowCanvas.Nodes.PickValue<UnityEngine.Texture2D>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_Transform : FlowCanvas.Nodes.PickValue<UnityEngine.Transform>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_AI_NavMeshAgent : FlowCanvas.Nodes.PickValue<UnityEngine.AI.NavMeshAgent>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_Audio_AudioMixer : FlowCanvas.Nodes.PickValue<UnityEngine.Audio.AudioMixer>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_UI_Button : FlowCanvas.Nodes.PickValue<UnityEngine.UI.Button>{}
-		class FlowCanvas_Nodes_PickValue_UnityEngine_UI_Slider : FlowCanvas.Nodes.PickValue<UnityEngine.UI.Slider>{}
-
 		class FlowCanvas_Nodes_ReadFlowParameter_System_Boolean : FlowCanvas.Nodes.ReadFlowParameter<System.Boolean>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_System_Single : FlowCanvas.Nodes.ReadFlowParameter<System.Single>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_System_Int32 : FlowCanvas.Nodes.ReadFlowParameter<System.Int32>{}
@@ -2355,6 +2111,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_ReadFlowParameter_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.ReadFlowParameter<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.ReadFlowParameter<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.ReadFlowParameter<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_ReadFlowParameter_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.ReadFlowParameter<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.ReadFlowParameter<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.ReadFlowParameter<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.ReadFlowParameter<EazyEngine.Space.GUIManager>{}
@@ -2444,6 +2201,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<EazyEngine.Space.GUIManager>{}
@@ -2533,6 +2291,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_RelayValueInput_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.RelayValueInput<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_RelayValueInput_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.RelayValueInput<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_RelayValueInput_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.RelayValueInput<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_RelayValueInput_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.RelayValueInput<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_RelayValueInput_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.RelayValueInput<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_RelayValueInput_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.RelayValueInput<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_RelayValueInput_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.RelayValueInput<EazyEngine.Space.GUIManager>{}
@@ -2622,6 +2381,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_RelayValueOutput_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.RelayValueOutput<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_RelayValueOutput_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.RelayValueOutput<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_RelayValueOutput_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.RelayValueOutput<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_RelayValueOutput_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.RelayValueOutput<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_RelayValueOutput_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.RelayValueOutput<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_RelayValueOutput_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.RelayValueOutput<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_RelayValueOutput_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.RelayValueOutput<EazyEngine.Space.GUIManager>{}
@@ -2711,6 +2471,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_RemoveDictionaryKey_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.RemoveDictionaryKey<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_RemoveDictionaryKey_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.RemoveDictionaryKey<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_RemoveDictionaryKey_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.RemoveDictionaryKey<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_RemoveDictionaryKey_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.RemoveDictionaryKey<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_RemoveDictionaryKey_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.RemoveDictionaryKey<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_RemoveDictionaryKey_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.RemoveDictionaryKey<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_RemoveDictionaryKey_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.RemoveDictionaryKey<EazyEngine.Space.GUIManager>{}
@@ -2800,6 +2561,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_RemoveListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.RemoveListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_RemoveListItem_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.RemoveListItem<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_RemoveListItem_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.RemoveListItem<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_RemoveListItem_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.RemoveListItem<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_RemoveListItem_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.RemoveListItem<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_RemoveListItem_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.RemoveListItem<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_RemoveListItem_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.RemoveListItem<EazyEngine.Space.GUIManager>{}
@@ -2889,6 +2651,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_RemoveListItemAt_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.RemoveListItemAt<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_RemoveListItemAt_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.RemoveListItemAt<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_RemoveListItemAt_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.RemoveListItemAt<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_RemoveListItemAt_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.RemoveListItemAt<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_RemoveListItemAt_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.RemoveListItemAt<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_RemoveListItemAt_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.RemoveListItemAt<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_RemoveListItemAt_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.RemoveListItemAt<EazyEngine.Space.GUIManager>{}
@@ -2978,6 +2741,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SelectOnBool_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SelectOnBool<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SelectOnBool_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.SelectOnBool<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_SelectOnBool_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.SelectOnBool<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_SelectOnBool_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.SelectOnBool<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_SelectOnBool_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.SelectOnBool<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_SelectOnBool_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.SelectOnBool<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_SelectOnBool_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.SelectOnBool<EazyEngine.Space.GUIManager>{}
@@ -3067,6 +2831,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SelectOnEnum_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SelectOnEnum<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SelectOnEnum_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.SelectOnEnum<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_SelectOnEnum_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.SelectOnEnum<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_SelectOnEnum_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.SelectOnEnum<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_SelectOnEnum_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.SelectOnEnum<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_SelectOnEnum_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.SelectOnEnum<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_SelectOnEnum_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.SelectOnEnum<EazyEngine.Space.GUIManager>{}
@@ -3156,6 +2921,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SelectOnInt_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SelectOnInt<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SelectOnInt_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.SelectOnInt<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_SelectOnInt_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.SelectOnInt<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_SelectOnInt_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.SelectOnInt<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_SelectOnInt_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.SelectOnInt<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_SelectOnInt_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.SelectOnInt<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_SelectOnInt_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.SelectOnInt<EazyEngine.Space.GUIManager>{}
@@ -3245,6 +3011,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SelectOnString_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SelectOnString<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SelectOnString_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.SelectOnString<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_SelectOnString_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.SelectOnString<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_SelectOnString_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.SelectOnString<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_SelectOnString_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.SelectOnString<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_SelectOnString_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.SelectOnString<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_SelectOnString_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.SelectOnString<EazyEngine.Space.GUIManager>{}
@@ -3334,6 +3101,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SelectOnTag_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SelectOnTag<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SelectOnTag_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.SelectOnTag<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_SelectOnTag_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.SelectOnTag<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_SelectOnTag_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.SelectOnTag<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_SelectOnTag_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.SelectOnTag<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_SelectOnTag_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.SelectOnTag<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_SelectOnTag_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.SelectOnTag<EazyEngine.Space.GUIManager>{}
@@ -3423,6 +3191,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SendEvent_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SendEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SendEvent_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.SendEvent<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_SendEvent_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.SendEvent<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_SendEvent_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.SendEvent<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_SendEvent_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.SendEvent<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_SendEvent_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.SendEvent<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_SendEvent_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.SendEvent<EazyEngine.Space.GUIManager>{}
@@ -3512,6 +3281,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SendGlobalEvent_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SendGlobalEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SendGlobalEvent_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.SendGlobalEvent<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_SendGlobalEvent_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.SendGlobalEvent<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_SendGlobalEvent_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.SendGlobalEvent<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_SendGlobalEvent_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.SendGlobalEvent<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_SendGlobalEvent_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.SendGlobalEvent<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_SendGlobalEvent_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.SendGlobalEvent<EazyEngine.Space.GUIManager>{}
@@ -3601,6 +3371,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SetListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SetListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SetListItem_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.SetListItem<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_SetListItem_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.SetListItem<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_SetListItem_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.SetListItem<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_SetListItem_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.SetListItem<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_SetListItem_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.SetListItem<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_SetListItem_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.SetListItem<EazyEngine.Space.GUIManager>{}
@@ -3690,6 +3461,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SetOtherVariable_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SetOtherVariable<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SetOtherVariable_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.SetOtherVariable<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_SetOtherVariable_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.SetOtherVariable<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_SetOtherVariable_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.SetOtherVariable<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_SetOtherVariable_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.SetOtherVariable<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_SetOtherVariable_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.SetOtherVariable<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_SetOtherVariable_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.SetOtherVariable<EazyEngine.Space.GUIManager>{}
@@ -3779,6 +3551,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SetVariable_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SetVariable<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SetVariable_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.SetVariable<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_SetVariable_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.SetVariable<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_SetVariable_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.SetVariable<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_SetVariable_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.SetVariable<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_SetVariable_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.SetVariable<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_SetVariable_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.SetVariable<EazyEngine.Space.GUIManager>{}
@@ -3868,6 +3641,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_ShuffleList_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.ShuffleList<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_ShuffleList_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.ShuffleList<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_ShuffleList_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.ShuffleList<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_ShuffleList_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.ShuffleList<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_ShuffleList_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.ShuffleList<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_ShuffleList_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.ShuffleList<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_ShuffleList_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.ShuffleList<EazyEngine.Space.GUIManager>{}
@@ -3924,362 +3698,6 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_ShuffleList_UnityEngine_UI_Button : FlowCanvas.Nodes.ShuffleList<UnityEngine.UI.Button>{}
 		class FlowCanvas_Nodes_ShuffleList_UnityEngine_UI_Slider : FlowCanvas.Nodes.ShuffleList<UnityEngine.UI.Slider>{}
 
-		class FlowCanvas_Nodes_StaticCodeEvent_System_Boolean : FlowCanvas.Nodes.StaticCodeEvent<System.Boolean>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_System_Single : FlowCanvas.Nodes.StaticCodeEvent<System.Single>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_System_Int32 : FlowCanvas.Nodes.StaticCodeEvent<System.Int32>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Vector2 : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Vector2>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Vector3 : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Vector3>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Vector4 : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Vector4>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Quaternion : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Quaternion>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Keyframe : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Keyframe>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Bounds : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Bounds>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Color : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Color>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Rect : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Rect>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_ContactPoint : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.ContactPoint>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_ContactPoint2D : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.ContactPoint2D>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Collision : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Collision>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Collision2D : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Collision2D>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_RaycastHit : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.RaycastHit>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.RaycastHit2D>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Ray : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Ray>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Space : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Space>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_DragObject : FlowCanvas.Nodes.StaticCodeEvent<DragObject>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_PoolManagerComon : FlowCanvas.Nodes.StaticCodeEvent<PoolManagerComon>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_WeaponInstancedConfig : FlowCanvas.Nodes.StaticCodeEvent<WeaponInstancedConfig>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_AbilityInfo : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.AbilityInfo>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_AIBrain : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.AIBrain>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_AIElement : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.AIElement>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_AIMachine : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.AIMachine>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_BaseItemGame : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.BaseItemGame>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_Character : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.Character>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_CharacterHandleWeapon : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.CharacterHandleWeapon>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.DamageExtra>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.DamageExtraVariant>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.DamageExtraVariants>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.DamageOnTouch>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.GroupElement>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.GroupManager>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.GUIManager>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_Health : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.Health>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_ItemGame : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.ItemGame>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_LaserWeapon : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.LaserWeapon>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_LevelManger : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.LevelManger>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.PickEvent>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_Projectile : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.Projectile>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_ProjectileMultipeWeapon : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.ProjectileMultipeWeapon>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_ShieldControl : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.ShieldControl>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_SkillInfo : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.SkillInfo>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.TriggerWeaponState>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_UnitDefineLevel : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.UnitDefineLevel>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_Weapon : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.Weapon>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_WeaponAmmo : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.WeaponAmmo>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_WeaponGroup : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.WeaponGroup>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_WeaponGroupIntance : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.WeaponGroupIntance>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_WeaponInstanceInfo : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.WeaponInstanceInfo>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_WeaponIntanceAttachMent : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.WeaponIntanceAttachMent>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_WeaponLightning : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.WeaponLightning>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Tools_MultipleObjectPooler : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Tools.MultipleObjectPooler>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Tools_SimpleObjectPooler : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Tools.SimpleObjectPooler>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_FlowCanvas_FlowScript : FlowCanvas.Nodes.StaticCodeEvent<FlowCanvas.FlowScript>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_FlowCanvas_Nodes_Random : FlowCanvas.Nodes.StaticCodeEvent<FlowCanvas.Nodes.Random>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_NodeCanvas_Framework_Blackboard : FlowCanvas.Nodes.StaticCodeEvent<NodeCanvas.Framework.Blackboard>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_NodeCanvas_Framework_Internal_BlackboardSource : FlowCanvas.Nodes.StaticCodeEvent<NodeCanvas.Framework.Internal.BlackboardSource>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_System_Object : FlowCanvas.Nodes.StaticCodeEvent<System.Object>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_System_String : FlowCanvas.Nodes.StaticCodeEvent<System.String>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_System_Type : FlowCanvas.Nodes.StaticCodeEvent<System.Type>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_AnimationClip : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.AnimationClip>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_AnimationCurve : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.AnimationCurve>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Animator : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Animator>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_AudioClip : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.AudioClip>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_AudioSource : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.AudioSource>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Camera : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Camera>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_CharacterController : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.CharacterController>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Collider : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Collider>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Collider2D : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Collider2D>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_GameObject : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.GameObject>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_LayerMask : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.LayerMask>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Light : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Light>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Material : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Material>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Object : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Object>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Renderer : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Renderer>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Rigidbody : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Rigidbody>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Rigidbody2D : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Rigidbody2D>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Sprite : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Sprite>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_TextAsset : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.TextAsset>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Texture2D : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Texture2D>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Transform : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Transform>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_AI_NavMeshAgent : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.AI.NavMeshAgent>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Audio_AudioMixer : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Audio.AudioMixer>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_UI_Button : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.UI.Button>{}
-		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_UI_Slider : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.UI.Slider>{}
-
-		class FlowCanvas_Nodes_SwitchValue_System_Boolean : FlowCanvas.Nodes.SwitchValue<System.Boolean>{}
-		class FlowCanvas_Nodes_SwitchValue_System_Single : FlowCanvas.Nodes.SwitchValue<System.Single>{}
-		class FlowCanvas_Nodes_SwitchValue_System_Int32 : FlowCanvas.Nodes.SwitchValue<System.Int32>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Vector2 : FlowCanvas.Nodes.SwitchValue<UnityEngine.Vector2>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Vector3 : FlowCanvas.Nodes.SwitchValue<UnityEngine.Vector3>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Vector4 : FlowCanvas.Nodes.SwitchValue<UnityEngine.Vector4>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Quaternion : FlowCanvas.Nodes.SwitchValue<UnityEngine.Quaternion>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Keyframe : FlowCanvas.Nodes.SwitchValue<UnityEngine.Keyframe>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Bounds : FlowCanvas.Nodes.SwitchValue<UnityEngine.Bounds>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Color : FlowCanvas.Nodes.SwitchValue<UnityEngine.Color>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Rect : FlowCanvas.Nodes.SwitchValue<UnityEngine.Rect>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_ContactPoint : FlowCanvas.Nodes.SwitchValue<UnityEngine.ContactPoint>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_ContactPoint2D : FlowCanvas.Nodes.SwitchValue<UnityEngine.ContactPoint2D>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Collision : FlowCanvas.Nodes.SwitchValue<UnityEngine.Collision>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Collision2D : FlowCanvas.Nodes.SwitchValue<UnityEngine.Collision2D>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_RaycastHit : FlowCanvas.Nodes.SwitchValue<UnityEngine.RaycastHit>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.SwitchValue<UnityEngine.RaycastHit2D>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Ray : FlowCanvas.Nodes.SwitchValue<UnityEngine.Ray>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Space : FlowCanvas.Nodes.SwitchValue<UnityEngine.Space>{}
-		class FlowCanvas_Nodes_SwitchValue_DragObject : FlowCanvas.Nodes.SwitchValue<DragObject>{}
-		class FlowCanvas_Nodes_SwitchValue_PoolManagerComon : FlowCanvas.Nodes.SwitchValue<PoolManagerComon>{}
-		class FlowCanvas_Nodes_SwitchValue_WeaponInstancedConfig : FlowCanvas.Nodes.SwitchValue<WeaponInstancedConfig>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_AbilityInfo : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.AbilityInfo>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_AIBrain : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.AIBrain>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_AIElement : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.AIElement>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_AIMachine : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.AIMachine>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_BaseItemGame : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.BaseItemGame>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_Character : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.Character>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_CharacterHandleWeapon : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.CharacterHandleWeapon>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.DamageExtra>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.DamageExtraVariant>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.DamageExtraVariants>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.DamageOnTouch>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.GroupElement>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.GroupManager>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.GUIManager>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_Health : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.Health>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_ItemGame : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.ItemGame>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_LaserWeapon : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.LaserWeapon>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_LevelManger : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.LevelManger>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.PickEvent>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_Projectile : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.Projectile>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_ProjectileMultipeWeapon : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.ProjectileMultipeWeapon>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_ShieldControl : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.ShieldControl>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_SkillInfo : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.SkillInfo>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.TriggerWeaponState>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_UnitDefineLevel : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.UnitDefineLevel>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_Weapon : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.Weapon>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_WeaponAmmo : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.WeaponAmmo>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_WeaponGroup : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.WeaponGroup>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_WeaponGroupIntance : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.WeaponGroupIntance>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_WeaponInstanceInfo : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.WeaponInstanceInfo>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_WeaponIntanceAttachMent : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.WeaponIntanceAttachMent>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_WeaponLightning : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.WeaponLightning>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Tools_MultipleObjectPooler : FlowCanvas.Nodes.SwitchValue<EazyEngine.Tools.MultipleObjectPooler>{}
-		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Tools_SimpleObjectPooler : FlowCanvas.Nodes.SwitchValue<EazyEngine.Tools.SimpleObjectPooler>{}
-		class FlowCanvas_Nodes_SwitchValue_FlowCanvas_FlowScript : FlowCanvas.Nodes.SwitchValue<FlowCanvas.FlowScript>{}
-		class FlowCanvas_Nodes_SwitchValue_FlowCanvas_Nodes_Random : FlowCanvas.Nodes.SwitchValue<FlowCanvas.Nodes.Random>{}
-		class FlowCanvas_Nodes_SwitchValue_NodeCanvas_Framework_Blackboard : FlowCanvas.Nodes.SwitchValue<NodeCanvas.Framework.Blackboard>{}
-		class FlowCanvas_Nodes_SwitchValue_NodeCanvas_Framework_Internal_BlackboardSource : FlowCanvas.Nodes.SwitchValue<NodeCanvas.Framework.Internal.BlackboardSource>{}
-		class FlowCanvas_Nodes_SwitchValue_System_Object : FlowCanvas.Nodes.SwitchValue<System.Object>{}
-		class FlowCanvas_Nodes_SwitchValue_System_String : FlowCanvas.Nodes.SwitchValue<System.String>{}
-		class FlowCanvas_Nodes_SwitchValue_System_Type : FlowCanvas.Nodes.SwitchValue<System.Type>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_AnimationClip : FlowCanvas.Nodes.SwitchValue<UnityEngine.AnimationClip>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_AnimationCurve : FlowCanvas.Nodes.SwitchValue<UnityEngine.AnimationCurve>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Animator : FlowCanvas.Nodes.SwitchValue<UnityEngine.Animator>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_AudioClip : FlowCanvas.Nodes.SwitchValue<UnityEngine.AudioClip>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_AudioSource : FlowCanvas.Nodes.SwitchValue<UnityEngine.AudioSource>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Camera : FlowCanvas.Nodes.SwitchValue<UnityEngine.Camera>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_CharacterController : FlowCanvas.Nodes.SwitchValue<UnityEngine.CharacterController>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Collider : FlowCanvas.Nodes.SwitchValue<UnityEngine.Collider>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Collider2D : FlowCanvas.Nodes.SwitchValue<UnityEngine.Collider2D>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_GameObject : FlowCanvas.Nodes.SwitchValue<UnityEngine.GameObject>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_LayerMask : FlowCanvas.Nodes.SwitchValue<UnityEngine.LayerMask>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Light : FlowCanvas.Nodes.SwitchValue<UnityEngine.Light>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Material : FlowCanvas.Nodes.SwitchValue<UnityEngine.Material>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Object : FlowCanvas.Nodes.SwitchValue<UnityEngine.Object>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Renderer : FlowCanvas.Nodes.SwitchValue<UnityEngine.Renderer>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Rigidbody : FlowCanvas.Nodes.SwitchValue<UnityEngine.Rigidbody>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Rigidbody2D : FlowCanvas.Nodes.SwitchValue<UnityEngine.Rigidbody2D>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Sprite : FlowCanvas.Nodes.SwitchValue<UnityEngine.Sprite>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_TextAsset : FlowCanvas.Nodes.SwitchValue<UnityEngine.TextAsset>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Texture2D : FlowCanvas.Nodes.SwitchValue<UnityEngine.Texture2D>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Transform : FlowCanvas.Nodes.SwitchValue<UnityEngine.Transform>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_AI_NavMeshAgent : FlowCanvas.Nodes.SwitchValue<UnityEngine.AI.NavMeshAgent>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Audio_AudioMixer : FlowCanvas.Nodes.SwitchValue<UnityEngine.Audio.AudioMixer>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_UI_Button : FlowCanvas.Nodes.SwitchValue<UnityEngine.UI.Button>{}
-		class FlowCanvas_Nodes_SwitchValue_UnityEngine_UI_Slider : FlowCanvas.Nodes.SwitchValue<UnityEngine.UI.Slider>{}
-
-		class FlowCanvas_Nodes_ToArray_System_Boolean : FlowCanvas.Nodes.ToArray<System.Boolean>{}
-		class FlowCanvas_Nodes_ToArray_System_Single : FlowCanvas.Nodes.ToArray<System.Single>{}
-		class FlowCanvas_Nodes_ToArray_System_Int32 : FlowCanvas.Nodes.ToArray<System.Int32>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_Vector2 : FlowCanvas.Nodes.ToArray<UnityEngine.Vector2>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_Vector3 : FlowCanvas.Nodes.ToArray<UnityEngine.Vector3>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_Vector4 : FlowCanvas.Nodes.ToArray<UnityEngine.Vector4>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_Quaternion : FlowCanvas.Nodes.ToArray<UnityEngine.Quaternion>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_Keyframe : FlowCanvas.Nodes.ToArray<UnityEngine.Keyframe>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_Bounds : FlowCanvas.Nodes.ToArray<UnityEngine.Bounds>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_Color : FlowCanvas.Nodes.ToArray<UnityEngine.Color>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_Rect : FlowCanvas.Nodes.ToArray<UnityEngine.Rect>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_ContactPoint : FlowCanvas.Nodes.ToArray<UnityEngine.ContactPoint>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_ContactPoint2D : FlowCanvas.Nodes.ToArray<UnityEngine.ContactPoint2D>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_Collision : FlowCanvas.Nodes.ToArray<UnityEngine.Collision>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_Collision2D : FlowCanvas.Nodes.ToArray<UnityEngine.Collision2D>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_RaycastHit : FlowCanvas.Nodes.ToArray<UnityEngine.RaycastHit>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.ToArray<UnityEngine.RaycastHit2D>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_Ray : FlowCanvas.Nodes.ToArray<UnityEngine.Ray>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_Space : FlowCanvas.Nodes.ToArray<UnityEngine.Space>{}
-		class FlowCanvas_Nodes_ToArray_DragObject : FlowCanvas.Nodes.ToArray<DragObject>{}
-		class FlowCanvas_Nodes_ToArray_PoolManagerComon : FlowCanvas.Nodes.ToArray<PoolManagerComon>{}
-		class FlowCanvas_Nodes_ToArray_WeaponInstancedConfig : FlowCanvas.Nodes.ToArray<WeaponInstancedConfig>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_AbilityInfo : FlowCanvas.Nodes.ToArray<EazyEngine.Space.AbilityInfo>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_AIBrain : FlowCanvas.Nodes.ToArray<EazyEngine.Space.AIBrain>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_AIElement : FlowCanvas.Nodes.ToArray<EazyEngine.Space.AIElement>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_AIMachine : FlowCanvas.Nodes.ToArray<EazyEngine.Space.AIMachine>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_BaseItemGame : FlowCanvas.Nodes.ToArray<EazyEngine.Space.BaseItemGame>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_Character : FlowCanvas.Nodes.ToArray<EazyEngine.Space.Character>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_CharacterHandleWeapon : FlowCanvas.Nodes.ToArray<EazyEngine.Space.CharacterHandleWeapon>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.ToArray<EazyEngine.Space.DamageExtra>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.ToArray<EazyEngine.Space.DamageExtraVariant>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.ToArray<EazyEngine.Space.DamageExtraVariants>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.ToArray<EazyEngine.Space.DamageOnTouch>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.ToArray<EazyEngine.Space.GroupElement>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.ToArray<EazyEngine.Space.GroupManager>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.ToArray<EazyEngine.Space.GUIManager>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_Health : FlowCanvas.Nodes.ToArray<EazyEngine.Space.Health>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_ItemGame : FlowCanvas.Nodes.ToArray<EazyEngine.Space.ItemGame>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_LaserWeapon : FlowCanvas.Nodes.ToArray<EazyEngine.Space.LaserWeapon>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_LevelManger : FlowCanvas.Nodes.ToArray<EazyEngine.Space.LevelManger>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.ToArray<EazyEngine.Space.PickEvent>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_Projectile : FlowCanvas.Nodes.ToArray<EazyEngine.Space.Projectile>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_ProjectileMultipeWeapon : FlowCanvas.Nodes.ToArray<EazyEngine.Space.ProjectileMultipeWeapon>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_ShieldControl : FlowCanvas.Nodes.ToArray<EazyEngine.Space.ShieldControl>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_SkillInfo : FlowCanvas.Nodes.ToArray<EazyEngine.Space.SkillInfo>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.ToArray<EazyEngine.Space.TriggerWeaponState>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_UnitDefineLevel : FlowCanvas.Nodes.ToArray<EazyEngine.Space.UnitDefineLevel>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_Weapon : FlowCanvas.Nodes.ToArray<EazyEngine.Space.Weapon>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_WeaponAmmo : FlowCanvas.Nodes.ToArray<EazyEngine.Space.WeaponAmmo>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_WeaponGroup : FlowCanvas.Nodes.ToArray<EazyEngine.Space.WeaponGroup>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_WeaponGroupIntance : FlowCanvas.Nodes.ToArray<EazyEngine.Space.WeaponGroupIntance>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_WeaponInstanceInfo : FlowCanvas.Nodes.ToArray<EazyEngine.Space.WeaponInstanceInfo>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_WeaponIntanceAttachMent : FlowCanvas.Nodes.ToArray<EazyEngine.Space.WeaponIntanceAttachMent>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_WeaponLightning : FlowCanvas.Nodes.ToArray<EazyEngine.Space.WeaponLightning>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Tools_MultipleObjectPooler : FlowCanvas.Nodes.ToArray<EazyEngine.Tools.MultipleObjectPooler>{}
-		class FlowCanvas_Nodes_ToArray_EazyEngine_Tools_SimpleObjectPooler : FlowCanvas.Nodes.ToArray<EazyEngine.Tools.SimpleObjectPooler>{}
-		class FlowCanvas_Nodes_ToArray_FlowCanvas_FlowScript : FlowCanvas.Nodes.ToArray<FlowCanvas.FlowScript>{}
-		class FlowCanvas_Nodes_ToArray_FlowCanvas_Nodes_Random : FlowCanvas.Nodes.ToArray<FlowCanvas.Nodes.Random>{}
-		class FlowCanvas_Nodes_ToArray_NodeCanvas_Framework_Blackboard : FlowCanvas.Nodes.ToArray<NodeCanvas.Framework.Blackboard>{}
-		class FlowCanvas_Nodes_ToArray_NodeCanvas_Framework_Internal_BlackboardSource : FlowCanvas.Nodes.ToArray<NodeCanvas.Framework.Internal.BlackboardSource>{}
-		class FlowCanvas_Nodes_ToArray_System_Object : FlowCanvas.Nodes.ToArray<System.Object>{}
-		class FlowCanvas_Nodes_ToArray_System_String : FlowCanvas.Nodes.ToArray<System.String>{}
-		class FlowCanvas_Nodes_ToArray_System_Type : FlowCanvas.Nodes.ToArray<System.Type>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_AnimationClip : FlowCanvas.Nodes.ToArray<UnityEngine.AnimationClip>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_AnimationCurve : FlowCanvas.Nodes.ToArray<UnityEngine.AnimationCurve>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_Animator : FlowCanvas.Nodes.ToArray<UnityEngine.Animator>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_AudioClip : FlowCanvas.Nodes.ToArray<UnityEngine.AudioClip>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_AudioSource : FlowCanvas.Nodes.ToArray<UnityEngine.AudioSource>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_Camera : FlowCanvas.Nodes.ToArray<UnityEngine.Camera>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_CharacterController : FlowCanvas.Nodes.ToArray<UnityEngine.CharacterController>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_Collider : FlowCanvas.Nodes.ToArray<UnityEngine.Collider>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_Collider2D : FlowCanvas.Nodes.ToArray<UnityEngine.Collider2D>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_GameObject : FlowCanvas.Nodes.ToArray<UnityEngine.GameObject>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_LayerMask : FlowCanvas.Nodes.ToArray<UnityEngine.LayerMask>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_Light : FlowCanvas.Nodes.ToArray<UnityEngine.Light>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_Material : FlowCanvas.Nodes.ToArray<UnityEngine.Material>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_Object : FlowCanvas.Nodes.ToArray<UnityEngine.Object>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_Renderer : FlowCanvas.Nodes.ToArray<UnityEngine.Renderer>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_Rigidbody : FlowCanvas.Nodes.ToArray<UnityEngine.Rigidbody>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_Rigidbody2D : FlowCanvas.Nodes.ToArray<UnityEngine.Rigidbody2D>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_Sprite : FlowCanvas.Nodes.ToArray<UnityEngine.Sprite>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_TextAsset : FlowCanvas.Nodes.ToArray<UnityEngine.TextAsset>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_Texture2D : FlowCanvas.Nodes.ToArray<UnityEngine.Texture2D>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_Transform : FlowCanvas.Nodes.ToArray<UnityEngine.Transform>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_AI_NavMeshAgent : FlowCanvas.Nodes.ToArray<UnityEngine.AI.NavMeshAgent>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_Audio_AudioMixer : FlowCanvas.Nodes.ToArray<UnityEngine.Audio.AudioMixer>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_UI_Button : FlowCanvas.Nodes.ToArray<UnityEngine.UI.Button>{}
-		class FlowCanvas_Nodes_ToArray_UnityEngine_UI_Slider : FlowCanvas.Nodes.ToArray<UnityEngine.UI.Slider>{}
-
-		class FlowCanvas_Nodes_ToList_System_Boolean : FlowCanvas.Nodes.ToList<System.Boolean>{}
-		class FlowCanvas_Nodes_ToList_System_Single : FlowCanvas.Nodes.ToList<System.Single>{}
-		class FlowCanvas_Nodes_ToList_System_Int32 : FlowCanvas.Nodes.ToList<System.Int32>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_Vector2 : FlowCanvas.Nodes.ToList<UnityEngine.Vector2>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_Vector3 : FlowCanvas.Nodes.ToList<UnityEngine.Vector3>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_Vector4 : FlowCanvas.Nodes.ToList<UnityEngine.Vector4>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_Quaternion : FlowCanvas.Nodes.ToList<UnityEngine.Quaternion>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_Keyframe : FlowCanvas.Nodes.ToList<UnityEngine.Keyframe>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_Bounds : FlowCanvas.Nodes.ToList<UnityEngine.Bounds>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_Color : FlowCanvas.Nodes.ToList<UnityEngine.Color>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_Rect : FlowCanvas.Nodes.ToList<UnityEngine.Rect>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_ContactPoint : FlowCanvas.Nodes.ToList<UnityEngine.ContactPoint>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_ContactPoint2D : FlowCanvas.Nodes.ToList<UnityEngine.ContactPoint2D>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_Collision : FlowCanvas.Nodes.ToList<UnityEngine.Collision>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_Collision2D : FlowCanvas.Nodes.ToList<UnityEngine.Collision2D>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_RaycastHit : FlowCanvas.Nodes.ToList<UnityEngine.RaycastHit>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.ToList<UnityEngine.RaycastHit2D>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_Ray : FlowCanvas.Nodes.ToList<UnityEngine.Ray>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_Space : FlowCanvas.Nodes.ToList<UnityEngine.Space>{}
-		class FlowCanvas_Nodes_ToList_DragObject : FlowCanvas.Nodes.ToList<DragObject>{}
-		class FlowCanvas_Nodes_ToList_PoolManagerComon : FlowCanvas.Nodes.ToList<PoolManagerComon>{}
-		class FlowCanvas_Nodes_ToList_WeaponInstancedConfig : FlowCanvas.Nodes.ToList<WeaponInstancedConfig>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_AbilityInfo : FlowCanvas.Nodes.ToList<EazyEngine.Space.AbilityInfo>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_AIBrain : FlowCanvas.Nodes.ToList<EazyEngine.Space.AIBrain>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_AIElement : FlowCanvas.Nodes.ToList<EazyEngine.Space.AIElement>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_AIMachine : FlowCanvas.Nodes.ToList<EazyEngine.Space.AIMachine>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_BaseItemGame : FlowCanvas.Nodes.ToList<EazyEngine.Space.BaseItemGame>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_Character : FlowCanvas.Nodes.ToList<EazyEngine.Space.Character>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_CharacterHandleWeapon : FlowCanvas.Nodes.ToList<EazyEngine.Space.CharacterHandleWeapon>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.ToList<EazyEngine.Space.DamageExtra>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.ToList<EazyEngine.Space.DamageExtraVariant>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.ToList<EazyEngine.Space.DamageExtraVariants>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.ToList<EazyEngine.Space.DamageOnTouch>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.ToList<EazyEngine.Space.GroupElement>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.ToList<EazyEngine.Space.GroupManager>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.ToList<EazyEngine.Space.GUIManager>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_Health : FlowCanvas.Nodes.ToList<EazyEngine.Space.Health>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_ItemGame : FlowCanvas.Nodes.ToList<EazyEngine.Space.ItemGame>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_LaserWeapon : FlowCanvas.Nodes.ToList<EazyEngine.Space.LaserWeapon>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_LevelManger : FlowCanvas.Nodes.ToList<EazyEngine.Space.LevelManger>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.ToList<EazyEngine.Space.PickEvent>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_Projectile : FlowCanvas.Nodes.ToList<EazyEngine.Space.Projectile>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_ProjectileMultipeWeapon : FlowCanvas.Nodes.ToList<EazyEngine.Space.ProjectileMultipeWeapon>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_ShieldControl : FlowCanvas.Nodes.ToList<EazyEngine.Space.ShieldControl>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_SkillInfo : FlowCanvas.Nodes.ToList<EazyEngine.Space.SkillInfo>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.ToList<EazyEngine.Space.TriggerWeaponState>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_UnitDefineLevel : FlowCanvas.Nodes.ToList<EazyEngine.Space.UnitDefineLevel>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_Weapon : FlowCanvas.Nodes.ToList<EazyEngine.Space.Weapon>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_WeaponAmmo : FlowCanvas.Nodes.ToList<EazyEngine.Space.WeaponAmmo>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_WeaponGroup : FlowCanvas.Nodes.ToList<EazyEngine.Space.WeaponGroup>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_WeaponGroupIntance : FlowCanvas.Nodes.ToList<EazyEngine.Space.WeaponGroupIntance>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_WeaponInstanceInfo : FlowCanvas.Nodes.ToList<EazyEngine.Space.WeaponInstanceInfo>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_WeaponIntanceAttachMent : FlowCanvas.Nodes.ToList<EazyEngine.Space.WeaponIntanceAttachMent>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Space_WeaponLightning : FlowCanvas.Nodes.ToList<EazyEngine.Space.WeaponLightning>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Tools_MultipleObjectPooler : FlowCanvas.Nodes.ToList<EazyEngine.Tools.MultipleObjectPooler>{}
-		class FlowCanvas_Nodes_ToList_EazyEngine_Tools_SimpleObjectPooler : FlowCanvas.Nodes.ToList<EazyEngine.Tools.SimpleObjectPooler>{}
-		class FlowCanvas_Nodes_ToList_FlowCanvas_FlowScript : FlowCanvas.Nodes.ToList<FlowCanvas.FlowScript>{}
-		class FlowCanvas_Nodes_ToList_FlowCanvas_Nodes_Random : FlowCanvas.Nodes.ToList<FlowCanvas.Nodes.Random>{}
-		class FlowCanvas_Nodes_ToList_NodeCanvas_Framework_Blackboard : FlowCanvas.Nodes.ToList<NodeCanvas.Framework.Blackboard>{}
-		class FlowCanvas_Nodes_ToList_NodeCanvas_Framework_Internal_BlackboardSource : FlowCanvas.Nodes.ToList<NodeCanvas.Framework.Internal.BlackboardSource>{}
-		class FlowCanvas_Nodes_ToList_System_Object : FlowCanvas.Nodes.ToList<System.Object>{}
-		class FlowCanvas_Nodes_ToList_System_String : FlowCanvas.Nodes.ToList<System.String>{}
-		class FlowCanvas_Nodes_ToList_System_Type : FlowCanvas.Nodes.ToList<System.Type>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_AnimationClip : FlowCanvas.Nodes.ToList<UnityEngine.AnimationClip>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_AnimationCurve : FlowCanvas.Nodes.ToList<UnityEngine.AnimationCurve>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_Animator : FlowCanvas.Nodes.ToList<UnityEngine.Animator>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_AudioClip : FlowCanvas.Nodes.ToList<UnityEngine.AudioClip>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_AudioSource : FlowCanvas.Nodes.ToList<UnityEngine.AudioSource>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_Camera : FlowCanvas.Nodes.ToList<UnityEngine.Camera>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_CharacterController : FlowCanvas.Nodes.ToList<UnityEngine.CharacterController>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_Collider : FlowCanvas.Nodes.ToList<UnityEngine.Collider>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_Collider2D : FlowCanvas.Nodes.ToList<UnityEngine.Collider2D>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_GameObject : FlowCanvas.Nodes.ToList<UnityEngine.GameObject>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_LayerMask : FlowCanvas.Nodes.ToList<UnityEngine.LayerMask>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_Light : FlowCanvas.Nodes.ToList<UnityEngine.Light>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_Material : FlowCanvas.Nodes.ToList<UnityEngine.Material>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_Object : FlowCanvas.Nodes.ToList<UnityEngine.Object>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_Renderer : FlowCanvas.Nodes.ToList<UnityEngine.Renderer>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_Rigidbody : FlowCanvas.Nodes.ToList<UnityEngine.Rigidbody>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_Rigidbody2D : FlowCanvas.Nodes.ToList<UnityEngine.Rigidbody2D>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_Sprite : FlowCanvas.Nodes.ToList<UnityEngine.Sprite>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_TextAsset : FlowCanvas.Nodes.ToList<UnityEngine.TextAsset>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_Texture2D : FlowCanvas.Nodes.ToList<UnityEngine.Texture2D>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_Transform : FlowCanvas.Nodes.ToList<UnityEngine.Transform>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_AI_NavMeshAgent : FlowCanvas.Nodes.ToList<UnityEngine.AI.NavMeshAgent>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_Audio_AudioMixer : FlowCanvas.Nodes.ToList<UnityEngine.Audio.AudioMixer>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_UI_Button : FlowCanvas.Nodes.ToList<UnityEngine.UI.Button>{}
-		class FlowCanvas_Nodes_ToList_UnityEngine_UI_Slider : FlowCanvas.Nodes.ToList<UnityEngine.UI.Slider>{}
-
 		class FlowCanvas_Nodes_TryGetValue_System_Boolean : FlowCanvas.Nodes.TryGetValue<System.Boolean>{}
 		class FlowCanvas_Nodes_TryGetValue_System_Single : FlowCanvas.Nodes.TryGetValue<System.Single>{}
 		class FlowCanvas_Nodes_TryGetValue_System_Int32 : FlowCanvas.Nodes.TryGetValue<System.Int32>{}
@@ -4313,6 +3731,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_TryGetValue_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.TryGetValue<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_TryGetValue_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.TryGetValue<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_TryGetValue_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.TryGetValue<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_TryGetValue_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.TryGetValue<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_TryGetValue_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.TryGetValue<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_TryGetValue_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.TryGetValue<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_TryGetValue_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.TryGetValue<EazyEngine.Space.GUIManager>{}
@@ -4402,6 +3821,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_WriteFlowParameter_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.WriteFlowParameter<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_WriteFlowParameter_EazyEngine_Space_DamageExtraVariants : FlowCanvas.Nodes.WriteFlowParameter<EazyEngine.Space.DamageExtraVariants>{}
 		class FlowCanvas_Nodes_WriteFlowParameter_EazyEngine_Space_DamageOnTouch : FlowCanvas.Nodes.WriteFlowParameter<EazyEngine.Space.DamageOnTouch>{}
+		class FlowCanvas_Nodes_WriteFlowParameter_EazyEngine_Space_DragObjectAOT : FlowCanvas.Nodes.WriteFlowParameter<EazyEngine.Space.DragObjectAOT>{}
 		class FlowCanvas_Nodes_WriteFlowParameter_EazyEngine_Space_GroupElement : FlowCanvas.Nodes.WriteFlowParameter<EazyEngine.Space.GroupElement>{}
 		class FlowCanvas_Nodes_WriteFlowParameter_EazyEngine_Space_GroupManager : FlowCanvas.Nodes.WriteFlowParameter<EazyEngine.Space.GroupManager>{}
 		class FlowCanvas_Nodes_WriteFlowParameter_EazyEngine_Space_GUIManager : FlowCanvas.Nodes.WriteFlowParameter<EazyEngine.Space.GUIManager>{}
@@ -4491,6 +3911,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Framework_BBParameter_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Framework.BBParameter<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Framework_BBParameter_EazyEngine_Space_DamageExtraVariants : NodeCanvas.Framework.BBParameter<EazyEngine.Space.DamageExtraVariants>{}
 		class NodeCanvas_Framework_BBParameter_EazyEngine_Space_DamageOnTouch : NodeCanvas.Framework.BBParameter<EazyEngine.Space.DamageOnTouch>{}
+		class NodeCanvas_Framework_BBParameter_EazyEngine_Space_DragObjectAOT : NodeCanvas.Framework.BBParameter<EazyEngine.Space.DragObjectAOT>{}
 		class NodeCanvas_Framework_BBParameter_EazyEngine_Space_GroupElement : NodeCanvas.Framework.BBParameter<EazyEngine.Space.GroupElement>{}
 		class NodeCanvas_Framework_BBParameter_EazyEngine_Space_GroupManager : NodeCanvas.Framework.BBParameter<EazyEngine.Space.GroupManager>{}
 		class NodeCanvas_Framework_BBParameter_EazyEngine_Space_GUIManager : NodeCanvas.Framework.BBParameter<EazyEngine.Space.GUIManager>{}
@@ -4580,6 +4001,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Framework_Variable_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Framework.Variable<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Framework_Variable_EazyEngine_Space_DamageExtraVariants : NodeCanvas.Framework.Variable<EazyEngine.Space.DamageExtraVariants>{}
 		class NodeCanvas_Framework_Variable_EazyEngine_Space_DamageOnTouch : NodeCanvas.Framework.Variable<EazyEngine.Space.DamageOnTouch>{}
+		class NodeCanvas_Framework_Variable_EazyEngine_Space_DragObjectAOT : NodeCanvas.Framework.Variable<EazyEngine.Space.DragObjectAOT>{}
 		class NodeCanvas_Framework_Variable_EazyEngine_Space_GroupElement : NodeCanvas.Framework.Variable<EazyEngine.Space.GroupElement>{}
 		class NodeCanvas_Framework_Variable_EazyEngine_Space_GroupManager : NodeCanvas.Framework.Variable<EazyEngine.Space.GroupManager>{}
 		class NodeCanvas_Framework_Variable_EazyEngine_Space_GUIManager : NodeCanvas.Framework.Variable<EazyEngine.Space.GUIManager>{}
@@ -4669,6 +4091,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Framework_Internal_ReflectedAction_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Framework.Internal.ReflectedAction<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Framework_Internal_ReflectedAction_EazyEngine_Space_DamageExtraVariants : NodeCanvas.Framework.Internal.ReflectedAction<EazyEngine.Space.DamageExtraVariants>{}
 		class NodeCanvas_Framework_Internal_ReflectedAction_EazyEngine_Space_DamageOnTouch : NodeCanvas.Framework.Internal.ReflectedAction<EazyEngine.Space.DamageOnTouch>{}
+		class NodeCanvas_Framework_Internal_ReflectedAction_EazyEngine_Space_DragObjectAOT : NodeCanvas.Framework.Internal.ReflectedAction<EazyEngine.Space.DragObjectAOT>{}
 		class NodeCanvas_Framework_Internal_ReflectedAction_EazyEngine_Space_GroupElement : NodeCanvas.Framework.Internal.ReflectedAction<EazyEngine.Space.GroupElement>{}
 		class NodeCanvas_Framework_Internal_ReflectedAction_EazyEngine_Space_GroupManager : NodeCanvas.Framework.Internal.ReflectedAction<EazyEngine.Space.GroupManager>{}
 		class NodeCanvas_Framework_Internal_ReflectedAction_EazyEngine_Space_GUIManager : NodeCanvas.Framework.Internal.ReflectedAction<EazyEngine.Space.GUIManager>{}
@@ -4758,6 +4181,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Framework_Internal_ReflectedFunction_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Framework.Internal.ReflectedFunction<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Framework_Internal_ReflectedFunction_EazyEngine_Space_DamageExtraVariants : NodeCanvas.Framework.Internal.ReflectedFunction<EazyEngine.Space.DamageExtraVariants>{}
 		class NodeCanvas_Framework_Internal_ReflectedFunction_EazyEngine_Space_DamageOnTouch : NodeCanvas.Framework.Internal.ReflectedFunction<EazyEngine.Space.DamageOnTouch>{}
+		class NodeCanvas_Framework_Internal_ReflectedFunction_EazyEngine_Space_DragObjectAOT : NodeCanvas.Framework.Internal.ReflectedFunction<EazyEngine.Space.DragObjectAOT>{}
 		class NodeCanvas_Framework_Internal_ReflectedFunction_EazyEngine_Space_GroupElement : NodeCanvas.Framework.Internal.ReflectedFunction<EazyEngine.Space.GroupElement>{}
 		class NodeCanvas_Framework_Internal_ReflectedFunction_EazyEngine_Space_GroupManager : NodeCanvas.Framework.Internal.ReflectedFunction<EazyEngine.Space.GroupManager>{}
 		class NodeCanvas_Framework_Internal_ReflectedFunction_EazyEngine_Space_GUIManager : NodeCanvas.Framework.Internal.ReflectedFunction<EazyEngine.Space.GUIManager>{}
@@ -4847,6 +4271,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.AddElementToDictionary<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_EazyEngine_Space_DamageExtraVariants : NodeCanvas.Tasks.Actions.AddElementToDictionary<EazyEngine.Space.DamageExtraVariants>{}
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_EazyEngine_Space_DamageOnTouch : NodeCanvas.Tasks.Actions.AddElementToDictionary<EazyEngine.Space.DamageOnTouch>{}
+		class NodeCanvas_Tasks_Actions_AddElementToDictionary_EazyEngine_Space_DragObjectAOT : NodeCanvas.Tasks.Actions.AddElementToDictionary<EazyEngine.Space.DragObjectAOT>{}
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_EazyEngine_Space_GroupElement : NodeCanvas.Tasks.Actions.AddElementToDictionary<EazyEngine.Space.GroupElement>{}
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_EazyEngine_Space_GroupManager : NodeCanvas.Tasks.Actions.AddElementToDictionary<EazyEngine.Space.GroupManager>{}
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_EazyEngine_Space_GUIManager : NodeCanvas.Tasks.Actions.AddElementToDictionary<EazyEngine.Space.GUIManager>{}
@@ -4936,6 +4361,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_AddElementToList_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.AddElementToList<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_AddElementToList_EazyEngine_Space_DamageExtraVariants : NodeCanvas.Tasks.Actions.AddElementToList<EazyEngine.Space.DamageExtraVariants>{}
 		class NodeCanvas_Tasks_Actions_AddElementToList_EazyEngine_Space_DamageOnTouch : NodeCanvas.Tasks.Actions.AddElementToList<EazyEngine.Space.DamageOnTouch>{}
+		class NodeCanvas_Tasks_Actions_AddElementToList_EazyEngine_Space_DragObjectAOT : NodeCanvas.Tasks.Actions.AddElementToList<EazyEngine.Space.DragObjectAOT>{}
 		class NodeCanvas_Tasks_Actions_AddElementToList_EazyEngine_Space_GroupElement : NodeCanvas.Tasks.Actions.AddElementToList<EazyEngine.Space.GroupElement>{}
 		class NodeCanvas_Tasks_Actions_AddElementToList_EazyEngine_Space_GroupManager : NodeCanvas.Tasks.Actions.AddElementToList<EazyEngine.Space.GroupManager>{}
 		class NodeCanvas_Tasks_Actions_AddElementToList_EazyEngine_Space_GUIManager : NodeCanvas.Tasks.Actions.AddElementToList<EazyEngine.Space.GUIManager>{}
@@ -5025,6 +4451,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.GetDictionaryElement<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_EazyEngine_Space_DamageExtraVariants : NodeCanvas.Tasks.Actions.GetDictionaryElement<EazyEngine.Space.DamageExtraVariants>{}
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_EazyEngine_Space_DamageOnTouch : NodeCanvas.Tasks.Actions.GetDictionaryElement<EazyEngine.Space.DamageOnTouch>{}
+		class NodeCanvas_Tasks_Actions_GetDictionaryElement_EazyEngine_Space_DragObjectAOT : NodeCanvas.Tasks.Actions.GetDictionaryElement<EazyEngine.Space.DragObjectAOT>{}
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_EazyEngine_Space_GroupElement : NodeCanvas.Tasks.Actions.GetDictionaryElement<EazyEngine.Space.GroupElement>{}
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_EazyEngine_Space_GroupManager : NodeCanvas.Tasks.Actions.GetDictionaryElement<EazyEngine.Space.GroupManager>{}
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_EazyEngine_Space_GUIManager : NodeCanvas.Tasks.Actions.GetDictionaryElement<EazyEngine.Space.GUIManager>{}
@@ -5114,6 +4541,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.GetIndexOfElement<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_EazyEngine_Space_DamageExtraVariants : NodeCanvas.Tasks.Actions.GetIndexOfElement<EazyEngine.Space.DamageExtraVariants>{}
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_EazyEngine_Space_DamageOnTouch : NodeCanvas.Tasks.Actions.GetIndexOfElement<EazyEngine.Space.DamageOnTouch>{}
+		class NodeCanvas_Tasks_Actions_GetIndexOfElement_EazyEngine_Space_DragObjectAOT : NodeCanvas.Tasks.Actions.GetIndexOfElement<EazyEngine.Space.DragObjectAOT>{}
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_EazyEngine_Space_GroupElement : NodeCanvas.Tasks.Actions.GetIndexOfElement<EazyEngine.Space.GroupElement>{}
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_EazyEngine_Space_GroupManager : NodeCanvas.Tasks.Actions.GetIndexOfElement<EazyEngine.Space.GroupManager>{}
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_EazyEngine_Space_GUIManager : NodeCanvas.Tasks.Actions.GetIndexOfElement<EazyEngine.Space.GUIManager>{}
@@ -5203,6 +4631,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_InsertElementToList_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.InsertElementToList<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_InsertElementToList_EazyEngine_Space_DamageExtraVariants : NodeCanvas.Tasks.Actions.InsertElementToList<EazyEngine.Space.DamageExtraVariants>{}
 		class NodeCanvas_Tasks_Actions_InsertElementToList_EazyEngine_Space_DamageOnTouch : NodeCanvas.Tasks.Actions.InsertElementToList<EazyEngine.Space.DamageOnTouch>{}
+		class NodeCanvas_Tasks_Actions_InsertElementToList_EazyEngine_Space_DragObjectAOT : NodeCanvas.Tasks.Actions.InsertElementToList<EazyEngine.Space.DragObjectAOT>{}
 		class NodeCanvas_Tasks_Actions_InsertElementToList_EazyEngine_Space_GroupElement : NodeCanvas.Tasks.Actions.InsertElementToList<EazyEngine.Space.GroupElement>{}
 		class NodeCanvas_Tasks_Actions_InsertElementToList_EazyEngine_Space_GroupManager : NodeCanvas.Tasks.Actions.InsertElementToList<EazyEngine.Space.GroupManager>{}
 		class NodeCanvas_Tasks_Actions_InsertElementToList_EazyEngine_Space_GUIManager : NodeCanvas.Tasks.Actions.InsertElementToList<EazyEngine.Space.GUIManager>{}
@@ -5292,6 +4721,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_PickListElement_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.PickListElement<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_PickListElement_EazyEngine_Space_DamageExtraVariants : NodeCanvas.Tasks.Actions.PickListElement<EazyEngine.Space.DamageExtraVariants>{}
 		class NodeCanvas_Tasks_Actions_PickListElement_EazyEngine_Space_DamageOnTouch : NodeCanvas.Tasks.Actions.PickListElement<EazyEngine.Space.DamageOnTouch>{}
+		class NodeCanvas_Tasks_Actions_PickListElement_EazyEngine_Space_DragObjectAOT : NodeCanvas.Tasks.Actions.PickListElement<EazyEngine.Space.DragObjectAOT>{}
 		class NodeCanvas_Tasks_Actions_PickListElement_EazyEngine_Space_GroupElement : NodeCanvas.Tasks.Actions.PickListElement<EazyEngine.Space.GroupElement>{}
 		class NodeCanvas_Tasks_Actions_PickListElement_EazyEngine_Space_GroupManager : NodeCanvas.Tasks.Actions.PickListElement<EazyEngine.Space.GroupManager>{}
 		class NodeCanvas_Tasks_Actions_PickListElement_EazyEngine_Space_GUIManager : NodeCanvas.Tasks.Actions.PickListElement<EazyEngine.Space.GUIManager>{}
@@ -5381,6 +4811,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.PickRandomListElement<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_EazyEngine_Space_DamageExtraVariants : NodeCanvas.Tasks.Actions.PickRandomListElement<EazyEngine.Space.DamageExtraVariants>{}
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_EazyEngine_Space_DamageOnTouch : NodeCanvas.Tasks.Actions.PickRandomListElement<EazyEngine.Space.DamageOnTouch>{}
+		class NodeCanvas_Tasks_Actions_PickRandomListElement_EazyEngine_Space_DragObjectAOT : NodeCanvas.Tasks.Actions.PickRandomListElement<EazyEngine.Space.DragObjectAOT>{}
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_EazyEngine_Space_GroupElement : NodeCanvas.Tasks.Actions.PickRandomListElement<EazyEngine.Space.GroupElement>{}
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_EazyEngine_Space_GroupManager : NodeCanvas.Tasks.Actions.PickRandomListElement<EazyEngine.Space.GroupManager>{}
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_EazyEngine_Space_GUIManager : NodeCanvas.Tasks.Actions.PickRandomListElement<EazyEngine.Space.GUIManager>{}
@@ -5470,6 +4901,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.RemoveElementFromList<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_EazyEngine_Space_DamageExtraVariants : NodeCanvas.Tasks.Actions.RemoveElementFromList<EazyEngine.Space.DamageExtraVariants>{}
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_EazyEngine_Space_DamageOnTouch : NodeCanvas.Tasks.Actions.RemoveElementFromList<EazyEngine.Space.DamageOnTouch>{}
+		class NodeCanvas_Tasks_Actions_RemoveElementFromList_EazyEngine_Space_DragObjectAOT : NodeCanvas.Tasks.Actions.RemoveElementFromList<EazyEngine.Space.DragObjectAOT>{}
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_EazyEngine_Space_GroupElement : NodeCanvas.Tasks.Actions.RemoveElementFromList<EazyEngine.Space.GroupElement>{}
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_EazyEngine_Space_GroupManager : NodeCanvas.Tasks.Actions.RemoveElementFromList<EazyEngine.Space.GroupManager>{}
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_EazyEngine_Space_GUIManager : NodeCanvas.Tasks.Actions.RemoveElementFromList<EazyEngine.Space.GUIManager>{}
@@ -5559,6 +4991,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_SendEvent_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.SendEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_SendEvent_EazyEngine_Space_DamageExtraVariants : NodeCanvas.Tasks.Actions.SendEvent<EazyEngine.Space.DamageExtraVariants>{}
 		class NodeCanvas_Tasks_Actions_SendEvent_EazyEngine_Space_DamageOnTouch : NodeCanvas.Tasks.Actions.SendEvent<EazyEngine.Space.DamageOnTouch>{}
+		class NodeCanvas_Tasks_Actions_SendEvent_EazyEngine_Space_DragObjectAOT : NodeCanvas.Tasks.Actions.SendEvent<EazyEngine.Space.DragObjectAOT>{}
 		class NodeCanvas_Tasks_Actions_SendEvent_EazyEngine_Space_GroupElement : NodeCanvas.Tasks.Actions.SendEvent<EazyEngine.Space.GroupElement>{}
 		class NodeCanvas_Tasks_Actions_SendEvent_EazyEngine_Space_GroupManager : NodeCanvas.Tasks.Actions.SendEvent<EazyEngine.Space.GroupManager>{}
 		class NodeCanvas_Tasks_Actions_SendEvent_EazyEngine_Space_GUIManager : NodeCanvas.Tasks.Actions.SendEvent<EazyEngine.Space.GUIManager>{}
@@ -5648,6 +5081,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.SendEventToObjects<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_EazyEngine_Space_DamageExtraVariants : NodeCanvas.Tasks.Actions.SendEventToObjects<EazyEngine.Space.DamageExtraVariants>{}
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_EazyEngine_Space_DamageOnTouch : NodeCanvas.Tasks.Actions.SendEventToObjects<EazyEngine.Space.DamageOnTouch>{}
+		class NodeCanvas_Tasks_Actions_SendEventToObjects_EazyEngine_Space_DragObjectAOT : NodeCanvas.Tasks.Actions.SendEventToObjects<EazyEngine.Space.DragObjectAOT>{}
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_EazyEngine_Space_GroupElement : NodeCanvas.Tasks.Actions.SendEventToObjects<EazyEngine.Space.GroupElement>{}
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_EazyEngine_Space_GroupManager : NodeCanvas.Tasks.Actions.SendEventToObjects<EazyEngine.Space.GroupManager>{}
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_EazyEngine_Space_GUIManager : NodeCanvas.Tasks.Actions.SendEventToObjects<EazyEngine.Space.GUIManager>{}
@@ -5737,6 +5171,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_SendMessage_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.SendMessage<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_SendMessage_EazyEngine_Space_DamageExtraVariants : NodeCanvas.Tasks.Actions.SendMessage<EazyEngine.Space.DamageExtraVariants>{}
 		class NodeCanvas_Tasks_Actions_SendMessage_EazyEngine_Space_DamageOnTouch : NodeCanvas.Tasks.Actions.SendMessage<EazyEngine.Space.DamageOnTouch>{}
+		class NodeCanvas_Tasks_Actions_SendMessage_EazyEngine_Space_DragObjectAOT : NodeCanvas.Tasks.Actions.SendMessage<EazyEngine.Space.DragObjectAOT>{}
 		class NodeCanvas_Tasks_Actions_SendMessage_EazyEngine_Space_GroupElement : NodeCanvas.Tasks.Actions.SendMessage<EazyEngine.Space.GroupElement>{}
 		class NodeCanvas_Tasks_Actions_SendMessage_EazyEngine_Space_GroupManager : NodeCanvas.Tasks.Actions.SendMessage<EazyEngine.Space.GroupManager>{}
 		class NodeCanvas_Tasks_Actions_SendMessage_EazyEngine_Space_GUIManager : NodeCanvas.Tasks.Actions.SendMessage<EazyEngine.Space.GUIManager>{}
@@ -5826,6 +5261,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_SetListElement_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.SetListElement<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_SetListElement_EazyEngine_Space_DamageExtraVariants : NodeCanvas.Tasks.Actions.SetListElement<EazyEngine.Space.DamageExtraVariants>{}
 		class NodeCanvas_Tasks_Actions_SetListElement_EazyEngine_Space_DamageOnTouch : NodeCanvas.Tasks.Actions.SetListElement<EazyEngine.Space.DamageOnTouch>{}
+		class NodeCanvas_Tasks_Actions_SetListElement_EazyEngine_Space_DragObjectAOT : NodeCanvas.Tasks.Actions.SetListElement<EazyEngine.Space.DragObjectAOT>{}
 		class NodeCanvas_Tasks_Actions_SetListElement_EazyEngine_Space_GroupElement : NodeCanvas.Tasks.Actions.SetListElement<EazyEngine.Space.GroupElement>{}
 		class NodeCanvas_Tasks_Actions_SetListElement_EazyEngine_Space_GroupManager : NodeCanvas.Tasks.Actions.SetListElement<EazyEngine.Space.GroupManager>{}
 		class NodeCanvas_Tasks_Actions_SetListElement_EazyEngine_Space_GUIManager : NodeCanvas.Tasks.Actions.SetListElement<EazyEngine.Space.GUIManager>{}
@@ -5915,6 +5351,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_SetVariable_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.SetVariable<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_SetVariable_EazyEngine_Space_DamageExtraVariants : NodeCanvas.Tasks.Actions.SetVariable<EazyEngine.Space.DamageExtraVariants>{}
 		class NodeCanvas_Tasks_Actions_SetVariable_EazyEngine_Space_DamageOnTouch : NodeCanvas.Tasks.Actions.SetVariable<EazyEngine.Space.DamageOnTouch>{}
+		class NodeCanvas_Tasks_Actions_SetVariable_EazyEngine_Space_DragObjectAOT : NodeCanvas.Tasks.Actions.SetVariable<EazyEngine.Space.DragObjectAOT>{}
 		class NodeCanvas_Tasks_Actions_SetVariable_EazyEngine_Space_GroupElement : NodeCanvas.Tasks.Actions.SetVariable<EazyEngine.Space.GroupElement>{}
 		class NodeCanvas_Tasks_Actions_SetVariable_EazyEngine_Space_GroupManager : NodeCanvas.Tasks.Actions.SetVariable<EazyEngine.Space.GroupManager>{}
 		class NodeCanvas_Tasks_Actions_SetVariable_EazyEngine_Space_GUIManager : NodeCanvas.Tasks.Actions.SetVariable<EazyEngine.Space.GUIManager>{}
@@ -6004,6 +5441,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_EazyEngine_Space_DamageExtraVariants : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<EazyEngine.Space.DamageExtraVariants>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_EazyEngine_Space_DamageOnTouch : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<EazyEngine.Space.DamageOnTouch>{}
+		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_EazyEngine_Space_DragObjectAOT : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<EazyEngine.Space.DragObjectAOT>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_EazyEngine_Space_GroupElement : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<EazyEngine.Space.GroupElement>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_EazyEngine_Space_GroupManager : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<EazyEngine.Space.GroupManager>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_EazyEngine_Space_GUIManager : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<EazyEngine.Space.GUIManager>{}
@@ -6093,6 +5531,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_EazyEngine_Space_DamageExtraVariants : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<EazyEngine.Space.DamageExtraVariants>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_EazyEngine_Space_DamageOnTouch : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<EazyEngine.Space.DamageOnTouch>{}
+		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_EazyEngine_Space_DragObjectAOT : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<EazyEngine.Space.DragObjectAOT>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_EazyEngine_Space_GroupElement : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<EazyEngine.Space.GroupElement>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_EazyEngine_Space_GroupManager : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<EazyEngine.Space.GroupManager>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_EazyEngine_Space_GUIManager : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<EazyEngine.Space.GUIManager>{}
@@ -6182,6 +5621,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckEvent_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckEvent_EazyEngine_Space_DamageExtraVariants : NodeCanvas.Tasks.Conditions.CheckEvent<EazyEngine.Space.DamageExtraVariants>{}
 		class NodeCanvas_Tasks_Conditions_CheckEvent_EazyEngine_Space_DamageOnTouch : NodeCanvas.Tasks.Conditions.CheckEvent<EazyEngine.Space.DamageOnTouch>{}
+		class NodeCanvas_Tasks_Conditions_CheckEvent_EazyEngine_Space_DragObjectAOT : NodeCanvas.Tasks.Conditions.CheckEvent<EazyEngine.Space.DragObjectAOT>{}
 		class NodeCanvas_Tasks_Conditions_CheckEvent_EazyEngine_Space_GroupElement : NodeCanvas.Tasks.Conditions.CheckEvent<EazyEngine.Space.GroupElement>{}
 		class NodeCanvas_Tasks_Conditions_CheckEvent_EazyEngine_Space_GroupManager : NodeCanvas.Tasks.Conditions.CheckEvent<EazyEngine.Space.GroupManager>{}
 		class NodeCanvas_Tasks_Conditions_CheckEvent_EazyEngine_Space_GUIManager : NodeCanvas.Tasks.Conditions.CheckEvent<EazyEngine.Space.GUIManager>{}
@@ -6271,6 +5711,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckEventValue<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_EazyEngine_Space_DamageExtraVariants : NodeCanvas.Tasks.Conditions.CheckEventValue<EazyEngine.Space.DamageExtraVariants>{}
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_EazyEngine_Space_DamageOnTouch : NodeCanvas.Tasks.Conditions.CheckEventValue<EazyEngine.Space.DamageOnTouch>{}
+		class NodeCanvas_Tasks_Conditions_CheckEventValue_EazyEngine_Space_DragObjectAOT : NodeCanvas.Tasks.Conditions.CheckEventValue<EazyEngine.Space.DragObjectAOT>{}
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_EazyEngine_Space_GroupElement : NodeCanvas.Tasks.Conditions.CheckEventValue<EazyEngine.Space.GroupElement>{}
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_EazyEngine_Space_GroupManager : NodeCanvas.Tasks.Conditions.CheckEventValue<EazyEngine.Space.GroupManager>{}
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_EazyEngine_Space_GUIManager : NodeCanvas.Tasks.Conditions.CheckEventValue<EazyEngine.Space.GUIManager>{}
@@ -6360,6 +5801,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_EazyEngine_Space_DamageExtraVariants : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<EazyEngine.Space.DamageExtraVariants>{}
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_EazyEngine_Space_DamageOnTouch : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<EazyEngine.Space.DamageOnTouch>{}
+		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_EazyEngine_Space_DragObjectAOT : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<EazyEngine.Space.DragObjectAOT>{}
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_EazyEngine_Space_GroupElement : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<EazyEngine.Space.GroupElement>{}
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_EazyEngine_Space_GroupManager : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<EazyEngine.Space.GroupManager>{}
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_EazyEngine_Space_GUIManager : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<EazyEngine.Space.GUIManager>{}
@@ -6449,6 +5891,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckUnityEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_EazyEngine_Space_DamageExtraVariants : NodeCanvas.Tasks.Conditions.CheckUnityEvent<EazyEngine.Space.DamageExtraVariants>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_EazyEngine_Space_DamageOnTouch : NodeCanvas.Tasks.Conditions.CheckUnityEvent<EazyEngine.Space.DamageOnTouch>{}
+		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_EazyEngine_Space_DragObjectAOT : NodeCanvas.Tasks.Conditions.CheckUnityEvent<EazyEngine.Space.DragObjectAOT>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_EazyEngine_Space_GroupElement : NodeCanvas.Tasks.Conditions.CheckUnityEvent<EazyEngine.Space.GroupElement>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_EazyEngine_Space_GroupManager : NodeCanvas.Tasks.Conditions.CheckUnityEvent<EazyEngine.Space.GroupManager>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_EazyEngine_Space_GUIManager : NodeCanvas.Tasks.Conditions.CheckUnityEvent<EazyEngine.Space.GUIManager>{}
@@ -6538,6 +5981,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_EazyEngine_Space_DamageExtraVariants : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<EazyEngine.Space.DamageExtraVariants>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_EazyEngine_Space_DamageOnTouch : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<EazyEngine.Space.DamageOnTouch>{}
+		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_EazyEngine_Space_DragObjectAOT : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<EazyEngine.Space.DragObjectAOT>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_EazyEngine_Space_GroupElement : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<EazyEngine.Space.GroupElement>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_EazyEngine_Space_GroupManager : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<EazyEngine.Space.GroupManager>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_EazyEngine_Space_GUIManager : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<EazyEngine.Space.GUIManager>{}
@@ -6627,6 +6071,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckVariable_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckVariable<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckVariable_EazyEngine_Space_DamageExtraVariants : NodeCanvas.Tasks.Conditions.CheckVariable<EazyEngine.Space.DamageExtraVariants>{}
 		class NodeCanvas_Tasks_Conditions_CheckVariable_EazyEngine_Space_DamageOnTouch : NodeCanvas.Tasks.Conditions.CheckVariable<EazyEngine.Space.DamageOnTouch>{}
+		class NodeCanvas_Tasks_Conditions_CheckVariable_EazyEngine_Space_DragObjectAOT : NodeCanvas.Tasks.Conditions.CheckVariable<EazyEngine.Space.DragObjectAOT>{}
 		class NodeCanvas_Tasks_Conditions_CheckVariable_EazyEngine_Space_GroupElement : NodeCanvas.Tasks.Conditions.CheckVariable<EazyEngine.Space.GroupElement>{}
 		class NodeCanvas_Tasks_Conditions_CheckVariable_EazyEngine_Space_GroupManager : NodeCanvas.Tasks.Conditions.CheckVariable<EazyEngine.Space.GroupManager>{}
 		class NodeCanvas_Tasks_Conditions_CheckVariable_EazyEngine_Space_GUIManager : NodeCanvas.Tasks.Conditions.CheckVariable<EazyEngine.Space.GUIManager>{}
@@ -6716,6 +6161,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.ListContainsElement<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_EazyEngine_Space_DamageExtraVariants : NodeCanvas.Tasks.Conditions.ListContainsElement<EazyEngine.Space.DamageExtraVariants>{}
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_EazyEngine_Space_DamageOnTouch : NodeCanvas.Tasks.Conditions.ListContainsElement<EazyEngine.Space.DamageOnTouch>{}
+		class NodeCanvas_Tasks_Conditions_ListContainsElement_EazyEngine_Space_DragObjectAOT : NodeCanvas.Tasks.Conditions.ListContainsElement<EazyEngine.Space.DragObjectAOT>{}
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_EazyEngine_Space_GroupElement : NodeCanvas.Tasks.Conditions.ListContainsElement<EazyEngine.Space.GroupElement>{}
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_EazyEngine_Space_GroupManager : NodeCanvas.Tasks.Conditions.ListContainsElement<EazyEngine.Space.GroupManager>{}
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_EazyEngine_Space_GUIManager : NodeCanvas.Tasks.Conditions.ListContainsElement<EazyEngine.Space.GUIManager>{}
@@ -6805,6 +6251,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_TryGetValue_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.TryGetValue<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_TryGetValue_EazyEngine_Space_DamageExtraVariants : NodeCanvas.Tasks.Conditions.TryGetValue<EazyEngine.Space.DamageExtraVariants>{}
 		class NodeCanvas_Tasks_Conditions_TryGetValue_EazyEngine_Space_DamageOnTouch : NodeCanvas.Tasks.Conditions.TryGetValue<EazyEngine.Space.DamageOnTouch>{}
+		class NodeCanvas_Tasks_Conditions_TryGetValue_EazyEngine_Space_DragObjectAOT : NodeCanvas.Tasks.Conditions.TryGetValue<EazyEngine.Space.DragObjectAOT>{}
 		class NodeCanvas_Tasks_Conditions_TryGetValue_EazyEngine_Space_GroupElement : NodeCanvas.Tasks.Conditions.TryGetValue<EazyEngine.Space.GroupElement>{}
 		class NodeCanvas_Tasks_Conditions_TryGetValue_EazyEngine_Space_GroupManager : NodeCanvas.Tasks.Conditions.TryGetValue<EazyEngine.Space.GroupManager>{}
 		class NodeCanvas_Tasks_Conditions_TryGetValue_EazyEngine_Space_GUIManager : NodeCanvas.Tasks.Conditions.TryGetValue<EazyEngine.Space.GUIManager>{}
@@ -6897,6 +6344,7 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_Flow.ReadParameter<EazyEngine.Space.DamageExtraVariant>( (System.String)o );
 			_FlowCanvas_Flow.ReadParameter<EazyEngine.Space.DamageExtraVariants>( (System.String)o );
 			_FlowCanvas_Flow.ReadParameter<EazyEngine.Space.DamageOnTouch>( (System.String)o );
+			_FlowCanvas_Flow.ReadParameter<EazyEngine.Space.DragObjectAOT>( (System.String)o );
 			_FlowCanvas_Flow.ReadParameter<EazyEngine.Space.GroupElement>( (System.String)o );
 			_FlowCanvas_Flow.ReadParameter<EazyEngine.Space.GroupManager>( (System.String)o );
 			_FlowCanvas_Flow.ReadParameter<EazyEngine.Space.GUIManager>( (System.String)o );
@@ -6989,6 +6437,7 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_Flow.WriteParameter<EazyEngine.Space.DamageExtraVariant>( (System.String)o, (EazyEngine.Space.DamageExtraVariant)o );
 			_FlowCanvas_Flow.WriteParameter<EazyEngine.Space.DamageExtraVariants>( (System.String)o, (EazyEngine.Space.DamageExtraVariants)o );
 			_FlowCanvas_Flow.WriteParameter<EazyEngine.Space.DamageOnTouch>( (System.String)o, (EazyEngine.Space.DamageOnTouch)o );
+			_FlowCanvas_Flow.WriteParameter<EazyEngine.Space.DragObjectAOT>( (System.String)o, (EazyEngine.Space.DragObjectAOT)o );
 			_FlowCanvas_Flow.WriteParameter<EazyEngine.Space.GroupElement>( (System.String)o, (EazyEngine.Space.GroupElement)o );
 			_FlowCanvas_Flow.WriteParameter<EazyEngine.Space.GroupManager>( (System.String)o, (EazyEngine.Space.GroupManager)o );
 			_FlowCanvas_Flow.WriteParameter<EazyEngine.Space.GUIManager>( (System.String)o, (EazyEngine.Space.GUIManager)o );
@@ -7081,6 +6530,7 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_FlowNode.AddValueInput<EazyEngine.Space.DamageExtraVariant>( (System.String)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueInput<EazyEngine.Space.DamageExtraVariants>( (System.String)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueInput<EazyEngine.Space.DamageOnTouch>( (System.String)o, (System.String)o );
+			_FlowCanvas_FlowNode.AddValueInput<EazyEngine.Space.DragObjectAOT>( (System.String)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueInput<EazyEngine.Space.GroupElement>( (System.String)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueInput<EazyEngine.Space.GroupManager>( (System.String)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueInput<EazyEngine.Space.GUIManager>( (System.String)o, (System.String)o );
@@ -7173,6 +6623,7 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.DamageExtraVariant>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtraVariant>)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.DamageExtraVariants>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtraVariants>)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.DamageOnTouch>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageOnTouch>)o );
+			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.DragObjectAOT>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DragObjectAOT>)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.GroupElement>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.GroupElement>)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.GroupManager>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.GroupManager>)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.GUIManager>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.GUIManager>)o );
@@ -7265,6 +6716,7 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.DamageExtraVariant>( (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtraVariant>)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.DamageExtraVariants>( (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtraVariants>)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.DamageOnTouch>( (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageOnTouch>)o, (System.String)o );
+			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.DragObjectAOT>( (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DragObjectAOT>)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.GroupElement>( (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.GroupElement>)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.GroupManager>( (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.GroupManager>)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.GUIManager>( (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.GUIManager>)o, (System.String)o );
@@ -7356,6 +6808,7 @@ namespace ParadoxNotion.Internal{
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<EazyEngine.Space.DamageExtraVariant>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<EazyEngine.Space.DamageExtraVariants>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<EazyEngine.Space.DamageOnTouch>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
+			FlowCanvas.TypeConverter.GetConverterFuncFromTo<EazyEngine.Space.DragObjectAOT>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<EazyEngine.Space.GroupElement>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<EazyEngine.Space.GroupManager>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<EazyEngine.Space.GUIManager>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
@@ -7447,6 +6900,7 @@ namespace ParadoxNotion.Internal{
 			FlowCanvas.TypeConverter.QuickConvert<EazyEngine.Space.DamageExtraVariant>( (System.Object)o );
 			FlowCanvas.TypeConverter.QuickConvert<EazyEngine.Space.DamageExtraVariants>( (System.Object)o );
 			FlowCanvas.TypeConverter.QuickConvert<EazyEngine.Space.DamageOnTouch>( (System.Object)o );
+			FlowCanvas.TypeConverter.QuickConvert<EazyEngine.Space.DragObjectAOT>( (System.Object)o );
 			FlowCanvas.TypeConverter.QuickConvert<EazyEngine.Space.GroupElement>( (System.Object)o );
 			FlowCanvas.TypeConverter.QuickConvert<EazyEngine.Space.GroupManager>( (System.Object)o );
 			FlowCanvas.TypeConverter.QuickConvert<EazyEngine.Space.GUIManager>( (System.Object)o );
@@ -7538,6 +6992,7 @@ namespace ParadoxNotion.Internal{
 			FlowCanvas.ValueInput.CreateInstance<EazyEngine.Space.DamageExtraVariant>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
 			FlowCanvas.ValueInput.CreateInstance<EazyEngine.Space.DamageExtraVariants>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
 			FlowCanvas.ValueInput.CreateInstance<EazyEngine.Space.DamageOnTouch>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
+			FlowCanvas.ValueInput.CreateInstance<EazyEngine.Space.DragObjectAOT>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
 			FlowCanvas.ValueInput.CreateInstance<EazyEngine.Space.GroupElement>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
 			FlowCanvas.ValueInput.CreateInstance<EazyEngine.Space.GroupManager>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
 			FlowCanvas.ValueInput.CreateInstance<EazyEngine.Space.GUIManager>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
@@ -7629,6 +7084,7 @@ namespace ParadoxNotion.Internal{
 			FlowCanvas.ValueOutput.CreateInstance<EazyEngine.Space.DamageExtraVariant>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtraVariant>)o );
 			FlowCanvas.ValueOutput.CreateInstance<EazyEngine.Space.DamageExtraVariants>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtraVariants>)o );
 			FlowCanvas.ValueOutput.CreateInstance<EazyEngine.Space.DamageOnTouch>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageOnTouch>)o );
+			FlowCanvas.ValueOutput.CreateInstance<EazyEngine.Space.DragObjectAOT>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DragObjectAOT>)o );
 			FlowCanvas.ValueOutput.CreateInstance<EazyEngine.Space.GroupElement>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.GroupElement>)o );
 			FlowCanvas.ValueOutput.CreateInstance<EazyEngine.Space.GroupManager>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.GroupManager>)o );
 			FlowCanvas.ValueOutput.CreateInstance<EazyEngine.Space.GUIManager>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.GUIManager>)o );
@@ -7721,6 +7177,7 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<EazyEngine.Space.DamageExtraVariant>( (EazyEngine.Space.DamageExtraVariant)o );
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<EazyEngine.Space.DamageExtraVariants>( (EazyEngine.Space.DamageExtraVariants)o );
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<EazyEngine.Space.DamageOnTouch>( (EazyEngine.Space.DamageOnTouch)o );
+			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<EazyEngine.Space.DragObjectAOT>( (EazyEngine.Space.DragObjectAOT)o );
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<EazyEngine.Space.GroupElement>( (EazyEngine.Space.GroupElement)o );
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<EazyEngine.Space.GroupManager>( (EazyEngine.Space.GroupManager)o );
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<EazyEngine.Space.GUIManager>( (EazyEngine.Space.GUIManager)o );
@@ -7813,6 +7270,7 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<EazyEngine.Space.DamageExtraVariant>( (EazyEngine.Space.DamageExtraVariant)o );
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<EazyEngine.Space.DamageExtraVariants>( (EazyEngine.Space.DamageExtraVariants)o );
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<EazyEngine.Space.DamageOnTouch>( (EazyEngine.Space.DamageOnTouch)o );
+			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<EazyEngine.Space.DragObjectAOT>( (EazyEngine.Space.DragObjectAOT)o );
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<EazyEngine.Space.GroupElement>( (EazyEngine.Space.GroupElement)o );
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<EazyEngine.Space.GroupManager>( (EazyEngine.Space.GroupManager)o );
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<EazyEngine.Space.GUIManager>( (EazyEngine.Space.GUIManager)o );
@@ -7905,6 +7363,7 @@ namespace ParadoxNotion.Internal{
 			_NodeCanvas_Framework_Blackboard.GetVariable<EazyEngine.Space.DamageExtraVariant>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetVariable<EazyEngine.Space.DamageExtraVariants>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetVariable<EazyEngine.Space.DamageOnTouch>( (System.String)o );
+			_NodeCanvas_Framework_Blackboard.GetVariable<EazyEngine.Space.DragObjectAOT>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetVariable<EazyEngine.Space.GroupElement>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetVariable<EazyEngine.Space.GroupManager>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetVariable<EazyEngine.Space.GUIManager>( (System.String)o );
@@ -7997,6 +7456,7 @@ namespace ParadoxNotion.Internal{
 			_NodeCanvas_Framework_Blackboard.GetValue<EazyEngine.Space.DamageExtraVariant>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetValue<EazyEngine.Space.DamageExtraVariants>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetValue<EazyEngine.Space.DamageOnTouch>( (System.String)o );
+			_NodeCanvas_Framework_Blackboard.GetValue<EazyEngine.Space.DragObjectAOT>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetValue<EazyEngine.Space.GroupElement>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetValue<EazyEngine.Space.GroupManager>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetValue<EazyEngine.Space.GUIManager>( (System.String)o );
@@ -8089,6 +7549,7 @@ namespace ParadoxNotion.Internal{
 			_NodeCanvas_Framework_IBlackboard.GetVariable<EazyEngine.Space.DamageExtraVariant>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetVariable<EazyEngine.Space.DamageExtraVariants>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetVariable<EazyEngine.Space.DamageOnTouch>( (System.String)o );
+			_NodeCanvas_Framework_IBlackboard.GetVariable<EazyEngine.Space.DragObjectAOT>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetVariable<EazyEngine.Space.GroupElement>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetVariable<EazyEngine.Space.GroupManager>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetVariable<EazyEngine.Space.GUIManager>( (System.String)o );
@@ -8181,6 +7642,7 @@ namespace ParadoxNotion.Internal{
 			_NodeCanvas_Framework_IBlackboard.GetValue<EazyEngine.Space.DamageExtraVariant>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetValue<EazyEngine.Space.DamageExtraVariants>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetValue<EazyEngine.Space.DamageOnTouch>( (System.String)o );
+			_NodeCanvas_Framework_IBlackboard.GetValue<EazyEngine.Space.DragObjectAOT>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetValue<EazyEngine.Space.GroupElement>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetValue<EazyEngine.Space.GroupManager>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetValue<EazyEngine.Space.GUIManager>( (System.String)o );
@@ -8503,6 +7965,14 @@ namespace ParadoxNotion.Internal{
 			System.Collections.Generic.List<EazyEngine.Space.DamageOnTouch> System_Collections_Generic_List_EazyEngine_Space_DamageOnTouch;
 			System.Collections.Generic.IDictionary<System.String, EazyEngine.Space.DamageOnTouch> IDict_EazyEngine_Space_DamageOnTouch;
 			System.Collections.Generic.Dictionary<System.String, EazyEngine.Space.DamageOnTouch> Dict_EazyEngine_Space_DamageOnTouch;
+			///------
+			System.Action<EazyEngine.Space.DragObjectAOT> System_Action_EazyEngine_Space_DragObjectAOT;
+			System.Func<EazyEngine.Space.DragObjectAOT> System_Func_EazyEngine_Space_DragObjectAOT;
+			UnityEngine.Events.UnityAction<EazyEngine.Space.DragObjectAOT> UnityEngine_Events_UnityAction_EazyEngine_Space_DragObjectAOT;
+			System.Collections.Generic.IList<EazyEngine.Space.DragObjectAOT> System_Collections_Generic_IList_EazyEngine_Space_DragObjectAOT;
+			System.Collections.Generic.List<EazyEngine.Space.DragObjectAOT> System_Collections_Generic_List_EazyEngine_Space_DragObjectAOT;
+			System.Collections.Generic.IDictionary<System.String, EazyEngine.Space.DragObjectAOT> IDict_EazyEngine_Space_DragObjectAOT;
+			System.Collections.Generic.Dictionary<System.String, EazyEngine.Space.DragObjectAOT> Dict_EazyEngine_Space_DragObjectAOT;
 			///------
 			System.Action<EazyEngine.Space.GroupElement> System_Action_EazyEngine_Space_GroupElement;
 			System.Func<EazyEngine.Space.GroupElement> System_Func_EazyEngine_Space_GroupElement;
@@ -8948,5 +8418,5 @@ namespace ParadoxNotion.Internal{
 	}
 }
 
-//7217 Types | 1320 Methods spoofed
+//6676 Types | 1335 Methods spoofed
 #pragma warning restore 0219, 0168, 0612
