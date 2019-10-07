@@ -455,12 +455,6 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             fileSaveGame.Close();
             fileSaveGame = null;
         }
-
-        int pGameStep = PlayerPrefs.GetInt("firstGame", 0);
-        if (pGameStep < 3 && Application.isPlaying)
-        {
-            PlayerPrefs.SetInt("firstGame", 3);
-        }
     }
     [Button("Load Game")]
     [HideInEditorMode]
@@ -892,8 +886,6 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         InAppPurchasing.InitializeFailed -= initFailed;
         EzEventManager.RemoveListener(this);
     }
-    
-    
     void onRewardedAdComplete(RewardedAdNetwork pNetWork, AdPlacement placement)
     {
         if (rewardAds.ContainsKey(placement.Name))

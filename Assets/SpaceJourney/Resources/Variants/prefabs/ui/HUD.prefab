@@ -30,9 +30,6 @@ MonoBehaviour:
   onEnableLateUpdateEvent:
     m_PersistentCalls:
       m_Calls: []
-  onCompleteTweenShow:
-    m_PersistentCalls:
-      m_Calls: []
   relative: 0
 --- !u!114 &8393442344744831923
 MonoBehaviour:
@@ -57,7 +54,6 @@ MonoBehaviour:
       isI2String: 1
       value: Press button FIGHT to play the first game
     IDButonFocus: FightButton
-    offset: {x: 0, y: 0, z: 0}
     blockState: 1
   - triggerToExcute: SecondGameWin
     title:
@@ -70,7 +66,6 @@ MonoBehaviour:
       value: 'You seem to be very gifted in this game. You can also upgrade plane
         to be able to play easier '
     IDButonFocus: UpgradeButton
-    offset: {x: 0, y: 0, z: 0}
     blockState: 1
   - triggerToExcute: SecondGameLose
     title:
@@ -83,7 +78,6 @@ MonoBehaviour:
       value: Unfortunately when you lose the game. You can go to upgrade for more
         power will help you pass the level easier
     IDButonFocus: UpgradeButton
-    offset: {x: 0, y: 0, z: 0}
     blockState: 1
   - triggerToExcute: FirstUpgrade
     title:
@@ -94,8 +88,7 @@ MonoBehaviour:
       normalString: Let do the first upgrade
       isI2String: 0
       value: 
-    IDButonFocus: UpgradeButon1
-    offset: {x: 0.091, y: 0, z: 0}
+    IDButonFocus: UpgradeButton1
     blockState: 1
   - triggerToExcute: FirstUpgradeSuccess
     title:
@@ -107,7 +100,6 @@ MonoBehaviour:
       isI2String: 0
       value: 
     IDButonFocus: 
-    offset: {x: 0, y: 0, z: 0}
     blockState: 0
   blackBG: {fileID: 6999310194765018785}
   hole: {fileID: 3497224069940447239}
@@ -237,9 +229,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   onEnableLateUpdateEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onCompleteTweenShow:
     m_PersistentCalls:
       m_Calls: []
   relative: 0

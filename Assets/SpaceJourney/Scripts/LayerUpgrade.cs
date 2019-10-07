@@ -14,8 +14,6 @@ namespace EazyEngine.Space.UI
 	    public string targetShopUpgradeSkill; 
         [SerializeField]
 	    protected BoxInfoPlane boxInfo;
-
-        public BoxChoosePlane boxplanes;
 	    public GameObject effectUpgrade,effectBaokich;
         protected PlaneInfoConfig selectedPlane;
         protected SkillInfoInstanced choosedSkill;
@@ -92,7 +90,11 @@ namespace EazyEngine.Space.UI
                     else
                     {
                         var shop =  LoadAssets.LoadShop("MainShop");
-                        bool showButton = shop.getInfoItem(pExist1.item.itemID) != null;
+                        bool showButton = true;
+                        if (shop.getInfoItem(pExist1.item.itemID) == null)
+                        {
+                            showButton = false;
+                        }
                         if (showButton)
                         {
                             HUDLayer.Instance.showDialogNotEnoughMoney(pExist1.item.displayNameItem.Value, delegate
@@ -222,7 +224,6 @@ namespace EazyEngine.Space.UI
                 effectUpgrade.gameObject.SetActive(true);
 	            effectUpgrade.GetComponent<ParticleSystem>().Play();
                 GameManager.Instance.SaveGame();
-                boxplanes.reloadData();
                 boxInfo.Data = boxInfo.Data;
                 return;
             }
@@ -250,7 +251,12 @@ namespace EazyEngine.Space.UI
 
         private void OnEnable()
         {
-      
+            int pFirstGame = PlayerPrefs.GetInt("firstGame", 0);
+            if (pFirstGame == 2)
+            {
+                PlayerPrefs.SetInt("firstGame", 3);
+                EzEventManager.TriggerEvent(new GuideEvent("FirstUpgrade"));
+            }
         }
 
         public void upgradePlane1()
@@ -296,7 +302,6 @@ namespace EazyEngine.Space.UI
                 effectUpgrade.gameObject.SetActive(true);
                 effectUpgrade.GetComponent<ParticleSystem>().Play();
                 GameManager.Instance.SaveGame();
-                boxplanes.reloadData();
                 boxInfo.Data = boxInfo.Data;
                 return;
             }
@@ -318,25 +323,6 @@ namespace EazyEngine.Space.UI
                     });
                 }
             
-        }
-
-        private IEnumerator delayAction(float pDelay, System.Action pAction)
-        {
-            yield return new WaitForSeconds(pDelay);
-            pAction();
-        }
-        public void checkGuide()
-        {
-            StartCoroutine(delayAction(0.1f, delegate
-            {
-                int pStepGame = PlayerPrefs.GetInt("firstGame", 0);
-                if (pStepGame == 2)
-                {
-                    PlayerPrefs.SetInt("firstGame", 3);
-                    EzEventManager.TriggerEvent(new GuideEvent("FirstUpgrade"));
-                }
-            }));
-
         }
         // Start is called before the first frame update
         void Start()

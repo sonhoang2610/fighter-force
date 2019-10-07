@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using EazyCustomAction;
-using EazyEngine.Space;
 using Sirenix.OdinInspector;
 using EazyEngine.Tools;
 
@@ -33,8 +32,6 @@ public class UIElement : MonoBehaviour,EzEventListener<UIMessEvent> {
     UnityEvent onInitEvent;
     [SerializeField]
     UnityEvent onEnableLateUpdateEvent;
-    [SerializeField]
-    UnityEvent onCompleteTweenShow;
 
     public Action _actionOnClose;
     public int relative = 0;
@@ -75,6 +72,11 @@ public class UIElement : MonoBehaviour,EzEventListener<UIMessEvent> {
     }
     public void resetTween()
     {
+        //UITweener[] tweenChild = GetComponentsInChildren<UITweener>();
+        //foreach(var tween in tweenChild)
+        //{
+        //   tween.ResetToBeginning();
+        //}
     }
 
     public void stepEnable()
@@ -82,18 +84,16 @@ public class UIElement : MonoBehaviour,EzEventListener<UIMessEvent> {
         gameObject.SetActive(!gameObject.activeSelf);
     }
 
-
     public virtual void show()
     {
-        showElement(delegate {onCompleteTweenShow.Invoke();  }); 
-    }
-
-    public virtual void showElement(System.Action pComplete)
-    {
-        GameObject o;
-        (o = gameObject).SetActive(true);
-        RootMotionController.stopAllAction(o);
-        if( UIElementManager.Instance.doAction(this, true,pComplete))
+        gameObject.SetActive(true);
+        //var pAction = UIElementManager.Instance.getTween(cateGory);
+        //if (pAction != null)
+        //{
+        //    RootMotionController.runAction(gameObject, pAction);
+        //}
+        RootMotionController.stopAllAction(gameObject);
+       if( UIElementManager.Instance.doAction(this, true))
         {
             gameObject.GetComponent<RootMotionController>()._isRunOnRealTime = true;
         }
@@ -108,8 +108,10 @@ public class UIElement : MonoBehaviour,EzEventListener<UIMessEvent> {
         {
             gameObject.SetActive(false);
         }
-
-        _actionOnClose?.Invoke();
+        if (_actionOnClose != null)
+        {
+            _actionOnClose.Invoke();
+        }
     }
 
     public void change()
@@ -123,21 +125,25 @@ public class UIElement : MonoBehaviour,EzEventListener<UIMessEvent> {
             show();
         }
     }
-
-    private bool isFirst = false;
+    bool isFirst = false;
 
     private void LateUpdate()
     {
-        if (!isFirst) return;
-        onEnableLateUpdateEvent.Invoke();
-        isFirst = false;
+        if (isFirst)
+        {
+            onEnableLateUpdateEvent.Invoke();
+            isFirst = false;
+        }
     }
     private void OnEnable()
     {
 
         isFirst = true;
-        onEnableEvent?.Invoke();
-        onStartEvent?.Invoke();
+        if (onEnableEvent != null)
+        {
+            onEnableEvent.Invoke();
+        }
+        onStartEvent.Invoke();
     }
 
     private void OnDisable()
@@ -146,7 +152,10 @@ public class UIElement : MonoBehaviour,EzEventListener<UIMessEvent> {
         //{
         //    EzEventManager.RemoveListener(this);
         //}
-        onDisableEvent?.Invoke();
+        if (onDisableEvent != null)
+        {
+            onDisableEvent.Invoke();
+        }
     }
     protected virtual void Start()
     {

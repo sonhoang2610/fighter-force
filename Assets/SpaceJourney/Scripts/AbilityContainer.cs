@@ -220,7 +220,7 @@ namespace EazyEngine.Space
     }
     [System.Serializable]
     public class AbilityConfig
-    { 
+    {
         [EzSerializeField]
         [InlineEditor]
         public AbilityInfo _ability;

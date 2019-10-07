@@ -288,7 +288,7 @@ namespace EazyEngine.Space
             players = new Character[1];
             players[0] = Instantiate<Character>(GameManager.Instance.Database.planes[pSelectedPlane].Info.modelPlane);
             var pDataPlane = pSelectedPlane >=0 ? GameManager.Instance.Database.planes[pSelectedPlane] : null;
-            if (pDataPlane == null || pDataPlane.CurrentLevel == 0) {
+            if (pDataPlane == null) {
                 var pAllItem = GameDatabase.Instance.getAllItem(CategoryItem.PLANE);
                 foreach(var pItemPlane in pAllItem)
                 {
@@ -313,7 +313,7 @@ namespace EazyEngine.Space
             }
             int pSelectedSPPlane1 = pSelectedspPlane;
             var pDataSpPlane = pSelectedSPPlane1 >= 0 ? GameManager.Instance.Database.spPlanes[pSelectedSPPlane1] : null;
-            if (pDataSpPlane == null || pDataSpPlane.CurrentLevel == 0)
+            if (pDataSpPlane == null)
             {
                 var pAllItem = GameDatabase.Instance.getAllItem(CategoryItem.SP_PLANE);
                 foreach (var pItemPlane in pAllItem)

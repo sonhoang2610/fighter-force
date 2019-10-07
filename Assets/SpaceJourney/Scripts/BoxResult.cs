@@ -104,7 +104,7 @@ namespace EazyEngine.Space.UI
                 lose.SetActive(true);    
                 GameManager.Instance.SaveLevel();
             }
-            stage.text  = GameManager.Instance.isFree ? "0" : GameManager.Instance.ChoosedLevel.ToString();
+            stage.text = GameManager.Instance.ChoosedLevel.ToString();
             string[] pStrs = new string[3] { "ui/normal", "ui/hard", "ui/super_hard" };
             level.text = I2.Loc.LocalizationManager.GetTranslation(pStrs[GameManager.Instance.ChoosedHard]);
             coinTaken.text = StringUtils.addDotMoney(LevelManger.Instance._infoLevel.goldTaken);
