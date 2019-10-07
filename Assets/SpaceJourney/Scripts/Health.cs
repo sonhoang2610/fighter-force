@@ -465,18 +465,17 @@ namespace EazyEngine.Space
                 pRespawn.onRespawn();
             }
             revieing = false;
-            if (subHealth && deathtime > 0)
+            if (subHealth)
             {
                 for (int i = 0; i < childHealth.Length; ++i)
                 {
                     childHealth[i].Revive();
                 }
-                if(timeInvuAfterRevie > 0)
-                {
-                    invuSelf = true;
-                    Invoke("disableInvu", timeInvuAfterRevie);
-                }
-               
+            }
+            if(timeInvuAfterRevie > 0  && deathtime > 0)
+            {
+                invuSelf = true;
+                Invoke("disableInvu", timeInvuAfterRevie);
             }
             if (pActiveObject && !gameObject.activeSelf)
             {

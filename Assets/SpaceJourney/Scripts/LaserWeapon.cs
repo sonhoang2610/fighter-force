@@ -243,6 +243,11 @@ namespace EazyEngine.Space
                     {
                         pHist.Add(hits[0]);
                     }
+
+                    if (pHist.Count == 0)
+                    {
+                        onShootingLevel?.Invoke(pLevel, false);
+                    }
                     for (int i = 0; i < pHist.Count; ++i)
                     {
                         var hit = pHist[i];
@@ -264,11 +269,9 @@ namespace EazyEngine.Space
                             GameObject pEndPoint = getEndPoint(pLineLaser);
                             pEndPoint.transform.position = hit.point;
                         }
-                        if (onShootingLevel != null)
-                        {
-                            onShootingLevel.Invoke(pLevel, ishit);
-                        }
-                   
+
+                        onShootingLevel?.Invoke(pLevel, ishit);
+
                         if (levelLaser == 0)
                         {
                             startPoint.transform.position = transform.position;

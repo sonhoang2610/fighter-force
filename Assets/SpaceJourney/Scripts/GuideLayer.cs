@@ -13,6 +13,7 @@ namespace EazyEngine.Space.UI
         public I2String title;
         public I2String content;
         public string IDButonFocus;
+        public Vector3 offset;
         public bool blockState;
     }
 
@@ -38,7 +39,7 @@ namespace EazyEngine.Space.UI
         public UILabel content;
         public UIElement box;
         public GameObject handGuide;
-        public void focusButton(string pID,System.Action pExcute,bool pOverride)
+        public void focusButton(string pID,Vector3 pOffset,System.Action pExcute,bool pOverride)
         {
             hole.gameObject.SetActive(!string.IsNullOrEmpty(pID));
             handGuide.gameObject.SetActive(!string.IsNullOrEmpty(pID));
@@ -53,7 +54,7 @@ namespace EazyEngine.Space.UI
                     Vector2 posWorld =
                         pRootHole.transform.TransformPoint(
                             pRoot.transform.InverseTransformPoint(pObject.transform.position));
-                    hole.transform.localPosition = hole.transform.parent.InverseTransformPoint(posWorld);
+                    hole.transform.localPosition = hole.transform.parent.InverseTransformPoint(posWorld) + pOffset;
                     handGuide.transform.position = hole.transform.position;
                 }
               
@@ -102,7 +103,7 @@ namespace EazyEngine.Space.UI
             box.show();
             title.text = pInfo.title.Value;
             content.text = pInfo.content.Value;
-            focusButton(pInfo.IDButonFocus,pExcute,pOverride);
+            focusButton(pInfo.IDButonFocus,pInfo.offset,pExcute,pOverride);
         }
 
         private void passGuide()
