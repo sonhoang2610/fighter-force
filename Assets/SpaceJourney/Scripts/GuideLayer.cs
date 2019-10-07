@@ -39,6 +39,8 @@ namespace EazyEngine.Space.UI
         public UILabel content;
         public UIElement box;
         public GameObject handGuide;
+        
+        protected  GameObject cacheButton;
         public void focusButton(string pID,Vector3 pOffset,System.Action pExcute,bool pOverride)
         {
             hole.gameObject.SetActive(!string.IsNullOrEmpty(pID));
@@ -66,7 +68,7 @@ namespace EazyEngine.Space.UI
                     pNewObject.transform.parent = transform;
                     pNewObject.transform.localScale = new Vector3(1,1,1);
                     pNewObject.transform.position = hole.transform.position;
-                   
+                    cacheButton = pNewObject;
                     pNewObject.AddComponent<BoxCollider>(pCollider);
                     pNewObject.AddComponent<UIWidget>();
                     var pButtonNew = pNewObject.AddComponent<UIButton>(pButton);
@@ -99,7 +101,7 @@ namespace EazyEngine.Space.UI
         private void ExcuteState(GuideInfo pInfo,System.Action pExcute,bool pOverride)
         {
             blackBG.gameObject.SetActive(pInfo.blockState);
-     
+            
             box.show();
             title.text = pInfo.title.Value;
             content.text = pInfo.content.Value;
@@ -108,6 +110,11 @@ namespace EazyEngine.Space.UI
 
         private void passGuide()
         {
+            if (cacheButton)
+            {
+                Destroy(cacheButton);
+            }
+            
             blackBG.gameObject.SetActive(false);
             handGuide.gameObject.SetActive(false);
             box.close();
