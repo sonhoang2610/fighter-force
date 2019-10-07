@@ -222,6 +222,8 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     public ScheduleUIMain scehduleUI = ScheduleUIMain.NONE;
     [System.NonSerialized]
     public bool inGame = false;
+    [System.NonSerialized]
+    public int lastResultWin = -1;
 	public AudioSource[] backgroundStage;
 	public AudioSource[] bossStage;
     public prefabBulletGroup getGroupPrefab(GameObject pObject)
@@ -663,6 +665,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     {
         File.Delete(Application.persistentDataPath + "/" + "level_container.dat");
         File.Delete(Application.persistentDataPath + "/" + "GameInfo.dat");
+        PlayerPrefs.DeleteAll();
     }
     public void LoadLevel(int pIndex)
     {

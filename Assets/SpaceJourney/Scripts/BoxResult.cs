@@ -34,6 +34,7 @@ namespace EazyEngine.Space.UI
     {
         public UILabel stage, level,coinTaken,quantityDestroy,time,score;
         public GameObject win, lose;
+        public UIButton[] btnWins, btnLoses,btnLayerFrees;
         public BoxMissionLevel boxMission;
         List<EazyNode> pNodes = new List<EazyNode>();
 
@@ -60,7 +61,7 @@ namespace EazyEngine.Space.UI
         }   
         public void showResult(bool pWin)
         {
-          
+            GameManager.Instance.lastResultWin = pWin ? 1 :0;
             if (!pWin && timeShowLose == 0) {
                 if (GameManager.Instance.isFree)
                 {
@@ -165,6 +166,20 @@ namespace EazyEngine.Space.UI
                 float percent = 1 - (pStarNotEngough <= 0 ? 0 : (pStarNotEngough * 0.2f > 0.6f ? 0.6f : pStarNotEngough * 0.2f));
                 GameManager.Instance.Database.getComonItem("Coin").Quantity += (int)(LevelManger.Instance._infoLevel.goldTaken * percent);
                 GameManager.Instance.SaveGame();
+            }
+
+            foreach (var t in btnWins)
+            {
+                t.gameObject.SetActive(!GameManager.Instance.isFree);
+            }
+
+            foreach (var t in btnLoses)
+            {
+                t.gameObject.SetActive(!GameManager.Instance.isFree);
+            }
+            foreach (var t in btnLayerFrees)
+            {
+                t.gameObject.SetActive(GameManager.Instance.isFree);
             }
         }
         protected float currentCoin;

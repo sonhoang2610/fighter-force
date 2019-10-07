@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using EazyEngine.Tools;
 using EasyMobile;
+using Random = UnityEngine.Random;
 
 namespace EazyEngine.Space.UI
 {
@@ -165,6 +167,13 @@ namespace EazyEngine.Space.UI
                                     selectedPlane.upgradeExtraAbility[pAbility._ability.itemID] = pListInt.ToArray();
                                 }
                             }
+
+                            if (PlayerPrefs.GetInt("firstGame", 0) == 3)
+                            {
+                                EzEventManager.TriggerEvent(new GuideEvent("FirstUpgradeSuccess"));
+                                PlayerPrefs.SetInt("firstGame",4);
+                            }
+                       
                             selectedPlane.CurrentLevel++;
                             selectedPlane.ExtraInfo();
                             effectUpgrade.gameObject.SetActive(true);
@@ -240,6 +249,16 @@ namespace EazyEngine.Space.UI
   
         }
 
+        private void OnEnable()
+        {
+            int pFirstGame = PlayerPrefs.GetInt("firstGame", 0);
+            if (pFirstGame == 2)
+            {
+                PlayerPrefs.SetInt("firstGame", 3);
+                EzEventManager.TriggerEvent(new GuideEvent("FirstUpgrade"));
+            }
+        }
+
         public void upgradePlane1()
         {
 
@@ -308,7 +327,7 @@ namespace EazyEngine.Space.UI
         // Start is called before the first frame update
         void Start()
         {
-
+       
         }
 
         // Update is called once per frame

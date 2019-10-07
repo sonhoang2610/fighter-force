@@ -92,14 +92,9 @@ public class AtlasLoader
     //Get the provided atlas from the loaded sprites
     public Sprite getAtlas(string atlasName)
     {
-        Sprite tempSprite;
-
-        if (!spriteDic.TryGetValue(atlasName, out tempSprite))
-        {
-            Debug.LogError("The Provided atlas `" + atlasName + "` does not exist!");
-            return null;
-        }
-        return tempSprite;
+        if (spriteDic.TryGetValue(atlasName, out var tempSprite)) return tempSprite;
+        Debug.LogError("The Provided atlas `" + atlasName + "` does not exist!");
+        return null;
     }
 
     //Returns number of sprites in the Atlas
@@ -141,7 +136,12 @@ public static class MonoBehaviorExtension
     }
     public static T AddComponent<T>(this GameObject go, T toAdd) where T : Component
     {
-        return go.AddComponent<T>().GetCopyOf(toAdd) as T;
+        var pComp = go.AddComponent<T>();
+        if (pComp == null)
+        {
+            pComp = go.GetComponent<T>();
+        }
+        return pComp.GetCopyOf(toAdd) as T;
     }
     public static List<T> FindObjectsOfTypeAll<T>()
     {

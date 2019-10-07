@@ -44,6 +44,7 @@ namespace EazyEngine.Space.UI
               var pDateTime = TimeExtension.GetNetTime(ref isConnected);
                 if (isConnected && GameManager.Instance.dailyGiftModule.lastDate != pDateTime.DayOfYear && GameManager.Instance.dailyGiftModule.currentDay < GameDatabase.Instance.databaseDailyGift.item.Count)
                 {
+                    if (PlayerPrefs.GetInt("firstGame", 0) <2) return;
                     boxdailyGift.GetComponent<UIElement>().show();
                 }
       
@@ -293,6 +294,24 @@ namespace EazyEngine.Space.UI
             }else if(GameManager.Instance.scehduleUI == ScheduleUIMain.UPGRADE)
             {
                 upgrade();
+            }
+
+            int pFirstGame = PlayerPrefs.GetInt("firstGame", 0);
+            if (pFirstGame == 0)
+            {
+                EzEventManager.TriggerEvent(new GuideEvent("FirstGame", delegate
+                {
+                    PlayerPrefs.SetInt("firstGame", 1); 
+                    MainScene.Instance.freePlay();
+                }));
+            }else if (pFirstGame == 1)
+            {
+                EzEventManager.TriggerEvent(new GuideEvent("SecondGame" + ((GameManager.Instance.lastResultWin == 1)  ? "Win" :  "Lose"),
+                    delegate
+                    {
+                        PlayerPrefs.SetInt("firstGame", 2); 
+                    },false));
+              
             }
         }
 
