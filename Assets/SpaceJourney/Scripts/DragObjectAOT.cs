@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using EazyEngine.Tools.Space;
 using UnityEngine;
+using UnityEngine.Scripting;
 
 namespace  EazyEngine.Space
 {
+	[Preserve]
     public class DragObjectAOT : MonoBehaviour
     {
        public float Speed = 100;

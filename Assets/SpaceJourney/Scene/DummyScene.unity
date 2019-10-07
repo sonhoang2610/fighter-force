@@ -1,0 +1,1646 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+OcclusionCullingSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_OcclusionBakeSettings:
+    smallestOccluder: 5
+    smallestHole: 0.25
+    backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
+--- !u!104 &2
+RenderSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 9
+  m_Fog: 0
+  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogMode: 3
+  m_FogDensity: 0.01
+  m_LinearFogStart: 0
+  m_LinearFogEnd: 300
+  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientIntensity: 1
+  m_AmbientMode: 3
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SkyboxMaterial: {fileID: 0}
+  m_HaloStrength: 0.5
+  m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
+  m_HaloTexture: {fileID: 0}
+  m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
+  m_DefaultReflectionMode: 0
+  m_DefaultReflectionResolution: 128
+  m_ReflectionBounces: 1
+  m_ReflectionIntensity: 1
+  m_CustomReflection: {fileID: 0}
+  m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_UseRadianceAmbientProbe: 0
+--- !u!157 &3
+LightmapSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 11
+  m_GIWorkflowMode: 1
+  m_GISettings:
+    serializedVersion: 2
+    m_BounceScale: 1
+    m_IndirectOutputScale: 1
+    m_AlbedoBoost: 1
+    m_EnvironmentLightingMode: 0
+    m_EnableBakedLightmaps: 0
+    m_EnableRealtimeLightmaps: 0
+  m_LightmapEditorSettings:
+    serializedVersion: 12
+    m_Resolution: 2
+    m_BakeResolution: 40
+    m_AtlasSize: 1024
+    m_AO: 0
+    m_AOMaxDistance: 1
+    m_CompAOExponent: 1
+    m_CompAOExponentDirect: 0
+    m_ExtractAmbientOcclusion: 0
+    m_Padding: 2
+    m_LightmapParameters: {fileID: 0}
+    m_LightmapsBakeMode: 1
+    m_TextureCompression: 1
+    m_FinalGather: 0
+    m_FinalGatherFiltering: 1
+    m_FinalGatherRayCount: 256
+    m_ReflectionCompression: 2
+    m_MixedBakeMode: 2
+    m_BakeBackend: 1
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 512
+    m_PVRBounces: 2
+    m_PVREnvironmentSampleCount: 256
+    m_PVREnvironmentReferencePointCount: 2048
+    m_PVRFilteringMode: 1
+    m_PVRDenoiserTypeDirect: 1
+    m_PVRDenoiserTypeIndirect: 1
+    m_PVRDenoiserTypeAO: 1
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
+    m_PVREnvironmentMIS: 1
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 5
+    m_PVRFilteringGaussRadiusAO: 2
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
+  m_LightingDataAsset: {fileID: 0}
+  m_UseShadowmask: 1
+--- !u!196 &4
+NavMeshSettings:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_BuildSettings:
+    serializedVersion: 2
+    agentTypeID: 0
+    agentRadius: 0.5
+    agentHeight: 2
+    agentSlope: 45
+    agentClimb: 0.4
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
+    minRegionArea: 2
+    manualCellSize: 0
+    cellSize: 0.16666667
+    manualTileSize: 0
+    tileSize: 256
+    accuratePlacement: 0
+    debug:
+      m_Flags: 0
+  m_NavMeshData: {fileID: 0}
+--- !u!1 &1099449295
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1099449298}
+  - component: {fileID: 1099449297}
+  - component: {fileID: 1099449296}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!81 &1099449296
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099449295}
+  m_Enabled: 1
+--- !u!20 &1099449297
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099449295}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &1099449298
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099449295}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1774128397
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1774128428}
+  - component: {fileID: 1774128427}
+  - component: {fileID: 1774128426}
+  - component: {fileID: 1774128425}
+  - component: {fileID: 1774128424}
+  - component: {fileID: 1774128423}
+  - component: {fileID: 1774128422}
+  - component: {fileID: 1774128421}
+  - component: {fileID: 1774128420}
+  - component: {fileID: 1774128419}
+  - component: {fileID: 1774128418}
+  - component: {fileID: 1774128417}
+  - component: {fileID: 1774128416}
+  - component: {fileID: 1774128415}
+  - component: {fileID: 1774128414}
+  - component: {fileID: 1774128413}
+  - component: {fileID: 1774128412}
+  - component: {fileID: 1774128411}
+  - component: {fileID: 1774128410}
+  - component: {fileID: 1774128409}
+  - component: {fileID: 1774128408}
+  - component: {fileID: 1774128407}
+  - component: {fileID: 1774128406}
+  - component: {fileID: 1774128405}
+  - component: {fileID: 1774128404}
+  - component: {fileID: 1774128403}
+  - component: {fileID: 1774128402}
+  - component: {fileID: 1774128401}
+  - component: {fileID: 1774128400}
+  - component: {fileID: 1774128399}
+  - component: {fileID: 1774128398}
+  - component: {fileID: 1774128430}
+  - component: {fileID: 1774128429}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1774128398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4010580f56bc3b45a20bf463af91527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _storage:
+    _array: []
+--- !u!114 &1774128399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _serializedBlackboard: '{"_variables":{}}'
+  _objectReferences: []
+--- !u!114 &1774128400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b5c3ebb24c97464da319951cafe5a47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boundGraphSerialization: 
+  boundGraphObjectReferences: []
+  enableAction: 0
+  disableAction: 0
+  _graph: {fileID: 0}
+  _blackboard: {fileID: 1774128399}
+--- !u!114 &1774128401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30599d570c93524c810714c5a2f7583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObjectToPool: {fileID: 0}
+  PoolSize: 20
+  PoolCanExpand: 1
+  dontDestroyOnload: 0
+--- !u!114 &1774128402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d9e78d0c323c5f4389a11af737e4d24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Pool: []
+  fixedIndex: -1
+--- !u!114 &1774128403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644af9a0a1c8c934881f4128d25c148c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boosterInfos: []
+  transitionAction: []
+  typeFire: 1
+  startWithReloadFirst: 0
+  timeReloadFirst: 0.1
+  randomReloadFirst: 0
+  randomTo: 0.1
+  prepareBulletWhenReload: 0
+  sizeRemoveTarget: -1
+  needTargetToFire: 0
+  forceDirectionFollowGun: 0
+  requireFaceTargetToFire: 0
+  onStartRotate:
+    m_PersistentCalls:
+      m_Calls: []
+  anchorRotation: {fileID: 0}
+  rotationSpeedUnlock: 0.5
+  rotationSpeedd: 0.5
+  defaultFace: {x: 0, y: 1}
+  directionTargetDefault: {x: 0, y: 1}
+  comebackDefaultWhenStop: 0
+  stopTargetingWhenstop: 0
+  allowRotationStart: 0
+  restartOnRestoreAmmo: 0
+  initialOffset: {x: 0, y: 0}
+  typeBehaviour: 0
+  isRamdomTimeReload: 0
+  reloadRamdom: {x: 0.1, y: 0.2}
+  timeReload: 0
+  machine:
+    AnimUse: Shoot
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
+    AnimReload: Reload
+    onReload:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShoot: Shoot
+    onListenShoot:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShootDone: ShootDone
+    onListenShootDone:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerReloadDone: ReloadDone
+    onListenReloadDone:
+      m_PersistentCalls:
+        m_Calls: []
+  firstMachine:
+    AnimUse: Shoot
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
+    AnimReload: Reload
+    onReload:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShoot: Shoot
+    onListenShoot:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShootDone: ShootDone
+    onListenShootDone:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerReloadDone: ReloadDone
+    onListenReloadDone:
+      m_PersistentCalls:
+        m_Calls: []
+  reactiveMachine:
+    AnimUse: Shoot
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
+    AnimReload: Reload
+    onReload:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShoot: Shoot
+    onListenShoot:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShootDone: ShootDone
+    onListenShootDone:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerReloadDone: ReloadDone
+    onListenReloadDone:
+      m_PersistentCalls:
+        m_Calls: []
+  fixDamage: 0
+  extraDamage:
+  - type: 0
+    damageExtra: 0
+  onStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onUse:
+    m_PersistentCalls:
+      m_Calls: []
+  onIdle:
+    m_PersistentCalls:
+      m_Calls: []
+  onInitDone:
+    m_PersistentCalls:
+      m_Calls: []
+  particleEffects: []
+  _listIgnoreObject: []
+  _currentState: 0
+  _ammo: {fileID: 0}
+  targetDirection: []
+  factorSpeed: 1
+  factorSpeedWeapon: 1
+  factorDamage: 1
+  dataWeapons: []
+  weapons: []
+  parent: {fileID: 0}
+  childs: []
+--- !u!114 &1774128404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a981961c823e2dd44abdcb8007909de7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boosterInfos: []
+  transitionAction: []
+  typeFire: 1
+  startWithReloadFirst: 0
+  timeReloadFirst: 0.1
+  randomReloadFirst: 0
+  randomTo: 0.1
+  prepareBulletWhenReload: 0
+  sizeRemoveTarget: -1
+  needTargetToFire: 0
+  forceDirectionFollowGun: 0
+  requireFaceTargetToFire: 0
+  onStartRotate:
+    m_PersistentCalls:
+      m_Calls: []
+  anchorRotation: {fileID: 0}
+  rotationSpeedUnlock: 0.5
+  rotationSpeedd: 0.5
+  defaultFace: {x: 0, y: 1}
+  directionTargetDefault: {x: 0, y: 1}
+  comebackDefaultWhenStop: 0
+  stopTargetingWhenstop: 0
+  allowRotationStart: 0
+  restartOnRestoreAmmo: 0
+  initialOffset: {x: 0, y: 0}
+  typeBehaviour: 0
+  isRamdomTimeReload: 0
+  reloadRamdom: {x: 0.1, y: 0.2}
+  timeReload: 0
+  machine:
+    AnimUse: Shoot
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
+    AnimReload: Reload
+    onReload:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShoot: Shoot
+    onListenShoot:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShootDone: ShootDone
+    onListenShootDone:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerReloadDone: ReloadDone
+    onListenReloadDone:
+      m_PersistentCalls:
+        m_Calls: []
+  firstMachine:
+    AnimUse: Shoot
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
+    AnimReload: Reload
+    onReload:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShoot: Shoot
+    onListenShoot:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShootDone: ShootDone
+    onListenShootDone:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerReloadDone: ReloadDone
+    onListenReloadDone:
+      m_PersistentCalls:
+        m_Calls: []
+  reactiveMachine:
+    AnimUse: Shoot
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
+    AnimReload: Reload
+    onReload:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShoot: Shoot
+    onListenShoot:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShootDone: ShootDone
+    onListenShootDone:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerReloadDone: ReloadDone
+    onListenReloadDone:
+      m_PersistentCalls:
+        m_Calls: []
+  fixDamage: 0
+  extraDamage:
+  - type: 0
+    damageExtra: 0
+  onStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onUse:
+    m_PersistentCalls:
+      m_Calls: []
+  onIdle:
+    m_PersistentCalls:
+      m_Calls: []
+  onInitDone:
+    m_PersistentCalls:
+      m_Calls: []
+  particleEffects: []
+  _listIgnoreObject: []
+  _currentState: 0
+  _ammo: {fileID: 0}
+  targetDirection: []
+  factorSpeed: 1
+  factorSpeedWeapon: 1
+  factorDamage: 1
+  dataWeapons: []
+  weapons: []
+--- !u!114 &1774128405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e0e0964074cafd4f9de0dc254cfaff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldObject: {fileID: 0}
+  duration: 10
+  extraShield: []
+--- !u!114 &1774128406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6260cbd12600d05408b580f66167f709, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onEndLifeTime:
+    m_PersistentCalls:
+      m_Calls: []
+  lifeTime: 3
+  lifeTimeRandomTo: 0
+  ignoreLiveTime: 0
+  onIndexBullet:
+    m_PersistentCalls:
+      m_Calls: []
+  Speed: 1
+  delayMove: 0
+  _SpeedConstraint: 1
+  SpeedStart: 0
+  durationToMax: 1
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  childs: []
+  ignoreMove: 0
+  currentSpeed: 0
+  MovetoTarget: 0
+  onMoveToTarget:
+    m_PersistentCalls:
+      m_Calls: []
+  target: {x: 0, y: 0}
+  moveSin: 0
+  frequency: 5
+  magnitude: 0.1
+  isAngularX: 0
+  delayX: 0
+  velocityXRandom: {x: 1, y: 1}
+  timeVelocityX: {x: 0.5, y: 0.5}
+  curveVelocityX:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1774128407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce126393c608214cbc9225597640830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boosterInfos: []
+  transitionAction: []
+  typeFire: 1
+  startWithReloadFirst: 0
+  timeReloadFirst: 0.1
+  randomReloadFirst: 0
+  randomTo: 0.1
+  prepareBulletWhenReload: 0
+  sizeRemoveTarget: -1
+  needTargetToFire: 0
+  forceDirectionFollowGun: 0
+  requireFaceTargetToFire: 0
+  onStartRotate:
+    m_PersistentCalls:
+      m_Calls: []
+  anchorRotation: {fileID: 0}
+  rotationSpeedUnlock: 0.5
+  rotationSpeedd: 0.5
+  defaultFace: {x: 0, y: 1}
+  directionTargetDefault: {x: 0, y: 1}
+  comebackDefaultWhenStop: 0
+  stopTargetingWhenstop: 0
+  allowRotationStart: 0
+  restartOnRestoreAmmo: 0
+  initialOffset: {x: 0, y: 0}
+  typeBehaviour: 0
+  isRamdomTimeReload: 0
+  reloadRamdom: {x: 0.1, y: 0.2}
+  timeReload: 0
+  machine:
+    AnimUse: Shoot
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
+    AnimReload: Reload
+    onReload:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShoot: Shoot
+    onListenShoot:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShootDone: ShootDone
+    onListenShootDone:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerReloadDone: ReloadDone
+    onListenReloadDone:
+      m_PersistentCalls:
+        m_Calls: []
+  firstMachine:
+    AnimUse: Shoot
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
+    AnimReload: Reload
+    onReload:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShoot: Shoot
+    onListenShoot:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShootDone: ShootDone
+    onListenShootDone:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerReloadDone: ReloadDone
+    onListenReloadDone:
+      m_PersistentCalls:
+        m_Calls: []
+  reactiveMachine:
+    AnimUse: Shoot
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
+    AnimReload: Reload
+    onReload:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShoot: Shoot
+    onListenShoot:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShootDone: ShootDone
+    onListenShootDone:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerReloadDone: ReloadDone
+    onListenReloadDone:
+      m_PersistentCalls:
+        m_Calls: []
+  fixDamage: 0
+  extraDamage:
+  - type: 0
+    damageExtra: 0
+  onStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onUse:
+    m_PersistentCalls:
+      m_Calls: []
+  onIdle:
+    m_PersistentCalls:
+      m_Calls: []
+  onInitDone:
+    m_PersistentCalls:
+      m_Calls: []
+  particleEffects: []
+  _listIgnoreObject: []
+  _currentState: 0
+  _ammo: {fileID: 0}
+  targetDirection: []
+  factorSpeed: 1
+  factorSpeedWeapon: 1
+  factorDamage: 1
+  defaultIndex: 0
+  attachMentPosStartNew: []
+  countBulletPerAttachment: 1
+  delayEachProjecttile: 0
+  randomDelayEachProjTo: 0
+  posStartAtAttachMent: 0
+  autoRotateIfHaveTarget: 0
+  trajectorPath: {fileID: 0}
+  onFireAttachMent:
+    m_PersistentCalls:
+      m_Calls: []
+  onFire:
+    m_PersistentCalls:
+      m_Calls: []
+  onUseEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onPrepareBullet:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1774128408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c484daf752c4b41bfd068c8d92e159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boosterInfos: []
+  transitionAction: []
+  typeFire: 1
+  startWithReloadFirst: 0
+  timeReloadFirst: 0.1
+  randomReloadFirst: 0
+  randomTo: 0.1
+  prepareBulletWhenReload: 0
+  sizeRemoveTarget: -1
+  needTargetToFire: 0
+  forceDirectionFollowGun: 0
+  requireFaceTargetToFire: 0
+  onStartRotate:
+    m_PersistentCalls:
+      m_Calls: []
+  anchorRotation: {fileID: 0}
+  rotationSpeedUnlock: 0.5
+  rotationSpeedd: 0.5
+  defaultFace: {x: 0, y: 1}
+  directionTargetDefault: {x: 0, y: 1}
+  comebackDefaultWhenStop: 0
+  stopTargetingWhenstop: 0
+  allowRotationStart: 0
+  restartOnRestoreAmmo: 0
+  initialOffset: {x: 0, y: 0}
+  typeBehaviour: 0
+  isRamdomTimeReload: 0
+  reloadRamdom: {x: 0.1, y: 0.2}
+  timeReload: 0
+  machine:
+    AnimUse: Shoot
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
+    AnimReload: Reload
+    onReload:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShoot: Shoot
+    onListenShoot:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShootDone: ShootDone
+    onListenShootDone:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerReloadDone: ReloadDone
+    onListenReloadDone:
+      m_PersistentCalls:
+        m_Calls: []
+  firstMachine:
+    AnimUse: Shoot
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
+    AnimReload: Reload
+    onReload:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShoot: Shoot
+    onListenShoot:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShootDone: ShootDone
+    onListenShootDone:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerReloadDone: ReloadDone
+    onListenReloadDone:
+      m_PersistentCalls:
+        m_Calls: []
+  reactiveMachine:
+    AnimUse: Shoot
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
+    AnimReload: Reload
+    onReload:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShoot: Shoot
+    onListenShoot:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShootDone: ShootDone
+    onListenShootDone:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerReloadDone: ReloadDone
+    onListenReloadDone:
+      m_PersistentCalls:
+        m_Calls: []
+  fixDamage: 0
+  extraDamage:
+  - type: 0
+    damageExtra: 0
+  onStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onUse:
+    m_PersistentCalls:
+      m_Calls: []
+  onIdle:
+    m_PersistentCalls:
+      m_Calls: []
+  onInitDone:
+    m_PersistentCalls:
+      m_Calls: []
+  particleEffects: []
+  _listIgnoreObject: []
+  _currentState: 0
+  _ammo: {fileID: 0}
+  targetDirection: []
+  factorSpeed: 1
+  factorSpeedWeapon: 1
+  factorDamage: 1
+--- !u!114 &1774128409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c26c4c1488032349ae20d097aa7ad58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boosterInfos: []
+  transitionAction: []
+  typeFire: 1
+  startWithReloadFirst: 0
+  timeReloadFirst: 0.1
+  randomReloadFirst: 0
+  randomTo: 0.1
+  prepareBulletWhenReload: 0
+  sizeRemoveTarget: -1
+  needTargetToFire: 0
+  forceDirectionFollowGun: 0
+  requireFaceTargetToFire: 0
+  onStartRotate:
+    m_PersistentCalls:
+      m_Calls: []
+  anchorRotation: {fileID: 0}
+  rotationSpeedUnlock: 0.5
+  rotationSpeedd: 0.5
+  defaultFace: {x: 0, y: 1}
+  directionTargetDefault: {x: 0, y: 1}
+  comebackDefaultWhenStop: 0
+  stopTargetingWhenstop: 0
+  allowRotationStart: 0
+  restartOnRestoreAmmo: 0
+  initialOffset: {x: 0, y: 0}
+  typeBehaviour: 0
+  isRamdomTimeReload: 0
+  reloadRamdom: {x: 0.1, y: 0.2}
+  timeReload: 0
+  machine:
+    AnimUse: Shoot
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
+    AnimReload: Reload
+    onReload:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShoot: Shoot
+    onListenShoot:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShootDone: ShootDone
+    onListenShootDone:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerReloadDone: ReloadDone
+    onListenReloadDone:
+      m_PersistentCalls:
+        m_Calls: []
+  firstMachine:
+    AnimUse: Shoot
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
+    AnimReload: Reload
+    onReload:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShoot: Shoot
+    onListenShoot:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShootDone: ShootDone
+    onListenShootDone:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerReloadDone: ReloadDone
+    onListenReloadDone:
+      m_PersistentCalls:
+        m_Calls: []
+  reactiveMachine:
+    AnimUse: Shoot
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
+    AnimReload: Reload
+    onReload:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShoot: Shoot
+    onListenShoot:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerShootDone: ShootDone
+    onListenShootDone:
+      m_PersistentCalls:
+        m_Calls: []
+    TriggerReloadDone: ReloadDone
+    onListenReloadDone:
+      m_PersistentCalls:
+        m_Calls: []
+  fixDamage: 0
+  extraDamage:
+  - type: 0
+    damageExtra: 0
+  onStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onUse:
+    m_PersistentCalls:
+      m_Calls: []
+  onIdle:
+    m_PersistentCalls:
+      m_Calls: []
+  onInitDone:
+    m_PersistentCalls:
+      m_Calls: []
+  particleEffects: []
+  _listIgnoreObject: []
+  _currentState: 0
+  _ammo: {fileID: 0}
+  targetDirection: []
+  factorSpeed: 1
+  factorSpeedWeapon: 1
+  factorDamage: 1
+  prepareLine: {fileID: 0}
+  lineLaser: {fileID: 0}
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 0
+  poolerEndPoint: {fileID: 0}
+  startPoint: {fileID: 0}
+  levelLaser: 0
+  maxLength: 30
+  lineElement: []
+  damagePerSec: 100
+  Infinite: 0
+--- !u!114 &1774128410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c53727573b38844ba2faa29188b212f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetMaskLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  ignoreOnDamaged: 0
+  DamageCaused: 10
+  damagedEffect: {fileID: 0}
+  durationForNextDame: 0.1
+  TakenDamageMask:
+    serializedVersion: 2
+    m_Bits: 2096951
+  DamageTakenWithEveryThing: 0
+  parentDamage: {fileID: 0}
+  _health: {fileID: 0}
+  damageChilds: []
+  factorDamage: 1
+  factorDamageSelfConfig: 1
+  extraDamageSelf: []
+  _listIgnoreObject: []
+--- !u!114 &1774128411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cf7708b779346646b45a901b8ceb1fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  invulnerable: 0
+  InvulnerableIfOutSide: 1
+  invuOnStart: 0
+  timeInvuAfterRevie: 0
+  disableParrentOnDeath: 0
+  disableOnDeath: 1
+  deffense: 0
+  MaxiumHealth: 0
+  InitialHealth: 0
+  containerHealthBar: {fileID: 0}
+  HealthBar: {fileID: 0}
+  DamageSfx: {fileID: 0}
+  preloadDeathEffect: 5
+  DeathEffect: {fileID: 0}
+  DamagedEffect: {fileID: 0}
+  HealingEffect: {fileID: 0}
+  HealingEffectTimer: {fileID: 0}
+  subHealth: 0
+  countChildMin: 0
+  childHealth: []
+  onMinChild:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  onTakenDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onRevie:
+    m_PersistentCalls:
+      m_Calls: []
+  animDeath: 0
+  triggerAnimDeath: 
+  listenerDeathAnimFinish: 
+--- !u!114 &1774128412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b6ebf22900257347a9a1e3aedb99f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isManual: 0
+  leaderGroup: []
+  _parentState:
+    isExpaned: 0
+    nameState: None
+    comment: None
+    nameGroup: 
+    isManual: 0
+    formatInfo:
+      prefabEnemies: []
+      quantity: 1
+      typeSpawn: 0
+      typeFomation: 0
+      startSpawnPos: {x: 0, y: 3}
+      AxisX: 0
+      sizeDomain: {x: 1, y: 1}
+      distanceEmiter: {x: 1, y: 1}
+      maxCollum: 1
+      radius: 1
+      directionStart: {x: 0, y: -1}
+    groupManager: {fileID: 0}
+    moveInfos:
+    - indexStateMove: 0
+      DelayStart: 0
+      RowDelay: 0
+      splineRaw:
+        points:
+        - {x: 0, y: 3, z: 0}
+        - {x: 0, y: 2.5, z: 0}
+        - {x: 0, y: 0.5, z: 0}
+        - {x: 0, y: 0, z: 0}
+        modes: 00000000000000000000000000000000
+        loop: 0
+        lineMode: 1
+        relative: 1
+        snap: 0
+        snapGrid: {x: 0, y: 0}
+        currentNode: 0
+      lookType: 0
+      durationMove: 1
+      speedBase: 0
+      curvesMoving:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      loop: 1
+      onCompleteNode: []
+      conditionComplete:
+      - condition: 0
+        destroyQuantity: 1
+        triggerString: 
+      onComplete:
+        m_PersistentCalls:
+          m_Calls: []
+      onStart:
+        m_PersistentCalls:
+          m_Calls: []
+    attackInfo:
+      BaseAI: 0
+      infoAI:
+        conditionStart: 0
+        triggerStringMachine: StartMachine
+        conditionAttack: 0
+        triggerStringAttack: StartAttack
+        firstDelay: {x: 0, y: 0}
+        reloadTime: {x: 2, y: 3}
+        countShoot: {x: 1, y: 2}
+        delayPerAttack: {x: 0.2, y: 0.5}
+        _typeDirection: 1
+    lootItems: []
+    _completeAction: 1
+    onCompleteState:
+      m_PersistentCalls:
+        m_Calls: []
+    totalDeath: 0
+  setUpIndex: 0
+--- !u!114 &1774128413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5faab9019bc6dfa479e601c937cc2a11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indexInGroup: 0
+  objectAnchor: {fileID: 0}
+  _parentGroup: {fileID: 0}
+  RotationSpeed: 360
+  speedSpringPoss: 6
+  ignoreMoveFollowLeader: 0
+--- !u!114 &1774128414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89698114b0d7eff49a82a17d9cb811bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ignoreAIMAchine: 0
+--- !u!114 &1774128415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce16be93f081a94285df660bf845e38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1774128416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b8916282d978bb458925b3a367dfc70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  registerDamagedDownBooster: 0
+  registerListenAnimatorTrigger: 0
+  registerMessEvent: 0
+  registerMessGameChangeWeapon: 0
+  shoortOnStart: 0
+  insideScreenRequire: 0
+  factorDamage: 1
+  factorSpeed: 1
+  conditionChangeWeapon: 0
+  DatabaseWeapon: []
+  _currentWeapons: []
+  damageOnTouchExtension: []
+  handleChilds: []
+--- !u!114 &1774128417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b818ef8b709c87742874c361649c352a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  machine:
+    model: {fileID: 0}
+    triggerInfos: []
+  modelObject: {fileID: 0}
+  _health: {fileID: 0}
+  handleWeapon: {fileID: 0}
+  _info:
+    info: {fileID: 0}
+    currentLevel: 0
+  originalPreb: {fileID: 0}
+--- !u!114 &1774128418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46546f14e0954a842ae327cf077967d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 100
+  EnableDrag: 0
+--- !u!114 &1774128419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6ae3a7ed9ea95a4d808c8141563dffa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 100
+  EnableDrag: 0
+--- !u!114 &1774128420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22e58532e89b775419dff666cf743710, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  references: []
+--- !u!114 &1774128421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e81799daad11542bc69f6b9a293509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachMent: {fileID: 0}
+  prefabItem: {fileID: 0}
+  items: []
+  onDataAction: []
+  cateGoryItemLoad: 
+  targetShop: 
+--- !u!114 &1774128422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54d10d2fc1819ec46bea598518cc0ad6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetShop: 
+  targetShopUpgradeSkill: 
+  boxInfo: {fileID: 0}
+  boxplanes: {fileID: 0}
+  effectUpgrade: {fileID: 0}
+  effectBaokich: {fileID: 0}
+--- !u!114 &1774128423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f06e48c3f73df94c9d7426d91675734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxDialogName: 
+  boxRebornName: 
+  boxRateName: 
+--- !u!114 &1774128424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3411c2f93e6b1dc45865e8d21fb60bab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camGUI: {fileID: 0}
+  boxsetting: {fileID: 0}
+  boxStatus: {fileID: 0}
+  dangerImage: {fileID: 0}
+  healImage: {fileID: 0}
+  hpBarImage: {fileID: 0}
+  EnergyBar: {fileID: 0}
+  BoosterBar: {fileID: 0}
+  iconPlane: {fileID: 0}
+  goldScore: {fileID: 0}
+  containerHandle: {fileID: 0}
+  posLeft: {fileID: 0}
+  posRight: {fileID: 0}
+  control1: {fileID: 0}
+  boxResult: {fileID: 0}
+--- !u!114 &1774128425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4384ef1d42ad079468de63dc7d1fc978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  states: []
+--- !u!114 &1774128426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8749ee800a060c4a8ae015b9cdbd872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPoint: {fileID: 0}
+  endPoint: {fileID: 0}
+  delayStartGame: 2
+  isPlaying: 0
+  isMatching: 0
+  currentPlayerIndex: 0
+  mainPlayCamera: {fileID: 0}
+  players: []
+  _charList: []
+--- !u!114 &1774128427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e47170481b7db30438d389b2201d5b35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectExcludes: []
+  groupPrefabBullet: []
+  backgroundStage: []
+  bossStage: []
+  loadFromResources: 1
+  isPlaying: 0
+  container:
+    levels: []
+  wincount: 0
+  _databaseDefault:
+    planes: []
+    spPlanes: []
+    selectedMainPlane: 
+    selectedSupportPlane1: 
+    selectedSupportPlane2: 
+    lastPlayStage:
+      x: 0
+      y: 0
+    currentLevelWheel: 0
+    currentExpWheel: 0
+    currentWheelToday: 0
+    timers: []
+    items: []
+    giftOnlineModules: []
+    dailyGiftModules: []
+  _databaseInstanced:
+    planes: []
+    spPlanes: []
+    selectedMainPlane: 
+    selectedSupportPlane1: 
+    selectedSupportPlane2: 
+    lastPlayStage:
+      x: 0
+      y: 0
+    currentLevelWheel: 0
+    currentExpWheel: 0
+    currentWheelToday: 0
+    timers: []
+    items: []
+    giftOnlineModules: []
+    dailyGiftModules: []
+  timer: []
+  defaultTestItem: []
+--- !u!4 &1774128428
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.51495886, y: -0.6387635, z: -0.35488203}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1774128429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10c8031d4b9d6a74eaf756a7be5e8e56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicOn: 1
+  MusicVolume: 0.3
+  sfxOn: 1
+  SfxVolume: 1
+  _backgroundMusic: {fileID: 0}
+--- !u!114 &1774128430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774128397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aeda789381d84c49be952b5d7ab0e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audios: []
+  randomAudio:
+    x: 0
+    y: 0
+  backGroundMusic: {fileID: 0}
+  playOnAwake: 1
+  isLoop: 1
+  delay: 0
