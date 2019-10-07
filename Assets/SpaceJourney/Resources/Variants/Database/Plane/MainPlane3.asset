@@ -413,14 +413,34 @@ MonoBehaviour:
   - levelUpRank: 60
   - levelUpRank: 80
   upgradeRateCriticalConfig:
-    startUnit: 0
-    algrothimTypeUpgrade: 0
+    startUnit: 40
+    algrothimTypeUpgrade: 1
     stepUnit: 0
-    isSpecifiedUnit: 0
-    unitDefines: []
+    isSpecifiedUnit: 1
+    unitDefines:
+    - levelRequire: 1
+      unit: 45
+    - levelRequire: 10
+      unit: 40
+    - levelRequire: 20
+      unit: 25
+    - levelRequire: 30
+      unit: 15
+    - levelRequire: 50
+      unit: 5
   upgradeIncreaseRate:
-    startUnit: 0
-    algrothimTypeUpgrade: 0
+    startUnit: 150
+    algrothimTypeUpgrade: 1
     stepUnit: 0
-    isSpecifiedUnit: 0
-    unitDefines: []
+    isSpecifiedUnit: 1
+    unitDefines:
+    - levelRequire: 0
+      unit: 150
+    - levelRequire: 10
+      unit: 140
+    - levelRequire: 20
+      unit: 135
+    - levelRequire: 30
+      unit: 130
+    - levelRequire: 40
+      unit: 125
