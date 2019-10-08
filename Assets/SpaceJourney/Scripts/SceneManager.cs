@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using EazyEngine.Tools;
@@ -28,6 +29,8 @@ namespace EazyEngine.Space
         bool isStart = false;
         public string currentScene;
         public Dictionary<string, AssetBundle> BUNDLES = new Dictionary<string, AssetBundle>();
+
+
 
         public void loadScene(string pScene)
         {

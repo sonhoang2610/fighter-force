@@ -11,6 +11,10 @@ using EasyMobile;
 using UnityEngine.Purchasing;
 using EazyEngine.Space.UI;
 using System.Linq;
+using EazyEngine.Tools.Space;
+using FlowCanvas.Nodes;
+using Spine.Unity;
+using Spine.Unity.Modules;
 #if UNITY_EDITOR
 using Sirenix.Utilities.Editor;
 #endif
@@ -325,6 +329,16 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     }
     public void initGame()
     {
+        if (PlayerPrefs.GetInt("firstGame", 0) == 5)
+        {
+           var pSke =gameObject.AddComponent<SkeletonMecanim>();
+           var pSke1 =gameObject.AddComponent<SkeletonRendererCustomMaterials>();
+           pSke1.setPropertyFloat("asd",0);
+           var pSke2 =gameObject.AddComponent<SkeletonUtilityBone>();
+           var pSke3 =gameObject.AddComponent<SkeletonUtility>();
+           var pSke4=gameObject.AddComponent<BoneFollower>();
+           var pSke5=gameObject.AddComponent<SkeletonRenderSeparator>();
+        }
         LoadGame();
         LoadAllLevel();
         reCalCulateStar();

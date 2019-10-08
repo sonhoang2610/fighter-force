@@ -4,11 +4,15 @@ using UnityEngine;
 using EazyEngine.Space;
 using NodeCanvas.Framework;
 using System.Linq;
+using UnityEngine.Scripting;
+
 
 namespace EazyEngine.Tools.Space
 {
+    [Preserve]
     public static class JourneySpaceUlities 
     {
+        [Preserve]
         public static void PassVariables(Blackboard pBlackBoardOriginal,Blackboard pBlackBoardClone)
         {
             for(int i = 0; i < pBlackBoardOriginal.variables.Count; ++i)
@@ -19,6 +23,7 @@ namespace EazyEngine.Tools.Space
                 }
             }
         }
+        [Preserve]
         public static Vector2[] posArray(Vector2 sizeDomain,Vector2 cellgrid, int pQuantity)
         {
             int pCol =(int)( sizeDomain.x / cellgrid.x);
@@ -29,6 +34,7 @@ namespace EazyEngine.Tools.Space
                 for(int j  = 0; j < pRow; ++j)
                 {
                     pAll.Add(new Vector2(i, j));
+                    Debug.Log("pos" + new Vector2(i,j));
                 }
             }
             while(pAll.Count > pQuantity)
@@ -41,14 +47,18 @@ namespace EazyEngine.Tools.Space
                 pAll[i] *= cellgrid + new Vector2(cellgrid.x / 2, 0) + new Vector2( cellgrid.x/2,0)*((int)pAll[i].y%1);
                // pAll[i] += new Vector2(Random.Range(-pCell.x / 2, pCell.x/2), Random.Range(-pCell.y / 2, pCell.y/2));
             }
+
+            Debug.Log("sizeDomain" + sizeDomain + "cellGrid" + cellgrid + "Quantity" + pQuantity);
             return pAll.ToArray();
         }
+        [Preserve]
         public static Rect Rect(this Camera pCam,float pScale = 1.0f)
         {
             float pWidth = 10.8f;// Screen.width * (pCam.orthographicSize * 2) / Screen.height;
             float pHeight = 19.2f;// LevelManger.Instance.mainPlayCamera.orthographicSize * 2;
             return new Rect((Vector2)pCam.transform.position - (new Vector2(pWidth, pHeight))* pScale / 2, new Vector2(pWidth, pHeight) * pScale);
         }
+        [Preserve]
         public static int getRowCountTriangle(int pTotalQuantity)
         {
             int pRowCount = 0;
@@ -67,7 +77,7 @@ namespace EazyEngine.Tools.Space
             }
             return pRowCount;
         }
-
+        [Preserve]
         public static bool checkDistance(List<Vector2[]> pVecs,Vector2 pVec,float pDistance)
         {
             for(int i = 0; i < pVecs.Count; ++i)
@@ -82,6 +92,7 @@ namespace EazyEngine.Tools.Space
             }
             return true;
         }
+        [Preserve]
         public static Vector2[][] getPointFormat(FormationInfo pInfo,int pQuantityElement)
         {
             List<Vector2[]> arrayResult = new List<Vector2[]>();
@@ -181,7 +192,7 @@ namespace EazyEngine.Tools.Space
           
             return arrayResult.ToArray();
         }
-   
+       [Preserve]
         public static GameObject[][] changeFormatArray(this GameObject[] pArrayObject, Vector2[][] pArrayPos,bool ismanual = false)
         {
             int pCounter = 0;
