@@ -141,9 +141,10 @@ namespace EazyEngine.Space.UI
             if (price[0].item.categoryItem ==  CategoryItem.IAP)
             {
                 var shop = LoadAssets.loadAsset<IAPSetting>("IAPSetting", "Variants/Database/");
-                GameManager.Instance.showInapp(shop.getInfo(price[0].item.itemID).Id, delegate (bool pSuccess, IAPProduct product)
+                IAPItem pIAPItem = shop.getInfo(price[0].item.itemID);
+                GameManager.Instance.showInapp(pIAPItem.Id.ToLower(), delegate (bool pSuccess, IAPProduct product)
                 {
-                    if (product.Name == selectedPlane.info.itemID.ToLower())
+                    if (product.Name == pIAPItem.Id.ToLower())
                     {
                         if (pSuccess)
                         {
@@ -166,11 +167,7 @@ namespace EazyEngine.Space.UI
                                 }
                             }
 
-                            if (PlayerPrefs.GetInt("firstGame", 0) == 3)
-                            {
-                                EzEventManager.TriggerEvent(new GuideEvent("FirstUpgradeSuccess"));
-                                PlayerPrefs.SetInt("firstGame",4);
-                            }
+                    
                        
                             selectedPlane.CurrentLevel++;
                             selectedPlane.ExtraInfo();

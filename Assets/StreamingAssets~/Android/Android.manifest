@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 250926748
+CRC: 1356503998
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -25,6 +25,7 @@ AssetBundleManifest:
         Dependency_0: resources/prefab/core
         Dependency_1: resources/prefab/enemy
         Dependency_2: resources/prefab/fx
+        Dependency_3: resources/prefab/container
     Info_3:
       Name: resources/material/core
       Dependencies:
@@ -55,10 +56,11 @@ AssetBundleManifest:
         Dependency_0: resources/material/core
         Dependency_1: resources/model/core
         Dependency_2: resources/texture/core
-        Dependency_3: resources/prefab/fx
-        Dependency_4: resources/flow/core
-        Dependency_5: resources/texture/ui
-        Dependency_6: resources/texture/play
+        Dependency_3: resources/prefab/enemy
+        Dependency_4: resources/prefab/fx
+        Dependency_5: resources/flow/core
+        Dependency_6: resources/texture/ui
+        Dependency_7: resources/texture/play
     Info_8:
       Name: resources/scripttableobject/skill
       Dependencies:
@@ -140,11 +142,12 @@ AssetBundleManifest:
         Dependency_2: resources/model/core
         Dependency_3: resources/texture/core
         Dependency_4: resources/prefab/core
-        Dependency_5: resources/prefab/fx
-        Dependency_6: resources/flow/core
-        Dependency_7: resources/texture/play
-        Dependency_8: resources/texture/mainplane
-        Dependency_9: resources/spine/mainplane
+        Dependency_5: resources/prefab/enemy
+        Dependency_6: resources/prefab/fx
+        Dependency_7: resources/flow/core
+        Dependency_8: resources/texture/play
+        Dependency_9: resources/texture/mainplane
+        Dependency_10: resources/spine/mainplane
     Info_18:
       Name: resources/flow/core
       Dependencies:
@@ -192,3 +195,8 @@ AssetBundleManifest:
     Info_28:
       Name: assetmanager
       Dependencies: {}
+    Info_29:
+      Name: resources/prefab/container
+      Dependencies:
+        Dependency_0: resources/prefab/core
+        Dependency_1: resources/prefab/fx

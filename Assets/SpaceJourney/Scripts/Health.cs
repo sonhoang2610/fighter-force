@@ -73,11 +73,11 @@ namespace EazyEngine.Space
         public Health[] getAllAvailableHealth()
         {
             List<Health> pHealths = new List<Health>();
-            for(int i = 0; i < childHealth.Length; ++i)
+            foreach (var t in childHealth)
             {
-                pHealths.AddRange(childHealth[i].getAllAvailableHealth());
+                pHealths.AddRange(t.getAllAvailableHealth());
             }
-            if(!subHealth  || currentChildAlive <= countChildMin)
+            if((!subHealth  || currentChildAlive <= countChildMin) && CurrentHealth > 0)
             {
                 pHealths.Add(this);
             }
