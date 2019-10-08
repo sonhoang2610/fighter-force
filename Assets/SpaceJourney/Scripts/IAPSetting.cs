@@ -71,6 +71,8 @@ namespace EazyEngine.Tools
                             {
                                 if (pWay[0].item.itemID == "IAP")
                                 {
+                                    if (!pInfoPrice.formatString.Value.Contains("{0}"))
+                                        return pInfoPrice.formatString.Value;
                                     return string.Format(pInfoPrice.formatString.Value, pWay[0].quantity.ToString());
                                 }
                             }

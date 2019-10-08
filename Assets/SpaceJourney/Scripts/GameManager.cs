@@ -27,7 +27,7 @@ public static class LoadAssets
         //T[] pObjectss = Resources.FindObjectsOfTypeAll<T>();
         //if(pObjectss.Length ==0 && !string.IsNullOrEmpty(pPathDefault))
         //{
-        if (SceneManager.Instance.isLocal)
+        if (SceneManager.Instance.isLocal || !Application.isPlaying)
         {
             T[] pObjectss = Resources.LoadAll<T>(pPathDefault);
             return pObjectss;
