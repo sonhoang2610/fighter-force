@@ -147,7 +147,7 @@ namespace EazyEngine.Space.UI
                     {
                         GameManager.Instance.showInapp(item.itemSell.itemID.ToLower(), delegate (bool pSuccess, IAPProduct product)
                         {
-                            if(product.Name == item.itemSell.itemID.ToLower())
+                            if(product.Id == item.itemSell.itemID.ToLower())
                             {
                                 if (pSuccess)
                                 {

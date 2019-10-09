@@ -955,10 +955,10 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     // Failed purchase handler
     void PurchaseFailedHandler(IAPProduct product)
     {
-        if (inapps.ContainsKey(product.Name))
+        if (inapps.ContainsKey(product.Id))
         {
-            inapps[product.Name](false, product);
-            inapps.Remove(product.Name);
+            inapps[product.Id](false, product);
+            inapps.Remove(product.Id);
         }
     }
 

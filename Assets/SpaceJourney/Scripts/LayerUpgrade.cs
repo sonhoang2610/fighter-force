@@ -144,7 +144,7 @@ namespace EazyEngine.Space.UI
                 IAPItem pIAPItem = shop.getInfo(price[0].item.itemID);
                 GameManager.Instance.showInapp(pIAPItem.Id.ToLower(), delegate (bool pSuccess, IAPProduct product)
                 {
-                    if (product.Name == pIAPItem.Id.ToLower())
+                    if (product.Id == pIAPItem.Id.ToLower())
                     {
                         if (pSuccess)
                         {
