@@ -945,10 +945,10 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                 break;
                 // More products here...
         }
-        if (inapps.ContainsKey(product.Name))
+        if (inapps.ContainsKey(product.Id))
         {
-            inapps[product.Name](true, product);
-            inapps.Remove(product.Name);
+            inapps[product.Id](true, product);
+            inapps.Remove(product.Id);
         }
     }
 
