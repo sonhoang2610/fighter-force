@@ -74,33 +74,15 @@ namespace EazyEngine.Space
             yield return new WaitForSeconds(0.1f);
             pAction();
         }
-        public void loadAllGame()
+
+        protected override void Awake()
         {
-            if (SceneManager.Instance.isLocal)
-            {
-                Instantiate(Resources.Load<GameObject>("Variants/Database/GameManager"));
-                StartCoroutine(delayAction(0.1f,delegate {
-
-                    Instantiate(Resources.Load<GameObject>("Variants/prefabs/ui/HUD"),transform);
-                   loadScene("SpaceJourney/Scene/variant/Main");
-               }));
-            }
-            else
-            {
-                fadeLayout.alpha = 0;
-                Sequence pSeq = DOTween.Sequence();
-                if (process)
-                {
-                    process.fillAmount = 0;
-                }
-                pSeq.Append(DOTween.To(() => fadeLayout.alpha, a => fadeLayout.alpha = a, 1, 0.25f));
-                pSeq.AppendCallback(delegate ()
-                {
-                    StartCoroutine(loadManager());
-                });
-
-                pSeq.Play();
-            }
+            base.Awake();
+#if UNITY_EDITOR
+            Debug.unityLogger.logEnabled = true;
+#else
+            Debug.unityLogger.logEnabled = false;
+#endif
         }
 
         public IEnumerator loadManager()

@@ -58,6 +58,10 @@ namespace EazyEngine.Space.UI
             }
         }
 
+        public void turnSound()
+        {
+            turnSound(!SoundManager.Instance.SfxOn);
+        }
 
         private void OnEnable()
         {
@@ -75,7 +79,10 @@ namespace EazyEngine.Space.UI
                 PlayerPrefs.SetInt("Vibrate", pBool ? 1 : 0);
             }
         }
-
+        public void turnVibrate()
+        {
+            turnVibrate(PlayerPrefs.GetInt("Vibrate",1) == 1);
+        }
         public void chooseSide(int index)
         {
             if (init)
