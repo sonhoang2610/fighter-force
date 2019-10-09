@@ -46,6 +46,7 @@ namespace EazyEngine.Space {
     {
         [InlineEditor]
         public PlaneInfo info;
+        [System.NonSerialized]
         protected int limitUpgrade;
         public int LimitUpgrade
         {

@@ -110,10 +110,10 @@ namespace EazyEngine.Space
 
         public int requireLevelUnlock;
         public int limitUpgrade = 1;
-
+        [System.NonSerialized]
         protected int limitUpgradeFromOut = 999;
         
-
+        [System.NonSerialized]
         protected int currentLevelPlane;
 
         public int CurrentLevelPlane
