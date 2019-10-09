@@ -639,7 +639,7 @@ namespace EasyMobile
                 return null;
             }
 
-            IAPProduct iapProduct = GetIAPProductByName(productName);
+            IAPProduct iapProduct = GetIAPProductById(productName);
 
             if (iapProduct == null)
             {
