@@ -66,46 +66,6 @@ MonoBehaviour:
       Flags: 0000
       Languages_Touch: []
     - Term: btn_shop
-      TermType: 0
-      Description: 
-      Languages:
-      - Attack
-      - "C\xF4ng"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: btn_upgrade
-      TermType: 0
-      Description: 
-      Languages:
-      - Defense
-      - "Th\u1EE7"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: flag
-      TermType: 0
-      Description: 
-      Languages:
-      - HP
-      - "M\xE1u"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: float
-      TermType: 0
-      Description: 
-      Languages:
-      - Lucky
-      - "May M\u1EAFn"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: recieved_icon
-      TermType: 0
-      Description: 
-      Languages:
-      - Fire Rate
-      - "T\u1ED1c \u0111\u1ED9 b\u1EAFn"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ability/attack
       TermType: 5
       Description: 
       Languages:
@@ -113,7 +73,7 @@ MonoBehaviour:
       - ui/home/btn_shop_vi[btn_shop_vi]
       Flags: 0000
       Languages_Touch: []
-    - Term: ability/defense
+    - Term: btn_upgrade
       TermType: 5
       Description: 
       Languages:
@@ -121,7 +81,7 @@ MonoBehaviour:
       - ui/home/btn_upgrade_vi[btn_upgrade_vi]
       Flags: 0000
       Languages_Touch: []
-    - Term: ability/hp
+    - Term: flag
       TermType: 5
       Description: 
       Languages:
@@ -129,11 +89,51 @@ MonoBehaviour:
       - ui/variant/setting/flag_vn[flag_vn]
       Flags: 0000
       Languages_Touch: []
-    - Term: ability/lucky
+    - Term: float
       TermType: 0
       Description: 
       Languages:
       - flag_vn
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: recieved_icon
+      TermType: 2
+      Description: 
+      Languages:
+      - ui/onlinegift/item_nhan_en
+      - ui/onlinegift/item_nhan_vi
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ability/attack
+      TermType: 0
+      Description: 
+      Languages:
+      - Attack
+      - "C\xF4ng"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ability/defense
+      TermType: 0
+      Description: 
+      Languages:
+      - Defense
+      - "Th\u1EE7"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ability/hp
+      TermType: 0
+      Description: 
+      Languages:
+      - HP
+      - "M\xE1u"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ability/lucky
+      TermType: 0
+      Description: 
+      Languages:
+      - Lucky
       - "May M\u1EAFn"
       Flags: 0000
       Languages_Touch: []
@@ -141,19 +141,27 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Destroy all enemies
-      - "Ti\xEAu di\u1EC7t to\xE0n b\u1ED9 k\u1EBB \u0111\u1ECBch"
+      - Fire Rate
+      - "T\u1ED1c \u0111\u1ED9 b\u1EAFn"
       Flags: 0000
       Languages_Touch: []
     - Term: mission/destroy_all_content
       TermType: 0
       Description: 
       Languages:
-      - Complete the level without taking damage
-      - "V\u01B0\u1EE3t qua b\xE0n ch\u01A1i kh\xF4ng m\u1EA5t m\xE1u"
+      - Destroy all enemies
+      - "Ti\xEAu di\u1EC7t to\xE0n b\u1ED9 k\u1EBB \u0111\u1ECBch"
       Flags: 0000
       Languages_Touch: []
     - Term: mission/full_hp_content
+      TermType: 0
+      Description: 
+      Languages:
+      - Complete the level with full HP
+      - "V\u01B0\u1EE3t qua b\xE0n ch\u01A1i kh\xF4ng m\u1EA5t m\xE1u"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: mission/pass_level_content
       TermType: 0
       Description: 
       Languages:
@@ -161,7 +169,7 @@ MonoBehaviour:
       - "V\u01B0\u1EE3t qua b\xE0n ch\u01A1i"
       Flags: 0000
       Languages_Touch: []
-    - Term: mission/pass_level_content
+    - Term: plane/CircleMain3
       TermType: 0
       Description: 
       Languages:
@@ -171,7 +179,7 @@ MonoBehaviour:
         h\u01B0\u1EDBng"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/CircleMain3
+    - Term: plane/HealTimer
       TermType: 0
       Description: 
       Languages:
@@ -179,7 +187,7 @@ MonoBehaviour:
       - "H\u1ED3i $percentHeal % M\xE1u trong $Duration s"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/HealTimer
+    - Term: plane/OnBreakBoosterEz
       TermType: 0
       Description: 
       Languages:
@@ -190,7 +198,7 @@ MonoBehaviour:
         cho skill n\u1ED9i t\u1EA1i"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/OnBreakBoosterEz
+    - Term: plane/OnBreakShieldActiveOrb
       TermType: 0
       Description: 
       Languages:
@@ -200,7 +208,7 @@ MonoBehaviour:
         bi\u1EC7t b\u1EA3o v\u1EC7 m\xE1y bay"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/OnBreakShieldActiveOrb
+    - Term: plane/OnBreakShieldCrazyRocket
       TermType: 0
       Description: 
       Languages:
@@ -210,7 +218,7 @@ MonoBehaviour:
         khi\xEAn n\xE0y v\u1EE1 s\u1EBD b\u1EAFn ra 1 tr\xF9m t\xEAn l\u1EEDa."
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/OnBreakShieldCrazyRocket
+    - Term: plane/OnBreakShieldOrbLightning
       TermType: 0
       Description: 
       Languages:
@@ -221,7 +229,7 @@ MonoBehaviour:
         t\u1EA5t c\u1EA3 \u0111\u1ECBch xung quanh"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/OnBreakShieldOrbLightning
+    - Term: plane/RainRocket
       TermType: 0
       Description: 
       Languages:
@@ -229,7 +237,7 @@ MonoBehaviour:
       - "T\u1EA1o m\u1ED9t tr\u1EADn m\u01B0a t\xEAn l\u1EEDa "
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/RainRocket
+    - Term: plane/TakenDamageDamageBooster
       TermType: 0
       Description: 
       Languages:
@@ -238,7 +246,7 @@ MonoBehaviour:
         % s\xE1t th\u01B0\u01A1ng c\u1EE7a m\xE1y bay"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/TakenDamageDamageBooster
+    - Term: plane/TakenDameActiveShield
       TermType: 0
       Description: 
       Languages:
@@ -246,7 +254,7 @@ MonoBehaviour:
       - "Khi b\u1ECB s\xE1t th\u01B0\u01A1ng s\u1EBD k\xEDch ho\u1EA1t khi\xEAn"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/TakenDameActiveShield
+    - Term: plane/TakenDameHealTimer
       TermType: 0
       Description: 
       Languages:
@@ -254,7 +262,7 @@ MonoBehaviour:
       - "Khi b\u1ECB s\xE1t th\u01B0\u01A1ng s\u1EBD h\u1ED3i $percentHeal % m\xE1u"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/TakenDameHealTimer
+    - Term: plane/TakenDameInvisible
       TermType: 0
       Description: 
       Languages:
@@ -263,7 +271,7 @@ MonoBehaviour:
         trong $Duration s"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/TakenDameInvisible
+    - Term: plane/main_plane1
       TermType: 0
       Description: 
       Languages:
@@ -271,7 +279,7 @@ MonoBehaviour:
       - "\u01AFng \u0111\u1ECF"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/main_plane1
+    - Term: plane/main_plane2
       TermType: 0
       Description: 
       Languages:
@@ -279,7 +287,7 @@ MonoBehaviour:
       - "B\u1ECD c\xE1nh xanh"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/main_plane2
+    - Term: plane/main_plane3
       TermType: 0
       Description: 
       Languages:
@@ -287,7 +295,7 @@ MonoBehaviour:
       - "B\u01B0\u1EDBm \u0111\xEAm"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/main_plane3
+    - Term: plane/main_plane4
       TermType: 0
       Description: 
       Languages:
@@ -295,7 +303,7 @@ MonoBehaviour:
       - "K\u1EBB ng\u1EF1 tr\u1ECB v\xE0ng"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/main_plane4
+    - Term: plane/main_plane5
       TermType: 0
       Description: 
       Languages:
@@ -303,7 +311,7 @@ MonoBehaviour:
       - "H\u1ED3 \u0111i\u1EC7p quang"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/main_plane5
+    - Term: plane/main_plane6
       TermType: 0
       Description: 
       Languages:
@@ -311,7 +319,7 @@ MonoBehaviour:
       - "Ho\xE0ng \u0111\u1EBF sa m\u1EA1c"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/main_plane6
+    - Term: plane/plane1_info
       TermType: 0
       Description: 
       Languages:
@@ -319,7 +327,7 @@ MonoBehaviour:
       - "B\u1EAFn lo\u1EA1t \u0111\u1EA1n theo h\xE0ng ngang"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/plane1_info
+    - Term: plane/plane1_skill1
       TermType: 0
       Description: 
       Languages:
@@ -328,7 +336,7 @@ MonoBehaviour:
         h\u1EE7y m\u1ECDi v\u1EADt n\xF3 g\u1EB7p ph\u1EA3i"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/plane1_skill1
+    - Term: plane/plane1_skill2
       TermType: 0
       Description: 
       Languages:
@@ -338,7 +346,7 @@ MonoBehaviour:
         g\u1EB7p ph\u1EA3i"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/plane1_skill2
+    - Term: plane/plane1_skill3
       TermType: 0
       Description: 
       Languages:
@@ -348,7 +356,7 @@ MonoBehaviour:
         khi\xEAn n\xE0y v\u1EE1 s\u1EBD t\u0103ng $damageBooster % s\xE1t th\u01B0\u01A1ng"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/plane1_skill3
+    - Term: plane/plane2_info
       TermType: 0
       Description: 
       Languages:
@@ -356,7 +364,7 @@ MonoBehaviour:
       - "B\u1EAFn lo\u1EA1t \u0111\u1EA1n theo h\xECnh n\xF3n"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/plane2_info
+    - Term: plane/plane2_skill1
       TermType: 0
       Description: 
       Languages:
@@ -364,7 +372,7 @@ MonoBehaviour:
       - "B\u1EAFn ra 1 lo\u1EA1t \u0111an boomerang theo h\xECnh n\xF3n"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/plane2_skill1
+    - Term: plane/plane2_skill2
       TermType: 0
       Description: 
       Languages:
@@ -373,7 +381,7 @@ MonoBehaviour:
         b\u1EAFn th\xEAm  $speedFactor % "
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/plane2_skill2
+    - Term: plane/plane2_skill3
       TermType: 0
       Description: 
       Languages:
@@ -383,7 +391,7 @@ MonoBehaviour:
         khi\xEAn n\xE0y v\u1EE1 s\u1EBD t\u0103ng $damageBooster % s\xE1t th\u01B0\u01A1ng"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/plane2_skill3
+    - Term: plane/plane3_info
       TermType: 0
       Description: 
       Languages:
@@ -393,7 +401,7 @@ MonoBehaviour:
         \u0111\u01B0\u1EDDng \u0111i"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/plane3_info
+    - Term: plane/plane4_info
       TermType: 0
       Description: 
       Languages:
@@ -401,7 +409,7 @@ MonoBehaviour:
       - "B\u1EAFn lo\u1EA1t \u0111\u1EA1n theo h\xE0ng ngang"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/plane4_info
+    - Term: plane/plane6_skill1
       TermType: 0
       Description: 
       Languages:
@@ -412,7 +420,7 @@ MonoBehaviour:
         \u0111i"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/plane6_skill1
+    - Term: plane/plane_info5
       TermType: 0
       Description: 
       Languages:
@@ -420,7 +428,7 @@ MonoBehaviour:
       - "B\u1EAFn lo\u1EA1n \r\u0111\u1EA1n trong m\u1ED9t h\xECnh n\xF3n"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/plane_info5
+    - Term: plane/plane_info6
       TermType: 0
       Description: 
       Languages:
@@ -429,7 +437,7 @@ MonoBehaviour:
         k\xE8m theo t\xEAn l\u1EEDa"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/plane_info6
+    - Term: plane/sp_plane1
       TermType: 0
       Description: 
       Languages:
@@ -437,7 +445,7 @@ MonoBehaviour:
       - "Th\u1EA7n kh\xF4ng gian"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/sp_plane1
+    - Term: plane/sp_plane2
       TermType: 0
       Description: 
       Languages:
@@ -445,7 +453,7 @@ MonoBehaviour:
       - "Tia ch\u1EDBp xanh"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/sp_plane2
+    - Term: plane/sp_plane3
       TermType: 0
       Description: 
       Languages:
@@ -453,7 +461,7 @@ MonoBehaviour:
       - "K\u1EBB h\u1EE7y di\u1EC7t"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/sp_plane3
+    - Term: plane/sp_plane4
       TermType: 0
       Description: 
       Languages:
@@ -461,7 +469,7 @@ MonoBehaviour:
       - "Gai H\u01B0 Kh\xF4ng"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/sp_plane4
+    - Term: plane/sp_plane5
       TermType: 0
       Description: 
       Languages:
@@ -469,7 +477,7 @@ MonoBehaviour:
       - "Th\u1EA7n l\u1EEDa"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/sp_plane5
+    - Term: plane/sp_plane6
       TermType: 0
       Description: 
       Languages:
@@ -477,7 +485,7 @@ MonoBehaviour:
       - "Gai t\u1ED1i th\u01B0\u1EE3ng"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/sp_plane6
+    - Term: plane/sp_plane7
       TermType: 0
       Description: 
       Languages:
@@ -485,7 +493,7 @@ MonoBehaviour:
       - "Tia ch\u1EBFt ch\xF3c"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/sp_plane7
+    - Term: plane/sp_plane8
       TermType: 0
       Description: 
       Languages:
@@ -493,7 +501,7 @@ MonoBehaviour:
       - "V\u1EE5 n\u1ED5 l\u1EDBn"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/sp_plane8
+    - Term: plane/sp_plane9
       TermType: 0
       Description: 
       Languages:
@@ -501,7 +509,7 @@ MonoBehaviour:
       - "Ng\xF4i sao h\u1EE7y di\u1EC7t"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/sp_plane9
+    - Term: plane/spplane1_info
       TermType: 0
       Description: 
       Languages:
@@ -509,7 +517,7 @@ MonoBehaviour:
       - "B\u1EAFn t\xEAn l\u1EEDa t\u1EF1 \u0111\u1ED9ng theo d\xF5i m\u1EE5c ti\xEAu"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/spplane1_info
+    - Term: plane/spplane1_skill
       TermType: 0
       Description: 
       Languages:
@@ -518,7 +526,7 @@ MonoBehaviour:
         ti\xEAu g\u1EA7n nh\u1EA5t"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/spplane1_skill
+    - Term: plane/spplane2_info
       TermType: 0
       Description: 
       Languages:
@@ -526,7 +534,7 @@ MonoBehaviour:
       - "B\u1EAFn m\u1ED9t lo\u1EA1t v\u1EDBi t\u1ED1c \u0111\u1ED9 c\u1EF1c nhanh"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/spplane2_info
+    - Term: plane/spplane2_skill
       TermType: 0
       Description: 
       Languages:
@@ -537,7 +545,7 @@ MonoBehaviour:
         c\u1EF1c l\u1EDBn"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/spplane2_skill
+    - Term: plane/spplane3_info
       TermType: 0
       Description: 
       Languages:
@@ -545,7 +553,7 @@ MonoBehaviour:
       - "B\u1EAFn m\u1ED9t lu\u1ED3ng s\xE9t v\xE0o k\u1EBB th\xF9 g\u1EA7n nh\u1EA5t"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/spplane3_info
+    - Term: plane/spplane3_skill
       TermType: 0
       Description: 
       Languages:
@@ -553,7 +561,7 @@ MonoBehaviour:
       - "Tia s\xE9t s\u1EBD l\xE2y lan qua c\xE1c k\u1EBB th\xF9 b\xEAn c\u1EA1nh"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/spplane3_skill
+    - Term: plane/spplane4_info
       TermType: 0
       Description: 
       Languages:
@@ -561,7 +569,7 @@ MonoBehaviour:
       - "B\u1EAFn m\u1ED9t lo\u1EA1t \u0111\u1EA1n l\u1EDBn"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/spplane4_info
+    - Term: plane/spplane4_skill
       TermType: 0
       Description: 
       Languages:
@@ -570,7 +578,7 @@ MonoBehaviour:
         \u0111\u1ECBch"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/spplane4_skill
+    - Term: plane/spplane5_info
       TermType: 0
       Description: 
       Languages:
@@ -578,7 +586,7 @@ MonoBehaviour:
       - "B\u1EAFn m\u1ED9t lo\u1EA1t \u0111\u1EA1n nhanh v\xE0 m\u1EA1nh"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/spplane5_info
+    - Term: plane/spplane5_skill
       TermType: 0
       Description: 
       Languages:
@@ -588,7 +596,7 @@ MonoBehaviour:
         l\u01B0\u1EE3ng thi\xEAu \u0111\u1ED1t t\u1EA5t c\u1EA3 k\u1EBB th\xF9"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/spplane5_skill
+    - Term: plane/spplane6_info
       TermType: 0
       Description: 
       Languages:
@@ -597,7 +605,7 @@ MonoBehaviour:
         li\xEAn ti\u1EBFp nhau v\u1EC1 ph\xEDa tr\u01B0\u1EDBc"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/spplane6_info
+    - Term: plane/spplane6_skill
       TermType: 0
       Description: 
       Languages:
@@ -608,7 +616,7 @@ MonoBehaviour:
         c\u1EF1c l\u1EDBn"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/spplane6_skill
+    - Term: plane/spplane7_info
       TermType: 0
       Description: 
       Languages:
@@ -617,7 +625,7 @@ MonoBehaviour:
         \u0111\u1ECBch"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/spplane7_info
+    - Term: plane/spplane7_skill
       TermType: 0
       Description: 
       Languages:
@@ -626,7 +634,7 @@ MonoBehaviour:
         l\xE0m 2 v\u1EDBi s\u1EE9c m\u1EA1nh kh\xF4ng \u0111\u1ED5i"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/spplane7_skill
+    - Term: plane/spplane8_info
       TermType: 0
       Description: 
       Languages:
@@ -634,7 +642,7 @@ MonoBehaviour:
       - "B\u1EAFn m\u1ED9t lo\u1EA1t \u0111\u1EA1n l\u1EDBn c\u1EF1c m\u1EA1nh"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/spplane8_info
+    - Term: plane/spplane8_skill
       TermType: 0
       Description: 
       Languages:
@@ -643,7 +651,7 @@ MonoBehaviour:
         xunh quanh"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/spplane8_skill
+    - Term: plane/spplane9_info
       TermType: 0
       Description: 
       Languages:
@@ -651,7 +659,7 @@ MonoBehaviour:
       - "B\u1EAFn m\u1ED9t lo\u1EA1t \u0111\u1EA1n l\u1EDBn c\u1EF1c m\u1EA1nh"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/spplane9_info
+    - Term: plane/spplane9_skill
       TermType: 0
       Description: 
       Languages:
@@ -660,7 +668,7 @@ MonoBehaviour:
         cho\xE1ng k\u1EBB \u0111\u1ECBch xung quanh"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/spplane9_skill
+    - Term: plane/spplane_skill2
       TermType: 0
       Description: 
       Languages:
@@ -668,21 +676,13 @@ MonoBehaviour:
       - "S\u1EE9c t\u1EA5n c\xF4ng t\u0103ng $damageBooster %"
       Flags: 0000
       Languages_Touch: []
-    - Term: plane/spplane_skill2
+    - Term: plane/spplane_skill3
       TermType: 0
       Description: 
       Languages:
       - Increase the power of accompaning Main Ship by 20%
       - "T\u0103ng s\u1EE9c m\u1EA1nh t\xE0u ch\xEDnh \u0111i k\xE8m th\xEAm $damageBooster
         %"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: plane/spplane_skill3
-      TermType: 2
-      Description: 
-      Languages:
-      - ui/onlinegift/item_nhan_en
-      - ui/onlinegift/item_nhan_vi
       Flags: 0000
       Languages_Touch: []
     - Term: text/choose_item_sp
@@ -1199,735 +1199,11 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Comon Pack 1
-      - "G\xF3i ph\u1ED5 th\xF4ng 1"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/guide_fight_first
-      TermType: 0
-      Description: 
-      Languages:
-      - Comon Pack 2
-      - "G\xF3i ph\u1ED5 th\xF4ng 2"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/unfortunately
-      TermType: 0
-      Description: 
-      Languages:
-      - Supreme Pack 1
-      - "G\xF3i si\xEAu c\u1EA5p 1"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/lose_first
-      TermType: 0
-      Description: 
-      Languages:
-      - Supreme Pack 2
-      - "G\xF3i si\xEAu c\u1EA5p 2"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/congratulation
-      TermType: 0
-      Description: 
-      Languages:
-      - Ticket Pack 1
-      - "G\xF3i v\xE9 1"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/win_first
-      TermType: 0
-      Description: 
-      Languages:
-      - Ticket Pack 2
-      - "G\xF3i v\xE9 2"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/require_skill
-      TermType: 0
-      Description: 
-      Languages:
-      - Watch ADS
-      - "Xem Qu\u1EA3ng C\xE1o"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/BoxComonPack1
-      TermType: 0
-      Description: 
-      Languages:
-      - Red Eagle part
-      - "M\u1EA3nh gh\xE9p \u01AFng \u0111\u1ECF"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/BoxComonPack2
-      TermType: 0
-      Description: 
-      Languages:
-      - Green Wings Bug part
-      - "M\u1EA3nh gh\xE9p B\u1ECD c\xE1nh xanh"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/BoxSupremePack1
-      TermType: 0
-      Description: 
-      Languages:
-      - Night Hunter part
-      - "M\u1EA3nh gh\xE9p B\u01B0\u1EDBm \u0110\xEAm"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/BoxSupremePack2
-      TermType: 0
-      Description: 
-      Languages:
-      - Golden Conqueror part
-      - "M\u1EA3nh gh\xE9p K\u1EBB Ng\u1EF1 Tr\u1ECB V\xE0ng"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/BoxTicket1
-      TermType: 0
-      Description: 
-      Languages:
-      - Butterfly Queen part
-      - "M\u1EA3nh gh\xE9p H\u1ED3 \u0110i\u1EC7p Quang"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/BoxTicket2
-      TermType: 0
-      Description: 
-      Languages:
-      - Gun Goddess satellite part
-      - "M\u1EA3nh gh\xE9p Th\u1EA7n kh\xF4ng gian"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/BoxWatch
-      TermType: 0
-      Description: 
-      Languages:
-      - Green Flash satellite part
-      - "M\u1EA3nh gh\xE9p Tia ch\u1EDBp xanh"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/CraftPlane1
-      TermType: 0
-      Description: 
-      Languages:
-      - Destroyer satellite part
-      - "M\u1EA3nh gh\xE9p K\u1EBB h\u1EE7y di\u1EC7t"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/CraftPlane2
-      TermType: 0
-      Description: 
-      Languages:
-      - Void Spike satellite part
-      - "M\u1EA3nh gh\xE9p Gai H\u01B0 Kh\xF4ng"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/CraftPlane3
-      TermType: 0
-      Description: 
-      Languages:
-      - Fire God satellite part
-      - "M\u1EA3nh gh\xE9p Th\u1EA7n l\u1EEDa"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/CraftPlane4
-      TermType: 0
-      Description: 
-      Languages:
-      - Pulsefire Spike satellite part
-      - "M\u1EA3nh gh\xE9p Gai t\u1ED1i th\u01B0\u1EE3ng"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/CraftPlane5
-      TermType: 0
-      Description: 
-      Languages:
-      - Deadly Ray satellite part
-      - "M\u1EA3nh gh\xE9p Tia ch\u1EBFt ch\xF3c"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/CraftPlane6
-      TermType: 0
-      Description: 
-      Languages:
-      - Big Bang satellite part
-      - "M\u1EA3nh gh\xE9p V\u1EE5 n\u1ED5 l\u1EDBn"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/CraftSpPlane1
-      TermType: 0
-      Description: 
-      Languages:
-      - Demolition Star satellite part
-      - "M\u1EA3nh gh\xE9p Ng\xF4i sao h\u1EE7y di\u1EC7t"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/CraftSpPlane2
-      TermType: 0
-      Description: 
-      Languages:
-      - OK
-      - "\u0110\u1ED3ng \xFD"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/CraftSpPlane3
-      TermType: 0
-      Description: 
-      Languages:
-      - Crystal Pack No.1
-      - "G\xF3i Pha l\xEA 1"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/CraftSpPlane4
-      TermType: 0
-      Description: 
-      Languages:
-      - Crystal Pack No.2
-      - "G\xF3i Pha l\xEA 2"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/CraftSpPlane5
-      TermType: 0
-      Description: 
-      Languages:
-      - Crystal Pack No.3
-      - "G\xF3i Pha l\xEA 3"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/CraftSpPlane6
-      TermType: 0
-      Description: 
-      Languages:
-      - Crystal Pack No.4
-      - "G\xF3i Pha l\xEA 4"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/CraftSpPlane7
-      TermType: 0
-      Description: 
-      Languages:
-      - Crystal Pack No.5
-      - "G\xF3i Pha l\xEA 5"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/CraftSpPlane8
-      TermType: 0
-      Description: 
-      Languages:
-      - Crystal Pack No.6
-      - "G\xF3i Pha l\xEA 6"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/CraftSpPlane9
-      TermType: 0
-      Description: 
-      Languages:
-      - Gold Pack No.1
-      - "G\xF3i Xu 1"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/OK
-      TermType: 0
-      Description: 
-      Languages:
-      - Pack Gold No.2
-      - "G\xF3i Xu 2"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/PackCrystal1
-      TermType: 0
-      Description: 
-      Languages:
-      - Pack Gold No.3
-      - "G\xF3i Xu 3"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/PackCrystal2
-      TermType: 0
-      Description: 
-      Languages:
-      - Pack Gold No.4
-      - "G\xF3i Xu 4"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/PackCrystal3
-      TermType: 0
-      Description: 
-      Languages:
-      - Pack Gold No.5
-      - "G\xF3i Xu 5"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/PackCrystal4
-      TermType: 0
-      Description: 
-      Languages:
-      - Pack Gold No.6
-      - "G\xF3i Xu 6"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/PackCrystal5
-      TermType: 0
-      Description: 
-      Languages:
-      - Best Score
-      - "\u0110i\u1EC3m cao nh\u1EA5t"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/PackCrystal6
-      TermType: 0
-      Description: 
-      Languages:
-      - LUCKY BOX
-      - "H\u1ED8P QU\xC0 MAY M\u1EAEN"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/PackGold1
-      TermType: 0
-      Description: 
-      Languages:
-      - Claim
-      - "Nh\u1EADn"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/PackGold2
-      TermType: 0
-      Description: 
-      Languages:
-      - Click here to login
-      - "\u1EA4n v\xE0o \u0111\xE2y \u0111\u1EC3 \u0111\u0103ng nh\u1EADp"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/PackGold3
-      TermType: 0
-      Description: 
-      Languages:
-      - Coin
-      - Xu
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/PackGold4
-      TermType: 0
-      Description: 
-      Languages:
-      - COMON
-      - "Ph\u1ED5 th\xF4ng"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/PackGold5
-      TermType: 0
-      Description: 
-      Languages:
-      - Congratulations you got
-      - "Ch\xFAc m\u1EEBng b\u1EA1n \u0111\xE3 nh\u1EADn \u0111\u01B0\u1EE3c"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/PackGold6
-      TermType: 0
-      Description: 
-      Languages:
-      - CONTROL
-      - "\u0110i\u1EC1u khi\u1EC3n"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/best_score
-      TermType: 0
-      Description: 
-      Languages:
-      - Crystal
-      - "Pha l\xEA"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/box_lucky
-      TermType: 0
-      Description: 
-      Languages:
-      - Elite
-      - "Cao c\u1EA5p"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/claim
-      TermType: 0
-      Description: 
-      Languages:
-      - Energy
-      - "Th\u1EC3 l\u1EF1c"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/click_here_login
-      TermType: 0
-      Description: 
-      Languages:
-      - Free
-      - "Mi\u1EC5n Ph\xED"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/coin
-      TermType: 0
-      Description: 
-      Languages:
-      - Free Play
-      - "Ch\u01A1i th\u1EED"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/common
-      TermType: 0
-      Description: 
-      Languages:
-      - Online Gifts
-      - "Qu\xE0 online"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/congrat_claim
-      TermType: 0
-      Description: 
-      Languages:
-      - SKILL
-      - "K\u1EF9 n\u0103ng"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/control
-      TermType: 0
-      Description: 
-      Languages:
-      - Hard
-      - "Kh\xF3"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/crystal
-      TermType: 0
-      Description: 
-      Languages:
-      - LANGUAGE
-      - "Ng\xF4n ng\u1EEF"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/elite
-      TermType: 0
-      Description: 
-      Languages:
-      - left
-      - "tr\xE1i"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/energy
-      TermType: 0
-      Description: 
-      Languages:
-      - Level
-      - "C\u1EA5p \u0111\u1ED9"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/free
-      TermType: 0
-      Description: 
-      Languages:
-      - Lucky
-      - "May M\u1EAFn"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/free_play
-      TermType: 0
-      Description: 
-      Languages:
-      - LUCKY WHEEL
-      - "V\xD2NG QUAY MAY M\u1EAEN"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/gift_online
-      TermType: 0
-      Description: 
-      Languages:
-      - MAXIUM ENERGY
-      - "\u0110\u1EA7y th\u1EC3 l\u1EF1c"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/handle
-      TermType: 0
-      Description: 
-      Languages:
-      - Mission
-      - "Nhi\u1EC7m V\u1EE5"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/hard
-      TermType: 0
-      Description: 
-      Languages:
-      - Next
-      - "Ch\u01A1i ti\u1EBFp"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/language
-      TermType: 0
-      Description: 
-      Languages:
-      - No
-      - "Kh\xF4ng"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/left
-      TermType: 0
-      Description: 
-      Languages:
-      - Normal
-      - "Th\u01B0\u1EDDng"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/level
-      TermType: 0
-      Description: 
-      Languages:
-      - Notification
-      - "Th\xF4ng b\xE1o"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/lucky_box
-      TermType: 0
-      Description: 
-      Languages:
-      - Pack
-      - "G\xF3i"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/lucky_wheel
-      TermType: 0
-      Description: 
-      Languages:
-      - Pause
-      - "T\u1EA1m d\u1EEBng"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/maxEnergy
-      TermType: 0
-      Description: 
-      Languages:
-      - Ranks
-      - "X\u1EBFp h\u1EA1ng"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/mission
-      TermType: 0
-      Description: 
-      Languages:
-      - Rate Us
-      - "\u0110\xE1nh Gi\xE1"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/next
-      TermType: 0
-      Description: 
-      Languages:
-      - Resurrect
-      - "H\u1ED3i sinh"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/no
-      TermType: 0
-      Description: 
-      Languages:
-      - Replay
-      - "Ch\u01A1i l\u1EA1i"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/normal
-      TermType: 0
-      Description: 
-      Languages:
-      - RESUME
-      - "Ti\u1EBFp t\u1EE5c"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/notice
-      TermType: 0
-      Description: 
-      Languages:
-      - right
-      - "ph\u1EA3i"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/pack
-      TermType: 0
-      Description: 
-      Languages:
-      - Daily Gifts
-      - "Qu\xE0 h\u1EB1ng ng\xE0y"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/pause
-      TermType: 0
-      Description: 
-      Languages:
-      - Save
-      - "L\u01B0u"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/rank
-      TermType: 0
-      Description: 
-      Languages:
-      - Score
-      - "\u0110i\u1EC3m"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/rate_us
-      TermType: 0
-      Description: 
-      Languages:
-      - Settings
-      - "C\xE0i \u0111\u1EB7t"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/reborn
-      TermType: 0
-      Description: 
-      Languages:
-      - Shop
-      - "C\u1EEDa h\xE0ng"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/replay
-      TermType: 0
-      Description: 
-      Languages:
-      - SOUND
-      - "\xC2m thanh"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/resume
-      TermType: 0
-      Description: 
-      Languages:
-      - Star
-      - "Ng\xF4i sao"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/right
-      TermType: 0
-      Description: 
-      Languages:
-      - START
-      - "B\u1EAFt \u0111\u1EA7u"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/rollcall
-      TermType: 0
-      Description: 
-      Languages:
-      - Super Hard
-      - "Si\xEAu Kh\xF3"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/save
-      TermType: 0
-      Description: 
-      Languages:
-      - Supreme
-      - "Si\xEAu c\u1EA5p"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/score
-      TermType: 0
-      Description: 
-      Languages:
-      - Ticket
-      - "V\xE9"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/setting
-      TermType: 0
-      Description: 
-      Languages:
-      - Unlock
-      - "M\u1EDF kh\xF3a"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/shop
-      TermType: 0
-      Description: 
-      Languages:
-      - 103.130.212.111/StreamingAssets/PC/
-      - 103.130.212.111/StreamingAssets/PC/
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/sound
-      TermType: 0
-      Description: 
-      Languages:
-      - 103.130.212.111/StreamingAssets/Android/
-      - 103.130.212.111/StreamingAssets/Android/
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/star
-      TermType: 0
-      Description: 
-      Languages:
-      - 103.130.212.111/StreamingAssets/IOS/
-      - 103.130.212.111/StreamingAssets/IOS/
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/start
-      TermType: 0
-      Description: 
-      Languages:
-      - Vibration
-      - Rung
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/super_hard
-      TermType: 0
-      Description: 
-      Languages:
-      - Watch
-      - Xem
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/supreme
-      TermType: 0
-      Description: 
-      Languages:
-      - Yes
-      - "C\xF3"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/ticket
-      TermType: 0
-      Description: 
-      Languages:
-      - Sand Emperor part
-      - "M\u1EA3nh gh\xE9p Ho\xE0ng \u0111\u1EBF sa m\u1EA1c"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/unlock
-      TermType: 0
-      Description: 
-      Languages:
-      - Unlock at level {0}
-      - "M\u1EDF kh\xF3a \u1EDF c\u1EA5p \u0111\u1ED9 {0}"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/uri_assetbundle
-      TermType: 0
-      Description: 
-      Languages:
-      - 'Currently gold received is {0}%.
-
-        Have enough {1} star to received 100% gold'
-      - 'Currently gold received is {0}%.
-
-        Have enough {1} star to received 100% gold'
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ui/uri_assetbundle_android
-      TermType: 0
-      Description: 
-      Languages:
       - Welcome to Fighter Force
       - "Ch\xE0o m\u1EEBng \u0111\u1EBFn v\u1EDBi Fighter Force"
       Flags: 0000
       Languages_Touch: []
-    - Term: ui/uri_assetbundle_ios
+    - Term: text/guide_fight_first
       TermType: 0
       Description: 
       Languages:
@@ -1936,7 +1212,7 @@ MonoBehaviour:
         \u0111\u1EA7u ti\xEAn"
       Flags: 0000
       Languages_Touch: []
-    - Term: ui/vibrate
+    - Term: text/unfortunately
       TermType: 0
       Description: 
       Languages:
@@ -1944,7 +1220,7 @@ MonoBehaviour:
       - "Th\u1EADt \u0111\xE1ng ti\u1EBFc"
       Flags: 0000
       Languages_Touch: []
-    - Term: ui/watch
+    - Term: text/lose_first
       TermType: 0
       Description: 
       Languages:
@@ -1955,7 +1231,7 @@ MonoBehaviour:
         c\xF3 th\u1EC3 qua m\xE0n ch\u01A1i d\u1EC5 d\xE0ng h\u01A1n"
       Flags: 0000
       Languages_Touch: []
-    - Term: ui/yes
+    - Term: text/congratulation
       TermType: 0
       Description: 
       Languages:
@@ -1963,7 +1239,7 @@ MonoBehaviour:
       - "Ch\xFAc m\u1EEBng"
       Flags: 0000
       Languages_Touch: []
-    - Term: ui/gold_received
+    - Term: text/win_first
       TermType: 0
       Description: 
       Languages:
@@ -1972,6 +1248,730 @@ MonoBehaviour:
       - "C\xF3 v\u1EBB b\u1EA1n r\u1EA5t c\xF3 khi\u1EBFu trong tr\xF2 ch\u01A1i n\xE0y.
         B\u1EA1n c\xF2n c\xF3 th\u1EC3 n\xE2ng c\u1EA5p m\xE1y bay \u0111\u1EC3 c\xF3
         th\u1EC3 qua m\xE0n ch\u01A1i d\u1EC5 d\xE0ng h\u01A1n "
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/require_skill
+      TermType: 0
+      Description: 
+      Languages:
+      - Unlock at level {0}
+      - "M\u1EDF kh\xF3a \u1EDF c\u1EA5p \u0111\u1ED9 {0}"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/BoxComonPack1
+      TermType: 0
+      Description: 
+      Languages:
+      - Comon Pack 1
+      - "G\xF3i ph\u1ED5 th\xF4ng 1"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/BoxComonPack2
+      TermType: 0
+      Description: 
+      Languages:
+      - Comon Pack 2
+      - "G\xF3i ph\u1ED5 th\xF4ng 2"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/BoxSupremePack1
+      TermType: 0
+      Description: 
+      Languages:
+      - Supreme Pack 1
+      - "G\xF3i si\xEAu c\u1EA5p 1"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/BoxSupremePack2
+      TermType: 0
+      Description: 
+      Languages:
+      - Supreme Pack 2
+      - "G\xF3i si\xEAu c\u1EA5p 2"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/BoxTicket1
+      TermType: 0
+      Description: 
+      Languages:
+      - Ticket Pack 1
+      - "G\xF3i v\xE9 1"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/BoxTicket2
+      TermType: 0
+      Description: 
+      Languages:
+      - Ticket Pack 2
+      - "G\xF3i v\xE9 2"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/BoxWatch
+      TermType: 0
+      Description: 
+      Languages:
+      - Watch ADS
+      - "Xem Qu\u1EA3ng C\xE1o"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/CraftPlane1
+      TermType: 0
+      Description: 
+      Languages:
+      - Red Eagle part
+      - "M\u1EA3nh gh\xE9p \u01AFng \u0111\u1ECF"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/CraftPlane2
+      TermType: 0
+      Description: 
+      Languages:
+      - Green Wings Bug part
+      - "M\u1EA3nh gh\xE9p B\u1ECD c\xE1nh xanh"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/CraftPlane3
+      TermType: 0
+      Description: 
+      Languages:
+      - Night Hunter part
+      - "M\u1EA3nh gh\xE9p B\u01B0\u1EDBm \u0110\xEAm"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/CraftPlane4
+      TermType: 0
+      Description: 
+      Languages:
+      - Golden Conqueror part
+      - "M\u1EA3nh gh\xE9p K\u1EBB Ng\u1EF1 Tr\u1ECB V\xE0ng"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/CraftPlane5
+      TermType: 0
+      Description: 
+      Languages:
+      - Butterfly Queen part
+      - "M\u1EA3nh gh\xE9p H\u1ED3 \u0110i\u1EC7p Quang"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/CraftPlane6
+      TermType: 0
+      Description: 
+      Languages:
+      - Sand Emperor part
+      - "M\u1EA3nh gh\xE9p Ho\xE0ng \u0111\u1EBF sa m\u1EA1c"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/CraftSpPlane1
+      TermType: 0
+      Description: 
+      Languages:
+      - Gun Goddess satellite part
+      - "M\u1EA3nh gh\xE9p Th\u1EA7n kh\xF4ng gian"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/CraftSpPlane2
+      TermType: 0
+      Description: 
+      Languages:
+      - Green Flash satellite part
+      - "M\u1EA3nh gh\xE9p Tia ch\u1EDBp xanh"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/CraftSpPlane3
+      TermType: 0
+      Description: 
+      Languages:
+      - Destroyer satellite part
+      - "M\u1EA3nh gh\xE9p K\u1EBB h\u1EE7y di\u1EC7t"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/CraftSpPlane4
+      TermType: 0
+      Description: 
+      Languages:
+      - Void Spike satellite part
+      - "M\u1EA3nh gh\xE9p Gai H\u01B0 Kh\xF4ng"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/CraftSpPlane5
+      TermType: 0
+      Description: 
+      Languages:
+      - Fire God satellite part
+      - "M\u1EA3nh gh\xE9p Th\u1EA7n l\u1EEDa"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/CraftSpPlane6
+      TermType: 0
+      Description: 
+      Languages:
+      - Pulsefire Spike satellite part
+      - "M\u1EA3nh gh\xE9p Gai t\u1ED1i th\u01B0\u1EE3ng"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/CraftSpPlane7
+      TermType: 0
+      Description: 
+      Languages:
+      - Deadly Ray satellite part
+      - "M\u1EA3nh gh\xE9p Tia ch\u1EBFt ch\xF3c"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/CraftSpPlane8
+      TermType: 0
+      Description: 
+      Languages:
+      - Big Bang satellite part
+      - "M\u1EA3nh gh\xE9p V\u1EE5 n\u1ED5 l\u1EDBn"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/CraftSpPlane9
+      TermType: 0
+      Description: 
+      Languages:
+      - Demolition Star satellite part
+      - "M\u1EA3nh gh\xE9p Ng\xF4i sao h\u1EE7y di\u1EC7t"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/OK
+      TermType: 0
+      Description: 
+      Languages:
+      - OK
+      - "\u0110\u1ED3ng \xFD"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/PackCrystal1
+      TermType: 0
+      Description: 
+      Languages:
+      - Crystal Pack No.1
+      - "G\xF3i Pha l\xEA 1"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/PackCrystal2
+      TermType: 0
+      Description: 
+      Languages:
+      - Crystal Pack No.2
+      - "G\xF3i Pha l\xEA 2"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/PackCrystal3
+      TermType: 0
+      Description: 
+      Languages:
+      - Crystal Pack No.3
+      - "G\xF3i Pha l\xEA 3"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/PackCrystal4
+      TermType: 0
+      Description: 
+      Languages:
+      - Crystal Pack No.4
+      - "G\xF3i Pha l\xEA 4"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/PackCrystal5
+      TermType: 0
+      Description: 
+      Languages:
+      - Crystal Pack No.5
+      - "G\xF3i Pha l\xEA 5"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/PackCrystal6
+      TermType: 0
+      Description: 
+      Languages:
+      - Crystal Pack No.6
+      - "G\xF3i Pha l\xEA 6"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/PackGold1
+      TermType: 0
+      Description: 
+      Languages:
+      - Gold Pack No.1
+      - "G\xF3i Xu 1"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/PackGold2
+      TermType: 0
+      Description: 
+      Languages:
+      - Pack Gold No.2
+      - "G\xF3i Xu 2"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/PackGold3
+      TermType: 0
+      Description: 
+      Languages:
+      - Pack Gold No.3
+      - "G\xF3i Xu 3"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/PackGold4
+      TermType: 0
+      Description: 
+      Languages:
+      - Pack Gold No.4
+      - "G\xF3i Xu 4"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/PackGold5
+      TermType: 0
+      Description: 
+      Languages:
+      - Pack Gold No.5
+      - "G\xF3i Xu 5"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/PackGold6
+      TermType: 0
+      Description: 
+      Languages:
+      - Pack Gold No.6
+      - "G\xF3i Xu 6"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/best_score
+      TermType: 0
+      Description: 
+      Languages:
+      - Best Score
+      - "\u0110i\u1EC3m cao nh\u1EA5t"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/box_lucky
+      TermType: 0
+      Description: 
+      Languages:
+      - LUCKY BOX
+      - "H\u1ED8P QU\xC0 MAY M\u1EAEN"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/claim
+      TermType: 0
+      Description: 
+      Languages:
+      - Claim
+      - "Nh\u1EADn"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/click_here_login
+      TermType: 0
+      Description: 
+      Languages:
+      - Click here to login
+      - "\u1EA4n v\xE0o \u0111\xE2y \u0111\u1EC3 \u0111\u0103ng nh\u1EADp"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/coin
+      TermType: 0
+      Description: 
+      Languages:
+      - Coin
+      - Xu
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/common
+      TermType: 0
+      Description: 
+      Languages:
+      - COMON
+      - "Ph\u1ED5 th\xF4ng"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/congrat_claim
+      TermType: 0
+      Description: 
+      Languages:
+      - Congratulations you got
+      - "Ch\xFAc m\u1EEBng b\u1EA1n \u0111\xE3 nh\u1EADn \u0111\u01B0\u1EE3c"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/control
+      TermType: 0
+      Description: 
+      Languages:
+      - CONTROL
+      - "\u0110i\u1EC1u khi\u1EC3n"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/crystal
+      TermType: 0
+      Description: 
+      Languages:
+      - Crystal
+      - "Pha l\xEA"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/elite
+      TermType: 0
+      Description: 
+      Languages:
+      - Elite
+      - "Cao c\u1EA5p"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/energy
+      TermType: 0
+      Description: 
+      Languages:
+      - Energy
+      - "Th\u1EC3 l\u1EF1c"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/free
+      TermType: 0
+      Description: 
+      Languages:
+      - Free
+      - "Mi\u1EC5n Ph\xED"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/free_play
+      TermType: 0
+      Description: 
+      Languages:
+      - Free Play
+      - "Ch\u01A1i th\u1EED"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/gift_online
+      TermType: 0
+      Description: 
+      Languages:
+      - Online Gifts
+      - "Qu\xE0 online"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/handle
+      TermType: 0
+      Description: 
+      Languages:
+      - SKILL
+      - "K\u1EF9 n\u0103ng"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/hard
+      TermType: 0
+      Description: 
+      Languages:
+      - Hard
+      - "Kh\xF3"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/language
+      TermType: 0
+      Description: 
+      Languages:
+      - LANGUAGE
+      - "Ng\xF4n ng\u1EEF"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/left
+      TermType: 0
+      Description: 
+      Languages:
+      - left
+      - "tr\xE1i"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/level
+      TermType: 0
+      Description: 
+      Languages:
+      - Level
+      - "C\u1EA5p \u0111\u1ED9"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/lucky_box
+      TermType: 0
+      Description: 
+      Languages:
+      - Lucky
+      - "May M\u1EAFn"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/lucky_wheel
+      TermType: 0
+      Description: 
+      Languages:
+      - LUCKY WHEEL
+      - "V\xD2NG QUAY MAY M\u1EAEN"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/maxEnergy
+      TermType: 0
+      Description: 
+      Languages:
+      - MAXIUM ENERGY
+      - "\u0110\u1EA7y th\u1EC3 l\u1EF1c"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/mission
+      TermType: 0
+      Description: 
+      Languages:
+      - Mission
+      - "Nhi\u1EC7m V\u1EE5"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/next
+      TermType: 0
+      Description: 
+      Languages:
+      - Next
+      - "Ch\u01A1i ti\u1EBFp"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/no
+      TermType: 0
+      Description: 
+      Languages:
+      - No
+      - "Kh\xF4ng"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/normal
+      TermType: 0
+      Description: 
+      Languages:
+      - Normal
+      - "Th\u01B0\u1EDDng"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/notice
+      TermType: 0
+      Description: 
+      Languages:
+      - Notification
+      - "Th\xF4ng b\xE1o"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/pack
+      TermType: 0
+      Description: 
+      Languages:
+      - Pack
+      - "G\xF3i"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/pause
+      TermType: 0
+      Description: 
+      Languages:
+      - Pause
+      - "T\u1EA1m d\u1EEBng"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/rank
+      TermType: 0
+      Description: 
+      Languages:
+      - Ranks
+      - "X\u1EBFp h\u1EA1ng"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/rate_us
+      TermType: 0
+      Description: 
+      Languages:
+      - Rate Us
+      - "\u0110\xE1nh Gi\xE1"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/reborn
+      TermType: 0
+      Description: 
+      Languages:
+      - Resurrect
+      - "H\u1ED3i sinh"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/replay
+      TermType: 0
+      Description: 
+      Languages:
+      - Replay
+      - "Ch\u01A1i l\u1EA1i"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/resume
+      TermType: 0
+      Description: 
+      Languages:
+      - RESUME
+      - "Ti\u1EBFp t\u1EE5c"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/right
+      TermType: 0
+      Description: 
+      Languages:
+      - right
+      - "ph\u1EA3i"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/rollcall
+      TermType: 0
+      Description: 
+      Languages:
+      - Daily Gifts
+      - "Qu\xE0 h\u1EB1ng ng\xE0y"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/save
+      TermType: 0
+      Description: 
+      Languages:
+      - Save
+      - "L\u01B0u"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/score
+      TermType: 0
+      Description: 
+      Languages:
+      - Score
+      - "\u0110i\u1EC3m"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/setting
+      TermType: 0
+      Description: 
+      Languages:
+      - Settings
+      - "C\xE0i \u0111\u1EB7t"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/shop
+      TermType: 0
+      Description: 
+      Languages:
+      - Shop
+      - "C\u1EEDa h\xE0ng"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/sound
+      TermType: 0
+      Description: 
+      Languages:
+      - SOUND
+      - "\xC2m thanh"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/star
+      TermType: 0
+      Description: 
+      Languages:
+      - Star
+      - "Ng\xF4i sao"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/start
+      TermType: 0
+      Description: 
+      Languages:
+      - START
+      - "B\u1EAFt \u0111\u1EA7u"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/super_hard
+      TermType: 0
+      Description: 
+      Languages:
+      - Super Hard
+      - "Si\xEAu Kh\xF3"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/supreme
+      TermType: 0
+      Description: 
+      Languages:
+      - Supreme
+      - "Si\xEAu c\u1EA5p"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/ticket
+      TermType: 0
+      Description: 
+      Languages:
+      - Ticket
+      - "V\xE9"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/unlock
+      TermType: 0
+      Description: 
+      Languages:
+      - Unlock
+      - "M\u1EDF kh\xF3a"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/uri_assetbundle
+      TermType: 0
+      Description: 
+      Languages:
+      - 103.130.212.111/StreamingAssets/PC/
+      - 103.130.212.111/StreamingAssets/PC/
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/uri_assetbundle_android
+      TermType: 0
+      Description: 
+      Languages:
+      - 103.130.212.111/StreamingAssets/Android/
+      - 103.130.212.111/StreamingAssets/Android/
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/uri_assetbundle_ios
+      TermType: 0
+      Description: 
+      Languages:
+      - 103.130.212.111/StreamingAssets/IOS/
+      - 103.130.212.111/StreamingAssets/IOS/
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/vibrate
+      TermType: 0
+      Description: 
+      Languages:
+      - Vibration
+      - Rung
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/watch
+      TermType: 0
+      Description: 
+      Languages:
+      - Watch
+      - Xem
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/yes
+      TermType: 0
+      Description: 
+      Languages:
+      - Yes
+      - "C\xF3"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/gold_received
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Currently gold received is {0}%.
+
+        Have enough {1} star to received 100% gold'
+      - 'Currently gold received is {0}%.
+
+        Have enough {1} star to received 100% gold'
       Flags: 0000
       Languages_Touch: []
     CaseInsensitiveTerms: 0
@@ -1989,7 +1989,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbx8Wa8N32JyZ5C4pYOJ3jF2_oE2-cIG5ljH845Z/exec
     Google_SpreadsheetKey: 1pkO-Gbk-Dc8oWvX3kBUU66aMqePyy6D93nsLx9wsiAQ
     Google_SpreadsheetName: I2Loc Fighter Force Localization
-    Google_LastUpdatedVersion: 1570692189045
+    Google_LastUpdatedVersion: 1570697265736
     Google_Password: lengochan
     GoogleUpdateFrequency: 0
     GoogleInEditorCheckFrequency: 0
