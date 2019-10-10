@@ -59,7 +59,7 @@ public class AudioPlay : MonoBehaviour {
         {
             if (cacheAudios[i].clip != null)
             {
-                Destroy(cacheAudios[i].gameObject);
+                Destroy(cacheAudios[i].gameObject, cacheAudios[i].clip.length);
             }
         }
         cacheAudios.Clear();

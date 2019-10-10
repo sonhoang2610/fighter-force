@@ -47,6 +47,7 @@ namespace EazyEngine.Space.UI
         {
             PlayerEnviroment.clear();
             Time.timeScale = 1;
+            GameManager.Instance.inGame = false;
             LevelManger.InstanceRaw = null;
             SceneManager.Instance.loadScene("Main");
         }
