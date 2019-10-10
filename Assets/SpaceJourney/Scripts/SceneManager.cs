@@ -106,11 +106,11 @@ namespace EazyEngine.Space
         protected override void Awake()
         {
             base.Awake();
-//#if UNITY_EDITOR
-//            Debug.unityLogger.logEnabled = true;
-//#else
-//  Debug.unityLogger.logEnabled = false;
-//#endif
+#if UNITY_EDITOR
+            Debug.unityLogger.logEnabled = true;
+#else
+            Debug.unityLogger.logEnabled = false;
+#endif
         }
 
         public IEnumerator loadManager()
