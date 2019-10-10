@@ -21,16 +21,16 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Pack Elite 1
-      - "G\xF3i cao c\u1EA5p 1"
+      - Premiere Elite Pack
+      - "G\xF3i cao c\u1EA5p c\u01A1 b\u1EA3n"
       Flags: 0000
       Languages_Touch: []
     - Term: BoxElitePack2
       TermType: 0
       Description: 
       Languages:
-      - Pack Elite 2
-      - "G\xF3i cao c\u1EA5p 2"
+      - VIP Elite Pack
+      - "G\xF3i cao c\u1EA5p VIP"
       Flags: 0000
       Languages_Touch: []
     - Term: FightButton
@@ -53,56 +53,16 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Pack Random Craft
-      - Pack Random Craft
+      - Random Ship Part
+      - "M\u1EA3nh t\xE0u ng\u1EABu nhi\xEAn"
       Flags: 0000
       Languages_Touch: []
     - Term: PackRandomCraftSpPlane
       TermType: 0
       Description: 
       Languages:
-      - Pack Random Craft
-      - Pack Random Craft
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ability/attack
-      TermType: 0
-      Description: 
-      Languages:
-      - Attack
-      - "C\xF4ng"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ability/defense
-      TermType: 0
-      Description: 
-      Languages:
-      - Defense
-      - "Th\u1EE7"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ability/hp
-      TermType: 0
-      Description: 
-      Languages:
-      - Hp
-      - "M\xE1u"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ability/lucky
-      TermType: 0
-      Description: 
-      Languages:
-      - Lucky
-      - "May M\u1EAFn"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ability/speed
-      TermType: 0
-      Description: 
-      Languages:
-      - Fire Speed
-      - "T\u1ED1c \u0111\u1ED9 b\u1EAFn"
+      - Random Satellite Part
+      - "M\u1EA3nh v\u1EC7 tinh ng\u1EABu nhi\xEAn"
       Flags: 0000
       Languages_Touch: []
     - Term: btn_shop
@@ -137,11 +97,59 @@ MonoBehaviour:
       - 
       Flags: 0000
       Languages_Touch: []
+    - Term: recieved_icon
+      TermType: 2
+      Description: 
+      Languages:
+      - ui/onlinegift/item_nhan_en
+      - ui/onlinegift/item_nhan_vi
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ability/attack
+      TermType: 0
+      Description: 
+      Languages:
+      - Attack
+      - "C\xF4ng"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ability/defense
+      TermType: 0
+      Description: 
+      Languages:
+      - Defense
+      - "Th\u1EE7"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ability/hp
+      TermType: 0
+      Description: 
+      Languages:
+      - HP
+      - "M\xE1u"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ability/lucky
+      TermType: 0
+      Description: 
+      Languages:
+      - Lucky
+      - "May M\u1EAFn"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ability/speed
+      TermType: 0
+      Description: 
+      Languages:
+      - Fire Rate
+      - "T\u1ED1c \u0111\u1ED9 b\u1EAFn"
+      Flags: 0000
+      Languages_Touch: []
     - Term: mission/destroy_all_content
       TermType: 0
       Description: 
       Languages:
-      - Destroy all enemy
+      - Destroy all enemies
       - "Ti\xEAu di\u1EC7t to\xE0n b\u1ED9 k\u1EBB \u0111\u1ECBch"
       Flags: 0000
       Languages_Touch: []
@@ -149,7 +157,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Pass level with full HP
+      - Complete the level without taking damage
       - "V\u01B0\u1EE3t qua b\xE0n ch\u01A1i kh\xF4ng m\u1EA5t m\xE1u"
       Flags: 0000
       Languages_Touch: []
@@ -157,7 +165,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Pass the level
+      - Complete the level
       - "V\u01B0\u1EE3t qua b\xE0n ch\u01A1i"
       Flags: 0000
       Languages_Touch: []
@@ -165,11 +173,10 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Create a circle bullet around protect the plane in a short time then explore
-        damaged all enemies get in the way
+      - Create a shield that causes damage to enemy when expired
       - "T\u1EA1o 1 v\xF2ng tr\xF2n l\u01B0\u1EE1i li\u1EC1m b\u1EA3o v\u1EC7 m\xE1y
-        bay trong th\u1EDDi gian ng\u1EAFn sau \u0111\xF3 n\u1ECF b\u1EAFn t\u1ECFa
-        ra c\xE1c h\u01B0\u1EDBng"
+        bay trong th\u1EDDi gian ng\u1EAFn sau \u0111\xF3 b\u1EAFn t\u1ECFa ra c\xE1c
+        h\u01B0\u1EDBng"
       Flags: 0000
       Languages_Touch: []
     - Term: plane/HealTimer
@@ -184,8 +191,8 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - "Give a shield block damage when the shield break will booster extra $speedFactor
-        % speed for \rintrinsic skill"
+      - Receive a shield that blocks one damage. When the shield breaks your passive
+        skill speed will increase by $speedFactor %
       - "Nh\u1EADn 1 khi\xEAn \u0111\u1EE1 1 l\u1EA7n s\xE1t th\u01B0\u01A1ng khi
         khi\xEAn n\xE0y v\u1EE1 s\u1EBD t\u0103ng $speedFactor % t\u1ED1c \u0111\u1ED9
         cho skill n\u1ED9i t\u1EA1i"
@@ -197,7 +204,7 @@ MonoBehaviour:
       Languages:
       - Create a Shield and 3 Energy Balls that protect you and fire back at enemies
       - "T\u1EA1o ra 1 v\xF2ng tr\xF2n b\u1EA3o v\u1EC7 k\xE8m 3 qu\u1EA3 c\u1EA7u
-        n\u0103ng l\u01B0\u1EE3ng  b\u1EAFn ra  c\xE1c lo\u1EA1i \u0111\u1EA1n \u0111\u1EB7c
+        n\u0103ng l\u01B0\u1EE3ng b\u1EAFn ra c\xE1c lo\u1EA1i \u0111\u1EA1n \u0111\u1EB7c
         bi\u1EC7t b\u1EA3o v\u1EC7 m\xE1y bay"
       Flags: 0000
       Languages_Touch: []
@@ -205,9 +212,9 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - "Give a shield block damage when the shield break will booster extra $speedFactor
-        % speed for \rintrinsic skill"
-      - "Nh\u1EADn 1 khi\xEAn \u0111\u1EE1 1 l\u1EA7n s\xE1t th\u01B0\u01A1ng khi
+      - Receive a shield that blocks one damage. When the shield breaks your passive
+        skill speed will increase by $speedFactor %
+      - "Nh\u1EADn 1 khi\xEAn \u0111\u1EE1 1 l\u1EA7n s\xE1t th\u01B0\u01A1ng. Khi
         khi\xEAn n\xE0y v\u1EE1 s\u1EBD b\u1EAFn ra 1 tr\xF9m t\xEAn l\u1EEDa."
       Flags: 0000
       Languages_Touch: []
@@ -215,9 +222,9 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Give a shield block damage when the shield break will create 3 orb lighting
-        destroy all enemies around
-      - "Nh\u1EADn 1 khi\xEAn \u0111\u1EE1 1 l\u1EA7n s\xE1t th\u01B0\u01A1ng khi
+      - Receive a shield that blocks one damage. When the shield breaks it will create
+        3 lighting orb that struck all nearby enemies
+      - "Nh\u1EADn 1 khi\xEAn \u0111\u1EE1 1 l\u1EA7n s\xE1t th\u01B0\u01A1ng. Khi
         khi\xEAn n\xE0y v\u1EE1 s\u1EBD t\u1EA1o ra 3 qu\u1EA3 c\u1EA7u s\xE9t gi\u1EADt
         t\u1EA5t c\u1EA3 \u0111\u1ECBch xung quanh"
       Flags: 0000
@@ -226,7 +233,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Create a Rain Rocket
+      - Create a rain of missile
       - "T\u1EA1o m\u1ED9t tr\u1EADn m\u01B0a t\xEAn l\u1EEDa "
       Flags: 0000
       Languages_Touch: []
@@ -234,7 +241,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - When taken damage will booster $damageBooster % damage of plane
+      - Increase damage by $damageBooster % when taking damage
       - "Khi nh\xE2n s\xE1t th\u01B0\u01A1ng s\u1EBD t\u0103ng th\xEAm $damageBooster
         % s\xE1t th\u01B0\u01A1ng c\u1EE7a m\xE1y bay"
       Flags: 0000
@@ -243,7 +250,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - When taken damage will active a shield
+      - Activate a shield when taking damage
       - "Khi b\u1ECB s\xE1t th\u01B0\u01A1ng s\u1EBD k\xEDch ho\u1EA1t khi\xEAn"
       Flags: 0000
       Languages_Touch: []
@@ -251,7 +258,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - When taken damage will heal $percentHeal % HP
+      - Heal $percentHeal % HP when taking damage
       - "Khi b\u1ECB s\xE1t th\u01B0\u01A1ng s\u1EBD h\u1ED3i $percentHeal % m\xE1u"
       Flags: 0000
       Languages_Touch: []
@@ -259,7 +266,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - When taken damage the plane will invisible in $Duration s
+      - Become invisible in $Duration s when taking damage
       - "Khi nh\u1EADn s\xE1t th\u01B0\u01A1ng m\xE1y bay s\u1EBD t\xE0ng h\xECnh
         trong $Duration s"
       Flags: 0000
@@ -284,7 +291,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Night Butterfly
+      - Night Hunter
       - "B\u01B0\u1EDBm \u0111\xEAm"
       Flags: 0000
       Languages_Touch: []
@@ -292,7 +299,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Golden Emperor
+      - Golden Conqueror
       - "K\u1EBB ng\u1EF1 tr\u1ECB v\xE0ng"
       Flags: 0000
       Languages_Touch: []
@@ -300,7 +307,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Shiny Butterfly
+      - Butterfly Queen
       - "H\u1ED3 \u0111i\u1EC7p quang"
       Flags: 0000
       Languages_Touch: []
@@ -308,7 +315,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - The Emperor of the Sands
+      - Sand Emperor
       - "Ho\xE0ng \u0111\u1EBF sa m\u1EA1c"
       Flags: 0000
       Languages_Touch: []
@@ -316,7 +323,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Shoot a series of bullets in a Horizontal line
+      - Fire bullets in a horizontal line
       - "B\u1EAFn lo\u1EA1t \u0111\u1EA1n theo h\xE0ng ngang"
       Flags: 0000
       Languages_Touch: []
@@ -324,7 +331,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Shoot a big laser destroy all enemies in vertical line
+      - Shoot a big laser beam that destroys all enemies in a line
       - "B\u1EAFn 1 tia laser l\u1EDBn theo \u0111\u01B0\u1EDDng th\u1EB3ng ph\xE1
         h\u1EE7y m\u1ECDi v\u1EADt n\xF3 g\u1EB7p ph\u1EA3i"
       Flags: 0000
@@ -333,7 +340,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - When taken damage create a circle energy destroy all enemies get in the way
+      - Create an energy circle that destroys all nearby enemies
       - "Khi nh\xE2n s\xE1t th\u01B0\u01A1ng s\u1EBD t\u1EA1o ra 1 v\xF2ng tr\xF2n
         n\u0103ng l\u01B0\u1EE3ng ti\xEAu di\u1EC7t m\u1ECDi qu\xE2n \u0111\u1ECBch
         g\u1EB7p ph\u1EA3i"
@@ -343,8 +350,8 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Give a shield block damage when the shield break when booster $damageBooster
-        % damge of plane
+      - Receive a shield that blocks one damage. When the shield breaks your damage
+        will increase by $damageBooster %
       - "Nh\u1EADn 1 khi\xEAn \u0111\u1EE1 1 l\u1EA7n s\xE1t th\u01B0\u01A1ng khi
         khi\xEAn n\xE0y v\u1EE1 s\u1EBD t\u0103ng $damageBooster % s\xE1t th\u01B0\u01A1ng"
       Flags: 0000
@@ -353,7 +360,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Shoot series of bullet flow a cone
+      - Fire bullets in a triangle
       - "B\u1EAFn lo\u1EA1t \u0111\u1EA1n theo h\xECnh n\xF3n"
       Flags: 0000
       Languages_Touch: []
@@ -361,7 +368,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Shoot a series of boomerang bullet flow cone
+      - Fire a series of boomerang bullet
       - "B\u1EAFn ra 1 lo\u1EA1t \u0111an boomerang theo h\xECnh n\xF3n"
       Flags: 0000
       Languages_Touch: []
@@ -369,7 +376,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - When taken damage wil booster $speedFactor percent speed fight
+      - Increase fire rate by $speedFactor % when taking damage
       - "Khi nh\u1EADn s\xE1t th\u01B0\u01A1ng s\u1EBD t\u0103ng t\u1ED1c \u0111\u1ED9
         b\u1EAFn th\xEAm  $speedFactor % "
       Flags: 0000
@@ -378,8 +385,8 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Give a shield block damage when the shield break when booster $damageBooster
-        % damge of plane
+      - Receive a shield that blocks one damage. When the shield breaks your damage
+        will increase by $damageBooster %
       - "Nh\u1EADn 1 khi\xEAn \u0111\u1EE1 1 l\u1EA7n s\xE1t th\u01B0\u01A1ng khi
         khi\xEAn n\xE0y v\u1EE1 s\u1EBD t\u0103ng $damageBooster % s\xE1t th\u01B0\u01A1ng"
       Flags: 0000
@@ -388,7 +395,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Shoot a hook through all enemies and damaged  on the way
+      - Fire bullets that penetrate through all enemies
       - "B\u1EAFn ra vi\xEAn \u0111\u1EA1n h\xECnh b\xE1n nguy\u1EC7t xuy\xEAn th\u1EA5u
         v\xE0 g\xE2y s\xE1t th\u01B0\u01A1ng m\u1ECDi qu\xE2n \u0111\u1ECBch tr\xEAn
         \u0111\u01B0\u1EDDng \u0111i"
@@ -398,7 +405,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Shoot a series of bullets in a Horizontal line
+      - Fire bullets in a horizontal line
       - "B\u1EAFn lo\u1EA1t \u0111\u1EA1n theo h\xE0ng ngang"
       Flags: 0000
       Languages_Touch: []
@@ -417,7 +424,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Fire series bullet in a cone
+      - Fire bullets in a triangle
       - "B\u1EAFn lo\u1EA1n \r\u0111\u1EA1n trong m\u1ED9t h\xECnh n\xF3n"
       Flags: 0000
       Languages_Touch: []
@@ -425,7 +432,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Shoot powerful bullets forward and missiles
+      - Fire powerful bullets and missiles toward enemies
       - "B\u1EAFn lo\u1EA1t \u0111\u1EA1n c\u1EF1c m\u1EA1nh v\u1EC1 ph\xEDa tr\u01B0\u1EDBc
         k\xE8m theo t\xEAn l\u1EEDa"
       Flags: 0000
@@ -506,7 +513,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Fire automated rocket
+      - Fire automated rockets that follow the target
       - "B\u1EAFn t\xEAn l\u1EEDa t\u1EF1 \u0111\u1ED9ng theo d\xF5i m\u1EE5c ti\xEAu"
       Flags: 0000
       Languages_Touch: []
@@ -514,7 +521,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - When an enemy is killed, the bullets bounce to the closet target
+      - When an enemy is killed, the bullet bounces to the closet target
       - "Ti\xEAu di\u1EC7t m\u1EE5c ti\xEAu t\xEAn l\u1EEDa n\u1EA3y sang m\u1EE5c
         ti\xEAu g\u1EA7n nh\u1EA5t"
       Flags: 0000
@@ -550,7 +557,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Chain lighting passes through several enemies
+      - Chain lightning passes through several enemies
       - "Tia s\xE9t s\u1EBD l\xE2y lan qua c\xE1c k\u1EBB th\xF9 b\xEAn c\u1EA1nh"
       Flags: 0000
       Languages_Touch: []
@@ -678,19 +685,11 @@ MonoBehaviour:
         %"
       Flags: 0000
       Languages_Touch: []
-    - Term: recieved_icon
-      TermType: 2
-      Description: 
-      Languages:
-      - ui/onlinegift/item_nhan_en
-      - ui/onlinegift/item_nhan_vi
-      Flags: 0000
-      Languages_Touch: []
     - Term: text/choose_item_sp
       TermType: 0
       Description: 
       Languages:
-      - Choose Item to play easier
+      - Choose support items for more enjoyable
       - "Ch\u1ECDn v\u1EADt ph\u1EA9m h\u1ED7 tr\u1EE3 \u0111\u1EC3 ch\u01A1i d\u1EC5
         d\xE0ng h\u01A1n"
       Flags: 0000
@@ -751,187 +750,11 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Andromeda 1
-      - "Ti\xEAn N\u1EEF 1"
+      - Aquarius 1
+      - "B\u1EA3o B\xECnh 1"
       Flags: 0000
       Languages_Touch: []
     - Term: text/map_name10
-      TermType: 0
-      Description: 
-      Languages:
-      - Coma Berenices 5
-      - "H\u1EADu Ph\xE1t 5"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name11
-      TermType: 0
-      Description: 
-      Languages:
-      - Sculptor 1
-      - "Ng\u1ECDc Phu 1"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name12
-      TermType: 0
-      Description: 
-      Languages:
-      - Sculptor 2
-      - "Ng\u1ECDc Phu 2"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name13
-      TermType: 0
-      Description: 
-      Languages:
-      - Sculptor 3
-      - "Ng\u1ECDc Phu 3"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name14
-      TermType: 0
-      Description: 
-      Languages:
-      - Sculptor 4
-      - "Ng\u1ECDc Phu 4"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name15
-      TermType: 0
-      Description: 
-      Languages:
-      - Sculptor 5
-      - "Ng\u1ECDc Phu 5"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name16
-      TermType: 0
-      Description: 
-      Languages:
-      - Serpens 1
-      - "C\u1EF1 X\xE0 1"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name17
-      TermType: 0
-      Description: 
-      Languages:
-      - Serpens 2
-      - "C\u1EF1 X\xE0 2"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name18
-      TermType: 0
-      Description: 
-      Languages:
-      - Serpens 3
-      - "C\u1EF1 X\xE0 3"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name19
-      TermType: 0
-      Description: 
-      Languages:
-      - Serpens 4
-      - "C\u1EF1 X\xE0 4"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name2
-      TermType: 0
-      Description: 
-      Languages:
-      - Andromeda 2
-      - "Ti\xEAn N\u1EEF 2"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name20
-      TermType: 0
-      Description: 
-      Languages:
-      - Serpens 5
-      - "C\u1EF1 X\xE0 5"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name21
-      TermType: 0
-      Description: 
-      Languages:
-      - Ursa Major 1
-      - "\u0110\u1EA1i H\xF9ng 1"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name22
-      TermType: 0
-      Description: 
-      Languages:
-      - Ursa Major 2
-      - "\u0110\u1EA1i H\xF9ng 2"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name23
-      TermType: 0
-      Description: 
-      Languages:
-      - Ursa Major 3
-      - "\u0110\u1EA1i H\xF9ng 3"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name24
-      TermType: 0
-      Description: 
-      Languages:
-      - Ursa Major 4
-      - "\u0110\u1EA1i H\xF9ng 4"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name25
-      TermType: 0
-      Description: 
-      Languages:
-      - Ursa Major 5
-      - "\u0110\u1EA1i H\xF9ng 5"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name26
-      TermType: 0
-      Description: 
-      Languages:
-      - Virgo 1
-      - "X\u1EED N\u1EEF 1"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name27
-      TermType: 0
-      Description: 
-      Languages:
-      - Virgo 2
-      - "X\u1EED N\u1EEF 2"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name28
-      TermType: 0
-      Description: 
-      Languages:
-      - Virgo 3
-      - "X\u1EED N\u1EEF 3"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name29
-      TermType: 0
-      Description: 
-      Languages:
-      - Virgo 4
-      - "X\u1EED N\u1EEF 4"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name3
-      TermType: 0
-      Description: 
-      Languages:
-      - Andromeda 3
-      - "Ti\xEAn N\u1EEF 3"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/map_name30
       TermType: 0
       Description: 
       Languages:
@@ -939,139 +762,315 @@ MonoBehaviour:
       - "X\u1EED N\u1EEF 5"
       Flags: 0000
       Languages_Touch: []
+    - Term: text/map_name11
+      TermType: 0
+      Description: 
+      Languages:
+      - Capricorn 1
+      - "Ma K\u1EBFt 1"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name12
+      TermType: 0
+      Description: 
+      Languages:
+      - Capricorn 2
+      - "Ma K\u1EBFt 2"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name13
+      TermType: 0
+      Description: 
+      Languages:
+      - Capricorn 3
+      - "Ma K\u1EBFt 3"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name14
+      TermType: 0
+      Description: 
+      Languages:
+      - Capricorn 4
+      - "Ma K\u1EBFt 4"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name15
+      TermType: 0
+      Description: 
+      Languages:
+      - Capricorn 5
+      - "Ma K\u1EBFt 5"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name16
+      TermType: 0
+      Description: 
+      Languages:
+      - Leo 1
+      - "S\u01B0 T\u1EED 1"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name17
+      TermType: 0
+      Description: 
+      Languages:
+      - Leo 2
+      - "S\u01B0 T\u1EED 2"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name18
+      TermType: 0
+      Description: 
+      Languages:
+      - Leo 3
+      - "S\u01B0 T\u1EED 3"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name19
+      TermType: 0
+      Description: 
+      Languages:
+      - Leo 4
+      - "S\u01B0 T\u1EED 4"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name2
+      TermType: 0
+      Description: 
+      Languages:
+      - Aquarius 2
+      - "B\u1EA3o B\xECnh 2"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name20
+      TermType: 0
+      Description: 
+      Languages:
+      - Leo 5
+      - "S\u01B0 T\u1EED 5"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name21
+      TermType: 0
+      Description: 
+      Languages:
+      - Taurus 1
+      - "Kim Ng\u01B0u 1"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name22
+      TermType: 0
+      Description: 
+      Languages:
+      - Taurus 2
+      - "Kim Ng\u01B0u 2"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name23
+      TermType: 0
+      Description: 
+      Languages:
+      - Taurus 3
+      - "Kim Ng\u01B0u 3"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name24
+      TermType: 0
+      Description: 
+      Languages:
+      - Taurus 4
+      - "Kim Ng\u01B0u 4"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name25
+      TermType: 0
+      Description: 
+      Languages:
+      - Taurus 5
+      - "Kim Ng\u01B0u 5"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name26
+      TermType: 0
+      Description: 
+      Languages:
+      - Cancer 1
+      - "C\u1EF1 Gi\u1EA3i 1"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name27
+      TermType: 0
+      Description: 
+      Languages:
+      - Cancer 2
+      - "C\u1EF1 Gi\u1EA3i 2"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name28
+      TermType: 0
+      Description: 
+      Languages:
+      - Cancer 3
+      - "C\u1EF1 Gi\u1EA3i 3"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name29
+      TermType: 0
+      Description: 
+      Languages:
+      - Cancer 4
+      - "C\u1EF1 Gi\u1EA3i 4"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name3
+      TermType: 0
+      Description: 
+      Languages:
+      - Aquarius 3
+      - "B\u1EA3o B\xECnh 3"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/map_name30
+      TermType: 0
+      Description: 
+      Languages:
+      - Cancer 5
+      - "C\u1EF1 Gi\u1EA3i 5"
+      Flags: 0000
+      Languages_Touch: []
     - Term: text/map_name31
       TermType: 0
       Description: 
       Languages:
-      - Canum Venaticorum 1
-      - "L\u1EA1p Khuy\u1EC3n 1"
+      - Aries 1
+      - "B\u1EA1ch D\u01B0\u01A1ng 1"
       Flags: 0000
       Languages_Touch: []
     - Term: text/map_name32
       TermType: 0
       Description: 
       Languages:
-      - Canum Venaticorum 2
-      - "L\u1EA1p Khuy\u1EC3n 2"
+      - Aries 2
+      - "B\u1EA1ch D\u01B0\u01A1ng 2"
       Flags: 0000
       Languages_Touch: []
     - Term: text/map_name33
       TermType: 0
       Description: 
       Languages:
-      - Canum Venaticorum 3
-      - "L\u1EA1p Khuy\u1EC3n 3"
+      - Aries 3
+      - "B\u1EA1ch D\u01B0\u01A1ng 3"
       Flags: 0000
       Languages_Touch: []
     - Term: text/map_name34
       TermType: 0
       Description: 
       Languages:
-      - Canum Venaticorum 4
-      - "L\u1EA1p Khuy\u1EC3n 4"
+      - Aries 4
+      - "B\u1EA1ch D\u01B0\u01A1ng 4"
       Flags: 0000
       Languages_Touch: []
     - Term: text/map_name35
       TermType: 0
       Description: 
       Languages:
-      - Canum Venaticorum 5
-      - "L\u1EA1p Khuy\u1EC3n 5"
+      - Aries 5
+      - "B\u1EA1ch D\u01B0\u01A1ng 5"
       Flags: 0000
       Languages_Touch: []
     - Term: text/map_name36
       TermType: 0
       Description: 
       Languages:
-      - Sextans 1
-      - "L\u1EE5c Ph\xE2n Nghi 1"
+      - Sagittarius 1
+      - "Nh\xE2n M\xE3 1"
       Flags: 0000
       Languages_Touch: []
     - Term: text/map_name37
       TermType: 0
       Description: 
       Languages:
-      - Sextans 2
-      - "L\u1EE5c Ph\xE2n Nghi 2"
+      - Sagittarius 2
+      - "Nh\xE2n M\xE3 2"
       Flags: 0000
       Languages_Touch: []
     - Term: text/map_name38
       TermType: 0
       Description: 
       Languages:
-      - Sextans 3
-      - "L\u1EE5c Ph\xE2n Nghi 3"
+      - Sagittarius 3
+      - "Nh\xE2n M\xE3 3"
       Flags: 0000
       Languages_Touch: []
     - Term: text/map_name39
       TermType: 0
       Description: 
       Languages:
-      - Sextans 4
-      - "L\u1EE5c Ph\xE2n Nghi 4"
+      - Sagittarius 4
+      - "Nh\xE2n M\xE3 4"
       Flags: 0000
       Languages_Touch: []
     - Term: text/map_name4
       TermType: 0
       Description: 
       Languages:
-      - Andromeda 4
-      - "Ti\xEAn N\u1EEF 4"
+      - Aquarius 4
+      - "B\u1EA3o B\xECnh 4"
       Flags: 0000
       Languages_Touch: []
     - Term: text/map_name40
       TermType: 0
       Description: 
       Languages:
-      - Sextans 5
-      - "L\u1EE5c Ph\xE2n Nghi 5"
+      - Sagittarius 5
+      - "Nh\xE2n M\xE3 5"
       Flags: 0000
       Languages_Touch: []
     - Term: text/map_name5
       TermType: 0
       Description: 
       Languages:
-      - Andromeda 5
-      - "Ti\xEAn N\u1EEF 5"
+      - Aquarius 5
+      - "B\u1EA3o B\xECnh 5"
       Flags: 0000
       Languages_Touch: []
     - Term: text/map_name6
       TermType: 0
       Description: 
       Languages:
-      - Coma Berenices 1
-      - "H\u1EADu Ph\xE1t 1"
+      - Virgo 1
+      - "X\u1EED N\u1EEF 1"
       Flags: 0000
       Languages_Touch: []
     - Term: text/map_name7
       TermType: 0
       Description: 
       Languages:
-      - Coma Berenices 2
-      - "H\u1EADu Ph\xE1t 2"
+      - Virgo 2
+      - "X\u1EED N\u1EEF 2"
       Flags: 0000
       Languages_Touch: []
     - Term: text/map_name8
       TermType: 0
       Description: 
       Languages:
-      - Coma Berenices 3
-      - "H\u1EADu Ph\xE1t 3"
+      - Virgo 3
+      - "X\u1EED N\u1EEF 3"
       Flags: 0000
       Languages_Touch: []
     - Term: text/map_name9
       TermType: 0
       Description: 
       Languages:
-      - Coma Berenices 4
-      - "H\u1EADu Ph\xE1t 4"
+      - Virgo 4
+      - "X\u1EED N\u1EEF 4"
       Flags: 0000
       Languages_Touch: []
     - Term: text/maxEnergy
       TermType: 0
       Description: 
       Languages:
-      - GIVE 20 ENERGY TO FIGHT!
+      - RECEIVE 20 ENERGY TO FIGHT!
       - "Nh\u1EADn ngay 20 th\u1EC3 l\u1EF1c \u0111\u1EC3 chi\u1EBFn \u0111\u1EA5u"
       Flags: 0000
       Languages_Touch: []
@@ -1079,7 +1078,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - 'You have not enough {0}. '
+      - 'You don not have enough {0}. '
       - "B\u1EA1n kh\xF4ng \u0111\u1EE7 {0}."
       Flags: 0000
       Languages_Touch: []
@@ -1087,7 +1086,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - "You have not enough {0}. \nWanna buy some more?"
+      - "You don not have enough {0}. \nWanna buy more?"
       - "B\u1EA1n kh\xF4ng \u0111\u1EE7 {0}.\nV\xE0o c\u1EEDa h\xE0ng ngay?"
       Flags: 0000
       Languages_Touch: []
@@ -1095,7 +1094,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Login to Gameservices to use this feature
+      - Please login to Game services to use this feature
       - "\u0110\u0103ng nh\u1EADp \u0111\u1EC3 m\u1EDF t\xEDnh n\u0103ng n\xE0y"
       Flags: 0000
       Languages_Touch: []
@@ -1103,9 +1102,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - 'Do you love this game?
-
-        Why not share the love with a review?'
+      - "Please have a good day! \nWould you kindly rate us on Play Store?"
       - "B\u1EA1n c\xF3 th\xEDch tr\xF2 ch\u01A1i n\xE0y?\nH\xE3y g\u1EEDi cho ch\xFAng
         t\xF4i t\xECnh c\u1EA3m c\u1EE7a b\u1EA1n!"
       Flags: 0000
@@ -1114,7 +1111,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Do you want to reborn now?
+      - Do you want to resurrect now?
       - "B\u1EA1n c\xF3 mu\u1ED1n h\u1ED3i sinh l\u1EA1i?"
       Flags: 0000
       Languages_Touch: []
@@ -1130,7 +1127,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - '[FFA100]Require more craft plane: [-][FFFF00]{0}[-]'
+      - '[FFA100]Require more ship parts: [-][FFFF00]{0}[-]'
       - "[FFA100]Y\xEAu c\u1EA7u th\xEAm m\u1EA3nh: [-][FFFF00]{0}[-]"
       Flags: 0000
       Languages_Touch: []
@@ -1138,8 +1135,8 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Andromeda
-      - "Ti\xEAn N\u1EEF"
+      - Messier
+      - "V\xE2n Tinh"
       Flags: 0000
       Languages_Touch: []
     - Term: text/zone_name2
@@ -1198,11 +1195,74 @@ MonoBehaviour:
       - Cosmos Redshift 7
       Flags: 0000
       Languages_Touch: []
+    - Term: text/well_come
+      TermType: 0
+      Description: 
+      Languages:
+      - Welcome to Fighter Force
+      - "Ch\xE0o m\u1EEBng \u0111\u1EBFn v\u1EDBi Fighter Force"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/guide_fight_first
+      TermType: 0
+      Description: 
+      Languages:
+      - Press FIGHT button to play your first game
+      - "Ch\u1EA1m v\xE0o nut FIGHT \u0111\u1EC3 tr\u1EA3i nghi\u1EC7m m\xE0n ch\u01A1i
+        \u0111\u1EA7u ti\xEAn"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/unfortunately
+      TermType: 0
+      Description: 
+      Languages:
+      - Unfortunately
+      - "Th\u1EADt \u0111\xE1ng ti\u1EBFc"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/lose_first
+      TermType: 0
+      Description: 
+      Languages:
+      - When you lose the game. You can try to upgrade for more power. This will help
+        you complete the level more easily.
+      - "Th\u1EADt \u0111\xE1ng ti\u1EBFc khi kh\xF4ng th\u1EC3 v\u01B0\u1EE3t qua
+        m\xE0n ch\u01A1i b\u1EA1n c\xF3 th\u1EC3 n\xE2ng c\u1EA5p m\xE1y bay \u0111\u1EC3
+        c\xF3 th\u1EC3 qua m\xE0n ch\u01A1i d\u1EC5 d\xE0ng h\u01A1n"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/congratulation
+      TermType: 0
+      Description: 
+      Languages:
+      - Congratulations!
+      - "Ch\xFAc m\u1EEBng"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/win_first
+      TermType: 0
+      Description: 
+      Languages:
+      - You seem to be a very talented gamer. You can also try to upgrade your ship
+        so you can play more easily.
+      - "C\xF3 v\u1EBB b\u1EA1n r\u1EA5t c\xF3 khi\u1EBFu trong tr\xF2 ch\u01A1i n\xE0y.
+        B\u1EA1n c\xF2n c\xF3 th\u1EC3 n\xE2ng c\u1EA5p m\xE1y bay \u0111\u1EC3 c\xF3
+        th\u1EC3 qua m\xE0n ch\u01A1i d\u1EC5 d\xE0ng h\u01A1n "
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/require_skill
+      TermType: 0
+      Description: 
+      Languages:
+      - '{0}'
+      - '{0}'
+      Flags: 0000
+      Languages_Touch: []
     - Term: ui/BoxComonPack1
       TermType: 0
       Description: 
       Languages:
-      - Pack Comon 1
+      - Comon Pack 1
       - "G\xF3i ph\u1ED5 th\xF4ng 1"
       Flags: 0000
       Languages_Touch: []
@@ -1210,7 +1270,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Pack Comon 2
+      - Comon Pack 2
       - "G\xF3i ph\u1ED5 th\xF4ng 2"
       Flags: 0000
       Languages_Touch: []
@@ -1218,7 +1278,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Pack Supreme 1
+      - Supreme Pack 1
       - "G\xF3i si\xEAu c\u1EA5p 1"
       Flags: 0000
       Languages_Touch: []
@@ -1226,7 +1286,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Pack Supreme 2
+      - Supreme Pack 2
       - "G\xF3i si\xEAu c\u1EA5p 2"
       Flags: 0000
       Languages_Touch: []
@@ -1234,7 +1294,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Pack Ticket 1
+      - Ticket Pack 1
       - "G\xF3i v\xE9 1"
       Flags: 0000
       Languages_Touch: []
@@ -1242,7 +1302,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Pack Ticket 2
+      - Ticket Pack 2
       - "G\xF3i v\xE9 2"
       Flags: 0000
       Languages_Touch: []
@@ -1258,7 +1318,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Craft Red Eagle
+      - Red Eagle part
       - "M\u1EA3nh gh\xE9p \u01AFng \u0111\u1ECF"
       Flags: 0000
       Languages_Touch: []
@@ -1266,7 +1326,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Craft Green Wings Bug
+      - Green Wings Bug part
       - "M\u1EA3nh gh\xE9p B\u1ECD c\xE1nh xanh"
       Flags: 0000
       Languages_Touch: []
@@ -1274,7 +1334,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Craft Night Butterfly
+      - Night Hunter part
       - "M\u1EA3nh gh\xE9p B\u01B0\u1EDBm \u0110\xEAm"
       Flags: 0000
       Languages_Touch: []
@@ -1282,7 +1342,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Craft Golden Emperor
+      - Golden Conqueror part
       - "M\u1EA3nh gh\xE9p K\u1EBB Ng\u1EF1 Tr\u1ECB V\xE0ng"
       Flags: 0000
       Languages_Touch: []
@@ -1290,15 +1350,23 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Craft Shiny Butterfly
+      - Butterfly Queen part
       - "M\u1EA3nh gh\xE9p H\u1ED3 \u0110i\u1EC7p Quang"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/CraftPlane6
+      TermType: 0
+      Description: 
+      Languages:
+      - Sand Emperor part
+      - "M\u1EA3nh gh\xE9p Ho\xE0ng \u0111\u1EBF sa m\u1EA1c"
       Flags: 0000
       Languages_Touch: []
     - Term: ui/CraftSpPlane1
       TermType: 0
       Description: 
       Languages:
-      - Craft SpPlane Gun Goddess
+      - Gun Goddess satellite part
       - "M\u1EA3nh gh\xE9p Th\u1EA7n kh\xF4ng gian"
       Flags: 0000
       Languages_Touch: []
@@ -1306,7 +1374,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Craft SpPlane Green Flash
+      - Green Flash satellite part
       - "M\u1EA3nh gh\xE9p Tia ch\u1EDBp xanh"
       Flags: 0000
       Languages_Touch: []
@@ -1314,7 +1382,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Craft SpPlane Destroyer
+      - Destroyer satellite part
       - "M\u1EA3nh gh\xE9p K\u1EBB h\u1EE7y di\u1EC7t"
       Flags: 0000
       Languages_Touch: []
@@ -1322,7 +1390,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Craft SpPlane Void Spike
+      - Void Spike satellite part
       - "M\u1EA3nh gh\xE9p Gai H\u01B0 Kh\xF4ng"
       Flags: 0000
       Languages_Touch: []
@@ -1330,7 +1398,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Craft SpPlane Fire God
+      - Fire God satellite part
       - "M\u1EA3nh gh\xE9p Th\u1EA7n l\u1EEDa"
       Flags: 0000
       Languages_Touch: []
@@ -1338,7 +1406,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Craft SpPlane Pulsefire Spike
+      - Pulsefire Spike satellite part
       - "M\u1EA3nh gh\xE9p Gai t\u1ED1i th\u01B0\u1EE3ng"
       Flags: 0000
       Languages_Touch: []
@@ -1346,7 +1414,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Craft SpPlane Deadly Ray
+      - Deadly Ray satellite part
       - "M\u1EA3nh gh\xE9p Tia ch\u1EBFt ch\xF3c"
       Flags: 0000
       Languages_Touch: []
@@ -1354,7 +1422,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Craft SpPlane Big Bang
+      - Big Bang satellite part
       - "M\u1EA3nh gh\xE9p V\u1EE5 n\u1ED5 l\u1EDBn"
       Flags: 0000
       Languages_Touch: []
@@ -1362,7 +1430,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Craft SpPlane Demolition Star
+      - Demolition Star satellite part
       - "M\u1EA3nh gh\xE9p Ng\xF4i sao h\u1EE7y di\u1EC7t"
       Flags: 0000
       Languages_Touch: []
@@ -1378,7 +1446,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Pack Crystal 1
+      - Crystal Pack No.1
       - "G\xF3i Pha l\xEA 1"
       Flags: 0000
       Languages_Touch: []
@@ -1386,7 +1454,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Pack Crystal 2
+      - Crystal Pack No.2
       - "G\xF3i Pha l\xEA 2"
       Flags: 0000
       Languages_Touch: []
@@ -1394,7 +1462,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Pack Crystal 3
+      - Crystal Pack No.3
       - "G\xF3i Pha l\xEA 3"
       Flags: 0000
       Languages_Touch: []
@@ -1402,7 +1470,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Pack Crystal 4
+      - Crystal Pack No.4
       - "G\xF3i Pha l\xEA 4"
       Flags: 0000
       Languages_Touch: []
@@ -1410,7 +1478,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Pack Crystal 5
+      - Crystal Pack No.5
       - "G\xF3i Pha l\xEA 5"
       Flags: 0000
       Languages_Touch: []
@@ -1418,7 +1486,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Pack Crystal 6
+      - Crystal Pack No.6
       - "G\xF3i Pha l\xEA 6"
       Flags: 0000
       Languages_Touch: []
@@ -1426,7 +1494,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Pack Gold 1
+      - Gold Pack No.1
       - "G\xF3i Xu 1"
       Flags: 0000
       Languages_Touch: []
@@ -1434,7 +1502,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Pack Gold 2
+      - Pack Gold No.2
       - "G\xF3i Xu 2"
       Flags: 0000
       Languages_Touch: []
@@ -1442,7 +1510,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Pack Gold 3
+      - Pack Gold No.3
       - "G\xF3i Xu 3"
       Flags: 0000
       Languages_Touch: []
@@ -1450,7 +1518,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Pack Gold 4
+      - Pack Gold No.4
       - "G\xF3i Xu 4"
       Flags: 0000
       Languages_Touch: []
@@ -1458,7 +1526,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Pack Gold 5
+      - Pack Gold No.5
       - "G\xF3i Xu 5"
       Flags: 0000
       Languages_Touch: []
@@ -1466,7 +1534,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Pack Gold 6
+      - Pack Gold No.6
       - "G\xF3i Xu 6"
       Flags: 0000
       Languages_Touch: []
@@ -1474,7 +1542,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Best score
+      - Best Score
       - "\u0110i\u1EC3m cao nh\u1EA5t"
       Flags: 0000
       Languages_Touch: []
@@ -1522,8 +1590,8 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Congratulation you got
-      - "Ch\xFAc m\u1EEBng b\u1EA1n nh\u1EADn \u0111\u01B0\u1EE3c"
+      - Congratulations you got
+      - "Ch\xFAc m\u1EEBng b\u1EA1n \u0111\xE3 nh\u1EADn \u0111\u01B0\u1EE3c"
       Flags: 0000
       Languages_Touch: []
     - Term: ui/control
@@ -1578,7 +1646,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Gift Online
+      - Online Gifts
       - "Qu\xE0 online"
       Flags: 0000
       Languages_Touch: []
@@ -1586,8 +1654,8 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - HANDLE
-      - "Thao t\xE1c"
+      - SKILL
+      - "K\u1EF9 n\u0103ng"
       Flags: 0000
       Languages_Touch: []
     - Term: ui/hard
@@ -1682,7 +1750,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Notice
+      - Notification
       - "Th\xF4ng b\xE1o"
       Flags: 0000
       Languages_Touch: []
@@ -1706,7 +1774,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Rank
+      - Ranks
       - "X\u1EBFp h\u1EA1ng"
       Flags: 0000
       Languages_Touch: []
@@ -1722,7 +1790,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Reborn
+      - Resurrect
       - "H\u1ED3i sinh"
       Flags: 0000
       Languages_Touch: []
@@ -1754,7 +1822,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Daily Gift
+      - Daily Gifts
       - "Qu\xE0 h\u1EB1ng ng\xE0y"
       Flags: 0000
       Languages_Touch: []
@@ -1778,7 +1846,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Setting
+      - Settings
       - "C\xE0i \u0111\u1EB7t"
       Flags: 0000
       Languages_Touch: []
@@ -1874,7 +1942,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Vibrate
+      - Vibration
       - Rung
       Flags: 0000
       Languages_Touch: []
@@ -1894,86 +1962,16 @@ MonoBehaviour:
       - "C\xF3"
       Flags: 0000
       Languages_Touch: []
-    - Term: ui/CraftPlane6
-      TermType: 0
-      Description: 
-      Languages:
-      - Craft The Emperor of the Sands
-      - "M\u1EA3nh gh\xE9p Ho\xE0ng \u0111\u1EBF sa m\u1EA1c"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/require_skill
-      TermType: 0
-      Description: 
-      Languages:
-      - Require {0} level to unlock
-      - "Y\xEAu c\u1EA7u level {0} \u0111\u1EC3 m\u1EDF kh\xF3a"
-      Flags: 0000
-      Languages_Touch: []
     - Term: ui/gold_received
       TermType: 0
       Description: 
       Languages:
-      - 'recently receive {0}% gold.
+      - 'Currently gold received is {0}%.
 
-        [FFC300]need {1} stars to get 100% gold[-]'
-      - "Hi\u1EC7n t\u1EA1i nh\u1EADn \u0111\u01B0\u1EE3c {0}% v\xE0ng.\n[FFC300]C\u1EA7n
-        {1} sao \u0111\u1EC3 nh\u1EADn \u0111\u1EE7 100% v\xE0ng[-]"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/well_come
-      TermType: 0
-      Description: 
-      Languages:
-      - Welcome to Fighter Force
-      - "Ch\xE0o m\u1EEBng \u0111\u1EBFn v\u1EDBi Fighter Force"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/guide_fight_first
-      TermType: 0
-      Description: 
-      Languages:
-      - Press button FIGHT to play the first game
-      - "Ch\u1EA1m v\xE0o nut FIGHT \u0111\u1EC3 tr\u1EA3i nghi\u1EC7m m\xE0n ch\u01A1i
-        \u0111\u1EA7u ti\xEAn"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/unfortunately
-      TermType: 0
-      Description: 
-      Languages:
-      - Unfortunately
-      - "Th\u1EADt \u0111\xE1ng ti\u1EBFc"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/lose_first
-      TermType: 0
-      Description: 
-      Languages:
-      - Unfortunately when you lose the game. You can go to upgrade for more power
-        will help you pass the level easier
-      - "Th\u1EADt \u0111\xE1ng ti\u1EBFc khi kh\xF4ng th\u1EC3 v\u01B0\u1EE3t qua
-        m\xE0n ch\u01A1i b\u1EA1n c\xF3 th\u1EC3 n\xE2ng c\u1EA5p m\xE1y bay \u0111\u1EC3
-        c\xF3 th\u1EC3 qua m\xE0n ch\u01A1i d\u1EC5 d\xE0ng h\u01A1n"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/congratulation
-      TermType: 0
-      Description: 
-      Languages:
-      - Congratulation
-      - "Ch\xFAc m\u1EEBng"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: text/win_first
-      TermType: 0
-      Description: 
-      Languages:
-      - 'You seem to be very gifted in this game. You can also upgrade plane to be
-        able to play easier '
-      - "C\xF3 v\u1EBB b\u1EA1n r\u1EA5t c\xF3 khi\u1EBFu trong tr\xF2 ch\u01A1i n\xE0y.
-        B\u1EA1n c\xF2n c\xF3 th\u1EC3 n\xE2ng c\u1EA5p m\xE1y bay \u0111\u1EC3 c\xF3
-        th\u1EC3 qua m\xE0n ch\u01A1i d\u1EC5 d\xE0ng h\u01A1n "
+        Have enough {1} star to received 100% gold'
+      - 'Currently gold received is {0}%.
+
+        Have enough {1} star to received 100% gold'
       Flags: 0000
       Languages_Touch: []
     CaseInsensitiveTerms: 0
@@ -1991,7 +1989,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbx8Wa8N32JyZ5C4pYOJ3jF2_oE2-cIG5ljH845Z/exec
     Google_SpreadsheetKey: 1pkO-Gbk-Dc8oWvX3kBUU66aMqePyy6D93nsLx9wsiAQ
     Google_SpreadsheetName: I2Loc Fighter Force Localization
-    Google_LastUpdatedVersion: 1570351415534
+    Google_LastUpdatedVersion: 1570681560112
     Google_Password: lengochan
     GoogleUpdateFrequency: 0
     GoogleInEditorCheckFrequency: 0

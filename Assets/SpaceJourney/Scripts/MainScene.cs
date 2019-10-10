@@ -214,7 +214,7 @@ namespace EazyEngine.Space.UI
 
         public void test()
         {
-        
+            GameManager.Instance.isFree = false;
             GameManager.Instance.LoadLevel(GameManager.Instance.ChoosedLevel);
                 
         }

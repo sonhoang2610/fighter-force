@@ -214,6 +214,11 @@ namespace EazyEngine.Space.UI
                         selectedPlane.upgradeExtraAbility[pAbility._ability.itemID] = pListInt.ToArray();
                     }
                 }
+                int pStepGame = PlayerPrefs.GetInt("firstGame", 0);
+                if (pStepGame == 3)
+                {
+                    PlayerPrefs.SetInt("firstGame", 4);
+                }
 	            selectedPlane.CurrentLevel++;
                 selectedPlane.ExtraInfo();
                 effectUpgrade.gameObject.SetActive(true);
