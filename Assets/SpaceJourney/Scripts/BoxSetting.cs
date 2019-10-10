@@ -37,6 +37,8 @@ namespace EazyEngine.Space.UI
         public void replay()
         {
             GameManager.Instance.scehduleUI = ScheduleUIMain.GAME_IMEDIATELY;
+            GameManager.Instance.inGame = false;
+            GroupManager.clearCache();
             PlayerEnviroment.clear();
             Time.timeScale = 1;
             LevelManger.InstanceRaw = null;
@@ -47,6 +49,7 @@ namespace EazyEngine.Space.UI
         {
             PlayerEnviroment.clear();
             Time.timeScale = 1;
+            GroupManager.clearCache();
             GameManager.Instance.inGame = false;
             LevelManger.InstanceRaw = null;
             SceneManager.Instance.loadScene("Main");

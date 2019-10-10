@@ -36,6 +36,8 @@ public class MovingLeader : TimeControlBehavior
         completeAllandWait = false;
         stopRotation = true;
         setUpIndex = 0;
+        oldPos = Vector2.zero;
+        currentStep = 0;
     }
 
 
