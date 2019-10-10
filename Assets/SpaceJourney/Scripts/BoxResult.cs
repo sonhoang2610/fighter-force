@@ -81,12 +81,7 @@ namespace EazyEngine.Space.UI
                 GameManager.Instance.showBannerAds(true);
                 return;
             }
-            StartCoroutine(delayaction(3,delegate{
-                if (SceneManager.Instance.currentScene.StartsWith("Zone"))
-                {
-                    GameManager.Instance.showInterstitialAds();
-                }
-            }));
+       
           
             LevelManger.Instance.IsPlaying = false;
             GameManager.Instance.inGame = false;
@@ -126,7 +121,12 @@ namespace EazyEngine.Space.UI
             quantityDestroy.text = LevelManger.Instance._infoLevel.enemyKill.ToString();
         
             gameObject.SetActive(true);
-      
+            StartCoroutine(delayaction(3,delegate{
+                if (SceneManager.Instance.currentScene.StartsWith("Zone"))
+                {
+                    GameManager.Instance.showInterstitialAds();
+                }
+            }));
             if (pWin)
             {
                 if (!GameManager.Instance.isFree)
