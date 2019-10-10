@@ -124,8 +124,9 @@ namespace EazyEngine.Space.UI
                     }
                     else
                     {
-                        var pInfo =   new SupportPlaneInfoConfig() {info = (PlaneInfo)pItem, CurrentLevel = 0 };
-                        GameManager.Instance.Database.spPlanes.Add(pInfo);
+                        var pInfo =   new PlaneInfoConfig() {info = (PlaneInfo)pItem, currentLevel = 0 };
+                        pInfo.ExtraInfo();
+                        GameManager.Instance.Database.planes.Add(pInfo);
                         pInfos.Add(pInfo);
                     }
                 }
@@ -144,7 +145,8 @@ namespace EazyEngine.Space.UI
                     }
                     else
                     {
-                        var pInfo = new SupportPlaneInfoConfig() { info = (PlaneInfo)pItem, CurrentLevel = 0 };
+                        var pInfo = new SupportPlaneInfoConfig() { info = (PlaneInfo)pItem, currentLevel = 0 };
+                        pInfo.ExtraInfo();
                         GameManager.Instance.Database.spPlanes.Add(pInfo);
                         pInfos.Add(pInfo);
                     }
