@@ -58,7 +58,13 @@ namespace EazyEngine.Space.UI
                 GameManager.Instance.Database.lastPlayStage = new Pos(GameManager.Instance.Database.lastPlayStage.x + 1, GameManager.Instance.ChoosedHard);
             }
             Home();
-        }   
+        }
+
+        public IEnumerator delayaction(float pSec, System.Action pACtion)
+        {
+            yield return  new WaitForSeconds(pSec);
+            pACtion();
+        }
         public void showResult(bool pWin)
         {
             GameManager.Instance.lastResultWin = pWin ? 1 :0;
@@ -75,7 +81,13 @@ namespace EazyEngine.Space.UI
                 GameManager.Instance.showBannerAds(true);
                 return;
             }
-            GameManager.Instance.showInterstitialAds();
+            StartCoroutine(delayaction(3,delegate{
+                if (SceneManager.Instance.currentScene.StartsWith("Zone"))
+                {
+                    GameManager.Instance.showInterstitialAds();
+                }
+            }));
+          
             LevelManger.Instance.IsPlaying = false;
             GameManager.Instance.inGame = false;
             TimeKeeper.Instance.getTimer("Global").TimScale = 0;

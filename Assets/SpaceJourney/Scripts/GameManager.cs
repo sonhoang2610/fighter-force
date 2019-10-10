@@ -938,6 +938,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     // Successful purchase handler
     void PurchaseCompletedHandler(IAPProduct product)
     {
+        PlayerPrefs.SetInt("Purchase",1);
         // Compare product name to the generated name constants to determine which product was bought
         switch (product.Name)
         {
@@ -988,6 +989,8 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
 
     public void showBannerAds(bool pBool)
     {
+        int purchase = PlayerPrefs.GetInt("Purchase", 0);
+        if (purchase != 0) return;
         if (pBool)
         {
             Advertising.ShowBannerAd(BannerAdPosition.Bottom, BannerAdSize.Banner);
@@ -1045,7 +1048,12 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
 
     public void showInterstitialAds()
     {
-        Advertising.ShowInterstitialAd();
+        int purchase = PlayerPrefs.GetInt("Purchase", 0);
+        if (purchase == 0)
+        {
+            Advertising.ShowInterstitialAd();
+        }
+ 
     }
 
     public void OnEzEvent(GameDatabaseInventoryEvent eventType)
