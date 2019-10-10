@@ -135,11 +135,16 @@ namespace EazyEngine.Space {
         }
         public void ExtraInfo()
         {
-            info.setLevel(CurrentLevel);
+	        info.setLevel(CurrentLevel);
+
             for (int i = 0; i < info.skills.Count; ++i)
             {
-                info.skills[i].CurrentLevelSkill = upgradeSkill.ContainsKey(info.skills[i].info.itemID) ? upgradeSkill[info.skills[i].info.itemID] : (info.skills[i].isEnabled ? 1 : 0);
+
+                info.skills[i].CurrentLevelSkill = upgradeSkill.ContainsKey(info.skills[i].info.itemID)
+                    ? upgradeSkill[info.skills[i].info.itemID]
+                    : (info.skills[i].isEnabled ? 1 : 0);
             }
+
             for (int i = 0; i < info.currentAbility.Count; ++i)
             {
                 info.currentAbility[i].ExtraDamage = 0;
@@ -257,7 +262,8 @@ namespace EazyEngine.Space {
 #endif
         public UnitDefineLevel upgradeIncreaseRate;
         public void setLevel(int pLevel)
-        {
+	    {
+		    Debug.Log("check error level" + pLevel);
             upgradeRateCriticalConfig.setLevel(pLevel);
             upgradeIncreaseRate.setLevel(pLevel);
             for (int i = 0; i < currentAbility.Count; ++i)
@@ -266,7 +272,7 @@ namespace EazyEngine.Space {
             }
             for (int i = 0; i < skills.Count; ++i)
             {
-                skills[i].CurrentLevelPlane = pLevel;
+                skills[i].CurrentLevelPlaneOwner = pLevel;
             }
         }
     }

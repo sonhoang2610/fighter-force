@@ -61,11 +61,11 @@ namespace EazyEngine.Space.UI
             DataSource[index].info.LimitUpgrade = pItemShop.limitUpgrade;
             desChoosedSkill.text = DataSource[index].info.Info.Desc;
             layerAbleUpgradeSkill.gameObject.SetActive(true);
-            labelRequireLevel.gameObject.SetActive(false);
-            if (DataSource[index].info.CurrentLevelPlane <= 0 || DataSource[index].info.CurrentLevelSkill <= 0)
+	        labelRequireLevel.gameObject.SetActive(false);
+            if (DataSource[index].info.CurrentLevelPlaneOwner <= 0 || DataSource[index].info.CurrentLevelSkill <= 0)
             {
                 layerAbleUpgradeSkill.gameObject.SetActive(false);
-                if(DataSource[index].info.CurrentLevelPlane < owner.info.skills[index].requireLevelUnlock)
+                if(DataSource[index].info.CurrentLevelPlaneOwner < owner.info.skills[index].requireLevelUnlock)
                 {
                     labelRequireLevel.gameObject.SetActive(true);
                     labelRequireLevel.text = string.Format(I2.Loc.LocalizationManager.GetTranslation("text/require_skill"), owner.info.skills[index].requireLevelUnlock);

@@ -538,7 +538,8 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         }
         else
         {
-            _databaseInstanced = _databaseDefault.CloneData();
+	        _databaseInstanced = _databaseDefault.CloneData();
+	        _databaseInstanced.ExtraInfo();
             SaveGame();
         }
 

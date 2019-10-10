@@ -26,6 +26,7 @@ namespace EazyEngine.Space.UI
         }
         public void showInfo(int pLevel,int pHard)
         {
+            Debug.Log(("layer prepare"));
             var pdrop = GameDatabase.Instance.dropMonyeconfig[pLevel - 1][pHard];
             int pStarNotEngough = pdrop.requireStar - GameManager.Instance.Database.getComonItem("Star").Quantity;
             float percent = 1 - (pStarNotEngough <= 0 ? 0 : (pStarNotEngough * 0.2f > 0.6f ? 0.6f : pStarNotEngough * 0.2f));

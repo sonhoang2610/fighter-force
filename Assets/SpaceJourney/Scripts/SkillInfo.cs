@@ -114,49 +114,33 @@ namespace EazyEngine.Space
         protected int limitUpgradeFromOut = 999;
         
         [System.NonSerialized]
-        protected int currentLevelPlane;
+        protected int currentLevelPlaneOwner = 0;
 
-        public int CurrentLevelPlane
+        public int CurrentLevelPlaneOwner
         {
             set
             {
-                currentLevelPlane = value;
-            }
+                Debug.Log("ezlevel Plane " + value + "id" + info.itemID);
+                currentLevelPlaneOwner = value;
+            } 
 
-            get
-            {
-                return currentLevelPlane;
-            }
+            get => currentLevelPlaneOwner;
         }
 
-        public bool isEnabled
-        {
-            get
-            {
-                return currentLevelPlane >= requireLevelUnlock;
-            }
-        }
+        public bool isEnabled => currentLevelPlaneOwner >= requireLevelUnlock;
+
         public int CurrentLevelSkill
         {
-            set
-            {
-                Info.CurrentLevel = value;
-            }
-            get
-            {
-                return Info.CurrentLevel;
-            }
+            set => Info.CurrentLevel = value;
+            get => Info.CurrentLevel;
         }
         public SkillInfo Info
         {
-            get
-            {
-                //   for(int i = 0; i < )
-                return info;
-            }
+            get => info;
             set => info = value;
         }
 
-        public int LimitUpgrade { get { return Mathf.Min(limitUpgrade, limitUpgradeFromOut); }  set => limitUpgradeFromOut = value; }
+        public int LimitUpgrade { get => Mathf.Min(limitUpgrade, limitUpgradeFromOut);
+            set => limitUpgradeFromOut = value; }
     }
 }

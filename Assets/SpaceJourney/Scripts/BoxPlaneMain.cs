@@ -130,7 +130,8 @@ namespace EazyEngine.Space.UI
                 var pInfoConfig = GameManager.Instance.Database.getPlane(pInfos[i].itemID);
                 if (pInfoConfig == null)
                 {
-                    pInfoConfig = new PlaneInfoConfig() { Info = pInfos[i], CurrentLevel = 0 };
+                    pInfoConfig = new PlaneInfoConfig() { Info = pInfos[i], currentLevel = 0 };
+                    pInfoConfig.ExtraInfo();
                 }
                 if (pInfoConfig != null)
                 {

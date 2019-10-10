@@ -25,12 +25,17 @@ namespace EazyEngine.Space.UI
         protected List<BoxBasePlane> selectedBoxPlane = new List<BoxBasePlane>();
         public EazyGroupTabNGUI chooseHardMode;
         public UILabel desItemSp;
+        public LayerPrepare layerPrepare;
         protected PlaneInfoConfig selectedPlane;
 
         protected List<string> stateGames = new List<string>();
         protected override void Awake()
         {
             base.Awake();
+            if (layerPrepare)
+            {
+                layerPrepare.showInfo(0,0);
+            }
             stateGames.Add("Main");
             if ( GameManager.Instance.Database.lastOnline.Date != System.DateTime.Now.Date && GameManager.Instance.wincount == 1)
             {
