@@ -12,7 +12,6 @@ public class ObservableListGroupElement : ObservableList<GroupElement>
 {
 
 }
-
 public class MovingLeader : TimeControlBehavior
 {
 
@@ -35,6 +34,8 @@ public class MovingLeader : TimeControlBehavior
     private void OnEnable()
     {
         completeAllandWait = false;
+        stopRotation = true;
+        setUpIndex = 0;
     }
 
 

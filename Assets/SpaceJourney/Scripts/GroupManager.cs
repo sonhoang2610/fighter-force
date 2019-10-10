@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
@@ -79,6 +80,8 @@ namespace EazyEngine.Space
             }
             return myEnum;
         }
+        
+        public static List<MovingLeader> leaders = new List<MovingLeader>();
         public void initMove(GameObject[][] pEnemiesLoaded)
         {
             LevelState pState = _parentState;
@@ -88,14 +91,25 @@ namespace EazyEngine.Space
             //arrayPos = arrayPos.convertAfterRotation(Vector2.zero, pDegree);
             for (int j = 0; j < pEnemiesLoaded.Length; ++j)
             {
+                
+                MovingLeader pLeader =  leaders.Find(x => !x.gameObject.activeSelf);
                 GameObject pMainLeaderObject = null;
-                MovingLeader pLeader = null;
                 if (!pState.isManual)
                 {
-                    pMainLeaderObject = new GameObject();
-                    var pTime = pMainLeaderObject.AddComponent<TimeControllerElement>();
-                    pTime._groupName = TimeKeeper.Instance.getTimeLineIndex("Enemies") + 1;
-                    pLeader = pMainLeaderObject.AddComponent<MovingLeader>();
+                    if (!pLeader)
+                    {
+                        pMainLeaderObject = new GameObject();
+                        var pTime = pMainLeaderObject.AddComponent<TimeControllerElement>();
+                        pTime._groupName = TimeKeeper.Instance.getTimeLineIndex("Enemies") + 1;
+                        pLeader = pMainLeaderObject.AddComponent<MovingLeader>();
+                        leaders.Add(pLeader);
+                    }
+                    else
+                    {
+                        pMainLeaderObject = pLeader.gameObject;
+                        pMainLeaderObject.gameObject.SetActive(true);
+                    }
+             
                 }
                 else
                 {
@@ -244,6 +258,9 @@ namespace EazyEngine.Space
             }
   
         }
+
+        
+
         public void detachElement(GroupElement pElement)
         {
             countDetach++;
@@ -297,6 +314,11 @@ namespace EazyEngine.Space
         private void OnDisable()
         {
             EzEventManager.RemoveListener(this);
+            foreach (var pElement in leaderGroup)
+            {
+                pElement.leader.gameObject.SetActive(false);
+                pElement.leader.transform.parent = null;
+            }
         }
         public void onComplete(MovingLeader pLeader)
         {
@@ -315,6 +337,8 @@ namespace EazyEngine.Space
                         pChar.changeState(StateCharacter.Death);
                     }
                 }
+                pLeader.gameObject.SetActive(false);
+                pLeader.transform.parent = null;
             }
 
             _parentState.TotalComplete += pCount;

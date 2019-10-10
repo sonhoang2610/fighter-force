@@ -157,7 +157,7 @@ namespace EazyEngine.Space
         public void OnEzEvent(DamageTakenEvent eventType)
         {
             if (eventType.AffectedCharacter == null) return;
-            if(eventType.CurrentHealth <= 0 && eventType.Instigator == CurrentPlayer.gameObject)
+            if(eventType.CurrentHealth <= 0 && eventType.Instigator == CurrentPlayer.gameObject && eventType.AffectedCharacter.mainInfo != null)
             {
                 _infoLevel.score += eventType.AffectedCharacter.mainInfo.score;
             }
