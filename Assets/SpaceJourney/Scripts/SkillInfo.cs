@@ -120,7 +120,6 @@ namespace EazyEngine.Space
         {
             set
             {
-                Debug.Log("ezlevel Plane " + value + "id" + info.itemID);
                 currentLevelPlaneOwner = value;
             } 
 

@@ -455,6 +455,7 @@ namespace EazyEngine.Space
             }else if (eventType._message.StartsWith("ChangeBooster") && (GameObject)eventType._objects[0] == CurrentPlayer.gameObject)
             {
                 GUIManager.Instance.setBarBooster((int)eventType._objects[1]);
+                TimeKeeper.Instance.getTimer("Map").TimScale = 1 + (int) eventType._objects[1] * 0.1f;
             }
         }
 

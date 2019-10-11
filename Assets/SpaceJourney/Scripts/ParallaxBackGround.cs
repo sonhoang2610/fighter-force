@@ -55,7 +55,7 @@ namespace EazyEngine.Space
             }
         }
     }
-    public class ParallaxBackGround : MonoBehaviour
+    public class ParallaxBackGround : TimeControlBehavior
     {
 
         public ParrallaxInfo[] infos;
@@ -124,7 +124,7 @@ namespace EazyEngine.Space
         {
             for (int j = 0; j < infos.Length; j++)
             {
-                infos[j].currentPercent -= infos[j].currentSpeedPercent * Time.deltaTime;
+                infos[j].currentPercent -= infos[j].currentSpeedPercent * time.deltaTime;
                 if (infos[j].currentPercent < 0)
                 {
                     infos[j].currentPercent += 1;

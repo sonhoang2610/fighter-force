@@ -846,17 +846,16 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     }
     public void initIAPSuccess()
     {
-        Debug.Log("IAP Init Success");
         var pIAPSetting = LoadAssets.loadAsset<IAPSetting>("IAPSetting", "Variants/Database/");
         var products = pIAPSetting.items;
         foreach (var product in products)
         {
             ProductMetadata data = InAppPurchasing.GetProductLocalizedData(product.Id.ToLower());
             {
-                Debug.Log("IAP Init Success" + product.Id.ToLower());
+                
                 if (data != null)
                 {
-                    Debug.Log("IAP Init Success" + data.localizedPriceString);
+                  
                     product.Price = data.localizedPriceString;
                     product.isLoadLocalize = true;
                 }

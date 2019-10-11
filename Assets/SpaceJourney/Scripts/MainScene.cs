@@ -15,11 +15,10 @@ namespace EazyEngine.Space.UI
     
         public BoxInfoPlane boxInfo;
         public UIElement boxSetting;
-        public BoxDailyGift boxdailyGift;
         public ItemStorageRequire requireUnlock;
         public UIButton btnUnlock, btnFreePlay;
-        public GameObject boxRank;
         public UIButton btnFight;
+        public GameObject boxRank;
         public UILabel nameUser,idUser;
         public GameObject block;
         protected List<BoxBasePlane> selectedBoxPlane = new List<BoxBasePlane>();
@@ -51,7 +50,7 @@ namespace EazyEngine.Space.UI
                 {
                     int pStepGame = PlayerPrefs.GetInt("firstGame", 0);
                     if (pStepGame <2) return;
-                    boxdailyGift.GetComponent<UIElement>().show();
+                    MidLayer.Instance.boxDailyGift.GetComponent<UIElement>().show();
                 }
       
         }
@@ -164,6 +163,25 @@ namespace EazyEngine.Space.UI
         public void showBoxSetting()
         {
             boxSetting.show();
+        }
+
+        public void showBoxLucky()
+        {
+            MidLayer.Instance.boxLucky.show();
+        }
+
+        public void showBoxOnline()
+        {
+            MidLayer.Instance.BoxGiftOnline.show();
+        }
+        public void showBoxRankServer()
+        {
+            MidLayer.Instance.BoxRank.show();
+        }
+
+        public void showBoxShop()
+        {
+            MidLayer.Instance.boxShop.show();
         }
         public void setDataMainPlane(PlaneInfoConfig pInfo)
         {

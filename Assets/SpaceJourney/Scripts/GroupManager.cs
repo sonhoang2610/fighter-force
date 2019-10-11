@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
@@ -43,12 +44,17 @@ namespace EazyEngine.Space
 
         protected bool completeAndWating = false;
         protected int countDetach  = 0;
+        int indexQueue = 0;
         public LevelState ParentState
         {
             set
             {
                 _parentState = value;
                 indexQueue = 0;
+                countDetach = 0;
+                currentStep = 0;
+                elements.Clear();
+                leaderGroup.Clear();
                 initMove(initState());          
                 initLoot();
             }
@@ -65,7 +71,7 @@ namespace EazyEngine.Space
         {
             return isManual || Application.isPlaying;
         }
-        int indexQueue = 0;
+   
         public GameObject randomInFlagEnemy(GameObject[] pEnemyType, TypeSpawn typeSpawn,bool isFirst)
         {
             if (isFirst && typeSpawn == TypeSpawn.RandomForAll)
@@ -79,6 +85,9 @@ namespace EazyEngine.Space
             }
             return myEnum;
         }
+        
+        public static List<MovingLeader> leaders = new List<MovingLeader>();
+        public static List<GroupManager> managers = new List<GroupManager>();
         public void initMove(GameObject[][] pEnemiesLoaded)
         {
             LevelState pState = _parentState;
@@ -88,20 +97,33 @@ namespace EazyEngine.Space
             //arrayPos = arrayPos.convertAfterRotation(Vector2.zero, pDegree);
             for (int j = 0; j < pEnemiesLoaded.Length; ++j)
             {
+                
+                MovingLeader pLeader =  leaders.Find(x => !x.gameObject.activeSelf);
                 GameObject pMainLeaderObject = null;
-                MovingLeader pLeader = null;
                 if (!pState.isManual)
                 {
-                    pMainLeaderObject = new GameObject();
-                    var pTime = pMainLeaderObject.AddComponent<TimeControllerElement>();
-                    pTime._groupName = TimeKeeper.Instance.getTimeLineIndex("Enemies") + 1;
-                    pLeader = pMainLeaderObject.AddComponent<MovingLeader>();
+                    if (!pLeader)
+                    {
+                        pMainLeaderObject = new GameObject();
+                        var pTime = pMainLeaderObject.AddComponent<TimeControllerElement>();
+                        pTime._groupName = TimeKeeper.Instance.getTimeLineIndex("Enemies") + 1;
+                        pLeader = pMainLeaderObject.AddComponent<MovingLeader>();
+                        leaders.Add(pLeader);
+                    }
+                    else
+                    {
+                        pMainLeaderObject = pLeader.gameObject;
+                        pMainLeaderObject.gameObject.SetActive(true);
+                    }
+             
                 }
                 else
                 {
                     pMainLeaderObject = leaderGroup[j].leader.gameObject;
                     pLeader = pMainLeaderObject.GetComponent<MovingLeader>();
                 }
+
+                pMainLeaderObject.name = "leader";
                 pMainLeaderObject.transform.parent = transform;
                 pMainLeaderObject.transform.RotationDirect2D(pState.formatInfo.directionStart, TranformExtension.FacingDirection.DOWN);
                 pLeader._manager = this;
@@ -244,6 +266,9 @@ namespace EazyEngine.Space
             }
   
         }
+
+        
+
         public void detachElement(GroupElement pElement)
         {
             countDetach++;
@@ -252,7 +277,8 @@ namespace EazyEngine.Space
                 if(countDetach >= elements.Count)
                 {
                     _parentState.onCompleteState.Invoke();
-                    Destroy(gameObject);
+                    detachAllChild();
+                    gameObject.SetActive(false);
                 }
                 return;
             }
@@ -296,7 +322,22 @@ namespace EazyEngine.Space
         }
         private void OnDisable()
         {
+            if (!GameManager.Instance.inGame) return;
             EzEventManager.RemoveListener(this);
+        
+        }
+
+        public void detachAllChild()
+        {
+            foreach (var pElement in leaderGroup)
+            {
+                if (pElement.leader.gameObject.activeSelf)
+                {
+                    pElement.leader.transform.parent = null;
+                }
+                pElement.leader.gameObject.SetActive(false);
+           
+            }
         }
         public void onComplete(MovingLeader pLeader)
         {
@@ -315,6 +356,7 @@ namespace EazyEngine.Space
                         pChar.changeState(StateCharacter.Death);
                     }
                 }
+      
             }
 
             _parentState.TotalComplete += pCount;
@@ -329,7 +371,8 @@ namespace EazyEngine.Space
                     if (_parentState._completeAction == CompleteAction.DestroyLeft)
                     {
                         _parentState.onCompleteState.Invoke();
-                        Destroy(gameObject);
+                        detachAllChild();
+                        gameObject.SetActive(false);
                     
                     }
                     else {
@@ -337,6 +380,13 @@ namespace EazyEngine.Space
                     }
                 }
             }
+        }
+
+        public static void clearCache()
+        {
+            leaders.Clear();
+            managers.Clear();
+            SoundManager.PoolInGameAudios.Clear();
         }
     }
 }

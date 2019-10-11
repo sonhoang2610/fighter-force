@@ -263,7 +263,6 @@ namespace EazyEngine.Space {
         public UnitDefineLevel upgradeIncreaseRate;
         public void setLevel(int pLevel)
 	    {
-		    Debug.Log("check error level" + pLevel);
             upgradeRateCriticalConfig.setLevel(pLevel);
             upgradeIncreaseRate.setLevel(pLevel);
             for (int i = 0; i < currentAbility.Count; ++i)

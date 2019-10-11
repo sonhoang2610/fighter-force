@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using EazyEngine.Space;
 using UnityEngine;
 using EazyEngine.Tools;
 
@@ -31,6 +32,8 @@ public class SoundManager : PersistentSingleton<SoundManager>
     public float SfxVolume = 1f;
 
     public AudioSource _backgroundMusic;
+    public static List<AudioSource> PoolInGameAudios = new List<AudioSource>();
+    protected GameObject parrentSound;
     protected override void Awake()
     {
         base.Awake();
@@ -63,11 +66,7 @@ public class SoundManager : PersistentSingleton<SoundManager>
 
         set
         {
-            bool isChange = false;
-            if (musicOn != value)
-            {
-                isChange = true;
-            }
+            bool isChange = musicOn != value;
             musicOn = value;
             PlayerPrefs.SetInt("Music", musicOn ? 1 : 0);
             if (isChange)
@@ -134,14 +133,34 @@ public class SoundManager : PersistentSingleton<SoundManager>
     {
         if (!SfxOn || !sfx)
             return null;
-        // we create a temporary game object to host our audio source
-        GameObject temporaryAudioHost = new GameObject(sfx.name);
-        // we set the temp audio's position
-        temporaryAudioHost.transform.position = location;
-        // we add an audio source to that host
-        AudioSource audioSource = temporaryAudioHost.AddComponent<AudioSource>() as AudioSource;
-        // we set that audio source clip to the one in paramaters
-        audioSource.clip = sfx;
+        if (LevelManger.InstanceRaw && !LevelManger.Instance.IsMatching)
+        {
+            return null;
+        }
+
+        if (!parrentSound)
+        {
+            parrentSound = new GameObject();
+            parrentSound.name = "Sound";
+        }
+        AudioSource audioSource = PoolInGameAudios.Find(x => (!x.gameObject.activeSelf && x.clip == sfx));
+        if (!audioSource)
+        {
+            // we create a temporary game object to host our audio source
+            GameObject temporaryAudioHost = new GameObject(sfx.name);
+            temporaryAudioHost.transform.parent = parrentSound.transform;
+            // we set the temp audio's position
+            temporaryAudioHost.transform.position = location;
+            // we add an audio source to that host
+            audioSource = temporaryAudioHost.AddComponent<AudioSource>() as AudioSource;
+            // we set that audio source clip to the one in paramaters
+            audioSource.clip = sfx;
+            if (!loop)
+            {
+                PoolInGameAudios.Add(audioSource);
+            }
+        }
+        audioSource.gameObject.SetActive(true);
         // we set the audio source volume to the one in parameters
         audioSource.volume = SfxVolume;
         // we set our loop setting
@@ -151,14 +170,19 @@ public class SoundManager : PersistentSingleton<SoundManager>
 
         if (!loop)
         {
-            // we destroy the host after the clip has played
-            Destroy(temporaryAudioHost, sfx.length);
+            StartCoroutine(delayAction(sfx.length, delegate
+            {
+                if (GameManager.Instance.inGame)
+                {
+                    audioSource.gameObject.SetActive(false);
+                }
+            }));
         }
 
         // we return the audiosource reference
         return audioSource;
     }
-    public IEnumerator delayAction(float pDelay , System.Action pAction)
+    private IEnumerator delayAction(float pDelay , System.Action pAction)
     {
         yield return new WaitForSeconds(pDelay);
         pAction();
