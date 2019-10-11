@@ -31,7 +31,6 @@ public class TimeControlBehavior : MonoBehaviour
             {
                 return _time;
             }
-         
             if (_time == null)
             {
                 _time = gameObject.AddComponent<TimeControllerElement>();

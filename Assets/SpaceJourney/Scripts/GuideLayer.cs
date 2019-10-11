@@ -70,7 +70,8 @@ namespace EazyEngine.Space.UI
                     pNewObject.transform.position = hole.transform.position;
                     cacheButton = pNewObject;
                     pNewObject.AddComponent<BoxCollider>(pCollider);
-                    pNewObject.AddComponent<UIWidget>();
+                    var pWidget = pNewObject.AddComponent<UIWidget>();
+                    pWidget.depth = 10;
                     var pButtonNew = pNewObject.AddComponent<UIButton>(pButton);
                     if (pExcute != null)
                     {

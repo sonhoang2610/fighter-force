@@ -99,6 +99,7 @@ public class SoundManager : PersistentSingleton<SoundManager>
     /// <param name="Clip">Your audio clip.</param>
     public virtual void PlayBackgroundMusic(AudioSource Music)
     {
+        if (_backgroundMusic != null && Music.clip == _backgroundMusic.clip) return;
         // if the music's been turned off, we do nothing and exit
         if (!sfxOn)
             return;
