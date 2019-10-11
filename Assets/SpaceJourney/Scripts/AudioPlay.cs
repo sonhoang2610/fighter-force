@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class AudioPlay : MonoBehaviour {
     [SerializeField]
     AudioClip[] audios;
@@ -16,6 +18,8 @@ public class AudioPlay : MonoBehaviour {
     [SerializeField]
     float delay = 0;
     protected List<AudioSource> cacheAudios = new List<AudioSource>();
+    
+    
     public void pauseBackGroundMusic()
     {
         backGroundMusic.Pause();

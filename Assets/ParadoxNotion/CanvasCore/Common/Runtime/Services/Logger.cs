@@ -124,7 +124,7 @@ namespace ParadoxNotion.Services
             if ( message is System.Exception ) {
                 Debug.unityLogger.LogException((System.Exception)message);
             } else {
-                Debug.unityLogger.Log(type, tag, message, context as UnityEngine.Object);
+//                Debug.unityLogger.Log(type, tag, message, context as UnityEngine.Object);
             }
 #else
 			if (message is System.Exception){

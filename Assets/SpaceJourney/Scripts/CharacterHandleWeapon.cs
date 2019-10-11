@@ -891,6 +891,12 @@ namespace EazyEngine.Space
         }
         protected int cacheLevelBooster;
         protected bool isSupering = false;
+
+        public bool IsSuper
+        {
+            get { return isSupering; }
+            set { isSupering = value; }
+        }
         private void LateUpdate()
         {
             if (isSupering)

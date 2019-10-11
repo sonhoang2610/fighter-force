@@ -134,7 +134,7 @@ namespace NodeCanvas.Framework.Internal
 
             Variable variable;
             if ( !variables.TryGetValue(varName, out variable) ) {
-                Debug.Log(string.Format("<b>Blackboard:</b> No Variable of name '{0}' and type '{1}' exists on Blackboard '{2}'. Adding new instead...", varName, value != null ? value.GetType().FriendlyName() : "null", this.name));
+               // Debug.Log(string.Format("<b>Blackboard:</b> No Variable of name '{0}' and type '{1}' exists on Blackboard '{2}'. Adding new instead...", varName, value != null ? value.GetType().FriendlyName() : "null", this.name));
                 variable = AddVariable(varName, value);
                 variable.isProtected = true;
                 return variable;

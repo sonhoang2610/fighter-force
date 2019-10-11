@@ -20,6 +20,27 @@ namespace EazyEngine.Space
         {
             for(int i = 0; i < itemDropOnDeath.Count; ++i)
             {
+                if (itemDropOnDeath[i].idItem == "Booster")
+                {
+                    if (LevelManger.Instance.players[0].handleWeapon.CacheLevelBooster >= 5)
+                    {
+                        continue;
+                    }
+                }
+                if (itemDropOnDeath[i].idItem == "Booster6")
+                {
+                    if (LevelManger.Instance.players[0].handleWeapon.IsSuper)
+                    {
+                        continue;
+                    }
+                }
+                if (itemDropOnDeath[i].idItem == "Shield")
+                {
+                    if (LevelManger.Instance.players[0]._health.invulnerable)
+                    {
+                        continue;
+                    }
+                }
                var pObjectItem =  ItemEnviroment.Instance.getItem(itemDropOnDeath[i].gameObject);
                 pObjectItem.GetComponent<CoinEffControl>().SetInfo(transform.position);
                 pObjectItem.gameObject.SetActive(true);

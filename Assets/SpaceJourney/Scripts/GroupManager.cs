@@ -386,6 +386,7 @@ namespace EazyEngine.Space
         {
             leaders.Clear();
             managers.Clear();
+            SoundManager.PoolInGameAudios.Clear();
         }
     }
 }

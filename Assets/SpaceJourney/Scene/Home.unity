@@ -1540,7 +1540,7 @@ MonoBehaviour:
   onComplete:
     m_PersistentCalls:
       m_Calls: []
-  isLocal: 0
+  isLocal: 1
   currentScene: 
 --- !u!114 &1588093830
 MonoBehaviour:
@@ -1901,6 +1901,7 @@ GameObject:
   - component: {fileID: 6136843689317965652}
   - component: {fileID: 6136843689317965653}
   - component: {fileID: 6136843689317965650}
+  - component: {fileID: 6136843689317965649}
   m_Layer: 0
   m_Name: Time
   m_TagString: Untagged
@@ -1908,6 +1909,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6136843689317965649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6136843689317965648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c5d854c8d7d41a478115be0b70164dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameGroup: Map
+  _parent: 1
+  timScale: 1
 --- !u!114 &6136843689317965650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1983,3 +1999,4 @@ MonoBehaviour:
   - {fileID: 6136843689317965652}
   - {fileID: 6136843689317965653}
   - {fileID: 6136843689317965650}
+  - {fileID: 6136843689317965649}
