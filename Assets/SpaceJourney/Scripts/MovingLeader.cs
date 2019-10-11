@@ -35,6 +35,9 @@ public class MovingLeader : TimeControlBehavior
     private void OnEnable()
     {
         completeAllandWait = false;
+        setUpIndex = 0;
+        stopRotation = true;
+        currentStep = 0;
     }
 
 
