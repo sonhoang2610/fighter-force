@@ -606,9 +606,21 @@ public class LevelStateManager : Singleton<LevelStateManager>, EzEventListener<B
     {
         if (!pState.isManual)
         {
-            GameObject pMainLeaderObject = new GameObject();
-            GroupManager pLeader = pMainLeaderObject.AddComponent<GroupManager>();
-            pLeader.ParentState = pState;
+            GroupManager pLeader = GroupManager.managers.Find(x => !x.gameObject.activeSelf);
+            if (!pLeader)
+            {
+                GameObject pMainLeaderObject = new GameObject();
+                pLeader = pMainLeaderObject.AddComponent<GroupManager>();
+                pLeader.ParentState = pState;
+                pMainLeaderObject.name = "manager";
+                GroupManager.managers.Add(pLeader);
+            }
+            else
+            {
+                pLeader.gameObject.SetActive((true));
+                pLeader.ParentState = pState;
+            }
+     
         }
         else
         {
@@ -617,7 +629,6 @@ public class LevelStateManager : Singleton<LevelStateManager>, EzEventListener<B
             pMainLeaderObject.SetActive(true);
             pMainLeaderObject.GetComponent< GroupManager>().ParentState = pState;
         }
-      
     }
 
     public void DeBugString(string pStr)

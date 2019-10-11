@@ -157,7 +157,7 @@ namespace EazyEngine.Space
         public void OnEzEvent(DamageTakenEvent eventType)
         {
             if (eventType.AffectedCharacter == null) return;
-            if(eventType.CurrentHealth <= 0 && eventType.Instigator == CurrentPlayer.gameObject)
+            if(eventType.CurrentHealth <= 0 && eventType.Instigator == CurrentPlayer.gameObject && eventType.AffectedCharacter.mainInfo != null)
             {
                 _infoLevel.score += eventType.AffectedCharacter.mainInfo.score;
             }
@@ -236,6 +236,26 @@ namespace EazyEngine.Space
         protected override void Awake()
         {
             base.Awake();
+            for (int i = 0; i < 24; i++)
+            {
+                var pMainLeaderObject = new GameObject();
+                var pTime = pMainLeaderObject.AddComponent<TimeControllerElement>();
+                pTime._groupName = TimeKeeper.Instance.getTimeLineIndex("Enemies") + 1;
+                var pLeader = pMainLeaderObject.AddComponent<MovingLeader>();
+                GroupManager.leaders.Add(pLeader);
+                 pMainLeaderObject.SetActive(false);
+                 pMainLeaderObject.name = "leader";
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                var pMainLeaderObject = new GameObject();
+                var pTime = pMainLeaderObject.AddComponent<TimeControllerElement>();
+                pTime._groupName = TimeKeeper.Instance.getTimeLineIndex("Enemies") + 1;
+                var pManager = pMainLeaderObject.AddComponent<GroupManager>();
+                GroupManager.managers.Add(pManager);
+                pMainLeaderObject.SetActive(false);
+                pMainLeaderObject.name = "manager";
+            }
             cacheVolum = AudioListener.volume;
             AudioListener.volume = 0;
             GameManager.Instance.backgroundStage[GameManager.Instance.ChoosedHard].gameObject.SetActive(true);
