@@ -15,6 +15,23 @@ namespace EazyEngine.Space
     {
         public WeaponIntanceAttachMent[] dataWeapons;
         public List<Weapon> weapons = new List<Weapon>();
+
+        public override Character Owner {      
+            get
+            {
+                return base.Owner;
+            }
+
+            set
+            {
+                base.Owner = value;
+                for (int i = 0; i < weapons.Count; ++i)
+                {
+                    weapons[i].Owner = value;
+                }
+            }
+        }
+
         public override int FixDamage { get => base.FixDamage; set {
                 for (int i = 0; i < weapons.Count; ++i)
                 {
@@ -155,6 +172,10 @@ namespace EazyEngine.Space
                 weapons[i].init();
                 weapons[i].WeaponParrent = this;
                 weapons[i].BlockState = true;
+                if (Owner)
+                {
+                     weapons[i].Owner = Owner;
+                }
                 weapons[i].initDone();
             }
             for(int i = 0; i < dataWeapons.Length; ++i)
@@ -164,7 +185,12 @@ namespace EazyEngine.Space
                 pweaon.init();
                 pweaon.WeaponParrent = this;
                 pweaon.BlockState = true;
+                if (Owner)
+                {
+                    pweaon.Owner = Owner;
+                }
                 pweaon.initDone();
+              
             }
         }
         
