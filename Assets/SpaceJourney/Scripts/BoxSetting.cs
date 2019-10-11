@@ -38,6 +38,7 @@ namespace EazyEngine.Space.UI
         {
             GameManager.Instance.scehduleUI = ScheduleUIMain.GAME_IMEDIATELY;
             PlayerEnviroment.clear();
+            GroupManager.clearCache();
             Time.timeScale = 1;
             LevelManger.InstanceRaw = null;
             SceneManager.Instance.loadScene("Main");
@@ -46,6 +47,7 @@ namespace EazyEngine.Space.UI
         public void Home()
         {
             PlayerEnviroment.clear();
+            GroupManager.clearCache();
             Time.timeScale = 1;
             GameManager.Instance.inGame = false;
             LevelManger.InstanceRaw = null;

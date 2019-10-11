@@ -274,11 +274,13 @@ namespace EazyEngine.Space.UI
         }
         private void OnDisable()
         {
+            GroupManager.clearCache();
             TimeKeeper.Instance.getTimer("Global").TimScale = 1;
             GameManager.Instance.showBannerAds(false);
         }
         public void Home()
         {
+            GroupManager.clearCache();
             PlayerEnviroment.clear();
             TimeKeeper.Instance.getTimer("Global").TimScale = 1;
             LevelManger.InstanceRaw = null;
@@ -294,6 +296,7 @@ namespace EazyEngine.Space.UI
             }
             GameManager.Instance.scehduleUI = ScheduleUIMain.GAME_IMEDIATELY;
             PlayerEnviroment.clear();
+            GroupManager.clearCache();
             TimeKeeper.Instance.getTimer("Global").TimScale = 1;
             LevelManger.InstanceRaw = null;
             SceneManager.Instance.loadScene("Main");
@@ -308,6 +311,7 @@ namespace EazyEngine.Space.UI
             }
             GameManager.Instance.scehduleUI = ScheduleUIMain.UPGRADE;
             PlayerEnviroment.clear();
+            GroupManager.clearCache();
             TimeKeeper.Instance.getTimer("Global").TimScale = 1;
             LevelManger.InstanceRaw = null;
             SceneManager.Instance.loadScene("Main");
