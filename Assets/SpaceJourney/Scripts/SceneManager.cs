@@ -28,7 +28,7 @@ namespace EazyEngine.Space
         AsyncOperation async;
         bool isStart = false;
         public string currentScene;
-        public Dictionary<string, AssetBundle> BUNDLES = new Dictionary<string, AssetBundle>();
+        public static Dictionary<string, AssetBundle> BUNDLES = new Dictionary<string, AssetBundle>();
 
 
 

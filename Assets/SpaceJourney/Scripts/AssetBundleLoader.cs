@@ -1,6 +1,8 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 // AssetBundle cache checker & loader with caching
 // worsk by loading .manifest file from server and parsing hash string from it
@@ -11,8 +13,7 @@ namespace EazyEngine.Tools
     {
         public AssetBundle result;
         public UnityWebRequest www;
-
-
+        public static Dictionary<string, AssetBundle> BUNDLES = new Dictionary<string, AssetBundle>();
         /// <summary>
         /// load assetbundle manifest, check hash, load actual bundle with hash parameter to use caching
         /// instantiate gameobject
@@ -27,28 +28,23 @@ namespace EazyEngine.Tools
             {
                 yield return null;
             }
-
             // if you want to always load from server, can clear cache first
             //        Caching.CleanCache();
 
             // get current bundle hash from server, random value added to avoid caching
           www = UnityWebRequest.Get(bundleURL+ assetName + ".manifest?r=" + (Random.value * 9999999));
-            Debug.Log("Loading manifest:" + bundleURL+ assetName + ".manifest");
 
             // wait for load to finish
             yield return www.SendWebRequest();
-
+            Hash128 hashString = (default(Hash128));// new Hash128(0, 0, 0, 0);
             // if received error, exit
             if (www.isNetworkError == true)
             {
-                Debug.LogError("www error: " + www.error);
-                www.Dispose();
-                www = null;
-                yield break;
+                goto  lostinternet;
             }
 
             // create empty hash string
-            Hash128 hashString = (default(Hash128));// new Hash128(0, 0, 0, 0);
+
 
             // check if received data contains 'ManifestFileVersion'
             if (www.downloadHandler.text.Contains("ManifestFileVersion"))
@@ -59,6 +55,7 @@ namespace EazyEngine.Tools
 
                 if (hashString.isValid == true)
                 {
+ 
                     // we can check if there is cached version or not
                     if (Caching.IsVersionCached(bundleURL+assetName, hashString) == true)
                     {
@@ -82,30 +79,61 @@ namespace EazyEngine.Tools
                // Debug.LogError("Manifest doesn't contain string 'ManifestFileVersion': " + bundleURL + ".manifest");
                 yield break;
             }
-
-            // now download the actual bundle, with hashString parameter it uses cached version if available
-            www = UnityWebRequestAssetBundle.GetAssetBundle(bundleURL + assetName + "?r=" + (Random.value * 9999999), hashString, 0);
-
-            // wait for load to finish
-            yield return www.SendWebRequest();
-
-            if (www.error != null)
+            using (UnityWebRequest uwr = UnityWebRequestAssetBundle.GetAssetBundle(bundleURL + assetName   , hashString, 0))
             {
-                Debug.LogError("www error: " + www.error);
+                yield return uwr.SendWebRequest();
+             
+                if (uwr.isNetworkError || uwr.isHttpError)
+                {
+                    Debug.Log("www error: " + uwr.error);
+                }
+                // Get downloaded asset bundle
+                AssetBundle bundle = DownloadHandlerAssetBundle.GetContent((uwr));
+                Debug.Log("bundle name" + bundle.name);
+                result = bundle;
                 www.Dispose();
                 www = null;
-                yield break;
+                 yield break;      
             }
+            lostinternet:
+     
+            List<Hash128> listHash = new List<Hash128>();
+            string[] subs = assetName.Split('/');
+            Caching.GetCachedVersions( subs[subs.Length-1],listHash);
+      
+            for (int i = 0; i < listHash.Count; ++i)
+            {
+                using (UnityWebRequest uwr = UnityWebRequestAssetBundle.GetAssetBundle(bundleURL + assetName , listHash[i], 0))
+                {
+                
+                    yield return uwr.SendWebRequest();
 
-            // get bundle from downloadhandler
-            AssetBundle bundle = ((DownloadHandlerAssetBundle)www.downloadHandler).assetBundle;
-
-
-            result = bundle;
-            www.Dispose();
-            www = null;
-
-        
+                    if (uwr.isNetworkError || uwr.isHttpError)
+                    {
+                        Debug.Log("www error: " + uwr.error);
+                    }
+                    else
+                    {
+                        AssetBundle bundle = DownloadHandlerAssetBundle.GetContent((uwr));
+                        if (bundle != null && bundle.name == assetName)
+                        {
+                            result = bundle;
+                            yield break;
+                        }
+                        else
+                        {
+                     
+                            yield break;
+                        }
+                      
+                    
+                    }
+              
+                }
+            }
+           
         }
+        
+        
     }
 }

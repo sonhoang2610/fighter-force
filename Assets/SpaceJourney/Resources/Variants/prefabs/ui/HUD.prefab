@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &4321955616124224134
+--- !u!114 &4226070402174688812
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -17,10 +17,32 @@ MonoBehaviour:
   cateGory: FadeMoveFromLeft
   onEnableEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 911932385}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   onDisableEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 911932385}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onStartEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -55,7 +77,7 @@ MonoBehaviour:
     content:
       normalString: text/guide_fight_first
       isI2String: 1
-      value: Press button FIGHT to play the first game
+      value: Press FIGHT button to play your first game
     IDButonFocus: FightButton
     offset: {x: 0, y: 0, z: 0}
     blockState: 1
@@ -63,12 +85,12 @@ MonoBehaviour:
     title:
       normalString: text/congratulation
       isI2String: 1
-      value: Congratulation
+      value: Congratulations!
     content:
       normalString: text/win_first
       isI2String: 1
-      value: 'You seem to be very gifted in this game. You can also upgrade plane
-        to be able to play easier '
+      value: You seem to be a very talented gamer. You can also try to upgrade your
+        ship so you can play more easily.
     IDButonFocus: UpgradeButton
     offset: {x: 0, y: 0, z: 0}
     blockState: 1
@@ -80,8 +102,8 @@ MonoBehaviour:
     content:
       normalString: text/lose_first
       isI2String: 1
-      value: Unfortunately when you lose the game. You can go to upgrade for more
-        power will help you pass the level easier
+      value: When you lose the game. You can try to upgrade for more power. This will
+        help you complete the level more easily.
     IDButonFocus: UpgradeButton
     offset: {x: 0, y: 0, z: 0}
     blockState: 1
@@ -101,7 +123,7 @@ MonoBehaviour:
     title:
       normalString: text/congratulation
       isI2String: 1
-      value: Congratulation
+      value: Congratulations!
     content:
       normalString: Congratulation you finish the beginer tutorial
       isI2String: 0
@@ -113,7 +135,7 @@ MonoBehaviour:
   hole: {fileID: 3497224069940447239}
   title: {fileID: 3911914675690496481}
   content: {fileID: 3911914676005830832}
-  box: {fileID: 4321955616124224134}
+  box: {fileID: 4226070402174688812}
   handGuide: {fileID: 1799820944}
 --- !u!1 &3497224069940447239
 GameObject:
@@ -260,24 +282,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemExchange: WatchRebirth
---- !u!114 &350972210685644039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3911914674859236367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bacc912351c12094e836616b6f2b6d3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_target: {fileID: 2299975415306188644}
-  m_type: 2
-  runOnUpdateObjectRender: 1
-  sharedMat: 1
-  isIncludeChild: 1
-  mats: []
 --- !u!1 &4040770899566866160
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,7 +852,7 @@ Transform:
   m_GameObject: {fileID: 4848430350830774404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.25985384}
-  m_LocalScale: {x: 3.574, y: 6.289, z: 0.7}
+  m_LocalScale: {x: 3.574, y: 9.31, z: 0.7}
   m_Children: []
   m_Father: {fileID: 4431601642581276424}
   m_RootOrder: 0
@@ -1102,6 +1106,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3911914674982528809, guid: de8a1b992a8f63345bf362888432c403,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -20936
+      objectReference: {fileID: 0}
     - target: {fileID: 3911914674982528808, guid: de8a1b992a8f63345bf362888432c403,
         type: 3}
       propertyPath: m_Layer
@@ -1140,17 +1149,27 @@ PrefabInstance:
     - target: {fileID: 3911914674982528822, guid: de8a1b992a8f63345bf362888432c403,
         type: 3}
       propertyPath: mWidth
-      value: 1080
+      value: 864
       objectReference: {fileID: 0}
     - target: {fileID: 3911914674982528822, guid: de8a1b992a8f63345bf362888432c403,
         type: 3}
       propertyPath: mHeight
-      value: 1920
+      value: 1536
       objectReference: {fileID: 0}
     - target: {fileID: 3911914674982528822, guid: de8a1b992a8f63345bf362888432c403,
         type: 3}
       propertyPath: aspectRatio
       value: 0.5625
+      objectReference: {fileID: 0}
+    - target: {fileID: 3911914674982528822, guid: de8a1b992a8f63345bf362888432c403,
+        type: 3}
+      propertyPath: mColor.a
+      value: 0.003921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 3911914674982528822, guid: de8a1b992a8f63345bf362888432c403,
+        type: 3}
+      propertyPath: dirtyChange
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3911914675185758022, guid: de8a1b992a8f63345bf362888432c403,
         type: 3}
@@ -1162,7 +1181,8 @@ PrefabInstance:
       propertyPath: dirtyChange
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 758972614, guid: de8a1b992a8f63345bf362888432c403, type: 3}
+    - target: {fileID: 3131377891329881095, guid: de8a1b992a8f63345bf362888432c403,
+        type: 3}
       propertyPath: m_Layer
       value: 18
       objectReference: {fileID: 0}
@@ -1193,51 +1213,48 @@ PrefabInstance:
     - target: {fileID: 6401431671410170427, guid: de8a1b992a8f63345bf362888432c403,
         type: 3}
       propertyPath: m_Size.x
-      value: 1080
+      value: 864
       objectReference: {fileID: 0}
     - target: {fileID: 6401431671410170427, guid: de8a1b992a8f63345bf362888432c403,
         type: 3}
       propertyPath: m_Size.y
-      value: 1920
+      value: 1536
       objectReference: {fileID: 0}
     - target: {fileID: 3911914674177060761, guid: de8a1b992a8f63345bf362888432c403,
         type: 3}
       propertyPath: m_Layer
       value: 18
       objectReference: {fileID: 0}
+    - target: {fileID: 7636166122244409109, guid: de8a1b992a8f63345bf362888432c403,
+        type: 3}
+      propertyPath: dirtyChange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 758972614, guid: de8a1b992a8f63345bf362888432c403, type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 758972614, guid: de8a1b992a8f63345bf362888432c403, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 758972616, guid: de8a1b992a8f63345bf362888432c403, type: 3}
+      propertyPath: skeletonDataAsset
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 758972619, guid: de8a1b992a8f63345bf362888432c403, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 758972618, guid: de8a1b992a8f63345bf362888432c403, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de8a1b992a8f63345bf362888432c403, type: 3}
---- !u!1 &1251336588964887579 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2815957395544547538, guid: de8a1b992a8f63345bf362888432c403,
-    type: 3}
-  m_PrefabInstance: {fileID: 3911914674272230601}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1251336588964887576 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2815957395544547537, guid: de8a1b992a8f63345bf362888432c403,
-    type: 3}
-  m_PrefabInstance: {fileID: 3911914674272230601}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &968356465 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3911914675185757880, guid: de8a1b992a8f63345bf362888432c403,
-    type: 3}
-  m_PrefabInstance: {fileID: 3911914674272230601}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &968356464 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3911914675185757881, guid: de8a1b992a8f63345bf362888432c403,
-    type: 3}
-  m_PrefabInstance: {fileID: 3911914674272230601}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3911914674859236367 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 758972614, guid: de8a1b992a8f63345bf362888432c403,
     type: 3}
   m_PrefabInstance: {fileID: 3911914674272230601}
   m_PrefabAsset: {fileID: 0}
@@ -1265,6 +1282,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &911932385 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3911914674982528808, guid: de8a1b992a8f63345bf362888432c403,
+    type: 3}
+  m_PrefabInstance: {fileID: 3911914674272230601}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1251336588964887579 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2815957395544547538, guid: de8a1b992a8f63345bf362888432c403,
+    type: 3}
+  m_PrefabInstance: {fileID: 3911914674272230601}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1251336588964887576 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2815957395544547537, guid: de8a1b992a8f63345bf362888432c403,
+    type: 3}
+  m_PrefabInstance: {fileID: 3911914674272230601}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &968356465 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3911914675185757880, guid: de8a1b992a8f63345bf362888432c403,
+    type: 3}
+  m_PrefabInstance: {fileID: 3911914674272230601}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4040770898812851711
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1739,12 +1780,18 @@ PrefabInstance:
       propertyPath: mTerm
       value: text/reborn
       objectReference: {fileID: 0}
+    - target: {fileID: 4815503636191778440, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: mLocalizeTarget
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1970795024603502603, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
         type: 3}
       propertyPath: mTerm
       value: ui/reborn
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4815503636912961773, guid: 0e9851e33ccfd0a47b7153b8543aba9d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0e9851e33ccfd0a47b7153b8543aba9d, type: 3}
 --- !u!4 &2542871445707965085 stripped
 Transform:
@@ -1752,9 +1799,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4040770899032578952}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &3609560215242722549 stripped
+--- !u!4 &5993267018183484672 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 721711037950089085, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+  m_CorrespondingSourceObject: {fileID: 7728158407004700296, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
     type: 3}
   m_PrefabInstance: {fileID: 4040770899032578952}
   m_PrefabAsset: {fileID: 0}
@@ -1776,9 +1823,9 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4040770899032578952}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &5993267018183484672 stripped
+--- !u!4 &3609560215242722549 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 7728158407004700296, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+  m_CorrespondingSourceObject: {fileID: 721711037950089085, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
     type: 3}
   m_PrefabInstance: {fileID: 4040770899032578952}
   m_PrefabAsset: {fileID: 0}
