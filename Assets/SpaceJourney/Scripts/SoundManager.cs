@@ -34,6 +34,7 @@ public class SoundManager : PersistentSingleton<SoundManager>
     public AudioSource _backgroundMusic;
     public static List<AudioSource> PoolInGameAudios = new List<AudioSource>();
     protected GameObject parrentSound;
+    public List<AudioClip> ingnoreClips = new List<AudioClip>();
     protected override void Awake()
     {
         base.Awake();
@@ -139,12 +140,13 @@ public class SoundManager : PersistentSingleton<SoundManager>
             return null;
         }
 
+        if (ingnoreClips.Contains(sfx)) return null;
         if (!parrentSound)
         {
             parrentSound = new GameObject();
             parrentSound.name = "Sound";
         }
-        AudioSource audioSource = PoolInGameAudios.Find(x => (!x.gameObject.activeSelf && x.clip == sfx));
+        AudioSource audioSource = PoolInGameAudios.FindAndClean<AudioSource>(x => (!x.gameObject.activeSelf && x.clip == sfx),x => x.IsDestroyed());
         if (!audioSource)
         {
             // we create a temporary game object to host our audio source
@@ -156,7 +158,7 @@ public class SoundManager : PersistentSingleton<SoundManager>
             audioSource = temporaryAudioHost.AddComponent<AudioSource>() as AudioSource;
             // we set that audio source clip to the one in paramaters
             audioSource.clip = sfx;
-            if (!loop)
+            if (!loop && GameManager.Instance.inGame )
             {
                 PoolInGameAudios.Add(audioSource);
             }
@@ -171,11 +173,24 @@ public class SoundManager : PersistentSingleton<SoundManager>
 
         if (!loop)
         {
+            if (GameManager.Instance.inGame)
+            {
+                ingnoreClips.Add(sfx);
+            }
+
+            StartCoroutine(delayAction(0.1f, delegate
+            {
+                ingnoreClips.Remove(sfx);
+            }));
             StartCoroutine(delayAction(sfx.length, delegate
             {
                 if (GameManager.Instance.inGame)
                 {
                     audioSource.gameObject.SetActive(false);
+                }
+                else
+                {
+                    Destroy(audioSource.gameObject);
                 }
             }));
         }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using EazyEngine.Tools;
@@ -12,7 +13,6 @@ namespace EazyEngine.Space {
         public LayerMask maskCam;
         public GameObject warning;
         protected Collider2D colliderHit;
-        protected bool isActive = false;
         protected bool start = false;
         protected float timeSinceStart = 0;
         protected float destinyStart = 0;
@@ -38,45 +38,52 @@ namespace EazyEngine.Space {
                 timeSinceStart += Time.deltaTime;
                 if (timeSinceStart >= destinyStart)
                 {
+                    if (!warning.activeSelf)
+                    {
+                        StartCoroutine(delayActive(warning));
+                    }
                     start = true;
                 }
                 else
                 {
+                    RaycastHit2D hit = MMDebug.RayCast(transform.position, Vector2.down.Rotate(cacheRotation.eulerAngles.z), 10, maskCam, Color.red, true);
+                    if (hit)
+                    {
+                        cacheRotation = transform.rotation;
+                        cachePos = hit.point + (hit.point - (Vector2)transform.position).normalized * 0.5f;
+                        warning.transform.position = hit.point + (hit.point - (Vector2)transform.position).normalized*0.5f;
+                        warning.transform.rotation = cacheRotation;
+                        colliderHit = hit.collider;
+                    }
                     return;
                 }
             }
-            if (isActive)
+            if (start)
             {
                 warning.transform.position = cachePos;
+                warning.transform.rotation = cacheRotation;
                 return;
             }
-            isActive = true;
-            RaycastHit2D hit = MMDebug.RayCast(transform.position, Vector2.down.Rotate(transform.rotation.eulerAngles.z), 10, maskCam, Color.red, true);
-            if (hit)
-            {
-                if (!warning.activeSelf)
-                {
-                   // warning.gameObject.SetActive(true);
-                    StartCoroutine(delayActive(warning));
-                    //warning.GetComponent<LineRenderer>().useWorldSpace = true;
-                    //warning.GetComponent<LineRenderer>().SetPosition(1, (Vector3)hit.point + ((Vector3)Vector2.down.Rotate(transform.rotation.eulerAngles.z).normalized * 10));
-                    //warning.GetComponent<LineRenderer>().SetPosition(0, hit.point);
-                }
-                cachePos = hit.point + (hit.point - (Vector2)transform.position).normalized * 0.5f;
-                warning.transform.position = hit.point + (hit.point - (Vector2)transform.position).normalized*0.5f;
-                warning.transform.rotation = transform.rotation;
-                colliderHit = hit.collider;
-            }
+        
+
         }
+
+        protected Quaternion cacheRotation;
+        private void OnEnable()
+        {
+            
+        }
+
         private void LateUpdate()
         {
-            if (isActive)
+            if (start)
             {
                 warning.transform.position = cachePos;
-                return;
+                warning.transform.rotation = cacheRotation;
             }
         }
-        public IEnumerator delayActive(GameObject pObject)
+
+        private IEnumerator delayActive(GameObject pObject)
         {
             yield return new WaitForSeconds(0.1f);
             pObject.gameObject.SetActive(true);
@@ -86,7 +93,6 @@ namespace EazyEngine.Space {
         {
             if (colliderHit != null && colliderHit == collision)
             {
-                isActive = true;
                 warning.gameObject.SetActive(false);
             }
         }
@@ -96,7 +102,6 @@ namespace EazyEngine.Space {
             start = false;
             timeSinceStart = 0;
             warning.gameObject.SetActive(false);
-            isActive = false;
             destinyStart = 0;
         }
     }

@@ -64,6 +64,7 @@ public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>
     private void OnDisable()
     {
         EzEventManager.RemoveListener(this);
+        target = null;
     }
 
     public virtual Character[] findChar()
@@ -83,7 +84,7 @@ public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>
             {
                 float pDistance = Vector2.Distance(_chars[i].transform.position, transform.position);
                 bool insideScreen = LevelManger.Instance.mainPlayCamera.Rect().Contains(_chars[i].transform.position);
-
+                if(!_chars[i].gameObject.activeSelf || _chars[i].AvailableTargets.Length <= 0)continue;
                 if (!_listIgnoreCollider.Contains(_chars[i].gameObject) && Layers.LayerInLayerMask(_chars[i].gameObject.layer, TargetLayer) && pDistance < range && insideScreen) 
                 {
                     if (pDistance < distance || distance == 0)

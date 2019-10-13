@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
-using DG.DemiLib;
-using DG.Tweening.Core;
 using EazyEngine.Tools;
 using Sirenix.OdinInspector;
 using EazyEngine.Tools.Space;
-using System.Linq;
+using EazyEngine.Space.UI;
 using EazyEngine.Timer;
-using Spine.Unity;
 
 namespace EazyEngine.Space
 {
@@ -44,6 +38,7 @@ namespace EazyEngine.Space
 
         protected bool completeAndWating = false;
         protected int countDetach  = 0;
+        protected AIMachine mAi;
         int indexQueue = 0;
         public LevelState ParentState
         {
@@ -58,14 +53,13 @@ namespace EazyEngine.Space
                 initMove(initState());          
                 initLoot();
             }
-            get
-            {
-                return _parentState;
-            }
+            get => _parentState;
         }
         private void Awake()
         {
             time._groupName = TimeKeeper.Instance.getTimeLineIndex("Enemies");
+            mAi = GetComponent<AIMachine>();
+
         }
         public bool isValidateShow()
         {
@@ -90,15 +84,12 @@ namespace EazyEngine.Space
         public static List<GroupManager> managers = new List<GroupManager>();
         public void initMove(GameObject[][] pEnemiesLoaded)
         {
-            LevelState pState = _parentState;
-            int pCounter = 0;
-            //Vector2[][] arrayPos = JourneySpaceUlities.getPointFormat(pState.formatInfo, pState.formatInfo.quantity);
-            //float pDegree = VectorExtension.FindDegree(pState.formatInfo.directionStart);
-            //arrayPos = arrayPos.convertAfterRotation(Vector2.zero, pDegree);
-            for (int j = 0; j < pEnemiesLoaded.Length; ++j)
+            var pState = _parentState;
+            var pCounter = 0;
+            for (var j = 0; j < pEnemiesLoaded.Length; ++j)
             {
                 
-                MovingLeader pLeader =  leaders.Find(x => !x.gameObject.activeSelf);
+                var pLeader =  leaders.FindAndClean(x => !x.gameObject.activeSelf,x => x.IsDestroyed());
                 GameObject pMainLeaderObject = null;
                 if (!pState.isManual)
                 {
@@ -128,6 +119,14 @@ namespace EazyEngine.Space
                 pMainLeaderObject.transform.RotationDirect2D(pState.formatInfo.directionStart, TranformExtension.FacingDirection.DOWN);
                 pLeader._manager = this;
                 pLeader.transform.localPosition = pState.formatInfo.startSpawnPos;
+                for (int i = 0; i < pLeader.elements.Count; ++i)
+                {
+                        if (pLeader.elements[i].objectAnchor != null && pLeader.elements[i].objectAnchor.gameObject == pLeader.gameObject)
+                    {
+                        pLeader.elements[i].objectAnchor = null;
+                    }
+                }
+                pLeader.elements.Clear();
                 //pLeader.setInfoMove = pState;
                 GroupElement[] pElements = new GroupElement[pEnemiesLoaded[j].Length];
                 for (int i = 0; i < pEnemiesLoaded[j].Length; ++i)
@@ -172,33 +171,32 @@ namespace EazyEngine.Space
             {
                 if (_parentState.lootItems[i].baseLoot == AIBaseType.Group)
                 {
-                    float percentRandom = UnityEngine.Random.Range(0.0f, 1.0f);
+                    var percentRandom = UnityEngine.Random.Range(0.0f, 1.0f);
                     if (percentRandom < _parentState.lootItems[i].percent)
                     {
-                        int pCountItem = UnityEngine.Random.Range((int)_parentState.lootItems[i].dropCountRange.x, (int)_parentState.lootItems[i].dropCountRange.y);
-                        for (int j = 0; j < pCountItem; ++j)
+                        var pCountItem = UnityEngine.Random.Range((int)_parentState.lootItems[i].dropCountRange.x, (int)_parentState.lootItems[i].dropCountRange.y);
+                        for (var j = 0; j < pCountItem; ++j)
                         {
-                            int pRandomElement = UnityEngine.Random.Range(0, elements.Count);
-                            int pRandomItem = UnityEngine.Random.Range(0, _parentState.lootItems[i].items.Length);
+                            var pRandomElement = UnityEngine.Random.Range(0, elements.Count);
+                            var pRandomItem = UnityEngine.Random.Range(0, _parentState.lootItems[i].items.Length);
                             elements[pRandomElement].GetComponent<DopItem>().itemDropOnDeath.Add(_parentState.lootItems[i].items[pRandomItem]);
                         }
                     }
                 }
             }
-            for (int i  =0; i < elements.Count; ++i)
+            for (var i  =0; i < elements.Count; ++i)
             {
-                for (int j = 0; j < _parentState.lootItems.Length; ++j)
+                for (var j = 0; j < _parentState.lootItems.Length; ++j)
                 {
                     if (_parentState.lootItems[j].baseLoot == AIBaseType.SelfEmiter)
                     {
-                        float percentRandom = UnityEngine.Random.Range(0.0f, 1.0f);
+                        var percentRandom = UnityEngine.Random.Range(0.0f, 1.0f);
                         if (percentRandom < _parentState.lootItems[j].percent)
                         {
-                            int pCountItem = UnityEngine.Random.Range((int)_parentState.lootItems[j].dropCountRange.x, (int)_parentState.lootItems[j].dropCountRange.y);
-                            for (int g = 0; g < pCountItem; ++g)
+                            var pCountItem = UnityEngine.Random.Range((int)_parentState.lootItems[j].dropCountRange.x, (int)_parentState.lootItems[j].dropCountRange.y);
+                            for (var g = 0; g < pCountItem; ++g)
                             {
-                                int pRandomElement = UnityEngine.Random.Range(0, elements.Count);
-                                int pRandomItem = UnityEngine.Random.Range(0, _parentState.lootItems[j].items.Length);
+                                var pRandomItem = UnityEngine.Random.Range(0, _parentState.lootItems[j].items.Length);
                                 elements[i].GetComponent<DopItem>().itemDropOnDeath.Add(_parentState.lootItems[j].items[pRandomItem]);
                             }
                         }
@@ -208,18 +206,23 @@ namespace EazyEngine.Space
         }
         public GameObject[][] initState()
         {
-            List<GameObject> pElements = new List<GameObject>();
-            var machine = gameObject.AddComponent<AIMachine>();
-            LevelState pState = _parentState;
-            Vector2[][] arrayPos = JourneySpaceUlities.getPointFormat(pState.formatInfo, pState.formatInfo.quantity);
+            var pElements = new List<GameObject>();
+            var machine = mAi;
+            if (!machine)
+            {
+                machine = gameObject.AddComponent<AIMachine>();
+                mAi = machine;
+            }
+            var pState = _parentState;
+            var arrayPos = JourneySpaceUlities.getPointFormat(pState.formatInfo, pState.formatInfo.quantity);
             arrayPos = arrayPos.convertAfterRotation(Vector2.zero, 0);
             if (!pState.isManual)
             {
-                TypeSpawn pTypeGetEnemy = pState.formatInfo.typeSpawn;
+                var pTypeGetEnemy = pState.formatInfo.typeSpawn;
               
-                int pQuantity = pState.formatInfo.quantity;
+                var pQuantity = pState.formatInfo.quantity;
 
-                for (int i = 0; i < pQuantity; ++i)
+                for (var i = 0; i < pQuantity; ++i)
                 {
                     var _typeSpawn = randomInFlagEnemy(pState.formatInfo.prefabEnemies, pTypeGetEnemy,i== 0);
 
@@ -242,13 +245,13 @@ namespace EazyEngine.Space
             }
             else
             {
-                List<GameObject[]> pElementBigs = new List<GameObject[]>();
-                int pQuantity = 0;
-                for(int i = 0; i < leaderGroup.Count; ++i)
+                var pElementBigs = new List<GameObject[]>();
+                var pQuantity = 0;
+                for(var i = 0; i < leaderGroup.Count; ++i)
                 {
                
-                    List<GameObject> pSubElements = new List<GameObject>();
-                    for (int j  = 0; j < leaderGroup[i].elements.Length; ++j)
+                    var pSubElements = new List<GameObject>();
+                    for (var j  = 0; j < leaderGroup[i].elements.Length; ++j)
                     {
                         var pObjectEnemy = leaderGroup[i].elements[j];
                         machine._elements.Add(pObjectEnemy.GetComponent<AIElement>());
@@ -288,31 +291,35 @@ namespace EazyEngine.Space
             }
             elements.Remove(pElement);
             pElement.objectAnchor.elements.Remove(pElement);
-            _parentState.totalDeath++;
-            var pLeader = pElement.objectAnchor;
-            for (int i = 0; i < pLeader._moveInfo.conditionComplete.Length; ++i)
+            if (_parentState != null)
             {
-                if (pLeader._moveInfo.conditionComplete[i].condition == ConditionEndMoveType.DestroyAll )
+                _parentState.totalDeath++;
+                var pLeader = pElement.objectAnchor;
+                for (int i = 0; i < pLeader._moveInfo.conditionComplete.Length; ++i)
                 {
-                    if(_parentState.totalDeath >= _parentState.formatInfo.quantity)
+                    if (pLeader._moveInfo.conditionComplete[i].condition == ConditionEndMoveType.DestroyAll)
                     {
-                        pLeader.nextStep();
+                        if (_parentState.totalDeath >= _parentState.formatInfo.quantity)
+                        {
+                            pLeader.nextStep();
+                        }
                     }
-                }else if(pLeader._moveInfo.conditionComplete[i].condition == ConditionEndMoveType.DestroyQuantity)
-                {
-                    if (_parentState.totalDeath >= pLeader._moveInfo.conditionComplete[i].destroyQuantity)
+                    else if (pLeader._moveInfo.conditionComplete[i].condition == ConditionEndMoveType.DestroyQuantity)
                     {
-                        pLeader.nextStep();
+                        if (_parentState.totalDeath >= pLeader._moveInfo.conditionComplete[i].destroyQuantity)
+                        {
+                            pLeader.nextStep();
+                        }
                     }
                 }
             }
         }
         public void OnEzEvent(MessageGamePlayEvent eventType)
         {
-           for(int i = 0; i < leaderGroup.Count; ++i)
-            {
-                leaderGroup[i].leader.OnEzEvent(eventType);
-            }
+           for(int i = leaderGroup.Count - 1; i >= 0; --i)
+           {
+               leaderGroup[i].leader.OnEzEvent(eventType);
+           }
         }
         private void OnEnable()
         {
@@ -388,6 +395,7 @@ namespace EazyEngine.Space
             managers.Clear();
             SoundManager.PoolInGameAudios.Clear();
             SoundManager.Instance.StopAllCoroutines();
+            TopLayer.Instance.inGame(false);
         }
     }
 }

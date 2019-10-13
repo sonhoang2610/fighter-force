@@ -323,7 +323,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     {
         base.Awake();
         databaseGame = GameDatabase.Instance;
-        Application.targetFrameRate = 300;
+        Application.targetFrameRate = 60;
 
         // Database = Instantiate(Database);
     }
@@ -720,9 +720,11 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             pItem.Quantity--;
         }
         SaveGame();
-        MainScene.Instance.block.gameObject.SetActive(true);
+ 
+        TopLayer.Instance.block.gameObject.SetActive(true);
         StartCoroutine(delayAction(0.75f, delegate
         {
+            TopLayer.Instance.inGame(true);
             SceneManager.Instance.loadScene(GameDatabase.Instance.LevelScene(pIndex));
         }));
 

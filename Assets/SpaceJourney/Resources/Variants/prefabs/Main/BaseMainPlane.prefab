@@ -126,7 +126,7 @@ RectTransform:
   m_GameObject: {fileID: 1069622426666738285}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9, y: 0.9, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
   - {fileID: 1069622427632848073}
   - {fileID: 1069622427702799172}
@@ -833,6 +833,109 @@ MonoBehaviour:
   onDestroy:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &6236595441231106898
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8513677999280037170}
+  - component: {fileID: 6894428915971852854}
+  - component: {fileID: 7062358772203246621}
+  - component: {fileID: 8111865471249646170}
+  - component: {fileID: 2288785365557231834}
+  m_Layer: 9
+  m_Name: DefaultDeactiveSkill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &8513677999280037170
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6236595441231106898}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2822247560298209709}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6894428915971852854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6236595441231106898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad115aca74ce3c4891b3f6de0b4aae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boundGraphSerialization: '{"version":2.96,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","translation":{"x":58.0,"y":-5.0},"nodes":[{"_position":{"x":546.0,"y":240.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"2"},{"_flowScript":{"_value":1,"_name":"Condition","_targetVariableID":"9d66735c-a399-46d7-b965-4ef3d715ba09"},"_position":{"x":394.0,"y":342.0},"$type":"NodeCanvas.BehaviourTrees.BTNestedFlowScript","$id":"3"},{"_position":{"x":640.0,"y":327.0},"$type":"NodeCanvas.BehaviourTrees.Parallel","$id":"5"},{"_flowScript":{"_value":2,"_name":"Controller","_targetVariableID":"fc1b7ced-944e-4edc-97f1-a97703edcf7a"},"_position":{"x":519.0,"y":457.0},"$type":"NodeCanvas.BehaviourTrees.BTNestedFlowScript","$id":"6"},{"_flowScript":{"_value":3},"_position":{"x":777.0,"y":462.0},"$type":"NodeCanvas.BehaviourTrees.BTNestedFlowScript","$id":"8"}],"connections":[{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"6"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"8"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"localBlackboard":{"_name":"Local
+    Blackboard","_variables":{}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
+  boundGraphObjectReferences:
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 355aef73bf803484d978ced08b2a2fc8, type: 2}
+  - {fileID: 11400000, guid: c3516e048dd64744bae52de940b129fd, type: 2}
+  - {fileID: 11400000, guid: d6da7796186213946afb1a128599025c, type: 2}
+  enableAction: 0
+  disableAction: 0
+  _graph: {fileID: 0}
+  _blackboard: {fileID: 7062358772203246621}
+--- !u!114 &7062358772203246621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6236595441231106898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _serializedBlackboard: '{"_variables":{"Main":{"_value":1,"_name":"Main","_id":"b295bd72-c1cd-4446-bb84-aab40d5ae7cc","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Condition":{"_name":"Condition","_id":"9d66735c-a399-46d7-b965-4ef3d715ba09","$type":"NodeCanvas.Framework.Variable`1[[FlowCanvas.FlowScript,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Controller":{"_name":"Controller","_id":"fc1b7ced-944e-4edc-97f1-a97703edcf7a","$type":"NodeCanvas.Framework.Variable`1[[FlowCanvas.FlowScript,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
+  _objectReferences:
+  - {fileID: 0}
+  - {fileID: 1069622426666738285}
+--- !u!114 &8111865471249646170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6236595441231106898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 539f8a13a2b6280418222822b981a79d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2288785365557231834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6236595441231106898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72f9fa5fa34e5746ab2967f297890ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _groupName: 3
+  timeLineParent: {fileID: 0}
+  timeScale: 1
 --- !u!1001 &854017945314667162
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1160,15 +1263,15 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3187315377123410989}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &3024394379232401698 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 415264493019405583, guid: 08d9e6a51c0678f499695d2110d4c315,
-    type: 3}
-  m_PrefabInstance: {fileID: 3187315377123410989}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &3024394379251702648 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 415264493038772053, guid: 08d9e6a51c0678f499695d2110d4c315,
+    type: 3}
+  m_PrefabInstance: {fileID: 3187315377123410989}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3024394379232401698 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 415264493019405583, guid: 08d9e6a51c0678f499695d2110d4c315,
     type: 3}
   m_PrefabInstance: {fileID: 3187315377123410989}
   m_PrefabAsset: {fileID: 0}
@@ -1239,104 +1342,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4381328295261420, guid: 17529f7cf27e6c241b0a15e756fe5b68,
     type: 3}
   m_PrefabInstance: {fileID: 6916681708320236924}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &7804511921684491324
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2822247560298209709}
-    m_Modifications:
-    - target: {fileID: 4234479574708698990, guid: 5b9f578beb4668740b92d325dc0c4b65,
-        type: 3}
-      propertyPath: m_Name
-      value: DefaultDeactiveSkill
-      objectReference: {fileID: 0}
-    - target: {fileID: 1903222975086932238, guid: 5b9f578beb4668740b92d325dc0c4b65,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1903222975086932238, guid: 5b9f578beb4668740b92d325dc0c4b65,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1903222975086932238, guid: 5b9f578beb4668740b92d325dc0c4b65,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1903222975086932238, guid: 5b9f578beb4668740b92d325dc0c4b65,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1903222975086932238, guid: 5b9f578beb4668740b92d325dc0c4b65,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1903222975086932238, guid: 5b9f578beb4668740b92d325dc0c4b65,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1903222975086932238, guid: 5b9f578beb4668740b92d325dc0c4b65,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1903222975086932238, guid: 5b9f578beb4668740b92d325dc0c4b65,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1903222975086932238, guid: 5b9f578beb4668740b92d325dc0c4b65,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1903222975086932238, guid: 5b9f578beb4668740b92d325dc0c4b65,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1903222975086932238, guid: 5b9f578beb4668740b92d325dc0c4b65,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3738793271978173962, guid: 5b9f578beb4668740b92d325dc0c4b65,
-        type: 3}
-      propertyPath: _graph
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1030686445532608545, guid: 5b9f578beb4668740b92d325dc0c4b65,
-        type: 3}
-      propertyPath: _objectReferences.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1030686445532608545, guid: 5b9f578beb4668740b92d325dc0c4b65,
-        type: 3}
-      propertyPath: _serializedBlackboard
-      value: '{"_variables":{"Main":{"_value":1,"_name":"Main","_id":"b295bd72-c1cd-4446-bb84-aab40d5ae7cc","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Condition":{"_name":"Condition","_id":"9d66735c-a399-46d7-b965-4ef3d715ba09","$type":"NodeCanvas.Framework.Variable`1[[FlowCanvas.FlowScript,
-        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Controller":{"_name":"Controller","_id":"fc1b7ced-944e-4edc-97f1-a97703edcf7a","$type":"NodeCanvas.Framework.Variable`1[[FlowCanvas.FlowScript,
-        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1030686445532608545, guid: 5b9f578beb4668740b92d325dc0c4b65,
-        type: 3}
-      propertyPath: _objectReferences.Array.data[1]
-      value: 
-      objectReference: {fileID: 1069622426666738285}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5b9f578beb4668740b92d325dc0c4b65, type: 3}
---- !u!4 &8513677999280037170 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1903222975086932238, guid: 5b9f578beb4668740b92d325dc0c4b65,
-    type: 3}
-  m_PrefabInstance: {fileID: 7804511921684491324}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9191287864172643891
 PrefabInstance:

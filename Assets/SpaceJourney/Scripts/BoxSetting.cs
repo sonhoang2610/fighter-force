@@ -36,6 +36,11 @@ namespace EazyEngine.Space.UI
 
         public void replay()
         {
+            if (GameManager.Instance.isFree)
+            {
+                Home();
+                return;
+            }
             GameManager.Instance.scehduleUI = ScheduleUIMain.GAME_IMEDIATELY;
             PlayerEnviroment.clear();
             GroupManager.clearCache();
@@ -46,6 +51,7 @@ namespace EazyEngine.Space.UI
 
         public void Home()
         {
+          
             PlayerEnviroment.clear();
             GroupManager.clearCache();
             Time.timeScale = 1;

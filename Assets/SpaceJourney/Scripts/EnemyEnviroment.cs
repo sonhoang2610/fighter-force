@@ -24,6 +24,7 @@ public class EnemyEnviroment : PoolManagerGeneric<EnemyEnviroment>
         {
             if(pEnemy.info.elements[GameManager.Instance.ChoosedHard].target == pOriginal)
             {
+                pObject.transform.localScale = pOriginal.transform.localScale * 0.9f;
                 var pInfo = pEnemy.info.elements[GameManager.Instance.ChoosedHard];
                 pInfo.score = scoreSmall[GameManager.Instance.ChoosedHard];
                 pChar.setDataConfig(pInfo);
@@ -34,6 +35,14 @@ public class EnemyEnviroment : PoolManagerGeneric<EnemyEnviroment>
         {
             if (pEnemy.info.elements[GameManager.Instance.ChoosedHard].target == pOriginal)
             {
+                if (!pOriginal.name.ToLower().Contains("tower"))
+                {
+                    pObject.transform.localScale = pOriginal.transform.localScale * 0.8f;
+                }
+                else
+                {
+                    pObject.transform.localScale = pOriginal.transform.localScale * 0.9f;
+                }
                 var pInfo = pEnemy.info.elements[GameManager.Instance.ChoosedHard];
                 pInfo.score = scoremedium[GameManager.Instance.ChoosedHard];
                 pChar.setDataConfig(pInfo);
@@ -60,6 +69,7 @@ public class EnemyEnviroment : PoolManagerGeneric<EnemyEnviroment>
                 return;
             }
         }
+ 
     }
     public GameObject getEnemyFromPool(GameObject pObject)
     {

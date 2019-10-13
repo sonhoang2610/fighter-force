@@ -27,17 +27,20 @@ public class AudioPlay : MonoBehaviour {
     int enable = 0;
     private void Awake()
     {
-        //if (playOnAwake)
-        //{
-        //    if (!backGroundMusic)
-        //    {
-        //        SoundManager.Instance.PlaySound(audio, Vector3.zero);
-        //    }
-        //    else
-        //    {
-        //        SoundManager.Instance.PlayBackgroundMusic(backGroundMusic);
-        //    }
-        //}
+        for (int i = 0; i < audios.Length; ++i)
+        {
+            if (audios[i].loadState != AudioDataLoadState.Loaded)
+            {
+                audios[i].LoadAudioData();
+            }
+          
+        }
+
+        if (backGroundMusic && backGroundMusic.clip.loadState != AudioDataLoadState.Loaded &&
+            backGroundMusic.clip.loadState != AudioDataLoadState.Loading)
+        {
+            backGroundMusic.clip.LoadAudioData();
+        }
     }
 
     public IEnumerator delayAction(float pSec, System.Action pAction)
@@ -52,7 +55,7 @@ public class AudioPlay : MonoBehaviour {
         if (backGroundMusic)
         {
             backGroundMusic.Stop();
-            backGroundMusic.clip.UnloadAudioData();
+       
         }
     }
 

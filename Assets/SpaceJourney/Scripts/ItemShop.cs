@@ -288,9 +288,11 @@ namespace EazyEngine.Space.UI
                         boxTimer.gameObject.SetActive(true);
                         boxTimer.GetComponentInChildren<UILabel>().text = pTime.ToString(@"hh\:mm\:ss");
                         timeCountDown = pTime;
+           
                     }
                     else
                     {
+                        GameManager.Instance.Database.timers.Remove(pTimer);
                         btnBuyFree.gameObject.SetActive(true);
                         boxTimer.gameObject.SetActive(false);
                     }

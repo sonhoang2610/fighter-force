@@ -236,6 +236,7 @@ namespace EazyEngine.Space
         protected override void Awake()
         {
             base.Awake();
+            TimeKeeper.Instance.getTimer("Map").TimScale = 1 ;
             for (int i = 0; i < 24; i++)
             {
                 var pMainLeaderObject = new GameObject();

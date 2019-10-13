@@ -606,7 +606,7 @@ public class LevelStateManager : Singleton<LevelStateManager>, EzEventListener<B
     {
         if (!pState.isManual)
         {
-            GroupManager pLeader = GroupManager.managers.Find(x => !x.gameObject.activeSelf);
+            GroupManager pLeader = GroupManager.managers.FindAndClean(x => !x.gameObject.activeSelf,x=>x.IsDestroyed());
             if (!pLeader)
             {
                 GameObject pMainLeaderObject = new GameObject();

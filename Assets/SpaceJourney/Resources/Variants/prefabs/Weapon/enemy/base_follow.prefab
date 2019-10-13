@@ -58,10 +58,12 @@ MonoBehaviour:
   onEndLifeTime:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   lifeTime: 5
+  lifeTimeRandomTo: 0
   ignoreLiveTime: 0
+  onIndexBullet:
+    m_PersistentCalls:
+      m_Calls: []
   Speed: 10
   delayMove: 0
   _SpeedConstraint: 1
@@ -91,12 +93,19 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  childs: []
   ignoreMove: 1
   currentSpeed: 0
+  MovetoTarget: 0
+  onMoveToTarget:
+    m_PersistentCalls:
+      m_Calls: []
+  target: {x: 0, y: 0}
   moveSin: 0
   frequency: 5
   magnitude: 0.1
   isAngularX: 0
+  delayX: 0
   velocityXRandom: {x: 1, y: 1}
   timeVelocityX: {x: 0.5, y: 0.5}
   curveVelocityX:
@@ -186,12 +195,16 @@ MonoBehaviour:
   invulnerable: 0
   InvulnerableIfOutSide: 1
   invuOnStart: 0
+  timeInvuAfterRevie: 0
+  disableParrentOnDeath: 0
+  disableOnDeath: 1
   deffense: 0
   MaxiumHealth: 10
   InitialHealth: 10
   containerHealthBar: {fileID: 0}
   HealthBar: {fileID: 0}
   DamageSfx: {fileID: 0}
+  preloadDeathEffect: 5
   DeathEffect: {fileID: 1561269459470396, guid: 9a2b4141d5a70ae4baebf6e0ac706313,
     type: 3}
   DamagedEffect: {fileID: 0}
@@ -203,23 +216,15 @@ MonoBehaviour:
   onMinChild:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onDeath:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onTakenDamage:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: EazyEngine.Space.UnityEventInt, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onRevie:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   animDeath: 0
   triggerAnimDeath: 
   listenerDeathAnimFinish: 
@@ -269,6 +274,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   _countTriggerBoder: 0
+  active: 0
 --- !u!114 &3617437023212533873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,8 +312,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1001 &4818502357818968572
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -315,6 +319,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6868125235633595358}
     m_Modifications:
+    - target: {fileID: 7368056764806200329, guid: b8e2c3b2df4ec444e9baca9c7a6ae8e6,
+        type: 3}
+      propertyPath: m_Name
+      value: rocket_missi
+      objectReference: {fileID: 0}
     - target: {fileID: 250657690231111724, guid: b8e2c3b2df4ec444e9baca9c7a6ae8e6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -420,11 +429,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 7368056764806200329, guid: b8e2c3b2df4ec444e9baca9c7a6ae8e6,
-        type: 3}
-      propertyPath: m_Name
-      value: rocket_missi
-      objectReference: {fileID: 0}
     - target: {fileID: 9185955881171301185, guid: b8e2c3b2df4ec444e9baca9c7a6ae8e6,
         type: 3}
       propertyPath: m_LocalScale.y
@@ -484,7 +488,7 @@ PrefabInstance:
     - target: {fileID: 4580933267364830197, guid: b8e2c3b2df4ec444e9baca9c7a6ae8e6,
         type: 3}
       propertyPath: m_Time
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8e2c3b2df4ec444e9baca9c7a6ae8e6, type: 3}

@@ -33,7 +33,6 @@ namespace EazyEngine.Space
                             pBlackBoard.SetValue("Info", value[i]._info.Info);
                             pBlackBoard.SetValue("Duration", value[i]._info.Info.Duration);
                             pBlackBoard.SetValue("Cooldown", value[i]._info.Info.CoolDownTime);
-                            var pPlaneInfo = value[i]._targetOwner.GetComponent<Character>()._info;
                             for(int j = 0; j < value[i]._info.skillBlackBoard.Count; ++j)
                             {
                                 var pKey = value[i]._info.skillBlackBoard.Keys.ElementAt(j);

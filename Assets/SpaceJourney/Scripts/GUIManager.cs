@@ -223,7 +223,7 @@ namespace EazyEngine.Space
             if (eventType._message == "Warning")
             {
                 transform.Find("dangerboss").gameObject.SetActive(true);
-                SoundManager.Instance.PlayBackgroundMusic(GameManager.Instance.bossStage[GameManager.Instance.ChoosedHard]);
+               // SoundManager.Instance.PlayBackgroundMusic(GameManager.Instance.bossStage[GameManager.Instance.ChoosedHard]);
             }
         }
     }

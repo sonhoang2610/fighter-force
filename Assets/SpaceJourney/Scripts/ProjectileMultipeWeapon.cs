@@ -256,6 +256,11 @@ namespace EazyEngine.Space
                                      }
                                  }
 
+                                 if (Owner)
+                                 {
+                                     proj.transform.localScale =
+                                         pPool.GetLastOriginal().transform.localScale * Owner.transform.localScale.x;
+                                 }
                                  proj.setWeapon(this);
                                  proj.setOwner(Owner);
                                  proj.time._groupName = time._groupName;

@@ -5,7 +5,6 @@ using EazyEngine.Tools;
 using EasyMobile;
 using System;
 using UnityEngine.Networking;
-using UnityEngine.SocialPlatforms;
 
 namespace EazyEngine.Space.UI
 {
@@ -31,6 +30,7 @@ namespace EazyEngine.Space.UI
         protected override void Awake()
         {
             base.Awake();
+            GroupManager.clearCache();
             if (layerPrepare)
             {
                 layerPrepare.showInfo(0,0);
@@ -41,7 +41,7 @@ namespace EazyEngine.Space.UI
                 GameManager.Instance.Database.lastOnline = System.DateTime.Now;
                 if (StoreReview.CanRequestRating())
                 {
-                    HUDLayer.Instance.BoxRate.gameObject.SetActive(true);
+                    StoreReview.RequestRating();
                 }               
             }
             bool isConnected = false;
@@ -75,14 +75,7 @@ namespace EazyEngine.Space.UI
         {
             UnityWebRequest www = new UnityWebRequest("http://google.com");
             yield return www;
-            if (www.error != null)
-            {
-                action(false);
-            }
-            else
-            {
-                action(true);
-            }
+            action(www.error == null);
         }
         public void clearBox()
         {
@@ -162,7 +155,7 @@ namespace EazyEngine.Space.UI
 
         public void showBoxSetting()
         {
-            boxSetting.show();
+            TopLayer.Instance.boxsetting.show();
         }
 
         public void showBoxLucky()
@@ -187,7 +180,6 @@ namespace EazyEngine.Space.UI
         {
             selectedPlane = pInfo;
             boxInfo.Data = pInfo;
-         //   btnUnlock.gameObject.SetActive(!(pInfo.CurrentLevel > 0));
             btnFreePlay.gameObject.SetActive(!(pInfo.CurrentLevel > 0));
             boxRank.gameObject.SetActive((pInfo.CurrentLevel > 0));
             boxRank.GetComponentInChildren<EazyFrameCache>().setFrameIndex(pInfo.Rank);
@@ -255,18 +247,6 @@ namespace EazyEngine.Space.UI
  
             StartCoroutine(delayAction(0.25f, delegate
             {
-                //for(int i = 0; i <3; ++i)
-                //{
-                //   var pLevel = GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, i);
-                //    if(pLevel.isLocked)
-                //    {
-                //        chooseHardMode.GroupTab[i].GetComponent<UIButton>().isEnabled = false;
-                //    }
-                //    else
-                //    {
-                //        chooseHardMode.GroupTab[i].GetComponent<UIButton>().isEnabled = true;
-                //    }
-                //}
                 chooseHardMode.changeTab(GameManager.Instance.ChoosedLevel == GameManager.Instance.Database.lastPlayStage.x ?  GameManager.Instance.Database.lastPlayStage.y : 0);
             }));
        
