@@ -446,7 +446,7 @@ namespace EazyEngine.Space
             {
                 Invulnerable = true;
             }
-            if (subHealth && deathtime > 0)
+            if (subHealth )
             {
                 currentChildAlive = childHealth.Length;
                 if(currentChildAlive > 0)
