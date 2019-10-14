@@ -17,6 +17,8 @@ namespace EazyEngine.Space.UI
 
         public BoxChoosePlane boxplanes;
 	    public GameObject effectUpgrade,effectBaokich;
+        public GameObject textBaokick;
+        public AudioClip sfxUpgradePlane,sfxUpgradeSkill;
         protected PlaneInfoConfig selectedPlane;
         protected SkillInfoInstanced choosedSkill;
         
@@ -49,6 +51,7 @@ namespace EazyEngine.Space.UI
             var pExist = GameManager.Instance.Database.getComonItem(price.item);
             if(pExist.quantity >= price.quantity)
             {
+                SoundManager.Instance.PlaySound(sfxUpgradeSkill, Vector3.zero);
                 pExist.Quantity -= price.quantity;
                 if (selectedPlane.UpgradeSkill.ContainsKey(choosedSkill.info.Info.itemID))
                 {
@@ -109,7 +112,7 @@ namespace EazyEngine.Space.UI
                         return;
                     }
                 }
-              
+                SoundManager.Instance.PlaySound(sfxUpgradeSkill, Vector3.zero);
                 pExist.Quantity -= price.quantity;
                 if (selectedPlane.UpgradeSkill.ContainsKey(choosedSkill.info.Info.itemID))
                 {
@@ -200,6 +203,8 @@ namespace EazyEngine.Space.UI
                 {
                     effectBaokich.gameObject.SetActive(true);
                     effectBaokich.GetComponent<ParticleSystem>().Play();
+                    textBaokick.gameObject.SetActive(false);
+                    textBaokick.gameObject.SetActive(true);
                     for(int i = 0; i < selectedPlane.info.currentAbility.Count; ++i)
                     {
                         var pAbility = selectedPlane.info.currentAbility[i];
@@ -222,6 +227,7 @@ namespace EazyEngine.Space.UI
 	            selectedPlane.CurrentLevel++;
                 selectedPlane.ExtraInfo();
                 effectUpgrade.gameObject.SetActive(true);
+                SoundManager.Instance.PlaySound(sfxUpgradePlane, Vector3.zero);
 	            effectUpgrade.GetComponent<ParticleSystem>().Play();
                 GameManager.Instance.SaveGame();
                 boxplanes.reloadData();
@@ -279,6 +285,8 @@ namespace EazyEngine.Space.UI
                 {
                     effectBaokich.gameObject.SetActive(true);
                     effectBaokich.GetComponent<ParticleSystem>().Play();
+                    textBaokick.gameObject.SetActive(false);
+                    textBaokick.gameObject.SetActive(true);
                     for (int i = 0; i < selectedPlane.info.currentAbility.Count; ++i)
                     {
                         var pAbility = selectedPlane.info.currentAbility[i];
@@ -293,6 +301,7 @@ namespace EazyEngine.Space.UI
                         selectedPlane.upgradeExtraAbility[pAbility._ability.itemID] = pListInt.ToArray();
                     }
                 }
+                SoundManager.Instance.PlaySound(sfxUpgradePlane, Vector3.zero);
                 selectedPlane.CurrentLevel++;
                 selectedPlane.ExtraInfo();
                 effectUpgrade.gameObject.SetActive(true);

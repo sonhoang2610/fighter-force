@@ -33,6 +33,7 @@ namespace EazyEngine.Space
         public GameObject containerHealthBar;
         public Image HealthBar;
         public AudioClip DamageSfx;
+        public AudioClip DeathSfx;
         public int preloadDeathEffect = 5;
         public GameObject DeathEffect;
         public GameObject DamagedEffect;
@@ -398,6 +399,8 @@ namespace EazyEngine.Space
             {
                 onDeath.Invoke();
             }
+
+            SoundManager.Instance.PlaySound(DeathSfx, Vector3.zero);
             if (disableParrentOnDeath)
             {
                 transform.parent.gameObject.SetActive(false);

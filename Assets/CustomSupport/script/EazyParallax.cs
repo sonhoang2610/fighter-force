@@ -40,6 +40,8 @@ public class EazyParallax : MonoBehaviour
     [SerializeField]
     public UnityEvent onInitComplete = null;
 
+    public AudioClip sfxStartRoll;
+    public AudioClip sfxEndRoll;
     bool isStop = false;
     float currentTime = 0;
     float currentTimeStop = 0;
@@ -128,6 +130,7 @@ public class EazyParallax : MonoBehaviour
         totalRollStop = (float)countRoll;
         currentTimeStop = 0;
         currentTimeAtMax = 0;
+        SoundManager.Instance.PlaySound(sfxStartRoll, Vector3.zero);
         //for(int i = 0; i < Elements.Length; ++i)
         //{
         //    IElementReset pReset = Elements[i].GetComponent<IElementReset>();
@@ -241,6 +244,8 @@ public class EazyParallax : MonoBehaviour
                     {
                         callBackStop.Invoke();
                     }
+
+                    SoundManager.Instance.PlaySound(sfxEndRoll, Vector3.zero);
                 }
                 pDistance = totalRollStop * curveStop.Evaluate(percent) * (maxSpeed / Mathf.Abs(maxSpeed));
                 scroll = startRollStop + pDistance;

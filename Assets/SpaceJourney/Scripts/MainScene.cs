@@ -24,12 +24,14 @@ namespace EazyEngine.Space.UI
         public EazyGroupTabNGUI chooseHardMode;
         public UILabel desItemSp;
         public LayerPrepare layerPrepare;
+        public AudioClip fightSfx;
         protected PlaneInfoConfig selectedPlane;
 
         protected List<string> stateGames = new List<string>();
         protected override void Awake()
         {
             base.Awake();
+            Time.timeScale = 1;
             GroupManager.clearCache();
             if (layerPrepare)
             {
@@ -225,6 +227,7 @@ namespace EazyEngine.Space.UI
         public void test()
         {
             GameManager.Instance.isFree = false;
+            SoundManager.Instance.PlaySound(fightSfx, Vector3.zero);
             GameManager.Instance.LoadLevel(GameManager.Instance.ChoosedLevel);
                 
         }
@@ -281,6 +284,7 @@ namespace EazyEngine.Space.UI
         // Start is called before the first frame update
         void Start()
         {
+       
             if (GameServices.LocalUser != null)
             {
                 nameUser.text = GameServices.LocalUser.userName.Length < 10 ? GameServices.LocalUser.userName : (GameServices.LocalUser.userName.Substring(0, 7) + "...");
@@ -303,6 +307,8 @@ namespace EazyEngine.Space.UI
             int pFirstGame = PlayerPrefs.GetInt("firstGame", 0);
             if (pFirstGame == 0)
             {
+                GameManager.Instance.Database.firstOnline = System.DateTime.Now;
+                GameManager.Instance.SaveGame();
                 EzEventManager.TriggerEvent(new GuideEvent("FirstGame", delegate
                 {
                     PlayerPrefs.SetInt("firstGame", 1); 

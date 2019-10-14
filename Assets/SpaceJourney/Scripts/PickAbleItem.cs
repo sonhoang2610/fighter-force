@@ -15,6 +15,7 @@ public class PickAbleItem : SerializedMonoBehaviour
     public FlowCanvas.FlowScript mainBehaviorEffect;
     public LayerMask _layerCanPick;
     public Dictionary<string, object> Variables = new Dictionary<string, object>();
+    public AudioClip sfx;
     private void Awake()
     {
         if (effectOnPick && GameManager.Instance.inGame)
@@ -24,6 +25,7 @@ public class PickAbleItem : SerializedMonoBehaviour
     }
     public void onPicked()
     {
+        SoundManager.Instance.PlaySound(sfx, Vector3.zero);
         gameObject.SetActive(false);
         if (effectOnPick != null)
         {

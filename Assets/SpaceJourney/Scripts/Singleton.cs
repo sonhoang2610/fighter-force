@@ -8,6 +8,7 @@ namespace EazyEngine.Tools
     /// </summary>
     public class Singleton<T> : MonoBehaviour where T : Component
     {
+        public bool replaceNew = true;
         protected static T _instance;
 
         /// <summary>
@@ -56,12 +57,21 @@ namespace EazyEngine.Tools
             {
                 return;
             }
-            _instance = this as T;
+
+            if (replaceNew ||_instance == null)
+            {
+                    _instance = this as T;
+            }
+
+        
         }
 
         private void OnDestroy()
         {
-            _instance = null;
+            if (_instance == this)
+            {
+                _instance = null;
+            }
         }
     }
 }

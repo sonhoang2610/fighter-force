@@ -36,6 +36,7 @@ namespace EazyEngine.Space.UI
         public GameObject win, lose;
         public UIButton[] btnWins, btnLoses,btnLayerFrees;
         public BoxMissionLevel boxMission;
+        public GameObject btnX2Ads;
         List<EazyNode> pNodes = new List<EazyNode>();
 
         public void showTestWin()
@@ -65,13 +66,20 @@ namespace EazyEngine.Space.UI
             yield return  new WaitForSeconds(pSec);
             pACtion();
         }
+
+        protected Coroutine adsCourountine;
         public void showResult(bool pWin)
         {
             GameManager.Instance.lastResultWin = pWin ? 1 :0;
+            if (GameManager.Instance.isFree)
+            {
+                btnX2Ads.gameObject.SetActive(false);
+            }
             if (!pWin && timeShowLose == 0) {
                 if (GameManager.Instance.isFree)
                 {
                     timeShowLose++;
+                    btnX2Ads.gameObject.SetActive(false);
                     showResult(pWin);
                     return;
                 }
@@ -81,7 +89,7 @@ namespace EazyEngine.Space.UI
                 GameManager.Instance.showBannerAds(true);
                 return;
             }
-       
+          
           
             LevelManger.Instance.IsPlaying = false;
             GameManager.Instance.inGame = false;
@@ -121,12 +129,16 @@ namespace EazyEngine.Space.UI
             quantityDestroy.text = LevelManger.Instance._infoLevel.enemyKill.ToString();
         
             gameObject.SetActive(true);
-            StartCoroutine(delayaction(3,delegate{
-                if (SceneManager.Instance.currentScene.StartsWith("Zone"))
-                {
-                    GameManager.Instance.showInterstitialAds();
-                }
-            }));
+            if ((System.DateTime.Now - GameManager.Instance.Database.firstOnline).TotalSeconds > 600)
+            {
+                adsCourountine =  StartCoroutine(delayaction(3,delegate{
+                    if (SceneManager.Instance.currentScene.StartsWith("Zone"))
+                    {
+                        GameManager.Instance.showInterstitialAds();
+                    }
+                }));
+            }
+      
             if (pWin)
             {
                 if (!GameManager.Instance.isFree)
@@ -205,7 +217,14 @@ namespace EazyEngine.Space.UI
         public void watch()
         {
             if (GameManager.Instance.isFree) return;
-                GameManager.Instance.showRewardAds("WatchX2WinGame", delegate (bool pSucess)
+            if (adsCourountine != null)
+            {
+                StopCoroutine(adsCourountine);
+            }
+            
+
+           
+            GameManager.Instance.showRewardAds("WatchX2WinGame", delegate (bool pSucess)
             {
                 if (pSucess)
                 {

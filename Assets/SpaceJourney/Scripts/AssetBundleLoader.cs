@@ -13,7 +13,7 @@ namespace EazyEngine.Tools
     {
         public AssetBundle result;
         public UnityWebRequest www;
-        public static Dictionary<string, AssetBundle> BUNDLES = new Dictionary<string, AssetBundle>();
+        public static Dictionary<Hash128, AssetBundle> BUNDLES = new Dictionary<Hash128, AssetBundle>();
         /// <summary>
         /// load assetbundle manifest, check hash, load actual bundle with hash parameter to use caching
         /// instantiate gameobject
@@ -63,6 +63,7 @@ namespace EazyEngine.Tools
                     }
                     else
                     {
+                    
                         Debug.Log("No cached version founded for this hash..");
                     }
                 }
@@ -89,23 +90,21 @@ namespace EazyEngine.Tools
                 }
                 // Get downloaded asset bundle
                 AssetBundle bundle = DownloadHandlerAssetBundle.GetContent((uwr));
-                Debug.Log("bundle name" + bundle.name);
+                PlayerPrefs.SetString(bundleURL+assetName,hashString.ToString());
                 result = bundle;
                 www.Dispose();
                 www = null;
                  yield break;      
             }
             lostinternet:
-     
-            List<Hash128> listHash = new List<Hash128>();
-            string[] subs = assetName.Split('/');
-            Caching.GetCachedVersions( subs[subs.Length-1],listHash);
-      
-            for (int i = 0; i < listHash.Count; ++i)
+
+            string pStr = PlayerPrefs.GetString(bundleURL + assetName, "");
+            hashString = Hash128.Parse(pStr);
+            if (!string.IsNullOrEmpty(pStr))
             {
-                using (UnityWebRequest uwr = UnityWebRequestAssetBundle.GetAssetBundle(bundleURL + assetName , listHash[i], 0))
+                using (UnityWebRequest uwr =
+                    UnityWebRequestAssetBundle.GetAssetBundle(bundleURL + assetName, hashString, 0))
                 {
-                
                     yield return uwr.SendWebRequest();
 
                     if (uwr.isNetworkError || uwr.isHttpError)
@@ -115,20 +114,10 @@ namespace EazyEngine.Tools
                     else
                     {
                         AssetBundle bundle = DownloadHandlerAssetBundle.GetContent((uwr));
-                        if (bundle != null && bundle.name == assetName)
-                        {
-                            result = bundle;
-                            yield break;
-                        }
-                        else
-                        {
-                     
-                            yield break;
-                        }
-                      
-                    
+
+                        result = bundle;
+                        yield break;
                     }
-              
                 }
             }
            

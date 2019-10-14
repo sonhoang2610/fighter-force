@@ -27,7 +27,7 @@ namespace EazyEngine.Space
         public bool isLocal = true;
         AsyncOperation async;
         bool isStart = false;
-        public string currentScene;
+        public string currentScene; 
         public static Dictionary<string, AssetBundle> BUNDLES = new Dictionary<string, AssetBundle>();
 
 
@@ -35,6 +35,7 @@ namespace EazyEngine.Space
         public void loadScene(string pScene)
         {
             currentScene = pScene;
+            SoundManager.Instance.StopAllCoroutines();
             //   fadeLayout.alpha = 0;
             Sequence pSeq = DOTween.Sequence();
             if (process)

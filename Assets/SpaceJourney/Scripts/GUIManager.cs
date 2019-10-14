@@ -35,6 +35,7 @@ namespace EazyEngine.Space
         [SerializeField]
         protected GameObject posLeft, posRight, control1;
         public BoxResult boxResult;
+        public AudioClip sfxStartNomal, sfxStartBoss;
 
         public Camera CamGUI { get => camGUI; set => camGUI = value; }
         public bool isPlaying
@@ -224,6 +225,16 @@ namespace EazyEngine.Space
             {
                 transform.Find("dangerboss").gameObject.SetActive(true);
                // SoundManager.Instance.PlayBackgroundMusic(GameManager.Instance.bossStage[GameManager.Instance.ChoosedHard]);
+            }
+
+            if (eventType._message == "StartGame")
+            {
+                if (GameManager.Instance.ChoosedLevel % 5 == 0 || GameManager.Instance.ChoosedLevel % 5 == 3)
+                {
+                    SoundManager.Instance.PlaySound(sfxStartBoss,Vector3.zero);
+                }else{
+                    SoundManager.Instance.PlaySound(sfxStartNomal,Vector3.zero);
+                }
             }
         }
     }

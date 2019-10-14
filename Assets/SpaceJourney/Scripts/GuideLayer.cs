@@ -73,6 +73,11 @@ namespace EazyEngine.Space.UI
                     var pWidget = pNewObject.AddComponent<UIWidget>();
                     pWidget.depth = 10;
                     var pButtonNew = pNewObject.AddComponent<UIButton>(pButton);
+                    pButtonNew.onClick = new List<EventDelegate>();
+                    for (int j = 0; j < pButton.onClick.Count; ++j)
+                    {
+                        pButtonNew.onClick.Add(pButton.onClick[j]);
+                    }
                     if (pExcute != null)
                     {
                         if (pOverride)
@@ -113,7 +118,7 @@ namespace EazyEngine.Space.UI
         {
             if (cacheButton)
             {
-                Destroy(cacheButton);
+                NGUITools.Destroy(cacheButton);
             }
             
             blackBG.gameObject.SetActive(false);

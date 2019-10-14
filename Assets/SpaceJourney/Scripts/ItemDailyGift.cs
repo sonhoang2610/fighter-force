@@ -20,6 +20,7 @@ namespace EazyEngine.Space
         public UI2DSprite iconItem,box;
         public UILabel quantity,time;
         public GameObject iconRecieve, block,now;
+  
 
         public override ItemDailyGiftInfo Data { get => base.Data; set {
 

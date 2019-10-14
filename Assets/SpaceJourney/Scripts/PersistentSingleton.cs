@@ -10,6 +10,11 @@ namespace EazyEngine.Tools
         protected static T _instance;
         protected bool _enabled;
 
+        public static T InstanceRaw
+        {
+            get { return _instance; }
+        }
+
         /// <summary>
         /// Singleton design pattern
         /// </summary>

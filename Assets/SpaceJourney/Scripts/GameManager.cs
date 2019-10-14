@@ -230,6 +230,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     public int lastResultWin = -1;
 	public AudioSource[] backgroundStage;
 	public AudioSource[] bossStage;
+    public AudioClip btnSfx;
     public prefabBulletGroup getGroupPrefab(GameObject pObject)
     {
         for (int i = 0; i < groupPrefabBullet.Length; ++i)
@@ -395,6 +396,8 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     protected bool saveGameAgain = false;
 
     protected float delaySave = 0;
+    
+  
     [Button("Save Game")]
     [HideInEditorMode]
     public void SaveGame()

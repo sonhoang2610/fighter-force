@@ -29,6 +29,7 @@ namespace EazyEngine.Space.UI
         public UIButton btn1, btn2;
         public BaseItemGame watchItem;
         protected DailyGiftDataBase databse;
+        public AudioClip sfxClaim;
         private void OnEnable()
         {
             if (databse == null)
@@ -93,6 +94,7 @@ namespace EazyEngine.Space.UI
             {
                 var pData = DataSource[GameManager.Instance.dailyGiftModule.currentDay+1];
                 var pReward = GameManager.Instance.Database.getComonItem(pData.mainData.item.itemID);
+                SoundManager.Instance.PlaySound(sfxClaim,Vector3.zero);
                 pReward.Quantity += pData.mainData.quantity;
                 pData.status = 1;
                 TopLayer.Instance.boxReward.show();
@@ -123,6 +125,7 @@ namespace EazyEngine.Space.UI
                 {
                     var pData = DataSource[GameManager.Instance.dailyGiftModule.currentDay + 1];
                     var pReward = GameManager.Instance.Database.getComonItem(pData.mainData.item.itemID);
+                    SoundManager.Instance.PlaySound(sfxClaim,Vector3.zero);
                     pReward.Quantity += pData.mainData.quantity * 2;
                     pData.status = 1;
                     TopLayer.Instance.boxReward.show();

@@ -10,8 +10,8 @@ namespace EazyEngine.Space.UI
         public EazyFrameCache status;
         public GameObject iconComplete;
         public GameObject rewardLayer;
-        public UILabel rewardQuantity;
-        public UI2DSprite iconReward;
+        public UILabel rewardQuantity,rewardQuantity1;
+        public UI2DSprite iconReward,iconReward1;
         public override MissionItemInstanced Data { get => base.Data;
             set
             {
@@ -22,6 +22,16 @@ namespace EazyEngine.Space.UI
                 rewardLayer.SetActive(value.process < 1);
                 iconReward.sprite2D = value.rewards[0].item.iconShop;
                 rewardQuantity.text =StringUtils.addDotMoney( value.rewards[0].quantity);
+                if (value.rewards.Length > 1)
+                {
+                    iconReward1.sprite2D = value.rewards[1].item.iconShop;
+                    rewardQuantity1.text =StringUtils.addDotMoney( value.rewards[1].quantity);
+                }
+                else
+                {
+                    iconReward1.gameObject.SetActive(false);
+                    rewardQuantity1.gameObject.SetActive(false);
+                }
             }
         }
         // Start is called before the first frame update

@@ -189,6 +189,8 @@ namespace EazyEngine.Space
         [HideInInspector]
         public System.DateTime lastGoldWheel;
         [HideInInspector]
+        public System.DateTime firstOnline;
+        [HideInInspector]
         public int currentWheelToday = 0;
      //   [HideInInspector]
         [SerializeField]

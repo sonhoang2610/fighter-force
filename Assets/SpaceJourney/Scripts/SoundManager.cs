@@ -184,7 +184,7 @@ public class SoundManager : PersistentSingleton<SoundManager>
             }));
             StartCoroutine(delayAction(sfx.length, delegate
             {
-                if (GameManager.Instance.inGame)
+                if (GameManager.Instance.inGame && PoolInGameAudios.Contains(audioSource))
                 {
                     audioSource.gameObject.SetActive(false);
                 }
