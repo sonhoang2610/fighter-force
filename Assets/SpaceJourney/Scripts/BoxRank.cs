@@ -54,6 +54,7 @@ namespace EazyEngine.Space.UI
 
         public void resultScores(string pName ,IScore[] scores)
         {
+            Debug.Log("scoreleng" + scores.Length );
             cacheInfo = new List<RankInfo>();
             var ids = new List<string>();
             for (int i = 0; i < scores.Length; ++i)
@@ -65,6 +66,7 @@ namespace EazyEngine.Space.UI
         }
         public void resultProfile(IUserProfile[] propfiles)
         {
+            Debug.Log("propleng" + propfiles.Length );
             for(int i = 0; i< propfiles.Length; ++i)
             {
                for(int j  = 0; j < cacheInfo.Count; ++j)

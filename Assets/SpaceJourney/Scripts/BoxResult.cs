@@ -166,6 +166,7 @@ namespace EazyEngine.Space.UI
                         {
                             pScore += GameManager.Instance.container.levels[i].infos.score;
                         }
+                        Debug.Log("report_score" + pScore);
                         GameServices.ReportScore(pScore, EM_GameServicesConstants.Leaderboard_Top_Fighter);
                     }
               
