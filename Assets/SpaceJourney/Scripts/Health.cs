@@ -66,6 +66,11 @@ namespace EazyEngine.Space
         protected Health parentHealth;
         private void Awake()
         {
+            if (DeathSfx && (DeathSfx.loadState != AudioDataLoadState.Loaded ||
+                             DeathSfx.loadState != AudioDataLoadState.Loading))
+            {
+                DeathSfx.LoadAudioData();
+            }
             if (DeathEffect && GameManager.Instance.inGame)
             {
                 ParticleEnviroment.Instance.preloadEffect(preloadDeathEffect, DeathEffect, transform.position, 1);
