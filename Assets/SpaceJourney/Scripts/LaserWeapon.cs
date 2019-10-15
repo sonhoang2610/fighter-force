@@ -88,10 +88,6 @@ namespace EazyEngine.Space
             if (index < lines.Count)
             {
                 lines[index].gameObject.SetActive(true);
-                if(index > 0)
-                {
-                    Debug.Log("asdasd");
-                }
                 return lines[index];
             }
             var pLine =  Instantiate<LineRenderer>(lineLaser, lineLaser.transform.parent);

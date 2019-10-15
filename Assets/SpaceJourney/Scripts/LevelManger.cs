@@ -229,8 +229,11 @@ namespace EazyEngine.Space
         protected float cacheVolum;
         public void turnOnVolume()
         {
-            AudioListener.volume = SoundManager.Instance.SfxOn ? 1: 0;
-      
+            if (SoundManager.Instance.SfxOn)
+            {
+                DOTween.To(() => AudioListener.volume, x => AudioListener.volume = x, 1, 0.5f);
+            }
+        
             SoundManager.Instance.PlayBackgroundMusic(GameManager.Instance.backgroundStage[GameManager.Instance.ChoosedHard]);
         }
         protected override void Awake()

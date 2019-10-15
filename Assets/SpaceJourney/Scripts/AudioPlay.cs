@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using EazyEngine.Space;
 using UnityEngine;
 
 
@@ -18,8 +19,8 @@ public class AudioPlay : MonoBehaviour {
     [SerializeField]
     float delay = 0;
     protected List<AudioSource> cacheAudios = new List<AudioSource>();
-    
-    
+    public bool runAllGame = true;
+    public float factorVolume = 1;
     public void pauseBackGroundMusic()
     {
         backGroundMusic.Pause();
@@ -29,7 +30,7 @@ public class AudioPlay : MonoBehaviour {
     {
         for (int i = 0; i < audios.Length; ++i)
         {
-            if (audios[i].loadState != AudioDataLoadState.Loaded)
+            if (audios[i]!= null && audios[i].loadState != AudioDataLoadState.Loaded)
             {
                 audios[i].LoadAudioData();
             }
@@ -61,21 +62,32 @@ public class AudioPlay : MonoBehaviour {
 
     private void OnDisable()
     {
-        if (!GameManager.Instance.inGame) return;
+       // if (!GameManager.Instance.inGame) return;
         for(int i = cacheAudios.Count -1; i >= 0; --i)
         {
+            if (cacheAudios[i].IsDestroyed())
+            {
+                cacheAudios.RemoveAt(i);
+                continue;
+            }
             if (cacheAudios[i].clip != null)
             {
-                Destroy(cacheAudios[i].gameObject, cacheAudios[i].clip.length);
+                Destroy(cacheAudios[i].gameObject,0);
             }
         }
         cacheAudios.Clear();
     }
+    
+    
     private void OnEnable()
     {
 
         if (playOnAwake)
         {
+            if (!runAllGame && ( !LevelManger.InstanceRaw || !LevelManger.Instance.IsMatching ))
+            {
+                return;
+            }
             if (!backGroundMusic)
             {
                 //enable++;
@@ -85,7 +97,7 @@ public class AudioPlay : MonoBehaviour {
                 //}
                 if (delay == 0)
                 {
-                   var pAudio = SoundManager.Instance.PlaySound(audios[Random.Range(randomAudio.x,randomAudio.y)], Vector3.zero,isLoop);
+                   var pAudio = SoundManager.Instance.PlaySound(audios[Random.Range(randomAudio.x,randomAudio.y)], Vector3.zero,isLoop,factorVolume);
                     if (isLoop && pAudio && !cacheAudios.Contains(pAudio))
                     {
                         cacheAudios.Add(pAudio);
@@ -95,7 +107,7 @@ public class AudioPlay : MonoBehaviour {
                 {
                     StartCoroutine(delayAction(delay, delegate
                     {
-                        var pAudio = SoundManager.Instance.PlaySound(audios[Random.Range(randomAudio.x, randomAudio.y)], Vector3.zero,isLoop);
+                        var pAudio = SoundManager.Instance.PlaySound(audios[Random.Range(randomAudio.x, randomAudio.y)], Vector3.zero,isLoop,factorVolume);
                         if (isLoop && pAudio && !cacheAudios.Contains(pAudio))
                         {
                             cacheAudios.Add(pAudio);

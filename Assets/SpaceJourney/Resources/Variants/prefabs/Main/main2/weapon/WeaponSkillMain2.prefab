@@ -150,6 +150,29 @@ Transform:
   m_Father: {fileID: 4687391246940468890}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &487822995898771523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5226228512687489327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aeda789381d84c49be952b5d7ab0e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audios:
+  - {fileID: 8300000, guid: 7c4966dfdc9ebbb49a54b779d61db40c, type: 3}
+  randomAudio:
+    x: 0
+    y: 0
+  backGroundMusic: {fileID: 0}
+  playOnAwake: 1
+  isLoop: 0
+  delay: 0
+  runAllGame: 0
+  factorVolume: 1
 --- !u!114 &6132774588386346244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,8 +190,6 @@ MonoBehaviour:
   onStart:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onDestroy:
     m_PersistentCalls:
       m_Calls:
@@ -183,8 +204,6 @@ MonoBehaviour:
           m_StringArgument: Shoot
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &7671788214894604568
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,13 +251,9 @@ MonoBehaviour:
   onStart:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onDestroy:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1001 &4684358258862385676
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -708,6 +723,16 @@ PrefabInstance:
     - target: {fileID: 442666, guid: 58b4f35335c59de4d8a92239a48b274f, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2575409306136571596, guid: 58b4f35335c59de4d8a92239a48b274f,
+        type: 3}
+      propertyPath: audios.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 19b61776f39178143bad70ac34b38cc7, type: 3}
+    - target: {fileID: 2575409306136571596, guid: 58b4f35335c59de4d8a92239a48b274f,
+        type: 3}
+      propertyPath: factorVolume
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58b4f35335c59de4d8a92239a48b274f, type: 3}

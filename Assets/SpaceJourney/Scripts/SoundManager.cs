@@ -131,14 +131,11 @@ public class SoundManager : PersistentSingleton<SoundManager>
     /// <param name="sfx">The sound clip you want to play.</param>
     /// <param name="location">The location of the sound.</param>
     /// <param name="loop">If set to true, the sound will loop.</param>
-    public virtual AudioSource PlaySound(AudioClip sfx, Vector3 location, bool loop = false)
+    public virtual AudioSource PlaySound(AudioClip sfx, Vector3 location, bool loop = false,float pFactorSpeed = 1)
     {
         if (!SfxOn || !sfx)
             return null;
-        if (LevelManger.InstanceRaw && !LevelManger.Instance.IsMatching)
-        {
-            return null;
-        }
+       
 
         if (ingnoreClips.Contains(sfx)) return null;
         if (!parrentSound)
@@ -165,7 +162,7 @@ public class SoundManager : PersistentSingleton<SoundManager>
         }
         audioSource.gameObject.SetActive(true);
         // we set the audio source volume to the one in parameters
-        audioSource.volume = SfxVolume;
+        audioSource.volume = SfxVolume * pFactorSpeed;
         // we set our loop setting
         audioSource.loop = loop;
         // we start playing the sound
@@ -188,7 +185,7 @@ public class SoundManager : PersistentSingleton<SoundManager>
                 {
                     audioSource.gameObject.SetActive(false);
                 }
-                else
+                else if(!audioSource.IsDestroyed())
                 {
                     Destroy(audioSource.gameObject);
                 }

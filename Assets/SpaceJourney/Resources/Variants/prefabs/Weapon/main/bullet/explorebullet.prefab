@@ -283,6 +283,9 @@ MonoBehaviour:
   onEnableLateUpdateEvent:
     m_PersistentCalls:
       m_Calls: []
+  onCompleteTweenShow:
+    m_PersistentCalls:
+      m_Calls: []
   relative: 0
 --- !u!1 &2290545686915536186
 GameObject:
@@ -5053,6 +5056,7 @@ GameObject:
   - component: {fileID: 2290545686930424202}
   - component: {fileID: 2290545686931154068}
   - component: {fileID: 7031651973668242877}
+  - component: {fileID: -7535441003880565190}
   m_Layer: 10
   m_Name: explorebullet
   m_TagString: Untagged
@@ -9705,6 +9709,29 @@ MonoBehaviour:
   onDestroy:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-7535441003880565190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2290545686915555622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aeda789381d84c49be952b5d7ab0e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audios:
+  - {fileID: 8300000, guid: 58c0c9e48e14dc345906722ac21d37f5, type: 3}
+  randomAudio:
+    x: 0
+    y: 0
+  backGroundMusic: {fileID: 0}
+  playOnAwake: 1
+  isLoop: 0
+  delay: 0
+  runAllGame: 0
+  factorVolume: 0.8
 --- !u!1 &2290545686915576294
 GameObject:
   m_ObjectHideFlags: 0
