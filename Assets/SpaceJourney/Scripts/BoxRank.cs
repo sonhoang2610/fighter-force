@@ -16,6 +16,8 @@ namespace EazyEngine.Space.UI
             if(eventType.Event == "GameServiceInitialized")
             {
                 layerLogin.gameObject.SetActive(false);
+                Debug.Log("leadboard");
+                GameServices.ShowLeaderboardUI(EM_GameServicesConstants.Leaderboard_Top_Fighter);
                 GameServices.LoadLocalUserScore(EM_GameServicesConstants.Leaderboard_Top_Fighter, resultLocalScores);
                 GameServices.LoadScores(EM_GameServicesConstants.Leaderboard_Top_Fighter, 0, 19, TimeScope.AllTime, UserScope.Global, resultScores);
             }
@@ -36,7 +38,9 @@ namespace EazyEngine.Space.UI
             EzEventManager.AddListener(this);
             if (GameServices.IsInitialized())
             {
+                Debug.Log("leadboard");
                 layerLogin.gameObject.SetActive(false);
+                GameServices.ShowLeaderboardUI(EM_GameServicesConstants.Leaderboard_Top_Fighter);
                 GameServices.LoadLocalUserScore(EM_GameServicesConstants.Leaderboard_Top_Fighter, resultLocalScores);
                 GameServices.LoadScores(EM_GameServicesConstants.Leaderboard_Top_Fighter,0,19,TimeScope.AllTime,UserScope.Global, resultScores);
             }
