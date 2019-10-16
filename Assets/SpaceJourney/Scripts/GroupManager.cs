@@ -229,8 +229,8 @@ namespace EazyEngine.Space
                     var pObjectEnemy = EnemyEnviroment.Instance.getEnemyFromPool(_typeSpawn);
                     pObjectEnemy.transform.position = new Vector3(999, 999, 0);
                     LevelManger.Instance.addBornEnemy(pObjectEnemy);
-                
-                    pObjectEnemy.GetComponent<Health>().Revive();
+                    pObjectEnemy.gameObject.SetActive(true);
+                    pObjectEnemy.GetComponent<Health>().Revive(false);
                     // pObjectEnemy.transform.localPosition = arrayPos.getPointFromIndex(i) + pState.formatInfo.startSpawnPos;
                     pObjectEnemy.transform.RotationDirect2D(pState.formatInfo.directionStart, TranformExtension.FacingDirection.UP);
                     pElements.Add(pObjectEnemy);

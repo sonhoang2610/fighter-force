@@ -26,6 +26,8 @@ namespace EazyEngine.Space.UI
                 {
                     iconReward1.sprite2D = value.rewards[1].item.iconShop;
                     rewardQuantity1.text =StringUtils.addDotMoney( value.rewards[1].quantity);
+                    iconReward1.gameObject.SetActive(true);
+                    rewardQuantity1.gameObject.SetActive(true);
                 }
                 else
                 {

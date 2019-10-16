@@ -477,7 +477,7 @@ namespace EazyEngine.Space
             {
                 for (int i = 0; i < childHealth.Length; ++i)
                 {
-                    childHealth[i].Revive();
+                    childHealth[i].Revive(pActiveObject);
                 }
             }
             if(timeInvuAfterRevie > 0  && deathtime > 0)
