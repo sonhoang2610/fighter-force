@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -118,7 +119,9 @@ namespace EazyEngine.Space.UI
             }
         }
 
-        // Update is called once per frame
+       
+
+         // Update is called once per frame
         void Update()
         {
 
@@ -126,6 +129,25 @@ namespace EazyEngine.Space.UI
 
         protected virtual void OnEnable()
         {
+            if (autoSelfLoad && itemToLoad)
+            {
+                var pDataItem = GameManager.Instance.Database.getComonItem(itemToLoad);
+                if (pDataItem == null)
+                {
+                    pDataItem = new BaseItemGameInstanced();
+                    pDataItem.quantity = 0;
+                    pDataItem.item = itemToLoad;
+
+                }
+                T pData = new T();
+                if (typeof(IConvertBaseItemGameInstanced<T>).IsAssignableFrom(pData.GetType()))
+                {
+                    Data = ((IConvertBaseItemGameInstanced<T>)pData).convertFromBaseItemGameInstanced(pDataItem);
+                }else if(typeof(T) == typeof(BaseItemGameInstanced))
+                {
+                    Data = (T)pDataItem;
+                }
+            }
             if (autoSelfLoad)
             {
                 EzEventManager.AddListener(this);
