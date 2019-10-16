@@ -247,8 +247,8 @@ namespace EazyEngine.Space {
             for (int i  =0; i < PExtras.Count; ++i)
             {
                 pExtraDamage += PExtras[i].type == DamageType.Normal ? PExtras[i].damageExtra :
-                    (PExtras[i].type == DamageType.PecentHp ? (float)health.CurrentHealth * PExtras[i].damageExtra :
-                    (PExtras[i].type == DamageType.PecentMaxHp ? (float)health.MaxiumHealth * PExtras[i].damageExtra : (pCurrentDamge * PExtras[i].damageExtra)));
+                    (PExtras[i].type == DamageType.PecentHp ? (float)health.CurrentHealth * PExtras[i].damageExtra/100.0f :
+                    (PExtras[i].type == DamageType.PecentMaxHp ? (float)health.MaxiumHealth * PExtras[i].damageExtra : (pCurrentDamge * PExtras[i].damageExtra/100.0f)));
             }
             health.Damage((int)pCurrentDamge + (int)pExtraDamage, gameObject, 0, 0);
             if (ignoreOnDamaged)
