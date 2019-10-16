@@ -135,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameObjectToPool: {fileID: 899314491815318642, guid: 0e737f37e09d41246a2fe5d9826286ca,
     type: 3}
-  PoolSize: 3
+  PoolSize: 10
   PoolCanExpand: 1
   dontDestroyOnload: 0
 --- !u!1 &3480126233848385961
@@ -822,12 +822,6 @@ PrefabInstance:
       propertyPath: boosterInfos.Array.data[8].includeChild
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114506514760959066, guid: 407911a24b2f1ed42b7ee796c89befc9,
-        type: 3}
-      propertyPath: GameObjectToPool
-      value: 
-      objectReference: {fileID: 899314491815318642, guid: cc2d47d46123aac4c8881ec132b6ff39,
-        type: 3}
     - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -871,6 +865,17 @@ PrefabInstance:
     - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114506514760959066, guid: 407911a24b2f1ed42b7ee796c89befc9,
+        type: 3}
+      propertyPath: GameObjectToPool
+      value: 
+      objectReference: {fileID: 899314491815318642, guid: cc2d47d46123aac4c8881ec132b6ff39,
+        type: 3}
+    - target: {fileID: 114506514760959066, guid: 407911a24b2f1ed42b7ee796c89befc9,
+        type: 3}
+      propertyPath: PoolSize
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
