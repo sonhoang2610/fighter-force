@@ -171,7 +171,10 @@ namespace EazyEngine.Space.UI
         }
         public void showBoxRankServer()
         {
-            MidLayer.Instance.BoxRank.show();
+            if (GameServices.IsInitialized())
+            {
+                GameServices.ShowLeaderboardUI();
+            }
         }
 
         public void showBoxShop()

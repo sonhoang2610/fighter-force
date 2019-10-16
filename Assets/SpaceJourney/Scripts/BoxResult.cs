@@ -152,12 +152,7 @@ namespace EazyEngine.Space.UI
                         GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard + 1).isLocked = false;
                     }
                     var pOldLevelInfo = GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard);
-                    bool newbest = false;
-                    if(pOldLevelInfo.infos.score > LevelManger.Instance._infoLevel.score)
-                    {
-                        LevelManger.Instance._infoLevel.score = pOldLevelInfo.infos.score;
-                        newbest = true;
-                    }
+                    bool newbest = pOldLevelInfo.infos.score < LevelManger.Instance._infoLevel.score;
                     GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard).infos = LevelManger.Instance._infoLevel;
                     if (newbest)
                     {
