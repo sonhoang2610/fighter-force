@@ -142,10 +142,12 @@ MonoBehaviour:
   onEndLifeTime:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   lifeTime: 7
+  lifeTimeRandomTo: 0
   ignoreLiveTime: 0
+  onIndexBullet:
+    m_PersistentCalls:
+      m_Calls: []
   Speed: 12
   delayMove: 0
   _SpeedConstraint: 1
@@ -182,13 +184,12 @@ MonoBehaviour:
   onMoveToTarget:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   target: {x: 0, y: 0}
   moveSin: 0
   frequency: 5
   magnitude: 0.1
   isAngularX: 0
+  delayX: 0
   velocityXRandom: {x: 1, y: 1}
   timeVelocityX: {x: 0.5, y: 0.5}
   curveVelocityX:
@@ -216,6 +217,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   firstModule:
+    delayStart: 0
     noStart: 0
     start: 24
     destiny: 0
@@ -245,6 +247,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   secondModule:
+    delayStart: 0
     noStart: 1
     start: 0
     destiny: 24
@@ -379,38 +382,24 @@ MonoBehaviour:
   onStart:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onPlay:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onUpdate:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onStepComplete:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onComplete:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onTweenCreated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onRewind:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   targetIsSelf: 1
   targetGO: {fileID: 0}
   tweenTargetIsTargetGO: 1
@@ -579,6 +568,21 @@ PrefabInstance:
         type: 3}
       propertyPath: TakenDamageMask.m_Bits
       value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 114159071385699954, guid: 64944a73961a838488b0954164e9c20e,
+        type: 3}
+      propertyPath: factorDamageDecreaseSameObjects
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114159071385699954, guid: 64944a73961a838488b0954164e9c20e,
+        type: 3}
+      propertyPath: factorMinDamageDecrease
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114159071385699954, guid: 64944a73961a838488b0954164e9c20e,
+        type: 3}
+      propertyPath: durationForNextDame
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 114999931089774526, guid: 64944a73961a838488b0954164e9c20e,
         type: 3}
