@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using UnityEngine;
 
 namespace FlowCanvas.Nodes
 {
@@ -51,6 +52,11 @@ namespace FlowCanvas.Nodes
                 }
             }
             instanceObject = instanceInput != null ? instanceInput.value : null;
+            if (instanceObject == null && !methodInfo.IsStatic)
+            {
+                resultObject = null;
+                return;
+            }
             resultObject = methodInfo.Invoke(instanceObject, callParams);
         }
 

@@ -90,6 +90,8 @@ namespace EazyEngine.Space
         [InlineEditor]
         public Camera mainPlayCamera;
         public Character[] players;
+        
+        
         public Character CurrentPlayer
         {
             get
@@ -238,6 +240,11 @@ namespace EazyEngine.Space
         }
         protected override void Awake()
         {
+            if (SceneManager.Instance.currentScene.Contains("Main"))
+            {
+                Destroy(gameObject);
+                return;
+            }
             base.Awake();
             TimeKeeper.Instance.getTimer("Map").TimScale = 1 ;
             for (int i = 0; i < 24; i++)
