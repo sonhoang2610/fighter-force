@@ -75,6 +75,8 @@ namespace EazyEngine.Space {
         public LayerMask TargetMaskLayer;
         public bool ignoreOnDamaged = false;
         public int DamageCaused = 10;
+        public float factorDamageDecreaseSameObjects = 0;
+        public float factorMinDamageDecrease = 1;
         public GameObject damagedEffect;
         public float durationForNextDame = 0.1f;
         public LayerMask TakenDamageMask = ~0; 
@@ -89,26 +91,33 @@ namespace EazyEngine.Space {
         [SerializeField]
         [HideInEditorMode]
         protected float factorDamage = 1;
+        
+        
 
         protected List<GameObjectIgnoreTime> nextDamageSameObject = new List<GameObjectIgnoreTime>();
-
-        public bool getObjectIgnore(GameObject pObjectCompare, out GameObjectIgnoreTime pObject)
+        public bool getObjectIgnore(GameObject pObjectCompare, out int pObjectIndex)
         {  
             for (int i = 0; i < nextDamageSameObject.Count; ++i)
             {
                 if(nextDamageSameObject[i].pObject == pObjectCompare)
                 {
-                    pObject = nextDamageSameObject[i];
+                    pObjectIndex = i;
+                    if (nextDamageSameObject[i].duration <= 0)
+                    {
+                        return false;
+                    }
                     return true;
                 }
             }
-            pObject = new GameObjectIgnoreTime();
+
+            pObjectIndex = -1;
             return false;
         }
         public struct GameObjectIgnoreTime
         {
             public GameObject pObject;
             public float duration;
+            public int indexDamaged;
         }
 
         public float factorDamageSelfConfig = 1;
@@ -165,15 +174,14 @@ namespace EazyEngine.Space {
         private void Update()
         {
              for(int i = nextDamageSameObject.Count -1; i >= 0; --i)
-            {
-                GameObjectIgnoreTime pObject = nextDamageSameObject[i];
-                pObject.duration -= time.deltaTime;
-                nextDamageSameObject[i] = pObject;
-                if (pObject.duration <= 0)
-                {
-                    nextDamageSameObject.RemoveAt(i);
-                }
-            }
+             {
+                 GameObjectIgnoreTime pObject = nextDamageSameObject[i];
+                 if (pObject.duration > 0)
+                 {
+                     pObject.duration -= time.deltaTime;
+                     nextDamageSameObject[i] = pObject;
+                 }
+             }
         }
         protected virtual void Awake()
         {
@@ -186,14 +194,14 @@ namespace EazyEngine.Space {
         }
         protected virtual void OnTriggerStay2D(Collider2D collision)
         {
-            GameObjectIgnoreTime pObjectOut;
+            int pObjectOut;
             if (getObjectIgnore(collision.gameObject,out pObjectOut)) return;
             if (!_collider || !_collider.isTrigger || !_collider.enabled) return;
             OnEazyTriggerEnter2D(gameObject, collision);
         }
         protected virtual void OnTriggerEnter2D(Collider2D collision)
         {
-            GameObjectIgnoreTime pObjectOut;
+            int pObjectOut;
             if (getObjectIgnore(collision.gameObject, out pObjectOut)) return;
 
             if (parentDamage)
@@ -237,10 +245,23 @@ namespace EazyEngine.Space {
             }
             Health health = collision.GetComponent<Health>();
             if (!health) return;
-            GameObjectIgnoreTime pObjectOut;
+            int pObjectOut =-1;
+            int indexDamagedSamObject = 0;
             if (durationForNextDame >0 && !getObjectIgnore(collision.gameObject, out pObjectOut))
             {
-                nextDamageSameObject.Add(new GameObjectIgnoreTime() { pObject = collision.gameObject,duration = durationForNextDame});
+                if (pObjectOut < 0)
+                {
+                    nextDamageSameObject.Add(new GameObjectIgnoreTime() { pObject = collision.gameObject,duration = durationForNextDame,indexDamaged =  1});
+                }
+                else
+                {
+                    var pObject = nextDamageSameObject[pObjectOut];
+                    indexDamagedSamObject = pObject.indexDamaged;
+                    pObject.indexDamaged++;
+                    pObject.duration = durationForNextDame;
+                    nextDamageSameObject[pObjectOut] = pObject;
+                }
+              
             }
             float pExtraDamage = 0;
             float pCurrentDamge = (DamageCausedProp * FactorDamage * factorDamageSelfConfig);
@@ -250,7 +271,13 @@ namespace EazyEngine.Space {
                     (PExtras[i].type == DamageType.PecentHp ? (float)health.CurrentHealth * PExtras[i].damageExtra/100.0f :
                     (PExtras[i].type == DamageType.PecentMaxHp ? (float)health.MaxiumHealth * PExtras[i].damageExtra : (pCurrentDamge * PExtras[i].damageExtra/100.0f)));
             }
-            health.Damage((int)pCurrentDamge + (int)pExtraDamage, gameObject, 0, 0);
+
+            float pDecrease = 1 - indexDamagedSamObject * factorDamageDecreaseSameObjects;
+            if (pDecrease < factorMinDamageDecrease)
+            {
+                pDecrease = factorMinDamageDecrease;
+            }
+            health.Damage((int)((pCurrentDamge + pExtraDamage)*pDecrease), gameObject, 0, 0);
             if (ignoreOnDamaged)
             {
                 IgnoreGameObject(health.gameObject);
@@ -309,6 +336,7 @@ namespace EazyEngine.Space {
         }
         public void onRespawn()
         {
+            nextDamageSameObject.Clear();
             if (damageChilds!= null)
             {
                 for(int i = 0; i < damageChilds.Length; ++i)
