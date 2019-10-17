@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aad115aca74ce3c4891b3f6de0b4aae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundGraphSerialization: '{"version":2.92,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","translation":{"x":27.0,"y":-385.0},"zoomFactor":0.8739768,"nodes":[{"repeaterMode":"RepeatForever","repeatTimes":{"_value":1},"_position":{"x":500.0,"y":479.0},"$type":"NodeCanvas.BehaviourTrees.Repeater","$id":"2"},{"_condition":{"conditions":[{"method":{"_baseInfo":"EazyEngine.Space.Health|get_PercentageHealth|System.Single","_paramsInfo":""},"checkValue":{"_type":"System.Single","_value":{"$content":0.5,"$type":"System.Single"}},"comparison":"LessOrEqualTo","$type":"NodeCanvas.Tasks.Conditions.CheckProperty_Multiplatform"},{"overrideAgent":{"_value":1},"$type":"NodeCanvas.Tasks.Conditions.IsActive"},{"method":{"_baseInfo":"EazyEngine.Space.Health|get_PercentageHealth|System.Single","_paramsInfo":""},"checkValue":{"_type":"System.Single","_value":{"$content":0.1,"$type":"System.Single"}},"comparison":"GreaterThan","$type":"NodeCanvas.Tasks.Conditions.CheckProperty_Multiplatform"}],"$type":"NodeCanvas.Framework.ConditionList"},"_position":{"x":425.0,"y":618.0},"$type":"NodeCanvas.BehaviourTrees.ConditionalEvaluator","$id":"4"},{"_action":{"actions":[{"setTo":"Deactivate","overrideAgent":{"_value":1},"$type":"NodeCanvas.Tasks.Actions.SetObjectActive"},{"method":{"_baseInfo":"EazyEngine.Space.CharacterHandleWeapon|triggerHandleWepaon|System.Void","_paramsInfo":"System.String"},"parameters":[{"_type":"System.String","_value":{"$content":"ExploreShield","$type":"System.String"}}],"parameterIsByRef":[false],"returnValue":{},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"}],"$type":"NodeCanvas.Framework.ActionList"},"_position":{"x":400.0,"y":853.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"15"}],"connections":[{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"15"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"localBlackboard":{"_name":"Local
+  boundGraphSerialization: '{"version":2.96,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","translation":{"x":27.0,"y":-385.0},"zoomFactor":0.8739768,"nodes":[{"repeaterMode":"RepeatForever","repeatTimes":{"_value":1},"_position":{"x":500.0,"y":479.0},"$type":"NodeCanvas.BehaviourTrees.Repeater","$id":"2"},{"_condition":{"conditions":[{"method":{"_baseInfo":"EazyEngine.Space.Health|get_PercentageHealth|System.Single","_paramsInfo":""},"checkValue":{"_type":"System.Single","_value":{"$content":0.5,"$type":"System.Single"}},"comparison":"LessOrEqualTo","$type":"NodeCanvas.Tasks.Conditions.CheckProperty_Multiplatform"},{"overrideAgent":{"_value":1},"$type":"NodeCanvas.Tasks.Conditions.IsActive"},{"method":{"_baseInfo":"EazyEngine.Space.Health|get_PercentageHealth|System.Single","_paramsInfo":""},"checkValue":{"_type":"System.Single","_value":{"$content":0.1,"$type":"System.Single"}},"comparison":"GreaterThan","$type":"NodeCanvas.Tasks.Conditions.CheckProperty_Multiplatform"}],"$type":"NodeCanvas.Framework.ConditionList"},"_position":{"x":425.0,"y":618.0},"$type":"NodeCanvas.BehaviourTrees.ConditionalEvaluator","$id":"4"},{"_action":{"actions":[{"setTo":"Deactivate","overrideAgent":{"_value":1},"$type":"NodeCanvas.Tasks.Actions.SetObjectActive"},{"method":{"_baseInfo":"EazyEngine.Space.CharacterHandleWeapon|triggerHandleWepaon|System.Void","_paramsInfo":"System.String"},"parameters":[{"_type":"System.String","_value":{"$content":"ExploreShield","$type":"System.String"}}],"parameterIsByRef":[false],"returnValue":{},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"}],"$type":"NodeCanvas.Framework.ActionList"},"_position":{"x":400.0,"y":853.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"15"}],"connections":[{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"15"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"localBlackboard":{"_name":"Local
     Blackboard","_variables":{}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
   boundGraphObjectReferences:
   - {fileID: 0}
@@ -900,6 +900,21 @@ PrefabInstance:
       propertyPath: machine.model
       value: 
       objectReference: {fileID: 2675389896978250417}
+    - target: {fileID: 6801142509365525947, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8135350945030052996, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8135350945030052996, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -272
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d8cb7744763d36459cb5cb20a29e0ac, type: 3}
 --- !u!1 &8666511167644931436 stripped
