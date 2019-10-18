@@ -27,6 +27,7 @@ namespace EazyEngine.Space
         public float timeInvuAfterRevie = 0;
         public bool disableParrentOnDeath = false;
         public bool disableOnDeath  = true;
+        public bool activeOnRevie = true;
         public int deffense = 0;
         public int MaxiumHealth;
         public int InitialHealth;
@@ -498,7 +499,7 @@ namespace EazyEngine.Space
         protected int deathtime = 0;
         public void Revive()
         {
-            Revive(true);
+            Revive(activeOnRevie);
         }
 
         public bool registerListen()

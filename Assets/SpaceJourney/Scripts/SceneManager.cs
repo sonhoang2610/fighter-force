@@ -54,6 +54,8 @@ namespace EazyEngine.Space
             pSeq.Play();
         }
 
+        
+        
         public void complete()
         {
         
@@ -112,6 +114,7 @@ namespace EazyEngine.Space
 #else
             Debug.unityLogger.logEnabled = false;
 #endif
+            Screen.sleepTimeout = SleepTimeout.NeverSleep;
         }
 
         public IEnumerator loadManager()

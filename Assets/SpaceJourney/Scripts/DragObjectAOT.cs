@@ -60,7 +60,12 @@ namespace  EazyEngine.Space
             if (beganTouch)
             {
                 Vector2 deltaPos = touchPos - (Vector2)transform.position;
-                movement(deltaPos * Speed * Time.deltaTime);
+                var pMovement = deltaPos * Speed * Time.deltaTime;
+                if (Vector2.Distance(touchPos, transform.position) < Speed * Time.deltaTime)
+                {
+                    pMovement = touchPos - (Vector2)transform.position;
+                }
+                movement(pMovement);
             }
             Rect pRect = rect.rect;
             pRect.position = (Vector2) transform.position - rect.sizeDelta/2;
