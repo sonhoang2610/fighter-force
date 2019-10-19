@@ -21,7 +21,7 @@ namespace EazyEngine.Tools
         /// <param name="bundleURL">full url to assetbundle file</param>
         /// <param name="assetName">optional parameter to access specific asset from assetbundle</param>
         /// <returns></returns>
-        public  IEnumerator DownloadAndCache(string bundleURL, string assetName = "")
+        public  IEnumerator DownloadAndCache(string bundleURL, string assetName = "",bool pNewVer = true,System.Action<bool,AssetBundle> resultCallBack  = null)
         {
             // Wait for the Caching system to be ready
             while (!Caching.ready)
@@ -38,7 +38,7 @@ namespace EazyEngine.Tools
             yield return www.SendWebRequest();
             Hash128 hashString = (default(Hash128));// new Hash128(0, 0, 0, 0);
             // if received error, exit
-            if (www.isNetworkError == true)
+            if (www.isNetworkError == true || !pNewVer)
             {
                 goto  lostinternet;
             }
@@ -92,12 +92,14 @@ namespace EazyEngine.Tools
                 AssetBundle bundle = DownloadHandlerAssetBundle.GetContent((uwr));
                 PlayerPrefs.SetString(bundleURL+assetName,hashString.ToString());
                 result = bundle;
+    
                 www.Dispose();
                 www = null;
+                resultCallBack?.Invoke(true,bundle);
                  yield break;      
             }
             lostinternet:
-
+    
             string pStr = PlayerPrefs.GetString(bundleURL + assetName, "");
             hashString = Hash128.Parse(pStr);
             if (!string.IsNullOrEmpty(pStr))
@@ -114,8 +116,9 @@ namespace EazyEngine.Tools
                     else
                     {
                         AssetBundle bundle = DownloadHandlerAssetBundle.GetContent((uwr));
-
+                  
                         result = bundle;
+                        resultCallBack?.Invoke(false,bundle);
                         yield break;
                     }
                 }
