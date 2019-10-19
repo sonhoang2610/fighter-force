@@ -31,8 +31,7 @@ namespace EazyEngine.Space.UI
         protected override void Awake()
         {
             base.Awake();
-            Time.timeScale = 1;
-            GroupManager.clearCache();
+   
             if (layerPrepare)
             {
                 layerPrepare.showInfo(0,0);
@@ -287,7 +286,8 @@ namespace EazyEngine.Space.UI
         // Start is called before the first frame update
         void Start()
         {
-       
+            Time.timeScale = 1;
+            GroupManager.clearCache();
             if (GameServices.LocalUser != null)
             {
                 nameUser.text = GameServices.LocalUser.userName.Length < 10 ? GameServices.LocalUser.userName : (GameServices.LocalUser.userName.Substring(0, 7) + "...");
