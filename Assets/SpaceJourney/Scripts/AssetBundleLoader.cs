@@ -9,6 +9,12 @@ using UnityEngine.SceneManagement;
 
 namespace EazyEngine.Tools
 {
+    public enum LoadAssetBundleStatus
+    {
+        NEW,
+        CACHE,
+        LOST_CONNECT_NOT_HAVE_CACHE
+    }
     public class AssetBundleLoader 
     {
         public AssetBundle result;
@@ -21,7 +27,7 @@ namespace EazyEngine.Tools
         /// <param name="bundleURL">full url to assetbundle file</param>
         /// <param name="assetName">optional parameter to access specific asset from assetbundle</param>
         /// <returns></returns>
-        public  IEnumerator DownloadAndCache(string bundleURL, string assetName = "",bool pNewVer = true,System.Action<bool,AssetBundle> resultCallBack  = null)
+        public  IEnumerator DownloadAndCache(string bundleURL, string assetName = "",bool pNewVer = true,System.Action<LoadAssetBundleStatus,AssetBundle> resultCallBack  = null)
         {
             // Wait for the Caching system to be ready
             while (!Caching.ready)
@@ -86,7 +92,7 @@ namespace EazyEngine.Tools
              
                 if (uwr.isNetworkError || uwr.isHttpError)
                 {
-                    Debug.Log("www error: " + uwr.error);
+                    resultCallBack?.Invoke(LoadAssetBundleStatus.LOST_CONNECT_NOT_HAVE_CACHE,null);
                 }
                 // Get downloaded asset bundle
                 AssetBundle bundle = DownloadHandlerAssetBundle.GetContent((uwr));
@@ -95,7 +101,7 @@ namespace EazyEngine.Tools
     
                 www.Dispose();
                 www = null;
-                resultCallBack?.Invoke(true,bundle);
+                resultCallBack?.Invoke(LoadAssetBundleStatus.NEW,bundle);
                  yield break;      
             }
             lostinternet:
@@ -111,14 +117,14 @@ namespace EazyEngine.Tools
 
                     if (uwr.isNetworkError || uwr.isHttpError)
                     {
-                        Debug.Log("www error: " + uwr.error);
+                        resultCallBack?.Invoke(LoadAssetBundleStatus.LOST_CONNECT_NOT_HAVE_CACHE,null);
                     }
                     else
                     {
                         AssetBundle bundle = DownloadHandlerAssetBundle.GetContent((uwr));
                   
                         result = bundle;
-                        resultCallBack?.Invoke(false,bundle);
+                        resultCallBack?.Invoke(LoadAssetBundleStatus.CACHE,bundle);
                         yield break;
                     }
                 }

@@ -75,7 +75,7 @@ namespace EazyEngine.Space
         }
         public IEnumerator delayAction(float pDelay,System.Action pAction)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(pDelay);
             pAction();
         }
         public void loadAllGame()
@@ -119,6 +119,7 @@ namespace EazyEngine.Space
         }
 
         protected Coroutine corountineNotice;
+        protected string lastAssetLoaded;
         public IEnumerator loadManager(bool pNewVer)
         {
             AssetBundleLoader loader = new AssetBundleLoader();
@@ -129,21 +130,42 @@ namespace EazyEngine.Space
 #if UNITY_IOS
              pTag = "ui/uri_assetbundle_ios";
 #endif
-            bool pNewAsset = false;
+            LoadAssetBundleStatus status = LoadAssetBundleStatus.NEW;
+            if (corountineNotice != null)
+            {
+                StopCoroutine(corountineNotice);
+            }
             //30s check show box lost connection
-            corountineNotice = StartCoroutine(delayAction(30, delegate
+            corountineNotice = StartCoroutine(delayAction(5, delegate
             {
                 boxlostConnection.show();
             }));
-            yield return loader.DownloadAndCache(I2.Loc.LocalizationManager.GetTranslation(pTag), "assetmanager",pNewVer,(bool pNew,AssetBundle pBundle) =>
+            lastAssetLoaded = I2.Loc.LocalizationManager.GetTranslation(pTag) + "assetmanager";
+            yield return loader.DownloadAndCache(I2.Loc.LocalizationManager.GetTranslation(pTag), "assetmanager",pNewVer,(LoadAssetBundleStatus pNew,AssetBundle pBundle) =>
                 {
-                    pNewAsset = pNew;
-                });
-            StopCoroutine(corountineNotice);
+                    status = pNew;
+            });
+            if (status == LoadAssetBundleStatus.LOST_CONNECT_NOT_HAVE_CACHE)
+            {
+                boxlostConnection.show();
+                yield break;
+            }
+            else
+            {
+                if (boxlostConnection.gameObject.activeSelf)
+                {
+                    boxlostConnection.close();
+                }
+            }
+            if (corountineNotice != null)
+            {
+                StopCoroutine(corountineNotice);
+                corountineNotice = null;
+            }
             if (loader.result != null)
             {
                 var pManager = loader.result.LoadAsset<AssetbundleManager>("AssetbundleManager");
-                if (float.Parse(pManager.currentModule.version) > float.Parse(Application.version) && pNewAsset)
+                if (float.Parse(pManager.currentModule.version) > float.Parse(Application.version) && status == LoadAssetBundleStatus.NEW)
                 {
                     loader.result.Unload(true);
                     yield return loadManager(false);
@@ -166,8 +188,46 @@ namespace EazyEngine.Space
                         queue[i].Percent = queue[i].sizeFile / totalSize;
                     }
                 
-                yield return loadModules(queue,pNewAsset);
+                yield return loadModules(queue,status == LoadAssetBundleStatus.NEW);
             }
+        }
+
+        public void closeBoxLostConnect()
+        {
+            boxlostConnection.close();
+            if (corountineNotice != null)
+            {
+                StopCoroutine(corountineNotice);
+            }
+
+            corountineNotice = StartCoroutine(delayAction(10, delegate { boxlostConnection.show(); }));
+        }
+        public void refreshload()
+        {
+            AssetBundle.UnloadAllAssetBundles(true);
+            StopAllCoroutines();
+            if (process)
+            {
+                process.fillAmount = 0;
+            }
+            StartCoroutine(loadManager(true));
+        }
+
+        public IEnumerator tryReconect(float pSec,string pUrl,string pAsset,System.Action<LoadAssetBundleStatus,AssetBundle> pOnResult)
+        {
+            yield return new WaitForSeconds(pSec);
+            AssetBundleLoader loader = new AssetBundleLoader();
+            LoadAssetBundleStatus pStatusSub = LoadAssetBundleStatus.NEW;
+            yield return loader.DownloadAndCache(pUrl,pAsset,true,(LoadAssetBundleStatus pStatus,AssetBundle pBundle) =>
+            {
+                pStatusSub = pStatus;
+                pOnResult?.Invoke(pStatus,pBundle);
+            });
+            if (pStatusSub != LoadAssetBundleStatus.LOST_CONNECT_NOT_HAVE_CACHE)
+            {
+                yield break;
+            }
+            yield return tryReconect(pSec, pUrl,pAsset, pOnResult);
         }
         List<GameObject> objectPlanInstiate = new List<GameObject>();
         public IEnumerator loadModules(List<ModuleAssetInfo> queue,bool pNew)
@@ -185,8 +245,42 @@ namespace EazyEngine.Space
             {
                 AssetBundleLoader loader = new AssetBundleLoader();
                 loadingcontent.text = "Loading Module " + queue[i].nameDisplay;
+                if (corountineNotice != null)
+                {
+                    StopCoroutine(corountineNotice);
+                }
 
-                yield return loader.DownloadAndCache(pUrl, queue[i].nameModule,pNew);
+                //30s check show box lost connection
+                corountineNotice = StartCoroutine(delayAction(10, delegate
+                {
+                    boxlostConnection.show();
+                }));
+                LoadAssetBundleStatus status = LoadAssetBundleStatus.NEW;
+                lastAssetLoaded = pUrl + queue[i].nameModule;
+                yield return loader.DownloadAndCache(pUrl, queue[i].nameModule,pNew,(LoadAssetBundleStatus pStatus,AssetBundle pBundle) =>
+                {
+                    status = pStatus;
+                });
+                if (status == LoadAssetBundleStatus.LOST_CONNECT_NOT_HAVE_CACHE)
+                {
+                    boxlostConnection.show();
+                    yield return tryReconect(2, pUrl, queue[i].nameModule,
+                        (LoadAssetBundleStatus pStatus, AssetBundle pBundle) => { status = pStatus; });
+                }
+                else
+                {
+                    if (boxlostConnection.gameObject.activeSelf)
+                    {
+                        boxlostConnection.close();
+                    }
+                }
+
+                if (corountineNotice != null)
+                {
+                    StopCoroutine(corountineNotice);
+                    corountineNotice = null;
+                }
+  
                 if (loader.result != null && !BUNDLES.ContainsKey(pUrl + queue[i].nameModule))
                 {
                     if (queue[i].nameModule.Contains("material"))
