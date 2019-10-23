@@ -47,6 +47,18 @@ namespace EazyEngine.Space
             base.WeaponStart();
        
         }
+
+        public override void WeaponIdle()
+        {
+            base.WeaponIdle();
+            for (int i = 0; i < childs.Length; ++i)
+            {
+                childs[i].pauseWeapon(false);
+            }
+
+            parent.maxLength = 30;
+        }
+
         public void onShootingParrent(int pLevel,bool isHitting)
         {
             for (int i = 0; i < childs.Length; ++i)

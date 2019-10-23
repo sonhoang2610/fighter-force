@@ -285,6 +285,8 @@ namespace EazyEngine.Space
                 }
                 else
                 {
+                        onShootingLevel?.Invoke(pLevel, false);
+                    
                     Vector2 pEndPos = originalPos + (Vector3)directon.normalized * maxLength;
                     pLineLaser.SetPosition(0, originalPos);
                     pLineLaser.SetPosition(1, pEndPos);
