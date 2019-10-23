@@ -241,14 +241,29 @@ namespace EazyEngine.Space.UI
                 {
                     HUDLayer.Instance.showDialogNotEnoughMoney(pExist1.item.displayNameItem.Value, delegate
                     {
-	                    ShopManager.Instance.showBoxShop(pExist1.item.categoryItem.ToString());
+                        if (pExist1.item.categoryItem == CategoryItem.CRAFT)
+                        {
+                            TopLayer.Instance.boxLucky.show();
+                        }
+                        else
+                        {
+                            ShopManager.Instance.showBoxShop(pExist1.item.categoryItem.ToString());
+                        }
+	             
                         HUDLayer.Instance.BoxDialog.close();
                     });
                 }else if(pExist2 != null)
                 {
                     HUDLayer.Instance.showDialogNotEnoughMoney(pExist2.item.displayNameItem.Value, delegate
                     {
-	                    ShopManager.Instance.showBoxShop(pExist2.item.categoryItem.ToString());
+                        if (pExist2.item.categoryItem == CategoryItem.CRAFT)
+                        {
+                            TopLayer.Instance.boxLucky.show();
+                        }
+                        else
+                        {
+                            ShopManager.Instance.showBoxShop(pExist2.item.categoryItem.ToString());
+                        }
                         HUDLayer.Instance.BoxDialog.close();
                     });
                 }

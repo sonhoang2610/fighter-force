@@ -1965,15 +1965,41 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - 'Currently gold received is {0}%.
+      - 'Currently Gold received on this level is {0}%
 
-        Have enough {1} star to received 100% gold'
-      - 'Currently gold received is {0}%.
-
-        Have enough {1} star to received 100% gold'
+        Require [-][FFFF00]{1}[-] %star% to max out at 100%'
+      - "% V\xE0ng nh\u1EADn \u0111\u01B0\u1EE3c trong m\xE0n ch\u01A1i hi\u1EC7n
+        t\u1EA1i l\xE0 {0}%\nC\u1EA7n [-][FFFF00]{1}[-] %star% \u0111\u1EC3 nh\u1EADn
+        100% V\xE0ng"
       Flags: 0000
       Languages_Touch: []
-    - Term: lucky_wheel/
+    - Term: lucky_wheel/wheel_description
+      TermType: 0
+      Description: 
+      Languages:
+      - Spin to increase the level of the Wheel. The higher the Wheel's level, the
+        bigger the reward.
+      - "Quay \u0111\u1EC3 t\u0103ng c\u1EA5p \u0111\u1ED9 v\xF2ng quay. C\u1EA5p
+        \u0111\u1ED9 c\xE0ng cao ph\u1EA7n th\u01B0\u1EDFng c\xE0ng l\u1EDBn"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: lucky_wheel/spin_button
+      TermType: 0
+      Description: 
+      Languages:
+      - SPIN
+      - QUAY
+      Flags: 0000
+      Languages_Touch: []
+    - Term: lucky_wheel/wheel_level
+      TermType: 0
+      Description: 
+      Languages:
+      - Wheel Level
+      - "C\u1EA5p \u0111\u1ED9 b\xE1nh xe"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: lucky_wheel/daily_spin
       TermType: 0
       Description: 
       Languages:
@@ -1996,7 +2022,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbx8Wa8N32JyZ5C4pYOJ3jF2_oE2-cIG5ljH845Z/exec
     Google_SpreadsheetKey: 1pkO-Gbk-Dc8oWvX3kBUU66aMqePyy6D93nsLx9wsiAQ
     Google_SpreadsheetName: I2Loc Fighter Force Localization
-    Google_LastUpdatedVersion: 1571111756267
+    Google_LastUpdatedVersion: 1571457287943
     Google_Password: lengochan
     GoogleUpdateFrequency: 0
     GoogleInEditorCheckFrequency: 0
