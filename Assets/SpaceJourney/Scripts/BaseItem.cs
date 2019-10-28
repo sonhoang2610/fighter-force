@@ -36,7 +36,25 @@ public class BaseItem<T> : MonoBehaviour where T  : class
             }
       
         }
-        EventDelegate.Execute(onData);
+
+        if (onData.Count > 0)
+        {
+            onData[0].Execute();
+        }
+      
+    }
+    public virtual void onExecute1()
+    {
+        for(int i = 0; i < onData.Count; ++i) { 
+
+            if (onData[i].parameters.Length == 1)
+            {
+                onData[i].parameters[0].value = Data;
+            }
+      
+        }
+
+        onData[1].Execute();
     }
     // Start is called before the first frame update
     void Start()

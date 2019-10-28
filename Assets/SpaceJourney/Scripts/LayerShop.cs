@@ -11,6 +11,7 @@ namespace EazyEngine.Space.UI
 
         public string cateGoryItemLoad;
         public string targetShop;
+        public BoxPackageInfo boxInfo;
         protected bool isInit = false;
 
 
@@ -87,6 +88,23 @@ namespace EazyEngine.Space.UI
                     ShopManager.Instance.showBoxShop(pItemStorage.item.categoryItem.ToString());
                     HUDLayer.Instance.BoxDialog.close();
                 });
+            }
+        }
+        public void onShowInfo(object pItem)
+        {
+            var pItemInfo = (ShopItemInfo)pItem;
+            if (boxInfo)
+            {
+                boxInfo.GetComponent<UIElement>().show();
+                if (typeof(IExtractItem).IsAssignableFrom(((ItemPackage) pItemInfo.itemSell).items[0].item.GetType()))
+                {
+                    boxInfo.setData( (ItemPackage)((ItemPackage) pItemInfo.itemSell).items[0].item);
+                }
+                else
+                {
+                    boxInfo.setData( ((ItemPackage) pItemInfo.itemSell));
+                }
+     
             }
         }
 

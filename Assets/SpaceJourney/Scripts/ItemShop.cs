@@ -17,7 +17,7 @@ namespace EazyEngine.Space.UI
         public UILabel price;
         public UI2DSprite itemExchangeIcon;
         public UIButton buttonBuy;
-
+        public GameObject btnInfo;
         public bool loadBySelf = false;
         [ShowIf("loadBySelf")]
         public string nameTargetShop = "ShopMain";
@@ -82,6 +82,34 @@ namespace EazyEngine.Space.UI
                       //  buttonBuy.isEnabled = false;
                     }
                 }
+
+                if (btnInfo)
+                {
+                    bool pShow = false;
+                    if (typeof(IExtractItem).IsAssignableFrom(value.itemSell.GetType()))
+                    {
+                        var pItems = ((IExtractItem) value.itemSell).ExtractHere(true);
+                        if (pItems.Length == 1)
+                        {
+                            if (typeof(IExtractItem).IsAssignableFrom(pItems[0].item.GetType()))
+                            {
+                                pShow = true;
+                            }
+                        }else if (pItems.Length > 1)
+                        {
+                            pShow = true;
+                        }
+                    }
+
+                    btnInfo.gameObject.SetActive(pShow);
+                }
+             
+             
+             
+             
+             
+             
+             
             }
         }
 
