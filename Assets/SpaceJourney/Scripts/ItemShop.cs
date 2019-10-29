@@ -88,7 +88,7 @@ namespace EazyEngine.Space.UI
                     bool pShow = false;
                     if (typeof(IExtractItem).IsAssignableFrom(value.itemSell.GetType()))
                     {
-                        var pItems = ((IExtractItem) value.itemSell).ExtractHere(true);
+                        var pItems = ((ItemPackage) value.itemSell).items;
                         if (pItems.Length == 1)
                         {
                             if (typeof(IExtractItem).IsAssignableFrom(pItems[0].item.GetType()))
