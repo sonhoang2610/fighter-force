@@ -13,7 +13,7 @@ namespace EazyEngine.Space.UI
             List<BaseItemGameInstanced> pItemReal = new List<BaseItemGameInstanced>();
             for(int i = 0; i < pItems.Length; ++i)
             {
-               var pItemExist = GameManager.Instance.Database.getComonItem(pItems[i].itemID);
+               var pItemExist = GameManager.Instance.Database.getComonItem(pItems[i].ItemID);
                 if(pItemExist == null)
                 {
                     pItemExist = new BaseItemGameInstanced() { item = pItems[i], quantity = 0 };
@@ -21,6 +21,20 @@ namespace EazyEngine.Space.UI
                 pItemReal.Add(pItemExist);
             }
             DataSource = pItemReal.ToObservableList();
+            Invoke(nameof(chooseDefault), 0.25f);
+          
+        }
+
+        public void chooseDefault()
+        {
+            for (int i = 0; i < 2; ++i)
+            {
+                if (i < items.Count)
+                {
+                    items[i].setChoose(true);
+                    items[i].onExecute();
+                }
+            }
         }
         // Start is called before the first frame update
         void Start()

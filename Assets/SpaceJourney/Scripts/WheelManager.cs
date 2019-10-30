@@ -117,7 +117,7 @@ namespace EazyEngine.Space.UI
             updateWheelChance();
             updateTimeLeft();
             TopLayer.Instance.boxReward.show();
-            var pStorage = GameManager.Instance.Database.getComonItem(data.infos[cacheResult].item.itemID);
+            var pStorage = GameManager.Instance.Database.getComonItem(data.infos[cacheResult].item.ItemID);
             pStorage.Quantity+= data.infos[cacheResult].Quantity;
             if (typeof(IExtractItem).IsAssignableFrom(data.infos[cacheResult].item.GetType()))
             {
@@ -140,7 +140,7 @@ namespace EazyEngine.Space.UI
         {
             if(itemWatchExchange.categoryItem == CategoryItem.WATCH)
             {
-                GameManager.Instance.showRewardAds(itemWatchExchange.itemID, delegate (bool pBool)
+                GameManager.Instance.showRewardAds(itemWatchExchange.ItemID, delegate (bool pBool)
                 {
                     if (pBool)
                     {
@@ -215,7 +215,7 @@ namespace EazyEngine.Space.UI
 
         public void buyTicket()
         {
-            var pMoney = GameManager.Instance.Database.getComonItem(itemExchangeTicket.itemID);
+            var pMoney = GameManager.Instance.Database.getComonItem(itemExchangeTicket.ItemID);
             if(pMoney.Quantity >= priceTicket)
             {
                 pMoney.Quantity -= priceTicket;

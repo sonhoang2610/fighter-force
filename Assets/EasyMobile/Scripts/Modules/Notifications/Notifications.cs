@@ -163,7 +163,12 @@ namespace EasyMobile
                 // If the consent is granted, we'll help re-enable FCM automatically.
                 var consent = GetApplicableDataPrivacyConsent();
                 if (consent == ConsentStatus.Granted)
+                {
+                    Debug.Log("registered notification");
                     Firebase.Messaging.FirebaseMessaging.TokenRegistrationOnInitEnabled = true;
+                    
+                }
+            
 
                 // FirebaseMessaging will initialize once we subscribe to 
                 // the TokenReceived or MessageReceived event.
@@ -171,9 +176,7 @@ namespace EasyMobile
                 {
                     // Cache the registration token and fire event.
                     PushToken = tokenArg.Token;
-
-                    if (PushTokenReceived != null)
-                        PushTokenReceived(tokenArg.Token);
+                    PushTokenReceived?.Invoke(tokenArg.Token);
 
                     // Subscribe default Firebase topics if any.
                     // This must be done after the token has been received.

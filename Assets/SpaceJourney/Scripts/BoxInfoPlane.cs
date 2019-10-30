@@ -35,7 +35,7 @@ namespace EazyEngine.Space.UI
         public override PlaneInfoConfig Data { get {return base.Data;}
             set {
                 bool ischange = false;
-                if (base.Data.info == null || value == null || value.info.itemID != base.Data.info.itemID)
+                if (base.Data.info == null || value == null || value.info.ItemID != base.Data.info.ItemID)
                 {
                     ischange = true;
                 }
@@ -68,11 +68,11 @@ namespace EazyEngine.Space.UI
                 for(int i = 0; i < value.Info.skills.Count; ++i)
                 {
                     value.Info.skills[i].Info.VariableDict = value.Info.skills[i].Info.VariableDict.MergeLeft(value.Info.skills[i].skillBlackBoard);
-                    if (value.UpgradeSkill.ContainsKey(value.Info.skills[i].Info.itemID))
+                    if (value.UpgradeSkill.ContainsKey(value.Info.skills[i].Info.ItemID))
                     {
                         pDatas.Add(new SkillInfoInstanced()
                         {
-                            currentLevel = value.UpgradeSkill[value.Info.skills[i].Info.itemID] == 0 ? (value.Info.skills[i].isEnabled ? 1 : 0) : value.UpgradeSkill[value.Info.skills[i].Info.itemID],
+                            currentLevel = value.UpgradeSkill[value.Info.skills[i].Info.ItemID] == 0 ? (value.Info.skills[i].isEnabled ? 1 : 0) : value.UpgradeSkill[value.Info.skills[i].Info.ItemID],
                             info = value.Info.skills[i],
                         });
                     }
@@ -84,7 +84,7 @@ namespace EazyEngine.Space.UI
                             info = value.Info.skills[i],
                         };
                         pDatas.Add(pSkill);
-                        value.UpgradeSkill.Add(value.Info.skills[i].Info.itemID, value.Info.skills[i].isEnabled ? 1 : 0);
+                        value.UpgradeSkill.Add(value.Info.skills[i].Info.ItemID, value.Info.skills[i].isEnabled ? 1 : 0);
                     }
                 }
                 if (ischange)
@@ -107,7 +107,7 @@ namespace EazyEngine.Space.UI
                 {
                     var pShop = LoadAssets.LoadShop(targetShop);
                  
-                    var pItem = pShop.getInfoItem(value.info.itemID);
+                    var pItem = pShop.getInfoItem(value.info.ItemID);
                     var paymentInfos = pItem.getPrice(value.CurrentLevel + 1);
                     layerOneWay.gameObject.SetActive(false);
                     layerTwoWay.gameObject.SetActive(false);
@@ -125,7 +125,7 @@ namespace EazyEngine.Space.UI
                         if (paymentInfos[0][0].item.categoryItem == CategoryItem.IAP)
                         {
                             var shop = LoadAssets.loadAsset<IAPSetting>("IAPSetting", "Variants/Database/");
-                            priceLabelsOneWay.text = shop.getInfo(paymentInfos[0][0].item.itemID).Price;
+                            priceLabelsOneWay.text = shop.getInfo(paymentInfos[0][0].item.ItemID).Price;
                         }
                         else
                         {

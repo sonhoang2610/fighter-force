@@ -155,7 +155,12 @@ namespace Spine.Unity.Modules {
 				AtlasMaterialOverride atlasMaterialOverride = customMaterialOverrides[i];
 				if (atlasMaterialOverride.overrideDisabled)
 					continue;
-
+				var pShader = Shader.Find(atlasMaterialOverride.replacementMaterial.shader.name);
+				if (pShader)
+				{
+					atlasMaterialOverride.replacementMaterial.shader = pShader;
+				}
+		
 				skeletonRenderer.CustomMaterialOverride[atlasMaterialOverride.originalMaterial] = atlasMaterialOverride.replacementMaterial;
 			}
 			#endif

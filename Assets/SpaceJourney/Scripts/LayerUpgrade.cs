@@ -26,16 +26,16 @@ namespace EazyEngine.Space.UI
         {
             selectedPlane = pInfo;
             var pShopPlane = LoadAssets.LoadShop(targetShop);
-            var pItem = pShopPlane.getInfoItem(selectedPlane.info.itemID);
+            var pItem = pShopPlane.getInfoItem(selectedPlane.info.ItemID);
             pInfo.LimitUpgrade = pItem.limitUpgrade;
 	        boxInfo.Data = pInfo;
             if(pInfo.info.categoryItem == CategoryItem.SP_PLANE)
             {
-                GameManager.Instance.freeSpPlaneChoose = pInfo.info.itemID;
+                GameManager.Instance.freeSpPlaneChoose = pInfo.info.ItemID;
             }
             else
             {
-                GameManager.Instance.freePlaneChoose = pInfo.info.itemID;
+                GameManager.Instance.freePlaneChoose = pInfo.info.ItemID;
             }
         }
 
@@ -47,19 +47,19 @@ namespace EazyEngine.Space.UI
         {
            
             var pShopSkill = LoadAssets.LoadShop(targetShopUpgradeSkill);
-            var price =  pShopSkill.getInfoItem(choosedSkill.info.Info.itemID).getPriceFirstItem(choosedSkill.currentLevel);
+            var price =  pShopSkill.getInfoItem(choosedSkill.info.Info.ItemID).getPriceFirstItem(choosedSkill.currentLevel);
             var pExist = GameManager.Instance.Database.getComonItem(price.item);
             if(pExist.quantity >= price.quantity)
             {
                 SoundManager.Instance.PlaySound(sfxUpgradeSkill, Vector3.zero);
                 pExist.Quantity -= price.quantity;
-                if (selectedPlane.UpgradeSkill.ContainsKey(choosedSkill.info.Info.itemID))
+                if (selectedPlane.UpgradeSkill.ContainsKey(choosedSkill.info.Info.ItemID))
                 {
-                    selectedPlane.UpgradeSkill[choosedSkill.info.Info.itemID]++;
+                    selectedPlane.UpgradeSkill[choosedSkill.info.Info.ItemID]++;
                 }
                 else
                 {
-                    selectedPlane.UpgradeSkill.Add(choosedSkill.info.Info.itemID, 1);
+                    selectedPlane.UpgradeSkill.Add(choosedSkill.info.Info.ItemID, 1);
                 }
             }
             else
@@ -77,7 +77,7 @@ namespace EazyEngine.Space.UI
         {
            
             var pShopSkill = LoadAssets.LoadShop(targetShopUpgradeSkill);
-            var prices = pShopSkill.getInfoItem(choosedSkill.info.Info.itemID).getPriceSecondItems(choosedSkill.currentLevel);
+            var prices = pShopSkill.getInfoItem(choosedSkill.info.Info.ItemID).getPriceSecondItems(choosedSkill.currentLevel);
             var price = prices[0];
             var pExist = GameManager.Instance.Database.getComonItem(price.item);
             if (pExist.quantity >= price.quantity)
@@ -95,7 +95,7 @@ namespace EazyEngine.Space.UI
                     else
                     {
                         var shop =  LoadAssets.LoadShop("MainShop");
-                        bool showButton = shop.getInfoItem(pExist1.item.itemID) != null;
+                        bool showButton = shop.getInfoItem(pExist1.item.ItemID) != null;
                         if (showButton)
                         {
                             HUDLayer.Instance.showDialogNotEnoughMoney(pExist1.item.displayNameItem.Value, delegate
@@ -114,13 +114,13 @@ namespace EazyEngine.Space.UI
                 }
                 SoundManager.Instance.PlaySound(sfxUpgradeSkill, Vector3.zero);
                 pExist.Quantity -= price.quantity;
-                if (selectedPlane.UpgradeSkill.ContainsKey(choosedSkill.info.Info.itemID))
+                if (selectedPlane.UpgradeSkill.ContainsKey(choosedSkill.info.Info.ItemID))
                 {
-                    selectedPlane.UpgradeSkill[choosedSkill.info.Info.itemID]++;
+                    selectedPlane.UpgradeSkill[choosedSkill.info.Info.ItemID]++;
                 }
                 else
                 {
-                    selectedPlane.UpgradeSkill.Add(choosedSkill.info.Info.itemID, 1);
+                    selectedPlane.UpgradeSkill.Add(choosedSkill.info.Info.ItemID, 1);
                 }
             }
             else
@@ -139,12 +139,12 @@ namespace EazyEngine.Space.UI
         {
  
             var pShopPlane = LoadAssets.LoadShop(targetShop);
-            var price = pShopPlane.getInfoItem(selectedPlane.info.itemID).getPriceFirstItems(selectedPlane.CurrentLevel+1);
+            var price = pShopPlane.getInfoItem(selectedPlane.info.ItemID).getPriceFirstItems(selectedPlane.CurrentLevel+1);
             var pExist1 = GameManager.Instance.Database.getComonItem(price[0].item);
             if (price[0].item.categoryItem ==  CategoryItem.IAP)
             {
                 var shop = LoadAssets.loadAsset<IAPSetting>("IAPSetting", "Variants/Database/");
-                IAPItem pIAPItem = shop.getInfo(price[0].item.itemID);
+                IAPItem pIAPItem = shop.getInfo(price[0].item.ItemID);
                 GameManager.Instance.showInapp(pIAPItem.Id.ToLower(), delegate (bool pSuccess, IAPProduct product)
                 {
                     if (product.Id == pIAPItem.Id.ToLower())
@@ -158,15 +158,15 @@ namespace EazyEngine.Space.UI
                                 for (int i = 0; i < selectedPlane.info.currentAbility.Count; ++i)
                                 {
                                     var pAbility = selectedPlane.info.currentAbility[i];
-                                    if (!selectedPlane.upgradeExtraAbility.ContainsKey(pAbility._ability.itemID))
+                                    if (!selectedPlane.upgradeExtraAbility.ContainsKey(pAbility._ability.ItemID))
                                     {
-                                        selectedPlane.upgradeExtraAbility.Add(pAbility._ability.itemID, new int[0]);
+                                        selectedPlane.upgradeExtraAbility.Add(pAbility._ability.ItemID, new int[0]);
                                     }
                                     List<int> pListInt = new List<int>();
-                                    pListInt.AddRange(selectedPlane.upgradeExtraAbility[pAbility._ability.itemID]);
+                                    pListInt.AddRange(selectedPlane.upgradeExtraAbility[pAbility._ability.ItemID]);
                                     if (!pListInt.Contains(selectedPlane.CurrentLevel))
                                         pListInt.Add(selectedPlane.CurrentLevel);
-                                    selectedPlane.upgradeExtraAbility[pAbility._ability.itemID] = pListInt.ToArray();
+                                    selectedPlane.upgradeExtraAbility[pAbility._ability.ItemID] = pListInt.ToArray();
                                 }
                             }
 
@@ -208,15 +208,15 @@ namespace EazyEngine.Space.UI
                     for(int i = 0; i < selectedPlane.info.currentAbility.Count; ++i)
                     {
                         var pAbility = selectedPlane.info.currentAbility[i];
-                        if (!selectedPlane.upgradeExtraAbility.ContainsKey(pAbility._ability.itemID))
+                        if (!selectedPlane.upgradeExtraAbility.ContainsKey(pAbility._ability.ItemID))
                         {
-                            selectedPlane.upgradeExtraAbility.Add(pAbility._ability.itemID, new int[0]);
+                            selectedPlane.upgradeExtraAbility.Add(pAbility._ability.ItemID, new int[0]);
                         }
                         List<int> pListInt = new List<int>();
-                        pListInt.AddRange(selectedPlane.upgradeExtraAbility[pAbility._ability.itemID]);
+                        pListInt.AddRange(selectedPlane.upgradeExtraAbility[pAbility._ability.ItemID]);
                         if (!pListInt.Contains(selectedPlane.CurrentLevel))
                             pListInt.Add(selectedPlane.CurrentLevel);
-                        selectedPlane.upgradeExtraAbility[pAbility._ability.itemID] = pListInt.ToArray();
+                        selectedPlane.upgradeExtraAbility[pAbility._ability.ItemID] = pListInt.ToArray();
                     }
                 }
                 int pStepGame = PlayerPrefs.GetInt("firstGame", 0);
@@ -280,7 +280,7 @@ namespace EazyEngine.Space.UI
         {
 
             var pShopPlane = LoadAssets.LoadShop(targetShop);
-            var price = pShopPlane.getInfoItem(selectedPlane.info.itemID).getPriceSecondItems(selectedPlane.CurrentLevel + 1);
+            var price = pShopPlane.getInfoItem(selectedPlane.info.ItemID).getPriceSecondItems(selectedPlane.CurrentLevel + 1);
             var pExist1 = GameManager.Instance.Database.getComonItem(price[0].item);
             var pExist2 = price.Length == 2 ? GameManager.Instance.Database.getComonItem(price[1].item) : null;
             if (pExist1.quantity >= price[0].quantity )
@@ -305,15 +305,15 @@ namespace EazyEngine.Space.UI
                     for (int i = 0; i < selectedPlane.info.currentAbility.Count; ++i)
                     {
                         var pAbility = selectedPlane.info.currentAbility[i];
-                        if (!selectedPlane.upgradeExtraAbility.ContainsKey(pAbility._ability.itemID))
+                        if (!selectedPlane.upgradeExtraAbility.ContainsKey(pAbility._ability.ItemID))
                         {
-                            selectedPlane.upgradeExtraAbility.Add(pAbility._ability.itemID, new int[0]);
+                            selectedPlane.upgradeExtraAbility.Add(pAbility._ability.ItemID, new int[0]);
                         }
                         List<int> pListInt = new List<int>();
-                        pListInt.AddRange(selectedPlane.upgradeExtraAbility[pAbility._ability.itemID]);
+                        pListInt.AddRange(selectedPlane.upgradeExtraAbility[pAbility._ability.ItemID]);
                         if (!pListInt.Contains(selectedPlane.CurrentLevel))
                             pListInt.Add(selectedPlane.CurrentLevel);
-                        selectedPlane.upgradeExtraAbility[pAbility._ability.itemID] = pListInt.ToArray();
+                        selectedPlane.upgradeExtraAbility[pAbility._ability.ItemID] = pListInt.ToArray();
                     }
                 }
                 SoundManager.Instance.PlaySound(sfxUpgradePlane, Vector3.zero);

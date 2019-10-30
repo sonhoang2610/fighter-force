@@ -51,7 +51,7 @@ namespace EazyEngine.Tools
         public string Name { get =>( isCustom || item == null || item.item == null) ? name : item.item.displayNameItem.Value; set => name = value; }
         [ShowInInspector]
         [EnableIf("isCustom")]
-        public string Id { get => (isCustom || item == null || item.item == null) ? id : item.item.itemID; set => id = value; }
+        public string Id { get => (isCustom || item == null || item.item == null) ? id : item.item.ItemID; set => id = value; }
         [EnableIf("isCustom")]
         [ShowInInspector]
         public string Price { get {
@@ -64,12 +64,12 @@ namespace EazyEngine.Tools
                     var pShop = LoadAssets.LoadShop(item.ShopID);
                     if (pShop)
                     {
-                        var pInfoPrice = pShop.getInfoItem(item.item.itemID);
+                        var pInfoPrice = pShop.getInfoItem(item.item.ItemID);
                         foreach (var pWay in pInfoPrice.getPrice(0))
                         {
                             if (pWay.Length == 1)
                             {
-                                if (pWay[0].item.itemID == "IAP")
+                                if (pWay[0].item.ItemID == "IAP")
                                 {
                                     if (!pInfoPrice.formatString.Value.Contains("{0}"))
                                         return pInfoPrice.formatString.Value;

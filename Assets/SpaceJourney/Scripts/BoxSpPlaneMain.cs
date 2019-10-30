@@ -28,7 +28,7 @@ namespace EazyEngine.Space.UI
             refreshData();
             for (int i = 0; i < DataSource.Count; ++i)
             {
-                if (DataSource[i].Info.itemID == GameManager.Instance.Database.SelectedSupportPlane1)
+                if (DataSource[i].Info.ItemID == GameManager.Instance.Database.SelectedSupportPlane1)
                 {
                     currentPage = i;
                 }
@@ -44,7 +44,7 @@ namespace EazyEngine.Space.UI
                 refreshData();
                 for (int i = 0; i < DataSource.Count; ++i)
                 {
-                    if (DataSource[i].Info.itemID == GameManager.Instance.Database.SelectedMainPlane)
+                    if (DataSource[i].Info.ItemID == GameManager.Instance.Database.SelectedMainPlane)
                     {
                         currentPage = i;
                     }
@@ -61,7 +61,7 @@ namespace EazyEngine.Space.UI
                 {
                     for (int i = 0; i < DataSource.Count; ++i)
                     {
-                        if (DataSource[i].Info.itemID == GameManager.Instance.Database.SelectedMainPlane)
+                        if (DataSource[i].Info.ItemID == GameManager.Instance.Database.SelectedMainPlane)
                         {
                             currentPage = i;
                         }
@@ -86,8 +86,8 @@ namespace EazyEngine.Space.UI
         public override void updatePage()
         {
             base.updatePage();
-            GameManager.Instance.Database.SelectedSupportPlane1 = DataSource[currentPage].Info.itemID;
-            GameManager.Instance.freeSpPlaneChoose = DataSource[currentPage].Info.itemID;
+            GameManager.Instance.Database.SelectedSupportPlane1 = DataSource[currentPage].Info.ItemID;
+            GameManager.Instance.freeSpPlaneChoose = DataSource[currentPage].Info.ItemID;
         }
         // Update is called once per frame
         void Update()

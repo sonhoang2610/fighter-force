@@ -43,9 +43,9 @@ namespace EazyEngine.Space.UI
                 {
                     price.text = value.FormartString.ToString();
                 }
-                if(payment.item.itemID == "IAP")
+                if(payment.item.ItemID == "IAP")
                 {
-                    price.text = LoadAssets.loadAsset<IAPSetting>("IAPSetting", "Variants/Database/").getInfo(value.itemSell.itemID).Price;
+                    price.text = LoadAssets.loadAsset<IAPSetting>("IAPSetting", "Variants/Database/").getInfo(value.itemSell.ItemID).Price;
                 }
                 if (itemExchangeIcon)
                 {
@@ -166,16 +166,16 @@ namespace EazyEngine.Space.UI
                 if (shop != null && item != null)
                 {
                   
-                    var pItem = GameManager.Instance.Database.getComonItem(item.getPrice(0)[0][0].item.itemID);
+                    var pItem = GameManager.Instance.Database.getComonItem(item.getPrice(0)[0][0].item.ItemID);
                     if (pItem.Quantity >= item.getPrice(0)[0][0].quantity)
                     {
                         pItem.Quantity -= item.getPrice(0)[0][0].quantity;
                         claim();
-                    }else if(pItem.item.itemID == "IAP")
+                    }else if(pItem.item.ItemID == "IAP")
                     {
-                        GameManager.Instance.showInapp(item.itemSell.itemID.ToLower(), delegate (bool pSuccess, IAPProduct product)
+                        GameManager.Instance.showInapp(item.itemSell.ItemID.ToLower(), delegate (bool pSuccess, IAPProduct product)
                         {
-                            if(product.Id == item.itemSell.itemID.ToLower())
+                            if(product.Id == item.itemSell.ItemID.ToLower())
                             {
                                 if (pSuccess)
                                 {
@@ -234,7 +234,7 @@ namespace EazyEngine.Space.UI
                                 var pItemExchange = pPrice[i][0].item;
                                 if (pItemExchange.categoryItem == CategoryItem.WATCH)
                                 {
-                                    GameManager.Instance.showRewardAds(pItemExchange.itemID, callBackResultWatch);
+                                    GameManager.Instance.showRewardAds(pItemExchange.ItemID, callBackResultWatch);
                                 }
                             }
                         }

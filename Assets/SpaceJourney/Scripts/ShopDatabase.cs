@@ -75,7 +75,7 @@ namespace EazyEngine.Space
                 {
                     return "none";
                 }
-                return itemSell.itemID;
+                return itemSell.ItemID;
             }
         }
         public string idCategoryInShop = "Common";
@@ -186,7 +186,7 @@ namespace EazyEngine.Space
         {
             for (int i = 0; i < items.Length; ++i)
             {
-                if (items[i].itemSell.itemID == pItemID)
+                if (items[i].itemSell.ItemID == pItemID)
                 {
                     return items[i];
                 }

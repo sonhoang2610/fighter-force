@@ -40,6 +40,18 @@ namespace EazyEngine.Space
                 onUnchoose.Invoke();
             }
         }
+        public void setChoose(bool pBool)
+        {
+            isChoosed = pBool;
+            if (isChoosed)
+            {
+                onChoose.Invoke();
+            }
+            else
+            {
+                onUnchoose.Invoke();
+            }
+        }
 
     }
 }

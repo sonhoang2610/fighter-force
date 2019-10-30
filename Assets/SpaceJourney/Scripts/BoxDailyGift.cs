@@ -93,7 +93,7 @@ namespace EazyEngine.Space.UI
             if(GameManager.Instance.dailyGiftModule.lastDate != System.DateTime.Now.DayOfYear)
             {
                 var pData = DataSource[GameManager.Instance.dailyGiftModule.currentDay+1];
-                var pReward = GameManager.Instance.Database.getComonItem(pData.mainData.item.itemID);
+                var pReward = GameManager.Instance.Database.getComonItem(pData.mainData.item.ItemID);
                 SoundManager.Instance.PlaySound(sfxClaim,Vector3.zero);
                 pReward.Quantity += pData.mainData.quantity;
                 pData.status = 1;
@@ -112,7 +112,7 @@ namespace EazyEngine.Space.UI
         }
         public void claimX2()
         {
-            GameManager.Instance.showRewardAds(watchItem.itemID, resultClaimX2);
+            GameManager.Instance.showRewardAds(watchItem.ItemID, resultClaimX2);
         }
 
         public void resultClaimX2(bool pSucess)
@@ -124,7 +124,7 @@ namespace EazyEngine.Space.UI
                 if (GameManager.Instance.dailyGiftModule.lastDate != System.DateTime.Now.DayOfYear)
                 {
                     var pData = DataSource[GameManager.Instance.dailyGiftModule.currentDay + 1];
-                    var pReward = GameManager.Instance.Database.getComonItem(pData.mainData.item.itemID);
+                    var pReward = GameManager.Instance.Database.getComonItem(pData.mainData.item.ItemID);
                     SoundManager.Instance.PlaySound(sfxClaim,Vector3.zero);
                     pReward.Quantity += pData.mainData.quantity * 2;
                     pData.status = 1;

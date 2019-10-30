@@ -12,6 +12,8 @@ using UnityEngine.Purchasing;
 using EazyEngine.Space.UI;
 using System.Linq;
 using EazyEngine.Tools.Space;
+using Firebase;
+using Firebase.Analytics;
 using FlowCanvas.Nodes;
 using Spine.Unity;
 using Spine.Unity.Modules;
@@ -717,11 +719,11 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         var pInfo = container.getLevelInfo(pIndex, 0).infos;
         pInfo.InputConfig = ConfigLevel;
         isPlaying = true;
-        for (int i = 0; i < ConfigLevel.itemUsed.Count; ++i)
-        {
-            var pItem = GameManager.Instance.Database.getComonItem(ConfigLevel.itemUsed[i].itemID);
-            pItem.Quantity--;
-        }
+        //for (int i = 0; i < ConfigLevel.itemUsed.Count; ++i)
+        //{
+        //    var pItem = GameManager.Instance.Database.getComonItem(ConfigLevel.itemUsed[i].itemID);
+        //    pItem.Quantity--;
+        //}
         SaveGame();
  
         TopLayer.Instance.block.gameObject.SetActive(true);
@@ -880,7 +882,13 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         GameServices.UserLoginFailed += OnUserLoginFailed;
         Advertising.RewardedAdCompleted += onRewardedAdComplete;
         Advertising.RewardedAdSkipped += onRewardedAdSkiped;
+     //   Notifications.PushTokenReceived += TokenRecieved;
         EzEventManager.AddListener(this);
+    }
+
+    public void TokenRecieved(string pToken)
+    {
+        Debug.Log(pToken + "token notification");
     }
     public Dictionary<string, System.Action<bool, IAPProduct>> inapps = new Dictionary<string, System.Action<bool, IAPProduct>>();
     public void showInapp(string id, System.Action<bool, IAPProduct> pResult)
@@ -911,6 +919,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         GameServices.UserLoginFailed -= OnUserLoginFailed;
         InAppPurchasing.InitializeSucceeded -= initIAPSuccess;
         InAppPurchasing.InitializeFailed -= initFailed;
+      //  Notifications.PushTokenReceived-=TokenRecieved;
         EzEventManager.RemoveListener(this);
     }
     
@@ -990,6 +999,19 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         {
             GameServices.ManagedInit();
         }
+        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
+        {
+            FirebaseAnalytics.SetAnalyticsCollectionEnabled(true);
+            //Notifications.GrantDataPrivacyConsent();
+            //if (!Notifications.IsInitialized())
+            //{
+            //    Notifications.Init();
+            //}
+            //else
+            //{
+            //    Debug.Log("notification inited");
+            //}
+        });
 
     }
 
@@ -1074,7 +1096,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                 bool pCounting = GameManager.Instance.Database.checkTimerCountdownResotreModule(eventType.item.item);
                 if (!pCounting)
                 {
-                    GameManager.Instance.Database.timers.Add(new TimeCountDown() { key = "MainInventory/" + eventType.item.item.itemID, lastimeWheelFree = System.DateTime.Now });
+                    GameManager.Instance.Database.timers.Add(new TimeCountDown() { key = "MainInventory/" + eventType.item.item.ItemID, lastimeWheelFree = System.DateTime.Now });
                     dirty = true;
                 }
             }
@@ -1083,7 +1105,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                 for (int i = GameManager.Instance.Database.timers.Count - 1; i >= 0; --i)
                 {
                     var pTime = GameManager.Instance.Database.timers[i];
-                    if (pTime.key == "MainInventory/" + eventType.item.item.itemID)
+                    if (pTime.key == "MainInventory/" + eventType.item.item.ItemID)
                     {
                         foreach (var pLabel in pTime.LabelTimer)
                         {

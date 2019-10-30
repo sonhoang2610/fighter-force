@@ -35,7 +35,7 @@ namespace EazyEngine.Space {
                 LevelManger.Instance.players[0].GetComponent<Blackboard>().AddVariable(pDict.Keys.ElementAt(i), pDict[pDict.Keys.ElementAt(i)]);
             }
           
-            EzEventManager.TriggerEvent(new InputButtonTrigger(  Data._info.Info.itemID,Data._info.Info.categoryItem));
+            EzEventManager.TriggerEvent(new InputButtonTrigger(  Data._info.Info.ItemID,Data._info.Info.categoryItem));
             fillCoolDown.gameObject.SetActive(true);
             fillCoolDown.fillAmount = 1;
             var tween = DOTween.To(()=> fillCoolDown.fillAmount,x => fillCoolDown.fillAmount = x,0, Data._info.Info.CoolDownTime).OnComplete(() => fillCoolDown.gameObject.SetActive(false));

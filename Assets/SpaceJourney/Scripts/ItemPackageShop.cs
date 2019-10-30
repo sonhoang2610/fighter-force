@@ -22,7 +22,7 @@ namespace EazyEngine.Space.UI
                 base.Data = value;
                 if (labelQuantity)
                 {
-                    var pQuantity = GameManager.Instance.Database.getComonItem(value.itemSell.itemID).Quantity;
+                    var pQuantity = GameManager.Instance.Database.getComonItem(value.itemSell.ItemID).Quantity;
                     labelQuantity.transform.parent.gameObject.SetActive(pQuantity > 0);
                     labelQuantity.text = pQuantity.ToString();
                     if(pQuantity > 0)
@@ -43,7 +43,7 @@ namespace EazyEngine.Space.UI
         
         public void open()
         {
-          var pItem =  GameManager.Instance.Database.getComonItem(Data.itemSell.itemID);
+          var pItem =  GameManager.Instance.Database.getComonItem(Data.itemSell.ItemID);
             pItem.Quantity--;
             claim();
             Data = Data;

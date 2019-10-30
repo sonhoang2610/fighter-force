@@ -11,10 +11,7 @@ namespace EazyEngine.Tools
   // Start is called before the first frame update
   void Start()
   {
-   FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
-   {
-    FirebaseAnalytics.SetAnalyticsCollectionEnabled(true);
-   });
+
   }
  }
 }

@@ -140,16 +140,17 @@ MonoBehaviour:
     relative: 1
     absolute: 0
   updateAnchors: 1
-  mColor: {r: 1, g: 1, b: 1, a: 0.003921569}
+  mColor: {r: 1, g: 1, b: 1, a: 0.007843138}
   mPivot: 4
   mWidth: 100
   mHeight: 100
-  mDepth: 12
+  mDepth: 15
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 1
+  dirtyChange: 0
   mType: 0
   mFillDirection: 4
   mFillAmount: 1
@@ -180,6 +181,8 @@ GameObject:
   - component: {fileID: 4087936400837228082}
   - component: {fileID: 3956310960487778794}
   - component: {fileID: 1948647699642436706}
+  - component: {fileID: 1743434462770273215}
+  - component: {fileID: 4536121468915591992}
   m_Layer: 5
   m_Name: BoxPlane
   m_TagString: Untagged
@@ -242,6 +245,7 @@ MonoBehaviour:
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 1.6348314
+  dirtyChange: 0
 --- !u!114 &1948647699642436706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,3 +264,108 @@ MonoBehaviour:
     currentLevel: 0
   lockIcon: {fileID: 685613241}
   compareRender: {fileID: 1307585272000290766}
+--- !u!114 &1743434462770273215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4087936400837228083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e2747e3775af504da1a4d5a46c5a1ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  method: 0
+  style: 0
+  animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  ignoreTimeScale: 1
+  delay: 0
+  duration: 0.25
+  steeperCurves: 0
+  tweenGroup: 0
+  useFixedUpdate: 0
+  onFinished: []
+  eventReceiver: {fileID: 0}
+  callWhenFinished: 
+  from: 0
+  to: 1
+--- !u!114 &4536121468915591992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4087936400837228083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cda214cdb8eb15b4cad6cc1065929273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenTriggerUI: 0
+  listeners: []
+  cateGory: None
+  onEnableEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1743434462770273215}
+        m_MethodName: ResetToBeginning
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1743434462770273215}
+        m_MethodName: PlayForward
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDisableEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onInitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onEnableLateUpdateEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onCompleteTweenShow:
+    m_PersistentCalls:
+      m_Calls: []
+  relative: 0

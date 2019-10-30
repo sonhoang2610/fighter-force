@@ -58,17 +58,17 @@ namespace EazyEngine.Space.UI
         public void onBuy(object pItem)
         {
             var pItemInfo = (ShopItemInfo)pItem;
-            var pItemStorage = GameManager.Instance.Database.getComonItem(pItemInfo.getPrice(0)[0][0].item.itemID);
+            var pItemStorage = GameManager.Instance.Database.getComonItem(pItemInfo.getPrice(0)[0][0].item.ItemID);
             if (pItemStorage.Quantity >= pItemInfo.getPrice(0)[0][0].quantity)
             {
                 pItemStorage.Quantity -= pItemInfo.getPrice(0)[0][0].quantity;
                 claim(pItemInfo);
             }
-            else if (pItemStorage.item.itemID == "IAP")
+            else if (pItemStorage.item.ItemID == "IAP")
             {
-                GameManager.Instance.showInapp(pItemInfo.itemSell.itemID.ToLower(), delegate (bool pSuccess, IAPProduct product)
+                GameManager.Instance.showInapp(pItemInfo.itemSell.ItemID.ToLower(), delegate (bool pSuccess, IAPProduct product)
                 {
-                    if (product.Id == pItemInfo.itemSell.itemID.ToLower())
+                    if (product.Id == pItemInfo.itemSell.ItemID.ToLower())
                     {
                         if (pSuccess)
                         {

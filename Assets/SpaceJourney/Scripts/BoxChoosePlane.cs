@@ -63,14 +63,14 @@ namespace EazyEngine.Space.UI
                     {
                         group.GroupTab.Add(items[i].GetComponent<EazyTabNGUI>());
                         GameObject pObjectNew = null;
-                        if (cacheModel.ContainsKey(items[i].Data.Info.itemID))
+                        if (cacheModel.ContainsKey(items[i].Data.Info.ItemID))
                         {
-                            pObjectNew = cacheModel[items[i].Data.Info.itemID];
+                            pObjectNew = cacheModel[items[i].Data.Info.ItemID];
                         }
                         else
                         {
                             pObjectNew = Instantiate(items[i].Data.Info.model, attachMentModel.transform);
-                            cacheModel.Add(items[i].Data.Info.itemID, pObjectNew);
+                            cacheModel.Add(items[i].Data.Info.ItemID, pObjectNew);
 
                         }
              
@@ -85,7 +85,7 @@ namespace EazyEngine.Space.UI
                 group.reloadTabs();
                 for (int i = 0; i < DataSource.Count; ++i)
                 {
-                    if ((currentIndexTab == 0 && DataSource[i].Info.itemID == GameManager.Instance.Database.SelectedMainPlane) || (currentIndexTab == 1 && DataSource[i].Info.itemID == GameManager.Instance.Database.SelectedSupportPlane1))
+                    if ((currentIndexTab == 0 && DataSource[i].Info.ItemID == GameManager.Instance.Database.SelectedMainPlane) || (currentIndexTab == 1 && DataSource[i].Info.ItemID == GameManager.Instance.Database.SelectedSupportPlane1))
                     {
                         currentPage = i;
                     }

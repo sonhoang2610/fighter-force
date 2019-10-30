@@ -69,7 +69,7 @@ namespace EazyEngine.Space {
              Dictionary<string, int> pUpgradeSkill = new Dictionary<string, int>();
             for(int i = 0; i < pInfo.skills.Count; ++i)
             {
-                pUpgradeSkill.Add(pInfo.skills[i].Info.itemID, 1);
+                pUpgradeSkill.Add(pInfo.skills[i].Info.ItemID, 1);
             }
             var pInfoPlane  = new PlaneInfoConfig()
             {
@@ -86,7 +86,7 @@ namespace EazyEngine.Space {
         {
             for(int i = 0; i < info.currentAbility.Count; ++i)
             {
-                if(info.currentAbility[i]._ability.itemID == pID)
+                if(info.currentAbility[i]._ability.ItemID == pID)
                 {
                    return info.currentAbility[i].NextUnit - info.currentAbility[i].CurrentUnit;
                 }
@@ -140,8 +140,8 @@ namespace EazyEngine.Space {
             for (int i = 0; i < info.skills.Count; ++i)
             {
 
-                info.skills[i].CurrentLevelSkill = upgradeSkill.ContainsKey(info.skills[i].info.itemID)
-                    ? upgradeSkill[info.skills[i].info.itemID]
+                info.skills[i].CurrentLevelSkill = upgradeSkill.ContainsKey(info.skills[i].info.ItemID)
+                    ? upgradeSkill[info.skills[i].info.ItemID]
                     : (info.skills[i].isEnabled ? 1 : 0);
             }
 
@@ -155,13 +155,13 @@ namespace EazyEngine.Space {
                 {
                     upgradeExtraAbility = new Dictionary<string, int[]>();
                 }
-                if (!upgradeExtraAbility.ContainsKey(info.currentAbility[i]._ability.itemID)) continue;
+                if (!upgradeExtraAbility.ContainsKey(info.currentAbility[i]._ability.ItemID)) continue;
                 int pExtra = 0;
-                for(int j  = 0; j < upgradeExtraAbility[info.currentAbility[i]._ability.itemID].Length; ++j)
+                for(int j  = 0; j < upgradeExtraAbility[info.currentAbility[i]._ability.ItemID].Length; ++j)
                 {
-                    pExtra += (int)(((info.currentAbility[i].getUnitAtLevel(upgradeExtraAbility[info.currentAbility[i]._ability.itemID][j]+1) - info.currentAbility[i].getUnitAtLevel(upgradeExtraAbility[info.currentAbility[i]._ability.itemID][j])))*((float)(info.upgradeIncreaseRate.getUnit(upgradeExtraAbility[info.currentAbility[i]._ability.itemID][j]))-100)/100.0f);
+                    pExtra += (int)(((info.currentAbility[i].getUnitAtLevel(upgradeExtraAbility[info.currentAbility[i]._ability.ItemID][j]+1) - info.currentAbility[i].getUnitAtLevel(upgradeExtraAbility[info.currentAbility[i]._ability.ItemID][j])))*((float)(info.upgradeIncreaseRate.getUnit(upgradeExtraAbility[info.currentAbility[i]._ability.ItemID][j]))-100)/100.0f);
                 }
-                info.currentAbility[i].ExtraDamage = upgradeExtraAbility.ContainsKey(info.currentAbility[i]._ability.itemID) ? pExtra : 0;
+                info.currentAbility[i].ExtraDamage = upgradeExtraAbility.ContainsKey(info.currentAbility[i]._ability.ItemID) ? pExtra : 0;
             }
         }
         public PlaneInfo Info {
@@ -169,7 +169,7 @@ namespace EazyEngine.Space {
                 info.setLevel(CurrentLevel);
                 for (int i = 0; i < info.skills.Count; ++i)
                 {
-                    info.skills[i].CurrentLevelSkill = upgradeSkill.ContainsKey(info.skills[i].info.itemID) ? upgradeSkill[info.skills[i].info.itemID] : (info.skills[i].isEnabled ? 1:0) ;
+                    info.skills[i].CurrentLevelSkill = upgradeSkill.ContainsKey(info.skills[i].info.ItemID) ? upgradeSkill[info.skills[i].info.ItemID] : (info.skills[i].isEnabled ? 1:0) ;
                 }
                 return info;
             }
@@ -187,13 +187,13 @@ namespace EazyEngine.Space {
         public int CurrentLevel { get => currentLevel; set {
                 for (int i = 0; i < info.skills.Count; ++i)
                 {
-                    if (upgradeSkill.ContainsKey(info.skills[i].Info.itemID))
+                    if (upgradeSkill.ContainsKey(info.skills[i].Info.ItemID))
                     {
-                        if (upgradeSkill[info.skills[i].Info.itemID] == 0)
+                        if (upgradeSkill[info.skills[i].Info.ItemID] == 0)
                         {
                             if (info.skills[i].requireLevelUnlock <= value)
                             {
-                                upgradeSkill[info.skills[i].Info.itemID] = 1;
+                                upgradeSkill[info.skills[i].Info.ItemID] = 1;
                             }
                         }
                     }
@@ -201,7 +201,7 @@ namespace EazyEngine.Space {
                     {
                         if (info.skills[i].requireLevelUnlock <= value)
                         {
-                            upgradeSkill.Add(info.skills[i].Info.itemID, 1);
+                            upgradeSkill.Add(info.skills[i].Info.ItemID, 1);
                         }
                     }
                 }
@@ -223,7 +223,7 @@ namespace EazyEngine.Space {
             Dictionary<string, int> pUpgradeSkill = new Dictionary<string, int>();
             for (int i = 0; i < pInfo.skills.Count; ++i)
             {
-                pUpgradeSkill.Add(pInfo.skills[i].Info.itemID, 1);
+                pUpgradeSkill.Add(pInfo.skills[i].Info.ItemID, 1);
             }
             var pInfoPlane = new SupportPlaneInfoConfig()
             {

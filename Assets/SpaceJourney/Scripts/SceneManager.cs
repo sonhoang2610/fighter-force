@@ -5,6 +5,7 @@ using UnityEngine;
 using EazyEngine.Tools;
 using UnityEngine.Events;
 using DG.Tweening;
+using EasyMobile;
 using EazyEngine.Space.UI;
 using I2.Loc;
 

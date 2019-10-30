@@ -294,7 +294,7 @@ namespace EazyEngine.Space
                 bool exist = false;
                 for (int j = 0; j < pItems.Count; ++j)
                 {
-                    if (pItem[i].itemID == pItems[j].item.itemID)
+                    if (pItem[i].ItemID == pItems[j].item.ItemID)
                     {
                         pItems[j].quantity++;
                         exist = true;
@@ -310,7 +310,7 @@ namespace EazyEngine.Space
             int pSelectedPlane = -1;
             for(int i = 0; i < GameManager.Instance.Database.planes.Count; ++i)
             {
-                if(GameManager.Instance.Database.planes[i].info.itemID == ((!GameManager.Instance.isFree || string.IsNullOrEmpty(GameManager.Instance.freePlaneChoose) ? GameManager.Instance.Database.SelectedMainPlane : GameManager.Instance.freePlaneChoose)))
+                if(GameManager.Instance.Database.planes[i].info.ItemID == ((!GameManager.Instance.isFree || string.IsNullOrEmpty(GameManager.Instance.freePlaneChoose) ? GameManager.Instance.Database.SelectedMainPlane : GameManager.Instance.freePlaneChoose)))
                 {
                     pSelectedPlane = i;
                     break;
@@ -323,7 +323,7 @@ namespace EazyEngine.Space
                 var pAllItem = GameDatabase.Instance.getAllItem(CategoryItem.PLANE);
                 foreach(var pItemPlane in pAllItem)
                 {
-                   if( pItemPlane.itemID == GameManager.Instance.freePlaneChoose)
+                   if( pItemPlane.ItemID == GameManager.Instance.freePlaneChoose)
                     {
                         pDataPlane = PlaneInfoConfig.CloneDefault((PlaneInfo) pItemPlane);
                     }
@@ -336,7 +336,7 @@ namespace EazyEngine.Space
             int pSelectedspPlane =-1;
             for (int i = 0; i < GameManager.Instance.Database.spPlanes.Count; ++i)
             {
-                if (GameManager.Instance.Database.spPlanes[i].info.itemID == ((!GameManager.Instance.isFree || string.IsNullOrEmpty(GameManager.Instance.freeSpPlaneChoose) ? GameManager.Instance.Database.SelectedSupportPlane1 : GameManager.Instance.freeSpPlaneChoose)))
+                if (GameManager.Instance.Database.spPlanes[i].info.ItemID == ((!GameManager.Instance.isFree || string.IsNullOrEmpty(GameManager.Instance.freeSpPlaneChoose) ? GameManager.Instance.Database.SelectedSupportPlane1 : GameManager.Instance.freeSpPlaneChoose)))
                 {
                     pSelectedspPlane = i;
                     break;
@@ -349,7 +349,7 @@ namespace EazyEngine.Space
                 var pAllItem = GameDatabase.Instance.getAllItem(CategoryItem.SP_PLANE);
                 foreach (var pItemPlane in pAllItem)
                 {
-                    if (pItemPlane.itemID == GameManager.Instance.freeSpPlaneChoose)
+                    if (pItemPlane.ItemID == GameManager.Instance.freeSpPlaneChoose)
                     {
                         pDataSpPlane = SupportPlaneInfoConfig.CloneDefaultSp((PlaneInfo)pItemPlane);
                     }
@@ -454,7 +454,7 @@ namespace EazyEngine.Space
                     {
                         if (!_infoLevel.InputConfig.itemUsed[i].isActive)
                         {
-                            EzEventManager.TriggerEvent(new InputButtonTrigger(_infoLevel.InputConfig.itemUsed[i].itemID, _infoLevel.InputConfig.itemUsed[i].categoryItem));
+                            EzEventManager.TriggerEvent(new InputButtonTrigger(_infoLevel.InputConfig.itemUsed[i].ItemID, _infoLevel.InputConfig.itemUsed[i].categoryItem));
                         }
                     }
                 }

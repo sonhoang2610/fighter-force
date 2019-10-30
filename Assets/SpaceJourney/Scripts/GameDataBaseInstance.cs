@@ -143,7 +143,7 @@ namespace EazyEngine.Space
         {
             foreach(var pTime in timers)
             {
-                if(pTime.key.Contains(pItem.itemID) && pTime.key.StartsWith("MainInventory"))
+                if(pTime.key.Contains(pItem.ItemID) && pTime.key.StartsWith("MainInventory"))
                 {
                     return true;
                 }
@@ -165,7 +165,7 @@ namespace EazyEngine.Space
         {
             foreach (var pTime in timers)
             {
-                if (pTime.key.Contains(pItem.itemID) && pTime.key.StartsWith("MainInventory"))
+                if (pTime.key.Contains(pItem.ItemID) && pTime.key.StartsWith("MainInventory"))
                 {
                     return pTime;
                 }
@@ -334,7 +334,7 @@ namespace EazyEngine.Space
         {
             for(int i = 0; i < planes.Count; ++i)
             {
-                if(planes[i].Info.itemID == pID)
+                if(planes[i].Info.ItemID == pID)
                 {
                     return planes[i];
                 }
@@ -350,7 +350,7 @@ namespace EazyEngine.Space
                     items.RemoveAt(i);
                     continue;
                 }
-                if(items[i].item.itemID == pID)
+                if(items[i].item.ItemID == pID)
                 {
                     return items[i];
                 }

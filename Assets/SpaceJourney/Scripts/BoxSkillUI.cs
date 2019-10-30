@@ -57,7 +57,7 @@ namespace EazyEngine.Space.UI
             IndexChoosed = 0;
             if (index >= DataSource.Count) return;
             var pShop = LoadAssets.LoadShop(targetShop);
-            var pItemShop = pShop.getInfoItem(DataSource[index].info.info.itemID);
+            var pItemShop = pShop.getInfoItem(DataSource[index].info.info.ItemID);
             DataSource[index].info.LimitUpgrade = pItemShop.limitUpgrade;
             desChoosedSkill.text = DataSource[index].info.Info.Desc;
             layerAbleUpgradeSkill.gameObject.SetActive(true);
@@ -88,7 +88,7 @@ namespace EazyEngine.Space.UI
             //infoTrade.setDa
   
       
-            var pItem = pShop.getInfoItem(DataSource[index].info.Info.itemID);
+            var pItem = pShop.getInfoItem(DataSource[index].info.Info.ItemID);
             var paymentInfos = pItem.getPrice(DataSource[index].currentLevel);
             for (int i = 0; i < infoTrade.Count; ++i)
             {

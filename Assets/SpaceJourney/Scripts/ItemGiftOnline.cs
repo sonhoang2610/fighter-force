@@ -48,7 +48,7 @@ namespace EazyEngine.Space
             callBackEffect();
             effect.gameObject.SetActive(true);
             effect.Play();
-            var pItem = GameManager.Instance.Database.getComonItem(Data.mainData.item.itemID);
+            var pItem = GameManager.Instance.Database.getComonItem(Data.mainData.item.ItemID);
             Data.status = 1;
             pItem.Quantity += Data.mainData.quantity;
             Effecting = false; 
@@ -58,7 +58,7 @@ namespace EazyEngine.Space
         {
             if (Effecting && Using)
             {
-                var pItem = GameManager.Instance.Database.getComonItem(Data.mainData.item.itemID);
+                var pItem = GameManager.Instance.Database.getComonItem(Data.mainData.item.ItemID);
                 pItem.Quantity += Data.mainData.quantity;
                 Effecting = false;
             }

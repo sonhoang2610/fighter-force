@@ -308,7 +308,7 @@ namespace EazyEngine.Space.UI
                     {
                       var pStorage =  GameManager.Instance.Database.getComonItem(pNode.misson.rewards[i].item);
                         pStorage.Quantity += pNode.misson.rewards[i].quantity;
-                        if (pStorage.item.itemID != "Coin")
+                        if (pStorage.item.ItemID != "Coin")
                         {
                             if (extraItem == null)
                             {

@@ -18,11 +18,11 @@ namespace EazyEngine.Space
             ids = new string[info.Length];
             for (int i = 0; i < ids.Length; ++i)
             {
-                if(string.IsNullOrEmpty(info[i].itemID))
+                if(string.IsNullOrEmpty(info[i].ItemID))
                 {
-                    info[i].itemID = info[i].name;
+                    info[i].ItemID = info[i].name;
                 }
-                ids[i] = info[i].itemID;
+                ids[i] = info[i].ItemID;
             }
             if (!Application.isPlaying)
             {
@@ -38,7 +38,7 @@ namespace EazyEngine.Space
         {
             for(int i = 0; i < info.Length; ++i)
             {
-                if(info[i].itemID == pID)
+                if(info[i].ItemID == pID)
                 {
                     return info[i];
                 }

@@ -137,7 +137,7 @@ namespace EazyEngine.Space
         {
             for(int i = 0; i < abilities.Count; ++i)
             {
-                if(abilities[i]._ability.itemID == pID)
+                if(abilities[i]._ability.ItemID == pID)
                 {
                     return abilities[i];
                 }

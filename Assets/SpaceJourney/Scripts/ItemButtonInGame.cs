@@ -29,7 +29,9 @@ namespace EazyEngine.Space
 
         public void useController()
         {
-            EzEventManager.TriggerEvent(new InputButtonTrigger(Data.item.itemID, Data.item.categoryItem));
+            EzEventManager.TriggerEvent(new InputButtonTrigger(Data.item.ItemID, Data.item.categoryItem));
+            var pItem = GameManager.Instance.Database.getComonItem(Data.item.ItemID);
+            pItem.Quantity--;
             Data.quantity--;
             if(Data.quantity == 0)
             {
