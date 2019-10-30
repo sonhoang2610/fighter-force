@@ -56,19 +56,19 @@ namespace EasyMobile
 
         // Required
         [SerializeField]
-        private string _name = null;
+        public string _name = null;
         [SerializeField]
-        private IAPProductType _type = IAPProductType.Consumable;
+        public IAPProductType _type = IAPProductType.Consumable;
         [SerializeField]
-        private string _id = null;
+        public string _id = null;
 
         // Optional
         [SerializeField]
-        private string _price = null;
+        public string _price = null;
         [SerializeField]
-        private string _description = null;
+        public string _description = null;
         [SerializeField]
-        private StoreSpecificId[] _storeSpecificIds = null;
+        public StoreSpecificId[] _storeSpecificIds = null;
 
 #if UNITY_EDITOR
         // Editor-use via reflection only, hence the warning suppression.
