@@ -113,6 +113,18 @@ namespace EazyEngine.Space
                 return pSprite;
             }
         }
+
+        public string ItemID { get {
+                if(itemID == "BoxElitePack1")
+                {
+                    return "BoxElitePack01";
+                }
+                if (itemID == "BoxElitePack2")
+                {
+                    return "BoxElitePack02";
+                }
+                return itemID;
+            } set => itemID = value; }
     }
 
 }
