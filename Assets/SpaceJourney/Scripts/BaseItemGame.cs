@@ -115,6 +115,7 @@ namespace EazyEngine.Space
         }
 
         public string ItemID { get {
+#if UNITY_IOS
                 if(itemID == "BoxElitePack1")
                 {
                     return "BoxElitePack01";
@@ -123,6 +124,7 @@ namespace EazyEngine.Space
                 {
                     return "BoxElitePack02";
                 }
+#endif
                 return itemID;
             } set => itemID = value; }
     }
