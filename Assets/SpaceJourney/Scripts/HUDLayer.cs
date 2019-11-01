@@ -44,6 +44,7 @@ namespace EazyEngine.Space.UI {
 
         public void rebornCrystal()
         {
+            Firebase.Analytics.FirebaseAnalytics.LogEvent($"Reborn_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedHard}");
             var pItem = GameManager.Instance.Database.getComonItem("Crystal");
             if (pItem.Quantity >= 50)
             {
@@ -53,8 +54,9 @@ namespace EazyEngine.Space.UI {
             }
         }
         public void rebornWatchAds()
-        {   	     
-	        GameManager.Instance.showRewardAds(BoxReborn.GetComponent<BoxReborn>().itemExchange,delegate(bool pBool){
+        {
+            Firebase.Analytics.FirebaseAnalytics.LogEvent($"RebornAds_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedHard}");
+            GameManager.Instance.showRewardAds(BoxReborn.GetComponent<BoxReborn>().itemExchange,delegate(bool pBool){
                 BoxReborn.close();
                 if (pBool)
                 {

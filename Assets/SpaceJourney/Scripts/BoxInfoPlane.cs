@@ -23,7 +23,7 @@ namespace EazyEngine.Space.UI
         public GameObject boxRank;
         public GameObject layerAbleUpgradePlane;
         public GameObject layerLimitSkillPlane;
-        public GameObject layerOneWay, layerTwoWay;
+        public GameObject layerOneWay, layerTwoWay,layerUnlock;
         public void OnEzEvent(UIMessEvent eventType)
         {
             if (eventType.Event.StartsWith("ChangeLanguage"))
@@ -141,6 +141,15 @@ namespace EazyEngine.Space.UI
                         pUprank = true;
                         requireCraft = paymentInfos[0][1].quantity;
 
+                    }
+                    layerUnlock.gameObject.SetActive(false);
+                    if (value.CurrentLevel == 0)
+                    {
+                        if (!layerOneWay.gameObject.activeSelf)
+                        {
+                            layerUnlock.gameObject.SetActive(true);
+                            layerTwoWay.gameObject.SetActive(false);
+                        }
                     }
                     if (slot)
                     {

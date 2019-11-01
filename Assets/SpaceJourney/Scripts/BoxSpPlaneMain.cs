@@ -44,7 +44,7 @@ namespace EazyEngine.Space.UI
                 refreshData();
                 for (int i = 0; i < DataSource.Count; ++i)
                 {
-                    if (DataSource[i].Info.ItemID == GameManager.Instance.Database.SelectedMainPlane)
+                    if (DataSource[i].Info.ItemID == GameManager.Instance.Database.SelectedSupportPlane1)
                     {
                         currentPage = i;
                     }

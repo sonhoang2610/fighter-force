@@ -17,6 +17,8 @@ using Firebase.Analytics;
 using FlowCanvas.Nodes;
 using Spine.Unity;
 using Spine.Unity.Modules;
+using System;
+using UnityEngine.Networking;
 #if UNITY_EDITOR
 using Sirenix.Utilities.Editor;
 #endif
@@ -1046,31 +1048,48 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         }
         return -1;
     }
+    IEnumerator checkInternetConnection(Action<bool> action)
+    {
+        UnityWebRequest www = new UnityWebRequest("http://google.com");
+        yield return www;
+        action(www.error == null);
+    }
     public void showRewardAds(string pID, System.Action<bool> onResult)
     {
-        var placement = AdPlacement.PlacementWithName(pID);
-        if (!rewardAds.ContainsKey(pID))
+        StartCoroutine(checkInternetConnection(delegate (bool pResult)
         {
-            rewardAds.Add(pID, onResult);
-        }
-        else
-        {
-            rewardAds[pID] += onResult;
-        }
-        if (Advertising.IsRewardedAdReady(placement))
-        {
-     
-            Advertising.ShowRewardedAd(placement);
-        }
-        else
-        {
-            TopLayer.Instance.loadingAds.gameObject.SetActive(true);
-            Advertising.LoadRewardedAd(placement);
-            if (indexOfads(placement) < 0)
+            if (pResult)
             {
-                timeoutAds.Add(new CountdownAds() { placeMent = placement, currentTime = 5 });
+                var placement = AdPlacement.PlacementWithName(pID);
+                if (!rewardAds.ContainsKey(pID))
+                {
+                    rewardAds.Add(pID, onResult);
+                }
+                else
+                {
+                    rewardAds[pID] += onResult;
+                }
+                if (Advertising.IsRewardedAdReady(placement))
+                {
+
+                    Advertising.ShowRewardedAd(placement);
+                }
+                else
+                {
+                    TopLayer.Instance.loadingAds.gameObject.SetActive(true);
+                    Advertising.LoadRewardedAd(placement);
+                    if (indexOfads(placement) < 0)
+                    {
+                        timeoutAds.Add(new CountdownAds() { placeMent = placement, currentTime = 5 });
+                    }
+                }
             }
-        }
+            else
+            {
+                onResult?.Invoke(false);
+            }
+        }));
+  
 
     }
 

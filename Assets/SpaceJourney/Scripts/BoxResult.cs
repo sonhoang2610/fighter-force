@@ -93,7 +93,7 @@ namespace EazyEngine.Space.UI
                 GameManager.Instance.showBannerAds(true);
                 return;
             }
-          
+           
           
             LevelManger.Instance.IsPlaying = false;
             GameManager.Instance.inGame = false;
@@ -166,6 +166,7 @@ namespace EazyEngine.Space.UI
             {
                 if (!GameManager.Instance.isFree)
                 {
+                    Firebase.Analytics.FirebaseAnalytics.LogEvent($"Win_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedHard}");
                     var pdrop =
                         GameDatabase.Instance.dropMonyeconfig[GameManager.Instance.ChoosedLevel - 1][
                             GameManager.Instance.ChoosedHard];
@@ -218,6 +219,7 @@ namespace EazyEngine.Space.UI
             }
             else if (!GameManager.Instance.isFree)
             {
+                Firebase.Analytics.FirebaseAnalytics.LogEvent($"Lose_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedHard}_Time_{LevelManger.Instance.CurrentTime.TotalSeconds}");
                 //lose game
                 var pdrop = GameDatabase.Instance.dropMonyeconfig[GameManager.Instance.ChoosedLevel - 1][GameManager.Instance.ChoosedHard];
                 int pStarNotEngough = pdrop.requireStar - GameManager.Instance.Database.getComonItem("Star").Quantity;

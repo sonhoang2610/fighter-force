@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 namespace EazyEngine.Space.UI
 {
-    public class LayerUpgrade : Singleton<LayerUpgrade>
+    public class LayerUpgrade : Singleton<LayerUpgrade>,EzEventListener<UIMessEvent>
     {
         public string targetShop;
 	    public string targetShopUpgradeSkill; 
@@ -18,6 +18,7 @@ namespace EazyEngine.Space.UI
         public BoxChoosePlane boxplanes;
 	    public GameObject effectUpgrade,effectBaokich;
         public GameObject textBaokick;
+        public UIButton btnSelect;
         public AudioClip sfxUpgradePlane,sfxUpgradeSkill;
         protected PlaneInfoConfig selectedPlane;
         protected SkillInfoInstanced choosedSkill;
@@ -32,11 +33,42 @@ namespace EazyEngine.Space.UI
             if(pInfo.info.categoryItem == CategoryItem.SP_PLANE)
             {
                 GameManager.Instance.freeSpPlaneChoose = pInfo.info.ItemID;
+                if (pInfo.info.itemID == GameManager.Instance.Database.SelectedSupportPlane1)
+                {
+                    btnSelect.isEnabled = false;
+                }
+                else
+                {
+                    btnSelect.isEnabled = true;
+                }
             }
             else
             {
                 GameManager.Instance.freePlaneChoose = pInfo.info.ItemID;
+                if(pInfo.info.itemID == GameManager.Instance.Database.SelectedMainPlane)
+                {
+                    btnSelect.isEnabled = false;
+                }
+                else
+                {
+                    btnSelect.isEnabled = true;
+                }
             }
+        }
+
+        public void selectMainPlane()
+        {
+            var pInfo = selectedPlane;
+            if (pInfo.info.categoryItem == CategoryItem.SP_PLANE)
+            {
+                GameManager.Instance.Database.SelectedSupportPlane1 = GameManager.Instance.freeSpPlaneChoose;
+                GameManager.Instance.Database.SelectedSupportPlane2 = GameManager.Instance.freeSpPlaneChoose;
+            }
+            else
+            {
+                GameManager.Instance.Database.SelectedMainPlane = GameManager.Instance.freePlaneChoose;
+            }
+            btnSelect.isEnabled = false;
         }
 
         public void chooseSkill(object pSkill)
@@ -273,7 +305,11 @@ namespace EazyEngine.Space.UI
 
         private void OnEnable()
         {
-      
+            EzEventManager.AddListener(this);
+        }
+        private void OnDisable()
+        {
+            EzEventManager.RemoveListener(this);
         }
 
         public void upgradePlane1()
@@ -374,6 +410,14 @@ namespace EazyEngine.Space.UI
         void Update()
         {
 
+        }
+
+        public void OnEzEvent(UIMessEvent eventType)
+        {
+            if(eventType.Event == "ChangeTabSp")
+            {
+                GetComponent<EazyGroupTabNGUI>().changeTab(1);
+            }
         }
     }
 }

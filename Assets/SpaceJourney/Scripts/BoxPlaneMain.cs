@@ -128,12 +128,12 @@ namespace EazyEngine.Space.UI
             for (int i = 0; i < pInfos.Length; ++i)
             {
                 var pInfoConfig = GameManager.Instance.Database.getPlane(pInfos[i].ItemID);
-                if (pInfoConfig == null)
-                {
-                    pInfoConfig = new PlaneInfoConfig() { Info = pInfos[i], currentLevel = 0 };
-                    pInfoConfig.ExtraInfo();
-                }
-                if (pInfoConfig != null)
+                //if (pInfoConfig == null)
+                //{
+                //    pInfoConfig = new PlaneInfoConfig() { Info = pInfos[i], currentLevel = 0 };
+                //    pInfoConfig.ExtraInfo();
+                //}
+                if (pInfoConfig != null && pInfoConfig.currentLevel > 0)
                 {
     
                     pInfoIntanceds.Add(pInfoConfig);

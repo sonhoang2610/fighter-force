@@ -80,7 +80,12 @@ namespace EazyEngine.Space.UI
         }
         public void clearBox()
         {
-          
+            if (selectedBoxPlane.Count == 1)
+            {
+
+                upgrade();
+                return;
+            }
             for (int i = 0; i < selectedBoxPlane.Count; ++i)
             {
                 selectedBoxPlane[i].selected(false);
@@ -90,6 +95,19 @@ namespace EazyEngine.Space.UI
 
         public void clearBoxIfHasItemInBox(BoxBasePlane pPlane)
         {
+            if (selectedBoxPlane.Contains(pPlane))
+            {
+                if (pPlane.DataSource.Count > 0 && pPlane.DataSource[0].Info.categoryItem == CategoryItem.PLANE)
+                {
+                    upgrade();
+                }
+                else if (pPlane.DataSource.Count > 0 && pPlane.DataSource[0].Info.categoryItem == CategoryItem.SP_PLANE)
+                {
+                    upgradeSp();
+                }
+
+                return;
+            }
             if (pPlane.DataSource.Count > 0)
             {
        
@@ -103,7 +121,10 @@ namespace EazyEngine.Space.UI
 
         public void addSelectedBoxPlane(BoxBasePlane pPlane)
         {
-            if (selectedBoxPlane.Contains(pPlane)) return;
+            if (selectedBoxPlane.Contains(pPlane)) {
+           
+                return;
+            }
             if (pPlane.DataSource.Count <= 0) return;
                 selectedBoxPlane.Add(pPlane);
             pPlane.selected(true);
@@ -265,7 +286,17 @@ namespace EazyEngine.Space.UI
             stateGames.Add("Upgrade");
             EzEventManager.TriggerEvent(new UIMessEvent("Upgrade"));
         }
+        public void upgradeSp()
+        {
+            stateGames.Add("Upgrade");
+            EzEventManager.TriggerEvent(new UIMessEvent("Upgrade"));
+            Invoke(nameof(changeTabSp), 0.1f);
+        }
 
+        public void changeTabSp()
+        {
+            EzEventManager.TriggerEvent(new UIMessEvent("ChangeTabSp"));
+        }
 
         public void chooseUseItem(object pObject)
         {

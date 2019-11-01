@@ -134,7 +134,7 @@ namespace EazyEngine.Space
 
         public void setGoldScore(int pGold)
         {
-            goldScore.text = pGold.ToString();
+            goldScore.text = pGold.ToString("D7");
         }
 
         public void showDangerEffect()
