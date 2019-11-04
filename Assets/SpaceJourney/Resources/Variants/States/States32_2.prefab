@@ -1,5 +1,53 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &321825558154025987
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2571452306396314666}
+  - component: {fileID: 2414086873981683343}
+  m_Layer: 0
+  m_Name: '[Pool]0_enemy_smal11 Variant 1'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2571452306396314666
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321825558154025987}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 550843610908349513}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2414086873981683343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321825558154025987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30599d570c93524c810714c5a2f7583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObjectToPool: {fileID: 7074295023724667274, guid: 65065533d11cdbd43903e226db37ea42,
+    type: 3}
+  PoolSize: 0
+  PoolCanExpand: 1
+  dontDestroyOnload: 0
 --- !u!1 &550843610908349518
 GameObject:
   m_ObjectHideFlags: 0
@@ -27,7 +75,16 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 5357234971241766187}
+  - {fileID: 2571452306396314666}
+  - {fileID: 3720426878928542861}
+  - {fileID: 1163916708399608704}
+  - {fileID: 6328145816269700893}
+  - {fileID: 2107036543419458156}
+  - {fileID: 6069739226233662109}
+  - {fileID: 9018924852456821300}
+  - {fileID: 6494261570717514489}
   m_Father: {fileID: 4247844955654482729}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -46,56 +103,296 @@ MonoBehaviour:
   replaceNew: 1
   _storage:
     _array:
-    - key: {fileID: 3636471721448960107, guid: b9ce8392c6f5aa24395913bd0c7cf2f3, type: 3}
-      info:
-        isIgnore: 0
-        countPreload: 48
-        pooler: {fileID: 0}
-    - key: {fileID: 2272231639648870313, guid: c822584e6e0ba764f9b40a3f61ef8425, type: 3}
-      info:
-        isIgnore: 0
-        countPreload: 5
-        pooler: {fileID: 0}
-    - key: {fileID: 7619462946654086594, guid: d3e357238ddee5b44a74b9f4ed13b505, type: 3}
-      info:
-        isIgnore: 0
-        countPreload: 3
-        pooler: {fileID: 0}
-    - key: {fileID: 1734134187445777560, guid: c25c8f9c69e42e041afdda036585a3f0, type: 3}
-      info:
-        isIgnore: 0
-        countPreload: 3
-        pooler: {fileID: 0}
-    - key: {fileID: 6877586096180333616, guid: 62a589af3418e45448edff8891386944, type: 3}
-      info:
-        isIgnore: 0
-        countPreload: 3
-        pooler: {fileID: 0}
-    - key: {fileID: 4906141339235065535, guid: 009f606667bbcc64992f5c94e6d16562, type: 3}
-      info:
-        isIgnore: 0
-        countPreload: 3
-        pooler: {fileID: 0}
     - key: {fileID: 2484218859286932059, guid: cae6aa904dc009b40bbc60045d377279, type: 3}
       info:
         isIgnore: 0
         countPreload: 5
         pooler: {fileID: 0}
-    - key: {fileID: 3559139901592560013, guid: 4de007d16d5aaef43ba230ea3d48fd3c, type: 3}
+    - key: {fileID: 1400878771669119179, guid: d9962f1ca6752e5458e6aa15739f6b27, type: 3}
       info:
         isIgnore: 0
-        countPreload: 48
-        pooler: {fileID: 0}
-    - key: {fileID: 1143518063389232502, guid: d2f1e8e571829454c87483f800af27f6, type: 3}
+        countPreload: 24
+        pooler: {fileID: 6409846062888451381}
+    - key: {fileID: 7074295023724667274, guid: 65065533d11cdbd43903e226db37ea42, type: 3}
       info:
         isIgnore: 0
-        countPreload: 3
-        pooler: {fileID: 0}
-    - key: {fileID: 6508332693050883645, guid: 77c6c73c912bf0642a20a03faefd54bc, type: 3}
+        countPreload: 24
+        pooler: {fileID: 2414086873981683343}
+    - key: {fileID: 3094362236577191586, guid: 5f0100ef76448e343a347eed1e9b09e0, type: 3}
       info:
         isIgnore: 0
-        countPreload: 3
-        pooler: {fileID: 0}
+        countPreload: 4
+        pooler: {fileID: 7678535262914001658}
+    - key: {fileID: 2471145985186011652, guid: be9e9c06d97c6dd49a8935f7db7b69a3, type: 3}
+      info:
+        isIgnore: 0
+        countPreload: 4
+        pooler: {fileID: 8928888221825394671}
+    - key: {fileID: 7788581899229243069, guid: 99b83ece3c55ab049bf31a392b34464a, type: 3}
+      info:
+        isIgnore: 0
+        countPreload: 4
+        pooler: {fileID: 539690752238037177}
+    - key: {fileID: 6559501798258503714, guid: f91b9fa0cc899ad4c9b09394838b6b01, type: 3}
+      info:
+        isIgnore: 0
+        countPreload: 4
+        pooler: {fileID: 3756888990710177808}
+    - key: {fileID: 7999839863641311002, guid: fefe6a1b43c786845912a3926ec07c6d, type: 3}
+      info:
+        isIgnore: 0
+        countPreload: 4
+        pooler: {fileID: 7553399632277303017}
+    - key: {fileID: 4906141339235065535, guid: 54c70c781ee1bc745886f7d9ba3e69be, type: 3}
+      info:
+        isIgnore: 0
+        countPreload: 4
+        pooler: {fileID: 6926206474449960092}
+    - key: {fileID: 8666511167644931436, guid: 7c1c78c0d52121b42a3b909737e7ac05, type: 3}
+      info:
+        isIgnore: 0
+        countPreload: 4
+        pooler: {fileID: 3714351788750562832}
+--- !u!1 &2026990464591031693
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9018924852456821300}
+  - component: {fileID: 6926206474449960092}
+  m_Layer: 0
+  m_Name: '[Pool]medium4a2'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9018924852456821300
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026990464591031693}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 550843610908349513}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6926206474449960092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026990464591031693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30599d570c93524c810714c5a2f7583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObjectToPool: {fileID: 4906141339235065535, guid: 54c70c781ee1bc745886f7d9ba3e69be,
+    type: 3}
+  PoolSize: 0
+  PoolCanExpand: 1
+  dontDestroyOnload: 0
+--- !u!1 &2847032923029711877
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6069739226233662109}
+  - component: {fileID: 7553399632277303017}
+  m_Layer: 0
+  m_Name: '[Pool]0enemy23 Variant 1'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6069739226233662109
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2847032923029711877}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 550843610908349513}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7553399632277303017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2847032923029711877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30599d570c93524c810714c5a2f7583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObjectToPool: {fileID: 7999839863641311002, guid: fefe6a1b43c786845912a3926ec07c6d,
+    type: 3}
+  PoolSize: 0
+  PoolCanExpand: 1
+  dontDestroyOnload: 0
+--- !u!1 &2985830316514969293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5357234971241766187}
+  - component: {fileID: 6409846062888451381}
+  m_Layer: 0
+  m_Name: '[Pool]0_enemy_smal11 Variant 1'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5357234971241766187
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2985830316514969293}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 550843610908349513}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6409846062888451381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2985830316514969293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30599d570c93524c810714c5a2f7583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObjectToPool: {fileID: 1400878771669119179, guid: d9962f1ca6752e5458e6aa15739f6b27,
+    type: 3}
+  PoolSize: 0
+  PoolCanExpand: 1
+  dontDestroyOnload: 0
+--- !u!1 &3077701301608791400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1163916708399608704}
+  - component: {fileID: 8928888221825394671}
+  m_Layer: 0
+  m_Name: '[Pool]0_Tower11 Variant 1'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1163916708399608704
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3077701301608791400}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 550843610908349513}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8928888221825394671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3077701301608791400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30599d570c93524c810714c5a2f7583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObjectToPool: {fileID: 2471145985186011652, guid: be9e9c06d97c6dd49a8935f7db7b69a3,
+    type: 3}
+  PoolSize: 0
+  PoolCanExpand: 1
+  dontDestroyOnload: 0
+--- !u!1 &3909862563668073351
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6494261570717514489}
+  - component: {fileID: 3714351788750562832}
+  m_Layer: 0
+  m_Name: '[Pool]2enemy14'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6494261570717514489
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3909862563668073351}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 550843610908349513}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3714351788750562832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3909862563668073351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30599d570c93524c810714c5a2f7583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObjectToPool: {fileID: 8666511167644931436, guid: 7c1c78c0d52121b42a3b909737e7ac05,
+    type: 3}
+  PoolSize: 0
+  PoolCanExpand: 1
+  dontDestroyOnload: 0
 --- !u!1 &4247844955335395754
 GameObject:
   m_ObjectHideFlags: 0
@@ -5330,702 +5627,6 @@ MonoBehaviour:
         m_Calls: []
     totalDeath: 0
   - isExpaned: 0
-    nameState: State 9a
-    comment: meteorit large
-    nameGroup: State 9a (meteorit large)
-    isManual: 0
-    formatInfo:
-      prefabEnemies:
-      - {fileID: 1251574869174726520, guid: 82553e18ef93b4946bbb8e5ac2514bbc, type: 3}
-      quantity: 10
-      typeSpawn: 0
-      typeFomation: 1
-      startSpawnPos: {x: -13.715622, y: 15.956717}
-      AxisX: 0
-      sizeDomain: {x: 15, y: 19}
-      distanceEmiter: {x: 0.8, y: 0.8}
-      maxCollum: 1
-      radius: 1
-      directionStart: {x: 1, y: -1}
-    groupManager: {fileID: 0}
-    moveInfos:
-    - indexStateMove: 0
-      DelayStart: 0
-      RowDelay: 0
-      splineRaw:
-        points:
-        - {x: -13.715624, y: 15.956717, z: 0}
-        - {x: -13.715624, y: 15.456717, z: 0}
-        - {x: 17.636803, y: -18.231113, z: 0}
-        - {x: 17.636803, y: -18.731113, z: 0}
-        modes: 00000000000000000000000000000000
-        loop: 0
-        lineMode: 1
-        relative: 1
-        snap: 0
-        snapGrid: {x: 0, y: 0}
-        currentNode: 0
-      lookType: 0
-      durationMove: 2
-      speedBase: 1
-      curvesMoving:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 2
-          outSlope: 2
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      loop: 1
-      onCompleteNode: []
-      conditionComplete:
-      - condition: 0
-        destroyQuantity: 1
-        triggerString: 
-      - condition: 1
-        destroyQuantity: 1
-        triggerString: 
-      onComplete:
-        m_PersistentCalls:
-          m_Calls: []
-      onStart:
-        m_PersistentCalls:
-          m_Calls: []
-    attackInfo:
-      BaseAI: 0
-      infoAI:
-        conditionStart: 0
-        triggerStringMachine: StartMachine
-        conditionAttack: 0
-        triggerStringAttack: StartAttack
-        firstDelay: {x: 0, y: 0}
-        reloadTime: {x: 2, y: 3}
-        countShoot: {x: 1, y: 2}
-        delayPerAttack: {x: 0.2, y: 0.5}
-        _typeDirection: 1
-    lootItems:
-    - baseLoot: 1
-      items:
-      - {fileID: 6875481962810221245, guid: 09ab89a6f9bea17469559696f243a759, type: 3}
-      percent: 0.5
-      dropCountRange: {x: 2, y: 4}
-    - baseLoot: 0
-      items:
-      - {fileID: 2725560285071857337, guid: 0971f79f08ce8854b82f023123fb1334, type: 3}
-      percent: 0.3
-      dropCountRange: {x: 1, y: 1}
-    - baseLoot: 0
-      items:
-      - {fileID: 6875481962810221245, guid: ee8cb0f293c94f944a3e293980cf0f13, type: 3}
-      percent: 0.3
-      dropCountRange: {x: 1, y: 1}
-    - baseLoot: 0
-      items:
-      - {fileID: 2725560285071857337, guid: b3563a708a29ffb4d8d744ee8a043d04, type: 3}
-      percent: 0.3
-      dropCountRange: {x: 1, y: 1}
-    _completeAction: 1
-    onCompleteState:
-      m_PersistentCalls:
-        m_Calls: []
-    totalDeath: 0
-  - isExpaned: 0
-    nameState: State 10a
-    comment: meteorit medium
-    nameGroup: State 10a (meteorit medium)
-    isManual: 0
-    formatInfo:
-      prefabEnemies:
-      - {fileID: 2321905483595145021, guid: 4dc3f9e296f0d3a45a5994f8b9b70181, type: 3}
-      quantity: 20
-      typeSpawn: 0
-      typeFomation: 1
-      startSpawnPos: {x: -12.092858, y: 13.442786}
-      AxisX: 0
-      sizeDomain: {x: 14, y: 14}
-      distanceEmiter: {x: 0.8, y: 0.8}
-      maxCollum: 1
-      radius: 1
-      directionStart: {x: 1, y: -1}
-    groupManager: {fileID: 0}
-    moveInfos:
-    - indexStateMove: 0
-      DelayStart: 1
-      RowDelay: 0
-      splineRaw:
-        points:
-        - {x: -12.092859, y: 13.442786, z: 0}
-        - {x: -12.092859, y: 12.942786, z: 0}
-        - {x: 18.937267, y: -20.087337, z: 0}
-        - {x: 18.937267, y: -20.587337, z: 0}
-        modes: 00000000000000000000000000000000
-        loop: 0
-        lineMode: 1
-        relative: 1
-        snap: 0
-        snapGrid: {x: 0, y: 0}
-        currentNode: 0
-      lookType: 0
-      durationMove: 2.5
-      speedBase: 1
-      curvesMoving:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 2
-          outSlope: 2
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      loop: 1
-      onCompleteNode: []
-      conditionComplete:
-      - condition: 0
-        destroyQuantity: 1
-        triggerString: 
-      - condition: 1
-        destroyQuantity: 1
-        triggerString: 
-      onComplete:
-        m_PersistentCalls:
-          m_Calls: []
-      onStart:
-        m_PersistentCalls:
-          m_Calls: []
-    attackInfo:
-      BaseAI: 0
-      infoAI:
-        conditionStart: 0
-        triggerStringMachine: StartMachine
-        conditionAttack: 0
-        triggerStringAttack: StartAttack
-        firstDelay: {x: 0, y: 0}
-        reloadTime: {x: 2, y: 3}
-        countShoot: {x: 1, y: 2}
-        delayPerAttack: {x: 0.2, y: 0.5}
-        _typeDirection: 1
-    lootItems:
-    - baseLoot: 1
-      items:
-      - {fileID: 6875481962810221245, guid: 09ab89a6f9bea17469559696f243a759, type: 3}
-      percent: 0.4
-      dropCountRange: {x: 1, y: 2}
-    - baseLoot: 0
-      items:
-      - {fileID: 2725560285071857337, guid: 0971f79f08ce8854b82f023123fb1334, type: 3}
-      percent: 0.3
-      dropCountRange: {x: 1, y: 1}
-    - baseLoot: 0
-      items:
-      - {fileID: 6875481962810221245, guid: ee8cb0f293c94f944a3e293980cf0f13, type: 3}
-      percent: 0.3
-      dropCountRange: {x: 1, y: 1}
-    - baseLoot: 0
-      items:
-      - {fileID: 2725560285071857337, guid: b3563a708a29ffb4d8d744ee8a043d04, type: 3}
-      percent: 0.3
-      dropCountRange: {x: 1, y: 1}
-    _completeAction: 1
-    onCompleteState:
-      m_PersistentCalls:
-        m_Calls: []
-    totalDeath: 0
-  - isExpaned: 0
-    nameState: State 11a
-    comment: meteorit small
-    nameGroup: State 11a (meteorit small)
-    isManual: 0
-    formatInfo:
-      prefabEnemies:
-      - {fileID: 5813766719866116515, guid: 20f23ede37c65044c885cfe3801ecbb9, type: 3}
-      quantity: 30
-      typeSpawn: 0
-      typeFomation: 1
-      startSpawnPos: {x: -15.076261, y: 17.121725}
-      AxisX: 0
-      sizeDomain: {x: 16, y: 23}
-      distanceEmiter: {x: 0.8, y: 0.8}
-      maxCollum: 1
-      radius: 1
-      directionStart: {x: 1, y: -1}
-    groupManager: {fileID: 0}
-    moveInfos:
-    - indexStateMove: 0
-      DelayStart: 2
-      RowDelay: 0
-      splineRaw:
-        points:
-        - {x: -15.0762615, y: 17.121725, z: 0}
-        - {x: -15.0762615, y: 16.621725, z: 0}
-        - {x: 23.632534, y: -24.980518, z: 0}
-        - {x: 23.632534, y: -25.480518, z: 0}
-        modes: 00000000000000000000000000000000
-        loop: 0
-        lineMode: 1
-        relative: 1
-        snap: 0
-        snapGrid: {x: 0, y: 0}
-        currentNode: 0
-      lookType: 0
-      durationMove: 3.5
-      speedBase: 1
-      curvesMoving:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 2
-          outSlope: 2
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      loop: 1
-      onCompleteNode: []
-      conditionComplete:
-      - condition: 0
-        destroyQuantity: 1
-        triggerString: 
-      - condition: 1
-        destroyQuantity: 1
-        triggerString: 
-      onComplete:
-        m_PersistentCalls:
-          m_Calls: []
-      onStart:
-        m_PersistentCalls:
-          m_Calls: []
-    attackInfo:
-      BaseAI: 0
-      infoAI:
-        conditionStart: 0
-        triggerStringMachine: StartMachine
-        conditionAttack: 0
-        triggerStringAttack: StartAttack
-        firstDelay: {x: 0, y: 0}
-        reloadTime: {x: 2, y: 3}
-        countShoot: {x: 1, y: 2}
-        delayPerAttack: {x: 0.2, y: 0.5}
-        _typeDirection: 1
-    lootItems:
-    - baseLoot: 1
-      items:
-      - {fileID: 6875481962810221245, guid: 09ab89a6f9bea17469559696f243a759, type: 3}
-      percent: 0.3
-      dropCountRange: {x: 1, y: 1}
-    - baseLoot: 0
-      items:
-      - {fileID: 2725560285071857337, guid: 0971f79f08ce8854b82f023123fb1334, type: 3}
-      percent: 0.2
-      dropCountRange: {x: 1, y: 1}
-    - baseLoot: 0
-      items:
-      - {fileID: 6875481962810221245, guid: ee8cb0f293c94f944a3e293980cf0f13, type: 3}
-      percent: 0.3
-      dropCountRange: {x: 1, y: 1}
-    - baseLoot: 0
-      items:
-      - {fileID: 2725560285071857337, guid: b3563a708a29ffb4d8d744ee8a043d04, type: 3}
-      percent: 0.2
-      dropCountRange: {x: 1, y: 1}
-    _completeAction: 1
-    onCompleteState:
-      m_PersistentCalls:
-        m_Calls: []
-    totalDeath: 0
-  - isExpaned: 0
-    nameState: State 9b
-    comment: meteorit large
-    nameGroup: State 9b (meteorit large)
-    isManual: 0
-    formatInfo:
-      prefabEnemies:
-      - {fileID: 8644569780587809145, guid: 4bb8510d5fda6be4f8f6c078ddf505c6, type: 3}
-      quantity: 10
-      typeSpawn: 0
-      typeFomation: 1
-      startSpawnPos: {x: 0.06986934, y: 19.694847}
-      AxisX: 0
-      sizeDomain: {x: 11, y: 19}
-      distanceEmiter: {x: 0.8, y: 0.8}
-      maxCollum: 1
-      radius: 1
-      directionStart: {x: 0, y: -1}
-    groupManager: {fileID: 0}
-    moveInfos:
-    - indexStateMove: 0
-      DelayStart: 0
-      RowDelay: 0
-      splineRaw:
-        points:
-        - {x: 0.06986743, y: 19.694847, z: 0}
-        - {x: 0.06986743, y: 19.194847, z: 0}
-        - {x: 0.36421615, y: -20.88454, z: 0}
-        - {x: 0.36421615, y: -21.38454, z: 0}
-        modes: 00000000000000000000000000000000
-        loop: 0
-        lineMode: 1
-        relative: 1
-        snap: 0
-        snapGrid: {x: 0, y: 0}
-        currentNode: 0
-      lookType: 0
-      durationMove: 2
-      speedBase: 1
-      curvesMoving:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 2
-          outSlope: 2
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      loop: 1
-      onCompleteNode: []
-      conditionComplete:
-      - condition: 0
-        destroyQuantity: 1
-        triggerString: 
-      - condition: 1
-        destroyQuantity: 1
-        triggerString: 
-      onComplete:
-        m_PersistentCalls:
-          m_Calls: []
-      onStart:
-        m_PersistentCalls:
-          m_Calls: []
-    attackInfo:
-      BaseAI: 0
-      infoAI:
-        conditionStart: 0
-        triggerStringMachine: StartMachine
-        conditionAttack: 0
-        triggerStringAttack: StartAttack
-        firstDelay: {x: 0, y: 0}
-        reloadTime: {x: 2, y: 3}
-        countShoot: {x: 1, y: 2}
-        delayPerAttack: {x: 0.2, y: 0.5}
-        _typeDirection: 1
-    lootItems:
-    - baseLoot: 1
-      items:
-      - {fileID: 6875481962810221245, guid: 09ab89a6f9bea17469559696f243a759, type: 3}
-      percent: 0.5
-      dropCountRange: {x: 2, y: 4}
-    - baseLoot: 0
-      items:
-      - {fileID: 2725560285071857337, guid: 0971f79f08ce8854b82f023123fb1334, type: 3}
-      percent: 0.3
-      dropCountRange: {x: 1, y: 1}
-    - baseLoot: 0
-      items:
-      - {fileID: 6875481962810221245, guid: ee8cb0f293c94f944a3e293980cf0f13, type: 3}
-      percent: 0.3
-      dropCountRange: {x: 1, y: 1}
-    - baseLoot: 0
-      items:
-      - {fileID: 2725560285071857337, guid: b3563a708a29ffb4d8d744ee8a043d04, type: 3}
-      percent: 0.3
-      dropCountRange: {x: 1, y: 1}
-    _completeAction: 1
-    onCompleteState:
-      m_PersistentCalls:
-        m_Calls: []
-    totalDeath: 0
-  - isExpaned: 0
-    nameState: State 10b
-    comment: meteorit medium
-    nameGroup: State 10b (meteorit medium)
-    isManual: 0
-    formatInfo:
-      prefabEnemies:
-      - {fileID: 2321905483595145021, guid: 4dc3f9e296f0d3a45a5994f8b9b70181, type: 3}
-      quantity: 20
-      typeSpawn: 0
-      typeFomation: 1
-      startSpawnPos: {x: 0.2747631, y: 18.113136}
-      AxisX: 0
-      sizeDomain: {x: 11, y: 16}
-      distanceEmiter: {x: 0.8, y: 0.8}
-      maxCollum: 1
-      radius: 1
-      directionStart: {x: 0, y: -1}
-    groupManager: {fileID: 0}
-    moveInfos:
-    - indexStateMove: 0
-      DelayStart: 1
-      RowDelay: 0
-      splineRaw:
-        points:
-        - {x: 0.27476215, y: 18.113136, z: 0}
-        - {x: 0.27476215, y: 17.613136, z: 0}
-        - {x: 0.08815193, y: -18.122055, z: 0}
-        - {x: 0.08815193, y: -18.622055, z: 0}
-        modes: 00000000000000000000000000000000
-        loop: 0
-        lineMode: 1
-        relative: 1
-        snap: 0
-        snapGrid: {x: 0, y: 0}
-        currentNode: 0
-      lookType: 0
-      durationMove: 2.5
-      speedBase: 1
-      curvesMoving:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 2
-          outSlope: 2
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      loop: 1
-      onCompleteNode: []
-      conditionComplete:
-      - condition: 0
-        destroyQuantity: 1
-        triggerString: 
-      - condition: 1
-        destroyQuantity: 1
-        triggerString: 
-      onComplete:
-        m_PersistentCalls:
-          m_Calls: []
-      onStart:
-        m_PersistentCalls:
-          m_Calls: []
-    attackInfo:
-      BaseAI: 0
-      infoAI:
-        conditionStart: 0
-        triggerStringMachine: StartMachine
-        conditionAttack: 0
-        triggerStringAttack: StartAttack
-        firstDelay: {x: 0, y: 0}
-        reloadTime: {x: 2, y: 3}
-        countShoot: {x: 1, y: 2}
-        delayPerAttack: {x: 0.2, y: 0.5}
-        _typeDirection: 1
-    lootItems:
-    - baseLoot: 1
-      items:
-      - {fileID: 6875481962810221245, guid: 09ab89a6f9bea17469559696f243a759, type: 3}
-      percent: 0.4
-      dropCountRange: {x: 1, y: 2}
-    - baseLoot: 0
-      items:
-      - {fileID: 2725560285071857337, guid: 0971f79f08ce8854b82f023123fb1334, type: 3}
-      percent: 0.3
-      dropCountRange: {x: 1, y: 1}
-    - baseLoot: 0
-      items:
-      - {fileID: 6875481962810221245, guid: ee8cb0f293c94f944a3e293980cf0f13, type: 3}
-      percent: 0.3
-      dropCountRange: {x: 1, y: 1}
-    - baseLoot: 0
-      items:
-      - {fileID: 2725560285071857337, guid: b3563a708a29ffb4d8d744ee8a043d04, type: 3}
-      percent: 0.3
-      dropCountRange: {x: 1, y: 1}
-    _completeAction: 1
-    onCompleteState:
-      m_PersistentCalls:
-        m_Calls: []
-    totalDeath: 0
-  - isExpaned: 0
-    nameState: State 11b
-    comment: meteorit small
-    nameGroup: State 11b (meteorit small)
-    isManual: 0
-    formatInfo:
-      prefabEnemies:
-      - {fileID: 5813766719866116515, guid: 20f23ede37c65044c885cfe3801ecbb9, type: 3}
-      quantity: 30
-      typeSpawn: 0
-      typeFomation: 1
-      startSpawnPos: {x: 0.011756897, y: 22.628202}
-      AxisX: 0
-      sizeDomain: {x: 11, y: 25}
-      distanceEmiter: {x: 0.8, y: 0.8}
-      maxCollum: 1
-      radius: 1
-      directionStart: {x: 0, y: -1}
-    groupManager: {fileID: 0}
-    moveInfos:
-    - indexStateMove: 0
-      DelayStart: 2
-      RowDelay: 0
-      splineRaw:
-        points:
-        - {x: 0.011755943, y: 22.628202, z: 0}
-        - {x: 0.011755943, y: 22.128202, z: 0}
-        - {x: 0.012458801, y: -22.517881, z: 0}
-        - {x: 0.012458801, y: -23.017881, z: 0}
-        modes: 00000000000000000000000000000000
-        loop: 0
-        lineMode: 1
-        relative: 1
-        snap: 0
-        snapGrid: {x: 0, y: 0}
-        currentNode: 0
-      lookType: 0
-      durationMove: 3.5
-      speedBase: 1
-      curvesMoving:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 2
-          outSlope: 2
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      loop: 1
-      onCompleteNode: []
-      conditionComplete:
-      - condition: 0
-        destroyQuantity: 1
-        triggerString: 
-      - condition: 1
-        destroyQuantity: 1
-        triggerString: 
-      onComplete:
-        m_PersistentCalls:
-          m_Calls: []
-      onStart:
-        m_PersistentCalls:
-          m_Calls: []
-    attackInfo:
-      BaseAI: 0
-      infoAI:
-        conditionStart: 0
-        triggerStringMachine: StartMachine
-        conditionAttack: 0
-        triggerStringAttack: StartAttack
-        firstDelay: {x: 0, y: 0}
-        reloadTime: {x: 2, y: 3}
-        countShoot: {x: 1, y: 2}
-        delayPerAttack: {x: 0.2, y: 0.5}
-        _typeDirection: 1
-    lootItems:
-    - baseLoot: 1
-      items:
-      - {fileID: 6875481962810221245, guid: 09ab89a6f9bea17469559696f243a759, type: 3}
-      percent: 0.3
-      dropCountRange: {x: 1, y: 1}
-    - baseLoot: 0
-      items:
-      - {fileID: 2725560285071857337, guid: 0971f79f08ce8854b82f023123fb1334, type: 3}
-      percent: 0.2
-      dropCountRange: {x: 1, y: 1}
-    - baseLoot: 0
-      items:
-      - {fileID: 6875481962810221245, guid: ee8cb0f293c94f944a3e293980cf0f13, type: 3}
-      percent: 0.3
-      dropCountRange: {x: 1, y: 1}
-    - baseLoot: 0
-      items:
-      - {fileID: 2725560285071857337, guid: b3563a708a29ffb4d8d744ee8a043d04, type: 3}
-      percent: 0.2
-      dropCountRange: {x: 1, y: 1}
-    _completeAction: 1
-    onCompleteState:
-      m_PersistentCalls:
-        m_Calls: []
-    totalDeath: 0
-  - isExpaned: 1
     nameState: State 28
     comment: medium 13
     nameGroup: State 28 (medium 13)
@@ -6210,813 +5811,6 @@ MonoBehaviour:
       - {fileID: 2725560285071857337, guid: 01fa4b2cb0e33934282e101e7859129b, type: 3}
       - {fileID: 6875481962810221245, guid: ee8cb0f293c94f944a3e293980cf0f13, type: 3}
       percent: 0.03
-      dropCountRange: {x: 1, y: 1}
-    _completeAction: 1
-    onCompleteState:
-      m_PersistentCalls:
-        m_Calls: []
-    totalDeath: 0
-  - isExpaned: 0
-    nameState: MiniBoss
-    comment: 2
-    nameGroup: MiniBoss (2)
-    isManual: 0
-    formatInfo:
-      prefabEnemies:
-      - {fileID: 6434266160877196158, guid: d32c58e6a9e8c1e43bbf9a974a4edde7, type: 3}
-      quantity: 1
-      typeSpawn: 0
-      typeFomation: 0
-      startSpawnPos: {x: -0.17733622, y: 10.481727}
-      AxisX: 0
-      sizeDomain: {x: 1, y: 1}
-      distanceEmiter: {x: 1, y: 1}
-      maxCollum: 1
-      radius: 1
-      directionStart: {x: 0, y: -1}
-    groupManager: {fileID: 0}
-    moveInfos:
-    - indexStateMove: 0
-      DelayStart: 0
-      RowDelay: 0
-      splineRaw:
-        points:
-        - {x: -0.17733622, y: 10.481727, z: 0}
-        - {x: -0.17733622, y: 9.981727, z: 0}
-        - {x: 3.8052077, y: 7.414372, z: 0}
-        - {x: -0.048001528, y: 7.132206, z: 0}
-        modes: 00000000000000000000000000000000
-        loop: 0
-        lineMode: 1
-        relative: 1
-        snap: 0
-        snapGrid: {x: 0, y: 0}
-        currentNode: 0
-      lookType: 3
-      durationMove: 1
-      speedBase: 0
-      curvesMoving:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      loop: 1
-      onCompleteNode: []
-      conditionComplete:
-      - condition: 0
-        destroyQuantity: 1
-        triggerString: 
-      onComplete:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 0}
-            m_MethodName: setObjectTarget
-            m_Mode: 0
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-          - m_Target: {fileID: 0}
-            m_MethodName: sendTriggerTargetSetBefore
-            m_Mode: 5
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: Start
-              m_BoolArgument: 0
-            m_CallState: 2
-      onStart:
-        m_PersistentCalls:
-          m_Calls: []
-    - indexStateMove: 0
-      DelayStart: 0
-      RowDelay: 0
-      splineRaw:
-        points:
-        - {x: -0.048001528, y: 7.132206, z: 0}
-        - {x: -3.9012108, y: 6.85004, z: 0}
-        - {x: -5.064831, y: 5.6529274, z: 0}
-        - {x: -3.807922, y: 5.055703, z: 0}
-        - {x: -2.551013, y: 4.458479, z: 0}
-        - {x: -1.0980005, y: 4.273676, z: 0}
-        - {x: 0.013266325, y: 4.3356895, z: 0}
-        - {x: 1.1245332, y: 4.397703, z: 0}
-        - {x: 3.1194816, y: 4.581097, z: 0}
-        - {x: 4.151359, y: 5.774366, z: 0}
-        - {x: 5.1832366, y: 6.9676347, z: 0}
-        - {x: -0.90387225, y: 7.196396, z: 0}
-        - {x: 0.09612775, y: 7.196396, z: 0}
-        modes: 00000000000000000000000000000000000000000000000000000000
-        loop: 0
-        lineMode: 0
-        relative: 1
-        snap: 0
-        snapGrid: {x: 0, y: 0}
-        currentNode: 0
-      lookType: 3
-      durationMove: 2
-      speedBase: 1
-      curvesMoving:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      loop: 99999
-      onCompleteNode:
-      - nodeListen: 0
-        onComplate:
-          m_PersistentCalls:
-            m_Calls:
-            - m_Target: {fileID: 0}
-              m_MethodName: setObjectTarget
-              m_Mode: 0
-              m_Arguments:
-                m_ObjectArgument: {fileID: 0}
-                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-                m_IntArgument: 0
-                m_FloatArgument: 0
-                m_StringArgument: 
-                m_BoolArgument: 0
-              m_CallState: 2
-            - m_Target: {fileID: 0}
-              m_MethodName: sendTriggerTargetSetBefore
-              m_Mode: 5
-              m_Arguments:
-                m_ObjectArgument: {fileID: 0}
-                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-                m_IntArgument: 0
-                m_FloatArgument: 0
-                m_StringArgument: MID
-                m_BoolArgument: 0
-              m_CallState: 2
-      - nodeListen: 2
-        onComplate:
-          m_PersistentCalls:
-            m_Calls:
-            - m_Target: {fileID: 0}
-              m_MethodName: setObjectTarget
-              m_Mode: 0
-              m_Arguments:
-                m_ObjectArgument: {fileID: 0}
-                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-                m_IntArgument: 0
-                m_FloatArgument: 0
-                m_StringArgument: 
-                m_BoolArgument: 0
-              m_CallState: 2
-            - m_Target: {fileID: 0}
-              m_MethodName: sendTriggerTargetSetBefore
-              m_Mode: 5
-              m_Arguments:
-                m_ObjectArgument: {fileID: 0}
-                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-                m_IntArgument: 0
-                m_FloatArgument: 0
-                m_StringArgument: MID
-                m_BoolArgument: 0
-              m_CallState: 2
-      conditionComplete:
-      - condition: 0
-        destroyQuantity: 1
-        triggerString: 
-      - condition: 1
-        destroyQuantity: 1
-        triggerString: 
-      onComplete:
-        m_PersistentCalls:
-          m_Calls: []
-      onStart:
-        m_PersistentCalls:
-          m_Calls: []
-    attackInfo:
-      BaseAI: 0
-      infoAI:
-        conditionStart: 0
-        triggerStringMachine: StartMachine
-        conditionAttack: 0
-        triggerStringAttack: StartAttack
-        firstDelay: {x: 0, y: 0}
-        reloadTime: {x: 2, y: 3}
-        countShoot: {x: 1, y: 2}
-        delayPerAttack: {x: 0.2, y: 0.5}
-        _typeDirection: 1
-    lootItems:
-    - baseLoot: 0
-      items:
-      - {fileID: 2725560285071857337, guid: 0971f79f08ce8854b82f023123fb1334, type: 3}
-      percent: 0.3
-      dropCountRange: {x: 1, y: 1}
-    - baseLoot: 1
-      items:
-      - {fileID: 6875481962810221245, guid: 09ab89a6f9bea17469559696f243a759, type: 3}
-      percent: 1
-      dropCountRange: {x: 15, y: 20}
-    - baseLoot: 0
-      items:
-      - {fileID: 6875481962810221245, guid: 09ab89a6f9bea17469559696f243a759, type: 3}
-      percent: 0.3
-      dropCountRange: {x: 5, y: 10}
-    - baseLoot: 0
-      items:
-      - {fileID: 6875481962810221245, guid: ee8cb0f293c94f944a3e293980cf0f13, type: 3}
-      percent: 0.05
-      dropCountRange: {x: 1, y: 1}
-    _completeAction: 1
-    onCompleteState:
-      m_PersistentCalls:
-        m_Calls: []
-    totalDeath: 0
-  - isExpaned: 0
-    nameState: State 9c
-    comment: meteorit large
-    nameGroup: State 9c (meteorit large)
-    isManual: 0
-    formatInfo:
-      prefabEnemies:
-      - {fileID: 8644569780587809145, guid: 4bb8510d5fda6be4f8f6c078ddf505c6, type: 3}
-      quantity: 10
-      typeSpawn: 0
-      typeFomation: 1
-      startSpawnPos: {x: 13.715622, y: 15.956717}
-      AxisX: 0
-      sizeDomain: {x: 15, y: 19}
-      distanceEmiter: {x: 0.8, y: 0.8}
-      maxCollum: 1
-      radius: 1
-      directionStart: {x: -1, y: -1}
-    groupManager: {fileID: 0}
-    moveInfos:
-    - indexStateMove: 0
-      DelayStart: 0
-      RowDelay: 0
-      splineRaw:
-        points:
-        - {x: 13.715624, y: 15.956717, z: 0}
-        - {x: 13.715624, y: 15.456717, z: 0}
-        - {x: -17.636803, y: -18.231113, z: 0}
-        - {x: -17.636803, y: -18.731113, z: 0}
-        modes: 00000000000000000000000000000000
-        loop: 0
-        lineMode: 1
-        relative: 1
-        snap: 0
-        snapGrid: {x: 0, y: 0}
-        currentNode: 0
-      lookType: 0
-      durationMove: 2
-      speedBase: 1
-      curvesMoving:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 2
-          outSlope: 2
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      loop: 1
-      onCompleteNode: []
-      conditionComplete:
-      - condition: 0
-        destroyQuantity: 1
-        triggerString: 
-      - condition: 1
-        destroyQuantity: 1
-        triggerString: 
-      onComplete:
-        m_PersistentCalls:
-          m_Calls: []
-      onStart:
-        m_PersistentCalls:
-          m_Calls: []
-    attackInfo:
-      BaseAI: 0
-      infoAI:
-        conditionStart: 0
-        triggerStringMachine: StartMachine
-        conditionAttack: 0
-        triggerStringAttack: StartAttack
-        firstDelay: {x: 0, y: 0}
-        reloadTime: {x: 2, y: 3}
-        countShoot: {x: 1, y: 2}
-        delayPerAttack: {x: 0.2, y: 0.5}
-        _typeDirection: 1
-    lootItems:
-    - baseLoot: 1
-      items:
-      - {fileID: 6875481962810221245, guid: 09ab89a6f9bea17469559696f243a759, type: 3}
-      percent: 0.5
-      dropCountRange: {x: 2, y: 4}
-    - baseLoot: 0
-      items:
-      - {fileID: 2725560285071857337, guid: 0971f79f08ce8854b82f023123fb1334, type: 3}
-      percent: 0.3
-      dropCountRange: {x: 1, y: 1}
-    - baseLoot: 0
-      items:
-      - {fileID: 6875481962810221245, guid: ee8cb0f293c94f944a3e293980cf0f13, type: 3}
-      percent: 0.3
-      dropCountRange: {x: 1, y: 1}
-    - baseLoot: 0
-      items:
-      - {fileID: 2725560285071857337, guid: b3563a708a29ffb4d8d744ee8a043d04, type: 3}
-      percent: 0.3
-      dropCountRange: {x: 1, y: 1}
-    _completeAction: 1
-    onCompleteState:
-      m_PersistentCalls:
-        m_Calls: []
-    totalDeath: 0
-  - isExpaned: 0
-    nameState: State 10c
-    comment: meteorit medium
-    nameGroup: State 10c (meteorit medium)
-    isManual: 0
-    formatInfo:
-      prefabEnemies:
-      - {fileID: 2321905483595145021, guid: 4dc3f9e296f0d3a45a5994f8b9b70181, type: 3}
-      quantity: 20
-      typeSpawn: 0
-      typeFomation: 1
-      startSpawnPos: {x: 12.092858, y: 13.442786}
-      AxisX: 0
-      sizeDomain: {x: 14, y: 14}
-      distanceEmiter: {x: 0.8, y: 0.8}
-      maxCollum: 1
-      radius: 1
-      directionStart: {x: -1, y: -1}
-    groupManager: {fileID: 0}
-    moveInfos:
-    - indexStateMove: 0
-      DelayStart: 1
-      RowDelay: 0
-      splineRaw:
-        points:
-        - {x: 12.092859, y: 13.442786, z: 0}
-        - {x: 12.092859, y: 12.942786, z: 0}
-        - {x: -18.937267, y: -20.087337, z: 0}
-        - {x: -18.937267, y: -20.587337, z: 0}
-        modes: 00000000000000000000000000000000
-        loop: 0
-        lineMode: 1
-        relative: 1
-        snap: 0
-        snapGrid: {x: 0, y: 0}
-        currentNode: 0
-      lookType: 0
-      durationMove: 2.5
-      speedBase: 1
-      curvesMoving:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 2
-          outSlope: 2
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      loop: 1
-      onCompleteNode: []
-      conditionComplete:
-      - condition: 0
-        destroyQuantity: 1
-        triggerString: 
-      - condition: 1
-        destroyQuantity: 1
-        triggerString: 
-      onComplete:
-        m_PersistentCalls:
-          m_Calls: []
-      onStart:
-        m_PersistentCalls:
-          m_Calls: []
-    attackInfo:
-      BaseAI: 0
-      infoAI:
-        conditionStart: 0
-        triggerStringMachine: StartMachine
-        conditionAttack: 0
-        triggerStringAttack: StartAttack
-        firstDelay: {x: 0, y: 0}
-        reloadTime: {x: 2, y: 3}
-        countShoot: {x: 1, y: 2}
-        delayPerAttack: {x: 0.2, y: 0.5}
-        _typeDirection: 1
-    lootItems:
-    - baseLoot: 1
-      items:
-      - {fileID: 6875481962810221245, guid: 09ab89a6f9bea17469559696f243a759, type: 3}
-      percent: 0.4
-      dropCountRange: {x: 1, y: 2}
-    - baseLoot: 0
-      items:
-      - {fileID: 2725560285071857337, guid: 0971f79f08ce8854b82f023123fb1334, type: 3}
-      percent: 0.3
-      dropCountRange: {x: 1, y: 1}
-    - baseLoot: 0
-      items:
-      - {fileID: 6875481962810221245, guid: ee8cb0f293c94f944a3e293980cf0f13, type: 3}
-      percent: 0.3
-      dropCountRange: {x: 1, y: 1}
-    - baseLoot: 0
-      items:
-      - {fileID: 2725560285071857337, guid: b3563a708a29ffb4d8d744ee8a043d04, type: 3}
-      percent: 0.3
-      dropCountRange: {x: 1, y: 1}
-    _completeAction: 1
-    onCompleteState:
-      m_PersistentCalls:
-        m_Calls: []
-    totalDeath: 0
-  - isExpaned: 0
-    nameState: State 11c
-    comment: meteorit small
-    nameGroup: State 11c (meteorit small)
-    isManual: 0
-    formatInfo:
-      prefabEnemies:
-      - {fileID: 5813766719866116515, guid: 20f23ede37c65044c885cfe3801ecbb9, type: 3}
-      quantity: 30
-      typeSpawn: 0
-      typeFomation: 1
-      startSpawnPos: {x: 15.076261, y: 17.121725}
-      AxisX: 0
-      sizeDomain: {x: 16, y: 23}
-      distanceEmiter: {x: 0.8, y: 0.8}
-      maxCollum: 1
-      radius: 1
-      directionStart: {x: -1, y: -1}
-    groupManager: {fileID: 0}
-    moveInfos:
-    - indexStateMove: 0
-      DelayStart: 2
-      RowDelay: 0
-      splineRaw:
-        points:
-        - {x: 15.0762615, y: 17.121725, z: 0}
-        - {x: 15.0762615, y: 16.621725, z: 0}
-        - {x: -23.632534, y: -24.980518, z: 0}
-        - {x: -23.632534, y: -25.480518, z: 0}
-        modes: 00000000000000000000000000000000
-        loop: 0
-        lineMode: 1
-        relative: 1
-        snap: 0
-        snapGrid: {x: 0, y: 0}
-        currentNode: 0
-      lookType: 0
-      durationMove: 3.5
-      speedBase: 1
-      curvesMoving:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 2
-          outSlope: 2
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      loop: 1
-      onCompleteNode: []
-      conditionComplete:
-      - condition: 0
-        destroyQuantity: 1
-        triggerString: 
-      - condition: 1
-        destroyQuantity: 1
-        triggerString: 
-      onComplete:
-        m_PersistentCalls:
-          m_Calls: []
-      onStart:
-        m_PersistentCalls:
-          m_Calls: []
-    attackInfo:
-      BaseAI: 0
-      infoAI:
-        conditionStart: 0
-        triggerStringMachine: StartMachine
-        conditionAttack: 0
-        triggerStringAttack: StartAttack
-        firstDelay: {x: 0, y: 0}
-        reloadTime: {x: 2, y: 3}
-        countShoot: {x: 1, y: 2}
-        delayPerAttack: {x: 0.2, y: 0.5}
-        _typeDirection: 1
-    lootItems:
-    - baseLoot: 1
-      items:
-      - {fileID: 6875481962810221245, guid: 09ab89a6f9bea17469559696f243a759, type: 3}
-      percent: 0.3
-      dropCountRange: {x: 1, y: 1}
-    - baseLoot: 0
-      items:
-      - {fileID: 2725560285071857337, guid: 0971f79f08ce8854b82f023123fb1334, type: 3}
-      percent: 0.2
-      dropCountRange: {x: 1, y: 1}
-    - baseLoot: 0
-      items:
-      - {fileID: 6875481962810221245, guid: ee8cb0f293c94f944a3e293980cf0f13, type: 3}
-      percent: 0.3
-      dropCountRange: {x: 1, y: 1}
-    - baseLoot: 0
-      items:
-      - {fileID: 2725560285071857337, guid: b3563a708a29ffb4d8d744ee8a043d04, type: 3}
-      percent: 0.2
-      dropCountRange: {x: 1, y: 1}
-    _completeAction: 1
-    onCompleteState:
-      m_PersistentCalls:
-        m_Calls: []
-    totalDeath: 0
-  - isExpaned: 0
-    nameState: BOSS
-    comment: boss1
-    nameGroup: BOSS (boss1)
-    isManual: 0
-    formatInfo:
-      prefabEnemies:
-      - {fileID: 2553892579099444471, guid: 65ac43b5a2112074496851eaab5eacef, type: 3}
-      quantity: 1
-      typeSpawn: 0
-      typeFomation: 0
-      startSpawnPos: {x: 0, y: 10.951339}
-      AxisX: 0
-      sizeDomain: {x: 1, y: 1}
-      distanceEmiter: {x: 1, y: 1}
-      maxCollum: 1
-      radius: 1
-      directionStart: {x: 0, y: -1}
-    groupManager: {fileID: 0}
-    moveInfos:
-    - indexStateMove: 0
-      DelayStart: 0
-      RowDelay: 0
-      splineRaw:
-        points:
-        - {x: 0, y: 10.951339, z: 0}
-        - {x: 0, y: 10.451339, z: 0}
-        - {x: -4.518893, y: 7.8274207, z: 0}
-        - {x: 0, y: 7.364471, z: 0}
-        modes: 00000000000000000000000000000000
-        loop: 0
-        lineMode: 1
-        relative: 1
-        snap: 0
-        snapGrid: {x: 0, y: 0}
-        currentNode: 0
-      lookType: 3
-      durationMove: 1.5
-      speedBase: 0
-      curvesMoving:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      loop: 1
-      onCompleteNode: []
-      conditionComplete:
-      - condition: 0
-        destroyQuantity: 1
-        triggerString: 
-      onComplete:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 4247844955654482728}
-            m_MethodName: setObjectTarget
-            m_Mode: 0
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-          - m_Target: {fileID: 4247844955654482728}
-            m_MethodName: sendTriggerTargetSetBefore
-            m_Mode: 5
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: Start
-              m_BoolArgument: 0
-            m_CallState: 2
-      onStart:
-        m_PersistentCalls:
-          m_Calls: []
-    - indexStateMove: 0
-      DelayStart: 0
-      RowDelay: 0
-      splineRaw:
-        points:
-        - {x: 0, y: 7.364471, z: 0}
-        - {x: 4.518893, y: 6.901521, z: 0}
-        - {x: 4.225463, y: 5.7818246, z: 0}
-        - {x: 4.225463, y: 5.2818246, z: 0}
-        - {x: 4.225463, y: 4.7818246, z: 0}
-        - {x: -3.8686914, y: 2.9930348, z: 0}
-        - {x: -2.9273765, y: 4.812329, z: 0}
-        - {x: -1.9860616, y: 6.631623, z: 0}
-        - {x: 0.18766928, y: 4.5775843, z: 0}
-        - {x: 2.2440376, y: 5.457888, z: 0}
-        - {x: 4.300406, y: 6.338192, z: 0}
-        - {x: -4.089508, y: 8.098801, z: 0}
-        - {x: -3.7937527, y: 6.3381925, z: 0}
-        - {x: -3.4979973, y: 4.5775843, z: 0}
-        - {x: -1.1481962, y: 7.3945584, z: 0}
-        - {x: -0.14819622, y: 7.3945584, z: 0}
-        modes: 0000000000000000000000000000000000000000000000000000000000000000
-        loop: 0
-        lineMode: 0
-        relative: 1
-        snap: 0
-        snapGrid: {x: 0, y: 0}
-        currentNode: 0
-      lookType: 0
-      durationMove: 2
-      speedBase: 1
-      curvesMoving:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      loop: 9999
-      onCompleteNode: []
-      conditionComplete:
-      - condition: 0
-        destroyQuantity: 1
-        triggerString: 
-      - condition: 1
-        destroyQuantity: 1
-        triggerString: 
-      onComplete:
-        m_PersistentCalls:
-          m_Calls: []
-      onStart:
-        m_PersistentCalls:
-          m_Calls: []
-    attackInfo:
-      BaseAI: 0
-      infoAI:
-        conditionStart: 0
-        triggerStringMachine: StartMachine
-        conditionAttack: 0
-        triggerStringAttack: StartAttack
-        firstDelay: {x: 0, y: 0}
-        reloadTime: {x: 2, y: 3}
-        countShoot: {x: 1, y: 2}
-        delayPerAttack: {x: 0.2, y: 0.5}
-        _typeDirection: 1
-    lootItems:
-    - baseLoot: 0
-      items:
-      - {fileID: 2725560285071857337, guid: 0971f79f08ce8854b82f023123fb1334, type: 3}
-      percent: 0.3
-      dropCountRange: {x: 1, y: 1}
-    - baseLoot: 1
-      items:
-      - {fileID: 6875481962810221245, guid: 09ab89a6f9bea17469559696f243a759, type: 3}
-      percent: 1
-      dropCountRange: {x: 20, y: 25}
-    - baseLoot: 0
-      items:
-      - {fileID: 6875481962810221245, guid: 09ab89a6f9bea17469559696f243a759, type: 3}
-      percent: 0.3
-      dropCountRange: {x: 5, y: 9}
-    - baseLoot: 0
-      items:
-      - {fileID: 6875481962810221245, guid: ee8cb0f293c94f944a3e293980cf0f13, type: 3}
-      percent: 0.05
       dropCountRange: {x: 1, y: 1}
     _completeAction: 1
     onCompleteState:
@@ -7612,3 +6406,147 @@ MonoBehaviour:
         isIgnore: 0
         countPreload: 2
         pooler: {fileID: 0}
+--- !u!1 &7286096223261050425
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6328145816269700893}
+  - component: {fileID: 539690752238037177}
+  m_Layer: 0
+  m_Name: '[Pool]0enemy20 Variant 1'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6328145816269700893
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7286096223261050425}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 550843610908349513}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &539690752238037177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7286096223261050425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30599d570c93524c810714c5a2f7583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObjectToPool: {fileID: 7788581899229243069, guid: 99b83ece3c55ab049bf31a392b34464a,
+    type: 3}
+  PoolSize: 0
+  PoolCanExpand: 1
+  dontDestroyOnload: 0
+--- !u!1 &7673135930697136176
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3720426878928542861}
+  - component: {fileID: 7678535262914001658}
+  m_Layer: 0
+  m_Name: '[Pool]0_Tower10 Variant 1'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3720426878928542861
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7673135930697136176}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 550843610908349513}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7678535262914001658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7673135930697136176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30599d570c93524c810714c5a2f7583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObjectToPool: {fileID: 3094362236577191586, guid: 5f0100ef76448e343a347eed1e9b09e0,
+    type: 3}
+  PoolSize: 0
+  PoolCanExpand: 1
+  dontDestroyOnload: 0
+--- !u!1 &8114338603758414638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2107036543419458156}
+  - component: {fileID: 3756888990710177808}
+  m_Layer: 0
+  m_Name: '[Pool]0enemy20 Variant 1'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2107036543419458156
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8114338603758414638}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 550843610908349513}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3756888990710177808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8114338603758414638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30599d570c93524c810714c5a2f7583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObjectToPool: {fileID: 6559501798258503714, guid: f91b9fa0cc899ad4c9b09394838b6b01,
+    type: 3}
+  PoolSize: 0
+  PoolCanExpand: 1
+  dontDestroyOnload: 0
