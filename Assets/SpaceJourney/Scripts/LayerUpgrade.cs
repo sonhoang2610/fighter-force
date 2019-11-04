@@ -251,11 +251,23 @@ namespace EazyEngine.Space.UI
                         selectedPlane.upgradeExtraAbility[pAbility._ability.ItemID] = pListInt.ToArray();
                     }
                 }
-                int pStepGame = PlayerPrefs.GetInt("firstGame", 0);
-                if (pStepGame == 3)
+                StartCoroutine(delayAction(0.02f, delegate
                 {
-                    PlayerPrefs.SetInt("firstGame", 4);
-                }
+                    int pStepGame = PlayerPrefs.GetInt("firstGame", 0);
+                    if (pStepGame >= 3 && pStepGame < 5)
+                    {
+                        EzEventManager.TriggerEvent(new GuideEvent("FirstUpgrade" + (pStepGame - 2).ToString()));
+                        pStepGame++;
+                        PlayerPrefs.SetInt("firstGame", pStepGame);
+                    }
+                     else if (pStepGame == 5)
+                    {
+                        EzEventManager.TriggerEvent(new GuideEvent("FirstUpgradeSuccess"));
+                        pStepGame++;
+                        PlayerPrefs.SetInt("firstGame", pStepGame);
+                    }
+                }));
+     
 	            selectedPlane.CurrentLevel++;
                 selectedPlane.ExtraInfo();
                 effectUpgrade.gameObject.SetActive(true);

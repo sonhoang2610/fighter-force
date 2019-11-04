@@ -147,13 +147,13 @@ MonoBehaviour:
     blockState: 1
   - triggerToExcute: FirstUpgrade
     title:
-      normalString: First Upgrade
-      isI2String: 0
-      value: 
+      normalString: ui/first_upgrade
+      isI2String: 1
+      value: First Upgrade
     content:
-      normalString: Let do the first upgrade
-      isI2String: 0
-      value: 
+      normalString: ui/let_do_upgrade
+      isI2String: 1
+      value: Let do the upgrade to level 3
     IDButonFocus: UpgradeButon1
     offset: {x: 0.091, y: 0, z: 0}
     blockState: 1
@@ -163,12 +163,37 @@ MonoBehaviour:
       isI2String: 1
       value: Congratulations!
     content:
-      normalString: Congratulation you finish the beginer tutorial
-      isI2String: 0
-      value: 
-    IDButonFocus: 
+      normalString: text/upgrade_guide_success_content
+      isI2String: 1
+      value: Congratulation you finish the beginer tutorial back to game and fight
+        again
+    IDButonFocus: Back
     offset: {x: 0, y: 0, z: 0}
-    blockState: 0
+    blockState: 1
+  - triggerToExcute: FirstUpgrade1
+    title:
+      normalString: UPGRADE
+      isI2String: 1
+      value: Upgrade
+    content:
+      normalString: ui/let_do_upgrade
+      isI2String: 1
+      value: Let do the upgrade to level 3
+    IDButonFocus: UpgradeButon1
+    offset: {x: 0.091, y: 0, z: 0}
+    blockState: 1
+  - triggerToExcute: FirstUpgrade2
+    title:
+      normalString: UPGRADE
+      isI2String: 1
+      value: Upgrade
+    content:
+      normalString: ui/let_do_upgrade
+      isI2String: 1
+      value: Let do the upgrade to level 3
+    IDButonFocus: UpgradeButon1
+    offset: {x: 0.091, y: 0, z: 0}
+    blockState: 1
   blackBG: {fileID: 6999310194765018785}
   hole: {fileID: 3497224069940447239}
   title: {fileID: 3911914675690496481}
@@ -3038,11 +3063,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 70c04ab6a21cb154287b8a7d2cbd27f8,
         type: 3}
-    - target: {fileID: 1970795024603502600, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-        type: 3}
-      propertyPath: mText
-      value: Resurrect
-      objectReference: {fileID: 0}
     - target: {fileID: 1970795024871837850, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
         type: 3}
       propertyPath: mWidth
@@ -3072,31 +3092,6 @@ PrefabInstance:
         type: 3}
       propertyPath: dirtyChange
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815503637281105255, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-        type: 3}
-      propertyPath: mWidth
-      value: 452
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815503637281105255, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-        type: 3}
-      propertyPath: mHeight
-      value: 52
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815503637281105255, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-        type: 3}
-      propertyPath: aspectRatio
-      value: 8.692307
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815503637281105255, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-        type: 3}
-      propertyPath: mText
-      value: Do you want to resurrect now?
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815503637281105255, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-        type: 3}
-      propertyPath: mOverflow
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5183413200115577788, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
         type: 3}
@@ -3184,10 +3179,40 @@ PrefabInstance:
       propertyPath: mTerm
       value: text/reborn
       objectReference: {fileID: 0}
+    - target: {fileID: 4815503637281105255, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: mWidth
+      value: 452
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815503637281105255, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: mHeight
+      value: 52
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815503637281105255, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: aspectRatio
+      value: 8.692307
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815503637281105255, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: mText
+      value: Do you want to resurrect now?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815503637281105255, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: mOverflow
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4815503636191778440, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
         type: 3}
       propertyPath: mLocalizeTarget
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1970795024603502600, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: mText
+      value: Resurrect
       objectReference: {fileID: 0}
     - target: {fileID: 1970795024603502603, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
         type: 3}
@@ -3367,11 +3392,6 @@ PrefabInstance:
       propertyPath: onClick.Array.data[0].mMethodName
       value: rating
       objectReference: {fileID: 0}
-    - target: {fileID: 1970795024603502600, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-        type: 3}
-      propertyPath: mText
-      value: Rate Us
-      objectReference: {fileID: 0}
     - target: {fileID: 1970795024871837850, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
         type: 3}
       propertyPath: mWidth
@@ -3396,6 +3416,11 @@ PrefabInstance:
         type: 3}
       propertyPath: dirtyChange
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815503637281105240, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+        type: 3}
+      propertyPath: mTerm
+      value: text/rate_us
       objectReference: {fileID: 0}
     - target: {fileID: 4815503637281105255, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
         type: 3}
@@ -3424,10 +3449,10 @@ PrefabInstance:
       propertyPath: mOverflow
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4815503637281105240, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+    - target: {fileID: 1970795024603502600, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
         type: 3}
-      propertyPath: mTerm
-      value: text/rate_us
+      propertyPath: mText
+      value: Rate Us
       objectReference: {fileID: 0}
     - target: {fileID: 1970795024603502603, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
         type: 3}
@@ -3476,42 +3501,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 6952205297065852993, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
-        type: 3}
-      propertyPath: onClick.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6952205297065852993, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
-        type: 3}
-      propertyPath: onClick.Array.data[0].mTarget
-      value: 
-      objectReference: {fileID: 4040770899438611613}
-    - target: {fileID: 6952205297065852993, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
-        type: 3}
-      propertyPath: onClick.Array.data[0].mMethodName
-      value: close
-      objectReference: {fileID: 0}
-    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
-        type: 3}
-      propertyPath: mSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 7ec5e260132e0014c9ff84863eeee09c,
-        type: 3}
-    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
-        type: 3}
-      propertyPath: mWidth
-      value: 66
-      objectReference: {fileID: 0}
-    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
-        type: 3}
-      propertyPath: mHeight
-      value: 74
-      objectReference: {fileID: 0}
-    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
-        type: 3}
-      propertyPath: aspectRatio
-      value: 0.8918919
       objectReference: {fileID: 0}
     - target: {fileID: 3346290375905700156, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
         type: 3}
@@ -3582,6 +3571,42 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952205297065852993, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+        type: 3}
+      propertyPath: onClick.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952205297065852993, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+        type: 3}
+      propertyPath: onClick.Array.data[0].mTarget
+      value: 
+      objectReference: {fileID: 4040770899438611613}
+    - target: {fileID: 6952205297065852993, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+        type: 3}
+      propertyPath: onClick.Array.data[0].mMethodName
+      value: close
+      objectReference: {fileID: 0}
+    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+        type: 3}
+      propertyPath: mSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7ec5e260132e0014c9ff84863eeee09c,
+        type: 3}
+    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+        type: 3}
+      propertyPath: mWidth
+      value: 66
+      objectReference: {fileID: 0}
+    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+        type: 3}
+      propertyPath: mHeight
+      value: 74
+      objectReference: {fileID: 0}
+    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+        type: 3}
+      propertyPath: aspectRatio
+      value: 0.8918919
       objectReference: {fileID: 0}
     - target: {fileID: 2539561911282382920, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
         type: 3}

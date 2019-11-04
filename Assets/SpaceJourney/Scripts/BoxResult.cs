@@ -32,7 +32,7 @@ namespace EazyEngine.Space.UI
     }
     public class BoxResult : MonoBehaviour
     {
-        public UILabel stage, level,coinTaken,quantityDestroy,time,score;
+        public UILabel stage, level,coinTaken,quantityDestroy,time,score,goldReward;
         public GameObject win, lose;
         public UIButton[] btnWins, btnLoses,btnLayerFrees;
         public BoxMissionLevel boxMission;
@@ -54,7 +54,7 @@ namespace EazyEngine.Space.UI
         {
             if (!GameManager.Instance.isFree)
             {
-                GameManager.Instance.scehduleUI = ScheduleUIMain.GAME_IMEDIATELY;
+                //GameManager.Instance.scehduleUI = ScheduleUIMain.GAME_IMEDIATELY;
                 LevelInfoInstance pLevelInfo = GameManager.Instance.container.getLevelInfo(GameManager.Instance.Database.lastPlayStage.x + 1, GameManager.Instance.ChoosedHard);
                 if (pLevelInfo.isLocked)
                 {
@@ -62,7 +62,10 @@ namespace EazyEngine.Space.UI
                 }
                 GameManager.Instance.Database.lastPlayStage = new Pos(GameManager.Instance.Database.lastPlayStage.x + 1, GameManager.Instance.ChoosedHard);
             }
-            Home();
+          //  Home();
+            GameManager.Instance.ChoosedHard = 0;
+            GameManager.Instance.ChoosedLevel++;
+            GameManager.Instance.LoadLevel(GameManager.Instance.ChoosedLevel);
         }
 
         public IEnumerator delayaction(float pSec, System.Action pACtion)
@@ -154,7 +157,7 @@ namespace EazyEngine.Space.UI
             gameObject.SetActive(true);
             if ((System.DateTime.Now - GameManager.Instance.Database.firstOnline).TotalSeconds > 600)
             {
-                adsCourountine =  StartCoroutine(delayaction(3,delegate{
+                adsCourountine =  StartCoroutine(delayaction(1.5f,delegate{
                     if (SceneManager.Instance.currentScene.StartsWith("Zone"))
                     {
                         GameManager.Instance.showInterstitialAds();
@@ -209,7 +212,7 @@ namespace EazyEngine.Space.UI
                         GameManager.Instance.CurrentLevelUnlock++;
                         GameManager.Instance.Database.lastPlayStage =
                             new Pos(GameManager.Instance.Database.lastPlayStage.x, 0);
-                        GameManager.Instance.ChoosedLevel++;
+                       // GameManager.Instance.ChoosedLevel++;
                     }
 
                     //save game
@@ -247,7 +250,7 @@ namespace EazyEngine.Space.UI
         public void setGold(float pCoin)
         {
             currentCoin = pCoin;
-            coinTaken.text = StringUtils.addDotMoney((int)pCoin);
+            goldReward.text = StringUtils.addDotMoney((int)pCoin)+ " +";
         }
         
 
@@ -265,7 +268,7 @@ namespace EazyEngine.Space.UI
                 if (pSucess)
                 {
                     #region tinh percent nhan dc trong map
-
+                    btnX2Ads.gameObject.SetActive(false);
                     var pdrop =
                         GameDatabase.Instance.dropMonyeconfig[GameManager.Instance.ChoosedLevel - 1][
                             GameManager.Instance.ChoosedHard];
@@ -276,10 +279,11 @@ namespace EazyEngine.Space.UI
                                         : (pStarNotEngough * 0.2f > 0.6f ? 0.6f : pStarNotEngough * 0.2f));
 
                     #endregion
-
+                    goldReward.gameObject.SetActive(true);
                     var pItem = GameManager.Instance.Database.getComonItem("Coin");
                     pItem.Quantity += (int) (LevelManger.Instance._infoLevel.goldTaken * percent);
-                    int pTo = (int) (LevelManger.Instance._infoLevel.goldTaken * percent * 2);
+                    currentCoin = 0;
+                    int pTo = (int) (LevelManger.Instance._infoLevel.goldTaken * percent );
                     DOTween.To(() => currentCoin, setGold, pTo, 0.5f);
                     GameManager.Instance.SaveGame();
                 }
@@ -360,6 +364,7 @@ namespace EazyEngine.Space.UI
         private void OnDisable()
         {
             GroupManager.clearCache();
+            PlayerEnviroment.clear();
             TimeKeeper.Instance.getTimer("Global").TimScale = 1;
             GameManager.Instance.showBannerAds(false);
         }
@@ -379,12 +384,12 @@ namespace EazyEngine.Space.UI
                 Home();
                 return;
             }
-            GameManager.Instance.scehduleUI = ScheduleUIMain.GAME_IMEDIATELY;
-            PlayerEnviroment.clear();
-            GroupManager.clearCache();
             TimeKeeper.Instance.getTimer("Global").TimScale = 1;
             LevelManger.InstanceRaw = null;
-            SceneManager.Instance.loadScene("Main");
+            //  GameManager.Instance.pla
+            GameManager.Instance.LoadLevel(GameManager.Instance.ChoosedLevel);      
+  
+           // SceneManager.Instance.loadScene("Main");
         }
 
         public void Upgrade()

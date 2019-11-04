@@ -4394,7 +4394,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 5965814729012748176}
   m_Father: {fileID: 1551740442925246148}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4483,6 +4484,59 @@ MonoBehaviour:
         isIgnore: 0
         countPreload: 3
         pooler: {fileID: 0}
+    - key: {fileID: 6162313184924595875, guid: 72c710ea76d86d34a947cae71dfc80b7, type: 3}
+      info:
+        isIgnore: 0
+        countPreload: 3
+        pooler: {fileID: 605842094583269358}
+--- !u!1 &4408568996522755155
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5965814729012748176}
+  - component: {fileID: 605842094583269358}
+  m_Layer: 0
+  m_Name: '[Pool]1_tower_electric_rotate'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5965814729012748176
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4408568996522755155}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2945211861021137316}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &605842094583269358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4408568996522755155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30599d570c93524c810714c5a2f7583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObjectToPool: {fileID: 6162313184924595875, guid: 72c710ea76d86d34a947cae71dfc80b7,
+    type: 3}
+  PoolSize: 0
+  PoolCanExpand: 1
+  dontDestroyOnload: 0
 --- !u!1 &7827389940866543261
 GameObject:
   m_ObjectHideFlags: 0

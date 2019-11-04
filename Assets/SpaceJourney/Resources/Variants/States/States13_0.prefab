@@ -88,7 +88,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 3267308558001806224}
   m_Father: {fileID: 9204934302034519308}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -172,11 +173,59 @@ MonoBehaviour:
         isIgnore: 0
         countPreload: 3
         pooler: {fileID: 0}
-    - key: {fileID: 6434266160877196158, guid: d32c58e6a9e8c1e43bbf9a974a4edde7, type: 3}
+    - key: {fileID: 6434266160877196158, guid: 0fc7032c767297f429d47d5398dc5c9c, type: 3}
       info:
         isIgnore: 0
         countPreload: 1
-        pooler: {fileID: 0}
+        pooler: {fileID: 8994583418764424265}
+--- !u!1 &5342599970564018580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3267308558001806224}
+  - component: {fileID: 8994583418764424265}
+  m_Layer: 0
+  m_Name: '[Pool]MiniBoss3'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3267308558001806224
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5342599970564018580}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4821635397322234476}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8994583418764424265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5342599970564018580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30599d570c93524c810714c5a2f7583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObjectToPool: {fileID: 6434266160877196158, guid: 0fc7032c767297f429d47d5398dc5c9c,
+    type: 3}
+  PoolSize: 0
+  PoolCanExpand: 1
+  dontDestroyOnload: 0
 --- !u!1 &9204934301659529275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,7 +1142,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     totalDeath: 0
-  - isExpaned: 1
+  - isExpaned: 0
     nameState: State 5
     comment: 2 tower LR
     nameGroup: State 5 (2 tower LR)
@@ -1211,7 +1260,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     totalDeath: 0
-  - isExpaned: 1
+  - isExpaned: 0
     nameState: State 6
     comment: 1 tower L
     nameGroup: State 6 (1 tower L)
@@ -1330,7 +1379,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     totalDeath: 0
-  - isExpaned: 1
+  - isExpaned: 0
     nameState: State 6a
     comment: 1 tower R
     nameGroup: State 6a (1 tower R)
@@ -1449,7 +1498,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     totalDeath: 0
-  - isExpaned: 1
+  - isExpaned: 0
     nameState: State 7
     comment: tower M
     nameGroup: State 7 (tower M)

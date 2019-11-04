@@ -46,6 +46,14 @@ namespace EazyEngine.Space.UI
         public void chooseHardMode(int index)
         {
            var pLevelInfo =  GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, index);
+            if(index <2)
+            {
+               var pLevelInfoOld = GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, index+1);
+                if (!pLevelInfoOld.isLocked)
+                {
+                    pLevelInfo.isLocked = false;
+                }
+            }
             btnPlay.isEnabled = !pLevelInfo.isLocked;
             showInfo(GameManager.Instance.ChoosedLevel, index);
         }

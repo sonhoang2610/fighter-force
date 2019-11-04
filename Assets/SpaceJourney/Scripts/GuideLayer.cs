@@ -69,7 +69,8 @@ namespace EazyEngine.Space.UI
                     pNewObject.transform.localScale = new Vector3(1,1,1);
                     pNewObject.transform.position = hole.transform.position;
                     cacheButton = pNewObject;
-                    pNewObject.AddComponent<BoxCollider>(pCollider);
+                    var pCollider1 = pNewObject.AddComponent<BoxCollider>(pCollider);
+                    pCollider1.center = pNewObject.transform.TransformPoint(  hole.transform.position);
                     var pWidget = pNewObject.AddComponent<UIWidget>();
                     pWidget.depth = 10;
                     var pButtonNew = pNewObject.AddComponent<UIButton>(pButton);

@@ -57,11 +57,19 @@ public class MovingLeader : TimeControlBehavior
         if (_moveInfo != null)
         {
             RootMotionController.stopAllAction(gameObject);
+            float pDelayStart = _moveInfo.DelayStart;
+            if(elements.Count > 0 && elements[0].name.Contains("Rocket"))
+            {
+                if(pDelayStart < 1.5f)
+                {
+                    pDelayStart = 1.5f;
+                }
+            }
             for (int j = 0; j < elements.Count; ++j)
             {
-                elements[j].SendMessage("moveAfter", _moveInfo.DelayStart + indexLeader * pInfo.RowDelay,SendMessageOptions.DontRequireReceiver);
+                elements[j].SendMessage("moveAfter", pDelayStart + indexLeader * pInfo.RowDelay,SendMessageOptions.DontRequireReceiver);
              }
-            RootMotionController.runAction(gameObject, EazyCustomAction.Sequences.create(EazyCustomAction.DelayTime.create(_moveInfo.DelayStart + indexLeader * pInfo.RowDelay), BezierWalkAction.create(pInfo.splineRaw, pInfo.durationMove, !pInfo.speedBase).setNodeEvent(
+            RootMotionController.runAction(gameObject, EazyCustomAction.Sequences.create(EazyCustomAction.DelayTime.create(pDelayStart + indexLeader * pInfo.RowDelay), BezierWalkAction.create(pInfo.splineRaw, pInfo.durationMove, !pInfo.speedBase).setNodeEvent(
                 delegate(int pNode)
                 {
                     for(int i = 0; i < _moveInfo.onCompleteNode.Length; ++i)

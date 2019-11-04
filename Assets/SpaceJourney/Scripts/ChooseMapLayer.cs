@@ -80,6 +80,19 @@ namespace EazyEngine.Space.UI
                 {
                     GameManager.Instance.Database.lastPlayStage = new Pos(1,GameManager.Instance.ChoosedHard);
                 }
+                int pLow = GameManager.Instance.Database.lastPlayStage.x;
+                var pLevelInfo = GameManager.Instance.container.getLevelInfo(GameManager.Instance.Database.lastPlayStage.x, 0);
+                while (pLevelInfo.isLocked)
+                {
+                    pLow--;
+                    if(pLow <= 0)
+                    {
+                        pLow = 1;
+                        break;
+                    }
+                    pLevelInfo = GameManager.Instance.container.getLevelInfo(pLow, 0);
+                }
+                GameManager.Instance.Database.lastPlayStage.x = pLow;
                 group.changeTab(GameManager.Instance.Database.lastPlayStage.x - 1);
 
             }

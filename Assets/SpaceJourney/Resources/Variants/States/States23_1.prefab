@@ -61,6 +61,102 @@ MonoBehaviour:
         isIgnore: 0
         countPreload: 2
         pooler: {fileID: 0}
+--- !u!1 &2412462616804637611
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 750436375043844755}
+  - component: {fileID: 5640592738814513845}
+  m_Layer: 0
+  m_Name: '[Pool]MiniBoss2 Variant'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &750436375043844755
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2412462616804637611}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6419150593317149649}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5640592738814513845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2412462616804637611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30599d570c93524c810714c5a2f7583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObjectToPool: {fileID: 3518671587580317377, guid: 003259653c614264a86721b1145413c1,
+    type: 3}
+  PoolSize: 0
+  PoolCanExpand: 1
+  dontDestroyOnload: 0
+--- !u!1 &3256204775463692922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5191087003365092334}
+  - component: {fileID: 7944702206460237144}
+  m_Layer: 0
+  m_Name: '[Pool]MiniBoss2 Variant'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5191087003365092334
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3256204775463692922}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6419150593317149649}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7944702206460237144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3256204775463692922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30599d570c93524c810714c5a2f7583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObjectToPool: {fileID: 3518671587580317377, guid: 003259653c614264a86721b1145413c1,
+    type: 3}
+  PoolSize: 0
+  PoolCanExpand: 1
+  dontDestroyOnload: 0
 --- !u!1 &6419150593317149654
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,7 +184,9 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 750436375043844755}
+  - {fileID: 5191087003365092334}
   m_Father: {fileID: 7224612003995460785}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2002,7 +2100,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     totalDeath: 0
-  - isExpaned: 1
+  - isExpaned: 0
     nameState: State 10
     comment: small R
     nameGroup: State 10 (small R)
@@ -6091,7 +6189,7 @@ MonoBehaviour:
     isManual: 0
     formatInfo:
       prefabEnemies:
-      - {fileID: 3518671587580317377, guid: 003259653c614264a86721b1145413c1, type: 3}
+      - {fileID: 8897217092925319505, guid: ed45249e6d0910f44b30aa427beddc2a, type: 3}
       quantity: 1
       typeSpawn: 0
       typeFomation: 0

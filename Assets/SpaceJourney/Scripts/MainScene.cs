@@ -9,16 +9,16 @@ using UnityEngine.Networking;
 namespace EazyEngine.Space.UI
 {
 
-    public class MainScene : Singleton<MainScene>,IBackBehavior
+    public class MainScene : Singleton<MainScene>, IBackBehavior
     {
-    
+
         public BoxInfoPlane boxInfo;
         public UIElement boxSetting;
         public ItemStorageRequire requireUnlock;
         public UIButton btnUnlock, btnFreePlay;
         public UIButton btnFight;
         public GameObject boxRank;
-        public UILabel nameUser,idUser;
+        public UILabel nameUser, idUser;
         public GameObject block;
         protected List<BoxBasePlane> selectedBoxPlane = new List<BoxBasePlane>();
         public EazyGroupTabNGUI chooseHardMode;
@@ -31,37 +31,38 @@ namespace EazyEngine.Space.UI
         protected override void Awake()
         {
             base.Awake();
-   
+
             if (layerPrepare)
             {
-                layerPrepare.showInfo(0,0);
+                layerPrepare.showInfo(0, 0);
             }
             stateGames.Add("Main");
-            if ( GameManager.Instance.Database.lastOnline.Date != System.DateTime.Now.Date && GameManager.Instance.wincount == 1)
+            if (GameManager.Instance.Database.lastOnline.Date != System.DateTime.Now.Date && GameManager.Instance.wincount == 1)
             {
                 GameManager.Instance.Database.lastOnline = System.DateTime.Now;
                 if (StoreReview.CanRequestRating())
                 {
                     StoreReview.RequestRating();
-                }               
+                }
             }
             bool isConnected = false;
-              var pDateTime = TimeExtension.GetNetTime(ref isConnected);
-                if (isConnected && GameManager.Instance.dailyGiftModule.lastDate != pDateTime.DayOfYear && GameManager.Instance.dailyGiftModule.currentDay < GameDatabase.Instance.databaseDailyGift.item.Count)
-                {
-                    int pStepGame = PlayerPrefs.GetInt("firstGame", 0);
-                    if (pStepGame <2) return;
-                    MidLayer.Instance.boxDailyGift.GetComponent<UIElement>().show();
-                }
-      
+            var pDateTime = TimeExtension.GetNetTime(ref isConnected);
+            if (isConnected && GameManager.Instance.dailyGiftModule.lastDate != pDateTime.DayOfYear && GameManager.Instance.dailyGiftModule.currentDay < GameDatabase.Instance.databaseDailyGift.item.Count)
+            {
+                int pStepGame = PlayerPrefs.GetInt("firstGame", 0);
+                if (pStepGame < 2) return;
+                MidLayer.Instance.boxDailyGift.GetComponent<UIElement>().show();
+            }
+
         }
 
-   
+
         // Subscribe to events in the OnEnable method of a MonoBehavior script
         void OnEnable()
         {
             GameServices.UserLoginSucceeded += OnUserLoginSucceeded;
             GameServices.UserLoginFailed += OnUserLoginFailed;
+         
         }
 
         // Unsubscribe
@@ -71,7 +72,22 @@ namespace EazyEngine.Space.UI
             GameServices.UserLoginFailed -= OnUserLoginFailed;
         }
 
-        
+        //public void checkUpgradeFirstSuccess()
+        //{
+        //    int pFirstGame = PlayerPrefs.GetInt("firstGame", 0);
+        //    if (pFirstGame == 6)
+        //    {
+        //        EzEventManager.TriggerEvent(new GuideEvent("FirstUpgradeSuccess1",
+        //            delegate
+        //            {
+
+        //                PlayerPrefs.SetInt("firstGame", 7);
+        //                MainScene.Instance.upgrade();
+
+        //            }, true));
+
+        //    }
+        //}
         IEnumerator checkInternetConnection(Action<bool> action)
         {
             UnityWebRequest www = new UnityWebRequest("http://google.com");
@@ -80,37 +96,20 @@ namespace EazyEngine.Space.UI
         }
         public void clearBox()
         {
-            if (selectedBoxPlane.Count == 1)
-            {
-
-                upgrade();
-                return;
-            }
+   
             for (int i = 0; i < selectedBoxPlane.Count; ++i)
             {
                 selectedBoxPlane[i].selected(false);
             }
-	        selectedBoxPlane.Clear();
+            selectedBoxPlane.Clear();
         }
 
         public void clearBoxIfHasItemInBox(BoxBasePlane pPlane)
         {
-            if (selectedBoxPlane.Contains(pPlane))
-            {
-                if (pPlane.DataSource.Count > 0 && pPlane.DataSource[0].Info.categoryItem == CategoryItem.PLANE)
-                {
-                    upgrade();
-                }
-                else if (pPlane.DataSource.Count > 0 && pPlane.DataSource[0].Info.categoryItem == CategoryItem.SP_PLANE)
-                {
-                    upgradeSp();
-                }
 
-                return;
-            }
             if (pPlane.DataSource.Count > 0)
             {
-       
+
                 for (int i = 0; i < selectedBoxPlane.Count; ++i)
                 {
                     selectedBoxPlane[i].selected(false);
@@ -121,12 +120,13 @@ namespace EazyEngine.Space.UI
 
         public void addSelectedBoxPlane(BoxBasePlane pPlane)
         {
-            if (selectedBoxPlane.Contains(pPlane)) {
-           
+            if (selectedBoxPlane.Contains(pPlane))
+            {
+
                 return;
             }
             if (pPlane.DataSource.Count <= 0) return;
-                selectedBoxPlane.Add(pPlane);
+            selectedBoxPlane.Add(pPlane);
             pPlane.selected(true);
             pPlane.updatePage();
         }
@@ -142,7 +142,7 @@ namespace EazyEngine.Space.UI
 
         public void clearAllSelected()
         {
-            for(int i = selectedBoxPlane.Count -1; i >= 0; --i)
+            for (int i = selectedBoxPlane.Count - 1; i >= 0; --i)
             {
                 selectedBoxPlane[i].selected(false);
                 selectedBoxPlane.RemoveAt(i);
@@ -151,7 +151,7 @@ namespace EazyEngine.Space.UI
 
         public void nextPage()
         {
-            for(int i = 0; i < selectedBoxPlane.Count; ++i)
+            for (int i = 0; i < selectedBoxPlane.Count; ++i)
             {
                 selectedBoxPlane[i].nextPage();
             }
@@ -164,15 +164,15 @@ namespace EazyEngine.Space.UI
                 selectedBoxPlane[i].previousPage();
             }
         }
-        
+
         public void chooseIndexMainPlane(int index)
         {
-  
+
         }
         public void chooseIndexSpPlane(int index)
         {
-           // GameManager.Instance.Database.selectedSupportPlane1 = index;
-           // GameManager.Instance.Database.selectedSupportPlane2 = index;
+            // GameManager.Instance.Database.selectedSupportPlane1 = index;
+            // GameManager.Instance.Database.selectedSupportPlane2 = index;
         }
 
         public void showBoxSetting()
@@ -221,7 +221,7 @@ namespace EazyEngine.Space.UI
             {
                 requireUnlock.gameObject.SetActive(false);
             }
-            if(pInfo.GetType() != typeof(EazyEngine.Space.SupportPlaneInfoConfig))
+            if (pInfo.GetType() != typeof(EazyEngine.Space.SupportPlaneInfoConfig))
             {
                 btnFight.isEnabled = pInfo.CurrentLevel > 0;
             }
@@ -252,7 +252,7 @@ namespace EazyEngine.Space.UI
             GameManager.Instance.isFree = false;
             SoundManager.Instance.PlaySound(fightSfx, Vector3.zero);
             GameManager.Instance.LoadLevel(GameManager.Instance.ChoosedLevel);
-                
+
         }
 
         public void freePlay()
@@ -264,25 +264,25 @@ namespace EazyEngine.Space.UI
         }
 
         public void choosedMap()
-        {          
+        {
             stateGames.Add("ChooseMap");
             EzEventManager.TriggerEvent(new UIMessEvent("ChooseMap"));
         }
         public void preparePlay()
         {
- 
+
             StartCoroutine(delayAction(0.25f, delegate
             {
-                chooseHardMode.changeTab(GameManager.Instance.ChoosedLevel == GameManager.Instance.Database.lastPlayStage.x ?  GameManager.Instance.Database.lastPlayStage.y : 0);
+                chooseHardMode.changeTab(GameManager.Instance.ChoosedLevel == GameManager.Instance.Database.lastPlayStage.x ? GameManager.Instance.Database.lastPlayStage.y : 0);
             }));
-       
+
             GameManager.Instance.ConfigLevel = new LevelConfig();
             stateGames.Add("Play");
             EzEventManager.TriggerEvent(new UIMessEvent("Play"));
         }
 
         public void upgrade()
-        {           
+        {
             stateGames.Add("Upgrade");
             EzEventManager.TriggerEvent(new UIMessEvent("Upgrade"));
         }
@@ -303,7 +303,7 @@ namespace EazyEngine.Space.UI
             if (pObject == null) return;
             var pItem = (BaseItemGameInstanced)pObject;
             desItemSp.text = pItem.item.descriptionItem.Value;
-            if (GameManager.Instance.ConfigLevel.itemUsed.Contains( (ItemGame) pItem.item))
+            if (GameManager.Instance.ConfigLevel.itemUsed.Contains((ItemGame)pItem.item))
             {
                 desItemSp.gameObject.SetActive(false);
                 GameManager.Instance.ConfigLevel.itemUsed.Remove((ItemGame)pItem.item);
@@ -333,7 +333,8 @@ namespace EazyEngine.Space.UI
             {
                 choosedMap();
                 StartCoroutine(delayAction(0.25f, preparePlay));
-            }else if(GameManager.Instance.scehduleUI == ScheduleUIMain.UPGRADE)
+            }
+            else if (GameManager.Instance.scehduleUI == ScheduleUIMain.UPGRADE)
             {
                 upgrade();
             }
@@ -345,25 +346,28 @@ namespace EazyEngine.Space.UI
                 GameManager.Instance.SaveGame();
                 EzEventManager.TriggerEvent(new GuideEvent("FirstGame", delegate
                 {
-                    PlayerPrefs.SetInt("firstGame", 1); 
+                    PlayerPrefs.SetInt("firstGame", 1);
                     MainScene.Instance.freePlay();
                 }));
-            }else if (pFirstGame == 1)
+            }
+            else if (pFirstGame == 1)
             {
-                EzEventManager.TriggerEvent(new GuideEvent("SecondGame" + ((GameManager.Instance.lastResultWin == 1)  ? "Win" :  "Lose"),
+                EzEventManager.TriggerEvent(new GuideEvent("SecondGame" + ((GameManager.Instance.lastResultWin == 1) ? "Win" : "Lose"),
                     delegate
                     {
-              
-                        PlayerPrefs.SetInt("firstGame", 2); 
+
+                        PlayerPrefs.SetInt("firstGame", 2);
                         MainScene.Instance.upgrade();
-              
-                    },true));
-              
+
+                    }, true));
+
             }
+           
         }
 
 
-        IEnumerator delayAction(float pDelay ,System.Action action)
+
+        IEnumerator delayAction(float pDelay, System.Action action)
         {
             yield return new WaitForSeconds(pDelay);
             action();
@@ -385,8 +389,8 @@ namespace EazyEngine.Space.UI
         {
             if (GameServices.LocalUser != null)
             {
-                nameUser.text = GameServices.LocalUser.userName.Length< 10 ? GameServices.LocalUser.userName :  (GameServices.LocalUser.userName.Substring(0,7) + "...");
-                idUser.text = GameServices.LocalUser.id.Length < 10 ? GameServices.LocalUser.id : (GameServices.LocalUser.id.Substring(0, 7) + "..."); 
+                nameUser.text = GameServices.LocalUser.userName.Length < 10 ? GameServices.LocalUser.userName : (GameServices.LocalUser.userName.Substring(0, 7) + "...");
+                idUser.text = GameServices.LocalUser.id.Length < 10 ? GameServices.LocalUser.id : (GameServices.LocalUser.id.Substring(0, 7) + "...");
             }
             else
             {
@@ -412,10 +416,10 @@ namespace EazyEngine.Space.UI
 
         public bool onBack()
         {
-            if(stateGames.Count > 1)
+            if (stateGames.Count > 1)
             {
                 stateGames.RemoveAt(stateGames.Count - 1);
-                EzEventManager.TriggerEvent(new UIMessEvent(stateGames[stateGames.Count-1]));
+                EzEventManager.TriggerEvent(new UIMessEvent(stateGames[stateGames.Count - 1]));
                 return true;
             }
             return false;

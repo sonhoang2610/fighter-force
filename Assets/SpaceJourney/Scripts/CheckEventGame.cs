@@ -34,7 +34,7 @@ namespace EazyEngine.Space{
 
         protected override void OnDisable()
         {
-   
+            EzEventManager.RemoveListener(this);
             base.OnDisable();
         }
 

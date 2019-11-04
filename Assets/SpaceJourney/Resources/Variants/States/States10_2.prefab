@@ -61,6 +61,54 @@ MonoBehaviour:
         isIgnore: 0
         countPreload: 2
         pooler: {fileID: 0}
+--- !u!1 &1087287341579837931
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2607710680393284980}
+  - component: {fileID: 1471186791850206600}
+  m_Layer: 0
+  m_Name: '[Pool]boss2_2'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2607710680393284980
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087287341579837931}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4688445221484182113}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1471186791850206600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087287341579837931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30599d570c93524c810714c5a2f7583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObjectToPool: {fileID: 5405591382082374967, guid: a3bfafa7551c33748b33c03d93b4504d,
+    type: 3}
+  PoolSize: 0
+  PoolCanExpand: 1
+  dontDestroyOnload: 0
 --- !u!1 &4688445221484182118
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,7 +136,9 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1237016982298424663}
+  - {fileID: 2607710680393284980}
   m_Father: {fileID: 8955171695806973185}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -177,6 +227,59 @@ MonoBehaviour:
         isIgnore: 0
         countPreload: 3
         pooler: {fileID: 0}
+    - key: {fileID: 5405591382082374967, guid: a3bfafa7551c33748b33c03d93b4504d, type: 3}
+      info:
+        isIgnore: 0
+        countPreload: 1
+        pooler: {fileID: 1471186791850206600}
+--- !u!1 &8750145138412101361
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1237016982298424663}
+  - component: {fileID: 4391408146448922248}
+  m_Layer: 0
+  m_Name: '[Pool]1_enemy_medium8 Variant'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1237016982298424663
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8750145138412101361}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4688445221484182113}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4391408146448922248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8750145138412101361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30599d570c93524c810714c5a2f7583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObjectToPool: {fileID: 6848722327590828532, guid: 9af56b3183495684bafd1e439aab5b10,
+    type: 3}
+  PoolSize: 0
+  PoolCanExpand: 1
+  dontDestroyOnload: 0
 --- !u!1 &8955171694304026678
 GameObject:
   m_ObjectHideFlags: 0
@@ -3756,7 +3859,7 @@ MonoBehaviour:
       prefabEnemies:
       - {fileID: 8591550201151429216, guid: 11837461efde6c44f8d36f9e06bf6914, type: 3}
       - {fileID: 8591550201151429216, guid: 2ee2c5a304aa57848ad0c1dcbd28edbb, type: 3}
-      - {fileID: 6848722327590828532, guid: 9af56b3183495684bafd1e439aab5b10, type: 3}
+      - {fileID: 906830937678215037, guid: 55cc6130aab1ddd45a7dde43ac6a37a1, type: 3}
       quantity: 2
       typeSpawn: 0
       typeFomation: 2
@@ -4586,7 +4689,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     totalDeath: 0
-  - isExpaned: 1
+  - isExpaned: 0
     nameState: State end
     comment: end1
     nameGroup: State end (end1)

@@ -150,6 +150,7 @@ namespace DigitalRuby.ThunderAndLightning
 
         private void CustomTransform(LightningCustomTransformStateInfo state)
         {
+            
             if (CustomTransformHandler != null)
             {
                 CustomTransformHandler.Invoke(state);

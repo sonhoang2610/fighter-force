@@ -62,7 +62,8 @@ public class DictionnaryPrefabInfo
     {
         get
         {
-            return _array.Find(x => x.key == key).info;
+            var pFind = _array.Find(x => x.key == key);
+            return pFind == null ? null : pFind.info;
         }
         set
         {

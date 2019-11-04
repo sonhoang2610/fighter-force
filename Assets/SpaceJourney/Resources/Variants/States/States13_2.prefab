@@ -61,6 +61,102 @@ MonoBehaviour:
         isIgnore: 0
         countPreload: 2
         pooler: {fileID: 0}
+--- !u!1 &2288751809937514254
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2150604671649575062}
+  - component: {fileID: 8398227467157978386}
+  m_Layer: 0
+  m_Name: '[Pool]1enemy13 Variant'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2150604671649575062
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2288751809937514254}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5188477793592126512}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8398227467157978386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2288751809937514254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30599d570c93524c810714c5a2f7583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObjectToPool: {fileID: 1143518063389232502, guid: 37df535aaf469be4d824b10132dfac34,
+    type: 3}
+  PoolSize: 0
+  PoolCanExpand: 1
+  dontDestroyOnload: 0
+--- !u!1 &2605676601626084110
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6517368389623437476}
+  - component: {fileID: 8669713742494981761}
+  m_Layer: 0
+  m_Name: '[Pool]MiniBoss3 Variant Variant'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6517368389623437476
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2605676601626084110}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5188477793592126512}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8669713742494981761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2605676601626084110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30599d570c93524c810714c5a2f7583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObjectToPool: {fileID: 1058423172725382960, guid: 184652e93f4eef14293307feb6d3bdba,
+    type: 3}
+  PoolSize: 0
+  PoolCanExpand: 1
+  dontDestroyOnload: 0
 --- !u!1 &5188477793592126519
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,7 +184,10 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2150604671649575062}
+  - {fileID: 4424258647368711391}
+  - {fileID: 6517368389623437476}
   m_Father: {fileID: 8455139083865002832}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -177,11 +276,59 @@ MonoBehaviour:
         isIgnore: 0
         countPreload: 3
         pooler: {fileID: 0}
-    - key: {fileID: 2689596367040523767, guid: 60180db15a76c7a4391a3febdf3c4ad0, type: 3}
+    - key: {fileID: 1058423172725382960, guid: 184652e93f4eef14293307feb6d3bdba, type: 3}
       info:
         isIgnore: 0
-        countPreload: 3
-        pooler: {fileID: 0}
+        countPreload: 1
+        pooler: {fileID: 8669713742494981761}
+--- !u!1 &7222434391686251137
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4424258647368711391}
+  - component: {fileID: 3725819847204723604}
+  m_Layer: 0
+  m_Name: '[Pool]enemy9 Variant'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4424258647368711391
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7222434391686251137}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5188477793592126512}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3725819847204723604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7222434391686251137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30599d570c93524c810714c5a2f7583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObjectToPool: {fileID: 1174730541426721222, guid: ae3ebff41eef21a4ea5623ab751c721f,
+    type: 3}
+  PoolSize: 0
+  PoolCanExpand: 1
+  dontDestroyOnload: 0
 --- !u!1 &8455139083865002834
 GameObject:
   m_ObjectHideFlags: 0
@@ -4355,8 +4502,8 @@ MonoBehaviour:
     isManual: 0
     formatInfo:
       prefabEnemies:
-      - {fileID: 1143518063389232502, guid: 37df535aaf469be4d824b10132dfac34, type: 3}
-      - {fileID: 1174730541426721222, guid: ae3ebff41eef21a4ea5623ab751c721f, type: 3}
+      - {fileID: 8666511167644931436, guid: 792121a35100d1a4f8571dac88056cca, type: 3}
+      - {fileID: 1174730541426721222, guid: 623bc8aabdc44aa49844c5a38066e936, type: 3}
       quantity: 1
       typeSpawn: 2
       typeFomation: 0
@@ -4544,7 +4691,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     totalDeath: 0
-  - isExpaned: 1
+  - isExpaned: 0
     nameState: MiniBoss
     comment: 2
     nameGroup: MiniBoss (2)

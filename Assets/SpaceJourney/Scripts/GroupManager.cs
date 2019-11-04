@@ -394,7 +394,11 @@ namespace EazyEngine.Space
             managers.Clear();
             SoundManager.PoolInGameAudios.Clear();
             SoundManager.Instance.StopAllCoroutines();
-            TopLayer.Instance.inGame(false);
+            if (!SceneManager.Instance.currentScene.Contains("Zone"))
+            {
+                TopLayer.Instance.inGame(false);
+            }
+        
         }
     }
 }

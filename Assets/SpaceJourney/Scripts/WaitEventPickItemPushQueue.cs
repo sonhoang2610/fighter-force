@@ -88,6 +88,11 @@ namespace EazyEngine.Space{
             status = Status.Running;
             flowScript = null;
         }
+        public override void OnDestroy()
+        {
+            base.OnDestroy();
+            EzEventManager.RemoveListener(this);
+        }
 
     }
 }

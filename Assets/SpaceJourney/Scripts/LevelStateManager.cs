@@ -496,6 +496,7 @@ public struct BehaviorStateEvent
 
 public class LevelStateManager : Singleton<LevelStateManager>, EzEventListener<BehaviorStateEvent>
 {
+    public static string currentState;
     // [ExpanedListEvent("")]
     [ListDrawerSettings(NumberOfItemsPerPage = 10,ShowItemCount = true)]
     //[InfoBox("Nơi define các đợt quái việc khi nào ra đợt nào trình tự ra sao nằm ở component Behaviour Tree bên dưới ấn open, mỏ rộng từng state play game ấn button preview để xem trước từng đợt")]
@@ -576,7 +577,8 @@ public class LevelStateManager : Singleton<LevelStateManager>, EzEventListener<B
     }
     public LevelState runState(string pState)
     {
-        for(int i  =0; i< states.Length; ++i)
+        currentState = pState;
+        for (int i  =0; i< states.Length; ++i)
         {
             if(states[i].nameState == pState)
             {
