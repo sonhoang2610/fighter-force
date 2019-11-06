@@ -15,6 +15,7 @@ namespace EazyEngine.Space{
 		protected override string OnInit(){
             return null;
 		}
+        
 		//Called once per frame while the condition is active.
 		//Return whether the condition is success or failure.
 		protected override bool OnCheck(){
@@ -34,12 +35,16 @@ namespace EazyEngine.Space{
 
         protected override void OnDisable()
         {
-            EzEventManager.RemoveListener(this);
+          //  EzEventManager.RemoveListener(this);
             base.OnDisable();
         }
 
         public void OnEzEvent(MessageGamePlayEvent eventType)
         {
+            if (ownerAgent.IsDestroyed())
+            {
+                EzEventManager.RemoveListener(this);
+            }
             if(eventType._objects == null || eventType._objects.Length ==0 || eventType._objects[0] == null ||(GameObject) eventType._objects[0] == ownerAgent.gameObject)
             {
                if(eventType._message == eventName.value)
