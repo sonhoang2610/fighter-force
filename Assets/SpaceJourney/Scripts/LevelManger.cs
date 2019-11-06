@@ -9,6 +9,7 @@ using DG;
 using System;
 using NodeCanvas.Framework;
 using EazyEngine.Timer;
+using Spine.Unity;
 
 namespace EazyEngine.Space
 {
@@ -71,6 +72,13 @@ namespace EazyEngine.Space
         Enemy,
         Player
     }
+    public class PlaneInfoToCoppy
+    {
+        public GameObject model;
+        public Vector3 attachMentPos;
+        public PlaneInfo info;
+    }
+
 
     public class LevelConfig
     {
@@ -90,8 +98,8 @@ namespace EazyEngine.Space
         [InlineEditor]
         public Camera mainPlayCamera;
         public Character[] players;
-        
-        
+        private List<PlaneInfoToCoppy> cachePlanePreload = new List<PlaneInfoToCoppy>();
+        public List<PlaneInfoToCoppy> CachePlanePreload { get => cachePlanePreload; set => cachePlanePreload = value; }
         public Character CurrentPlayer
         {
             get
@@ -319,16 +327,24 @@ namespace EazyEngine.Space
             players = new Character[1];
             players[0] = Instantiate<Character>(GameManager.Instance.Database.planes[pSelectedPlane].Info.modelPlane);
             var pDataPlane = pSelectedPlane >=0 ? GameManager.Instance.Database.planes[pSelectedPlane] : null;
+            var pAllItemMainPlane = GameDatabase.Instance.getAllItem(CategoryItem.PLANE);
             if (pDataPlane == null || pDataPlane.CurrentLevel == 0) {
-                var pAllItem = GameDatabase.Instance.getAllItem(CategoryItem.PLANE);
-                foreach(var pItemPlane in pAllItem)
+                foreach(var pItemPlane in pAllItemMainPlane)
                 {
                    if( pItemPlane.ItemID == GameManager.Instance.freePlaneChoose)
                     {
-                        pDataPlane = PlaneInfoConfig.CloneDefault((PlaneInfo) pItemPlane);
+                        pDataPlane = PlaneInfoConfig.CloneDefault((PlaneInfo) pItemPlane,20);
                     }
                 }
             }
+            //for(int i  = 0; i < pAllItemMainPlane.Length; ++i)
+            //{
+            //    cachePlanePreload.Add(new PlaneInfoToCoppy()
+            //    {
+            //        model = ((PlaneInfo)pAllItemMainPlane[i]).modelPlane.transform.Find("model").gameObject,
+            //        attachMentPos = ((PlaneInfo)pAllItemMainPlane[i]).modelPlane.transform.Find("attachment").localPosition
+            //    });
+            //}
             players[0].setData(pDataPlane);
             GUIManager.Instance.setIconPlane(pDataPlane.info.iconGame);
             List<SkillInputData> skills = new List<SkillInputData>();
@@ -524,5 +540,6 @@ namespace EazyEngine.Space
 
         public bool IsPlaying { get => isPlaying; set => isPlaying = value; }
         public bool IsMatching { get => isMatching; set => isMatching = value; }
+  
     }
 }

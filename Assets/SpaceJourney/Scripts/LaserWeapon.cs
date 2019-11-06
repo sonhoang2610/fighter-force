@@ -46,7 +46,11 @@ namespace EazyEngine.Space
         protected List<LineRenderer> lines = new List<LineRenderer>();
         private void Awake()
         {
-            lines.Add(lineLaser);         
+            lines.Add(lineLaser);
+            if (lineLaser)
+            {
+                lineLaser.gameObject.SetActive(true);
+            }
         }
         public virtual void LaserWeaponUse()
         {
@@ -134,6 +138,13 @@ namespace EazyEngine.Space
                 LaserWeaponUse();
             }
       
+        }
+        private void Start()
+        {
+            if (lineLaser)
+            {
+                lineLaser.gameObject.SetActive(false);
+            }
         }
         public override void WeaponUse()
         {

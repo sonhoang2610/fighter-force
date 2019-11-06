@@ -6,74 +6,135 @@ using UnityEngine.Events;
 
 namespace EazyEngine.Space.UI
 {
-    public class NoticeItem : MonoBehaviour, EzEventListener<GameDatabaseInventoryEvent>
+    [System.Serializable]
+    public class EventTime : UnityEvent<TimeCountDown>
+    {
+
+    }
+    public class NoticeItem : MonoBehaviour, EzEventListener<GameDatabaseInventoryEvent>, EzEventListener<EventTimer>
     {
         public string[] itemIDs;
-        public int minQuantity = 1;
+        public string[] timerKey;
         public UnityEvent onNotice;
         public UnityEvent onNoneNotice;
+        public EventTime onTimerCounting;
+        public UnityEvent onNonTimer;
 
+        protected TimeCountDown timerPending;
+        protected int timeCounting = 0;
+        protected bool isNotice = false;
         public void OnEzEvent(GameDatabaseInventoryEvent eventType)
         {
-            bool notice = false;
-            bool handle = false;
-            foreach(var pItem in itemIDs)
-            {
-                if (eventType.item != null && eventType.item.item != null && eventType.item.item.itemID == pItem)
-                {
-                    handle = true;
-                    if (eventType.item.quantity >= minQuantity)
-                    {
-                        notice = true;
-                        onNotice?.Invoke();
-                    }
-                    else
-                    {
-                        onNoneNotice?.Invoke();
-                    }
-                }
-            }
-            if (!notice && handle)
-            {
-                onNoneNotice?.Invoke();
-            }
-          
+            reload();
         }
-
-        private void OnEnable()
+        public void reload()
         {
-            EzEventManager.AddListener(this);
+        
             bool notice = false;
             foreach (var pItem in itemIDs)
             {
                 var pItemExist = GameManager.Instance.Database.getComonItem(pItem);
-                if (pItemExist.quantity >= minQuantity)
+                if (pItemExist.quantity >= 1)
                 {
                     notice = true;
-                    onNotice?.Invoke();
+                    onNotice.Invoke();
                 }
             }
+            timerPending = null;
+            isNotice = notice;
             if (!notice)
             {
-                onNoneNotice?.Invoke();
+                checkTimer();
             }
+            if (timerPending == null)
+            {
+                onNonTimer.Invoke();
+            }
+            if(timeCounting < timerKey.Length)
+            {
+                isNotice = true;
+            }
+            if (isNotice)
+            {
+                onNotice.Invoke();
+            }
+            else
+            {
+                onNoneNotice.Invoke();
+            }
+        }
+        private void OnEnable()
+        {
+            EzEventManager.AddListener<GameDatabaseInventoryEvent>(this);
+            EzEventManager.AddListener<EventTimer>(this);
+            Invoke(nameof(reload), 0.2f);
+        }
+
+
+        public void checkTimer()
+        {
+            double pMinTime = 99999;
+            TimeCountDown pTimeCount = null;
+            timeCounting = 0;
+            foreach (var pKey in timerKey)
+            {
+                var pCount = GameManager.Instance.Database.timers.Find(x => x.key == pKey);
+                if (pCount != null)
+                {
+                    var pTime = System.DateTime.Now - pCount.lastimeWheelFree;
+                    if ((pCount.length- pTime.TotalSeconds) < pMinTime)
+                    {
+                        pMinTime = pCount.length - pTime.TotalSeconds;
+                        pTimeCount = pCount;
+                    }
+             
+                    timeCounting++;
+                }
+            }
+            if (pTimeCount != null)
+            {
+                onTimerCounting.Invoke(pTimeCount);
+            }
+
+            timerPending = pTimeCount;
         }
 
         private void OnDisable()
         {
-            EzEventManager.RemoveListener(this);
+            EzEventManager.RemoveListener<GameDatabaseInventoryEvent>(this);
+            EzEventManager.RemoveListener<EventTimer>(this);
         }
 
         // Start is called before the first frame update
         void Start()
         {
-
+      
         }
 
         // Update is called once per frame
         void Update()
         {
 
+        }
+
+        public void OnEzEvent(EventTimer eventType)
+        {
+            if (eventType.state == TimerState.Start)
+            {
+                foreach (var time in timerKey)
+                {
+                    if (time == eventType.key)
+                    {
+                        reload();
+                    }
+                }
+            }
+            if (eventType.state == TimerState.Complete && timerPending != null && timerPending.key == eventType.key)
+            {
+                isNotice = true;
+                timerPending = null;
+                onNotice.Invoke();
+            }
         }
     }
 }

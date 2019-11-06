@@ -47,6 +47,18 @@ namespace EazyEngine.Space
                 return new Health[] {  };
             }
         }
+        protected PlaneInfoToCoppy[] infoPreload;
+        public void setDataPreload(PlaneInfoToCoppy[] pInfos)
+        {
+            infoPreload = pInfos;
+           // for(int i = 0; i )
+        }
+        [Button("random")]
+        public void randomInfo()
+        {
+            int index = Random.Range(0, infoPreload.Length);
+
+        }
 
         public void changeState (StateCharacter state)
         {

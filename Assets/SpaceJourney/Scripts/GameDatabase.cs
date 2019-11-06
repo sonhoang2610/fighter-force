@@ -139,7 +139,9 @@ namespace EazyEngine.Space
         [FoldoutGroup("Level")]
       //  [ListDrawerSettings(AddCopiesLastElement = true)]
         private MapInfo[] mapInfos;
-
+        [SerializeField]
+        [FoldoutGroup("Wheel")]
+        public float timeWheelFree = 28800;
 
         [SerializeField]
         [FoldoutGroup("Wheel")]

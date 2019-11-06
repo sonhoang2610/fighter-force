@@ -8,6 +8,7 @@ using Sirenix.OdinInspector;
 
 namespace EazyEngine.Space
 {
+    using Sirenix.Serialization;
 #if UNITY_EDITOR
     using UnityEditor;
     public class ShopDatabaseInfoCreator
@@ -81,6 +82,7 @@ namespace EazyEngine.Space
         public string idCategoryInShop = "Common";
         public bool isVisible = true;
         public BaseItemGame itemSell;
+        public LimitedModule moduleLimitBuy;
         public bool isLimit = false;
         [ShowIf("isLimit")]
         public int limitUpgrade = 1;

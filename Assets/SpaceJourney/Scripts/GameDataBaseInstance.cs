@@ -44,8 +44,7 @@ namespace EazyEngine.Space
     {
         public string key;
         public System.DateTime lastimeWheelFree;
-        [System.NonSerialized]
-        public object tartget;
+        public double length;
         [System.NonSerialized]
         protected List<UILabel> labeltimers = new List<UILabel>();
         public List<UILabel> LabelTimer
@@ -99,18 +98,15 @@ namespace EazyEngine.Space
             for(int i = timers.Count-1; i >=0; i--)
             {
                 var pTime = timers[i];
+                string[] splitStr = pTime.key.Split('/');
                 if (pTime.key.StartsWith("MainInventory"))
                 {
-                    string[] splitStr = pTime.key.Split('/');
                     if (splitStr.Length > 1)
                     {
                         var pItem = getComonItem(splitStr[1]);
                         if (pItem != null)
                         {
-                            if(pTime.tartget == null)
-                            {
-                                pTime.tartget = pItem.item;
-                            }
+                           pTime.length = pItem.item.limitModule.timeToRestore;
                             var pTimeChange = System.DateTime.Now - pTime.lastimeWheelFree;
                             if (pTimeChange.TotalSeconds > 0)
                             {
@@ -128,6 +124,7 @@ namespace EazyEngine.Space
                                     {
                                         int pSodu = (int)pTimeChange.TotalSeconds % (int)pItem.item.limitModule.timeToRestore;
                                         pTime.lastimeWheelFree = System.DateTime.Now.AddSeconds(-pSodu);
+                                   
                                     }
                                     pItem.Quantity = pQuantityRestore;
                                     GameManager.Instance.SaveGame();
@@ -135,6 +132,20 @@ namespace EazyEngine.Space
                             }
                         }
                     }
+                }
+                else
+                {
+                    var pTimeChange = System.DateTime.Now - pTime.lastimeWheelFree;
+                    if (pTimeChange.TotalSeconds > pTime.length)
+                    {
+                        GameManager.Instance.removeTimer(timers[i]);
+                        timers.RemoveAt(i);                   
+                    }
+                    //else
+                    //{
+                    //    pTime.length -= pTimeChange.TotalSeconds;
+                    //}
+
                 }
             }
         }

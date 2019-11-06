@@ -71,8 +71,10 @@ namespace EazyEngine.Space.UI
                     isDirty = true;
                 }
             }
+       
             if (isDirty)
             {
+                GiftOnlineIcon.Instance.claim();
                 GameManager.Instance.SaveGame();
             }
 

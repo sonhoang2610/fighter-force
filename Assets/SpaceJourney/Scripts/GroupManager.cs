@@ -5,6 +5,7 @@ using Sirenix.OdinInspector;
 using EazyEngine.Tools.Space;
 using EazyEngine.Space.UI;
 using EazyEngine.Timer;
+using ParadoxNotion.Services;
 
 namespace EazyEngine.Space
 {
@@ -398,7 +399,10 @@ namespace EazyEngine.Space
             {
                 TopLayer.Instance.inGame(false);
             }
-        
+           if(MonoManager.current)
+            {
+                MonoManager.current.StopAllCoroutines();
+            }
         }
     }
 }

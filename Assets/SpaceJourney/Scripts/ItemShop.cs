@@ -8,7 +8,7 @@ using EasyMobile;
 
 namespace EazyEngine.Space.UI
 {
-    public class ItemShop : BaseItem<ShopItemInfo>, EzEventListener<GameDatabaseInventoryEvent>
+    public class ItemShop : BaseItem<ShopItemInfo>, EzEventListener<GameDatabaseInventoryEvent>,EzEventListener<EventTimer>
     {
         public UILabel nameItem,description;
         public UI2DSprite iconItem;
@@ -210,9 +210,10 @@ namespace EazyEngine.Space.UI
             var pTimer = GameManager.Instance.Database.timers.getTimer(nameTargetShop + "/" + itemIDToLoad);
             if (pTimer == null)
             {
-                pTimer = new TimeCountDown() { lastimeWheelFree = System.DateTime.Now, key = nameTargetShop + "/" + itemIDToLoad };
-                GameManager.Instance.Database.timers.Add(pTimer);
+                pTimer = new TimeCountDown() { lastimeWheelFree = System.DateTime.Now, key = nameTargetShop + "/" + itemIDToLoad,length = item.moduleLimitBuy.timeToRestore };
+                GameManager.Instance.addTimer(pTimer);
             }
+        
             GameManager.Instance.SaveGame();
             updateTime();
             Data = Data;
@@ -267,20 +268,20 @@ namespace EazyEngine.Space.UI
         // Update is called once per frame
         void Update()
         {
-            if (timerFree && timeCountDown.TotalMilliseconds > 0)
-            {
-                timeCountDown -= TimeSpan.FromSeconds(Time.deltaTime);
-                if (!cacheTextFreeCountDown)
-                {
-                    cacheTextFreeCountDown = boxTimer.GetComponentInChildren<UILabel>();
-                }
-                cacheTextFreeCountDown.text = timeCountDown.ToString(@"hh\:mm\:ss");
-                if (timeCountDown.TotalMilliseconds <= 0)
-                {
-                    boxTimer.gameObject.SetActive(false);
-                    btnBuyFree.gameObject.SetActive(true);
-                }
-            }
+            //if (timerFree && timeCountDown.TotalMilliseconds > 0)
+            //{
+            //    timeCountDown -= TimeSpan.FromSeconds(Time.deltaTime);
+            //    if (!cacheTextFreeCountDown)
+            //    {
+            //        cacheTextFreeCountDown = boxTimer.GetComponentInChildren<UILabel>();
+            //    }
+            //    cacheTextFreeCountDown.text = timeCountDown.ToString(@"hh\:mm\:ss");
+            //    if (timeCountDown.TotalMilliseconds <= 0)
+            //    {
+            //        boxTimer.gameObject.SetActive(false);
+            //        btnBuyFree.gameObject.SetActive(true);
+            //    }
+            //}
         }
 
         public void OnEzEvent(GameDatabaseInventoryEvent eventType)
@@ -292,11 +293,11 @@ namespace EazyEngine.Space.UI
                 {
                     if (eventType.item.Quantity >= item.getPrice(0)[0][0].quantity)
                     {
-                        buttonBuy.isEnabled = true;
+                       // buttonBuy.isEnabled = true;
                     }
                     else
                     {
-                        buttonBuy.isEnabled = false;
+                       // buttonBuy.isEnabled = false;
                     }
                 }
             }
@@ -304,28 +305,24 @@ namespace EazyEngine.Space.UI
 
         public void updateTime()
         {
-            if (timerFree)
+            var pTimerCounting = GameManager.Instance.Database.timers.Find(x => x.key == nameTargetShop + "/" + itemIDToLoad);
+            if(pTimerCounting != null)
             {
-                var pTimer = GameManager.Instance.Database.timers.getTimer(nameTargetShop + "/" + itemIDToLoad);
-                if (pTimer != null)
+                if (!pTimerCounting.LabelTimer.Contains(labelTimer))
                 {
-                    var pTime = pTimer.lastimeWheelFree.AddHours(8) - System.DateTime.Now;
-                    if (pTime.TotalSeconds > 0)
-                    {
-                        btnBuyFree.gameObject.SetActive(false);
-                        boxTimer.gameObject.SetActive(true);
-                        boxTimer.GetComponentInChildren<UILabel>().text = pTime.ToString(@"hh\:mm\:ss");
-                        timeCountDown = pTime;
-           
-                    }
-                    else
-                    {
-                        GameManager.Instance.Database.timers.Remove(pTimer);
-                        btnBuyFree.gameObject.SetActive(true);
-                        boxTimer.gameObject.SetActive(false);
-                    }
+                    pTimerCounting.LabelTimer.Add(labelTimer);
                 }
-                else
+           
+                if (timerFree)
+                {
+                    btnBuyFree.gameObject.SetActive(false);
+                    boxTimer.gameObject.SetActive(true);
+                }
+            
+            }
+            else
+            {
+                if (timerFree)
                 {
                     btnBuyFree.gameObject.SetActive(true);
                     boxTimer.gameObject.SetActive(false);
@@ -341,7 +338,8 @@ namespace EazyEngine.Space.UI
         private void OnEnable()
         {
          
-            EzEventManager.AddListener(this);
+            EzEventManager.AddListener<GameDatabaseInventoryEvent>(this);
+            EzEventManager.AddListener<EventTimer>(this);
             updateTime();
             if (delayInit <= 0)
             {
@@ -354,9 +352,20 @@ namespace EazyEngine.Space.UI
 
         private void OnDisable()
         {
-            EzEventManager.RemoveListener(this);
+            EzEventManager.RemoveListener<GameDatabaseInventoryEvent>(this);
+            EzEventManager.RemoveListener<EventTimer>(this);
         }
 
-
+        public void OnEzEvent(EventTimer eventType)
+        {
+            if(eventType.key == nameTargetShop + "/" + itemIDToLoad)
+            {
+                if(eventType.state == TimerState.Complete && timerFree)
+                {
+                    btnBuyFree.gameObject.SetActive(true);
+                    boxTimer.gameObject.SetActive(false);
+                }
+            }
+        }
     }
 }

@@ -88,6 +88,10 @@ namespace EazyEngine.Space
                     anchorLightning[anchorLightning.Count - 1].tracker.EndTarget = anchorLightning[anchorLightning.Count - 1].end.transform;
                     anchorLightning[anchorLightning.Count - 1].tracker.LightningScript = anchorLightning[anchorLightning.Count - 1].lightning;
                     anchorLightning[anchorLightning.Count - 1].onComplete.AddListener(onHandlerLightning);
+                    pLightning.Destination = end;
+                    pLightning.Source = start;
+                    pLightning.Camera = Camera.main;
+                    pLightning.Trigger();
                 }    
                 if(i >= CountTarget)
                 {

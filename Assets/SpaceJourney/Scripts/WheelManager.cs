@@ -6,7 +6,7 @@ using System;
 
 namespace EazyEngine.Space.UI
 {
-    public class WheelManager : Singleton<WheelManager>,EzEventListener<GameDatabasePropertyChanged<int>>
+    public class WheelManager : Singleton<WheelManager>,EzEventListener<GameDatabasePropertyChanged<int>>,EzEventListener<EventTimer>
     {
         public EazyParallax parallax;
         public ItemWheel[] items;
@@ -35,6 +35,10 @@ namespace EazyEngine.Space.UI
         // Start is called before the first frame update
         void Start()
         {
+            if (!cacheTextFreeCountDown)
+            {
+                cacheTextFreeCountDown = btnFree.transform.Find("time").GetComponent<UILabel>();
+            }
             labelPrice.text = priceTicket.ToString();
             labelTicketGet.text = quantityTicketCanGet.ToString();
             iconprice.sprite2D = itemExchangeTicket.CateGoryIcon;
@@ -57,26 +61,25 @@ namespace EazyEngine.Space.UI
 
             updateTimeLeft();
             updateWheelChance();
-            EzEventManager.AddListener(this);
+            EzEventManager.AddListener< GameDatabasePropertyChanged<int>>(this);
+            EzEventManager.AddListener<EventTimer>(this);
         }
 
         private void OnDisable()
         {
-            EzEventManager.RemoveListener(this);
+            EzEventManager.RemoveListener< GameDatabasePropertyChanged<int>>(this);
+            EzEventManager.RemoveListener<EventTimer>(this);
         }
 
         // Update is called once per frame
         void Update()
         {
-            if(timeCountDown.TotalMilliseconds > 0)
-            {
-                timeCountDown -= TimeSpan.FromSeconds(Time.deltaTime);
-                if (!cacheTextFreeCountDown)
-                {
-                    cacheTextFreeCountDown = btnFree.transform.Find("time").GetComponent<UILabel>();
-                }
-                cacheTextFreeCountDown.text = timeCountDown.ToString(@"hh\:mm\:ss");
-            }
+            //if(timeCountDown.TotalMilliseconds > 0)
+            //{
+            //    timeCountDown -= TimeSpan.FromSeconds(Time.deltaTime);
+    
+            //    cacheTextFreeCountDown.text = timeCountDown.ToString(@"hh\:mm\:ss");
+            //}
         }
 
         public void askForWheel()
@@ -152,24 +155,37 @@ namespace EazyEngine.Space.UI
 
         public void startRollFree()
         {
-            GameManager.Instance.Database.lastimeWheelFree = System.DateTime.Now;
+           var pTime  = GameManager.Instance.addTimer(new TimeCountDown()
+            {
+                key = "WheelFree",
+                lastimeWheelFree = System.DateTime.Now,
+                length = GameDatabase.Instance.timeWheelFree,
+            });
+     
             GameManager.Instance.SaveGame();
             startRoll();
             updateTimeLeft();
         }
         protected UILabel cacheTextFreeCountDown;
-        protected TimeSpan timeCountDown;
         public void updateTimeLeft()
         {
-            var pTime =  GameManager.Instance.Database.lastimeWheelFree.AddHours(8) - System.DateTime.Now;
-            btnFree.isEnabled =!( pTime.Seconds > 0);
-            btnFree.transform.Find("Label").gameObject.SetActive(!(pTime.Seconds > 0));
-            btnFree.transform.Find("time").gameObject.SetActive((pTime.Seconds > 0));
-            if ( pTime.TotalSeconds > 0)
-            {
-                btnFree.transform.Find("time").GetComponent<UILabel>().text = pTime.ToString(@"hh\:mm\:ss");
-            }
-            timeCountDown = pTime;
+            var pTimer = GameManager.Instance.Database.timers.Find(x => x.key == "WheelFree");
+            //if(pTimer != null)
+            //{
+                var pTime = (pTimer!= null? pTimer.lastimeWheelFree.AddSeconds(pTimer.length) : System.DateTime.Now) - System.DateTime.Now;
+                btnFree.isEnabled = !(pTime.Seconds > 0);
+                btnFree.transform.Find("Label").gameObject.SetActive(!(pTime.Seconds > 0));
+                btnFree.transform.Find("time").gameObject.SetActive((pTime.Seconds > 0));
+                if (pTime.TotalSeconds > 0)
+                {
+                    btnFree.transform.Find("time").GetComponent<UILabel>().text = pTime.ToString(@"hh\:mm\:ss");
+                }
+                if (pTimer != null && !pTimer.LabelTimer.Contains(cacheTextFreeCountDown))
+                {
+                    pTimer.LabelTimer.Add(cacheTextFreeCountDown);
+                }
+            //}
+          
         }
 
 
@@ -269,6 +285,17 @@ namespace EazyEngine.Space.UI
                     parallax.Elements[i].GetComponent<ItemWheel>().Data = data;
                 }
 
+            }
+        }
+
+        public void OnEzEvent(EventTimer eventType)
+        {
+           if(eventType.key == "WheelFree")
+            {
+                if(eventType.state == TimerState.Complete)
+                {
+                    updateTimeLeft();
+                }
             }
         }
     }

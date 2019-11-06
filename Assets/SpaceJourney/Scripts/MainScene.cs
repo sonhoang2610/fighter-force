@@ -37,10 +37,10 @@ namespace EazyEngine.Space.UI
                 layerPrepare.showInfo(0, 0);
             }
             stateGames.Add("Main");
-            if (GameManager.Instance.Database.lastOnline.Date != System.DateTime.Now.Date && GameManager.Instance.wincount == 1)
+            if ( GameManager.Instance.wincount == 3)
             {
                 GameManager.Instance.Database.lastOnline = System.DateTime.Now;
-                if (StoreReview.CanRequestRating())
+                if (StoreReview.CanRequestRating() )
                 {
                     StoreReview.RequestRating();
                 }
@@ -96,7 +96,11 @@ namespace EazyEngine.Space.UI
         }
         public void clearBox()
         {
-   
+            if(selectedBoxPlane.Count == 1)
+            {
+                upgrade();
+                return;
+            }
             for (int i = 0; i < selectedBoxPlane.Count; ++i)
             {
                 selectedBoxPlane[i].selected(false);
@@ -106,7 +110,11 @@ namespace EazyEngine.Space.UI
 
         public void clearBoxIfHasItemInBox(BoxBasePlane pPlane)
         {
-
+            if (selectedBoxPlane.Contains(pPlane) && selectedBoxPlane.Count == 2)
+            {
+                upgradeSp();
+                return;
+            }
             if (pPlane.DataSource.Count > 0)
             {
 

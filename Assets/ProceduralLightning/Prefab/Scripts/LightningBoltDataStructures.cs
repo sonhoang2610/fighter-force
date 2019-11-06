@@ -34,6 +34,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using EazyEngine.Space;
 
 namespace DigitalRuby.ThunderAndLightning
 {
@@ -1491,7 +1492,7 @@ namespace DigitalRuby.ThunderAndLightning
 
             while (true)
             {
-                if (lineRendererCache.Count == 0)
+                if (lineRendererCache.Count == 0 || (LevelManger.InstanceRaw && !LevelManger.Instance.IsMatching))
                 {
                     lineRenderer = new LineRendererMesh();
                 }

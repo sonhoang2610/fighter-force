@@ -197,6 +197,10 @@ public static class SerializeGameDataBase
             ss.AddSurrogate(typeof(ItemGame),
                             new StreamingContext(StreamingContextStates.All),
                             iteomGameInfo);
+            PackageInfoSerialize pack = new PackageInfoSerialize();
+            ss.AddSurrogate(typeof(ItemPackage),
+                            new StreamingContext(StreamingContextStates.All),
+                            pack);
             // 2. Have the formatter use our surrogate selector
             formatter.SurrogateSelector = ss;
             formatter.Serialize(ms, pInfo);
@@ -221,6 +225,18 @@ public enum ScheduleUIMain
     GAME_IMEDIATELY,
     UPGRADE
 }
+
+public enum TimerState
+{
+    Start,
+    Complete,
+    Running
+}
+public struct EventTimer
+{
+    public TimerState state;
+    public string key;
+}
 public class GameManager : PersistentSingleton<GameManager>, EzEventListener<GameDatabaseInventoryEvent>
 {
 
@@ -232,8 +248,8 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     public bool inGame = false;
     [System.NonSerialized]
     public int lastResultWin = -1;
-	public AudioSource[] backgroundStage;
-	public AudioSource[] bossStage;
+    public AudioSource[] backgroundStage;
+    public AudioSource[] bossStage;
     public AudioClip btnSfx;
     public prefabBulletGroup getGroupPrefab(GameObject pObject)
     {
@@ -336,13 +352,13 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     {
         if (PlayerPrefs.GetInt("firstGame", 0) == 5)
         {
-           var pSke =gameObject.AddComponent<SkeletonMecanim>();
-           var pSke1 =gameObject.AddComponent<SkeletonRendererCustomMaterials>();
-           pSke1.setPropertyFloat("asd",0);
-           var pSke2 =gameObject.AddComponent<SkeletonUtilityBone>();
-           var pSke3 =gameObject.AddComponent<SkeletonUtility>();
-           var pSke4=gameObject.AddComponent<BoneFollower>();
-           var pSke5=gameObject.AddComponent<SkeletonRenderSeparator>();
+            var pSke = gameObject.AddComponent<SkeletonMecanim>();
+            var pSke1 = gameObject.AddComponent<SkeletonRendererCustomMaterials>();
+            pSke1.setPropertyFloat("asd", 0);
+            var pSke2 = gameObject.AddComponent<SkeletonUtilityBone>();
+            var pSke3 = gameObject.AddComponent<SkeletonUtility>();
+            var pSke4 = gameObject.AddComponent<BoneFollower>();
+            var pSke5 = gameObject.AddComponent<SkeletonRenderSeparator>();
         }
         LoadGame();
         LoadAllLevel();
@@ -367,6 +383,10 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         if (!InAppPurchasing.IsInitialized())
         {
             InAppPurchasing.InitializePurchasing();
+        }
+        for(int i = 0; i < GameManager.Instance.Database.timers.Count; ++i)
+        {
+            addTimer(GameManager.Instance.Database.timers[i]);
         }
     }
     bool first = true;
@@ -400,8 +420,8 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     protected bool saveGameAgain = false;
 
     protected float delaySave = 0;
-    
-  
+
+
     [Button("Save Game")]
     [HideInEditorMode]
     public void SaveGame()
@@ -426,33 +446,33 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             {
                 //using (var memoryStream = new MemoryStream())
                 //{
-                    // Serialize to memory instead of to file
-                    var formatter = new BinaryFormatter();
-                    SurrogateSelector ss = new SurrogateSelector();
-                    PlaneInfoSerialize planeinfo = new PlaneInfoSerialize();
-                    ss.AddSurrogate(typeof(PlaneInfo),
-                                    new StreamingContext(StreamingContextStates.All),
-                                    planeinfo);
-                    BaseItemSerialize baseInfo = new BaseItemSerialize();
-                    ss.AddSurrogate(typeof(BaseItemGame),
-                                    new StreamingContext(StreamingContextStates.All),
-                                    baseInfo);
-                    ItemGameSerialize iteomGameInfo = new ItemGameSerialize();
-                    ss.AddSurrogate(typeof(ItemGame),
-                                    new StreamingContext(StreamingContextStates.All),
-                                    iteomGameInfo);
-                    SkillInfoSerialize skill = new SkillInfoSerialize();
-                    ss.AddSurrogate(typeof(SkillInfo),
-                                    new StreamingContext(StreamingContextStates.All),
-                                    skill);
-                    PackageInfoSerialize pack = new PackageInfoSerialize();
-                    ss.AddSurrogate(typeof(ItemPackage),
-                                    new StreamingContext(StreamingContextStates.All),
-                                    pack);
-     
-                    // 2. Have the formatter use our surrogate selector
-                    formatter.SurrogateSelector = ss;
-                    formatter.Serialize(fileSaveGame, _databaseInstanced);
+                // Serialize to memory instead of to file
+                var formatter = new BinaryFormatter();
+                SurrogateSelector ss = new SurrogateSelector();
+                PlaneInfoSerialize planeinfo = new PlaneInfoSerialize();
+                ss.AddSurrogate(typeof(PlaneInfo),
+                                new StreamingContext(StreamingContextStates.All),
+                                planeinfo);
+                BaseItemSerialize baseInfo = new BaseItemSerialize();
+                ss.AddSurrogate(typeof(BaseItemGame),
+                                new StreamingContext(StreamingContextStates.All),
+                                baseInfo);
+                ItemGameSerialize iteomGameInfo = new ItemGameSerialize();
+                ss.AddSurrogate(typeof(ItemGame),
+                                new StreamingContext(StreamingContextStates.All),
+                                iteomGameInfo);
+                SkillInfoSerialize skill = new SkillInfoSerialize();
+                ss.AddSurrogate(typeof(SkillInfo),
+                                new StreamingContext(StreamingContextStates.All),
+                                skill);
+                PackageInfoSerialize pack = new PackageInfoSerialize();
+                ss.AddSurrogate(typeof(ItemPackage),
+                                new StreamingContext(StreamingContextStates.All),
+                                pack);
+
+                // 2. Have the formatter use our surrogate selector
+                formatter.SurrogateSelector = ss;
+                formatter.Serialize(fileSaveGame, _databaseInstanced);
             }
         }
         catch (System.Exception e)
@@ -464,7 +484,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             if (fileSaveGame != null)
             {
                 fileSaveGame.Flush();
-                fileSaveGame.Close();            
+                fileSaveGame.Close();
                 fileSaveGame = null;
             }
         }
@@ -545,8 +565,8 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         }
         else
         {
-	        _databaseInstanced = _databaseDefault.CloneData();
-	        _databaseInstanced.ExtraInfo();
+            _databaseInstanced = _databaseDefault.CloneData();
+            _databaseInstanced.ExtraInfo();
             SaveGame();
         }
 
@@ -698,9 +718,10 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     public void LoadLevel(int pIndex)
     {
         inGame = true;
-       
+
         //  Database.selectedMainPlane = 6;
-        if (!GameManager.Instance.isFree) {
+        if (!GameManager.Instance.isFree)
+        {
             var pEnergy = GameManager.Instance.Database.getComonItem("Energy");
             if (pEnergy.quantity <= 0)
             {
@@ -727,7 +748,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         //    pItem.Quantity--;
         //}
         SaveGame();
- 
+
         TopLayer.Instance.block.gameObject.SetActive(true);
         StartCoroutine(delayAction(0.75f, delegate
         {
@@ -745,7 +766,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     private void Update()
     {
         if (first) return;
-        if(delaySave> 0)
+        if (delaySave > 0)
         {
             delaySave -= Time.deltaTime;
             if (delaySave <= 0)
@@ -759,17 +780,32 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         for (int i = timer.Count - 1; i >= 0; --i)
         {
 
-            if (timer[i].tartget == null) { timer.RemoveAt(i); continue; }
+            if (timer[i].length <= 0) { timer.RemoveAt(i); continue; }
             var pSec = (System.DateTime.Now - timer[i].lastimeWheelFree).TotalSeconds;
 
-            var pItem = (BaseItemGame)timer[i].tartget;
-            foreach (var pLabel in timer[i].LabelTimer)
+            for (int g = timer[i].LabelTimer.Count - 1; g>= 0; g-- )
             {
-                pLabel.text = System.TimeSpan.FromSeconds(pItem.limitModule.timeToRestore - pSec).ToString(@"hh\:mm\:ss");
+                var pLabel = timer[i].LabelTimer[g];
+                if (pLabel.IsDestroyed()) { timer[i].LabelTimer.RemoveAt(g); continue; }
+                pLabel.text = System.TimeSpan.FromSeconds(timer[i].length - pSec).ToString(@"hh\:mm\:ss");
             }
-            if (pSec >= pItem.limitModule.timeToRestore)
+            if (pSec >= timer[i].length)
             {
+                var pOldTimer = timer[i];
+                EzEventManager.TriggerEvent(new EventTimer()
+                {
+                    key = timer[i].key,
+                    state = TimerState.Complete
+                });
                 GameManager.Instance.Database.reupdateTimerCount();
+                if (timer.Contains(pOldTimer))
+                {
+                    EzEventManager.TriggerEvent(new EventTimer()
+                    {
+                        key = pOldTimer.key,
+                        state = TimerState.Start
+                    });
+                }
             }
         }
         if (GameManager.Instance.Database != null)
@@ -805,14 +841,28 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
 
 
 
-    public bool addTimer(TimeCountDown pTime)
+    public TimeCountDown addTimer(TimeCountDown pTime)
     {
+        var pTimeCounting = GameManager.Instance.Database.timers.Find(x => x.key == pTime.key);
+        if (pTimeCounting == null)
+        {
+    
+            GameManager.Instance.Database.timers.Add(pTime);
+            EzEventManager.TriggerEvent(new EventTimer()
+            {
+                key = pTime.key,
+                state = TimerState.Start
+            });
+        }
+        else
+        {
+            pTime = pTimeCounting;
+        }
         if (!timer.Contains(pTime))
         {
             timer.Add(pTime);
-            return true;
         }
-        return false;
+        return pTime;
     }
     public void removeTimer(TimeCountDown pTime)
     {
@@ -863,10 +913,10 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         {
             ProductMetadata data = InAppPurchasing.GetProductLocalizedData(product.Id.ToLower());
             {
-                
+
                 if (data != null)
                 {
-                  
+
                     product.Price = data.localizedPriceString;
                     product.isLoadLocalize = true;
                 }
@@ -884,8 +934,8 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         GameServices.UserLoginFailed += OnUserLoginFailed;
         Advertising.RewardedAdCompleted += onRewardedAdComplete;
         Advertising.RewardedAdSkipped += onRewardedAdSkiped;
-     //   Notifications.PushTokenReceived += TokenRecieved;
-        EzEventManager.AddListener(this);
+        //   Notifications.PushTokenReceived += TokenRecieved;
+        EzEventManager.AddListener<GameDatabaseInventoryEvent>(this);
     }
 
     public void TokenRecieved(string pToken)
@@ -921,11 +971,11 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         GameServices.UserLoginFailed -= OnUserLoginFailed;
         InAppPurchasing.InitializeSucceeded -= initIAPSuccess;
         InAppPurchasing.InitializeFailed -= initFailed;
-      //  Notifications.PushTokenReceived-=TokenRecieved;
-        EzEventManager.RemoveListener(this);
+        //  Notifications.PushTokenReceived-=TokenRecieved;
+        EzEventManager.RemoveListener<GameDatabaseInventoryEvent>(this);
     }
-    
-    
+
+
     void onRewardedAdComplete(RewardedAdNetwork pNetWork, AdPlacement placement)
     {
         if (rewardAds.ContainsKey(placement.Name))
@@ -955,7 +1005,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     // Successful purchase handler
     void PurchaseCompletedHandler(IAPProduct product)
     {
-        PlayerPrefs.SetInt("Purchase",1);
+        PlayerPrefs.SetInt("Purchase", 1);
         // Compare product name to the generated name constants to determine which product was bought
         switch (product.Name)
         {
@@ -1056,6 +1106,10 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     }
     public void showRewardAds(string pID, System.Action<bool> onResult)
     {
+#if UNITY_EDITOR
+        onResult(true);
+        return;
+#endif
         StartCoroutine(checkInternetConnection(delegate (bool pResult)
         {
             if (pResult)
@@ -1089,7 +1143,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                 onResult?.Invoke(false);
             }
         }));
-  
+
 
     }
 
@@ -1102,7 +1156,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         {
             Advertising.ShowInterstitialAd();
         }
- 
+
     }
 
     public void OnEzEvent(GameDatabaseInventoryEvent eventType)
@@ -1115,7 +1169,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                 bool pCounting = GameManager.Instance.Database.checkTimerCountdownResotreModule(eventType.item.item);
                 if (!pCounting)
                 {
-                    GameManager.Instance.Database.timers.Add(new TimeCountDown() { key = "MainInventory/" + eventType.item.item.ItemID, lastimeWheelFree = System.DateTime.Now });
+                    addTimer(new TimeCountDown() { key = "MainInventory/" + eventType.item.item.ItemID, lastimeWheelFree = System.DateTime.Now, length = eventType.item.item.limitModule.timeToRestore });
                     dirty = true;
                 }
             }
@@ -1126,11 +1180,12 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                     var pTime = GameManager.Instance.Database.timers[i];
                     if (pTime.key == "MainInventory/" + eventType.item.item.ItemID)
                     {
-                        foreach (var pLabel in pTime.LabelTimer)
+                        EzEventManager.TriggerEvent<EventTimer>(new EventTimer()
                         {
-                            pLabel.gameObject.SetActive(false);
-                        }
-                        GameManager.Instance.Database.timers.Remove(pTime);                    
+                            key = "MainInventory/" + eventType.item.item.ItemID,
+                            state = TimerState.Complete
+                        });
+                        GameManager.Instance.Database.timers.Remove(pTime);
                         GameManager.Instance.removeTimer(pTime);
                         dirty = true;
                     }
@@ -1142,4 +1197,6 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             }
         }
     }
+
+ 
 }

@@ -68,13 +68,14 @@ namespace EazyEngine.Space
     [System.Serializable]
     public class LimitedModule
     {
-        public int limitInInventory = 20;
+        public int limitInInventory = -1;
         public bool isRestoreAble;
         [ShowIf("isRestoreAble")]
         public float timeToRestore = 1200;
         [ShowIf("isRestoreAble")]
         public int quantityRestore = 1;
     }
+
     [System.Serializable]
     public class BaseItemGame : EzScriptTableObject
     {

@@ -157,7 +157,7 @@ namespace DigitalRuby.ThunderAndLightning
             }
         }
 
-        private void CallLightning()
+        public void CallLightning()
         {
             CallLightning(null, null);
         }

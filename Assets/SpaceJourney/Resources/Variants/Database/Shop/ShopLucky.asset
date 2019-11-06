@@ -26,6 +26,11 @@ MonoBehaviour:
   - idCategoryInShop: Common
     isVisible: 1
     itemSell: {fileID: 11400000, guid: 90db49db7f9a36b4a8eb4d608b6407eb, type: 2}
+    moduleLimitBuy:
+      limitInInventory: -1
+      isRestoreAble: 1
+      timeToRestore: 28800
+      quantityRestore: 1
     isLimit: 0
     limitUpgrade: 1
     priceDefines:
@@ -50,6 +55,11 @@ MonoBehaviour:
   - idCategoryInShop: Common
     isVisible: 1
     itemSell: {fileID: 11400000, guid: 776c3e879ce9a03489c40d7ecff1062f, type: 2}
+    moduleLimitBuy:
+      limitInInventory: -1
+      isRestoreAble: 1
+      timeToRestore: 28800
+      quantityRestore: 1
     isLimit: 0
     limitUpgrade: 1
     priceDefines:
@@ -68,6 +78,11 @@ MonoBehaviour:
   - idCategoryInShop: Common
     isVisible: 1
     itemSell: {fileID: 11400000, guid: e1d94a75fd918564f82db947baeed26d, type: 2}
+    moduleLimitBuy:
+      limitInInventory: -1
+      isRestoreAble: 0
+      timeToRestore: 1200
+      quantityRestore: 1
     isLimit: 0
     limitUpgrade: 1
     priceDefines:
@@ -77,6 +92,29 @@ MonoBehaviour:
         exchangeItems:
           item: {fileID: 11400000, guid: aee618de5d7d1c44cb04d45f15262be7, type: 2}
           quantity: 1000
+        addUnitLevel: 0
+        requireOnly: 0
+    formatString:
+      normalString: '{0}'
+      isI2String: 0
+      value: 
+  - idCategoryInShop: Common
+    isVisible: 1
+    itemSell: {fileID: 11400000, guid: e227104e42f409940a805c75e363e4dc, type: 2}
+    moduleLimitBuy:
+      limitInInventory: 1
+      isRestoreAble: 1
+      timeToRestore: 1200
+      quantityRestore: 1
+    isLimit: 0
+    limitUpgrade: 1
+    priceDefines:
+    - levelRequire: 0
+      unit:
+      - groupID: 0
+        exchangeItems:
+          item: {fileID: 11400000, guid: 7fe69affac39dd849b4cbac509386ec0, type: 2}
+          quantity: 0
         addUnitLevel: 0
         requireOnly: 0
     formatString:
