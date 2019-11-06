@@ -83,12 +83,13 @@ namespace EazyEngine.Space
         {
             if (SceneManager.Instance.isLocal)
             {
-                Instantiate(Resources.Load<GameObject>("Variants/Database/GameManager"));
-                StartCoroutine(delayAction(0.1f,delegate {
+                loadScene("SpaceJourney/Scene/variant/Main");
+             
+                StartCoroutine(delayAction(0.3f, delegate {
+                    Instantiate(Resources.Load<GameObject>("Variants/Database/GameManager"));
+                    Instantiate(Resources.Load<GameObject>("Variants/prefabs/ui/HUD"), transform);
 
-                    Instantiate(Resources.Load<GameObject>("Variants/prefabs/ui/HUD"),transform);
-                   loadScene("SpaceJourney/Scene/variant/Main");
-               }));
+                }));
             }
             else
             {

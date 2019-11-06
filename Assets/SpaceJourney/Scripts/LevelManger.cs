@@ -287,6 +287,14 @@ namespace EazyEngine.Space
             var psate = LoadAssets.loadAsset<GameObject>(stringState, "Variants/States/");
             Instantiate(psate);
             _infoLevel = GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard).infos.CloneData();
+            if (_infoLevel.Missions.Count == 0)
+            {
+                var pMissionDefaults = GameDatabase.Instance.getMissionForLevel(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard);
+                for (int i = 0; i < pMissionDefaults.Length; ++i)
+                {
+                    _infoLevel.Missions.Add(new MissionItemInstanced() { mission = pMissionDefaults[i].mission, process = 0, rewards = pMissionDefaults[i].rewards });
+                }
+            }
             List<ItemGame> pItem = new List<ItemGame>();
             List<ItemGameInstanced> pItems = new List<ItemGameInstanced>();
 
