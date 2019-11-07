@@ -489,6 +489,61 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             }
         }
     }
+    public void SaveGameCache()
+    {
+        FileStream fileSave = null;
+        try
+        {  
+            string destination = Application.persistentDataPath + "/GameInfoCache.dat";
+            if (File.Exists(destination)) fileSave = File.OpenWrite(destination);
+            else fileSave = File.Create(destination);
+            if (fileSave != null)
+            {
+                //using (var memoryStream = new MemoryStream())
+                //{
+                // Serialize to memory instead of to file
+                var formatter = new BinaryFormatter();
+                SurrogateSelector ss = new SurrogateSelector();
+                PlaneInfoSerialize planeinfo = new PlaneInfoSerialize();
+                ss.AddSurrogate(typeof(PlaneInfo),
+                                new StreamingContext(StreamingContextStates.All),
+                                planeinfo);
+                BaseItemSerialize baseInfo = new BaseItemSerialize();
+                ss.AddSurrogate(typeof(BaseItemGame),
+                                new StreamingContext(StreamingContextStates.All),
+                                baseInfo);
+                ItemGameSerialize iteomGameInfo = new ItemGameSerialize();
+                ss.AddSurrogate(typeof(ItemGame),
+                                new StreamingContext(StreamingContextStates.All),
+                                iteomGameInfo);
+                SkillInfoSerialize skill = new SkillInfoSerialize();
+                ss.AddSurrogate(typeof(SkillInfo),
+                                new StreamingContext(StreamingContextStates.All),
+                                skill);
+                PackageInfoSerialize pack = new PackageInfoSerialize();
+                ss.AddSurrogate(typeof(ItemPackage),
+                                new StreamingContext(StreamingContextStates.All),
+                                pack);
+
+                // 2. Have the formatter use our surrogate selector
+                formatter.SurrogateSelector = ss;
+                formatter.Serialize(fileSave, _databaseInstanced);
+            }
+        }
+        catch (System.Exception e)
+        {
+            Debug.Log(e);
+        }
+        finally
+        {
+            if (fileSave != null)
+            {
+                fileSave.Flush();
+                fileSave.Close();
+                fileSave = null;
+            }
+        }
+    }
     private void OnDestroy()
     {
         if (fileSaveGame != null)
@@ -510,6 +565,74 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         // UnityEditor.Undo.RecordObject(Database, "loadgame");
         FileStream file = null;
         string destination = Application.persistentDataPath + "/GameInfo.dat";
+        if (File.Exists(destination))
+        {
+            file = File.OpenRead(destination);
+            if (file != null)
+            {
+
+                var formatter = new BinaryFormatter();
+                SurrogateSelector ss = new SurrogateSelector();
+                PlaneInfoSerialize planeinfo = new PlaneInfoSerialize();
+                ss.AddSurrogate(typeof(PlaneInfo),
+                                new StreamingContext(StreamingContextStates.All),
+                                planeinfo);
+                BaseItemSerialize baseInfo = new BaseItemSerialize();
+                ss.AddSurrogate(typeof(BaseItemGame),
+                                new StreamingContext(StreamingContextStates.All),
+                                baseInfo);
+                ItemGameSerialize iteomGameInfo = new ItemGameSerialize();
+                ss.AddSurrogate(typeof(ItemGame),
+                                new StreamingContext(StreamingContextStates.All),
+                                iteomGameInfo);
+                SkillInfoSerialize skill = new SkillInfoSerialize();
+                ss.AddSurrogate(typeof(SkillInfo),
+                                new StreamingContext(StreamingContextStates.All),
+                                skill);
+                PackageInfoSerialize pack = new PackageInfoSerialize();
+                ss.AddSurrogate(typeof(ItemPackage),
+                                new StreamingContext(StreamingContextStates.All),
+                                pack);
+                // 2. Have the formatter use our surrogate selector
+                formatter.SurrogateSelector = ss;
+                try
+                {
+                    file.Seek(0, SeekOrigin.Begin);
+                    var pData = formatter.Deserialize(file);
+                    _databaseInstanced = (GameDataBaseInstance)pData;
+                    _databaseInstanced.ExtraInfo();
+                }
+                catch (SerializationException e)
+                {
+                    LoadGameCache();
+                    SaveGame();
+                    throw;
+                }
+                finally
+                {
+                    file.Close();
+                }
+#if UNITY_EDITOR
+                if (!Application.isPlaying)
+                {
+                    UnityEditor.EditorUtility.SetDirty(this);
+                }
+#endif
+            }
+        }
+        else
+        {
+            _databaseInstanced = _databaseDefault.CloneData();
+            _databaseInstanced.ExtraInfo();
+            SaveGame();
+        }
+
+    }
+    public void LoadGameCache()
+    {
+        // UnityEditor.Undo.RecordObject(Database, "loadgame");
+        FileStream file = null;
+        string destination = Application.persistentDataPath + "/GameInfoCache.dat";
         if (File.Exists(destination))
         {
             file = File.OpenRead(destination);
@@ -968,6 +1091,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     // Unsubscribe when the game object is disabled
     void OnDisable()
     {
+        SaveGameCache();
         SaveGame();
         InAppPurchasing.PurchaseCompleted -= PurchaseCompletedHandler;
         InAppPurchasing.PurchaseFailed -= PurchaseFailedHandler;
