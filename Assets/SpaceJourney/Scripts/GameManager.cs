@@ -602,11 +602,19 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                     _databaseInstanced = (GameDataBaseInstance)pData;
                     _databaseInstanced.ExtraInfo();
                 }
-                catch (SerializationException e)
+                catch
                 {
+                    file.Flush();
+                    file.Close();
+                  
                     LoadGameCache();
+               
+                    string destinationClone = Application.persistentDataPath + "/GameInfo.dat";
+                    if (File.Exists(destinationClone))
+                    {
+                        File.Delete(destinationClone);
+                    }
                     SaveGame();
-                    throw;
                 }
                 finally
                 {
@@ -670,10 +678,8 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                     _databaseInstanced = (GameDataBaseInstance)pData;
                     _databaseInstanced.ExtraInfo();
                 }
-                catch (SerializationException e)
+                catch
                 {
-                    Debug.Log(e.Message);
-                    throw;
                 }
                 finally
                 {
