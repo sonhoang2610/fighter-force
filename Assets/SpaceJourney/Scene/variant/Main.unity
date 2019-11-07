@@ -658,7 +658,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3097
+  startingRenderQueue: 3098
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 3
@@ -2714,7 +2714,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3105
+  startingRenderQueue: 3106
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -3312,6 +3312,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &176874547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bd97513069766847851e1041f64e378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTarget: {fileID: 1689461997}
 --- !u!1 &187206022
 GameObject:
   m_ObjectHideFlags: 0
@@ -3920,6 +3933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76cd7e42f57a68446a7231297c27f903, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  replaceNew: 1
   labelTimer: {fileID: 382603803}
   boxTimer: {fileID: 1571249409}
   dot: {fileID: 1843666752}
@@ -5681,7 +5695,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3061
+  startingRenderQueue: 3063
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 3
@@ -6793,7 +6807,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3044
+  startingRenderQueue: 3046
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -15250,6 +15264,18 @@ MonoBehaviour:
   - {fileID: 1168148517}
   - {fileID: 1832227200}
   group: {fileID: 1339328200}
+--- !u!114 &714253958 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 677088738, guid: 31d9a9eb0b0581c4289dafe11f59b213,
+    type: 3}
+  m_PrefabInstance: {fileID: 714253952}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &731564246
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16829,7 +16855,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3036
+  startingRenderQueue: 3040
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -18065,7 +18091,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3023
+  startingRenderQueue: 3025
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -18989,6 +19015,7 @@ GameObject:
   m_Component:
   - component: {fileID: 878916432}
   - component: {fileID: 878916433}
+  - component: {fileID: 878916434}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -19004,7 +19031,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 878916431}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 342, y: 297, z: 0}
+  m_LocalPosition: {x: 342, y: 309, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 200122172}
@@ -19053,7 +19080,7 @@ MonoBehaviour:
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 7b1babd7348f0104eab1315642572a9b, type: 3}
   mFont: {fileID: 0}
-  mText: "Qu\xE0 t\u1EB7ng h\xE0ng ng\xE0y"
+  mText: Online Gifts
   mFontSize: 26
   mFontStyle: 0
   mAlignment: 0
@@ -19081,6 +19108,44 @@ MonoBehaviour:
   mMaxLineHeight: 0
   mLineWidth: 0
   mMultiline: 1
+--- !u!114 &878916434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878916431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: ui/gift_online
+  mTermSecondary: 
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 1742740515}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_NGUI_Label
 --- !u!1 &891785106
 GameObject:
   m_ObjectHideFlags: 0
@@ -20169,7 +20234,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3040
+  startingRenderQueue: 3042
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 3
@@ -21007,6 +21072,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784eeb15959ae5f46a7fd014718cf571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &970509730 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1697967385228941911, guid: c02312868a7176f4dbcff15fc621dc27,
+    type: 3}
+  m_PrefabInstance: {fileID: 970509727}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &974750896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bd97513069766847851e1041f64e378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTarget: {fileID: 714253958}
 --- !u!1 &984309566
 GameObject:
   m_ObjectHideFlags: 0
@@ -21269,6 +21359,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 998108757}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &998108759 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1697967385228941911, guid: c02312868a7176f4dbcff15fc621dc27,
+    type: 3}
+  m_PrefabInstance: {fileID: 998108757}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &998108760 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8190066888522344655, guid: c02312868a7176f4dbcff15fc621dc27,
@@ -22080,6 +22182,19 @@ Transform:
   m_Father: {fileID: 1525426764}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1051660238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bd97513069766847851e1041f64e378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTarget: {fileID: 2294198238716344776}
 --- !u!1 &1052476279
 GameObject:
   m_ObjectHideFlags: 0
@@ -23046,7 +23161,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3106
+  startingRenderQueue: 3107
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 3
@@ -25559,6 +25674,19 @@ MonoBehaviour:
   - _nameProperty: spine
     effectAmount: 1
   includeChild: 0
+--- !u!114 &1193102607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bd97513069766847851e1041f64e378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTarget: {fileID: 998108759}
 --- !u!1 &1196829477
 GameObject:
   m_ObjectHideFlags: 0
@@ -25634,7 +25762,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3044
+  startingRenderQueue: 3046
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -28478,7 +28606,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3097
+  startingRenderQueue: 3098
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -30293,6 +30421,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d53fc714a9ced6b42a912db1a206a33c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1430010144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bd97513069766847851e1041f64e378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTarget: {fileID: 1866929206}
 --- !u!114 &1439342684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32762,7 +32903,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3013
+  startingRenderQueue: 3015
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -33199,7 +33340,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3061
+  startingRenderQueue: 3063
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -34071,7 +34212,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3016
+  startingRenderQueue: 3018
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -36390,7 +36531,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3040
+  startingRenderQueue: 3042
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 3
@@ -36673,7 +36814,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3099
+  startingRenderQueue: 3100
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 3
@@ -38162,6 +38303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1689461996}
   - component: {fileID: 1689461997}
+  - component: {fileID: 1689461998}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -38226,7 +38368,7 @@ MonoBehaviour:
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 7b1babd7348f0104eab1315642572a9b, type: 3}
   mFont: {fileID: 0}
-  mText: "H\u1ED9p qu\xE0 + v\xF2ng quay may m\u1EAFn"
+  mText: Gift + Wheel lucky
   mFontSize: 26
   mFontStyle: 0
   mAlignment: 0
@@ -38254,6 +38396,44 @@ MonoBehaviour:
   mMaxLineHeight: 0
   mLineWidth: 0
   mMultiline: 1
+--- !u!114 &1689461998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689461995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: ui/giftandwheel
+  mTermSecondary: 
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 176874547}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_NGUI_Label
 --- !u!1 &1693636834
 GameObject:
   m_ObjectHideFlags: 0
@@ -39525,6 +39705,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mTarget: {fileID: 1151130704}
+--- !u!114 &1742740515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bd97513069766847851e1041f64e378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTarget: {fileID: 878916433}
 --- !u!1 &1747842234
 GameObject:
   m_ObjectHideFlags: 0
@@ -39758,6 +39951,19 @@ MonoBehaviour:
   mFixedAspect: 0
   mPixelSize: 1
   nextSprite: {fileID: 0}
+--- !u!114 &1763163755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bd97513069766847851e1041f64e378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTarget: {fileID: 970509730}
 --- !u!1 &1766506935
 GameObject:
   m_ObjectHideFlags: 0
@@ -40751,7 +40957,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3055
+  startingRenderQueue: 3057
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -43762,6 +43968,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784eeb15959ae5f46a7fd014718cf571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1866929206 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1697967385228941911, guid: c02312868a7176f4dbcff15fc621dc27,
+    type: 3}
+  m_PrefabInstance: {fileID: 1866929203}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1868365996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45154,7 +45372,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3061
+  startingRenderQueue: 3063
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -49662,6 +49880,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 784eeb15959ae5f46a7fd014718cf571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2294198238716344776 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1697967385228941911, guid: c02312868a7176f4dbcff15fc621dc27,
+    type: 3}
+  m_PrefabInstance: {fileID: 2294198238716344774}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &2440317826064187152 stripped

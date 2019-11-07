@@ -11,6 +11,7 @@ public class PickAbleItem : SerializedMonoBehaviour
 {
     public string idItem;
     public int quantityItem;
+    public Sprite icon;
     public GameObject effectOnPick;
     public FlowCanvas.FlowScript mainBehaviorEffect;
     public LayerMask _layerCanPick;

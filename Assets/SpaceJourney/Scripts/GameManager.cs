@@ -542,6 +542,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                 formatter.SurrogateSelector = ss;
                 try
                 {
+                    file.Seek(0, SeekOrigin.Begin);
                     var pData = formatter.Deserialize(file);
                     _databaseInstanced = (GameDataBaseInstance)pData;
                     _databaseInstanced.ExtraInfo();
@@ -742,11 +743,14 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         var pInfo = container.getLevelInfo(pIndex, 0).infos;
         pInfo.InputConfig = ConfigLevel;
         isPlaying = true;
-        //for (int i = 0; i < ConfigLevel.itemUsed.Count; ++i)
-        //{
-        //    var pItem = GameManager.Instance.Database.getComonItem(ConfigLevel.itemUsed[i].itemID);
-        //    pItem.Quantity--;
-        //}
+        for (int i = 0; i < ConfigLevel.itemUsed.Count; ++i)
+        {
+            var pItem = GameManager.Instance.Database.getComonItem(ConfigLevel.itemUsed[i].itemID);
+            if(!((ItemGame)pItem.item).isActive)
+            {
+                pItem.Quantity--;
+            }           
+        }
         SaveGame();
 
         TopLayer.Instance.block.gameObject.SetActive(true);

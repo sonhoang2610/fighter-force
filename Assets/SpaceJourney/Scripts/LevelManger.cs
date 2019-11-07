@@ -286,15 +286,17 @@ namespace EazyEngine.Space
             string stringState = GameManager.Instance.isFree ? "Statesfree" : "States" + GameManager.Instance.ChoosedLevel + "_" + GameManager.Instance.ChoosedHard ;
             var psate = LoadAssets.loadAsset<GameObject>(stringState, "Variants/States/");
             Instantiate(psate);
-            _infoLevel = GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard).infos.CloneData();
-            if (_infoLevel.Missions.Count == 0)
+            var pInfoOriginal = GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard).infos;
+        
+            if (pInfoOriginal.Missions.Count == 0)
             {
                 var pMissionDefaults = GameDatabase.Instance.getMissionForLevel(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard);
                 for (int i = 0; i < pMissionDefaults.Length; ++i)
                 {
-                    _infoLevel.Missions.Add(new MissionItemInstanced() { mission = pMissionDefaults[i].mission, process = 0, rewards = pMissionDefaults[i].rewards });
+                    pInfoOriginal.Missions.Add(new MissionItemInstanced() { mission = pMissionDefaults[i].mission, process = 0, rewards = pMissionDefaults[i].rewards });
                 }
             }
+            _infoLevel = pInfoOriginal.CloneData();
             List<ItemGame> pItem = new List<ItemGame>();
             List<ItemGameInstanced> pItems = new List<ItemGameInstanced>();
 

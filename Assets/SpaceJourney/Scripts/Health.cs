@@ -329,13 +329,13 @@ namespace EazyEngine.Space
             }
 	        if(damage > 0 ){
 	        	int pDownDamaged = 0;
-	        	for(int i  = 0 ; i < pDownDamaged ; ++i){
+	        	for(int i  = 0 ; i < indexDamaged; ++i){
 	        		pDownDamaged += 15*i;
 	        	}
 	        	if(pDownDamaged > 90){
 	        		pDownDamaged = 90;
 	        	}
-	        	damage -= (int)((float)damage* (float)pDownDamaged/10.0f);
+	        	damage -= (int)((float)damage* (float)pDownDamaged/100.0f);
 	        	indexDamaged++;
 	        }
             CurrentHealth -= damage;

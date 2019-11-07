@@ -63,6 +63,14 @@ namespace EazyEngine.Space.UI
                 GameManager.Instance.Database.lastPlayStage = new Pos(GameManager.Instance.Database.lastPlayStage.x + 1, GameManager.Instance.ChoosedHard);
             }
           //  Home();
+             for(int i = GameManager.Instance.ConfigLevel.itemUsed.Count-1; i >=0; --i)
+            {
+                var pItem = GameManager.Instance.ConfigLevel.itemUsed[i];
+               if (!pItem.isActive)
+                {
+                    GameManager.Instance.ConfigLevel.itemUsed.RemoveAt(i);
+                }
+            }
             GameManager.Instance.ChoosedHard = 0;
             GameManager.Instance.ChoosedLevel++;
             GameManager.Instance.LoadLevel(GameManager.Instance.ChoosedLevel);

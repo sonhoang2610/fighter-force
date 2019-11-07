@@ -4,6 +4,7 @@ using NodeCanvas.Framework;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -87,6 +88,7 @@ namespace EazyEngine.Space
         [ListDrawerSettings(ShowIndexLabels = true, ListElementLabelName = "nameLabel")]
         public WeaponGroupIntance[] DatabaseWeapon;
 
+        protected float blockTimeDropBooster = 0;
         protected bool isShooting = false;
         protected List<Weapon> countShooting = new List<Weapon>();
         [EazyEngine.Tools.ReadOnly]
@@ -98,6 +100,7 @@ namespace EazyEngine.Space
         public GameObject[] damageOnTouchExtension;
 
         public List<CharacterHandleWeapon> handleChilds = new List<CharacterHandleWeapon>();
+        public GameObject modelBooster;
 
         Character _char;
         protected GameObject _targetDirection;
@@ -244,26 +247,60 @@ namespace EazyEngine.Space
 
         public void onDamaged(int pDamaged)
         {
-            if (pDamaged > 0)
+            if (pDamaged > 0 && blockTimeDropBooster <= 0)
             {
+                bool dirty = false;
                 if (startLevelBooster == 6)
                 {
                     CacheLevelBooster--;
-                    if (CacheLevelBooster <= 0)
+                    if (CacheLevelBooster < 0)
                     {
                         CacheLevelBooster = 0;
+                    }
+                    else
+                    {
+                        dirty = true;
                     }
                 }
                 else
                 {
                     int pLEvel = startLevelBooster - 1;
-                    if (pLEvel <= 0)
+                    if (pLEvel < 0)
                     {
                         pLEvel = 0;
                     }
+                    else
+                    {
+                        dirty = true;
+                    }
                     booster("Booster" + pLEvel);
                 }
+                if (dirty)
+                {
+                    var pObjectItem = ItemEnviroment.Instance.getItem(modelBooster);
+                    pObjectItem.gameObject.SetActive(true);
+                    pObjectItem.GetComponent<CoinEffControl>().SetInfo(transform.position);
+                    pObjectItem.GetComponent<CoinEffControl>().isEnable = false;
+                    pObjectItem.GetComponent<Collider2D>().enabled = false;
+                    Vector2 pDirection = UnityEngine.Random.insideUnitCircle;
+                    if(pDirection.y < 0)
+                    {
+                        pDirection.y = -pDirection.y;
+                    }
+                    pObjectItem.GetComponent<Rigidbody2D>().AddForce(pDirection * 30, ForceMode2D.Force);
+                    StartCoroutine(delayAction(1, delegate
+                    {
+                        pObjectItem.GetComponent<CoinEffControl>().isEnable = true;
+                        pObjectItem.GetComponent<Collider2D>().enabled = true;
+                    }));
+                    pObjectItem.gameObject.SetActive(true);
+                }     
             }
+        }
+        IEnumerator delayAction(float pDelay, System.Action action)
+        {
+            yield return new WaitForSeconds(pDelay);
+            action();
         }
         public override void addChild(Character pChild)
         {
@@ -735,7 +772,7 @@ namespace EazyEngine.Space
         }
         public void booster(string pID)
         {
-
+            blockTimeDropBooster = 1;
             if (pID.StartsWith("Booster"))
             {
                 bool planSupering = false;
@@ -899,6 +936,10 @@ namespace EazyEngine.Space
         }
         private void LateUpdate()
         {
+            if(blockTimeDropBooster > 0)
+            {
+                blockTimeDropBooster -= Time.deltaTime;
+            }          
             if (isSupering)
             {
                 currentDurationSuper += Time.deltaTime;

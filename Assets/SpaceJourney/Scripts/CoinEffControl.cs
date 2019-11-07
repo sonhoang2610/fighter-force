@@ -18,6 +18,8 @@ namespace EazyEngine.Space
         public Vector3 bigSize = new Vector3(0.7f, 0.7f, 1f);
         public Vector3 normalSize = new Vector3(0.5f, 0.5f, 1f);
         public Vector3 smallSize = new Vector3(0.35f, 0.35f, 1f);
+        [System.NonSerialized]
+        public bool isEnable = true;
         // Use this for initialization
         void Awake()
         {
@@ -35,6 +37,7 @@ namespace EazyEngine.Space
         
         void Update()
         {
+            if (!isEnable) return;
             if (LevelManger.InstanceRaw != null && LevelManger.Instance.isPause == false)
             {
                 if (isTarget)
@@ -72,6 +75,8 @@ namespace EazyEngine.Space
 
         public void OnDisable()
         {
+           isEnable = true;
+           GetComponent<Collider2D>().enabled = true;
             isTarget = false;
         }
         public void SetInfo(Vector3 newPos)
