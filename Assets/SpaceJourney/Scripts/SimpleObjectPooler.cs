@@ -30,6 +30,10 @@ namespace EazyEngine.Tools
         /// the actual object pool
         protected List<GameObject> _pooledGameObjects;
 
+        public override bool isDontDestroyOnload()
+        {
+            return dontDestroyOnload;
+        }
         public override GameObject GetLastOriginal()
         {
             return GameObjectToPool;

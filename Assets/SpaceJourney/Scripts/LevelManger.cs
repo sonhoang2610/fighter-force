@@ -10,6 +10,7 @@ using System;
 using NodeCanvas.Framework;
 using EazyEngine.Timer;
 using Spine.Unity;
+using System.Linq;
 
 namespace EazyEngine.Space
 {
@@ -218,7 +219,14 @@ namespace EazyEngine.Space
             EzEventManager.RemoveListener<DamageTakenEvent>(this);
             EzEventManager.RemoveListener<PickEvent>(this);
             EzEventManager.RemoveListener<MessageGamePlayEvent>(this);
-            ObjectPooler.poolManager.Clear();
+         //   ObjectPooler.poolManager.Clear();
+            for(int i  = ObjectPooler.poolManager.Count -1; i >= 0 ; --i)
+            {
+                if (!ObjectPooler.poolManager.ElementAt(i).Value.dontDestroyOnload)
+                {
+                    ObjectPooler.poolManager.Remove(ObjectPooler.poolManager.ElementAt(i).Key);
+                }
+            }
         }
 
         public float CurrentRateCoin

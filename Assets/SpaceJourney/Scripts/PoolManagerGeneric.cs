@@ -14,7 +14,6 @@ public class PrefabInfo
     [TableColumnWidth(100)]
     [HideLabel]
     public PrefabInfoMain info;
-
     public PrefabInfo(GameObject pKey, PrefabInfoMain pInfo)
     {
         key = pKey;
@@ -31,6 +30,7 @@ public class PrefabInfoMain
     [HideInEditorMode]
     [VerticalGroup("group2")]
     public ObjectPooler pooler;
+    public bool dontDestroyOnload = false;
 }
 [System.Serializable]
 public class DictionnaryPrefabInfo 
@@ -98,6 +98,8 @@ public class PoolManagerGeneric<T> : Singleton<T> where T : Component
     [SerializeField]
     [HideLabel]
     public DictionnaryPrefabInfo _storage;
+
+    protected bool isInit = false;
     protected override void Awake()
     {
         base.Awake();
@@ -109,12 +111,14 @@ public class PoolManagerGeneric<T> : Singleton<T> where T : Component
             pObjectNew.transform.parent = transform;
             pObjectNew.transform.localPosition = Vector3.zero;
             var pooler = pObjectNew.AddComponent<SimpleObjectPooler>();
+            pooler.dontDestroyOnload = _storage[_storage.Keys.ElementAt(i)].dontDestroyOnload;
             pooler.onNewGameObjectCreated = (onNewCreateObject);
             pooler.GameObjectToPool = _storage.Keys.ElementAt(i);
             pooler.PoolSize = _storage[_storage.Keys.ElementAt(i)].countPreload;
             pooler.FillObjectPool();
             _storage[_storage.Keys.ElementAt(i)].pooler = pooler;
         }
+        isInit = true;
     }
     public virtual void onNewCreateObject(GameObject pObject,GameObject pOriginal)
     {
@@ -123,7 +127,7 @@ public class PoolManagerGeneric<T> : Singleton<T> where T : Component
   
     public GameObject getObjectFromPool(GameObject pObject)
     {
-        if(_storage.ContainsKey(pObject) && _storage[pObject].pooler == null)
+        if(_storage.ContainsKey(pObject) && (_storage[pObject].pooler == null && (isInit || _storage[pObject].countPreload == 0)))
         {
             _storage.Remove(pObject);
         }
@@ -141,7 +145,7 @@ public class PoolManagerGeneric<T> : Singleton<T> where T : Component
             _storage.Add(pObject, new PrefabInfoMain());
             _storage[pObject].pooler = pooler;
         }
-
+        if(_storage[pObject].pooler == null) { return null; }
         return _storage[pObject].pooler.GetPooledGameObject();
     }
 }

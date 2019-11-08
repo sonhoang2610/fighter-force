@@ -40,7 +40,10 @@ public class ParticleEnviroment : PoolManagerGeneric<ParticleEnviroment>
         pNewObject.SetActive(true);
         return pNewObject;
     }
-
+    protected override void Awake()
+    {
+        base.Awake();
+    }
 
     public void preloadEffect(int pCount,GameObject pObject, Vector3 pos, int orderLayer = 0, bool isLocal = false)
     {
@@ -48,6 +51,7 @@ public class ParticleEnviroment : PoolManagerGeneric<ParticleEnviroment>
         for(int i = 0; i < pCount; ++i)
         { 
             GameObject pNewObject = getObjectFromPool(pObject);
+            if (pNewObject == null) return;
             if (!isLocal)
             {
                 pNewObject.transform.position = pos;

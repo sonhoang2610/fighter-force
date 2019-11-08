@@ -15,7 +15,7 @@ public class InputManager : Singleton<InputManager> {
     {
         get
         {
-#if UNITY_ANDROID || UNITY_IPHONE
+#if ( UNITY_ANDROID || UNITY_IPHONE ) && !UNITY_EDITOR
             if (isTouch)
             {
                 return Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);

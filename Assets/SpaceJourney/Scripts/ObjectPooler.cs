@@ -12,6 +12,7 @@ namespace EazyEngine.Tools
     /// 
     public class PoolerContainer
     {
+        public bool dontDestroyOnload = false;
         public GameObject parrent = null;
         public List<GameObject> poolObjects = null;
     }
@@ -22,6 +23,10 @@ namespace EazyEngine.Tools
         /// if this is true, the pool will try not to create a new waiting pool if it finds one with the same name.
         // public bool MutualizeWaitingPools = false;
 
+        public virtual bool isDontDestroyOnload()
+        {
+            return false;
+        }
         /// <summary>
         /// On awake we fill our object pool
         /// </summary>
@@ -63,7 +68,12 @@ namespace EazyEngine.Tools
             }
             if (!isInitialized)
             {
+          
                 PoolerContainer container = new PoolerContainer() { parrent = new GameObject(DetermineObjectPoolName()), poolObjects = new List<GameObject>() };
+                if (isDontDestroyOnload())
+                {
+                    container.dontDestroyOnload = true;
+                }
                 poolManager.Add(pObject, container);
                 pContainer = container;
             }
