@@ -51,16 +51,19 @@ MonoBehaviour:
         isIgnore: 1
         countPreload: 3
         pooler: {fileID: 0}
+        dontDestroyOnload: 0
     - key: {fileID: 3591821763798330855, guid: aa6e0332b93b90040b86f25f459c4249, type: 3}
       info:
         isIgnore: 1
         countPreload: 3
         pooler: {fileID: 0}
+        dontDestroyOnload: 0
     - key: {fileID: 2290545686915555622, guid: 5a3977b479baf634283a87c577c9d99a, type: 3}
       info:
         isIgnore: 0
         countPreload: 2
         pooler: {fileID: 0}
+        dontDestroyOnload: 0
 --- !u!1 &6510135297581050053
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,11 +115,13 @@ MonoBehaviour:
         isIgnore: 0
         countPreload: 3
         pooler: {fileID: 0}
+        dontDestroyOnload: 0
     - key: {fileID: 6875481962810221246, guid: 985df31c0c382da4fa7602fef502f84d, type: 3}
       info:
         isIgnore: 0
         countPreload: 3
         pooler: {fileID: 0}
+        dontDestroyOnload: 0
 --- !u!1 &6510135297664551492
 GameObject:
   m_ObjectHideFlags: 0
@@ -2194,9 +2199,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aad115aca74ce3c4891b3f6de0b4aae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundGraphSerialization: '{"version":2.96,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","comments":"StateController","translation":{"x":-302.0,"y":-126.0},"zoomFactor":0.8517235,"nodes":[{"_position":{"x":780.0,"y":270.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"2"},{"_action":{"messCompare":"StartGame","$type":"EazyEngine.Space.WaitEventGame"},"_position":{"x":490.0,"y":365.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"3"},{"_position":{"x":727.0,"y":418.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"5"},{"_position":{"x":109.0,"y":560.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"6"},{"_action":{"nameState":"State
-    1","wait":{},"$type":"EazyEngine.Space.RunState"},"_position":{"x":-1063.0,"y":737.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"7"},{"_action":{"nameState":"State
-    9","wait":{"_value":true},"$type":"EazyEngine.Space.RunState"},"_position":{"x":-934.0,"y":731.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"10"},{"failureRemap":"Success","_position":{"x":-723.0,"y":714.0},"$type":"NodeCanvas.BehaviourTrees.Remapper","$id":"13"},{"timeout":{"_value":4.0},"_position":{"x":-732.0,"y":796.0},"$type":"NodeCanvas.BehaviourTrees.Timeout","$id":"14"},{"_position":{"x":-758.0,"y":905.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"16"},{"_action":{"nameState":"State
+  boundGraphSerialization: '{"version":2.96,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","comments":"StateController","translation":{"x":1276.0,"y":-466.0},"nodes":[{"_position":{"x":780.0,"y":270.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"2"},{"_action":{"messCompare":"StartGame","$type":"EazyEngine.Space.WaitEventGame"},"_position":{"x":490.0,"y":365.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"3"},{"_position":{"x":727.0,"y":418.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"5"},{"_position":{"x":109.0,"y":560.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"6"},{"_action":{"nameState":"State
+    1","wait":{"_value":true},"$type":"EazyEngine.Space.RunState"},"_position":{"x":-1063.0,"y":737.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"7"},{"_action":{"nameState":"State
+    10","wait":{"_value":true},"$type":"EazyEngine.Space.RunState"},"_position":{"x":-934.0,"y":731.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"10"},{"failureRemap":"Success","_position":{"x":-723.0,"y":714.0},"$type":"NodeCanvas.BehaviourTrees.Remapper","$id":"13"},{"timeout":{"_value":4.0},"_position":{"x":-732.0,"y":796.0},"$type":"NodeCanvas.BehaviourTrees.Timeout","$id":"14"},{"_position":{"x":-758.0,"y":905.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"16"},{"_action":{"nameState":"State
     6","wait":{"_value":true},"$type":"EazyEngine.Space.RunState"},"_position":{"x":-835.0,"y":1017.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"17"},{"_action":{"waitTime":{"_value":1.0},"timerBehavior":{},"$type":"NodeCanvas.Tasks.Actions.Wait"},"_position":{"x":-704.0,"y":1018.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"20"},{"failureRemap":"Success","_position":{"x":-411.0,"y":731.0},"$type":"NodeCanvas.BehaviourTrees.Remapper","$id":"24"},{"timeout":{"_value":4.0},"_position":{"x":-451.0,"y":826.0},"$type":"NodeCanvas.BehaviourTrees.Timeout","$id":"25"},{"_position":{"x":-388.0,"y":926.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"27"},{"_position":{"x":-454.0,"y":993.0},"$type":"NodeCanvas.BehaviourTrees.Parallel","$id":"28"},{"_action":{"nameState":"State
     1","wait":{"_value":true},"$type":"EazyEngine.Space.RunState"},"_position":{"x":-521.0,"y":1127.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"29"},{"_action":{"nameState":"State
     2","wait":{"_value":true},"$type":"EazyEngine.Space.RunState"},"_position":{"x":-391.0,"y":1126.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"32"},{"_action":{"waitTime":{"_value":1.0},"timerBehavior":{},"$type":"NodeCanvas.Tasks.Actions.Wait"},"_position":{"x":-253.0,"y":1014.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"35"},{"failureRemap":"Success","_position":{"x":159.0,"y":761.0},"$type":"NodeCanvas.BehaviourTrees.Remapper","$id":"39"},{"timeout":{"_value":5.5},"_position":{"x":116.0,"y":895.0},"$type":"NodeCanvas.BehaviourTrees.Timeout","$id":"40"},{"_position":{"x":222.0,"y":969.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"42"},{"_position":{"x":143.0,"y":1064.0},"$type":"NodeCanvas.BehaviourTrees.Parallel","$id":"43"},{"_action":{"nameState":"State
@@ -2287,31 +2292,37 @@ MonoBehaviour:
         isIgnore: 0
         countPreload: 3
         pooler: {fileID: 0}
+        dontDestroyOnload: 0
     - key: {fileID: 4690541965793796162, guid: fc1be9e35d97d3242a38fbfdeb1470cb, type: 3}
       info:
         isIgnore: 0
         countPreload: 3
         pooler: {fileID: 0}
+        dontDestroyOnload: 0
     - key: {fileID: 3340574256467975602, guid: 515dde775d9b05d43b02d5c9e83e2e66, type: 3}
       info:
         isIgnore: 0
         countPreload: 10
         pooler: {fileID: 0}
+        dontDestroyOnload: 1
     - key: {fileID: 152634, guid: c816e04fdd948ef479558e37f6acc4ae, type: 3}
       info:
         isIgnore: 0
         countPreload: 30
         pooler: {fileID: 0}
+        dontDestroyOnload: 1
     - key: {fileID: 1561269459470396, guid: 9a2b4141d5a70ae4baebf6e0ac706313, type: 3}
       info:
         isIgnore: 0
         countPreload: 30
         pooler: {fileID: 0}
+        dontDestroyOnload: 1
     - key: {fileID: 7712717325186529190, guid: 4e5f322388e212242895585269c07da7, type: 3}
       info:
         isIgnore: 0
         countPreload: 3
         pooler: {fileID: 0}
+        dontDestroyOnload: 0
 --- !u!1 &7426216625990481185
 GameObject:
   m_ObjectHideFlags: 0
@@ -2363,23 +2374,28 @@ MonoBehaviour:
         isIgnore: 0
         countPreload: 6
         pooler: {fileID: 0}
+        dontDestroyOnload: 0
     - key: {fileID: 8644569780587809145, guid: 0c635eafe2d71f04d91075f5ac65598d, type: 3}
       info:
         isIgnore: 0
         countPreload: 24
         pooler: {fileID: 0}
+        dontDestroyOnload: 0
     - key: {fileID: 8644569780587809145, guid: 8158f14ea06527a4c95851aee95a4817, type: 3}
       info:
         isIgnore: 0
         countPreload: 24
         pooler: {fileID: 0}
+        dontDestroyOnload: 0
     - key: {fileID: 4906141339235065535, guid: c094303d3a575f34f98d52418b616b6f, type: 3}
       info:
         isIgnore: 0
         countPreload: 3
         pooler: {fileID: 0}
+        dontDestroyOnload: 0
     - key: {fileID: 8536902291035440741, guid: ce214db9429ddb44d92c33fd50e51121, type: 3}
       info:
         isIgnore: 0
         countPreload: 3
         pooler: {fileID: 0}
+        dontDestroyOnload: 0
