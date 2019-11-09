@@ -104,8 +104,8 @@ namespace EazyEngine.Space.UI
                 GameManager.Instance.showBannerAds(true);
                 return;
             }
-           
-          
+
+            GameManager.Instance.showBannerAds(true);
             LevelManger.Instance.IsPlaying = false;
             GameManager.Instance.inGame = false;
             TimeKeeper.Instance.getTimer("Global").TimScale = 0;
@@ -160,10 +160,10 @@ namespace EazyEngine.Space.UI
             currentCoin = LevelManger.Instance._infoLevel.goldTaken;
             boxMission.DataSource = LevelManger.Instance._infoLevel.missions.ToObservableList();  
             time.text = LevelManger.Instance.CurrentTime.ToString(@"mm\:ss");
-            quantityDestroy.text = LevelManger.Instance._infoLevel.enemyKill.ToString();
+            quantityDestroy.text =  $"{( (float)LevelManger.Instance._infoLevel.enemyKill / (float)(LevelManger.Instance._infoLevel.enemyKill + LevelManger.Instance.BornEnemy.Count))*100}%";
         
             gameObject.SetActive(true);
-            if ((System.DateTime.Now - GameManager.Instance.Database.firstOnline).TotalSeconds > 600)
+            if (!GameManager.Instance.isFree)
             {
                 adsCourountine =  StartCoroutine(delayaction(1.5f,delegate{
                     if (SceneManager.Instance.currentScene.StartsWith("Zone"))

@@ -6,6 +6,7 @@ using EazyEngine.Tools.Space;
 using EazyEngine.Space.UI;
 using EazyEngine.Timer;
 using ParadoxNotion.Services;
+using System.Linq;
 
 namespace EazyEngine.Space
 {
@@ -402,6 +403,19 @@ namespace EazyEngine.Space
            if(MonoManager.current)
             {
                 MonoManager.current.StopAllCoroutines();
+            }
+           for(int i = 0; i < ObjectPooler.poolManager.Count; ++i)
+            {
+                if (!ObjectPooler.poolManager.ElementAt(i).Key.IsDestroyed())
+                {
+                    foreach(var pObject in ObjectPooler.poolManager.ElementAt(i).Value.poolObjects)
+                    {
+                        if (!pObject.IsDestroyed())
+                        {
+                            pObject.gameObject.SetActive(false);
+                        }
+                    }
+                }
             }
         }
     }

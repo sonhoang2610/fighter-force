@@ -13,12 +13,16 @@ namespace EazyEngine.Space
         Birth,
         AliveOutSide,
         AliveInSide,
-        Death
+        Death,
     }
     public struct CharacterChangeState
     {
         public Character target;
         public StateCharacter previousState;
+    }
+    public struct DeathEvent
+    {
+        public Health target;
     }
     public class Character : TimeControlBehavior
     {

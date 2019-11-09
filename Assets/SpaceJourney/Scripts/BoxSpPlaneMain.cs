@@ -17,6 +17,7 @@ namespace EazyEngine.Space.UI
             {
                 if (GameManager.Instance.Database.spPlanes[i].CurrentLevel > 0)
                 {
+
                     pInfoIntanceds.Add(GameManager.Instance.Database.spPlanes[i]);
                 }
             }
@@ -24,16 +25,19 @@ namespace EazyEngine.Space.UI
         }
         protected override void Start()
         {
-
             refreshData();
-            for (int i = 0; i < DataSource.Count; ++i)
+            if (DataSource != null && DataSource.Count > 0)
             {
-                if (DataSource[i].Info.ItemID == GameManager.Instance.Database.SelectedSupportPlane1)
+           
+                for (int i = 0; i < DataSource.Count; ++i)
                 {
-                    currentPage = i;
+                    if (DataSource[i].Info.ItemID == GameManager.Instance.Database.SelectedSupportPlane1)
+                    {
+                        currentPage = i;
+                    }
                 }
+                Invoke(nameof(updatePage), 0.25f);
             }
-            Invoke("updatePage", 0.1f);
             base.Start();
         }
 
@@ -49,7 +53,7 @@ namespace EazyEngine.Space.UI
                         currentPage = i;
                     }
                 }
-                Invoke("updatePage", 0.1f);
+                Invoke(nameof(updatePage), 0.25f);
             }
 
         }

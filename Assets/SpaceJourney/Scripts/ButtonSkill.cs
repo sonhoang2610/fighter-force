@@ -29,7 +29,8 @@ namespace EazyEngine.Space {
         public TimeController time;
         public void press()
         {
-            for(int i = 0;  i < Data._info.Info.VariableDict.Count; ++i)
+            Firebase.Analytics.FirebaseAnalytics.LogEvent("PressSkill");
+            for (int i = 0;  i < Data._info.Info.VariableDict.Count; ++i)
             {
                 var pDict = Data._info.Info.VariableDict;
                 LevelManger.Instance.players[0].GetComponent<Blackboard>().AddVariable(pDict.Keys.ElementAt(i), pDict[pDict.Keys.ElementAt(i)]);

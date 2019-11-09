@@ -276,6 +276,7 @@ namespace EazyEngine.Space
                                  proj.setDirection(directon);
                                  if (TargetDirection)
                                  {
+                                     proj.setTarget(TargetDirection);
                                      proj.target = TargetDirection.transform.position;
                                  }
                                  if (trajectorPath)

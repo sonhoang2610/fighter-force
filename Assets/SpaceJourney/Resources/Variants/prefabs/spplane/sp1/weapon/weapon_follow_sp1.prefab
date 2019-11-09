@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b5c3ebb24c97464da319951cafe5a47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundGraphSerialization: '{"version":2.92,"type":"FlowCanvas.FlowScript","translation":{"x":-92.0,"y":86.0},"zoomFactor":0.4212616,"nodes":[{"eventName":{"_value":"Booster"},"target":{},"targets":{},"_position":{"x":181.0,"y":269.0},"$type":"FlowCanvas.Nodes.CustomEvent`1[[System.String,
+  boundGraphSerialization: '{"version":2.96,"type":"FlowCanvas.FlowScript","translation":{"x":-92.0,"y":86.0},"zoomFactor":0.4212616,"nodes":[{"eventName":{"_value":"Booster"},"target":{},"targets":{},"_position":{"x":181.0,"y":269.0},"$type":"FlowCanvas.Nodes.CustomEvent`1[[System.String,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]","$id":"2"},{"_inputPortValues":{},"_position":{"x":754.0,"y":270.0},"$type":"FlowCanvas.Nodes.SwitchBool","$id":"6"},{"_inputPortValues":{},"_position":{"x":1250.0,"y":268.0},"$type":"FlowCanvas.Nodes.SwitchBool","$id":"8"},{"_method":{"_baseInfo":"EazyEngine.Space.Weapon|addFactorSpeed|System.Void","_paramsInfo":"System.Single"},"_callable":true,"_inputPortValues":{},"_position":{"x":1454.0,"y":279.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"10"},{"_inputPortValues":{},"_position":{"x":1664.0,"y":258.0},"$type":"FlowCanvas.Nodes.ForLoop","$id":"13"},{"_inputPortValues":{},"_position":{"x":1968.0,"y":334.0},"$type":"FlowCanvas.Nodes.SwitchComparison","$id":"15"},{"targetVariable":{"_name":"Speed","_targetVariableID":"95547749-090a-42db-8bec-9881ac608463"},"_inputPortValues":{},"_position":{"x":2356.0,"y":313.0},"$type":"FlowCanvas.Nodes.SetVariable`1[[System.Single,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]","$id":"17"},{"_method":{"_baseInfo":"System.Collections.Generic.List`1[[System.Single,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]|get_Item|System.Single","_paramsInfo":"System.Int32"},"_inputPortValues":{},"_position":{"x":1821.0,"y":528.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"20"},{"_simplexNode":{},"_inputPortValues":{},"_position":{"x":2167.0,"y":499.0},"$type":"FlowCanvas.Nodes.SimplexNodeWrapper`1[[FlowCanvas.Nodes.FloatAdd,
@@ -140,6 +140,26 @@ MonoBehaviour:
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]],
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
   _objectReferences: []
+--- !u!114 &5812116809104908237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6302407136578566231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2e992bb6adc484288e83c01ef40f61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons: []
+  autoStartWeaponWhenFindTarget: 0
+  TargetLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  onFindTarget:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8329638369106037883
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,7 +792,7 @@ PrefabInstance:
     - target: {fileID: 6359240301430102800, guid: 407911a24b2f1ed42b7ee796c89befc9,
         type: 3}
       propertyPath: needTargetToFire
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6359240301430102800, guid: 407911a24b2f1ed42b7ee796c89befc9,
         type: 3}
@@ -927,6 +947,16 @@ PrefabInstance:
         type: 3}
       propertyPath: boosterInfos.Array.data[6].resuseAction
       value: Booster0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359240301430102800, guid: 407911a24b2f1ed42b7ee796c89befc9,
+        type: 3}
+      propertyPath: forceDirectionFollowGun
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359240301430102800, guid: 407911a24b2f1ed42b7ee796c89befc9,
+        type: 3}
+      propertyPath: requireFaceTargetToFire
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114506514760959066, guid: 407911a24b2f1ed42b7ee796c89befc9,
         type: 3}

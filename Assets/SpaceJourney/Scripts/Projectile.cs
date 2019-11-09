@@ -51,9 +51,20 @@ namespace EazyEngine.Space
 
         protected float currentDelayMove = 0;
         protected IMovementProjectile[] movementModules;
+        protected ISetTarget[] setTargetAbles;
+
+        public void setTarget(GameObject pTarget)
+        {
+            foreach(var pSet in setTargetAbles)
+            {
+                pSet.setTarget(pTarget);
+            }
+        }
+
         private void Awake()
         {
             movementModules = GetComponents<IMovementProjectile>();
+            setTargetAbles = GetComponents<ISetTarget>();
             System.Array.Sort<IMovementProjectile>(movementModules, new Comparison<IMovementProjectile>((i1, i2) => i2.getIndex().CompareTo(i1.getIndex())));
         }
         protected virtual bool onSpeedConstraintFeature()

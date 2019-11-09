@@ -175,8 +175,8 @@ namespace EazyEngine.Space
                             for (int i = 0; i < PExtras.Length; ++i)
                             {
                                 pExtraDamage += PExtras[i].type == DamageType.Normal ? PExtras[i].damageExtra :
-                                    (PExtras[i].type == DamageType.PecentHp ? (float)pHeath.CurrentHealth * PExtras[i].damageExtra :
-                                    (PExtras[i].type == DamageType.PecentMaxHp ? (float)pHeath.MaxiumHealth * PExtras[i].damageExtra : (pCurrentDamge * PExtras[i].damageExtra)));
+                                    (PExtras[i].type == DamageType.PecentHp ? (float)pHeath.CurrentHealth * PExtras[i].damageExtra/100f :
+                                    (PExtras[i].type == DamageType.PecentMaxHp ? (float)pHeath.MaxiumHealth * PExtras[i].damageExtra / 100f : (pCurrentDamge * PExtras[i].damageExtra / 100f)));
                             }
                             pHeath.Damage((int)pCurrentDamge + (int)pExtraDamage, Owner ? Owner.gameObject : null, 0, 0);
                             if (Owner)
@@ -201,9 +201,9 @@ namespace EazyEngine.Space
                     var PExtras = extraDamage.ToArray();
                     for (int i = 0; i < PExtras.Length; ++i)
                     {
-                        pExtraDamage += PExtras[i].type == DamageType.Normal ? PExtras[i].damageExtra :
-                            (PExtras[i].type == DamageType.PecentHp ? (float)pHeath.CurrentHealth * PExtras[i].damageExtra :
-                            (PExtras[i].type == DamageType.PecentMaxHp ? (float)pHeath.MaxiumHealth * PExtras[i].damageExtra : (pCurrentDamge * PExtras[i].damageExtra)));
+                        pExtraDamage += PExtras[i].type == DamageType.Normal ? PExtras[i].damageExtra  :
+                            (PExtras[i].type == DamageType.PecentHp ? (float)pHeath.CurrentHealth * PExtras[i].damageExtra / 100f :
+                            (PExtras[i].type == DamageType.PecentMaxHp ? (float)pHeath.MaxiumHealth * PExtras[i].damageExtra / 100f : (pCurrentDamge * PExtras[i].damageExtra / 100f)));
                     }
                     pHeath.Damage((int)pCurrentDamge + (int)pExtraDamage, Owner ? Owner.gameObject : null, 0, 0);
                     if (Owner && Owner._health)

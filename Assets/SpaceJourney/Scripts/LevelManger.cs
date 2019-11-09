@@ -170,6 +170,10 @@ namespace EazyEngine.Space
             if (eventType.AffectedCharacter == null) return;
             if(eventType.CurrentHealth <= 0 && eventType.Instigator == CurrentPlayer.gameObject && eventType.AffectedCharacter.mainInfo != null)
             {
+                if (eventType.AffectedCharacter.mainInfo.isBoss)
+                {
+                    CurrentPlayer._health.Invulnerable = true;
+                }
                 _infoLevel.score += eventType.AffectedCharacter.mainInfo.score;
             }
             if(eventType.CurrentHealth <= 0 && LevelManger.Instance.BornEnemy.Contains(eventType.AffectedCharacter.gameObject))
@@ -262,6 +266,7 @@ namespace EazyEngine.Space
                 return;
             }
             base.Awake();
+            Firebase.Analytics.FirebaseAnalytics.LogEvent($"Start_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedHard}");
             TimeKeeper.Instance.getTimer("Map").TimScale = 1 ;
             for (int i = 0; i < 24; i++)
             {
@@ -333,15 +338,31 @@ namespace EazyEngine.Space
                 }
             }
             BoxItemInGame.Instance.DataSource = pItems.ToObservableList();
-            int pSelectedPlane = -1;
-            for(int i = 0; i < GameManager.Instance.Database.planes.Count; ++i)
+
+            if (GameManager.Instance.isFree && GameManager.Instance.Database.SelectedMainPlane == "MainPlane1" && GameManager.Instance.Database.SelectedSupportPlane1 == "SpPlane1")
             {
-                if(GameManager.Instance.Database.planes[i].info.ItemID == ((!GameManager.Instance.isFree || string.IsNullOrEmpty(GameManager.Instance.freePlaneChoose) ? GameManager.Instance.Database.SelectedMainPlane : GameManager.Instance.freePlaneChoose)))
+                GameManager.Instance.freePlaneChoose = "MainPlane5";
+                GameManager.Instance.freeSpPlaneChoose = "SpPlane2";
+            }
+            int pSelectedPlane = -1;
+            for (int i = 0; i < GameManager.Instance.Database.planes.Count; ++i)
+            {
+                if (GameManager.Instance.Database.planes[i].info.ItemID == ((!GameManager.Instance.isFree || string.IsNullOrEmpty(GameManager.Instance.freePlaneChoose) ? GameManager.Instance.Database.SelectedMainPlane : GameManager.Instance.freePlaneChoose)))
                 {
                     pSelectedPlane = i;
                     break;
                 }
             }
+            int pSelectedspPlane = -1;
+            for (int i = 0; i < GameManager.Instance.Database.spPlanes.Count; ++i)
+            {
+                if (GameManager.Instance.Database.spPlanes[i].info.ItemID == ((!GameManager.Instance.isFree || string.IsNullOrEmpty(GameManager.Instance.freeSpPlaneChoose) ? GameManager.Instance.Database.SelectedSupportPlane1 : GameManager.Instance.freeSpPlaneChoose)))
+                {
+                    pSelectedspPlane = i;
+                    break;
+                }
+            }
+            if (GameManager.Instance.isFree)
             players = new Character[1];
             players[0] = Instantiate<Character>(GameManager.Instance.Database.planes[pSelectedPlane].Info.modelPlane);
             var pDataPlane = pSelectedPlane >=0 ? GameManager.Instance.Database.planes[pSelectedPlane] : null;
@@ -367,15 +388,7 @@ namespace EazyEngine.Space
             GUIManager.Instance.setIconPlane(pDataPlane.info.iconGame);
             List<SkillInputData> skills = new List<SkillInputData>();
             skills.AddRange(convert(players[0]._info.Info.skills.ToArray(), players[0]));
-            int pSelectedspPlane =-1;
-            for (int i = 0; i < GameManager.Instance.Database.spPlanes.Count; ++i)
-            {
-                if (GameManager.Instance.Database.spPlanes[i].info.ItemID == ((!GameManager.Instance.isFree || string.IsNullOrEmpty(GameManager.Instance.freeSpPlaneChoose) ? GameManager.Instance.Database.SelectedSupportPlane1 : GameManager.Instance.freeSpPlaneChoose)))
-                {
-                    pSelectedspPlane = i;
-                    break;
-                }
-            }
+      
             int pSelectedSPPlane1 = pSelectedspPlane;
             var pDataSpPlane = pSelectedSPPlane1 >= 0 ? GameManager.Instance.Database.spPlanes[pSelectedSPPlane1] : null;
             if (pDataSpPlane == null || pDataSpPlane.CurrentLevel == 0)

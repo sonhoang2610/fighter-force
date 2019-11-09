@@ -6,7 +6,11 @@ using EazyEngine.Space;
 using UnityEngine.Events;
 using EazyEngine.Tools.Space;
 
-public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>
+public interface ISetTarget
+{
+    void setTarget(GameObject pObject);
+}
+public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>, ISetTarget
 {
     public int countFindTarget = -1;
     public float speed = 5;
@@ -48,16 +52,12 @@ public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>
         {
             _dameOnTouch = GetComponent<DamageOnTouch>();
         }
-        target = null;
+       // target = null;
         currentCountFindTarget = countFindTarget;
         _cacheCollider = null;
         isSelfDamage = false;
         _dameOnTouch.ClearIgnoreList();
         _listIgnoreCollider.Clear();
-        if (LevelManger.InstanceRaw != null && LevelManger.Instance.CurrentPlayer != null)
-        {
-            findTargetMinDistance();
-        }
         EzEventManager.AddListener(this);
     }
 
@@ -74,7 +74,7 @@ public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>
 
     public virtual void findTargetMinDistance()
     {
-   
+        if (target && target.gameObject.activeSelf) return;
         if (autoTarget)
         {
             target = null;
@@ -186,6 +186,11 @@ public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>
                 isSelfDamage = true;
             }
         }
+    }
+
+    public void setTarget(GameObject pObject)
+    {
+        target = pObject;
     }
     //void OnTriggerEnter2D(Collider2D other)
     //{

@@ -7,7 +7,13 @@ namespace EazyEngine.Space {
     {
         public void shake()
         {
+            CameraShake.Instance.shakeAmount = 0.25f;
             CameraShake.Instance.shakeDuration = 0.2f;
+        }
+        public void shakeDuration(float pDurtion)
+        {
+            CameraShake.Instance.shakeAmount = 0.1f;
+            CameraShake.Instance.shakeDuration = pDurtion;
         }
     }
 }

@@ -160,12 +160,12 @@ public class WeaponFindTarget : MonoBehaviour,EzEventListener<CharacterChangeSta
         {
             charInside.AddRange(findChar());
         }
-        EzEventManager.AddListener(this);
+        EzEventManager.AddListener<CharacterChangeState>(this);
     }
 
     private void OnDisable()
     {
-        EzEventManager.RemoveListener(this);
+        EzEventManager.RemoveListener<CharacterChangeState>(this);
     }
 
 
@@ -179,7 +179,13 @@ public class WeaponFindTarget : MonoBehaviour,EzEventListener<CharacterChangeSta
                     findTargetMinDistance(weapons[i]);
                 }
             }
-        
+        for(int i = foundTarget.Count-1; i>=0; --i)
+        {
+            if (!foundTarget[i]._obect.activeSelf)
+            {
+                foundTarget.RemoveAt(i);
+            }
+        }
     }
     bool isDirty = true;
     public void OnEzEvent(CharacterChangeState eventType)
@@ -199,7 +205,10 @@ public class WeaponFindTarget : MonoBehaviour,EzEventListener<CharacterChangeSta
                 isDirty = true;
                 charInside.Add(eventType.target);
             }
-          
+
+
         }
     }
+
+
 }

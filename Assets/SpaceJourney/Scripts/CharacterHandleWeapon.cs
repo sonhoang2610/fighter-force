@@ -287,7 +287,7 @@ namespace EazyEngine.Space
                     {
                         pDirection.y = -pDirection.y;
                     }
-                    pObjectItem.GetComponent<Rigidbody2D>().AddForce(pDirection * 30, ForceMode2D.Force);
+                    pObjectItem.GetComponent<Rigidbody2D>().AddForce(pDirection * 50, ForceMode2D.Force);
                     StartCoroutine(delayAction(1, delegate
                     {
                         pObjectItem.GetComponent<CoinEffControl>().isEnable = true;
