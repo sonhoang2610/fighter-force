@@ -27,7 +27,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 5401165950312568826}
   m_Father: {fileID: 4494067887730869025}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -106,11 +107,11 @@ MonoBehaviour:
         countPreload: 5
         pooler: {fileID: 0}
         dontDestroyOnload: 0
-    - key: {fileID: 2553892579099444471, guid: 5c1d726419e05ee408fc8c6a5f9f9e14, type: 3}
+    - key: {fileID: 5853503670165523184, guid: b468caea2ac84e840a08de32adfc5ff8, type: 3}
       info:
         isIgnore: 0
         countPreload: 1
-        pooler: {fileID: 0}
+        pooler: {fileID: 3079668857904858744}
         dontDestroyOnload: 0
 --- !u!1 &4494067887730869027
 GameObject:
@@ -1274,7 +1275,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     totalDeath: 0
-  - isExpaned: 0
+  - isExpaned: 1
     nameState: State 8
     comment: medium 1,2 L
     nameGroup: State 8 (medium 1,2 L)
@@ -3280,14 +3281,14 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     totalDeath: 0
-  - isExpaned: 1
+  - isExpaned: 0
     nameState: BOSS
     comment: boss1
     nameGroup: BOSS (boss1)
     isManual: 0
     formatInfo:
       prefabEnemies:
-      - {fileID: 2553892579099444471, guid: 5c1d726419e05ee408fc8c6a5f9f9e14, type: 3}
+      - {fileID: 5853503670165523184, guid: b468caea2ac84e840a08de32adfc5ff8, type: 3}
       quantity: 1
       typeSpawn: 0
       typeFomation: 0
@@ -3578,6 +3579,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _serializedBlackboard: '{"_variables":{}}'
   _objectReferences: []
+--- !u!1 &8789972366748014378
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5401165950312568826}
+  - component: {fileID: 3079668857904858744}
+  m_Layer: 0
+  m_Name: '[Pool]MiniBoss4 Variant 1'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5401165950312568826
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8789972366748014378}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 218916947263519809}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3079668857904858744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8789972366748014378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30599d570c93524c810714c5a2f7583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObjectToPool: {fileID: 5853503670165523184, guid: b468caea2ac84e840a08de32adfc5ff8,
+    type: 3}
+  PoolSize: 0
+  PoolCanExpand: 1
+  dontDestroyOnload: 0
 --- !u!1001 &470428764249461565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3763,6 +3812,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2452806878863425168, guid: 777bde2bd1767804084c44d6b98645d4,
         type: 3}
+      propertyPath: _storage._array.Array.data[1].key
+      value: 
+      objectReference: {fileID: 2725560285071857338, guid: 0971f79f08ce8854b82f023123fb1334,
+        type: 3}
+    - target: {fileID: 2452806878863425168, guid: 777bde2bd1767804084c44d6b98645d4,
+        type: 3}
       propertyPath: _storage._array.Array.data[1].info.countPreload
       value: 4
       objectReference: {fileID: 0}
@@ -3771,12 +3826,6 @@ PrefabInstance:
       propertyPath: _storage._array.Array.data[1].info.dontDestroyOnload
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2452806878863425168, guid: 777bde2bd1767804084c44d6b98645d4,
-        type: 3}
-      propertyPath: _storage._array.Array.data[1].key
-      value: 
-      objectReference: {fileID: 2725560285071857338, guid: 0971f79f08ce8854b82f023123fb1334,
-        type: 3}
     - target: {fileID: 2452806878863425168, guid: 777bde2bd1767804084c44d6b98645d4,
         type: 3}
       propertyPath: _storage._array.Array.data[2].key
@@ -3902,23 +3951,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5426320343529833229, guid: 7a03ae695345b154d97a217ceeafd562,
         type: 3}
-      propertyPath: _storage._array.Array.data[3].info.countPreload
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 5426320343529833229, guid: 7a03ae695345b154d97a217ceeafd562,
-        type: 3}
-      propertyPath: _storage._array.Array.data[4].info.countPreload
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 5426320343529833229, guid: 7a03ae695345b154d97a217ceeafd562,
-        type: 3}
       propertyPath: _storage._array.Array.data[2].info.dontDestroyOnload
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5426320343529833229, guid: 7a03ae695345b154d97a217ceeafd562,
         type: 3}
+      propertyPath: _storage._array.Array.data[3].info.countPreload
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5426320343529833229, guid: 7a03ae695345b154d97a217ceeafd562,
+        type: 3}
       propertyPath: _storage._array.Array.data[3].info.dontDestroyOnload
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5426320343529833229, guid: 7a03ae695345b154d97a217ceeafd562,
+        type: 3}
+      propertyPath: _storage._array.Array.data[4].info.countPreload
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5426320343529833229, guid: 7a03ae695345b154d97a217ceeafd562,
         type: 3}

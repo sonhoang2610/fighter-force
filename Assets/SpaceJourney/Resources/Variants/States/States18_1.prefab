@@ -1,5 +1,53 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &841597947807197704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2386618870369251080}
+  - component: {fileID: 6554284508517900532}
+  m_Layer: 0
+  m_Name: '[Pool]boss1_medium'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2386618870369251080
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841597947807197704}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7561489635441323472}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6554284508517900532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841597947807197704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30599d570c93524c810714c5a2f7583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObjectToPool: {fileID: 2553892579099444471, guid: 65ac43b5a2112074496851eaab5eacef,
+    type: 3}
+  PoolSize: 0
+  PoolCanExpand: 1
+  dontDestroyOnload: 0
 --- !u!1 &3211288607997909737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1266,7 +1314,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     totalDeath: 0
-  - isExpaned: 0
+  - isExpaned: 1
     nameState: State 7
     comment: tower M
     nameGroup: State 7 (tower M)
@@ -3342,7 +3390,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     totalDeath: 0
-  - isExpaned: 0
+  - isExpaned: 1
     nameState: State 19
     comment: tower 3 3
     nameGroup: State 19 (tower 3 3)
@@ -4592,14 +4640,14 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     totalDeath: 0
-  - isExpaned: 1
+  - isExpaned: 0
     nameState: MiniBoss
     comment: 2
     nameGroup: MiniBoss (2)
     isManual: 0
     formatInfo:
       prefabEnemies:
-      - {fileID: 5200649770485080714, guid: aa8b89c0fb881fd4e8a825820d087c61, type: 3}
+      - {fileID: 2553892579099444471, guid: 65ac43b5a2112074496851eaab5eacef, type: 3}
       quantity: 1
       typeSpawn: 0
       typeFomation: 0
@@ -5637,7 +5685,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2386618870369251080}
   m_Father: {fileID: 6176779117405606576}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5716,9 +5765,9 @@ MonoBehaviour:
         countPreload: 2
         pooler: {fileID: 0}
         dontDestroyOnload: 0
-    - key: {fileID: 5200649770485080714, guid: aa8b89c0fb881fd4e8a825820d087c61, type: 3}
+    - key: {fileID: 2553892579099444471, guid: 65ac43b5a2112074496851eaab5eacef, type: 3}
       info:
         isIgnore: 0
         countPreload: 1
-        pooler: {fileID: 0}
+        pooler: {fileID: 6554284508517900532}
         dontDestroyOnload: 0
