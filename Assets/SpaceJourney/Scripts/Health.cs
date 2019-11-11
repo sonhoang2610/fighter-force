@@ -88,6 +88,7 @@ namespace EazyEngine.Space
             {
                 pHealths.Add(this);
             }
+
             return pHealths.ToArray();
         }
 
@@ -250,6 +251,10 @@ namespace EazyEngine.Space
             lastFrom = currentHealth;
             if (HealingEffectTimer)
             {
+                if (HealingEffect)
+                {
+                    ParticleEnviroment.Instance.createEffect(HealingEffect, transform.position);
+                }
                 HealingEffectTimer.gameObject.SetActive(true);
             }
         }

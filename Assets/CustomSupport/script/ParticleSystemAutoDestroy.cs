@@ -58,4 +58,15 @@ public class ParticleSystemAutoDestroy : MonoBehaviour {
             }
         }
     }
+
+    public  void detachFromParent()
+    {
+        transform.parent = null;
+    }
+
+    public  void setParent( Transform pTransParent)
+    {
+        transform.parent = pTransParent;
+        transform.localPosition = Vector3.zero;
+    }
 }

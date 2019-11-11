@@ -4,7 +4,8 @@ using UnityEngine;
 using EazyEngine.Tools;
 using Sirenix.OdinInspector;
 
-namespace EazyEngine.Space {
+namespace EazyEngine.Space
+{
     public enum DamageType
     {
         Normal,
@@ -18,7 +19,7 @@ namespace EazyEngine.Space {
         [HorizontalGroup("1"), PropertyOrder(1)]
         [HideLabel]
         public DamageType type;
-        [HorizontalGroup("1"),PropertyOrder(0)]
+        [HorizontalGroup("1"), PropertyOrder(0)]
         public float damageExtra;
     }
     [System.Serializable]
@@ -45,12 +46,12 @@ namespace EazyEngine.Space {
         }
         public override string ToString()
         {
-            return valueExtra!= null ?valueExtra.ToString() : "";
+            return valueExtra != null ? valueExtra.ToString() : "";
         }
 
     }
     [System.Serializable]
-    public class DamageExtraVariants : List<DamageExtraVariant> , ILevelSetter
+    public class DamageExtraVariants : List<DamageExtraVariant>, ILevelSetter
     {
         public void setLevel(int pLevel)
         {
@@ -63,14 +64,14 @@ namespace EazyEngine.Space {
         public DamageExtra[] toNormalArray()
         {
             List<DamageExtra> pArray = new List<DamageExtra>();
-            for(int i = 0; i < this.Count; ++i)
+            for (int i = 0; i < this.Count; ++i)
             {
                 pArray.Add(this[i].toNormal());
             }
             return pArray.ToArray();
         }
     }
-    public class DamageOnTouch : TimeControlBehavior,IRespawn, IgnoreObject
+    public class DamageOnTouch : TimeControlBehavior, IRespawn, IgnoreObject
     {
         public LayerMask TargetMaskLayer;
         public bool ignoreOnDamaged = false;
@@ -79,7 +80,7 @@ namespace EazyEngine.Space {
         public float factorMinDamageDecrease = 1;
         public GameObject damagedEffect;
         public float durationForNextDame = 0.1f;
-        public LayerMask TakenDamageMask = ~0; 
+        public LayerMask TakenDamageMask = ~0;
         public int DamageTakenWithEveryThing = 0;
         [HideInInspector]
         public DamageOnTouch parentDamage;
@@ -91,15 +92,15 @@ namespace EazyEngine.Space {
         [SerializeField]
         [HideInEditorMode]
         protected float factorDamage = 1;
-        
-        
+
+
 
         protected List<GameObjectIgnoreTime> nextDamageSameObject = new List<GameObjectIgnoreTime>();
         public bool getObjectIgnore(GameObject pObjectCompare, out int pObjectIndex)
-        {  
+        {
             for (int i = 0; i < nextDamageSameObject.Count; ++i)
             {
-                if(nextDamageSameObject[i].pObject == pObjectCompare)
+                if (nextDamageSameObject[i].pObject == pObjectCompare)
                 {
                     pObjectIndex = i;
                     if (nextDamageSameObject[i].duration <= 0)
@@ -138,12 +139,16 @@ namespace EazyEngine.Space {
             }
         }
         [ShowInInspector]
-        public DamageExtra[] ExtraDamge { get => extraDamge; set {
+        public DamageExtra[] ExtraDamge
+        {
+            get => extraDamge; set
+            {
                 tableExtraDamage.Clear();
                 extraDamge = value;
-            } }
+            }
+        }
         protected Dictionary<string, int> tableExtraDamage = new Dictionary<string, int>();
-        public void addExtraDamge(DamageExtra pDamage,string pID)
+        public void addExtraDamge(DamageExtra pDamage, string pID)
         {
             if (tableExtraDamage.ContainsKey(pID))
             {
@@ -155,38 +160,55 @@ namespace EazyEngine.Space {
             extraDamge[extraDamge.Length - 1] = pDamage;
             tableExtraDamage.Add(pID, extraDamge.Length - 1);
         }
-        public List<DamageExtra> PExtras { get {
+        public List<DamageExtra> PExtras
+        {
+            get
+            {
                 if (pExtras == null) pExtras = new List<DamageExtra>();
-                if (extraDamageSelf != null && ExtraDamge != null && pExtras.Count != extraDamageSelf.Length + ExtraDamge.Length)
+                pExtras.Clear();
+                int pSelfExtraLength = extraDamageSelf != null ? extraDamageSelf.Length : 0;
+                int pExtraLength = ExtraDamge != null ? ExtraDamge.Length : 0;
+                if (pExtras.Count != pSelfExtraLength + pExtraLength)
                 {
-                    pExtras.Clear();
-                    pExtras.AddRange(extraDamageSelf);
-                    pExtras.AddRange(ExtraDamge);
+                    if (extraDamageSelf != null)
+                    {
+                        pExtras.AddRange(extraDamageSelf);
+                    }
+                    if (ExtraDamge != null)
+                    {
+                        pExtras.AddRange(ExtraDamge);
+                    }
+
                 }
                 return pExtras;
-                    } set => pExtras = value; }
+            }
+            set => pExtras = value;
+        }
 
-        public int DamageCausedProp { get => DamageCaused; set {
+        public int DamageCausedProp
+        {
+            get => DamageCaused; set
+            {
                 DamageCaused = value;
             }
         }
 
         private void Update()
         {
-             for(int i = nextDamageSameObject.Count -1; i >= 0; --i)
-             {
-                 GameObjectIgnoreTime pObject = nextDamageSameObject[i];
-                 if (pObject.duration > 0)
-                 {
-                     pObject.duration -= time.deltaTime;
-                     nextDamageSameObject[i] = pObject;
-                 }
-             }
+            for (int i = nextDamageSameObject.Count - 1; i >= 0; --i)
+            {
+                GameObjectIgnoreTime pObject = nextDamageSameObject[i];
+                if (pObject.duration > 0)
+                {
+                    pObject.duration -= time.deltaTime;
+                    nextDamageSameObject[i] = pObject;
+                }
+            }
         }
         protected virtual void Awake()
         {
             _health = GetComponent<Health>();
-            for(int i = 0; i < damageChilds.Length; ++i)
+            for (int i = 0; i < damageChilds.Length; ++i)
             {
                 damageChilds[i].parentDamage = this;
             }
@@ -195,7 +217,7 @@ namespace EazyEngine.Space {
         protected virtual void OnTriggerStay2D(Collider2D collision)
         {
             int pObjectOut;
-            if (getObjectIgnore(collision.gameObject,out pObjectOut)) return;
+            if (getObjectIgnore(collision.gameObject, out pObjectOut)) return;
             if (!_collider || !_collider.isTrigger || !_collider.enabled) return;
             OnEazyTriggerEnter2D(gameObject, collision);
         }
@@ -213,20 +235,20 @@ namespace EazyEngine.Space {
         }
         protected void OnEazyTriggerEnter2D(GameObject pObject, Collider2D collision)
         {
-            Collider(pObject,collision);
+            Collider(pObject, collision);
         }
         List<DamageExtra> pExtras = new List<DamageExtra>();
         protected void Collider(GameObject pSelf, Collider2D collision)
         {
-       
+
             if (!Layers.LayerInLayerMask(collision.gameObject.layer, TargetMaskLayer))
             {
                 return;
             }
             ConnectLayerTrigger pConnect = null;
-            if (LevelManger.InstanceRaw &&( pConnect = LevelManger.Instance.checkAssignedObject(collision.gameObject))  != null)
+            if (LevelManger.InstanceRaw && (pConnect = LevelManger.Instance.checkAssignedObject(collision.gameObject)) != null)
             {
-                if(Layers.LayerInLayerMask(gameObject.layer, pConnect.layer))
+                if (Layers.LayerInLayerMask(gameObject.layer, pConnect.layer))
                 {
                     return;
                 }
@@ -245,13 +267,13 @@ namespace EazyEngine.Space {
             }
             Health health = collision.GetComponent<Health>();
             if (!health) return;
-            int pObjectOut =-1;
+            int pObjectOut = -1;
             int indexDamagedSamObject = 0;
-            if (durationForNextDame >0 && !getObjectIgnore(collision.gameObject, out pObjectOut))
+            if (durationForNextDame > 0 && !getObjectIgnore(collision.gameObject, out pObjectOut))
             {
                 if (pObjectOut < 0)
                 {
-                    nextDamageSameObject.Add(new GameObjectIgnoreTime() { pObject = collision.gameObject,duration = durationForNextDame,indexDamaged =  1});
+                    nextDamageSameObject.Add(new GameObjectIgnoreTime() { pObject = collision.gameObject, duration = durationForNextDame, indexDamaged = 1 });
                 }
                 else
                 {
@@ -261,15 +283,23 @@ namespace EazyEngine.Space {
                     pObject.duration = durationForNextDame;
                     nextDamageSameObject[pObjectOut] = pObject;
                 }
-              
+
             }
             float pExtraDamage = 0;
             float pCurrentDamge = (DamageCausedProp * FactorDamage * factorDamageSelfConfig);
-            for (int i  =0; i < PExtras.Count; ++i)
+            for (int i = 0; i < PExtras.Count; ++i)
             {
-                pExtraDamage += PExtras[i].type == DamageType.Normal ? PExtras[i].damageExtra :
-                    (PExtras[i].type == DamageType.PecentHp ? (float)health.CurrentHealth * PExtras[i].damageExtra/100.0f :
-                    (PExtras[i].type == DamageType.PecentMaxHp ? (float)health.MaxiumHealth * PExtras[i].damageExtra : (pCurrentDamge * PExtras[i].damageExtra/100.0f)));
+                var pDamageExtraLocal = PExtras[i].type == DamageType.Normal ? PExtras[i].damageExtra :
+                    (PExtras[i].type == DamageType.PecentHp ? (float)health.CurrentHealth * PExtras[i].damageExtra / 100.0f :
+                    (PExtras[i].type == DamageType.PecentMaxHp ? (float)health.MaxiumHealth * PExtras[i].damageExtra : (pCurrentDamge * PExtras[i].damageExtra / 100.0f)));
+                if (PExtras[i].type == DamageType.PecentHp || PExtras[i].type == DamageType.PecentMaxHp)
+                {
+                    if (pDamageExtraLocal > DamageCausedProp * 1.5f)
+                    {
+                        pDamageExtraLocal = DamageCausedProp * 1.5f;
+                    }
+                }
+                pExtraDamage += pDamageExtraLocal;
             }
 
             float pDecrease = 1 - indexDamagedSamObject * factorDamageDecreaseSameObjects;
@@ -277,7 +307,7 @@ namespace EazyEngine.Space {
             {
                 pDecrease = factorMinDamageDecrease;
             }
-            health.Damage((int)((pCurrentDamge + pExtraDamage)*pDecrease), gameObject, 0, 0);
+            health.Damage((int)((pCurrentDamge + pExtraDamage) * pDecrease), gameObject, 0, 0);
             if (ignoreOnDamaged)
             {
                 IgnoreGameObject(health.gameObject);
@@ -286,11 +316,11 @@ namespace EazyEngine.Space {
             {
                 return;
             }
-      
+
             if (_health)
             {
                 _health.Damage(DamageTakenWithEveryThing, gameObject, 0, 0);
-        
+
             }
             if (pSelf != gameObject)
             {
@@ -310,12 +340,12 @@ namespace EazyEngine.Space {
         public void IgnoreGameObject(GameObject pObject)
         {
             _listIgnoreObject.Add(pObject);
-             var ignores =  GetComponentsInChildren<IgnoreObject>();
+            var ignores = GetComponentsInChildren<IgnoreObject>();
             if (ignores != null)
             {
-                foreach(var pIgnore in ignores)
+                foreach (var pIgnore in ignores)
                 {
-                    if((object)pIgnore != this)
+                    if ((object)pIgnore != this)
                     {
                         pIgnore.IgnoreGameObject(pObject);
                     }
@@ -328,7 +358,7 @@ namespace EazyEngine.Space {
         }
         private void Start()
         {
-            
+
         }
         private void OnEnable()
         {
@@ -337,12 +367,12 @@ namespace EazyEngine.Space {
         public void onRespawn()
         {
             nextDamageSameObject.Clear();
-            if (damageChilds!= null)
+            if (damageChilds != null)
             {
-                for(int i = 0; i < damageChilds.Length; ++i)
+                for (int i = 0; i < damageChilds.Length; ++i)
                 {
                     damageChilds[i].gameObject.SetActive(true);
-                    if(damageChilds[i]._health)
+                    if (damageChilds[i]._health)
                         damageChilds[i]._health.Revive();
                 }
             }

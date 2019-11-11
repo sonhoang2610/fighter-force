@@ -29,9 +29,13 @@ namespace EazyEngine.Space.UI
         {
             for (int i = 0; i < 2; ++i)
             {
-                if (i < items.Count)
+                if (i < items.Count && items[i].Data.Quantity > 0)
                 {
                     items[i].setChoose(true);
+                    items[i].onExecute();
+                }else if(i < items.Count)
+                {
+                    items[i].setChoose(false);
                     items[i].onExecute();
                 }
             }

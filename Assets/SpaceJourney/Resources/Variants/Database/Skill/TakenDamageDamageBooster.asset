@@ -13,14 +13,76 @@ MonoBehaviour:
   m_Name: TakenDamageDamageBooster
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
-    SerializedBytes: 2d000b0000006c696d69744d6f64756c6501000c0000005661726961626c65446963742f00000000006600000053797374656d2e436f6c6c656374696f6e732e47656e657269632e44696374696f6e61727960325b5b53797374656d2e537472696e672c206d73636f726c69625d2c5b53797374656d2e4f626a6563742c206d73636f726c69625d5d2c206d73636f726c696200000000010008000000636f6d70617265722f01000000005900000053797374656d2e436f6c6c656374696f6e732e47656e657269632e47656e65726963457175616c697479436f6d706172657260315b5b53797374656d2e537472696e672c206d73636f726c69625d5d2c206d73636f726c69620100000005060100000000000000042e270002000000246b000d00000064616d616765426f6f7374657201000200000024762f02000000003100000045617a79456e67696e652e53706163652e556e6974446566696e654c6576656c2c20417373656d626c792d435368617270020000001700090000007374617274556e6974190000001d0014000000616c67726f7468696d5479706555706772616465000000000000000017000800000073746570556e6974050000002b000f0000006973537065636966696564556e69740001000b000000756e6974446566696e65732f03000000003a00000045617a79456e67696e652e53706163652e5370656369666965644c6576656c53746570556e69745b5d2c20417373656d626c792d43536861727003000000060000000000000000070505050705
+    SerializedFormat: 2
+    SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
+    SerializationNodes:
+    - Name: limitModule
+      Entry: 6
+      Data: 
+    - Name: VariableDict
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: damageBooster
+    - Name: $v
+      Entry: 7
+      Data: 2|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 25
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 5
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 7
+      Data: 3|EazyEngine.Space.SpecifiedLevelStepUnit[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   itemID: TakenDamageDamageBooster
   displayNameItem:
     normalString: 
@@ -29,7 +91,7 @@ MonoBehaviour:
   descriptionItem:
     normalString: plane/TakenDamageDamageBooster
     isI2String: 1
-    value: When taken damage will active a shield
+    value: Increase damage by $damageBooster % when taking damage
   categoryItem: 3
   iconShop: {fileID: 5427972722744064408, guid: c336f33155863f74d9acfd73a1e6e9d4,
     type: 3}

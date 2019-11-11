@@ -161,7 +161,7 @@ namespace EazyEngine.Space
                     if (pLightning.ManualMode)
                     {
                         anchorLightning[j].init();
-                        pLightning.Trigger(0.4f);
+                        pLightning.Trigger(0.2f);
                     }
                     else
                     {

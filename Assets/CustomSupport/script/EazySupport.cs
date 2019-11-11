@@ -17,7 +17,7 @@ using EasyMobile;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-public static class MeshUtils
+    public static class MeshUtils
 {
     /// <summary>
     /// Generates a simple quad of any size
@@ -1499,6 +1499,17 @@ public class CacheTexture2D
 }
 public static class TranformExtension
 {
+
+    public static void detachFromParent(this Transform pTrans)
+    {
+        pTrans.parent = null;
+    }
+
+    public static void setParent(this Transform pTrans,Transform pTransParent)
+    {
+        pTrans.parent = pTransParent;
+        pTrans.localPosition = Vector3.zero;
+    }
     public enum FacingDirection
     {
         UP = 270,
