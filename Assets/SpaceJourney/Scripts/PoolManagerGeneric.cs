@@ -148,4 +148,27 @@ public class PoolManagerGeneric<T> : Singleton<T> where T : Component
         if(_storage[pObject].pooler == null) { return null; }
         return _storage[pObject].pooler.GetPooledGameObject();
     }
+    public GameObject getObjectFromPoolWithNumberPreload(GameObject pObject,int pCount)
+    {
+        if (_storage.ContainsKey(pObject) && (_storage[pObject].pooler == null && (isInit || _storage[pObject].countPreload == 0)))
+        {
+            _storage.Remove(pObject);
+        }
+        if (!_storage.ContainsKey(pObject))
+        {
+            GameObject pObjectNew = new GameObject();
+            pObjectNew.name = "[Pool]" + pObject.name;
+            pObjectNew.transform.parent = transform;
+            pObjectNew.transform.localPosition = Vector3.zero;
+            var pooler = pObjectNew.AddComponent<SimpleObjectPooler>();
+            pooler.onNewGameObjectCreated = (onNewCreateObject);
+            pooler.GameObjectToPool = pObject;
+            pooler.PoolSize = pCount;
+            pooler.FillObjectPool();
+            _storage.Add(pObject, new PrefabInfoMain());
+            _storage[pObject].pooler = pooler;
+        }
+        if (_storage[pObject].pooler == null) { return null; }
+        return _storage[pObject].pooler.GetPooledGameObject();
+    }
 }

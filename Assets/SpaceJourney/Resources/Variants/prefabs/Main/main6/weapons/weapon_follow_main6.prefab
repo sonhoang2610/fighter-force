@@ -120,6 +120,26 @@ Transform:
   m_Father: {fileID: 6303826388625794239}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-7024279340675734175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6302407136578566231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2e992bb6adc484288e83c01ef40f61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons: []
+  autoStartWeaponWhenFindTarget: 0
+  TargetLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  onFindTarget:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8130990194734795622
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,6 +476,27 @@ PrefabInstance:
       propertyPath: boosterInfos.Array.data[6].actions.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6359240301430102800, guid: 407911a24b2f1ed42b7ee796c89befc9,
+        type: 3}
+      propertyPath: needTargetToFire
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359240301430102800, guid: 407911a24b2f1ed42b7ee796c89befc9,
+        type: 3}
+      propertyPath: forceDirectionFollowGun
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114506514760959066, guid: 407911a24b2f1ed42b7ee796c89befc9,
+        type: 3}
+      propertyPath: GameObjectToPool
+      value: 
+      objectReference: {fileID: 3846082939590667178, guid: 6f0212e8077e51840bc16811a37dabc9,
+        type: 3}
+    - target: {fileID: 114506514760959066, guid: 407911a24b2f1ed42b7ee796c89befc9,
+        type: 3}
+      propertyPath: PoolSize
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -500,19 +541,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114506514760959066, guid: 407911a24b2f1ed42b7ee796c89befc9,
-        type: 3}
-      propertyPath: GameObjectToPool
-      value: 
-      objectReference: {fileID: 3846082939590667178, guid: 6f0212e8077e51840bc16811a37dabc9,
-        type: 3}
-    - target: {fileID: 114506514760959066, guid: 407911a24b2f1ed42b7ee796c89befc9,
-        type: 3}
-      propertyPath: PoolSize
-      value: 6
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 407911a24b2f1ed42b7ee796c89befc9, type: 3}
+--- !u!1 &6302407136578566231 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1072918119399550, guid: 407911a24b2f1ed42b7ee796c89befc9,
+    type: 3}
+  m_PrefabInstance: {fileID: 6302060034184951849}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6303826388625794239 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4180916872256662, guid: 407911a24b2f1ed42b7ee796c89befc9,
@@ -525,7 +561,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 6302060034184951849}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 6302407136578566231}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ce126393c608214cbc9225597640830, type: 3}

@@ -132,6 +132,7 @@ namespace EazyEngine.Tools
                 {
                    // newGameObject.gameObject.SetActive(false);
                     StartCoroutine(delayActionDeactive(newGameObject));
+
                 }
             }
             else

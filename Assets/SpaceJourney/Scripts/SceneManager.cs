@@ -361,9 +361,10 @@ namespace EazyEngine.Space
                 }
                 else
                 {
+              
                     Sequence pSeq = DOTween.Sequence();
 
-                    pSeq.Append(DOTween.To(() => process.fillAmount, x => process.fillAmount = x, 1, 0.25f));
+                    pSeq.Append(DOTween.To(() => process.fillAmount, x => process.fillAmount = x, 1, 0.35f));
                     pSeq.AppendCallback(delegate
                     {
 
