@@ -25,6 +25,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_BinderConnection_UnityEngine_RaycastHit2D : FlowCanvas.BinderConnection<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_BinderConnection_UnityEngine_Ray : FlowCanvas.BinderConnection<UnityEngine.Ray>{}
 		class FlowCanvas_BinderConnection_UnityEngine_Space : FlowCanvas.BinderConnection<UnityEngine.Space>{}
+		class FlowCanvas_BinderConnection_EventTimer : FlowCanvas.BinderConnection<EventTimer>{}
 		class FlowCanvas_BinderConnection_EazyEngine_Space_DamageExtra : FlowCanvas.BinderConnection<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_BinderConnection_EazyEngine_Space_DamageExtraVariant : FlowCanvas.BinderConnection<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_BinderConnection_EazyEngine_Space_PickEvent : FlowCanvas.BinderConnection<EazyEngine.Space.PickEvent>{}
@@ -32,6 +33,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_BinderConnection_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.BinderConnection<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_BinderConnection_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.BinderConnection<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_BinderConnection_UnityEngine_LayerMask : FlowCanvas.BinderConnection<UnityEngine.LayerMask>{}
+		class FlowCanvas_BinderConnection_UnityEngine_Animations_ConstraintSource : FlowCanvas.BinderConnection<UnityEngine.Animations.ConstraintSource>{}
 
 		void FlowCanvas_ValueHandler_Delegate(){
 			FlowCanvas.ValueHandler<System.Boolean> _FlowCanvas_ValueHandler_System_Boolean = default(FlowCanvas.ValueHandler<System.Boolean>);
@@ -53,6 +55,7 @@ namespace ParadoxNotion.Internal{
 			FlowCanvas.ValueHandler<UnityEngine.RaycastHit2D> _FlowCanvas_ValueHandler_UnityEngine_RaycastHit2D = default(FlowCanvas.ValueHandler<UnityEngine.RaycastHit2D>);
 			FlowCanvas.ValueHandler<UnityEngine.Ray> _FlowCanvas_ValueHandler_UnityEngine_Ray = default(FlowCanvas.ValueHandler<UnityEngine.Ray>);
 			FlowCanvas.ValueHandler<UnityEngine.Space> _FlowCanvas_ValueHandler_UnityEngine_Space = default(FlowCanvas.ValueHandler<UnityEngine.Space>);
+			FlowCanvas.ValueHandler<EventTimer> _FlowCanvas_ValueHandler_EventTimer = default(FlowCanvas.ValueHandler<EventTimer>);
 			FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtra> _FlowCanvas_ValueHandler_EazyEngine_Space_DamageExtra = default(FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtra>);
 			FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtraVariant> _FlowCanvas_ValueHandler_EazyEngine_Space_DamageExtraVariant = default(FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtraVariant>);
 			FlowCanvas.ValueHandler<EazyEngine.Space.PickEvent> _FlowCanvas_ValueHandler_EazyEngine_Space_PickEvent = default(FlowCanvas.ValueHandler<EazyEngine.Space.PickEvent>);
@@ -60,6 +63,7 @@ namespace ParadoxNotion.Internal{
 			FlowCanvas.ValueHandler<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride> _FlowCanvas_ValueHandler_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride = default(FlowCanvas.ValueHandler<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>);
 			FlowCanvas.ValueHandler<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride> _FlowCanvas_ValueHandler_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride = default(FlowCanvas.ValueHandler<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>);
 			FlowCanvas.ValueHandler<UnityEngine.LayerMask> _FlowCanvas_ValueHandler_UnityEngine_LayerMask = default(FlowCanvas.ValueHandler<UnityEngine.LayerMask>);
+			FlowCanvas.ValueHandler<UnityEngine.Animations.ConstraintSource> _FlowCanvas_ValueHandler_UnityEngine_Animations_ConstraintSource = default(FlowCanvas.ValueHandler<UnityEngine.Animations.ConstraintSource>);
 		}
 
 		class FlowCanvas_ValueInput_System_Boolean : FlowCanvas.ValueInput<System.Boolean>{}
@@ -81,6 +85,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_ValueInput_UnityEngine_RaycastHit2D : FlowCanvas.ValueInput<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_ValueInput_UnityEngine_Ray : FlowCanvas.ValueInput<UnityEngine.Ray>{}
 		class FlowCanvas_ValueInput_UnityEngine_Space : FlowCanvas.ValueInput<UnityEngine.Space>{}
+		class FlowCanvas_ValueInput_EventTimer : FlowCanvas.ValueInput<EventTimer>{}
 		class FlowCanvas_ValueInput_EazyEngine_Space_DamageExtra : FlowCanvas.ValueInput<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_ValueInput_EazyEngine_Space_DamageExtraVariant : FlowCanvas.ValueInput<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_ValueInput_EazyEngine_Space_PickEvent : FlowCanvas.ValueInput<EazyEngine.Space.PickEvent>{}
@@ -88,6 +93,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_ValueInput_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.ValueInput<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_ValueInput_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.ValueInput<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_ValueInput_UnityEngine_LayerMask : FlowCanvas.ValueInput<UnityEngine.LayerMask>{}
+		class FlowCanvas_ValueInput_UnityEngine_Animations_ConstraintSource : FlowCanvas.ValueInput<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_ValueOutput_System_Boolean : FlowCanvas.ValueOutput<System.Boolean>{}
 		class FlowCanvas_ValueOutput_System_Single : FlowCanvas.ValueOutput<System.Single>{}
@@ -108,6 +114,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_ValueOutput_UnityEngine_RaycastHit2D : FlowCanvas.ValueOutput<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_ValueOutput_UnityEngine_Ray : FlowCanvas.ValueOutput<UnityEngine.Ray>{}
 		class FlowCanvas_ValueOutput_UnityEngine_Space : FlowCanvas.ValueOutput<UnityEngine.Space>{}
+		class FlowCanvas_ValueOutput_EventTimer : FlowCanvas.ValueOutput<EventTimer>{}
 		class FlowCanvas_ValueOutput_EazyEngine_Space_DamageExtra : FlowCanvas.ValueOutput<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_ValueOutput_EazyEngine_Space_DamageExtraVariant : FlowCanvas.ValueOutput<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_ValueOutput_EazyEngine_Space_PickEvent : FlowCanvas.ValueOutput<EazyEngine.Space.PickEvent>{}
@@ -115,6 +122,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_ValueOutput_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.ValueOutput<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_ValueOutput_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.ValueOutput<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_ValueOutput_UnityEngine_LayerMask : FlowCanvas.ValueOutput<UnityEngine.LayerMask>{}
+		class FlowCanvas_ValueOutput_UnityEngine_Animations_ConstraintSource : FlowCanvas.ValueOutput<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_AddDictionaryItem_System_Boolean : FlowCanvas.Nodes.AddDictionaryItem<System.Boolean>{}
 		class FlowCanvas_Nodes_AddDictionaryItem_System_Single : FlowCanvas.Nodes.AddDictionaryItem<System.Single>{}
@@ -135,6 +143,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_AddDictionaryItem_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.AddDictionaryItem<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_AddDictionaryItem_UnityEngine_Ray : FlowCanvas.Nodes.AddDictionaryItem<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_AddDictionaryItem_UnityEngine_Space : FlowCanvas.Nodes.AddDictionaryItem<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_AddDictionaryItem_EventTimer : FlowCanvas.Nodes.AddDictionaryItem<EventTimer>{}
 		class FlowCanvas_Nodes_AddDictionaryItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.AddDictionaryItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_AddDictionaryItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.AddDictionaryItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_AddDictionaryItem_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.AddDictionaryItem<EazyEngine.Space.PickEvent>{}
@@ -142,6 +151,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_AddDictionaryItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.AddDictionaryItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_AddDictionaryItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.AddDictionaryItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_AddDictionaryItem_UnityEngine_LayerMask : FlowCanvas.Nodes.AddDictionaryItem<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_AddDictionaryItem_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.AddDictionaryItem<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_AddListItem_System_Boolean : FlowCanvas.Nodes.AddListItem<System.Boolean>{}
 		class FlowCanvas_Nodes_AddListItem_System_Single : FlowCanvas.Nodes.AddListItem<System.Single>{}
@@ -162,6 +172,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_AddListItem_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.AddListItem<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_AddListItem_UnityEngine_Ray : FlowCanvas.Nodes.AddListItem<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_AddListItem_UnityEngine_Space : FlowCanvas.Nodes.AddListItem<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_AddListItem_EventTimer : FlowCanvas.Nodes.AddListItem<EventTimer>{}
 		class FlowCanvas_Nodes_AddListItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.AddListItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_AddListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.AddListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_AddListItem_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.AddListItem<EazyEngine.Space.PickEvent>{}
@@ -169,6 +180,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_AddListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.AddListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_AddListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.AddListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_AddListItem_UnityEngine_LayerMask : FlowCanvas.Nodes.AddListItem<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_AddListItem_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.AddListItem<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_Buffer_System_Boolean : FlowCanvas.Nodes.Buffer<System.Boolean>{}
 		class FlowCanvas_Nodes_Buffer_System_Single : FlowCanvas.Nodes.Buffer<System.Single>{}
@@ -189,6 +201,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_Buffer_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.Buffer<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_Buffer_UnityEngine_Ray : FlowCanvas.Nodes.Buffer<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_Buffer_UnityEngine_Space : FlowCanvas.Nodes.Buffer<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_Buffer_EventTimer : FlowCanvas.Nodes.Buffer<EventTimer>{}
 		class FlowCanvas_Nodes_Buffer_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.Buffer<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_Buffer_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.Buffer<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_Buffer_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.Buffer<EazyEngine.Space.PickEvent>{}
@@ -196,6 +209,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_Buffer_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.Buffer<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_Buffer_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.Buffer<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_Buffer_UnityEngine_LayerMask : FlowCanvas.Nodes.Buffer<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_Buffer_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.Buffer<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_Cache_System_Boolean : FlowCanvas.Nodes.Cache<System.Boolean>{}
 		class FlowCanvas_Nodes_Cache_System_Single : FlowCanvas.Nodes.Cache<System.Single>{}
@@ -216,6 +230,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_Cache_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.Cache<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_Cache_UnityEngine_Ray : FlowCanvas.Nodes.Cache<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_Cache_UnityEngine_Space : FlowCanvas.Nodes.Cache<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_Cache_EventTimer : FlowCanvas.Nodes.Cache<EventTimer>{}
 		class FlowCanvas_Nodes_Cache_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.Cache<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_Cache_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.Cache<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_Cache_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.Cache<EazyEngine.Space.PickEvent>{}
@@ -223,6 +238,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_Cache_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.Cache<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_Cache_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.Cache<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_Cache_UnityEngine_LayerMask : FlowCanvas.Nodes.Cache<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_Cache_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.Cache<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_Cast_System_Boolean : FlowCanvas.Nodes.Cast<System.Boolean>{}
 		class FlowCanvas_Nodes_Cast_System_Single : FlowCanvas.Nodes.Cast<System.Single>{}
@@ -243,6 +259,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_Cast_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.Cast<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_Cast_UnityEngine_Ray : FlowCanvas.Nodes.Cast<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_Cast_UnityEngine_Space : FlowCanvas.Nodes.Cast<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_Cast_EventTimer : FlowCanvas.Nodes.Cast<EventTimer>{}
 		class FlowCanvas_Nodes_Cast_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.Cast<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_Cast_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.Cast<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_Cast_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.Cast<EazyEngine.Space.PickEvent>{}
@@ -250,6 +267,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_Cast_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.Cast<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_Cast_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.Cast<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_Cast_UnityEngine_LayerMask : FlowCanvas.Nodes.Cast<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_Cast_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.Cast<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_CastTo_System_Boolean : FlowCanvas.Nodes.CastTo<System.Boolean>{}
 		class FlowCanvas_Nodes_CastTo_System_Single : FlowCanvas.Nodes.CastTo<System.Single>{}
@@ -270,6 +288,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_CastTo_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.CastTo<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_CastTo_UnityEngine_Ray : FlowCanvas.Nodes.CastTo<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_CastTo_UnityEngine_Space : FlowCanvas.Nodes.CastTo<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_CastTo_EventTimer : FlowCanvas.Nodes.CastTo<EventTimer>{}
 		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.CastTo<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.CastTo<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.CastTo<EazyEngine.Space.PickEvent>{}
@@ -277,6 +296,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_CastTo_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.CastTo<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_CastTo_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.CastTo<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_CastTo_UnityEngine_LayerMask : FlowCanvas.Nodes.CastTo<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_CastTo_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.CastTo<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_CodeEvent_System_Boolean : FlowCanvas.Nodes.CodeEvent<System.Boolean>{}
 		class FlowCanvas_Nodes_CodeEvent_System_Single : FlowCanvas.Nodes.CodeEvent<System.Single>{}
@@ -297,6 +317,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_CodeEvent_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.CodeEvent<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Ray : FlowCanvas.Nodes.CodeEvent<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Space : FlowCanvas.Nodes.CodeEvent<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_CodeEvent_EventTimer : FlowCanvas.Nodes.CodeEvent<EventTimer>{}
 		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.PickEvent>{}
@@ -304,6 +325,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_CodeEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.CodeEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_CodeEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.CodeEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_CodeEvent_UnityEngine_LayerMask : FlowCanvas.Nodes.CodeEvent<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.CodeEvent<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_CreateCollection_System_Boolean : FlowCanvas.Nodes.CreateCollection<System.Boolean>{}
 		class FlowCanvas_Nodes_CreateCollection_System_Single : FlowCanvas.Nodes.CreateCollection<System.Single>{}
@@ -324,6 +346,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_CreateCollection_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.CreateCollection<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_CreateCollection_UnityEngine_Ray : FlowCanvas.Nodes.CreateCollection<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_CreateCollection_UnityEngine_Space : FlowCanvas.Nodes.CreateCollection<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_CreateCollection_EventTimer : FlowCanvas.Nodes.CreateCollection<EventTimer>{}
 		class FlowCanvas_Nodes_CreateCollection_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.CreateCollection<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_CreateCollection_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.CreateCollection<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_CreateCollection_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.CreateCollection<EazyEngine.Space.PickEvent>{}
@@ -331,6 +354,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_CreateCollection_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.CreateCollection<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_CreateCollection_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.CreateCollection<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_CreateCollection_UnityEngine_LayerMask : FlowCanvas.Nodes.CreateCollection<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_CreateCollection_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.CreateCollection<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_CreateDictionary_System_Boolean : FlowCanvas.Nodes.CreateDictionary<System.Boolean>{}
 		class FlowCanvas_Nodes_CreateDictionary_System_Single : FlowCanvas.Nodes.CreateDictionary<System.Single>{}
@@ -351,6 +375,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_CreateDictionary_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.CreateDictionary<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_CreateDictionary_UnityEngine_Ray : FlowCanvas.Nodes.CreateDictionary<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_CreateDictionary_UnityEngine_Space : FlowCanvas.Nodes.CreateDictionary<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_CreateDictionary_EventTimer : FlowCanvas.Nodes.CreateDictionary<EventTimer>{}
 		class FlowCanvas_Nodes_CreateDictionary_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.CreateDictionary<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_CreateDictionary_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.CreateDictionary<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_CreateDictionary_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.CreateDictionary<EazyEngine.Space.PickEvent>{}
@@ -358,6 +383,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_CreateDictionary_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.CreateDictionary<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_CreateDictionary_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.CreateDictionary<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_CreateDictionary_UnityEngine_LayerMask : FlowCanvas.Nodes.CreateDictionary<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_CreateDictionary_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.CreateDictionary<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_CustomEvent_System_Boolean : FlowCanvas.Nodes.CustomEvent<System.Boolean>{}
 		class FlowCanvas_Nodes_CustomEvent_System_Single : FlowCanvas.Nodes.CustomEvent<System.Single>{}
@@ -378,6 +404,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_CustomEvent_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.CustomEvent<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_CustomEvent_UnityEngine_Ray : FlowCanvas.Nodes.CustomEvent<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_CustomEvent_UnityEngine_Space : FlowCanvas.Nodes.CustomEvent<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_CustomEvent_EventTimer : FlowCanvas.Nodes.CustomEvent<EventTimer>{}
 		class FlowCanvas_Nodes_CustomEvent_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.CustomEvent<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_CustomEvent_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.CustomEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_CustomEvent_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.CustomEvent<EazyEngine.Space.PickEvent>{}
@@ -385,6 +412,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_CustomEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.CustomEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_CustomEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.CustomEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_CustomEvent_UnityEngine_LayerMask : FlowCanvas.Nodes.CustomEvent<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_CustomEvent_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.CustomEvent<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_DictionaryContainsKey_System_Boolean : FlowCanvas.Nodes.DictionaryContainsKey<System.Boolean>{}
 		class FlowCanvas_Nodes_DictionaryContainsKey_System_Single : FlowCanvas.Nodes.DictionaryContainsKey<System.Single>{}
@@ -405,6 +433,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_DictionaryContainsKey_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.DictionaryContainsKey<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_DictionaryContainsKey_UnityEngine_Ray : FlowCanvas.Nodes.DictionaryContainsKey<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_DictionaryContainsKey_UnityEngine_Space : FlowCanvas.Nodes.DictionaryContainsKey<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_DictionaryContainsKey_EventTimer : FlowCanvas.Nodes.DictionaryContainsKey<EventTimer>{}
 		class FlowCanvas_Nodes_DictionaryContainsKey_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.DictionaryContainsKey<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_DictionaryContainsKey_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.DictionaryContainsKey<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_DictionaryContainsKey_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.DictionaryContainsKey<EazyEngine.Space.PickEvent>{}
@@ -412,6 +441,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_DictionaryContainsKey_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.DictionaryContainsKey<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_DictionaryContainsKey_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.DictionaryContainsKey<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_DictionaryContainsKey_UnityEngine_LayerMask : FlowCanvas.Nodes.DictionaryContainsKey<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_DictionaryContainsKey_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.DictionaryContainsKey<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_ForEach_System_Boolean : FlowCanvas.Nodes.ForEach<System.Boolean>{}
 		class FlowCanvas_Nodes_ForEach_System_Single : FlowCanvas.Nodes.ForEach<System.Single>{}
@@ -432,6 +462,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_ForEach_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.ForEach<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_ForEach_UnityEngine_Ray : FlowCanvas.Nodes.ForEach<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_ForEach_UnityEngine_Space : FlowCanvas.Nodes.ForEach<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_ForEach_EventTimer : FlowCanvas.Nodes.ForEach<EventTimer>{}
 		class FlowCanvas_Nodes_ForEach_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.ForEach<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_ForEach_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.ForEach<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_ForEach_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.ForEach<EazyEngine.Space.PickEvent>{}
@@ -439,6 +470,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_ForEach_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.ForEach<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_ForEach_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.ForEach<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_ForEach_UnityEngine_LayerMask : FlowCanvas.Nodes.ForEach<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_ForEach_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.ForEach<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_GetDictionaryItem_System_Boolean : FlowCanvas.Nodes.GetDictionaryItem<System.Boolean>{}
 		class FlowCanvas_Nodes_GetDictionaryItem_System_Single : FlowCanvas.Nodes.GetDictionaryItem<System.Single>{}
@@ -459,6 +491,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetDictionaryItem_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.GetDictionaryItem<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_GetDictionaryItem_UnityEngine_Ray : FlowCanvas.Nodes.GetDictionaryItem<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_GetDictionaryItem_UnityEngine_Space : FlowCanvas.Nodes.GetDictionaryItem<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_GetDictionaryItem_EventTimer : FlowCanvas.Nodes.GetDictionaryItem<EventTimer>{}
 		class FlowCanvas_Nodes_GetDictionaryItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.GetDictionaryItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_GetDictionaryItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.GetDictionaryItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_GetDictionaryItem_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.GetDictionaryItem<EazyEngine.Space.PickEvent>{}
@@ -466,6 +499,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetDictionaryItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.GetDictionaryItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_GetDictionaryItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.GetDictionaryItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_GetDictionaryItem_UnityEngine_LayerMask : FlowCanvas.Nodes.GetDictionaryItem<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_GetDictionaryItem_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.GetDictionaryItem<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_GetFirstListItem_System_Boolean : FlowCanvas.Nodes.GetFirstListItem<System.Boolean>{}
 		class FlowCanvas_Nodes_GetFirstListItem_System_Single : FlowCanvas.Nodes.GetFirstListItem<System.Single>{}
@@ -486,6 +520,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetFirstListItem_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.GetFirstListItem<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_GetFirstListItem_UnityEngine_Ray : FlowCanvas.Nodes.GetFirstListItem<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_GetFirstListItem_UnityEngine_Space : FlowCanvas.Nodes.GetFirstListItem<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_GetFirstListItem_EventTimer : FlowCanvas.Nodes.GetFirstListItem<EventTimer>{}
 		class FlowCanvas_Nodes_GetFirstListItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.GetFirstListItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_GetFirstListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.GetFirstListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_GetFirstListItem_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.GetFirstListItem<EazyEngine.Space.PickEvent>{}
@@ -493,6 +528,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetFirstListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.GetFirstListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_GetFirstListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.GetFirstListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_GetFirstListItem_UnityEngine_LayerMask : FlowCanvas.Nodes.GetFirstListItem<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_GetFirstListItem_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.GetFirstListItem<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_GetLastListItem_System_Boolean : FlowCanvas.Nodes.GetLastListItem<System.Boolean>{}
 		class FlowCanvas_Nodes_GetLastListItem_System_Single : FlowCanvas.Nodes.GetLastListItem<System.Single>{}
@@ -513,6 +549,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetLastListItem_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.GetLastListItem<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_GetLastListItem_UnityEngine_Ray : FlowCanvas.Nodes.GetLastListItem<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_GetLastListItem_UnityEngine_Space : FlowCanvas.Nodes.GetLastListItem<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_GetLastListItem_EventTimer : FlowCanvas.Nodes.GetLastListItem<EventTimer>{}
 		class FlowCanvas_Nodes_GetLastListItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.GetLastListItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_GetLastListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.GetLastListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_GetLastListItem_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.GetLastListItem<EazyEngine.Space.PickEvent>{}
@@ -520,6 +557,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetLastListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.GetLastListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_GetLastListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.GetLastListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_GetLastListItem_UnityEngine_LayerMask : FlowCanvas.Nodes.GetLastListItem<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_GetLastListItem_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.GetLastListItem<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_GetListItem_System_Boolean : FlowCanvas.Nodes.GetListItem<System.Boolean>{}
 		class FlowCanvas_Nodes_GetListItem_System_Single : FlowCanvas.Nodes.GetListItem<System.Single>{}
@@ -540,6 +578,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetListItem_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.GetListItem<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_GetListItem_UnityEngine_Ray : FlowCanvas.Nodes.GetListItem<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_GetListItem_UnityEngine_Space : FlowCanvas.Nodes.GetListItem<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_GetListItem_EventTimer : FlowCanvas.Nodes.GetListItem<EventTimer>{}
 		class FlowCanvas_Nodes_GetListItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.GetListItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_GetListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.GetListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_GetListItem_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.GetListItem<EazyEngine.Space.PickEvent>{}
@@ -547,6 +586,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.GetListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_GetListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.GetListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_GetListItem_UnityEngine_LayerMask : FlowCanvas.Nodes.GetListItem<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_GetListItem_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.GetListItem<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_GetOtherVariable_System_Boolean : FlowCanvas.Nodes.GetOtherVariable<System.Boolean>{}
 		class FlowCanvas_Nodes_GetOtherVariable_System_Single : FlowCanvas.Nodes.GetOtherVariable<System.Single>{}
@@ -567,6 +607,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetOtherVariable_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.GetOtherVariable<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_GetOtherVariable_UnityEngine_Ray : FlowCanvas.Nodes.GetOtherVariable<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_GetOtherVariable_UnityEngine_Space : FlowCanvas.Nodes.GetOtherVariable<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_GetOtherVariable_EventTimer : FlowCanvas.Nodes.GetOtherVariable<EventTimer>{}
 		class FlowCanvas_Nodes_GetOtherVariable_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.GetOtherVariable<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_GetOtherVariable_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.GetOtherVariable<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_GetOtherVariable_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.GetOtherVariable<EazyEngine.Space.PickEvent>{}
@@ -574,6 +615,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetOtherVariable_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.GetOtherVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_GetOtherVariable_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.GetOtherVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_GetOtherVariable_UnityEngine_LayerMask : FlowCanvas.Nodes.GetOtherVariable<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_GetOtherVariable_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.GetOtherVariable<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_GetRandomListItem_System_Boolean : FlowCanvas.Nodes.GetRandomListItem<System.Boolean>{}
 		class FlowCanvas_Nodes_GetRandomListItem_System_Single : FlowCanvas.Nodes.GetRandomListItem<System.Single>{}
@@ -594,6 +636,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetRandomListItem_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.GetRandomListItem<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_GetRandomListItem_UnityEngine_Ray : FlowCanvas.Nodes.GetRandomListItem<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_GetRandomListItem_UnityEngine_Space : FlowCanvas.Nodes.GetRandomListItem<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_GetRandomListItem_EventTimer : FlowCanvas.Nodes.GetRandomListItem<EventTimer>{}
 		class FlowCanvas_Nodes_GetRandomListItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.GetRandomListItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_GetRandomListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.GetRandomListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_GetRandomListItem_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.GetRandomListItem<EazyEngine.Space.PickEvent>{}
@@ -601,6 +644,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetRandomListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.GetRandomListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_GetRandomListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.GetRandomListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_GetRandomListItem_UnityEngine_LayerMask : FlowCanvas.Nodes.GetRandomListItem<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_GetRandomListItem_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.GetRandomListItem<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_GetVariable_System_Boolean : FlowCanvas.Nodes.GetVariable<System.Boolean>{}
 		class FlowCanvas_Nodes_GetVariable_System_Single : FlowCanvas.Nodes.GetVariable<System.Single>{}
@@ -621,6 +665,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetVariable_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.GetVariable<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_GetVariable_UnityEngine_Ray : FlowCanvas.Nodes.GetVariable<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_GetVariable_UnityEngine_Space : FlowCanvas.Nodes.GetVariable<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_GetVariable_EventTimer : FlowCanvas.Nodes.GetVariable<EventTimer>{}
 		class FlowCanvas_Nodes_GetVariable_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.GetVariable<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_GetVariable_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.GetVariable<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_GetVariable_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.GetVariable<EazyEngine.Space.PickEvent>{}
@@ -628,6 +673,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetVariable_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.GetVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_GetVariable_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.GetVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_GetVariable_UnityEngine_LayerMask : FlowCanvas.Nodes.GetVariable<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_GetVariable_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.GetVariable<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_Identity_System_Boolean : FlowCanvas.Nodes.Identity<System.Boolean>{}
 		class FlowCanvas_Nodes_Identity_System_Single : FlowCanvas.Nodes.Identity<System.Single>{}
@@ -648,6 +694,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_Identity_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.Identity<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_Identity_UnityEngine_Ray : FlowCanvas.Nodes.Identity<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_Identity_UnityEngine_Space : FlowCanvas.Nodes.Identity<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_Identity_EventTimer : FlowCanvas.Nodes.Identity<EventTimer>{}
 		class FlowCanvas_Nodes_Identity_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.Identity<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_Identity_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.Identity<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_Identity_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.Identity<EazyEngine.Space.PickEvent>{}
@@ -655,6 +702,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_Identity_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.Identity<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_Identity_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.Identity<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_Identity_UnityEngine_LayerMask : FlowCanvas.Nodes.Identity<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_Identity_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.Identity<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_InsertListItem_System_Boolean : FlowCanvas.Nodes.InsertListItem<System.Boolean>{}
 		class FlowCanvas_Nodes_InsertListItem_System_Single : FlowCanvas.Nodes.InsertListItem<System.Single>{}
@@ -675,6 +723,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_InsertListItem_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.InsertListItem<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_InsertListItem_UnityEngine_Ray : FlowCanvas.Nodes.InsertListItem<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_InsertListItem_UnityEngine_Space : FlowCanvas.Nodes.InsertListItem<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_InsertListItem_EventTimer : FlowCanvas.Nodes.InsertListItem<EventTimer>{}
 		class FlowCanvas_Nodes_InsertListItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.InsertListItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_InsertListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.InsertListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_InsertListItem_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.InsertListItem<EazyEngine.Space.PickEvent>{}
@@ -682,6 +731,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_InsertListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.InsertListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_InsertListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.InsertListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_InsertListItem_UnityEngine_LayerMask : FlowCanvas.Nodes.InsertListItem<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_InsertListItem_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.InsertListItem<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_PickValue_System_Boolean : FlowCanvas.Nodes.PickValue<System.Boolean>{}
 		class FlowCanvas_Nodes_PickValue_System_Single : FlowCanvas.Nodes.PickValue<System.Single>{}
@@ -702,6 +752,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_PickValue_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.PickValue<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_PickValue_UnityEngine_Ray : FlowCanvas.Nodes.PickValue<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_PickValue_UnityEngine_Space : FlowCanvas.Nodes.PickValue<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_PickValue_EventTimer : FlowCanvas.Nodes.PickValue<EventTimer>{}
 		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.PickValue<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.PickValue<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.PickValue<EazyEngine.Space.PickEvent>{}
@@ -709,6 +760,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_PickValue_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.PickValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_PickValue_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.PickValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_PickValue_UnityEngine_LayerMask : FlowCanvas.Nodes.PickValue<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_PickValue_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.PickValue<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_ReadFlowParameter_System_Boolean : FlowCanvas.Nodes.ReadFlowParameter<System.Boolean>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_System_Single : FlowCanvas.Nodes.ReadFlowParameter<System.Single>{}
@@ -729,6 +781,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_ReadFlowParameter_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.ReadFlowParameter<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_UnityEngine_Ray : FlowCanvas.Nodes.ReadFlowParameter<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_UnityEngine_Space : FlowCanvas.Nodes.ReadFlowParameter<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_ReadFlowParameter_EventTimer : FlowCanvas.Nodes.ReadFlowParameter<EventTimer>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.ReadFlowParameter<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.ReadFlowParameter<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.ReadFlowParameter<EazyEngine.Space.PickEvent>{}
@@ -736,6 +789,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_ReadFlowParameter_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.ReadFlowParameter<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.ReadFlowParameter<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_UnityEngine_LayerMask : FlowCanvas.Nodes.ReadFlowParameter<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_ReadFlowParameter_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.ReadFlowParameter<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_System_Boolean : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<System.Boolean>{}
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_System_Single : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<System.Single>{}
@@ -756,6 +810,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_UnityEngine_Ray : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_UnityEngine_Space : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_EventTimer : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<EventTimer>{}
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<EazyEngine.Space.PickEvent>{}
@@ -763,6 +818,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_UnityEngine_LayerMask : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_RelayValueInput_System_Boolean : FlowCanvas.Nodes.RelayValueInput<System.Boolean>{}
 		class FlowCanvas_Nodes_RelayValueInput_System_Single : FlowCanvas.Nodes.RelayValueInput<System.Single>{}
@@ -783,6 +839,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_RelayValueInput_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.RelayValueInput<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_RelayValueInput_UnityEngine_Ray : FlowCanvas.Nodes.RelayValueInput<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_RelayValueInput_UnityEngine_Space : FlowCanvas.Nodes.RelayValueInput<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_RelayValueInput_EventTimer : FlowCanvas.Nodes.RelayValueInput<EventTimer>{}
 		class FlowCanvas_Nodes_RelayValueInput_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.RelayValueInput<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_RelayValueInput_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.RelayValueInput<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_RelayValueInput_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.RelayValueInput<EazyEngine.Space.PickEvent>{}
@@ -790,6 +847,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_RelayValueInput_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.RelayValueInput<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_RelayValueInput_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.RelayValueInput<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_RelayValueInput_UnityEngine_LayerMask : FlowCanvas.Nodes.RelayValueInput<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_RelayValueInput_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.RelayValueInput<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_RelayValueOutput_System_Boolean : FlowCanvas.Nodes.RelayValueOutput<System.Boolean>{}
 		class FlowCanvas_Nodes_RelayValueOutput_System_Single : FlowCanvas.Nodes.RelayValueOutput<System.Single>{}
@@ -810,6 +868,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_RelayValueOutput_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.RelayValueOutput<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_RelayValueOutput_UnityEngine_Ray : FlowCanvas.Nodes.RelayValueOutput<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_RelayValueOutput_UnityEngine_Space : FlowCanvas.Nodes.RelayValueOutput<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_RelayValueOutput_EventTimer : FlowCanvas.Nodes.RelayValueOutput<EventTimer>{}
 		class FlowCanvas_Nodes_RelayValueOutput_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.RelayValueOutput<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_RelayValueOutput_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.RelayValueOutput<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_RelayValueOutput_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.RelayValueOutput<EazyEngine.Space.PickEvent>{}
@@ -817,6 +876,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_RelayValueOutput_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.RelayValueOutput<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_RelayValueOutput_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.RelayValueOutput<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_RelayValueOutput_UnityEngine_LayerMask : FlowCanvas.Nodes.RelayValueOutput<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_RelayValueOutput_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.RelayValueOutput<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_RemoveDictionaryKey_System_Boolean : FlowCanvas.Nodes.RemoveDictionaryKey<System.Boolean>{}
 		class FlowCanvas_Nodes_RemoveDictionaryKey_System_Single : FlowCanvas.Nodes.RemoveDictionaryKey<System.Single>{}
@@ -837,6 +897,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_RemoveDictionaryKey_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.RemoveDictionaryKey<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_RemoveDictionaryKey_UnityEngine_Ray : FlowCanvas.Nodes.RemoveDictionaryKey<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_RemoveDictionaryKey_UnityEngine_Space : FlowCanvas.Nodes.RemoveDictionaryKey<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_RemoveDictionaryKey_EventTimer : FlowCanvas.Nodes.RemoveDictionaryKey<EventTimer>{}
 		class FlowCanvas_Nodes_RemoveDictionaryKey_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.RemoveDictionaryKey<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_RemoveDictionaryKey_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.RemoveDictionaryKey<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_RemoveDictionaryKey_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.RemoveDictionaryKey<EazyEngine.Space.PickEvent>{}
@@ -844,6 +905,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_RemoveDictionaryKey_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.RemoveDictionaryKey<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_RemoveDictionaryKey_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.RemoveDictionaryKey<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_RemoveDictionaryKey_UnityEngine_LayerMask : FlowCanvas.Nodes.RemoveDictionaryKey<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_RemoveDictionaryKey_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.RemoveDictionaryKey<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_RemoveListItem_System_Boolean : FlowCanvas.Nodes.RemoveListItem<System.Boolean>{}
 		class FlowCanvas_Nodes_RemoveListItem_System_Single : FlowCanvas.Nodes.RemoveListItem<System.Single>{}
@@ -864,6 +926,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_RemoveListItem_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.RemoveListItem<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_RemoveListItem_UnityEngine_Ray : FlowCanvas.Nodes.RemoveListItem<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_RemoveListItem_UnityEngine_Space : FlowCanvas.Nodes.RemoveListItem<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_RemoveListItem_EventTimer : FlowCanvas.Nodes.RemoveListItem<EventTimer>{}
 		class FlowCanvas_Nodes_RemoveListItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.RemoveListItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_RemoveListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.RemoveListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_RemoveListItem_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.RemoveListItem<EazyEngine.Space.PickEvent>{}
@@ -871,6 +934,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_RemoveListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.RemoveListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_RemoveListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.RemoveListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_RemoveListItem_UnityEngine_LayerMask : FlowCanvas.Nodes.RemoveListItem<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_RemoveListItem_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.RemoveListItem<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_RemoveListItemAt_System_Boolean : FlowCanvas.Nodes.RemoveListItemAt<System.Boolean>{}
 		class FlowCanvas_Nodes_RemoveListItemAt_System_Single : FlowCanvas.Nodes.RemoveListItemAt<System.Single>{}
@@ -891,6 +955,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_RemoveListItemAt_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.RemoveListItemAt<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_RemoveListItemAt_UnityEngine_Ray : FlowCanvas.Nodes.RemoveListItemAt<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_RemoveListItemAt_UnityEngine_Space : FlowCanvas.Nodes.RemoveListItemAt<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_RemoveListItemAt_EventTimer : FlowCanvas.Nodes.RemoveListItemAt<EventTimer>{}
 		class FlowCanvas_Nodes_RemoveListItemAt_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.RemoveListItemAt<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_RemoveListItemAt_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.RemoveListItemAt<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_RemoveListItemAt_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.RemoveListItemAt<EazyEngine.Space.PickEvent>{}
@@ -898,6 +963,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_RemoveListItemAt_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.RemoveListItemAt<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_RemoveListItemAt_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.RemoveListItemAt<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_RemoveListItemAt_UnityEngine_LayerMask : FlowCanvas.Nodes.RemoveListItemAt<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_RemoveListItemAt_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.RemoveListItemAt<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_SelectOnBool_System_Boolean : FlowCanvas.Nodes.SelectOnBool<System.Boolean>{}
 		class FlowCanvas_Nodes_SelectOnBool_System_Single : FlowCanvas.Nodes.SelectOnBool<System.Single>{}
@@ -918,6 +984,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SelectOnBool_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.SelectOnBool<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_SelectOnBool_UnityEngine_Ray : FlowCanvas.Nodes.SelectOnBool<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_SelectOnBool_UnityEngine_Space : FlowCanvas.Nodes.SelectOnBool<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_SelectOnBool_EventTimer : FlowCanvas.Nodes.SelectOnBool<EventTimer>{}
 		class FlowCanvas_Nodes_SelectOnBool_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SelectOnBool<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SelectOnBool_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SelectOnBool<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SelectOnBool_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.SelectOnBool<EazyEngine.Space.PickEvent>{}
@@ -925,6 +992,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SelectOnBool_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.SelectOnBool<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_SelectOnBool_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.SelectOnBool<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_SelectOnBool_UnityEngine_LayerMask : FlowCanvas.Nodes.SelectOnBool<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_SelectOnBool_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.SelectOnBool<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_SelectOnEnum_System_Boolean : FlowCanvas.Nodes.SelectOnEnum<System.Boolean>{}
 		class FlowCanvas_Nodes_SelectOnEnum_System_Single : FlowCanvas.Nodes.SelectOnEnum<System.Single>{}
@@ -945,6 +1013,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SelectOnEnum_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.SelectOnEnum<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_SelectOnEnum_UnityEngine_Ray : FlowCanvas.Nodes.SelectOnEnum<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_SelectOnEnum_UnityEngine_Space : FlowCanvas.Nodes.SelectOnEnum<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_SelectOnEnum_EventTimer : FlowCanvas.Nodes.SelectOnEnum<EventTimer>{}
 		class FlowCanvas_Nodes_SelectOnEnum_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SelectOnEnum<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SelectOnEnum_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SelectOnEnum<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SelectOnEnum_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.SelectOnEnum<EazyEngine.Space.PickEvent>{}
@@ -952,6 +1021,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SelectOnEnum_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.SelectOnEnum<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_SelectOnEnum_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.SelectOnEnum<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_SelectOnEnum_UnityEngine_LayerMask : FlowCanvas.Nodes.SelectOnEnum<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_SelectOnEnum_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.SelectOnEnum<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_SelectOnInt_System_Boolean : FlowCanvas.Nodes.SelectOnInt<System.Boolean>{}
 		class FlowCanvas_Nodes_SelectOnInt_System_Single : FlowCanvas.Nodes.SelectOnInt<System.Single>{}
@@ -972,6 +1042,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SelectOnInt_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.SelectOnInt<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_SelectOnInt_UnityEngine_Ray : FlowCanvas.Nodes.SelectOnInt<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_SelectOnInt_UnityEngine_Space : FlowCanvas.Nodes.SelectOnInt<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_SelectOnInt_EventTimer : FlowCanvas.Nodes.SelectOnInt<EventTimer>{}
 		class FlowCanvas_Nodes_SelectOnInt_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SelectOnInt<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SelectOnInt_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SelectOnInt<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SelectOnInt_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.SelectOnInt<EazyEngine.Space.PickEvent>{}
@@ -979,6 +1050,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SelectOnInt_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.SelectOnInt<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_SelectOnInt_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.SelectOnInt<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_SelectOnInt_UnityEngine_LayerMask : FlowCanvas.Nodes.SelectOnInt<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_SelectOnInt_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.SelectOnInt<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_SelectOnString_System_Boolean : FlowCanvas.Nodes.SelectOnString<System.Boolean>{}
 		class FlowCanvas_Nodes_SelectOnString_System_Single : FlowCanvas.Nodes.SelectOnString<System.Single>{}
@@ -999,6 +1071,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SelectOnString_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.SelectOnString<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_SelectOnString_UnityEngine_Ray : FlowCanvas.Nodes.SelectOnString<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_SelectOnString_UnityEngine_Space : FlowCanvas.Nodes.SelectOnString<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_SelectOnString_EventTimer : FlowCanvas.Nodes.SelectOnString<EventTimer>{}
 		class FlowCanvas_Nodes_SelectOnString_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SelectOnString<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SelectOnString_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SelectOnString<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SelectOnString_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.SelectOnString<EazyEngine.Space.PickEvent>{}
@@ -1006,6 +1079,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SelectOnString_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.SelectOnString<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_SelectOnString_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.SelectOnString<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_SelectOnString_UnityEngine_LayerMask : FlowCanvas.Nodes.SelectOnString<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_SelectOnString_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.SelectOnString<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_SelectOnTag_System_Boolean : FlowCanvas.Nodes.SelectOnTag<System.Boolean>{}
 		class FlowCanvas_Nodes_SelectOnTag_System_Single : FlowCanvas.Nodes.SelectOnTag<System.Single>{}
@@ -1026,6 +1100,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SelectOnTag_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.SelectOnTag<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_SelectOnTag_UnityEngine_Ray : FlowCanvas.Nodes.SelectOnTag<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_SelectOnTag_UnityEngine_Space : FlowCanvas.Nodes.SelectOnTag<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_SelectOnTag_EventTimer : FlowCanvas.Nodes.SelectOnTag<EventTimer>{}
 		class FlowCanvas_Nodes_SelectOnTag_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SelectOnTag<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SelectOnTag_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SelectOnTag<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SelectOnTag_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.SelectOnTag<EazyEngine.Space.PickEvent>{}
@@ -1033,6 +1108,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SelectOnTag_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.SelectOnTag<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_SelectOnTag_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.SelectOnTag<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_SelectOnTag_UnityEngine_LayerMask : FlowCanvas.Nodes.SelectOnTag<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_SelectOnTag_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.SelectOnTag<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_SendEvent_System_Boolean : FlowCanvas.Nodes.SendEvent<System.Boolean>{}
 		class FlowCanvas_Nodes_SendEvent_System_Single : FlowCanvas.Nodes.SendEvent<System.Single>{}
@@ -1053,6 +1129,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SendEvent_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.SendEvent<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_SendEvent_UnityEngine_Ray : FlowCanvas.Nodes.SendEvent<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_SendEvent_UnityEngine_Space : FlowCanvas.Nodes.SendEvent<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_SendEvent_EventTimer : FlowCanvas.Nodes.SendEvent<EventTimer>{}
 		class FlowCanvas_Nodes_SendEvent_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SendEvent<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SendEvent_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SendEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SendEvent_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.SendEvent<EazyEngine.Space.PickEvent>{}
@@ -1060,6 +1137,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SendEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.SendEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_SendEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.SendEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_SendEvent_UnityEngine_LayerMask : FlowCanvas.Nodes.SendEvent<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_SendEvent_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.SendEvent<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_SendGlobalEvent_System_Boolean : FlowCanvas.Nodes.SendGlobalEvent<System.Boolean>{}
 		class FlowCanvas_Nodes_SendGlobalEvent_System_Single : FlowCanvas.Nodes.SendGlobalEvent<System.Single>{}
@@ -1080,6 +1158,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SendGlobalEvent_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.SendGlobalEvent<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_SendGlobalEvent_UnityEngine_Ray : FlowCanvas.Nodes.SendGlobalEvent<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_SendGlobalEvent_UnityEngine_Space : FlowCanvas.Nodes.SendGlobalEvent<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_SendGlobalEvent_EventTimer : FlowCanvas.Nodes.SendGlobalEvent<EventTimer>{}
 		class FlowCanvas_Nodes_SendGlobalEvent_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SendGlobalEvent<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SendGlobalEvent_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SendGlobalEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SendGlobalEvent_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.SendGlobalEvent<EazyEngine.Space.PickEvent>{}
@@ -1087,6 +1166,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SendGlobalEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.SendGlobalEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_SendGlobalEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.SendGlobalEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_SendGlobalEvent_UnityEngine_LayerMask : FlowCanvas.Nodes.SendGlobalEvent<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_SendGlobalEvent_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.SendGlobalEvent<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_SetListItem_System_Boolean : FlowCanvas.Nodes.SetListItem<System.Boolean>{}
 		class FlowCanvas_Nodes_SetListItem_System_Single : FlowCanvas.Nodes.SetListItem<System.Single>{}
@@ -1107,6 +1187,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SetListItem_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.SetListItem<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_SetListItem_UnityEngine_Ray : FlowCanvas.Nodes.SetListItem<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_SetListItem_UnityEngine_Space : FlowCanvas.Nodes.SetListItem<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_SetListItem_EventTimer : FlowCanvas.Nodes.SetListItem<EventTimer>{}
 		class FlowCanvas_Nodes_SetListItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SetListItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SetListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SetListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SetListItem_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.SetListItem<EazyEngine.Space.PickEvent>{}
@@ -1114,6 +1195,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SetListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.SetListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_SetListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.SetListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_SetListItem_UnityEngine_LayerMask : FlowCanvas.Nodes.SetListItem<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_SetListItem_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.SetListItem<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_SetOtherVariable_System_Boolean : FlowCanvas.Nodes.SetOtherVariable<System.Boolean>{}
 		class FlowCanvas_Nodes_SetOtherVariable_System_Single : FlowCanvas.Nodes.SetOtherVariable<System.Single>{}
@@ -1134,6 +1216,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SetOtherVariable_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.SetOtherVariable<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_SetOtherVariable_UnityEngine_Ray : FlowCanvas.Nodes.SetOtherVariable<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_SetOtherVariable_UnityEngine_Space : FlowCanvas.Nodes.SetOtherVariable<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_SetOtherVariable_EventTimer : FlowCanvas.Nodes.SetOtherVariable<EventTimer>{}
 		class FlowCanvas_Nodes_SetOtherVariable_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SetOtherVariable<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SetOtherVariable_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SetOtherVariable<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SetOtherVariable_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.SetOtherVariable<EazyEngine.Space.PickEvent>{}
@@ -1141,6 +1224,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SetOtherVariable_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.SetOtherVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_SetOtherVariable_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.SetOtherVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_SetOtherVariable_UnityEngine_LayerMask : FlowCanvas.Nodes.SetOtherVariable<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_SetOtherVariable_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.SetOtherVariable<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_SetVariable_System_Boolean : FlowCanvas.Nodes.SetVariable<System.Boolean>{}
 		class FlowCanvas_Nodes_SetVariable_System_Single : FlowCanvas.Nodes.SetVariable<System.Single>{}
@@ -1161,6 +1245,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SetVariable_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.SetVariable<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_SetVariable_UnityEngine_Ray : FlowCanvas.Nodes.SetVariable<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_SetVariable_UnityEngine_Space : FlowCanvas.Nodes.SetVariable<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_SetVariable_EventTimer : FlowCanvas.Nodes.SetVariable<EventTimer>{}
 		class FlowCanvas_Nodes_SetVariable_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SetVariable<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SetVariable_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SetVariable<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SetVariable_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.SetVariable<EazyEngine.Space.PickEvent>{}
@@ -1168,6 +1253,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SetVariable_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.SetVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_SetVariable_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.SetVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_SetVariable_UnityEngine_LayerMask : FlowCanvas.Nodes.SetVariable<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_SetVariable_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.SetVariable<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_ShuffleList_System_Boolean : FlowCanvas.Nodes.ShuffleList<System.Boolean>{}
 		class FlowCanvas_Nodes_ShuffleList_System_Single : FlowCanvas.Nodes.ShuffleList<System.Single>{}
@@ -1188,6 +1274,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_ShuffleList_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.ShuffleList<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_ShuffleList_UnityEngine_Ray : FlowCanvas.Nodes.ShuffleList<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_ShuffleList_UnityEngine_Space : FlowCanvas.Nodes.ShuffleList<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_ShuffleList_EventTimer : FlowCanvas.Nodes.ShuffleList<EventTimer>{}
 		class FlowCanvas_Nodes_ShuffleList_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.ShuffleList<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_ShuffleList_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.ShuffleList<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_ShuffleList_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.ShuffleList<EazyEngine.Space.PickEvent>{}
@@ -1195,6 +1282,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_ShuffleList_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.ShuffleList<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_ShuffleList_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.ShuffleList<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_ShuffleList_UnityEngine_LayerMask : FlowCanvas.Nodes.ShuffleList<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_ShuffleList_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.ShuffleList<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_StaticCodeEvent_System_Boolean : FlowCanvas.Nodes.StaticCodeEvent<System.Boolean>{}
 		class FlowCanvas_Nodes_StaticCodeEvent_System_Single : FlowCanvas.Nodes.StaticCodeEvent<System.Single>{}
@@ -1215,6 +1303,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Ray : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Space : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_EventTimer : FlowCanvas.Nodes.StaticCodeEvent<EventTimer>{}
 		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.PickEvent>{}
@@ -1222,6 +1311,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_StaticCodeEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.StaticCodeEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_StaticCodeEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.StaticCodeEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_LayerMask : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_SwitchValue_System_Boolean : FlowCanvas.Nodes.SwitchValue<System.Boolean>{}
 		class FlowCanvas_Nodes_SwitchValue_System_Single : FlowCanvas.Nodes.SwitchValue<System.Single>{}
@@ -1242,6 +1332,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SwitchValue_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.SwitchValue<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Ray : FlowCanvas.Nodes.SwitchValue<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Space : FlowCanvas.Nodes.SwitchValue<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_SwitchValue_EventTimer : FlowCanvas.Nodes.SwitchValue<EventTimer>{}
 		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.PickEvent>{}
@@ -1249,6 +1340,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SwitchValue_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.SwitchValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_SwitchValue_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.SwitchValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_SwitchValue_UnityEngine_LayerMask : FlowCanvas.Nodes.SwitchValue<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.SwitchValue<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_ToArray_System_Boolean : FlowCanvas.Nodes.ToArray<System.Boolean>{}
 		class FlowCanvas_Nodes_ToArray_System_Single : FlowCanvas.Nodes.ToArray<System.Single>{}
@@ -1269,6 +1361,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_ToArray_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.ToArray<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_ToArray_UnityEngine_Ray : FlowCanvas.Nodes.ToArray<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_ToArray_UnityEngine_Space : FlowCanvas.Nodes.ToArray<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_ToArray_EventTimer : FlowCanvas.Nodes.ToArray<EventTimer>{}
 		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.ToArray<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.ToArray<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.ToArray<EazyEngine.Space.PickEvent>{}
@@ -1276,6 +1369,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_ToArray_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.ToArray<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_ToArray_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.ToArray<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_ToArray_UnityEngine_LayerMask : FlowCanvas.Nodes.ToArray<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_ToArray_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.ToArray<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_ToList_System_Boolean : FlowCanvas.Nodes.ToList<System.Boolean>{}
 		class FlowCanvas_Nodes_ToList_System_Single : FlowCanvas.Nodes.ToList<System.Single>{}
@@ -1296,6 +1390,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_ToList_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.ToList<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_ToList_UnityEngine_Ray : FlowCanvas.Nodes.ToList<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_ToList_UnityEngine_Space : FlowCanvas.Nodes.ToList<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_ToList_EventTimer : FlowCanvas.Nodes.ToList<EventTimer>{}
 		class FlowCanvas_Nodes_ToList_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.ToList<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_ToList_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.ToList<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_ToList_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.ToList<EazyEngine.Space.PickEvent>{}
@@ -1303,6 +1398,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_ToList_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.ToList<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_ToList_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.ToList<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_ToList_UnityEngine_LayerMask : FlowCanvas.Nodes.ToList<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_ToList_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.ToList<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_TryGetValue_System_Boolean : FlowCanvas.Nodes.TryGetValue<System.Boolean>{}
 		class FlowCanvas_Nodes_TryGetValue_System_Single : FlowCanvas.Nodes.TryGetValue<System.Single>{}
@@ -1323,6 +1419,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_TryGetValue_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.TryGetValue<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_TryGetValue_UnityEngine_Ray : FlowCanvas.Nodes.TryGetValue<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_TryGetValue_UnityEngine_Space : FlowCanvas.Nodes.TryGetValue<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_TryGetValue_EventTimer : FlowCanvas.Nodes.TryGetValue<EventTimer>{}
 		class FlowCanvas_Nodes_TryGetValue_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.TryGetValue<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_TryGetValue_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.TryGetValue<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_TryGetValue_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.TryGetValue<EazyEngine.Space.PickEvent>{}
@@ -1330,6 +1427,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_TryGetValue_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.TryGetValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_TryGetValue_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.TryGetValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_TryGetValue_UnityEngine_LayerMask : FlowCanvas.Nodes.TryGetValue<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_TryGetValue_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.TryGetValue<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_WriteFlowParameter_System_Boolean : FlowCanvas.Nodes.WriteFlowParameter<System.Boolean>{}
 		class FlowCanvas_Nodes_WriteFlowParameter_System_Single : FlowCanvas.Nodes.WriteFlowParameter<System.Single>{}
@@ -1350,6 +1448,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_WriteFlowParameter_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.WriteFlowParameter<UnityEngine.RaycastHit2D>{}
 		class FlowCanvas_Nodes_WriteFlowParameter_UnityEngine_Ray : FlowCanvas.Nodes.WriteFlowParameter<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_WriteFlowParameter_UnityEngine_Space : FlowCanvas.Nodes.WriteFlowParameter<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_WriteFlowParameter_EventTimer : FlowCanvas.Nodes.WriteFlowParameter<EventTimer>{}
 		class FlowCanvas_Nodes_WriteFlowParameter_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.WriteFlowParameter<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_WriteFlowParameter_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.WriteFlowParameter<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_WriteFlowParameter_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.WriteFlowParameter<EazyEngine.Space.PickEvent>{}
@@ -1357,6 +1456,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_WriteFlowParameter_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.WriteFlowParameter<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_WriteFlowParameter_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.WriteFlowParameter<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class FlowCanvas_Nodes_WriteFlowParameter_UnityEngine_LayerMask : FlowCanvas.Nodes.WriteFlowParameter<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_WriteFlowParameter_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.WriteFlowParameter<UnityEngine.Animations.ConstraintSource>{}
 
 		class NodeCanvas_Framework_BBParameter_System_Boolean : NodeCanvas.Framework.BBParameter<System.Boolean>{}
 		class NodeCanvas_Framework_BBParameter_System_Single : NodeCanvas.Framework.BBParameter<System.Single>{}
@@ -1377,6 +1477,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Framework_BBParameter_UnityEngine_RaycastHit2D : NodeCanvas.Framework.BBParameter<UnityEngine.RaycastHit2D>{}
 		class NodeCanvas_Framework_BBParameter_UnityEngine_Ray : NodeCanvas.Framework.BBParameter<UnityEngine.Ray>{}
 		class NodeCanvas_Framework_BBParameter_UnityEngine_Space : NodeCanvas.Framework.BBParameter<UnityEngine.Space>{}
+		class NodeCanvas_Framework_BBParameter_EventTimer : NodeCanvas.Framework.BBParameter<EventTimer>{}
 		class NodeCanvas_Framework_BBParameter_EazyEngine_Space_DamageExtra : NodeCanvas.Framework.BBParameter<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Framework_BBParameter_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Framework.BBParameter<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Framework_BBParameter_EazyEngine_Space_PickEvent : NodeCanvas.Framework.BBParameter<EazyEngine.Space.PickEvent>{}
@@ -1384,6 +1485,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Framework_BBParameter_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Framework.BBParameter<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Framework_BBParameter_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Framework.BBParameter<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class NodeCanvas_Framework_BBParameter_UnityEngine_LayerMask : NodeCanvas.Framework.BBParameter<UnityEngine.LayerMask>{}
+		class NodeCanvas_Framework_BBParameter_UnityEngine_Animations_ConstraintSource : NodeCanvas.Framework.BBParameter<UnityEngine.Animations.ConstraintSource>{}
 
 		class NodeCanvas_Framework_Variable_System_Boolean : NodeCanvas.Framework.Variable<System.Boolean>{}
 		class NodeCanvas_Framework_Variable_System_Single : NodeCanvas.Framework.Variable<System.Single>{}
@@ -1404,6 +1506,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Framework_Variable_UnityEngine_RaycastHit2D : NodeCanvas.Framework.Variable<UnityEngine.RaycastHit2D>{}
 		class NodeCanvas_Framework_Variable_UnityEngine_Ray : NodeCanvas.Framework.Variable<UnityEngine.Ray>{}
 		class NodeCanvas_Framework_Variable_UnityEngine_Space : NodeCanvas.Framework.Variable<UnityEngine.Space>{}
+		class NodeCanvas_Framework_Variable_EventTimer : NodeCanvas.Framework.Variable<EventTimer>{}
 		class NodeCanvas_Framework_Variable_EazyEngine_Space_DamageExtra : NodeCanvas.Framework.Variable<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Framework_Variable_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Framework.Variable<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Framework_Variable_EazyEngine_Space_PickEvent : NodeCanvas.Framework.Variable<EazyEngine.Space.PickEvent>{}
@@ -1411,6 +1514,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Framework_Variable_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Framework.Variable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Framework_Variable_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Framework.Variable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class NodeCanvas_Framework_Variable_UnityEngine_LayerMask : NodeCanvas.Framework.Variable<UnityEngine.LayerMask>{}
+		class NodeCanvas_Framework_Variable_UnityEngine_Animations_ConstraintSource : NodeCanvas.Framework.Variable<UnityEngine.Animations.ConstraintSource>{}
 
 		class NodeCanvas_Framework_Internal_ReflectedAction_System_Boolean : NodeCanvas.Framework.Internal.ReflectedAction<System.Boolean>{}
 		class NodeCanvas_Framework_Internal_ReflectedAction_System_Single : NodeCanvas.Framework.Internal.ReflectedAction<System.Single>{}
@@ -1431,6 +1535,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Framework_Internal_ReflectedAction_UnityEngine_RaycastHit2D : NodeCanvas.Framework.Internal.ReflectedAction<UnityEngine.RaycastHit2D>{}
 		class NodeCanvas_Framework_Internal_ReflectedAction_UnityEngine_Ray : NodeCanvas.Framework.Internal.ReflectedAction<UnityEngine.Ray>{}
 		class NodeCanvas_Framework_Internal_ReflectedAction_UnityEngine_Space : NodeCanvas.Framework.Internal.ReflectedAction<UnityEngine.Space>{}
+		class NodeCanvas_Framework_Internal_ReflectedAction_EventTimer : NodeCanvas.Framework.Internal.ReflectedAction<EventTimer>{}
 		class NodeCanvas_Framework_Internal_ReflectedAction_EazyEngine_Space_DamageExtra : NodeCanvas.Framework.Internal.ReflectedAction<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Framework_Internal_ReflectedAction_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Framework.Internal.ReflectedAction<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Framework_Internal_ReflectedAction_EazyEngine_Space_PickEvent : NodeCanvas.Framework.Internal.ReflectedAction<EazyEngine.Space.PickEvent>{}
@@ -1438,6 +1543,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Framework_Internal_ReflectedAction_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Framework.Internal.ReflectedAction<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Framework_Internal_ReflectedAction_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Framework.Internal.ReflectedAction<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class NodeCanvas_Framework_Internal_ReflectedAction_UnityEngine_LayerMask : NodeCanvas.Framework.Internal.ReflectedAction<UnityEngine.LayerMask>{}
+		class NodeCanvas_Framework_Internal_ReflectedAction_UnityEngine_Animations_ConstraintSource : NodeCanvas.Framework.Internal.ReflectedAction<UnityEngine.Animations.ConstraintSource>{}
 
 		class NodeCanvas_Framework_Internal_ReflectedFunction_System_Boolean : NodeCanvas.Framework.Internal.ReflectedFunction<System.Boolean>{}
 		class NodeCanvas_Framework_Internal_ReflectedFunction_System_Single : NodeCanvas.Framework.Internal.ReflectedFunction<System.Single>{}
@@ -1458,6 +1564,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Framework_Internal_ReflectedFunction_UnityEngine_RaycastHit2D : NodeCanvas.Framework.Internal.ReflectedFunction<UnityEngine.RaycastHit2D>{}
 		class NodeCanvas_Framework_Internal_ReflectedFunction_UnityEngine_Ray : NodeCanvas.Framework.Internal.ReflectedFunction<UnityEngine.Ray>{}
 		class NodeCanvas_Framework_Internal_ReflectedFunction_UnityEngine_Space : NodeCanvas.Framework.Internal.ReflectedFunction<UnityEngine.Space>{}
+		class NodeCanvas_Framework_Internal_ReflectedFunction_EventTimer : NodeCanvas.Framework.Internal.ReflectedFunction<EventTimer>{}
 		class NodeCanvas_Framework_Internal_ReflectedFunction_EazyEngine_Space_DamageExtra : NodeCanvas.Framework.Internal.ReflectedFunction<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Framework_Internal_ReflectedFunction_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Framework.Internal.ReflectedFunction<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Framework_Internal_ReflectedFunction_EazyEngine_Space_PickEvent : NodeCanvas.Framework.Internal.ReflectedFunction<EazyEngine.Space.PickEvent>{}
@@ -1465,6 +1572,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Framework_Internal_ReflectedFunction_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Framework.Internal.ReflectedFunction<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Framework_Internal_ReflectedFunction_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Framework.Internal.ReflectedFunction<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class NodeCanvas_Framework_Internal_ReflectedFunction_UnityEngine_LayerMask : NodeCanvas.Framework.Internal.ReflectedFunction<UnityEngine.LayerMask>{}
+		class NodeCanvas_Framework_Internal_ReflectedFunction_UnityEngine_Animations_ConstraintSource : NodeCanvas.Framework.Internal.ReflectedFunction<UnityEngine.Animations.ConstraintSource>{}
 
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_System_Boolean : NodeCanvas.Tasks.Actions.AddElementToDictionary<System.Boolean>{}
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_System_Single : NodeCanvas.Tasks.Actions.AddElementToDictionary<System.Single>{}
@@ -1485,6 +1593,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_UnityEngine_RaycastHit2D : NodeCanvas.Tasks.Actions.AddElementToDictionary<UnityEngine.RaycastHit2D>{}
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_UnityEngine_Ray : NodeCanvas.Tasks.Actions.AddElementToDictionary<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_UnityEngine_Space : NodeCanvas.Tasks.Actions.AddElementToDictionary<UnityEngine.Space>{}
+		class NodeCanvas_Tasks_Actions_AddElementToDictionary_EventTimer : NodeCanvas.Tasks.Actions.AddElementToDictionary<EventTimer>{}
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.AddElementToDictionary<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.AddElementToDictionary<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Actions.AddElementToDictionary<EazyEngine.Space.PickEvent>{}
@@ -1492,6 +1601,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Actions.AddElementToDictionary<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Actions.AddElementToDictionary<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_UnityEngine_LayerMask : NodeCanvas.Tasks.Actions.AddElementToDictionary<UnityEngine.LayerMask>{}
+		class NodeCanvas_Tasks_Actions_AddElementToDictionary_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Actions.AddElementToDictionary<UnityEngine.Animations.ConstraintSource>{}
 
 		class NodeCanvas_Tasks_Actions_AddElementToList_System_Boolean : NodeCanvas.Tasks.Actions.AddElementToList<System.Boolean>{}
 		class NodeCanvas_Tasks_Actions_AddElementToList_System_Single : NodeCanvas.Tasks.Actions.AddElementToList<System.Single>{}
@@ -1512,6 +1622,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_AddElementToList_UnityEngine_RaycastHit2D : NodeCanvas.Tasks.Actions.AddElementToList<UnityEngine.RaycastHit2D>{}
 		class NodeCanvas_Tasks_Actions_AddElementToList_UnityEngine_Ray : NodeCanvas.Tasks.Actions.AddElementToList<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Actions_AddElementToList_UnityEngine_Space : NodeCanvas.Tasks.Actions.AddElementToList<UnityEngine.Space>{}
+		class NodeCanvas_Tasks_Actions_AddElementToList_EventTimer : NodeCanvas.Tasks.Actions.AddElementToList<EventTimer>{}
 		class NodeCanvas_Tasks_Actions_AddElementToList_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.AddElementToList<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_AddElementToList_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.AddElementToList<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_AddElementToList_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Actions.AddElementToList<EazyEngine.Space.PickEvent>{}
@@ -1519,6 +1630,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_AddElementToList_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Actions.AddElementToList<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_AddElementToList_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Actions.AddElementToList<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_AddElementToList_UnityEngine_LayerMask : NodeCanvas.Tasks.Actions.AddElementToList<UnityEngine.LayerMask>{}
+		class NodeCanvas_Tasks_Actions_AddElementToList_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Actions.AddElementToList<UnityEngine.Animations.ConstraintSource>{}
 
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_System_Boolean : NodeCanvas.Tasks.Actions.GetDictionaryElement<System.Boolean>{}
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_System_Single : NodeCanvas.Tasks.Actions.GetDictionaryElement<System.Single>{}
@@ -1539,6 +1651,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_UnityEngine_RaycastHit2D : NodeCanvas.Tasks.Actions.GetDictionaryElement<UnityEngine.RaycastHit2D>{}
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_UnityEngine_Ray : NodeCanvas.Tasks.Actions.GetDictionaryElement<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_UnityEngine_Space : NodeCanvas.Tasks.Actions.GetDictionaryElement<UnityEngine.Space>{}
+		class NodeCanvas_Tasks_Actions_GetDictionaryElement_EventTimer : NodeCanvas.Tasks.Actions.GetDictionaryElement<EventTimer>{}
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.GetDictionaryElement<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.GetDictionaryElement<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Actions.GetDictionaryElement<EazyEngine.Space.PickEvent>{}
@@ -1546,6 +1659,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Actions.GetDictionaryElement<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Actions.GetDictionaryElement<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_UnityEngine_LayerMask : NodeCanvas.Tasks.Actions.GetDictionaryElement<UnityEngine.LayerMask>{}
+		class NodeCanvas_Tasks_Actions_GetDictionaryElement_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Actions.GetDictionaryElement<UnityEngine.Animations.ConstraintSource>{}
 
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_System_Boolean : NodeCanvas.Tasks.Actions.GetIndexOfElement<System.Boolean>{}
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_System_Single : NodeCanvas.Tasks.Actions.GetIndexOfElement<System.Single>{}
@@ -1566,6 +1680,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_UnityEngine_RaycastHit2D : NodeCanvas.Tasks.Actions.GetIndexOfElement<UnityEngine.RaycastHit2D>{}
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_UnityEngine_Ray : NodeCanvas.Tasks.Actions.GetIndexOfElement<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_UnityEngine_Space : NodeCanvas.Tasks.Actions.GetIndexOfElement<UnityEngine.Space>{}
+		class NodeCanvas_Tasks_Actions_GetIndexOfElement_EventTimer : NodeCanvas.Tasks.Actions.GetIndexOfElement<EventTimer>{}
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.GetIndexOfElement<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.GetIndexOfElement<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Actions.GetIndexOfElement<EazyEngine.Space.PickEvent>{}
@@ -1573,6 +1688,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Actions.GetIndexOfElement<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Actions.GetIndexOfElement<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_UnityEngine_LayerMask : NodeCanvas.Tasks.Actions.GetIndexOfElement<UnityEngine.LayerMask>{}
+		class NodeCanvas_Tasks_Actions_GetIndexOfElement_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Actions.GetIndexOfElement<UnityEngine.Animations.ConstraintSource>{}
 
 		class NodeCanvas_Tasks_Actions_InsertElementToList_System_Boolean : NodeCanvas.Tasks.Actions.InsertElementToList<System.Boolean>{}
 		class NodeCanvas_Tasks_Actions_InsertElementToList_System_Single : NodeCanvas.Tasks.Actions.InsertElementToList<System.Single>{}
@@ -1593,6 +1709,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_InsertElementToList_UnityEngine_RaycastHit2D : NodeCanvas.Tasks.Actions.InsertElementToList<UnityEngine.RaycastHit2D>{}
 		class NodeCanvas_Tasks_Actions_InsertElementToList_UnityEngine_Ray : NodeCanvas.Tasks.Actions.InsertElementToList<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Actions_InsertElementToList_UnityEngine_Space : NodeCanvas.Tasks.Actions.InsertElementToList<UnityEngine.Space>{}
+		class NodeCanvas_Tasks_Actions_InsertElementToList_EventTimer : NodeCanvas.Tasks.Actions.InsertElementToList<EventTimer>{}
 		class NodeCanvas_Tasks_Actions_InsertElementToList_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.InsertElementToList<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_InsertElementToList_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.InsertElementToList<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_InsertElementToList_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Actions.InsertElementToList<EazyEngine.Space.PickEvent>{}
@@ -1600,6 +1717,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_InsertElementToList_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Actions.InsertElementToList<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_InsertElementToList_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Actions.InsertElementToList<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_InsertElementToList_UnityEngine_LayerMask : NodeCanvas.Tasks.Actions.InsertElementToList<UnityEngine.LayerMask>{}
+		class NodeCanvas_Tasks_Actions_InsertElementToList_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Actions.InsertElementToList<UnityEngine.Animations.ConstraintSource>{}
 
 		class NodeCanvas_Tasks_Actions_PickListElement_System_Boolean : NodeCanvas.Tasks.Actions.PickListElement<System.Boolean>{}
 		class NodeCanvas_Tasks_Actions_PickListElement_System_Single : NodeCanvas.Tasks.Actions.PickListElement<System.Single>{}
@@ -1620,6 +1738,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_PickListElement_UnityEngine_RaycastHit2D : NodeCanvas.Tasks.Actions.PickListElement<UnityEngine.RaycastHit2D>{}
 		class NodeCanvas_Tasks_Actions_PickListElement_UnityEngine_Ray : NodeCanvas.Tasks.Actions.PickListElement<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Actions_PickListElement_UnityEngine_Space : NodeCanvas.Tasks.Actions.PickListElement<UnityEngine.Space>{}
+		class NodeCanvas_Tasks_Actions_PickListElement_EventTimer : NodeCanvas.Tasks.Actions.PickListElement<EventTimer>{}
 		class NodeCanvas_Tasks_Actions_PickListElement_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.PickListElement<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_PickListElement_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.PickListElement<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_PickListElement_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Actions.PickListElement<EazyEngine.Space.PickEvent>{}
@@ -1627,6 +1746,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_PickListElement_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Actions.PickListElement<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_PickListElement_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Actions.PickListElement<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_PickListElement_UnityEngine_LayerMask : NodeCanvas.Tasks.Actions.PickListElement<UnityEngine.LayerMask>{}
+		class NodeCanvas_Tasks_Actions_PickListElement_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Actions.PickListElement<UnityEngine.Animations.ConstraintSource>{}
 
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_System_Boolean : NodeCanvas.Tasks.Actions.PickRandomListElement<System.Boolean>{}
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_System_Single : NodeCanvas.Tasks.Actions.PickRandomListElement<System.Single>{}
@@ -1647,6 +1767,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_UnityEngine_RaycastHit2D : NodeCanvas.Tasks.Actions.PickRandomListElement<UnityEngine.RaycastHit2D>{}
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_UnityEngine_Ray : NodeCanvas.Tasks.Actions.PickRandomListElement<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_UnityEngine_Space : NodeCanvas.Tasks.Actions.PickRandomListElement<UnityEngine.Space>{}
+		class NodeCanvas_Tasks_Actions_PickRandomListElement_EventTimer : NodeCanvas.Tasks.Actions.PickRandomListElement<EventTimer>{}
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.PickRandomListElement<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.PickRandomListElement<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Actions.PickRandomListElement<EazyEngine.Space.PickEvent>{}
@@ -1654,6 +1775,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Actions.PickRandomListElement<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Actions.PickRandomListElement<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_UnityEngine_LayerMask : NodeCanvas.Tasks.Actions.PickRandomListElement<UnityEngine.LayerMask>{}
+		class NodeCanvas_Tasks_Actions_PickRandomListElement_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Actions.PickRandomListElement<UnityEngine.Animations.ConstraintSource>{}
 
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_System_Boolean : NodeCanvas.Tasks.Actions.RemoveElementFromList<System.Boolean>{}
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_System_Single : NodeCanvas.Tasks.Actions.RemoveElementFromList<System.Single>{}
@@ -1674,6 +1796,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_UnityEngine_RaycastHit2D : NodeCanvas.Tasks.Actions.RemoveElementFromList<UnityEngine.RaycastHit2D>{}
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_UnityEngine_Ray : NodeCanvas.Tasks.Actions.RemoveElementFromList<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_UnityEngine_Space : NodeCanvas.Tasks.Actions.RemoveElementFromList<UnityEngine.Space>{}
+		class NodeCanvas_Tasks_Actions_RemoveElementFromList_EventTimer : NodeCanvas.Tasks.Actions.RemoveElementFromList<EventTimer>{}
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.RemoveElementFromList<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.RemoveElementFromList<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Actions.RemoveElementFromList<EazyEngine.Space.PickEvent>{}
@@ -1681,6 +1804,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Actions.RemoveElementFromList<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Actions.RemoveElementFromList<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_UnityEngine_LayerMask : NodeCanvas.Tasks.Actions.RemoveElementFromList<UnityEngine.LayerMask>{}
+		class NodeCanvas_Tasks_Actions_RemoveElementFromList_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Actions.RemoveElementFromList<UnityEngine.Animations.ConstraintSource>{}
 
 		class NodeCanvas_Tasks_Actions_SendEvent_System_Boolean : NodeCanvas.Tasks.Actions.SendEvent<System.Boolean>{}
 		class NodeCanvas_Tasks_Actions_SendEvent_System_Single : NodeCanvas.Tasks.Actions.SendEvent<System.Single>{}
@@ -1701,6 +1825,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_SendEvent_UnityEngine_RaycastHit2D : NodeCanvas.Tasks.Actions.SendEvent<UnityEngine.RaycastHit2D>{}
 		class NodeCanvas_Tasks_Actions_SendEvent_UnityEngine_Ray : NodeCanvas.Tasks.Actions.SendEvent<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Actions_SendEvent_UnityEngine_Space : NodeCanvas.Tasks.Actions.SendEvent<UnityEngine.Space>{}
+		class NodeCanvas_Tasks_Actions_SendEvent_EventTimer : NodeCanvas.Tasks.Actions.SendEvent<EventTimer>{}
 		class NodeCanvas_Tasks_Actions_SendEvent_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.SendEvent<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_SendEvent_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.SendEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_SendEvent_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Actions.SendEvent<EazyEngine.Space.PickEvent>{}
@@ -1708,6 +1833,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_SendEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Actions.SendEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_SendEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Actions.SendEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_SendEvent_UnityEngine_LayerMask : NodeCanvas.Tasks.Actions.SendEvent<UnityEngine.LayerMask>{}
+		class NodeCanvas_Tasks_Actions_SendEvent_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Actions.SendEvent<UnityEngine.Animations.ConstraintSource>{}
 
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_System_Boolean : NodeCanvas.Tasks.Actions.SendEventToObjects<System.Boolean>{}
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_System_Single : NodeCanvas.Tasks.Actions.SendEventToObjects<System.Single>{}
@@ -1728,6 +1854,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_UnityEngine_RaycastHit2D : NodeCanvas.Tasks.Actions.SendEventToObjects<UnityEngine.RaycastHit2D>{}
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_UnityEngine_Ray : NodeCanvas.Tasks.Actions.SendEventToObjects<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_UnityEngine_Space : NodeCanvas.Tasks.Actions.SendEventToObjects<UnityEngine.Space>{}
+		class NodeCanvas_Tasks_Actions_SendEventToObjects_EventTimer : NodeCanvas.Tasks.Actions.SendEventToObjects<EventTimer>{}
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.SendEventToObjects<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.SendEventToObjects<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Actions.SendEventToObjects<EazyEngine.Space.PickEvent>{}
@@ -1735,6 +1862,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Actions.SendEventToObjects<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Actions.SendEventToObjects<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_UnityEngine_LayerMask : NodeCanvas.Tasks.Actions.SendEventToObjects<UnityEngine.LayerMask>{}
+		class NodeCanvas_Tasks_Actions_SendEventToObjects_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Actions.SendEventToObjects<UnityEngine.Animations.ConstraintSource>{}
 
 		class NodeCanvas_Tasks_Actions_SendMessage_System_Boolean : NodeCanvas.Tasks.Actions.SendMessage<System.Boolean>{}
 		class NodeCanvas_Tasks_Actions_SendMessage_System_Single : NodeCanvas.Tasks.Actions.SendMessage<System.Single>{}
@@ -1755,6 +1883,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_SendMessage_UnityEngine_RaycastHit2D : NodeCanvas.Tasks.Actions.SendMessage<UnityEngine.RaycastHit2D>{}
 		class NodeCanvas_Tasks_Actions_SendMessage_UnityEngine_Ray : NodeCanvas.Tasks.Actions.SendMessage<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Actions_SendMessage_UnityEngine_Space : NodeCanvas.Tasks.Actions.SendMessage<UnityEngine.Space>{}
+		class NodeCanvas_Tasks_Actions_SendMessage_EventTimer : NodeCanvas.Tasks.Actions.SendMessage<EventTimer>{}
 		class NodeCanvas_Tasks_Actions_SendMessage_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.SendMessage<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_SendMessage_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.SendMessage<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_SendMessage_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Actions.SendMessage<EazyEngine.Space.PickEvent>{}
@@ -1762,6 +1891,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_SendMessage_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Actions.SendMessage<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_SendMessage_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Actions.SendMessage<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_SendMessage_UnityEngine_LayerMask : NodeCanvas.Tasks.Actions.SendMessage<UnityEngine.LayerMask>{}
+		class NodeCanvas_Tasks_Actions_SendMessage_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Actions.SendMessage<UnityEngine.Animations.ConstraintSource>{}
 
 		class NodeCanvas_Tasks_Actions_SetListElement_System_Boolean : NodeCanvas.Tasks.Actions.SetListElement<System.Boolean>{}
 		class NodeCanvas_Tasks_Actions_SetListElement_System_Single : NodeCanvas.Tasks.Actions.SetListElement<System.Single>{}
@@ -1782,6 +1912,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_SetListElement_UnityEngine_RaycastHit2D : NodeCanvas.Tasks.Actions.SetListElement<UnityEngine.RaycastHit2D>{}
 		class NodeCanvas_Tasks_Actions_SetListElement_UnityEngine_Ray : NodeCanvas.Tasks.Actions.SetListElement<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Actions_SetListElement_UnityEngine_Space : NodeCanvas.Tasks.Actions.SetListElement<UnityEngine.Space>{}
+		class NodeCanvas_Tasks_Actions_SetListElement_EventTimer : NodeCanvas.Tasks.Actions.SetListElement<EventTimer>{}
 		class NodeCanvas_Tasks_Actions_SetListElement_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.SetListElement<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_SetListElement_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.SetListElement<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_SetListElement_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Actions.SetListElement<EazyEngine.Space.PickEvent>{}
@@ -1789,6 +1920,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_SetListElement_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Actions.SetListElement<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_SetListElement_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Actions.SetListElement<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_SetListElement_UnityEngine_LayerMask : NodeCanvas.Tasks.Actions.SetListElement<UnityEngine.LayerMask>{}
+		class NodeCanvas_Tasks_Actions_SetListElement_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Actions.SetListElement<UnityEngine.Animations.ConstraintSource>{}
 
 		class NodeCanvas_Tasks_Actions_SetVariable_System_Boolean : NodeCanvas.Tasks.Actions.SetVariable<System.Boolean>{}
 		class NodeCanvas_Tasks_Actions_SetVariable_System_Single : NodeCanvas.Tasks.Actions.SetVariable<System.Single>{}
@@ -1809,6 +1941,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_SetVariable_UnityEngine_RaycastHit2D : NodeCanvas.Tasks.Actions.SetVariable<UnityEngine.RaycastHit2D>{}
 		class NodeCanvas_Tasks_Actions_SetVariable_UnityEngine_Ray : NodeCanvas.Tasks.Actions.SetVariable<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Actions_SetVariable_UnityEngine_Space : NodeCanvas.Tasks.Actions.SetVariable<UnityEngine.Space>{}
+		class NodeCanvas_Tasks_Actions_SetVariable_EventTimer : NodeCanvas.Tasks.Actions.SetVariable<EventTimer>{}
 		class NodeCanvas_Tasks_Actions_SetVariable_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.SetVariable<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_SetVariable_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.SetVariable<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_SetVariable_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Actions.SetVariable<EazyEngine.Space.PickEvent>{}
@@ -1816,6 +1949,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_SetVariable_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Actions.SetVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_SetVariable_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Actions.SetVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_SetVariable_UnityEngine_LayerMask : NodeCanvas.Tasks.Actions.SetVariable<UnityEngine.LayerMask>{}
+		class NodeCanvas_Tasks_Actions_SetVariable_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Actions.SetVariable<UnityEngine.Animations.ConstraintSource>{}
 
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_System_Boolean : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<System.Boolean>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_System_Single : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<System.Single>{}
@@ -1836,6 +1970,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_UnityEngine_RaycastHit2D : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<UnityEngine.RaycastHit2D>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_UnityEngine_Ray : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_UnityEngine_Space : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<UnityEngine.Space>{}
+		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_EventTimer : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<EventTimer>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<EazyEngine.Space.PickEvent>{}
@@ -1843,6 +1978,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_UnityEngine_LayerMask : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<UnityEngine.LayerMask>{}
+		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<UnityEngine.Animations.ConstraintSource>{}
 
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_System_Boolean : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<System.Boolean>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_System_Single : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<System.Single>{}
@@ -1863,6 +1999,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_UnityEngine_RaycastHit2D : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<UnityEngine.RaycastHit2D>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_UnityEngine_Ray : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_UnityEngine_Space : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<UnityEngine.Space>{}
+		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_EventTimer : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<EventTimer>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<EazyEngine.Space.PickEvent>{}
@@ -1870,6 +2007,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_UnityEngine_LayerMask : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<UnityEngine.LayerMask>{}
+		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<UnityEngine.Animations.ConstraintSource>{}
 
 		class NodeCanvas_Tasks_Conditions_CheckEvent_System_Boolean : NodeCanvas.Tasks.Conditions.CheckEvent<System.Boolean>{}
 		class NodeCanvas_Tasks_Conditions_CheckEvent_System_Single : NodeCanvas.Tasks.Conditions.CheckEvent<System.Single>{}
@@ -1890,6 +2028,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckEvent_UnityEngine_RaycastHit2D : NodeCanvas.Tasks.Conditions.CheckEvent<UnityEngine.RaycastHit2D>{}
 		class NodeCanvas_Tasks_Conditions_CheckEvent_UnityEngine_Ray : NodeCanvas.Tasks.Conditions.CheckEvent<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Conditions_CheckEvent_UnityEngine_Space : NodeCanvas.Tasks.Conditions.CheckEvent<UnityEngine.Space>{}
+		class NodeCanvas_Tasks_Conditions_CheckEvent_EventTimer : NodeCanvas.Tasks.Conditions.CheckEvent<EventTimer>{}
 		class NodeCanvas_Tasks_Conditions_CheckEvent_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.CheckEvent<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_CheckEvent_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckEvent_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Conditions.CheckEvent<EazyEngine.Space.PickEvent>{}
@@ -1897,6 +2036,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Conditions.CheckEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_CheckEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Conditions.CheckEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_CheckEvent_UnityEngine_LayerMask : NodeCanvas.Tasks.Conditions.CheckEvent<UnityEngine.LayerMask>{}
+		class NodeCanvas_Tasks_Conditions_CheckEvent_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Conditions.CheckEvent<UnityEngine.Animations.ConstraintSource>{}
 
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_System_Boolean : NodeCanvas.Tasks.Conditions.CheckEventValue<System.Boolean>{}
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_System_Single : NodeCanvas.Tasks.Conditions.CheckEventValue<System.Single>{}
@@ -1917,6 +2057,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_UnityEngine_RaycastHit2D : NodeCanvas.Tasks.Conditions.CheckEventValue<UnityEngine.RaycastHit2D>{}
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_UnityEngine_Ray : NodeCanvas.Tasks.Conditions.CheckEventValue<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_UnityEngine_Space : NodeCanvas.Tasks.Conditions.CheckEventValue<UnityEngine.Space>{}
+		class NodeCanvas_Tasks_Conditions_CheckEventValue_EventTimer : NodeCanvas.Tasks.Conditions.CheckEventValue<EventTimer>{}
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.CheckEventValue<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckEventValue<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Conditions.CheckEventValue<EazyEngine.Space.PickEvent>{}
@@ -1924,6 +2065,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Conditions.CheckEventValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Conditions.CheckEventValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_UnityEngine_LayerMask : NodeCanvas.Tasks.Conditions.CheckEventValue<UnityEngine.LayerMask>{}
+		class NodeCanvas_Tasks_Conditions_CheckEventValue_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Conditions.CheckEventValue<UnityEngine.Animations.ConstraintSource>{}
 
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_System_Boolean : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<System.Boolean>{}
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_System_Single : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<System.Single>{}
@@ -1944,6 +2086,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_UnityEngine_RaycastHit2D : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<UnityEngine.RaycastHit2D>{}
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_UnityEngine_Ray : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_UnityEngine_Space : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<UnityEngine.Space>{}
+		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_EventTimer : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<EventTimer>{}
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<EazyEngine.Space.PickEvent>{}
@@ -1951,6 +2094,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_UnityEngine_LayerMask : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<UnityEngine.LayerMask>{}
+		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<UnityEngine.Animations.ConstraintSource>{}
 
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_System_Boolean : NodeCanvas.Tasks.Conditions.CheckUnityEvent<System.Boolean>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_System_Single : NodeCanvas.Tasks.Conditions.CheckUnityEvent<System.Single>{}
@@ -1971,6 +2115,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_UnityEngine_RaycastHit2D : NodeCanvas.Tasks.Conditions.CheckUnityEvent<UnityEngine.RaycastHit2D>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_UnityEngine_Ray : NodeCanvas.Tasks.Conditions.CheckUnityEvent<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_UnityEngine_Space : NodeCanvas.Tasks.Conditions.CheckUnityEvent<UnityEngine.Space>{}
+		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_EventTimer : NodeCanvas.Tasks.Conditions.CheckUnityEvent<EventTimer>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.CheckUnityEvent<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckUnityEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Conditions.CheckUnityEvent<EazyEngine.Space.PickEvent>{}
@@ -1978,6 +2123,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Conditions.CheckUnityEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Conditions.CheckUnityEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_UnityEngine_LayerMask : NodeCanvas.Tasks.Conditions.CheckUnityEvent<UnityEngine.LayerMask>{}
+		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Conditions.CheckUnityEvent<UnityEngine.Animations.ConstraintSource>{}
 
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_System_Boolean : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<System.Boolean>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_System_Single : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<System.Single>{}
@@ -1998,6 +2144,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_UnityEngine_RaycastHit2D : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<UnityEngine.RaycastHit2D>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_UnityEngine_Ray : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_UnityEngine_Space : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<UnityEngine.Space>{}
+		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_EventTimer : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<EventTimer>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<EazyEngine.Space.PickEvent>{}
@@ -2005,6 +2152,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_UnityEngine_LayerMask : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<UnityEngine.LayerMask>{}
+		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<UnityEngine.Animations.ConstraintSource>{}
 
 		class NodeCanvas_Tasks_Conditions_CheckVariable_System_Boolean : NodeCanvas.Tasks.Conditions.CheckVariable<System.Boolean>{}
 		class NodeCanvas_Tasks_Conditions_CheckVariable_System_Single : NodeCanvas.Tasks.Conditions.CheckVariable<System.Single>{}
@@ -2025,6 +2173,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckVariable_UnityEngine_RaycastHit2D : NodeCanvas.Tasks.Conditions.CheckVariable<UnityEngine.RaycastHit2D>{}
 		class NodeCanvas_Tasks_Conditions_CheckVariable_UnityEngine_Ray : NodeCanvas.Tasks.Conditions.CheckVariable<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Conditions_CheckVariable_UnityEngine_Space : NodeCanvas.Tasks.Conditions.CheckVariable<UnityEngine.Space>{}
+		class NodeCanvas_Tasks_Conditions_CheckVariable_EventTimer : NodeCanvas.Tasks.Conditions.CheckVariable<EventTimer>{}
 		class NodeCanvas_Tasks_Conditions_CheckVariable_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.CheckVariable<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_CheckVariable_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckVariable<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckVariable_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Conditions.CheckVariable<EazyEngine.Space.PickEvent>{}
@@ -2032,6 +2181,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckVariable_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Conditions.CheckVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_CheckVariable_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Conditions.CheckVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_CheckVariable_UnityEngine_LayerMask : NodeCanvas.Tasks.Conditions.CheckVariable<UnityEngine.LayerMask>{}
+		class NodeCanvas_Tasks_Conditions_CheckVariable_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Conditions.CheckVariable<UnityEngine.Animations.ConstraintSource>{}
 
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_System_Boolean : NodeCanvas.Tasks.Conditions.ListContainsElement<System.Boolean>{}
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_System_Single : NodeCanvas.Tasks.Conditions.ListContainsElement<System.Single>{}
@@ -2052,6 +2202,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_UnityEngine_RaycastHit2D : NodeCanvas.Tasks.Conditions.ListContainsElement<UnityEngine.RaycastHit2D>{}
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_UnityEngine_Ray : NodeCanvas.Tasks.Conditions.ListContainsElement<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_UnityEngine_Space : NodeCanvas.Tasks.Conditions.ListContainsElement<UnityEngine.Space>{}
+		class NodeCanvas_Tasks_Conditions_ListContainsElement_EventTimer : NodeCanvas.Tasks.Conditions.ListContainsElement<EventTimer>{}
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.ListContainsElement<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.ListContainsElement<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Conditions.ListContainsElement<EazyEngine.Space.PickEvent>{}
@@ -2059,6 +2210,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Conditions.ListContainsElement<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Conditions.ListContainsElement<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_UnityEngine_LayerMask : NodeCanvas.Tasks.Conditions.ListContainsElement<UnityEngine.LayerMask>{}
+		class NodeCanvas_Tasks_Conditions_ListContainsElement_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Conditions.ListContainsElement<UnityEngine.Animations.ConstraintSource>{}
 
 		class NodeCanvas_Tasks_Conditions_TryGetValue_System_Boolean : NodeCanvas.Tasks.Conditions.TryGetValue<System.Boolean>{}
 		class NodeCanvas_Tasks_Conditions_TryGetValue_System_Single : NodeCanvas.Tasks.Conditions.TryGetValue<System.Single>{}
@@ -2079,6 +2231,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_TryGetValue_UnityEngine_RaycastHit2D : NodeCanvas.Tasks.Conditions.TryGetValue<UnityEngine.RaycastHit2D>{}
 		class NodeCanvas_Tasks_Conditions_TryGetValue_UnityEngine_Ray : NodeCanvas.Tasks.Conditions.TryGetValue<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Conditions_TryGetValue_UnityEngine_Space : NodeCanvas.Tasks.Conditions.TryGetValue<UnityEngine.Space>{}
+		class NodeCanvas_Tasks_Conditions_TryGetValue_EventTimer : NodeCanvas.Tasks.Conditions.TryGetValue<EventTimer>{}
 		class NodeCanvas_Tasks_Conditions_TryGetValue_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.TryGetValue<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_TryGetValue_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.TryGetValue<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_TryGetValue_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Conditions.TryGetValue<EazyEngine.Space.PickEvent>{}
@@ -2086,6 +2239,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_TryGetValue_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Conditions.TryGetValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_TryGetValue_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Conditions.TryGetValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_TryGetValue_UnityEngine_LayerMask : NodeCanvas.Tasks.Conditions.TryGetValue<UnityEngine.LayerMask>{}
+		class NodeCanvas_Tasks_Conditions_TryGetValue_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Conditions.TryGetValue<UnityEngine.Animations.ConstraintSource>{}
 
 		///----------------------------------------------------------------------------------------------
 		void FlowCanvas_Flow_ReadParameter_1() {
@@ -2109,6 +2263,7 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_Flow.ReadParameter<UnityEngine.RaycastHit2D>( (System.String)o );
 			_FlowCanvas_Flow.ReadParameter<UnityEngine.Ray>( (System.String)o );
 			_FlowCanvas_Flow.ReadParameter<UnityEngine.Space>( (System.String)o );
+			_FlowCanvas_Flow.ReadParameter<EventTimer>( (System.String)o );
 			_FlowCanvas_Flow.ReadParameter<EazyEngine.Space.DamageExtra>( (System.String)o );
 			_FlowCanvas_Flow.ReadParameter<EazyEngine.Space.DamageExtraVariant>( (System.String)o );
 			_FlowCanvas_Flow.ReadParameter<EazyEngine.Space.PickEvent>( (System.String)o );
@@ -2116,6 +2271,7 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_Flow.ReadParameter<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (System.String)o );
 			_FlowCanvas_Flow.ReadParameter<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (System.String)o );
 			_FlowCanvas_Flow.ReadParameter<UnityEngine.LayerMask>( (System.String)o );
+			_FlowCanvas_Flow.ReadParameter<UnityEngine.Animations.ConstraintSource>( (System.String)o );
 		}
 
 		void FlowCanvas_Flow_WriteParameter_2() {
@@ -2139,6 +2295,7 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_Flow.WriteParameter<UnityEngine.RaycastHit2D>( (System.String)o, (UnityEngine.RaycastHit2D)o );
 			_FlowCanvas_Flow.WriteParameter<UnityEngine.Ray>( (System.String)o, (UnityEngine.Ray)o );
 			_FlowCanvas_Flow.WriteParameter<UnityEngine.Space>( (System.String)o, (UnityEngine.Space)o );
+			_FlowCanvas_Flow.WriteParameter<EventTimer>( (System.String)o, (EventTimer)o );
 			_FlowCanvas_Flow.WriteParameter<EazyEngine.Space.DamageExtra>( (System.String)o, (EazyEngine.Space.DamageExtra)o );
 			_FlowCanvas_Flow.WriteParameter<EazyEngine.Space.DamageExtraVariant>( (System.String)o, (EazyEngine.Space.DamageExtraVariant)o );
 			_FlowCanvas_Flow.WriteParameter<EazyEngine.Space.PickEvent>( (System.String)o, (EazyEngine.Space.PickEvent)o );
@@ -2146,6 +2303,7 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_Flow.WriteParameter<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (System.String)o, (Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride)o );
 			_FlowCanvas_Flow.WriteParameter<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (System.String)o, (Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride)o );
 			_FlowCanvas_Flow.WriteParameter<UnityEngine.LayerMask>( (System.String)o, (UnityEngine.LayerMask)o );
+			_FlowCanvas_Flow.WriteParameter<UnityEngine.Animations.ConstraintSource>( (System.String)o, (UnityEngine.Animations.ConstraintSource)o );
 		}
 
 		void FlowCanvas_FlowNode_AddValueInput_1() {
@@ -2169,6 +2327,7 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_FlowNode.AddValueInput<UnityEngine.RaycastHit2D>( (System.String)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueInput<UnityEngine.Ray>( (System.String)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueInput<UnityEngine.Space>( (System.String)o, (System.String)o );
+			_FlowCanvas_FlowNode.AddValueInput<EventTimer>( (System.String)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueInput<EazyEngine.Space.DamageExtra>( (System.String)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueInput<EazyEngine.Space.DamageExtraVariant>( (System.String)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueInput<EazyEngine.Space.PickEvent>( (System.String)o, (System.String)o );
@@ -2176,6 +2335,7 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_FlowNode.AddValueInput<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (System.String)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueInput<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (System.String)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueInput<UnityEngine.LayerMask>( (System.String)o, (System.String)o );
+			_FlowCanvas_FlowNode.AddValueInput<UnityEngine.Animations.ConstraintSource>( (System.String)o, (System.String)o );
 		}
 
 		void FlowCanvas_FlowNode_AddValueOutput_2() {
@@ -2199,6 +2359,7 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_FlowNode.AddValueOutput<UnityEngine.RaycastHit2D>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<UnityEngine.RaycastHit2D>)o );
 			_FlowCanvas_FlowNode.AddValueOutput<UnityEngine.Ray>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<UnityEngine.Ray>)o );
 			_FlowCanvas_FlowNode.AddValueOutput<UnityEngine.Space>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<UnityEngine.Space>)o );
+			_FlowCanvas_FlowNode.AddValueOutput<EventTimer>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EventTimer>)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.DamageExtra>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtra>)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.DamageExtraVariant>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtraVariant>)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.PickEvent>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.PickEvent>)o );
@@ -2206,6 +2367,7 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_FlowNode.AddValueOutput<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>)o );
 			_FlowCanvas_FlowNode.AddValueOutput<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>)o );
 			_FlowCanvas_FlowNode.AddValueOutput<UnityEngine.LayerMask>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<UnityEngine.LayerMask>)o );
+			_FlowCanvas_FlowNode.AddValueOutput<UnityEngine.Animations.ConstraintSource>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<UnityEngine.Animations.ConstraintSource>)o );
 		}
 
 		void FlowCanvas_FlowNode_AddValueOutput_3() {
@@ -2229,6 +2391,7 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_FlowNode.AddValueOutput<UnityEngine.RaycastHit2D>( (System.String)o, (FlowCanvas.ValueHandler<UnityEngine.RaycastHit2D>)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueOutput<UnityEngine.Ray>( (System.String)o, (FlowCanvas.ValueHandler<UnityEngine.Ray>)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueOutput<UnityEngine.Space>( (System.String)o, (FlowCanvas.ValueHandler<UnityEngine.Space>)o, (System.String)o );
+			_FlowCanvas_FlowNode.AddValueOutput<EventTimer>( (System.String)o, (FlowCanvas.ValueHandler<EventTimer>)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.DamageExtra>( (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtra>)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.DamageExtraVariant>( (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtraVariant>)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.PickEvent>( (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.PickEvent>)o, (System.String)o );
@@ -2236,6 +2399,7 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_FlowNode.AddValueOutput<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (System.String)o, (FlowCanvas.ValueHandler<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueOutput<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (System.String)o, (FlowCanvas.ValueHandler<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueOutput<UnityEngine.LayerMask>( (System.String)o, (FlowCanvas.ValueHandler<UnityEngine.LayerMask>)o, (System.String)o );
+			_FlowCanvas_FlowNode.AddValueOutput<UnityEngine.Animations.ConstraintSource>( (System.String)o, (FlowCanvas.ValueHandler<UnityEngine.Animations.ConstraintSource>)o, (System.String)o );
 		}
 
 		void FlowCanvas_TypeConverter_GetConverterFuncFromTo_1() {
@@ -2258,6 +2422,7 @@ namespace ParadoxNotion.Internal{
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<UnityEngine.RaycastHit2D>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<UnityEngine.Ray>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<UnityEngine.Space>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
+			FlowCanvas.TypeConverter.GetConverterFuncFromTo<EventTimer>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<EazyEngine.Space.DamageExtra>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<EazyEngine.Space.DamageExtraVariant>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<EazyEngine.Space.PickEvent>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
@@ -2265,6 +2430,7 @@ namespace ParadoxNotion.Internal{
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<UnityEngine.LayerMask>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
+			FlowCanvas.TypeConverter.GetConverterFuncFromTo<UnityEngine.Animations.ConstraintSource>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
 		}
 
 		void FlowCanvas_TypeConverter_QuickConvert_2() {
@@ -2287,6 +2453,7 @@ namespace ParadoxNotion.Internal{
 			FlowCanvas.TypeConverter.QuickConvert<UnityEngine.RaycastHit2D>( (System.Object)o );
 			FlowCanvas.TypeConverter.QuickConvert<UnityEngine.Ray>( (System.Object)o );
 			FlowCanvas.TypeConverter.QuickConvert<UnityEngine.Space>( (System.Object)o );
+			FlowCanvas.TypeConverter.QuickConvert<EventTimer>( (System.Object)o );
 			FlowCanvas.TypeConverter.QuickConvert<EazyEngine.Space.DamageExtra>( (System.Object)o );
 			FlowCanvas.TypeConverter.QuickConvert<EazyEngine.Space.DamageExtraVariant>( (System.Object)o );
 			FlowCanvas.TypeConverter.QuickConvert<EazyEngine.Space.PickEvent>( (System.Object)o );
@@ -2294,6 +2461,7 @@ namespace ParadoxNotion.Internal{
 			FlowCanvas.TypeConverter.QuickConvert<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (System.Object)o );
 			FlowCanvas.TypeConverter.QuickConvert<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (System.Object)o );
 			FlowCanvas.TypeConverter.QuickConvert<UnityEngine.LayerMask>( (System.Object)o );
+			FlowCanvas.TypeConverter.QuickConvert<UnityEngine.Animations.ConstraintSource>( (System.Object)o );
 		}
 
 		void FlowCanvas_ValueInput_CreateInstance_1() {
@@ -2316,6 +2484,7 @@ namespace ParadoxNotion.Internal{
 			FlowCanvas.ValueInput.CreateInstance<UnityEngine.RaycastHit2D>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
 			FlowCanvas.ValueInput.CreateInstance<UnityEngine.Ray>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
 			FlowCanvas.ValueInput.CreateInstance<UnityEngine.Space>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
+			FlowCanvas.ValueInput.CreateInstance<EventTimer>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
 			FlowCanvas.ValueInput.CreateInstance<EazyEngine.Space.DamageExtra>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
 			FlowCanvas.ValueInput.CreateInstance<EazyEngine.Space.DamageExtraVariant>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
 			FlowCanvas.ValueInput.CreateInstance<EazyEngine.Space.PickEvent>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
@@ -2323,6 +2492,7 @@ namespace ParadoxNotion.Internal{
 			FlowCanvas.ValueInput.CreateInstance<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
 			FlowCanvas.ValueInput.CreateInstance<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
 			FlowCanvas.ValueInput.CreateInstance<UnityEngine.LayerMask>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
+			FlowCanvas.ValueInput.CreateInstance<UnityEngine.Animations.ConstraintSource>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
 		}
 
 		void FlowCanvas_ValueOutput_CreateInstance_1() {
@@ -2345,6 +2515,7 @@ namespace ParadoxNotion.Internal{
 			FlowCanvas.ValueOutput.CreateInstance<UnityEngine.RaycastHit2D>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<UnityEngine.RaycastHit2D>)o );
 			FlowCanvas.ValueOutput.CreateInstance<UnityEngine.Ray>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<UnityEngine.Ray>)o );
 			FlowCanvas.ValueOutput.CreateInstance<UnityEngine.Space>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<UnityEngine.Space>)o );
+			FlowCanvas.ValueOutput.CreateInstance<EventTimer>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EventTimer>)o );
 			FlowCanvas.ValueOutput.CreateInstance<EazyEngine.Space.DamageExtra>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtra>)o );
 			FlowCanvas.ValueOutput.CreateInstance<EazyEngine.Space.DamageExtraVariant>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtraVariant>)o );
 			FlowCanvas.ValueOutput.CreateInstance<EazyEngine.Space.PickEvent>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.PickEvent>)o );
@@ -2352,6 +2523,7 @@ namespace ParadoxNotion.Internal{
 			FlowCanvas.ValueOutput.CreateInstance<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>)o );
 			FlowCanvas.ValueOutput.CreateInstance<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>)o );
 			FlowCanvas.ValueOutput.CreateInstance<UnityEngine.LayerMask>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<UnityEngine.LayerMask>)o );
+			FlowCanvas.ValueOutput.CreateInstance<UnityEngine.Animations.ConstraintSource>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<UnityEngine.Animations.ConstraintSource>)o );
 		}
 
 		void FlowCanvas_Nodes_ReflectedDelegateEvent_Callback1_1() {
@@ -2375,6 +2547,7 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<UnityEngine.RaycastHit2D>( (UnityEngine.RaycastHit2D)o );
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<UnityEngine.Ray>( (UnityEngine.Ray)o );
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<UnityEngine.Space>( (UnityEngine.Space)o );
+			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<EventTimer>( (EventTimer)o );
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<EazyEngine.Space.DamageExtra>( (EazyEngine.Space.DamageExtra)o );
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<EazyEngine.Space.DamageExtraVariant>( (EazyEngine.Space.DamageExtraVariant)o );
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<EazyEngine.Space.PickEvent>( (EazyEngine.Space.PickEvent)o );
@@ -2382,6 +2555,7 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride)o );
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride)o );
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<UnityEngine.LayerMask>( (UnityEngine.LayerMask)o );
+			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<UnityEngine.Animations.ConstraintSource>( (UnityEngine.Animations.ConstraintSource)o );
 		}
 
 		void FlowCanvas_Nodes_ReflectedUnityEvent_CallbackMethod1_1() {
@@ -2405,6 +2579,7 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<UnityEngine.RaycastHit2D>( (UnityEngine.RaycastHit2D)o );
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<UnityEngine.Ray>( (UnityEngine.Ray)o );
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<UnityEngine.Space>( (UnityEngine.Space)o );
+			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<EventTimer>( (EventTimer)o );
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<EazyEngine.Space.DamageExtra>( (EazyEngine.Space.DamageExtra)o );
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<EazyEngine.Space.DamageExtraVariant>( (EazyEngine.Space.DamageExtraVariant)o );
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<EazyEngine.Space.PickEvent>( (EazyEngine.Space.PickEvent)o );
@@ -2412,6 +2587,7 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride)o );
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride)o );
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<UnityEngine.LayerMask>( (UnityEngine.LayerMask)o );
+			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<UnityEngine.Animations.ConstraintSource>( (UnityEngine.Animations.ConstraintSource)o );
 		}
 
 		void NodeCanvas_Framework_Blackboard_GetVariable_1() {
@@ -2435,6 +2611,7 @@ namespace ParadoxNotion.Internal{
 			_NodeCanvas_Framework_Blackboard.GetVariable<UnityEngine.RaycastHit2D>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetVariable<UnityEngine.Ray>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetVariable<UnityEngine.Space>( (System.String)o );
+			_NodeCanvas_Framework_Blackboard.GetVariable<EventTimer>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetVariable<EazyEngine.Space.DamageExtra>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetVariable<EazyEngine.Space.DamageExtraVariant>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetVariable<EazyEngine.Space.PickEvent>( (System.String)o );
@@ -2442,6 +2619,7 @@ namespace ParadoxNotion.Internal{
 			_NodeCanvas_Framework_Blackboard.GetVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetVariable<UnityEngine.LayerMask>( (System.String)o );
+			_NodeCanvas_Framework_Blackboard.GetVariable<UnityEngine.Animations.ConstraintSource>( (System.String)o );
 		}
 
 		void NodeCanvas_Framework_Blackboard_GetValue_2() {
@@ -2465,6 +2643,7 @@ namespace ParadoxNotion.Internal{
 			_NodeCanvas_Framework_Blackboard.GetValue<UnityEngine.RaycastHit2D>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetValue<UnityEngine.Ray>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetValue<UnityEngine.Space>( (System.String)o );
+			_NodeCanvas_Framework_Blackboard.GetValue<EventTimer>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetValue<EazyEngine.Space.DamageExtra>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetValue<EazyEngine.Space.DamageExtraVariant>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetValue<EazyEngine.Space.PickEvent>( (System.String)o );
@@ -2472,6 +2651,7 @@ namespace ParadoxNotion.Internal{
 			_NodeCanvas_Framework_Blackboard.GetValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetValue<UnityEngine.LayerMask>( (System.String)o );
+			_NodeCanvas_Framework_Blackboard.GetValue<UnityEngine.Animations.ConstraintSource>( (System.String)o );
 		}
 
 		void NodeCanvas_Framework_IBlackboard_GetVariable_1() {
@@ -2495,6 +2675,7 @@ namespace ParadoxNotion.Internal{
 			_NodeCanvas_Framework_IBlackboard.GetVariable<UnityEngine.RaycastHit2D>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetVariable<UnityEngine.Ray>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetVariable<UnityEngine.Space>( (System.String)o );
+			_NodeCanvas_Framework_IBlackboard.GetVariable<EventTimer>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetVariable<EazyEngine.Space.DamageExtra>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetVariable<EazyEngine.Space.DamageExtraVariant>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetVariable<EazyEngine.Space.PickEvent>( (System.String)o );
@@ -2502,6 +2683,7 @@ namespace ParadoxNotion.Internal{
 			_NodeCanvas_Framework_IBlackboard.GetVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetVariable<UnityEngine.LayerMask>( (System.String)o );
+			_NodeCanvas_Framework_IBlackboard.GetVariable<UnityEngine.Animations.ConstraintSource>( (System.String)o );
 		}
 
 		void NodeCanvas_Framework_IBlackboard_GetValue_2() {
@@ -2525,6 +2707,7 @@ namespace ParadoxNotion.Internal{
 			_NodeCanvas_Framework_IBlackboard.GetValue<UnityEngine.RaycastHit2D>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetValue<UnityEngine.Ray>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetValue<UnityEngine.Space>( (System.String)o );
+			_NodeCanvas_Framework_IBlackboard.GetValue<EventTimer>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetValue<EazyEngine.Space.DamageExtra>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetValue<EazyEngine.Space.DamageExtraVariant>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetValue<EazyEngine.Space.PickEvent>( (System.String)o );
@@ -2532,6 +2715,7 @@ namespace ParadoxNotion.Internal{
 			_NodeCanvas_Framework_IBlackboard.GetValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetValue<UnityEngine.LayerMask>( (System.String)o );
+			_NodeCanvas_Framework_IBlackboard.GetValue<UnityEngine.Animations.ConstraintSource>( (System.String)o );
 		}
 
 		///----------------------------------------------------------------------------------------------
@@ -2688,6 +2872,14 @@ namespace ParadoxNotion.Internal{
 			System.Collections.Generic.IDictionary<System.String, UnityEngine.Space> IDict_UnityEngine_Space;
 			System.Collections.Generic.Dictionary<System.String, UnityEngine.Space> Dict_UnityEngine_Space;
 			///------
+			System.Action<EventTimer> System_Action_EventTimer;
+			System.Func<EventTimer> System_Func_EventTimer;
+			UnityEngine.Events.UnityAction<EventTimer> UnityEngine_Events_UnityAction_EventTimer;
+			System.Collections.Generic.IList<EventTimer> System_Collections_Generic_IList_EventTimer;
+			System.Collections.Generic.List<EventTimer> System_Collections_Generic_List_EventTimer;
+			System.Collections.Generic.IDictionary<System.String, EventTimer> IDict_EventTimer;
+			System.Collections.Generic.Dictionary<System.String, EventTimer> Dict_EventTimer;
+			///------
 			System.Action<EazyEngine.Space.DamageExtra> System_Action_EazyEngine_Space_DamageExtra;
 			System.Func<EazyEngine.Space.DamageExtra> System_Func_EazyEngine_Space_DamageExtra;
 			UnityEngine.Events.UnityAction<EazyEngine.Space.DamageExtra> UnityEngine_Events_UnityAction_EazyEngine_Space_DamageExtra;
@@ -2744,9 +2936,17 @@ namespace ParadoxNotion.Internal{
 			System.Collections.Generic.IDictionary<System.String, UnityEngine.LayerMask> IDict_UnityEngine_LayerMask;
 			System.Collections.Generic.Dictionary<System.String, UnityEngine.LayerMask> Dict_UnityEngine_LayerMask;
 			///------
+			System.Action<UnityEngine.Animations.ConstraintSource> System_Action_UnityEngine_Animations_ConstraintSource;
+			System.Func<UnityEngine.Animations.ConstraintSource> System_Func_UnityEngine_Animations_ConstraintSource;
+			UnityEngine.Events.UnityAction<UnityEngine.Animations.ConstraintSource> UnityEngine_Events_UnityAction_UnityEngine_Animations_ConstraintSource;
+			System.Collections.Generic.IList<UnityEngine.Animations.ConstraintSource> System_Collections_Generic_IList_UnityEngine_Animations_ConstraintSource;
+			System.Collections.Generic.List<UnityEngine.Animations.ConstraintSource> System_Collections_Generic_List_UnityEngine_Animations_ConstraintSource;
+			System.Collections.Generic.IDictionary<System.String, UnityEngine.Animations.ConstraintSource> IDict_UnityEngine_Animations_ConstraintSource;
+			System.Collections.Generic.Dictionary<System.String, UnityEngine.Animations.ConstraintSource> Dict_UnityEngine_Animations_ConstraintSource;
+			///------
 		}
 	}
 }
 
-//2133 Types | 390 Methods spoofed
+//2297 Types | 420 Methods spoofed
 #pragma warning restore 0219, 0168, 0612
