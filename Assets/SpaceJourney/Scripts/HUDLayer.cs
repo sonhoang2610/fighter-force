@@ -50,7 +50,7 @@ namespace EazyEngine.Space.UI {
             {
                 TimeKeeper.Instance.getTimer("Global").TimScale = 1;
                 pItem.Quantity -= 50;
-                reviePlayer();
+                reviePlayer(1,true);
             }
         }
         public void rebornWatchAds()
@@ -61,7 +61,7 @@ namespace EazyEngine.Space.UI {
                 if (pBool)
                 {
                     TimeKeeper.Instance.getTimer("Global").TimScale = 1;
-                    reviePlayer();
+                    reviePlayer(1,false);
                 }
                 else
                 {
@@ -72,15 +72,23 @@ namespace EazyEngine.Space.UI {
             //GameManager.Instance.
         }
 
-       public void reviePlayer()
+       public void reviePlayer(float pHealthFactor = 1,bool booster = true)
         {
 
             HUDLayer.Instance.BoxReborn.close();
 
             LevelManger.Instance.CurrentPlayer.GetComponent<Health>().Revive();
+            LevelManger.Instance.CurrentPlayer.GetComponent<Health>().currentHealth = (int)(LevelManger.Instance.CurrentPlayer.GetComponent<Health>().currentHealth * pHealthFactor);
             LevelManger.Instance.CurrentPlayer.GetComponent<CharacterHandleWeapon>().ShootStart();
             LevelManger.Instance.CurrentPlayer.GetComponent<Character>().machine.SetTrigger("Start");
-           LevelManger.Instance.CurrentPlayer.GetComponent<CharacterHandleWeapon>().booster("Booster3");
+            if (booster)
+            {
+                LevelManger.Instance.CurrentPlayer.GetComponent<CharacterHandleWeapon>().booster("Booster3");
+            }
+            else
+            {
+                LevelManger.Instance.CurrentPlayer.GetComponent<CharacterHandleWeapon>().booster("Booster2");
+            }
             GUIManager.Instance.setHealthMainPlane(LevelManger.Instance.CurrentPlayer.GetComponent<Health>().currentHealth, LevelManger.Instance.CurrentPlayer.GetComponent<Health>().MaxiumHealth);
         }
 
