@@ -499,6 +499,7 @@ namespace EazyEngine.Space
             currentIndexBullet = 0;
             if (startWithReloadFirst)
             {
+                _currentTimReload = TimeReload;
                 changeState(WeaponState.WeaponReloading);
             }
             else

@@ -107,14 +107,16 @@ public class WeaponFindTarget : MonoBehaviour,EzEventListener<CharacterChangeSta
         }
         return pFounds.ToArray();
     }
+    protected bool refreshChar = false;
     public virtual void findTargetMinDistance(Weapon pWeapon)
     {
         if (isDirty)
         {      
-             var pFound = findTargetFromPos(transform.position);
+             var pFound = findTargetFromPos(transform.position,-1, refreshChar);
             foundTarget.AddRange(pFound);
             isDirty = false;
             isFirst = false;
+            refreshChar = false;
             charInside.Clear();
         }
         if (foundTarget.Count > 0)
@@ -184,6 +186,8 @@ public class WeaponFindTarget : MonoBehaviour,EzEventListener<CharacterChangeSta
             if (!foundTarget[i]._obect.activeSelf)
             {
                 foundTarget.RemoveAt(i);
+                isDirty = true;
+                refreshChar = true;
             }
         }
     }
