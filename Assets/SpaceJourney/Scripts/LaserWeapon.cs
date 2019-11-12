@@ -166,8 +166,8 @@ namespace EazyEngine.Space
                 for (int i = 0; i < extraDamage.Count; ++i)
                 {
                     pExtraDamage += extraDamage[i].type == DamageType.Normal ? extraDamage[i].damageExtra :
-                        (extraDamage[i].type == DamageType.PecentHp ? (float)health.CurrentHealth * extraDamage[i].damageExtra :
-                        (extraDamage[i].type == DamageType.PecentMaxHp ? (float)health.MaxiumHealth * extraDamage[i].damageExtra : (pCurrentDamge * extraDamage[i].damageExtra)));
+                        (extraDamage[i].type == DamageType.PecentHp ? (float)health.CurrentHealth * extraDamage[i].damageExtra/100.0f:
+                        (extraDamage[i].type == DamageType.PecentMaxHp ? (float)health.MaxiumHealth * extraDamage[i].damageExtra / 100.0f : (pCurrentDamge * extraDamage[i].damageExtra / 100.0f)));
                 }
             return pCurrentDamge + pExtraDamage;
         }
