@@ -169,12 +169,21 @@ namespace EazyEngine.Space.UI
             if (extraItem != null)
             {
                 int pFirstGuideBoxReward = PlayerPrefs.GetInt("FirstBoxReward", 0);
-                if (extraItem.item.itemID.StartsWith("Box") && pFirstGuideBoxReward == 0)
+                if (extraItem.item.itemID.StartsWith("Box") && (pFirstGuideBoxReward == 0 || pFirstGuideBoxReward == 3))
                 {
-                    PlayerPrefs.SetInt("FirstBoxReward", 1);
-                    StartCoroutine(delayaction(1, delegate {
-                        EzEventManager.TriggerEvent(new GuideEvent("FirstRewardBox", null));
-                    }));
+                    if (pFirstGuideBoxReward == 0)
+                    {
+                        PlayerPrefs.SetInt("FirstBoxReward", 1);
+                        StartCoroutine(delayaction(1, delegate
+                        {
+                            EzEventManager.TriggerEvent(new GuideEvent("FirstRewardBox", null));
+                        }));
+                    }
+                    else if (pFirstGuideBoxReward >= 1  && pFirstGuideBoxReward <= 3)
+                    {
+                        PlayerPrefs.SetInt("FirstBoxReward",4);
+                        PlayerPrefs.SetInt("SecondBox", 1);
+                    }
                 }
             }
             if (!GameManager.Instance.isFree)

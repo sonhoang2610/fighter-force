@@ -341,6 +341,7 @@ namespace EazyEngine.Space
             int pStepGame = PlayerPrefs.GetInt("firstGame", 0);
             if (GameManager.Instance.isFree && pStepGame == 9999)
             {
+                Firebase.Analytics.FirebaseAnalytics.LogEvent("FreeFirst");
                 GameManager.Instance.freePlaneChoose = "MainPlane5";
                 GameManager.Instance.freeSpPlaneChoose = "SpPlane2";
             }
