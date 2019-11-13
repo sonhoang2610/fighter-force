@@ -33,6 +33,19 @@ namespace EazyEngine.Space.UI
         {
         
         }
+        public void checkOpenBoxEliteFirst()
+        {
+            int pFirstBox = PlayerPrefs.GetInt("FirstBoxReward", 0);
+            if (pFirstBox == 2)
+            {
+                EzEventManager.TriggerEvent(new GuideEvent("FirstRewardBox2", delegate
+                {
+                }, false));
+            }
+
+
+        }
+
     }
 }
 

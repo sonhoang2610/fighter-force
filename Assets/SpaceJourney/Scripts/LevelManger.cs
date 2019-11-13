@@ -338,8 +338,8 @@ namespace EazyEngine.Space
                 }
             }
             BoxItemInGame.Instance.DataSource = pItems.ToObservableList();
-
-            if (GameManager.Instance.isFree && GameManager.Instance.Database.SelectedMainPlane == "MainPlane1" && GameManager.Instance.Database.SelectedSupportPlane1 == "SpPlane1")
+            int pStepGame = PlayerPrefs.GetInt("firstGame", 0);
+            if (GameManager.Instance.isFree && pStepGame == 9999)
             {
                 GameManager.Instance.freePlaneChoose = "MainPlane5";
                 GameManager.Instance.freeSpPlaneChoose = "SpPlane2";
@@ -464,8 +464,19 @@ namespace EazyEngine.Space
             return pDatas.ToArray();
         }
 
+        private IEnumerator delayAction(float pSec, System.Action pAction)
+        {
+            yield return new WaitForSeconds(pSec);
+            pAction.Invoke();
+        }
+
         private void Start()
         {
+            StartCoroutine(delayAction(0.1f, delegate
+            {
+                Physics2D.autoSimulation = true;
+            }));
+           
             if (PlayerEnviroment.eviromentInstant != null)
             {
                 PlayerEnviroment.clear();

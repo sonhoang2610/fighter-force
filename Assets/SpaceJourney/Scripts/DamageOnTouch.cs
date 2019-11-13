@@ -75,6 +75,7 @@ namespace EazyEngine.Space
     {
         public LayerMask TargetMaskLayer;
         public bool ignoreOnDamaged = false;
+        public bool autoGetOwnerMainPlane = false;
         public int DamageCaused = 10;
         public float factorDamageDecreaseSameObjects = 0;
         public float factorMinDamageDecrease = 1;
@@ -187,8 +188,15 @@ namespace EazyEngine.Space
 
         public int DamageCausedProp
         {
-            get => DamageCaused; set
+            get {
+                if (autoGetOwnerMainPlane && LevelManger.Instance.CurrentPlayer && LevelManger.Instance.CurrentPlayer.mainInfo != null)
+                {
+                    return (int)LevelManger.Instance.CurrentPlayer.mainInfo.DamgageBasic;
+                }
+                return DamageCaused;
+            } set
             {
+          
                 DamageCaused = value;
             }
         }

@@ -112,7 +112,7 @@ public class UIElementManager : Singleton<UIElementManager>
         return pAction;
     }
 
-    protected Dictionary<UIElement, Vector3> cachePos = new Dictionary<UIElement, Vector3>();
+    public Dictionary<UIElement, Vector3> cachePos = new Dictionary<UIElement, Vector3>();
     // Start is called before the first frame update
     void Start()
     {

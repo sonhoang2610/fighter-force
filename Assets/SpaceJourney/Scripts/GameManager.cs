@@ -361,6 +361,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             var pSke5 = gameObject.AddComponent<SkeletonRenderSeparator>();
         }
         LoadGame();
+        SaveGameCache();
         LoadAllLevel();
         reCalCulateStar();
         var currentModuleGiftOnline = GameDatabase.Instance.databaseGiftOnline;
@@ -883,6 +884,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         SaveGame();
 
         TopLayer.Instance.block.gameObject.SetActive(true);
+        Physics2D.autoSimulation = false;
         StartCoroutine(delayAction(0.75f, delegate
         {
             TopLayer.Instance.inGame(true);
@@ -949,7 +951,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         {
             if (Advertising.IsRewardedAdReady(timeoutAds[i].placeMent))
             {
-                TopLayer.Instance.loadingAds.gameObject.SetActive(false);
+                TopLayer.Instance.LoadingAds.gameObject.SetActive(false);
                 Advertising.ShowRewardedAd(timeoutAds[i].placeMent);
                 timeoutAds.RemoveAt(i);
                 continue;
@@ -963,7 +965,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                 {
                     if (rewardAds.ContainsKey(timeoutAds[i].placeMent.Name))
                     {
-                        TopLayer.Instance.loadingAds.gameObject.SetActive(false);
+                        TopLayer.Instance.LoadingAds.gameObject.SetActive(false);
                         rewardAds[timeoutAds[i].placeMent.Name](false);
                         rewardAds.Remove(timeoutAds[i].placeMent.Name);
                     }
@@ -1097,7 +1099,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     // Unsubscribe when the game object is disabled
     void OnDisable()
     {
-        SaveGameCache();
+       
         SaveGame();
         InAppPurchasing.PurchaseCompleted -= PurchaseCompletedHandler;
         InAppPurchasing.PurchaseFailed -= PurchaseFailedHandler;
@@ -1264,7 +1266,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                 }
                 else
                 {
-                    TopLayer.Instance.loadingAds.gameObject.SetActive(true);
+                    TopLayer.Instance.LoadingAds.gameObject.SetActive(true);
                     Advertising.LoadRewardedAd(placement);
                     if (indexOfads(placement) < 0)
                     {

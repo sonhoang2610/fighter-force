@@ -73,6 +73,46 @@ MonoBehaviour:
       - "N\xE2ng c\u1EA5p"
       Flags: 0000
       Languages_Touch: []
+    - Term: btn_shop
+      TermType: 5
+      Description: 
+      Languages:
+      - ui/home/btn_shop[btn_shop]
+      - ui/home/btn_shop_vi[btn_shop_vi]
+      Flags: 0000
+      Languages_Touch: []
+    - Term: btn_upgrade
+      TermType: 5
+      Description: 
+      Languages:
+      - ui/home/btn_upgrade[btn_upgrade]
+      - ui/home/btn_upgrade_vi[btn_upgrade_vi]
+      Flags: 0000
+      Languages_Touch: []
+    - Term: flag
+      TermType: 5
+      Description: 
+      Languages:
+      - ui/variant/setting/flag_en[flag_en]
+      - ui/variant/setting/flag_vn[flag_vn]
+      Flags: 0000
+      Languages_Touch: []
+    - Term: float
+      TermType: 0
+      Description: 
+      Languages:
+      - flag_vn
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: recieved_icon
+      TermType: 2
+      Description: 
+      Languages:
+      - ui/onlinegift/item_nhan_en
+      - ui/onlinegift/item_nhan_vi
+      Flags: 0000
+      Languages_Touch: []
     - Term: ability/attack
       TermType: 0
       Description: 
@@ -111,72 +151,6 @@ MonoBehaviour:
       Languages:
       - Fire Rate
       - "T\u1ED1c \u0111\u1ED9 b\u1EAFn"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: btn_shop
-      TermType: 5
-      Description: 
-      Languages:
-      - ui/home/btn_shop[btn_shop]
-      - ui/home/btn_shop_vi[btn_shop_vi]
-      Flags: 0000
-      Languages_Touch: []
-    - Term: btn_upgrade
-      TermType: 5
-      Description: 
-      Languages:
-      - ui/home/btn_upgrade[btn_upgrade]
-      - ui/home/btn_upgrade_vi[btn_upgrade_vi]
-      Flags: 0000
-      Languages_Touch: []
-    - Term: flag
-      TermType: 5
-      Description: 
-      Languages:
-      - ui/variant/setting/flag_en[flag_en]
-      - ui/variant/setting/flag_vn[flag_vn]
-      Flags: 0000
-      Languages_Touch: []
-    - Term: float
-      TermType: 0
-      Description: 
-      Languages:
-      - flag_vn
-      - 
-      Flags: 0000
-      Languages_Touch: []
-    - Term: lucky_wheel/daily_spin
-      TermType: 0
-      Description: 
-      Languages:
-      - Daily Spin
-      - "H\xE0ng ng\xE0y mua quay"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: lucky_wheel/spin_button
-      TermType: 0
-      Description: 
-      Languages:
-      - SPIN
-      - QUAY
-      Flags: 0000
-      Languages_Touch: []
-    - Term: lucky_wheel/wheel_description
-      TermType: 0
-      Description: 
-      Languages:
-      - Spin to increase the level of the Wheel. The higher the Wheel's level, the
-        bigger the reward.
-      - "Quay \u0111\u1EC3 t\u0103ng c\u1EA5p \u0111\u1ED9 v\xF2ng quay. C\u1EA5p
-        \u0111\u1ED9 c\xE0ng cao ph\u1EA7n th\u01B0\u1EDFng c\xE0ng l\u1EDBn"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: lucky_wheel/wheel_level
-      TermType: 0
-      Description: 
-      Languages:
-      - Wheel Level
-      - "C\u1EA5p \u0111\u1ED9 b\xE1nh xe"
       Flags: 0000
       Languages_Touch: []
     - Term: mission/destroy_all_content
@@ -716,14 +690,6 @@ MonoBehaviour:
       - Increase the power of accompaning Main Ship by 20%
       - "T\u0103ng s\u1EE9c m\u1EA1nh t\xE0u ch\xEDnh \u0111i k\xE8m th\xEAm $damageBooster
         %"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: recieved_icon
-      TermType: 2
-      Description: 
-      Languages:
-      - ui/onlinegift/item_nhan_en
-      - ui/onlinegift/item_nhan_vi
       Flags: 0000
       Languages_Touch: []
     - Term: text/choose_item_sp
@@ -2065,6 +2031,65 @@ MonoBehaviour:
       - "C\xF3"
       Flags: 0000
       Languages_Touch: []
+    - Term: lucky_wheel/daily_spin
+      TermType: 0
+      Description: 
+      Languages:
+      - Daily Spin
+      - "H\xE0ng ng\xE0y mua quay"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: lucky_wheel/spin_button
+      TermType: 0
+      Description: 
+      Languages:
+      - SPIN
+      - QUAY
+      Flags: 0000
+      Languages_Touch: []
+    - Term: lucky_wheel/wheel_description
+      TermType: 0
+      Description: 
+      Languages:
+      - Spin to increase the level of the Wheel. The higher the Wheel's level, the
+        bigger the reward.
+      - "Quay \u0111\u1EC3 t\u0103ng c\u1EA5p \u0111\u1ED9 v\xF2ng quay. C\u1EA5p
+        \u0111\u1ED9 c\xE0ng cao ph\u1EA7n th\u01B0\u1EDFng c\xE0ng l\u1EDBn"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: lucky_wheel/wheel_level
+      TermType: 0
+      Description: 
+      Languages:
+      - Wheel Level
+      - "C\u1EA5p \u0111\u1ED9 b\xE1nh xe"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/FirstRewardBoxContent
+      TermType: 0
+      Description: 
+      Languages:
+      - Congratulation! you recieved the first box elite!
+      - "Ch\xFAc m\u01B0ng b\u1EA1n \u0111\xE3 nh\u1EADn \u0111\u01B0\u1EE3c h\xF2m
+        qu\xE0 \u0111\u1EA7u ti\xEAn"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/FirstRewardBoxTitle1
+      TermType: 0
+      Description: 
+      Languages:
+      - First Open Elite Box
+      - "M\u1EDF H\u1ED9p L\u1EA7n \u0110\u1EA7u"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: text/FirstRewardBoxContent1
+      TermType: 0
+      Description: 
+      Languages:
+      - Let start to open the first box elite
+      - "H\xE3y th\u1EED c\xF9ng m\u1EDF h\u1ED9p cao c\u1EA5p l\u1EA7n \u0111\u1EA7u"
+      Flags: 0000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: 
@@ -2080,7 +2105,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbx8Wa8N32JyZ5C4pYOJ3jF2_oE2-cIG5ljH845Z/exec
     Google_SpreadsheetKey: 1pkO-Gbk-Dc8oWvX3kBUU66aMqePyy6D93nsLx9wsiAQ
     Google_SpreadsheetName: I2Loc Fighter Force Localization
-    Google_LastUpdatedVersion: 1572672164560
+    Google_LastUpdatedVersion: 1573034944853
     Google_Password: lengochan
     GoogleUpdateFrequency: 0
     GoogleInEditorCheckFrequency: 0

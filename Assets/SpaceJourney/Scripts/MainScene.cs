@@ -50,11 +50,14 @@ namespace EazyEngine.Space.UI
             if (isConnected && GameManager.Instance.dailyGiftModule.lastDate != pDateTime.DayOfYear && GameManager.Instance.dailyGiftModule.currentDay < GameDatabase.Instance.databaseDailyGift.item.Count)
             {
                 int pStepGame = PlayerPrefs.GetInt("firstGame", 0);
+                int pFirstBox = PlayerPrefs.GetInt("FirstBoxReward", 0);
                 if (pStepGame < 2) return;
+                if (pFirstBox == 1) return;
                 MidLayer.Instance.boxDailyGift.GetComponent<UIElement>().show();
             }
 
         }
+
 
 
         // Subscribe to events in the OnEnable method of a MonoBehavior script
@@ -348,7 +351,8 @@ namespace EazyEngine.Space.UI
             {
                 upgrade();
             }
-
+            int pFirstBox = PlayerPrefs.GetInt("FirstBoxReward", 0);
+          
             int pFirstGame = PlayerPrefs.GetInt("firstGame", 0);
             if (pFirstGame == 0)
             {
@@ -356,7 +360,7 @@ namespace EazyEngine.Space.UI
                 GameManager.Instance.SaveGame();
                 EzEventManager.TriggerEvent(new GuideEvent("FirstGame", delegate
                 {
-                    PlayerPrefs.SetInt("firstGame", 1);
+                    PlayerPrefs.SetInt("firstGame", 9999);
                     MainScene.Instance.freePlay();
                 }));
             }
@@ -372,7 +376,15 @@ namespace EazyEngine.Space.UI
                     }, true));
 
             }
-           
+            else if (pFirstBox == 1)
+            {
+                EzEventManager.TriggerEvent(new GuideEvent("FirstRewardBox1", delegate
+                {
+             
+                    PlayerPrefs.SetInt("FirstBoxReward", 2);
+                },false));
+            }
+
         }
 
 

@@ -27,6 +27,7 @@ namespace EazyEngine.Space
         public UnityEvent onComplete;
         public bool isLocal = true;
         public UIElement boxlostConnection;
+        public GameObject loadingAds;
         AsyncOperation async;
         bool isStart = false;
         public string currentScene; 

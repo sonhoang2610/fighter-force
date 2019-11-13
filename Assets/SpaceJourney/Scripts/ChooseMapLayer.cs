@@ -163,8 +163,18 @@ namespace EazyEngine.Space.UI
                 {
                     GetComponentInChildren<UICenterOnChild>().enabled = false;
                 }
+
+                StartCoroutine(delayAction(0.5f, delegate {
+                    SpringPanel.Stop(gameObject);
+                }));
                 firstLateUpdate = false;
             }
+        }
+
+        private IEnumerator delayAction(float pSec,System.Action pAction)
+        {
+            yield return new WaitForSeconds(pSec);
+            pAction.Invoke();
         }
 #if UNITY_EDITOR
         [ContextMenu("Export")]

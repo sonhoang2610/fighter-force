@@ -12,7 +12,16 @@ namespace EazyEngine.Space.UI
         public UIElement boxReward,boxShop,boxLucky;
         public GameObject hudItemLayer;
         public GameObject block;
-        public GameObject loadingAds;
+        private GameObject loadingAds;
+
+        public GameObject LoadingAds { get {
+                if(loadingAds == null)
+                {
+                    loadingAds = SceneManager.Instance.loadingAds;
+                }
+                return loadingAds;
+                    } set => loadingAds = value; }
+
         public void inGame(bool pBool)
         {
             if (pBool)

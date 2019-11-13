@@ -14,6 +14,7 @@ namespace EazyEngine.Space.UI
         public I2String content;
         public string IDButonFocus;
         public Vector3 offset;
+        public Vector3 boxPos = new Vector3(0, -74, 0);
         public bool blockState;
     }
 
@@ -47,6 +48,7 @@ namespace EazyEngine.Space.UI
             handGuide.gameObject.SetActive(!string.IsNullOrEmpty(pID));
             if (string.IsNullOrEmpty(pID)) return;
             var pObject = GameObject.Find("Core" + pID);
+            var buttonBlack = transform.Find("bg").GetComponent<UIButton>();
             if (pObject != null)
             {
                 var pRoot = pObject.GetComponentInParent<UIRoot>();
@@ -61,6 +63,7 @@ namespace EazyEngine.Space.UI
                 }
               
                 var pButton = pObject.GetComponent<UIButton>();
+                buttonBlack.onClick.Clear();
                 if (pButton)
                 {
                     var pCollider = pButton.GetComponent<BoxCollider>();
@@ -90,7 +93,18 @@ namespace EazyEngine.Space.UI
                     }
                     pButtonNew.onClick.Add(new EventDelegate(passGuide));
                 }
+                else
+                {
+                    handGuide.gameObject.SetActive(false);
+                    if (pExcute != null)
+                    {
+                        buttonBlack.onClick.Add(new EventDelegate(delegate { pExcute(); }));
+                    }
+                    buttonBlack.onClick.Add(new EventDelegate(passGuide));
+           
+                }
             }
+           
         }
 
         public void OnEzEvent(GuideEvent eventType)
@@ -108,7 +122,8 @@ namespace EazyEngine.Space.UI
         private void ExcuteState(GuideInfo pInfo,System.Action pExcute,bool pOverride)
         {
             blackBG.gameObject.SetActive(pInfo.blockState);
-            
+            box.transform.localPosition = pInfo.boxPos;
+            UIElementManager.Instance.cachePos[box] = pInfo.boxPos;
             box.show();
             title.text = pInfo.title.Value;
             content.text = pInfo.content.Value;

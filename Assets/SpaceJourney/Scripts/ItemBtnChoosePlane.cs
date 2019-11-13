@@ -14,6 +14,11 @@ namespace EazyEngine.Space.UI
                 {
                     icon.sprite2D = value.info.iconShopDisable;
                 }
+                var pCheck = GetComponent<CheckUnlockPlane>();
+                pCheck.infos.clear();
+                System.Array.Resize(ref pCheck.infos, 1);
+                pCheck.infos[0] = value.info;
+                pCheck.check();
                 base.Data = value;
             }
         }

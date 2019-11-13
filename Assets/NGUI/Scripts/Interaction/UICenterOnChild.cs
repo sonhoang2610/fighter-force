@@ -263,7 +263,9 @@ public class UICenterOnChild : MonoBehaviour
             else
 
 			{
-				SpringPanel.Begin(mScrollView.panel.cachedGameObject,
+           
+
+                SpringPanel.Begin(mScrollView.panel.cachedGameObject,
 					panelTrans.localPosition - localOffset, springStrength).onFinished = onFinished;
 			}
 		}

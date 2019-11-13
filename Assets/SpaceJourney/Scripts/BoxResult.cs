@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using EasyMobile;
+using EazyEngine.Tools;
 
 namespace EazyEngine.Space.UI
 {
@@ -112,6 +113,7 @@ namespace EazyEngine.Space.UI
       
             LevelManger.Instance._infoLevel.score = 0;
             if (pWin) {
+           
                 GameManager.Instance.wincount++;
                 win.SetActive(true);
                 lose.SetActive(false);
@@ -136,6 +138,7 @@ namespace EazyEngine.Space.UI
                 //set data extra craft reward
                 if (extraItem != null)
                 {
+                  
                     slotRewardExtra.Data = extraItem;
                     slotRewardExtra.gameObject.SetActive(true);
                 }
@@ -163,6 +166,17 @@ namespace EazyEngine.Space.UI
             quantityDestroy.text =  $"{( (float)LevelManger.Instance._infoLevel.enemyKill / (float)(LevelManger.Instance._infoLevel.enemyKill + LevelManger.Instance.BornEnemy.Count))*100}%";
         
             gameObject.SetActive(true);
+            if (extraItem != null)
+            {
+                int pFirstGuideBoxReward = PlayerPrefs.GetInt("FirstBoxReward", 0);
+                if (extraItem.item.itemID.StartsWith("Box") && pFirstGuideBoxReward == 0)
+                {
+                    PlayerPrefs.SetInt("FirstBoxReward", 1);
+                    StartCoroutine(delayaction(1, delegate {
+                        EzEventManager.TriggerEvent(new GuideEvent("FirstRewardBox", null));
+                    }));
+                }
+            }
             if (!GameManager.Instance.isFree)
             {
                 adsCourountine =  StartCoroutine(delayaction(1.5f,delegate{
