@@ -19,7 +19,6 @@ namespace EazyEngine.Space.UI
         public UIButton btnFight;
         public GameObject boxRank;
         public UILabel nameUser, idUser;
-        public GameObject block;
         protected List<BoxBasePlane> selectedBoxPlane = new List<BoxBasePlane>();
         public EazyGroupTabNGUI chooseHardMode;
         public UILabel desItemSp;
@@ -47,12 +46,14 @@ namespace EazyEngine.Space.UI
             }
             bool isConnected = false;
             var pDateTime = TimeExtension.GetNetTime(ref isConnected);
+            TopLayer.Instance.block.gameObject.SetActive(true);
             if (isConnected && GameManager.Instance.dailyGiftModule.lastDate != pDateTime.DayOfYear && GameManager.Instance.dailyGiftModule.currentDay < GameDatabase.Instance.databaseDailyGift.item.Count)
             {
                 int pStepGame = PlayerPrefs.GetInt("firstGame", 0);
                 int pFirstBox = PlayerPrefs.GetInt("FirstBoxReward", 0);
                 if (pStepGame < 2) return;
                 if (pFirstBox == 1) return;
+                TopLayer.Instance.block.gameObject.SetActive(true);
                 MidLayer.Instance.boxDailyGift.GetComponent<UIElement>().show();
             }
 
@@ -363,6 +364,7 @@ namespace EazyEngine.Space.UI
                     PlayerPrefs.SetInt("firstGame", 9999);
                     MainScene.Instance.freePlay();
                 }));
+
             }
             else if (pFirstGame == 1)
             {
@@ -384,7 +386,7 @@ namespace EazyEngine.Space.UI
                     PlayerPrefs.SetInt("FirstBoxReward", 2);
                 },false));
             }
-
+            TopLayer.Instance.block.gameObject.SetActive(false);
         }
 
 

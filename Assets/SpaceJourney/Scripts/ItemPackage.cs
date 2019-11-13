@@ -58,36 +58,40 @@ namespace EazyEngine.Space
         {
             int pFirstBox = PlayerPrefs.GetInt("FirstBoxReward", 0);
             int pSecondBox = PlayerPrefs.GetInt("SecondBox", 0);
-            if (pFirstBox == 2 && isNew)
+            if (itemID == "BoxElite")
             {
-                PlayerPrefs.SetInt("FirstBoxReward",3);
-                var pItemCoin = GameDatabase.Instance.getItem("Coin", CategoryItem.COMON);
-                var pItemCrystal = GameDatabase.Instance.getItem("Crystal", CategoryItem.COMON);
-                var pItemcraft = GameDatabase.Instance.getItem("CraftPlane2", CategoryItem.COMON);
-                List<BaseItemGameInstanced> pItemResultFake = new List<BaseItemGameInstanced>()
+                if (pFirstBox == 2 && isNew)
+                {
+                    PlayerPrefs.SetInt("FirstBoxReward", 3);
+                    var pItemCoin = GameDatabase.Instance.getItem("Coin", CategoryItem.COMON);
+                    var pItemCrystal = GameDatabase.Instance.getItem("Crystal", CategoryItem.COMON);
+                    var pItemcraft = GameDatabase.Instance.getItem("CraftPlane2", CategoryItem.COMON);
+                    List<BaseItemGameInstanced> pItemResultFake = new List<BaseItemGameInstanced>()
                 {
                     new BaseItemGameInstanced(){item =pItemCoin,quantity= 5000 },
                     new BaseItemGameInstanced(){item =pItemCrystal,quantity= 50 },
                     new BaseItemGameInstanced(){item =pItemcraft,quantity= 10 }
                 };
-                cacheExtra = pItemResultFake.ToArray();
-                return pItemResultFake.ToArray();
+                    cacheExtra = pItemResultFake.ToArray();
+                    return pItemResultFake.ToArray();
 
 
-            }else if(pSecondBox == 1 && isNew)
-            {
-                PlayerPrefs.SetInt("SecondBox", 2);
-                var pItemCoin = GameDatabase.Instance.getItem("Coin", CategoryItem.COMON);
-                var pItemCrystal = GameDatabase.Instance.getItem("Crystal", CategoryItem.COMON);
-                var pItemcraft = GameDatabase.Instance.getItem("CraftSpPlane3", CategoryItem.COMON);
-                List<BaseItemGameInstanced> pItemResultFake = new List<BaseItemGameInstanced>()
+                }
+                else if (pSecondBox == 1 && isNew)
+                {
+                    PlayerPrefs.SetInt("SecondBox", 2);
+                    var pItemCoin = GameDatabase.Instance.getItem("Coin", CategoryItem.COMON);
+                    var pItemCrystal = GameDatabase.Instance.getItem("Crystal", CategoryItem.COMON);
+                    var pItemcraft = GameDatabase.Instance.getItem("CraftSpPlane3", CategoryItem.COMON);
+                    List<BaseItemGameInstanced> pItemResultFake = new List<BaseItemGameInstanced>()
                 {
                     new BaseItemGameInstanced(){item =pItemCoin,quantity= 5000 },
                     new BaseItemGameInstanced(){item =pItemCrystal,quantity= 50 },
                     new BaseItemGameInstanced(){item =pItemcraft,quantity= 10 }
                 };
-                cacheExtra = pItemResultFake.ToArray();
-                return pItemResultFake.ToArray();
+                    cacheExtra = pItemResultFake.ToArray();
+                    return pItemResultFake.ToArray();
+                }
             }
             if (!isNew && cacheExtra != null)
             {

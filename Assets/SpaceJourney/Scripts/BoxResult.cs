@@ -169,7 +169,7 @@ namespace EazyEngine.Space.UI
             if (extraItem != null)
             {
                 int pFirstGuideBoxReward = PlayerPrefs.GetInt("FirstBoxReward", 0);
-                if (extraItem.item.itemID.StartsWith("Box") && (pFirstGuideBoxReward == 0 || pFirstGuideBoxReward == 3))
+                if (extraItem.item.itemID.StartsWith("Box") && (pFirstGuideBoxReward <= 3))
                 {
                     if (pFirstGuideBoxReward == 0)
                     {
