@@ -394,6 +394,7 @@ namespace EazyEngine.Space
         {
             leaders.Clear();
             managers.Clear();
+            PlayerEnviroment.eviromentInstant.Clear();
             SoundManager.PoolInGameAudios.Clear();
             SoundManager.Instance.StopAllCoroutines();
             if (!SceneManager.Instance.currentScene.Contains("Zone"))

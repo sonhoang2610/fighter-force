@@ -37,8 +37,8 @@ namespace EazyEngine.Space.UI
         public GameObject win, lose;
         public UIButton[] btnWins, btnLoses,btnLayerFrees;
         public BoxMissionLevel boxMission;
+        public BoxExtract boxShowReward;
         public GameObject btnX2Ads;
-        public ItemInventorySlot slotRewardExtra;
         private List<EazyNode> pNodes = new List<EazyNode>();
 
         public void showTestWin()
@@ -48,7 +48,8 @@ namespace EazyEngine.Space.UI
         }
 
         private int timeShowLose = 0;
-        private BaseItemGameInstanced extraItem;
+        private BaseItemGameInstanced[] extraItem;
+        protected List<BaseItemGameInstanced> listExtr = new List<BaseItemGameInstanced>();
         private Coroutine adsCourountine;
         private int scoreCount;
         public void nextPlay()
@@ -125,6 +126,7 @@ namespace EazyEngine.Space.UI
                 #region  check mission
                 // item craft extra refresh
                 extraItem = null;
+                listExtr.Clear();
                 foreach (var t in LevelManger.Instance._infoLevel.missions)
                 {
                     var pNode = new EazyNode()
@@ -136,15 +138,14 @@ namespace EazyEngine.Space.UI
                     pNode.runGraph(onFinishNode);
                 }
                 //set data extra craft reward
-                if (extraItem != null)
+                if (extraItem != null && extraItem.Length > 0)
                 {
-                  
-                    slotRewardExtra.Data = extraItem;
-                    slotRewardExtra.gameObject.SetActive(true);
+
+                    boxShowReward.DataSource = extraItem.ToObservableList();
                 }
                 else
                 {
-                    slotRewardExtra.gameObject.SetActive(false);
+                    boxShowReward.DataSource = new ObservableList<BaseItemGameInstanced>();
                 }
                 #endregion
                
@@ -166,26 +167,30 @@ namespace EazyEngine.Space.UI
             quantityDestroy.text =  $"{( (float)LevelManger.Instance._infoLevel.enemyKill / (float)(LevelManger.Instance._infoLevel.enemyKill + LevelManger.Instance.BornEnemy.Count))*100}%";
         
             gameObject.SetActive(true);
-            if (extraItem != null)
+            StartCoroutine(delayaction(0.25f, delegate
             {
-                int pFirstGuideBoxReward = PlayerPrefs.GetInt("FirstBoxReward", 0);
-                if (extraItem.item.itemID.StartsWith("Box") && (pFirstGuideBoxReward <= 3))
+                if (extraItem != null && extraItem.Length > 0)
                 {
-                    if (pFirstGuideBoxReward == 0)
+                    int pFirstGuideBoxReward = PlayerPrefs.GetInt("FirstBoxReward", 0);
+                    if (extraItem[0].item.itemID.StartsWith("Box") && (pFirstGuideBoxReward <= 3))
                     {
-                        PlayerPrefs.SetInt("FirstBoxReward", 1);
-                        StartCoroutine(delayaction(1, delegate
+                        if (pFirstGuideBoxReward == 0)
                         {
-                            EzEventManager.TriggerEvent(new GuideEvent("FirstRewardBox", null));
-                        }));
-                    }
-                    else if (pFirstGuideBoxReward >= 1  && pFirstGuideBoxReward <= 3)
-                    {
-                        PlayerPrefs.SetInt("FirstBoxReward",4);
-                        PlayerPrefs.SetInt("SecondBox", 1);
+                            PlayerPrefs.SetInt("FirstBoxReward", 1);
+                            StartCoroutine(delayaction(1, delegate
+                            {
+                                EzEventManager.TriggerEvent(new GuideEvent("FirstRewardBox", null));
+                            }));
+                        }
+                        else if (PlayerPrefs.GetInt("SecondBox", 0) == 0)
+                        {
+                            // PlayerPrefs.SetInt("FirstBoxReward",4);
+                            PlayerPrefs.SetInt("SecondBox", 1);
+                        }
                     }
                 }
-            }
+            }));
+        
             if (!GameManager.Instance.isFree)
             {
                 adsCourountine =  StartCoroutine(delayaction(1.5f,delegate{
@@ -310,9 +315,25 @@ namespace EazyEngine.Space.UI
                                         : (pStarNotEngough * 0.2f > 0.6f ? 0.6f : pStarNotEngough * 0.2f));
 
                     #endregion
-                    goldReward.gameObject.SetActive(true);
+                    int pQuantityReward = (int)(LevelManger.Instance._infoLevel.goldTaken * percent);
+                    //  goldReward.gameObject.SetActive(true);
                     var pItem = GameManager.Instance.Database.getComonItem("Coin");
-                    pItem.Quantity += (int) (LevelManger.Instance._infoLevel.goldTaken * percent);
+                   var pCoin = listExtr.Find(x => x.item.itemID == "Coin");
+                    if (pCoin != null)
+                    {
+                        pCoin.quantity += pQuantityReward;
+                    }
+                    else
+                    {
+                        pCoin = new BaseItemGameInstanced()
+                        {
+                            item = pItem.item,
+                            quantity = pQuantityReward
+                        };
+                        listExtr.Add(pCoin);
+                    }
+                    boxShowReward.DataSource = listExtr.ToObservableList();
+                    pItem.Quantity += pQuantityReward;
                     currentCoin = 0;
                     int pTo = (int) (LevelManger.Instance._infoLevel.goldTaken * percent );
                     DOTween.To(() => currentCoin, setGold, pTo, 0.5f);
@@ -347,18 +368,20 @@ namespace EazyEngine.Space.UI
                         pStorage.Quantity += pNode.misson.rewards[i].quantity;
                         if (pStorage.item.ItemID != "Coin")
                         {
-                            if (extraItem == null)
+                           var pExist = listExtr.Find(x => x.item.itemID == pStorage.item.ItemID);
+                            if (pExist == null)
                             {
-                                extraItem = new BaseItemGameInstanced()
+                                listExtr.Add(new BaseItemGameInstanced()
                                 {
-                                    item =  pStorage.item,
+                                    item = pStorage.item,
                                     quantity = pNode.misson.rewards[i].quantity
-                                };
+                                });
                             }
                             else
                             {
-                                extraItem.quantity += pNode.misson.rewards[i].quantity;
+                                pExist.quantity += pNode.misson.rewards[i].quantity;
                             }
+                            extraItem = listExtr.ToArray();
                         }
                     }
                 }

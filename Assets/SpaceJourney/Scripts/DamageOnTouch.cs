@@ -188,19 +188,27 @@ namespace EazyEngine.Space
 
         public int DamageCausedProp
         {
-            get {
-                if (autoGetOwnerMainPlane && LevelManger.Instance.CurrentPlayer && LevelManger.Instance.CurrentPlayer.mainInfo != null)
+            get
+            {
+                if (autoGetOwnerMainPlane)
                 {
-                    return (int)LevelManger.Instance.CurrentPlayer.mainInfo.DamgageBasic;
+                    if (LevelManger.Instance.CurrentPlayer )
+                    {
+                        {
+                            return (int)LevelManger.Instance.CurrentPlayer.handleWeapon.FixDamage;
+                        }
+                    }
+                  
                 }
                 return DamageCaused;
-            } set
+            }
+            set
             {
-          
+
                 DamageCaused = value;
+
             }
         }
-
         private void Update()
         {
             for (int i = nextDamageSameObject.Count - 1; i >= 0; --i)

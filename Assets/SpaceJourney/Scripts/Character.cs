@@ -198,7 +198,10 @@ namespace EazyEngine.Space
             {
                 abilities[i].initialAbility();
             }
+ 
+           
         }
+        
         private void OnEnable()
         {
             if (GameManager.Instance.isPlaying && LevelManger.InstanceRaw != null)
@@ -216,7 +219,6 @@ namespace EazyEngine.Space
         }
         private void Start()
         {
-          
         }
         // Update is called once per frame
         void Update()
@@ -231,6 +233,7 @@ namespace EazyEngine.Space
         }
         private void LateUpdate()
         {
+           
             if (transform.hasChanged)
             {
                 if(CurrentState == StateCharacter.AliveOutSide)

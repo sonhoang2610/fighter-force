@@ -24,6 +24,10 @@ public class BaseItem<T> : MonoBehaviour where T  : class
     {
         get;set;
     }
+    public bool Dirty
+    {
+        get; set;
+    }
     public virtual int Index { get => index; set => index = value; }
 
     public virtual void onExecute()

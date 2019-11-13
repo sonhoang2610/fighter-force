@@ -25,9 +25,11 @@ namespace EazyEngine.Space.UI
         public UI2DSprite iconCateGory;
         public UILabel quantity;
         public UIButton btnAddMore;
+        public GameObject model;
         public bool EffectOnShow = false;
         public bool autoSelfLoad = true;
         public GameDatabaseInventoryEventUnity onChange;
+        public UnityEvent onEffectShow;
 
         [ShowIf("autoSelfLoad")]
         public BaseItemGame itemToLoad;
@@ -161,19 +163,30 @@ namespace EazyEngine.Space.UI
                 EzEventManager.RemoveListener(this);
             }
         }
-
+        protected Tween cacheTween;
         public override void show()
         {
             base.show();
-            if (EffectOnShow)
+            if (EffectOnShow && Dirty)
             {
-                var widget = GetComponent<UIWidget>();
-                widget.alpha = 0;
-                var pFade = DG.Tweening.DOTween.To(() => widget.alpha, x => widget.alpha = x, 1, 0.25f);
+
+                //var widget = GetComponent<UIWidget>();
+                //widget.alpha = 0;
+                if (cacheTween != null)
+                {
+                    cacheTween.Kill();
+                }
+                model.transform.localScale = Vector3.zero;
+                var pFade = model.transform.DOScale(1, 0.5f).SetEase(Ease.OutElastic);
                 Sequence pSequence = DOTween.Sequence();
-                pSequence.AppendInterval(Index * 0.25f);
+                pSequence.AppendInterval(Index * 0.2f);
+                pSequence.AppendCallback(delegate
+                {
+                    onEffectShow.Invoke();
+                });
                 pSequence.Append(pFade);
                 pSequence.Play();
+                cacheTween = pSequence;
             }
         }
     }

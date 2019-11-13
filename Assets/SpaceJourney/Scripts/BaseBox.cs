@@ -78,11 +78,13 @@ public class BaseBox<TItem, TData> : MonoBehaviour where TItem : BaseItem<TData>
             if (!items[i].Using)
             {
                 items[i].Index = index;
+                items[i].Dirty = true;
                 setDataItem(pData, items[i]);
                 return items[i];
             }
         }
         var pItem = Instantiate<TItem>(prefabItem, attachMent.transform);
+        pItem.Dirty = true;
         pItem.Index = index;
         setDataItem(pData, pItem);
         pItem.onData = onDataAction;
@@ -95,6 +97,7 @@ public class BaseBox<TItem, TData> : MonoBehaviour where TItem : BaseItem<TData>
         Item.Clear();
         for (int i = 0; i < items.Count; ++i)
         {
+            items[i].Dirty = !items[i].Using;
             items[i].Using = false;
             items[i].hide();
         }

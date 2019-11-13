@@ -88,6 +88,10 @@ namespace EazyEngine.Space {
                 
                     if (enviroments[i].InitiateObject.relative == 0)
                     {
+                        if (enviroments[i].InitiateObject.enviroment.IsDestroyed())
+                        {
+                            continue;
+                        }
                         enviroments[i].InitiateObject.enviroment.SetActive(true);
                     }
                     enviroments[i].InitiateObject.relative++;
@@ -99,13 +103,17 @@ namespace EazyEngine.Space {
        
         private void OnDisable()
         {
-            for (int i = 0; i < enviroments.Length; ++i)
+            for (int i = enviroments.Length -1; i >= 0 ; --i)
             {
                 if (enviroments[i].autoActiveOnEnable && enviroments[i].InitiateObject.relative > 0)
                 {
                     enviroments[i].InitiateObject.relative--;
                     if (enviroments[i].InitiateObject.relative == 0)
                     {
+                        if (enviroments[i].InitiateObject.enviroment.IsDestroyed())
+                        {
+                            continue;
+                        }
                         enviroments[i].InitiateObject.enviroment.SetActive(false);
                     }
                 }

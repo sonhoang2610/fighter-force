@@ -330,6 +330,8 @@ public class EazyVariableConfig
                     pMethod.SetValue(pComponent, Convert.ChangeType(value, pMethod.FieldType));
                 }
             }
+            SerializedObject pObject = new SerializedObject(pComponent);
+            pObject.ApplyModifiedProperties();
         }
     }
     //[HideIf("ApplyTargetNow")]
