@@ -149,6 +149,8 @@ namespace EazyEngine.Space
                 };
             }
         }
+
+        
         public AbilityConfig getAbility(string pID,List<AbilityConfig> abilities)
         {
             for(int i = 0; i < abilities.Count; ++i)
@@ -207,6 +209,15 @@ namespace EazyEngine.Space
             if (GameManager.Instance.isPlaying && LevelManger.InstanceRaw != null)
             {
                 LevelManger.Instance._charList.Add(this);
+            }
+        }
+
+        [Button("refresh")]
+        public void refresh()
+        {
+            if (mainInfo != null)
+            {
+                setDataConfig(mainInfo);
             }
         }
 
