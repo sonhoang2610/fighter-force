@@ -24,9 +24,9 @@ public class UIElement : MonoBehaviour,EzEventListener<UIMessEvent> {
     [SerializeField]
     public string cateGory = "None";
     [SerializeField]
-    UnityEvent onEnableEvent;
+     public UnityEvent onEnableEvent;
     [SerializeField]
-    UnityEvent onDisableEvent;
+    public UnityEvent onDisableEvent;
     [SerializeField]
     UnityEvent onStartEvent;
     [SerializeField]

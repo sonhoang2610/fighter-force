@@ -22,6 +22,18 @@ namespace EazyEngine.Space.UI{
 			}
 			group.changeTab(index);
 		}
+
+        public void hide()
+        {
+            if (LevelManger.InstanceRaw)
+            {
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                GetComponent<UIElement>().close();
+            }
+        }
 	    // Start is called before the first frame update
 	    void Start()
 	    {

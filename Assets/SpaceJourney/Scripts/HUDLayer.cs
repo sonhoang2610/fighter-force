@@ -52,6 +52,26 @@ namespace EazyEngine.Space.UI {
                 pItem.Quantity -= 50;
                 reviePlayer(1,true);
             }
+            else
+            {
+                BoxReborn.gameObject.SetActive(false);
+                ShopManager.Instance.showBoxShop("Crystal");
+                ShopManager.Instance.GetComponent<UIElement>().onDisableEvent.RemoveListener(onSkipShop);
+                ShopManager.Instance.GetComponent<UIElement>().onDisableEvent.AddListener(onSkipShop);
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (ShopManager.InstanceRaw)
+            {
+                ShopManager.Instance.GetComponent<UIElement>().onDisableEvent.RemoveListener(onSkipShop);
+            }
+        }
+
+        public void onSkipShop()
+        {
+            BoxReborn.show();
         }
         public void rebornWatchAds()
         {
@@ -97,11 +117,11 @@ namespace EazyEngine.Space.UI {
             var pItem = GameManager.Instance.Database.getComonItem("Crystal");
             if (pItem.Quantity < 50)
             {
-                btn.isEnabled = false;
+              //  btn.isEnabled = false;
             }
             else
             {
-                btn.isEnabled = true;
+              //  btn.isEnabled = true;
             }
         }
         public void skipReborn()
