@@ -39,6 +39,10 @@ namespace EazyEngine.Space.UI
         public BoxMissionLevel boxMission;
         public BoxExtract boxShowReward;
         public GameObject btnX2Ads;
+        public GameObject layerRewardRandom;
+        public ItemPackage itemBoxRewardRandom;
+        public Animator boxRewardRandom;
+        public UIButton btnOpenBoxRewardRandom;
         private List<EazyNode> pNodes = new List<EazyNode>();
 
         public void showTestWin()
@@ -83,8 +87,14 @@ namespace EazyEngine.Space.UI
             yield return  new WaitForSeconds(pSec);
             pACtion();
         }
-
-     
+        protected Vector3 cachePosBoxReward,cacheScaleBoxReward;
+        protected bool isInit = false;
+        private void Awake()
+        {
+            cachePosBoxReward = boxRewardRandom.transform.localPosition;
+            cacheScaleBoxReward = boxRewardRandom.transform.localScale;
+            isInit = true;
+        }
         public void showResult(bool pWin)
         {
             GameManager.Instance.lastResultWin = pWin ? 1 :0;
@@ -106,7 +116,33 @@ namespace EazyEngine.Space.UI
                 GameManager.Instance.showBannerAds(true);
                 return;
             }
-
+            if (GameManager.Instance.ChoosedLevel >= 5)
+            {
+                int pShow = PlayerPrefs.GetInt("ShowBoxRewardRandom", 0);
+                if (pShow == 0)
+                {
+                    if (!isInit)
+                    {
+                        Awake();
+                    }
+                    layerRewardRandom.gameObject.SetActive(true);
+                    btnOpenBoxRewardRandom.gameObject.SetActive(true);
+                    boxRewardRandom.transform.localPosition = cachePosBoxReward;
+                    boxRewardRandom.transform.localScale = cacheScaleBoxReward;
+                    if (pWin)
+                    {
+                        PlayerPrefs.SetInt("ShowBoxRewardRandom", Random.Range(0, 3));
+                    }
+                    else
+                    {
+                        PlayerPrefs.SetInt("ShowBoxRewardRandom", Random.Range(2, 4));
+                    }
+                }
+                else
+                {
+                    PlayerPrefs.SetInt("ShowBoxRewardRandom", pShow-1);
+                }
+            }
             GameManager.Instance.showBannerAds(true);
             LevelManger.Instance.IsPlaying = false;
             GameManager.Instance.inGame = false;
@@ -319,19 +355,12 @@ namespace EazyEngine.Space.UI
                     //  goldReward.gameObject.SetActive(true);
                     var pItem = GameManager.Instance.Database.getComonItem("Coin");
                    var pCoin = listExtr.Find(x => x.item.itemID == "Coin");
-                    if (pCoin != null)
+                    pCoin = new BaseItemGameInstanced()
                     {
-                        pCoin.quantity += pQuantityReward;
-                    }
-                    else
-                    {
-                        pCoin = new BaseItemGameInstanced()
-                        {
-                            item = pItem.item,
-                            quantity = pQuantityReward
-                        };
-                        listExtr.Add(pCoin);
-                    }
+                        item = pItem.item,
+                        quantity = pQuantityReward
+                    };
+                    listExtr.Add(pCoin);
                     boxShowReward.DataSource = listExtr.ToObservableList();
                     pItem.Quantity += pQuantityReward;
                     currentCoin = 0;
@@ -341,7 +370,44 @@ namespace EazyEngine.Space.UI
                 }
             });
         }
+        public void watchRewardRandom()
+        {
+            if (GameManager.Instance.isFree) return;
+            //stop quang cao rac khi da an quang cao x2
+            if (adsCourountine != null)
+            {
+                StopCoroutine(adsCourountine);
+            }
+            btnOpenBoxRewardRandom.gameObject.SetActive(false);
+            GameManager.Instance.showRewardAds("WatchX2WinGame", delegate (bool pSucess)
+            {
+                if (pSucess)
+                {
+                    boxRewardRandom.SetTrigger("Open");
+                    boxRewardRandom.transform.localPosition = Vector3.zero;
+                    boxRewardRandom.transform.localScale *= 1.5f;
+                }
+            });
+        }
 
+        public void claimRewardRandom()
+        {
+            var pItems = itemBoxRewardRandom.ExtractHere();
+            foreach (var pItemAdd in pItems)
+            {
+                var pCheckStorage = GameManager.Instance.Database.getComonItem(pItemAdd.item);
+                pCheckStorage.Quantity += pItemAdd.Quantity;
+            }
+            listExtr.AddRange(pItems);
+            boxShowReward.DataSource = listExtr.ToObservableList();
+            GameManager.Instance.SaveGame();
+        }
+
+        public void openDone()
+        {
+            boxRewardRandom.gameObject.SetActive(false);
+            layerRewardRandom.gameObject.SetActive(false);
+        }
         public int getScore()
         {
             return scoreCount;
