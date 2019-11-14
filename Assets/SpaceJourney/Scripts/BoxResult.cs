@@ -116,7 +116,7 @@ namespace EazyEngine.Space.UI
                 GameManager.Instance.showBannerAds(true);
                 return;
             }
-            if (GameManager.Instance.ChoosedLevel >= 5)
+            if (GameManager.Instance.ChoosedLevel >= 5 && !GameManager.Instance.isFree)
             {
                 int pShow = PlayerPrefs.GetInt("ShowBoxRewardRandom", 0);
                 if (pShow == 0)
@@ -142,6 +142,10 @@ namespace EazyEngine.Space.UI
                 {
                     PlayerPrefs.SetInt("ShowBoxRewardRandom", pShow-1);
                 }
+            }
+            else
+            {
+                layerRewardRandom.gameObject.SetActive(false);
             }
             GameManager.Instance.showBannerAds(true);
             LevelManger.Instance.IsPlaying = false;
