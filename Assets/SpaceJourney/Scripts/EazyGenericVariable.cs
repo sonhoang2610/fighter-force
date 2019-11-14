@@ -315,6 +315,10 @@ public class EazyVariableConfig
         {
             cachePath[1] = cachePath[1].Remove(cachePath[1].IndexOf(':'));
         }
+        if(pTarget != null)
+        {
+            target = pTarget;
+        }
         var pComponent = Target.GetComponent(cachePath[0]);
         if (pComponent)
         {
@@ -328,10 +332,11 @@ public class EazyVariableConfig
                 else
                 {
                     pMethod.SetValue(pComponent, Convert.ChangeType(value, pMethod.FieldType));
+               
+
                 }
             }
-            SerializedObject pObject = new SerializedObject(pComponent);
-            pObject.ApplyModifiedProperties();
+
         }
     }
     //[HideIf("ApplyTargetNow")]
