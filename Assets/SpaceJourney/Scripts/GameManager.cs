@@ -892,7 +892,6 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         }));
 
     }
-
     IEnumerator delayAction(float pDelay, System.Action action)
     {
         yield return new WaitForSeconds(pDelay);
@@ -973,9 +972,6 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             }
         }
     }
-
-
-
     public TimeCountDown addTimer(TimeCountDown pTime)
     {
         var pTimeCounting = GameManager.Instance.Database.timers.Find(x => x.key == pTime.key);
@@ -1003,7 +999,6 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     {
         timer.Remove(pTime);
     }
-
     public void reCalCulateStar()
     {
         int totalStar = 0;
@@ -1024,7 +1019,6 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             pStar.quantity = totalStar;
         }
     }
-
     public void LoadScene(string pScene)
     {
         SceneManager.Instance.loadScene(pScene);

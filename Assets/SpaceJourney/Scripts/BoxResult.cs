@@ -40,8 +40,7 @@ namespace EazyEngine.Space.UI
         public BoxExtract boxShowReward;
         public GameObject btnX2Ads;
         public GameObject layerRewardRandom;
-        public ItemPackage itemBoxRewardRandom;
-        public ItemPackage itemBoxRewardRandom1;
+        public ItemPackage[] itemBoxRewardRandom;
         public Animator boxRewardRandom;
         public UIButton btnOpenBoxRewardRandom;
         private List<EazyNode> pNodes = new List<EazyNode>();
@@ -398,14 +397,7 @@ namespace EazyEngine.Space.UI
         public void claimRewardRandom()
         {
             BaseItemGameInstanced[] pItems = null;
-            if (GameManager.Instance.ChoosedLevel < 10)
-            {
-                pItems = itemBoxRewardRandom.ExtractHere();
-            }
-            else
-            {
-                pItems = Random.Range(0,2) == 0? itemBoxRewardRandom.ExtractHere() : itemBoxRewardRandom1.ExtractHere();
-            }
+            pItems = itemBoxRewardRandom[ GameManager.Instance.ChoosedHard == 0 ?( (GameManager.Instance.ChoosedLevel / 5) - 1) : (GameManager.Instance.ChoosedLevel / 5)].ExtractHere();
             foreach (var pItemAdd in pItems)
             {
                 var pCheckStorage = GameManager.Instance.Database.getComonItem(pItemAdd.item);
