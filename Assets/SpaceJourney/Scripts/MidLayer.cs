@@ -13,6 +13,7 @@ namespace EazyEngine.Space.UI
         public UIElement boxShop;
         public UIElement BoxGiftOnline;
         public UIElement BoxRank;
+        public UIElement boxPrepare;
         public void showBoxDailyGift()
         {
             boxLucky.show();

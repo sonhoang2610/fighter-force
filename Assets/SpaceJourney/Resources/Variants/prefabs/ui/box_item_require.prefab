@@ -115,10 +115,22 @@ MonoBehaviour:
   iconCateGory: {fileID: 0}
   quantity: {fileID: 5981549083535689685}
   btnAddMore: {fileID: 8076497924088151784}
+  model: {fileID: 0}
   EffectOnShow: 0
   autoSelfLoad: 0
+  onChange:
+    m_PersistentCalls:
+      m_Calls: []
+  onEffectShow:
+    m_PersistentCalls:
+      m_Calls: []
   itemToLoad: {fileID: 0}
   onAddMore: []
+  onFillData:
+    m_PersistentCalls:
+      m_Calls: []
+  labelTimer: {fileID: 0}
+  btnUse: {fileID: 0}
 --- !u!1 &5981549083450010051
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,7 +246,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5981549083535689675}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16, y: 0, z: 0}
+  m_LocalPosition: {x: 16, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3714389909062048198}
@@ -272,17 +284,17 @@ MonoBehaviour:
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mWidth: 120
-  mHeight: 24
+  mHeight: 30
   mDepth: 27
   mMat: {fileID: 0}
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 5
-  dirtyChange: 0
+  aspectRatio: 4
+  dirtyChange: 1
   keepCrispWhenShrunk: 1
-  mTrueTypeFont: {fileID: 12800000, guid: 7b1babd7348f0104eab1315642572a9b, type: 3}
-  mFont: {fileID: 0}
+  mTrueTypeFont: {fileID: 0}
+  mFont: {fileID: 11400000, guid: 544179e229594154b8b55c74d63faf02, type: 2}
   mText: 100.000
   mFontSize: 80
   mFontStyle: 0
@@ -399,16 +411,6 @@ PrefabInstance:
       propertyPath: onClick.Array.data[0].mMethodName
       value: clickMore
       objectReference: {fileID: 0}
-    - target: {fileID: 2539561911282382920, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 2539561911282382920, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 56
-      objectReference: {fileID: 0}
     - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
         type: 3}
       propertyPath: mDepth
@@ -434,6 +436,16 @@ PrefabInstance:
         type: 3}
       propertyPath: aspectRatio
       value: 1.1428572
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539561911282382920, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 2539561911282382920, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 56
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaa6c9b254bbcfa4aac049b71319e1ad, type: 3}

@@ -68,18 +68,21 @@ namespace EazyEngine.Space.UI
                 }
                 GameManager.Instance.Database.lastPlayStage = new Pos(GameManager.Instance.Database.lastPlayStage.x + 1, GameManager.Instance.ChoosedHard);
             }
-          //  Home();
-             for(int i = GameManager.Instance.ConfigLevel.itemUsed.Count-1; i >=0; --i)
-            {
-                var pItem = GameManager.Instance.ConfigLevel.itemUsed[i];
-               if (!pItem.isActive)
-                {
-                    GameManager.Instance.ConfigLevel.itemUsed.RemoveAt(i);
-                }
-            }
-            GameManager.Instance.ChoosedHard = 0;
-            GameManager.Instance.ChoosedLevel++;
-            GameManager.Instance.LoadLevel(GameManager.Instance.ChoosedLevel);
+            //  Home();
+                GameManager.Instance.Database.lastPlayStage = new Pos(GameManager.Instance.Database.lastPlayStage.x + 1, 0);
+                GameManager.Instance.ChoosedLevel++;
+            MidLayer.Instance.boxPrepare.show();
+            //for (int i = GameManager.Instance.ConfigLevel.itemUsed.Count-1; i >=0; --i)
+            //{
+            //    var pItem = GameManager.Instance.ConfigLevel.itemUsed[i];
+            //   if (!pItem.isActive)
+            //    {
+            //        GameManager.Instance.ConfigLevel.itemUsed.RemoveAt(i);
+            //    }
+            //}
+            //GameManager.Instance.ChoosedHard = 0;
+            //GameManager.Instance.ChoosedLevel++;
+            //GameManager.Instance.LoadLevel(GameManager.Instance.ChoosedLevel);
         }
 
         public IEnumerator delayaction(float pSec, System.Action pACtion)
@@ -89,6 +92,7 @@ namespace EazyEngine.Space.UI
         }
         protected Vector3 cachePosBoxReward,cacheScaleBoxReward;
         protected bool isInit = false;
+        protected bool isUnlock = false;
         private void Awake()
         {
             cachePosBoxReward = boxRewardRandom.transform.localPosition;
@@ -286,8 +290,7 @@ namespace EazyEngine.Space.UI
                     if (GameManager.Instance.ChoosedLevel == GameManager.Instance.CurrentLevelUnlock)
                     {
                         GameManager.Instance.CurrentLevelUnlock++;
-                        GameManager.Instance.Database.lastPlayStage =
-                            new Pos(GameManager.Instance.Database.lastPlayStage.x, 0);
+                        isUnlock = true;
                        // GameManager.Instance.ChoosedLevel++;
                     }
 
@@ -298,7 +301,7 @@ namespace EazyEngine.Space.UI
             }
             else if (!GameManager.Instance.isFree)
             {
-                Firebase.Analytics.FirebaseAnalytics.LogEvent($"Lose_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedHard}_Time_{LevelManger.Instance.CurrentTime.TotalSeconds}");
+                Firebase.Analytics.FirebaseAnalytics.LogEvent($"Lose_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedHard}");
                 //lose game
                 var pdrop = GameDatabase.Instance.dropMonyeconfig[GameManager.Instance.ChoosedLevel - 1][GameManager.Instance.ChoosedHard];
                 int pStarNotEngough = pdrop.requireStar - GameManager.Instance.Database.getComonItem("Star").Quantity;
@@ -500,6 +503,10 @@ namespace EazyEngine.Space.UI
             TimeKeeper.Instance.getTimer("Global").TimScale = 1;
             LevelManger.InstanceRaw = null;
             SceneManager.Instance.loadScene("Main");
+            if (isUnlock && !GameManager.Instance.isFree)
+            {
+                GameManager.Instance.Database.lastPlayStage = new Pos(GameManager.Instance.Database.lastPlayStage.x + 1, 0);
+            }
         }
 
         public void Replay()
@@ -509,10 +516,11 @@ namespace EazyEngine.Space.UI
                 Home();
                 return;
             }
-            TimeKeeper.Instance.getTimer("Global").TimScale = 1;
-            LevelManger.InstanceRaw = null;
-            //  GameManager.Instance.pla
-            GameManager.Instance.LoadLevel(GameManager.Instance.ChoosedLevel);      
+            MidLayer.Instance.boxPrepare.show();
+            //TimeKeeper.Instance.getTimer("Global").TimScale = 1;
+            //LevelManger.InstanceRaw = null;
+            ////  GameManager.Instance.pla
+            //GameManager.Instance.LoadLevel(GameManager.Instance.ChoosedLevel);      
   
            // SceneManager.Instance.loadScene("Main");
         }

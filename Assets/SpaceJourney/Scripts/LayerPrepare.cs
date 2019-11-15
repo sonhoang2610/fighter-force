@@ -14,15 +14,49 @@ namespace EazyEngine.Space.UI
     {
         public UILabel level, highScore,goldReceived;
         public UIButton btnPlay;
+        public EazyGroupTabNGUI _chooseHardMode;
+        public UILabel desItemSp;
         public override MapInfoInstanced Data { get => base.Data; set {
                 base.Data = value;
                 level.text = "[FFDC00]MAP " + value.level.ToString()+":[-]" + value.nameMap;
                 highScore.text = StringUtils.addDotMoney( value.highScore);
             }
         }
+        
         private void OnEnable()
         {
-           // showInfo(GameManager.Instance.ChoosedLevel,0);
+            // showInfo(GameManager.Instance.ChoosedLevel,0);
+            GameManager.Instance.ConfigLevel = new LevelConfig();
+            StartCoroutine(enable());
+        }
+
+        private IEnumerator enable()
+        {
+            yield return new WaitForSeconds(0.1f);
+            int lastChoosedIndex = 0;
+            for (int i = 0; i < 3; ++i)
+            {
+                var pLevelInfo = GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, i);
+                _chooseHardMode.GroupTab[i].Button.isEnabled = true;
+                if (pLevelInfo.isLocked)
+                {
+                    _chooseHardMode.GroupTab[i].Button.isEnabled = false;
+                }
+                else
+                {
+                    _chooseHardMode.GroupTab[i].Button.isEnabled = true;
+                    lastChoosedIndex = i;
+                }
+
+            }
+            if (GameManager.Instance.scehduleUI != ScheduleUIMain.REPLAY)
+            {
+                _chooseHardMode.changeTab(lastChoosedIndex);
+            }
+            else
+            {
+                _chooseHardMode.changeTab(GameManager.Instance.Database.lastPlayStage.y);
+            }
         }
         public void showInfo(int pLevel,int pHard)
         {
@@ -57,7 +91,29 @@ namespace EazyEngine.Space.UI
             btnPlay.isEnabled = !pLevelInfo.isLocked;
             showInfo(GameManager.Instance.ChoosedLevel, index);
         }
-
+        public AudioClip fightSfx;
+        public void play()
+        {
+            GameManager.Instance.isFree = false;
+            SoundManager.Instance.PlaySound(fightSfx, Vector3.zero);
+            GameManager.Instance.LoadLevel(GameManager.Instance.ChoosedLevel);
+        }
+        public void chooseUseItem(object pObject)
+        {
+            if (pObject == null) return;
+            var pItem = (BaseItemGameInstanced)pObject;
+            desItemSp.text = pItem.item.descriptionItem.Value;
+            if (GameManager.Instance.ConfigLevel.itemUsed.Contains((ItemGame)pItem.item))
+            {
+                desItemSp.gameObject.SetActive(false);
+                GameManager.Instance.ConfigLevel.itemUsed.Remove((ItemGame)pItem.item);
+            }
+            else
+            {
+                desItemSp.gameObject.SetActive(true);
+                GameManager.Instance.ConfigLevel.itemUsed.Add((ItemGame)pItem.item);
+            }
+        }
         // Start is called before the first frame update
         void Start()
         {

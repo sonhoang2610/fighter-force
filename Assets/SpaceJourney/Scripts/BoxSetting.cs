@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using EazyEngine.Tools;
-
+using EazyEngine.Timer;
 
 namespace EazyEngine.Space.UI
 {
@@ -31,7 +31,7 @@ namespace EazyEngine.Space.UI
         {
             if (LevelManger.InstanceRaw == null) return;
             LevelManger.Instance.IsMatching = !pBool;
-            Time.timeScale = pBool ? 0 : 1;
+            TimeKeeper.Instance.getTimer("Global").TimScale = pBool ? 0 : 1;
         }
 
         public void replay()
@@ -41,12 +41,14 @@ namespace EazyEngine.Space.UI
                 Home();
                 return;
             }
-            GameManager.Instance.scehduleUI = ScheduleUIMain.GAME_IMEDIATELY;
-            PlayerEnviroment.clear();
-            GroupManager.clearCache();
-            Time.timeScale = 1;
-            LevelManger.InstanceRaw = null;
-            SceneManager.Instance.loadScene("Main");
+            GameManager.Instance.scehduleUI = ScheduleUIMain.REPLAY;
+            MidLayer.Instance.boxPrepare.show();
+            //GameManager.Instance.scehduleUI = ScheduleUIMain.GAME_IMEDIATELY;
+            //PlayerEnviroment.clear();
+            //GroupManager.clearCache();
+            //Time.timeScale = 1;
+            //LevelManger.InstanceRaw = null;
+            //SceneManager.Instance.loadScene("Main");
         }
 
         public void Home()

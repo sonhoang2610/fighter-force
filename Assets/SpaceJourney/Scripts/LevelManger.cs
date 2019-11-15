@@ -339,7 +339,7 @@ namespace EazyEngine.Space
             }
             BoxItemInGame.Instance.DataSource = pItems.ToObservableList();
             int pStepGame = PlayerPrefs.GetInt("firstGame", 0);
-            if (GameManager.Instance.isFree && pStepGame == 9999)
+            if (GameManager.Instance.isFree && GameManager.Instance.isGuide)
             {
                 Firebase.Analytics.FirebaseAnalytics.LogEvent("FreeFirst");
                 GameManager.Instance.freePlaneChoose = "MainPlane5";
@@ -473,7 +473,7 @@ namespace EazyEngine.Space
 
         private void Start()
         {
-            StartCoroutine(delayAction(0.1f, delegate
+            StartCoroutine(delayAction(0.2f, delegate
             {
                 Physics2D.autoSimulation = true;
             }));
@@ -535,7 +535,7 @@ namespace EazyEngine.Space
             }
             else if (eventType._message == "LoseGame")
             {
-       
+                IsMatching = false;
                 GetComponent<IBlackboard>().SetValue("isWin", false);
                 startTime = false;
             }

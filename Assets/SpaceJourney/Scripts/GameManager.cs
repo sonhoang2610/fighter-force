@@ -19,6 +19,7 @@ using Spine.Unity;
 using Spine.Unity.Modules;
 using System;
 using UnityEngine.Networking;
+using EazyEngine.Timer;
 #if UNITY_EDITOR
 using Sirenix.Utilities.Editor;
 #endif
@@ -222,7 +223,7 @@ public class prefabBulletGroup
 public enum ScheduleUIMain
 {
     NONE,
-    GAME_IMEDIATELY,
+    REPLAY,
     UPGRADE
 }
 
@@ -336,6 +337,8 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     public int wincount = 0;
     [System.NonSerialized]
     public bool isFree = false;
+    [System.NonSerialized]
+    public bool isGuide = true;
     [System.NonSerialized]
     public string freePlaneChoose = "";
     [System.NonSerialized]
@@ -848,8 +851,13 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     }
     public void LoadLevel(int pIndex)
     {
+ 
         inGame = true;
-
+        LevelManger.InstanceRaw = null;
+        GroupManager.clearCache();
+        PlayerEnviroment.clear();
+        TimeKeeper.Instance.getTimer("Global").TimScale = 1;
+        GameManager.Instance.showBannerAds(false);
         //  Database.selectedMainPlane = 6;
         if (!GameManager.Instance.isFree)
         {
@@ -885,8 +893,11 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
 
         TopLayer.Instance.block.gameObject.SetActive(true);
         Physics2D.autoSimulation = false;
+        Time.timeScale = 1;
+  
         StartCoroutine(delayAction(0.75f, delegate
         {
+            MidLayer.Instance.boxPrepare.close();
             TopLayer.Instance.inGame(true);
             SceneManager.Instance.loadScene(GameDatabase.Instance.LevelScene(pIndex));
         }));

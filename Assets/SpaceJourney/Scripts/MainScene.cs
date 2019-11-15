@@ -20,10 +20,8 @@ namespace EazyEngine.Space.UI
         public GameObject boxRank;
         public UILabel nameUser, idUser;
         protected List<BoxBasePlane> selectedBoxPlane = new List<BoxBasePlane>();
-        public EazyGroupTabNGUI chooseHardMode;
-        public UILabel desItemSp;
+     
         public LayerPrepare layerPrepare;
-        public AudioClip fightSfx;
         protected PlaneInfoConfig selectedPlane;
 
         protected List<string> stateGames = new List<string>();
@@ -264,17 +262,27 @@ namespace EazyEngine.Space.UI
         public void test()
         {
             GameManager.Instance.isFree = false;
-            SoundManager.Instance.PlaySound(fightSfx, Vector3.zero);
             GameManager.Instance.LoadLevel(GameManager.Instance.ChoosedLevel);
 
         }
 
         public void freePlay()
         {
+            GameManager.Instance.isGuide = false;
             GameManager.Instance.isFree = true;
             GameManager.Instance.ConfigLevel = new LevelConfig();
             GameManager.Instance.ChoosedLevel = -1;
             GameManager.Instance.LoadLevel(GameManager.Instance.ChoosedLevel);
+      
+        }
+        public void freePlayGuide()
+        {
+            GameManager.Instance.isGuide = true;
+            GameManager.Instance.isFree = true;
+            GameManager.Instance.ConfigLevel = new LevelConfig();
+            GameManager.Instance.ChoosedLevel = -1;
+            GameManager.Instance.LoadLevel(GameManager.Instance.ChoosedLevel);
+
         }
 
         public void choosedMap()
@@ -285,14 +293,15 @@ namespace EazyEngine.Space.UI
         public void preparePlay()
         {
 
-            StartCoroutine(delayAction(0.25f, delegate
-            {
-                chooseHardMode.changeTab(GameManager.Instance.ChoosedLevel == GameManager.Instance.Database.lastPlayStage.x ? GameManager.Instance.Database.lastPlayStage.y : 0);
-            }));
+            //StartCoroutine(delayAction(0.25f, delegate
+            //{
+            //    chooseHardMode.changeTab(GameManager.Instance.ChoosedLevel == GameManager.Instance.Database.lastPlayStage.x ? GameManager.Instance.Database.lastPlayStage.y : 0);
+            //}));
 
             GameManager.Instance.ConfigLevel = new LevelConfig();
-            stateGames.Add("Play");
-            EzEventManager.TriggerEvent(new UIMessEvent("Play"));
+            MidLayer.Instance.boxPrepare.show();
+            //stateGames.Add("Play");
+            //EzEventManager.TriggerEvent(new UIMessEvent("Play"));
         }
 
         public void upgrade()
@@ -312,22 +321,7 @@ namespace EazyEngine.Space.UI
             EzEventManager.TriggerEvent(new UIMessEvent("ChangeTabSp"));
         }
 
-        public void chooseUseItem(object pObject)
-        {
-            if (pObject == null) return;
-            var pItem = (BaseItemGameInstanced)pObject;
-            desItemSp.text = pItem.item.descriptionItem.Value;
-            if (GameManager.Instance.ConfigLevel.itemUsed.Contains((ItemGame)pItem.item))
-            {
-                desItemSp.gameObject.SetActive(false);
-                GameManager.Instance.ConfigLevel.itemUsed.Remove((ItemGame)pItem.item);
-            }
-            else
-            {
-                desItemSp.gameObject.SetActive(true);
-                GameManager.Instance.ConfigLevel.itemUsed.Add((ItemGame)pItem.item);
-            }
-        }
+      
         // Start is called before the first frame update
         void Start()
         {
@@ -343,12 +337,12 @@ namespace EazyEngine.Space.UI
                 nameUser.text = "GUEST";
                 idUser.text = "UNKNOWN";
             }
-            if (GameManager.Instance.scehduleUI == ScheduleUIMain.GAME_IMEDIATELY)
-            {
-                choosedMap();
-                StartCoroutine(delayAction(0.25f, preparePlay));
-            }
-            else if (GameManager.Instance.scehduleUI == ScheduleUIMain.UPGRADE)
+            //if (GameManager.Instance.scehduleUI == ScheduleUIMain.GAME_IMEDIATELY)
+            //{
+            //    choosedMap();
+            //    StartCoroutine(delayAction(0.25f, preparePlay));
+            //}
+            /*else*/ if (GameManager.Instance.scehduleUI == ScheduleUIMain.UPGRADE)
             {
                 upgrade();
             }
@@ -362,7 +356,7 @@ namespace EazyEngine.Space.UI
                 EzEventManager.TriggerEvent(new GuideEvent("FirstGame", delegate
                 {
                     PlayerPrefs.SetInt("firstGame", 9999);
-                    MainScene.Instance.freePlay();
+                    MainScene.Instance.freePlayGuide();
                 }));
 
             }

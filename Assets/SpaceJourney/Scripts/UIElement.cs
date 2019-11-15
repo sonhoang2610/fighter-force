@@ -102,6 +102,10 @@ public class UIElement : MonoBehaviour,EzEventListener<UIMessEvent> {
     public virtual void close()
     {
         RootMotionController.stopAllAction(gameObject);
+        if (!gameObject.activeInHierarchy)
+        {
+            return;
+        }
         var pAction = UIElementManager.Instance.doAction(this, false);
 
         if (!pAction)

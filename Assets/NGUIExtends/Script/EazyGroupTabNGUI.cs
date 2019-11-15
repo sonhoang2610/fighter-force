@@ -50,7 +50,7 @@ public class EazyGroupTabNGUI : MonoBehaviour {
     public bool isReload = false;
     public IEnumerator delayInit()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.01f);
         changeTab(0);
     }
     private void OnEnable()

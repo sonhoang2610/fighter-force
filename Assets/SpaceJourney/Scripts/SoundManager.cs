@@ -183,7 +183,15 @@ public class SoundManager : PersistentSingleton<SoundManager>
             {
                 if (GameManager.Instance.inGame && PoolInGameAudios.Contains(audioSource))
                 {
-                    audioSource.gameObject.SetActive(false);
+                    if (!audioSource.IsDestroyed())
+                    {
+                        audioSource.gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        PoolInGameAudios.Remove(audioSource);
+                    }
+               
                 }
                 else if(!audioSource.IsDestroyed())
                 {

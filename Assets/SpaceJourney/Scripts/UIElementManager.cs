@@ -67,12 +67,13 @@ public class UIElementManager : Singleton<UIElementManager>
 
             if (isActive)
             {
-   
+                PUpdateExtension(0);
                 RootMotionController.runAction(pElement.gameObject,Sequences.create  (((EazyFloatAction) getTween("FadeIn")).setUpdateEvent(PUpdateExtension),CallFunc.create(
                     () => pComplete?.Invoke())));
             }
             else
             {
+                PUpdateExtension(1);
                 RootMotionController.runAction(pElement.gameObject,Sequences.create( ((EazyFloatAction)getTween("FadeOut")).setUpdateEvent(PUpdateExtension), CallFunc.create(delegate {
                     pComplete?.Invoke();
                     pElement.gameObject.SetActive(false);

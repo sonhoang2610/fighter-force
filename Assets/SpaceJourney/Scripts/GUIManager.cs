@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using EazyEngine.Tools;
 using EazyEngine.Space.UI;
 using DG.Tweening;
+using EazyEngine.Timer;
 
 namespace EazyEngine.Space
 {
@@ -95,7 +96,7 @@ namespace EazyEngine.Space
         public void pauseGame()
         {
             if (LevelManger.InstanceRaw == null) return;
-            Time.timeScale = 0;
+            TimeKeeper.Instance.getTimer("Global").TimScale = 0;
 
             LevelManger.Instance.IsMatching = false;
             boxsetting.show();
@@ -104,7 +105,7 @@ namespace EazyEngine.Space
         public void resumeGame()
         {
             if (LevelManger.InstanceRaw == null) return;
-            Time.timeScale = 1;
+            TimeKeeper.Instance.getTimer("Global").TimScale = 1;
 
             LevelManger.Instance.IsMatching = true;
             boxsetting.close();

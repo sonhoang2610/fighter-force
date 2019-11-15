@@ -63,15 +63,15 @@ namespace EazyEngine.Space.UI {
 
         private void OnDisable()
         {
-            if (ShopManager.InstanceRaw)
-            {
-                ShopManager.Instance.GetComponent<UIElement>().onDisableEvent.RemoveListener(onSkipShop);
-            }
+         
         }
 
         public void onSkipShop()
         {
-            BoxReborn.show();
+            if (LevelManger.InstanceRaw && LevelManger.Instance.IsMatching)
+            {
+                BoxReborn.show();
+            }
         }
         public void rebornWatchAds()
         {
