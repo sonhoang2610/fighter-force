@@ -315,7 +315,7 @@ namespace EazyEngine.Space
             }
         }
 
-        public virtual void Damage(int damage, GameObject instigator, float flickerDuration, float invincibilityDuration)
+        public virtual void Damage(int damage, GameObject instigator, float flickerDuration, float invincibilityDuration,bool reducedamage = true)
         {
             if (Invulnerable) return;
             if (CurrentHealth <= 0) return;
@@ -332,7 +332,8 @@ namespace EazyEngine.Space
                     damage = (int)((float)damage * (2 - 10000 / (10000 - currentDeffense)));
                 }
             }
-	        if(damage > 0 ){
+	        if(damage > 0 && reducedamage)
+            {
 	        	int pDownDamaged = 0;
 	        	for(int i  = 0 ; i < indexDamaged; ++i){
 	        		pDownDamaged += 15*i;

@@ -266,7 +266,7 @@ namespace EazyEngine.Space
                             ignoreObject.Add(pTarget.gameObject);
                             float pDamage = TotalDamage(pTarget) * time.deltaTime;
                             pDamage += pDamageLeft;
-                            pTarget.Damage((int)pDamage, Owner ? Owner.gameObject : null, 0, 0);
+                            pTarget.Damage((int)pDamage, Owner ? Owner.gameObject : null, 0, 0,false);
                             damageLeft = pDamage - (int)pDamage;
                         }
                         if (ishit)

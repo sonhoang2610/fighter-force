@@ -11,7 +11,6 @@ namespace EazyEngine.Space.UI
 
         public void refreshData()
         {
-            PlaneInfo[] pInfos = (PlaneInfo[])GameDatabase.Instance.getAllItem(CategoryItem.SP_PLANE);
             List<PlaneInfoConfig> pInfoIntanceds = new List<PlaneInfoConfig>();
             for (int i = 0; i < GameManager.Instance.Database.spPlanes.Count; ++i)
             {
@@ -57,7 +56,11 @@ namespace EazyEngine.Space.UI
             }
 
         }
-        
+        public override void setDataItem(PlaneInfoConfig pData, ItemPlaneMain pItem)
+        {
+            base.setDataItem(pData, pItem);
+            pItem.transform.SetSiblingIndex(pItem.Index);
+        }
         public int refStencil;
         public override ObservableList<PlaneInfoConfig> DataSource { get => base.DataSource; set { base.DataSource = value;
                 StartCoroutine(delayClip());

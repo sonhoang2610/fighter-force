@@ -145,5 +145,6 @@ public class BaseBox<TItem, TData> : MonoBehaviour where TItem : BaseItem<TData>
         {
             attachMent.SendMessage("Reposition", SendMessageOptions.DontRequireReceiver);
         }
+        
     }
 }

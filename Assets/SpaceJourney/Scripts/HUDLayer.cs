@@ -46,6 +46,7 @@ namespace EazyEngine.Space.UI {
         {
             Firebase.Analytics.FirebaseAnalytics.LogEvent($"Reborn_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedHard}");
             var pItem = GameManager.Instance.Database.getComonItem("Crystal");
+            LevelManger.Instance.IsMatching = true;
             if (pItem.Quantity >= 50)
             {
                 TimeKeeper.Instance.getTimer("Global").TimScale = 1;
@@ -80,6 +81,7 @@ namespace EazyEngine.Space.UI {
                 BoxReborn.close();
                 if (pBool)
                 {
+                    LevelManger.Instance.IsMatching = true;
                     TimeKeeper.Instance.getTimer("Global").TimScale = 1;
                     reviePlayer(1,false);
                 }
