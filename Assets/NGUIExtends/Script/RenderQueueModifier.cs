@@ -103,6 +103,7 @@ public class RenderQueueModifier : MonoBehaviour
                 }
             }
         }
+        m_target.onRender -= resort;
         m_target.onRender += resort;
     }
 
