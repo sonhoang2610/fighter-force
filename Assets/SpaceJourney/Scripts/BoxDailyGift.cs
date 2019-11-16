@@ -35,7 +35,7 @@ namespace EazyEngine.Space.UI
         private DateTime time;
         private bool isGetTime;
         public AudioClip sfxClaim;
-        private bool firstTime = true;
+        private bool firstTime = false;
 
         public bool FirstTime { get => firstTime; set => firstTime = value; }
         public DateTime Time { get => time; set => time = value; }
