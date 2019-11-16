@@ -34,8 +34,9 @@ namespace EazyEngine.Space
                 {
                     onUnchoose.Invoke();
                 }
-                onExecute();
+             
                 base.Data = value;
+                onExecute();
             }
         }
 
