@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using EazyEngine.Tools;
+using UnityEngine.Networking;
 
 namespace EazyEngine.Space.UI
 {
     using System;
 #if UNITY_EDITOR
     using UnityEditor;
-    using UnityEngine.Networking;
+
 
     public class DailyGiftDataBaseCreator
     {
