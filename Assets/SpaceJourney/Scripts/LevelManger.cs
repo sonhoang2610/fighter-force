@@ -512,7 +512,13 @@ namespace EazyEngine.Space
                     {
                         if (!_infoLevel.InputConfig.itemUsed[i].isActive)
                         {
-                            EzEventManager.TriggerEvent(new InputButtonTrigger(_infoLevel.InputConfig.itemUsed[i].ItemID, _infoLevel.InputConfig.itemUsed[i].categoryItem));
+                            var pItemID = _infoLevel.InputConfig.itemUsed[i].ItemID;
+                            var pCate = _infoLevel.InputConfig.itemUsed[i].categoryItem;
+                            StartCoroutine(delayAction(i * 0.1f, delegate
+                            {                   
+                                EzEventManager.TriggerEvent(new InputButtonTrigger(pItemID, pCate));
+                            }));
+          
                         }
                     }
                 }

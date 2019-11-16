@@ -26,6 +26,7 @@ namespace EazyEngine.Space
             EzEventManager.RemoveListener(this);
             base.OnStop();
         }
+   
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
         protected override string OnInit()

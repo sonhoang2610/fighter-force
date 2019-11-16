@@ -65,6 +65,8 @@ namespace EazyEngine.Space
 	    protected float currentDurationResetDamaged = 0;
 	    protected int indexDamaged = 0;
         protected Health parentHealth;
+
+    
         private void Awake()
         {
             if (DeathSfx && (DeathSfx.loadState != AudioDataLoadState.Loaded ||

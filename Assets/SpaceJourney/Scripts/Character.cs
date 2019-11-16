@@ -99,14 +99,25 @@ namespace EazyEngine.Space
         {
             machine.SetTrigger(pTrigger);
         }
+        protected float factorHP = 1;
+        public void setFactorHP(float pFactor)
+        {
+            if (_info != null)
+            {
+                _health.MaxiumHealth *= (int)pFactor;
+                _health.currentHealth *= (int)pFactor;
+                _health.InitialHealth *= (int)pFactor;
+            }
+            factorHP = pFactor;
+        }
         public void setData(PlaneInfoConfig pData)
         {
             _info = pData;
             if (getAbility("Hp", pData.info.currentAbility) != null)
             {
-                _health.MaxiumHealth = getAbility("Hp", pData.info.currentAbility).CurrentUnit;
-                _health.currentHealth = getAbility("Hp", pData.info.currentAbility).CurrentUnit;
-                _health.InitialHealth = getAbility("Hp", pData.info.currentAbility).CurrentUnit;
+                _health.MaxiumHealth =(int)( getAbility("Hp", pData.info.currentAbility).CurrentUnit* factorHP);
+                _health.currentHealth = (int)(getAbility("Hp", pData.info.currentAbility).CurrentUnit* factorHP);
+                _health.InitialHealth = (int)(getAbility("Hp", pData.info.currentAbility).CurrentUnit *factorHP);
                 _health.Deffense = getAbility("Defense", pData.info.currentAbility).CurrentUnit;
                 var pSpeed = getAbility("SpeedFire", pData.info.currentAbility);
                 if (pSpeed != null)
@@ -120,6 +131,7 @@ namespace EazyEngine.Space
         }
         [System.NonSerialized]
         public CharacterInstancedConfig mainInfo;
+
         public void setDataConfig(CharacterInstancedConfig pInfo)
         {
             if (!_health) _health = GetComponent<Health>();

@@ -878,7 +878,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             Database.lastPlayStage = new Pos(pIndex, GameManager.Instance.ChoosedHard);
         }
 
-        var pInfo = container.getLevelInfo(pIndex, 0).infos;
+        var pInfo = container.getLevelInfo(pIndex, GameManager.Instance.ChoosedHard).infos;
         pInfo.InputConfig = ConfigLevel;
         isPlaying = true;
         for (int i = 0; i < ConfigLevel.itemUsed.Count; ++i)

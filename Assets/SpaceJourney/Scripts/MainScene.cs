@@ -53,6 +53,9 @@ namespace EazyEngine.Space.UI
                 if (pStepGame < 2) return;
                 if (pFirstBox == 1) return;
                 TopLayer.Instance.block.gameObject.SetActive(true);
+                MidLayer.Instance.boxDailyGift.FirstTime = true;
+                MidLayer.Instance.boxDailyGift.Time = pDateTime;
+                MidLayer.Instance.boxDailyGift.IsGetTime = true;
                 MidLayer.Instance.boxDailyGift.GetComponent<UIElement>().show();
             }
 

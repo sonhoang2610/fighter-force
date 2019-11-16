@@ -16,6 +16,7 @@ namespace EazyEngine.Space.UI
         public UIElement boxPrepare;
         public void showBoxDailyGift()
         {
+            MidLayer.Instance.boxDailyGift.IsGetTime = false;
             boxDailyGift.GetComponent<UIElement>().show();
         }
 

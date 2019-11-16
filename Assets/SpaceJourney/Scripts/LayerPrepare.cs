@@ -26,7 +26,10 @@ namespace EazyEngine.Space.UI
         private void OnEnable()
         {
             // showInfo(GameManager.Instance.ChoosedLevel,0);
-            GameManager.Instance.ConfigLevel = new LevelConfig();
+            if (GameManager.Instance.ConfigLevel == null)
+            {
+                GameManager.Instance.ConfigLevel = new LevelConfig();
+            }
             StartCoroutine(enable());
         }
 
@@ -101,17 +104,22 @@ namespace EazyEngine.Space.UI
         public void chooseUseItem(object pObject)
         {
             if (pObject == null) return;
-            var pItem = (BaseItemGameInstanced)pObject;
-            desItemSp.text = pItem.item.descriptionItem.Value;
-            if (GameManager.Instance.ConfigLevel.itemUsed.Contains((ItemGame)pItem.item))
+            if (GameManager.Instance.ConfigLevel == null)
+            {
+                GameManager.Instance.ConfigLevel = new LevelConfig();
+            }
+            var pItem = (ItemOutGameInfo)pObject;
+            desItemSp.text = pItem.item.item.descriptionItem.Value;
+            if (!pItem.isChoosed)
             {
                 desItemSp.gameObject.SetActive(false);
-                GameManager.Instance.ConfigLevel.itemUsed.Remove((ItemGame)pItem.item);
+                GameManager.Instance.ConfigLevel.itemUsed.Remove((ItemGame)pItem.item.item);
             }
             else
             {
                 desItemSp.gameObject.SetActive(true);
-                GameManager.Instance.ConfigLevel.itemUsed.Add((ItemGame)pItem.item);
+                GameManager.Instance.ConfigLevel.itemUsed.Remove((ItemGame)pItem.item.item);
+                GameManager.Instance.ConfigLevel.itemUsed.Add((ItemGame)pItem.item.item);
             }
         }
         // Start is called before the first frame update

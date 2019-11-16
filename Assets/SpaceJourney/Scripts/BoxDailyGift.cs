@@ -32,17 +32,22 @@ namespace EazyEngine.Space.UI
         public UIButton btn1, btn2;
         public BaseItemGame watchItem;
         protected DailyGiftDataBase databse;
-        protected DateTime time;
-        protected bool isGetTime;
+        private DateTime time;
+        private bool isGetTime;
         public AudioClip sfxClaim;
-        protected bool firstTime = true;
+        private bool firstTime = true;
+
+        public bool FirstTime { get => firstTime; set => firstTime = value; }
+        public DateTime Time { get => time; set => time = value; }
+        public bool IsGetTime { get => isGetTime; set => isGetTime = value; }
+
         private void OnEnable()
         {
             if (databse == null)
             {
                 databse = GameDatabase.Instance.databaseDailyGift;
             }
-            if (!firstTime)
+            if (!FirstTime)
             {
                 TopLayer.Instance.LoadingAds.gameObject.SetActive(true);
                 StartCoroutine(checkModule());
@@ -51,7 +56,7 @@ namespace EazyEngine.Space.UI
             {
                 reload();
             }
-            firstTime = false;
+            FirstTime = false;
         }
 
         IEnumerator checkModule()
@@ -65,11 +70,11 @@ namespace EazyEngine.Space.UI
             {
                 if (pResult)
                 {
-                    time = TimeExtension.GetNetTime(ref isGetTime);
+                    Time = TimeExtension.GetNetTime(ref isGetTime);
                 }
                 
             });
-            if (!isGetTime)
+            if (!IsGetTime)
             {
                 yield return new  WaitForSeconds(1);
                 yield return checkModule();
@@ -88,8 +93,8 @@ namespace EazyEngine.Space.UI
         }
         public void reload()
         {
-            btn1.isEnabled = !(GameManager.Instance.dailyGiftModule.lastDate == time.DayOfYear);
-            btn2.isEnabled = !(GameManager.Instance.dailyGiftModule.lastDateAds == time.DayOfYear);
+            btn1.isEnabled = !(GameManager.Instance.dailyGiftModule.lastDate == Time.DayOfYear);
+            btn2.isEnabled = !(GameManager.Instance.dailyGiftModule.lastDateAds == Time.DayOfYear);
             for (int i = 0; i < databse.item.Count; ++i)
             {
                 int status = 0;
@@ -100,7 +105,7 @@ namespace EazyEngine.Space.UI
                     status = 1;
 
                 }
-                else if (i == GameManager.Instance.dailyGiftModule.currentDay + 1 && GameManager.Instance.dailyGiftModule.lastDate != time.DayOfYear && GameManager.Instance.dailyGiftModule.lastDateAds != time.DayOfYear)
+                else if (i == GameManager.Instance.dailyGiftModule.currentDay + 1 && GameManager.Instance.dailyGiftModule.lastDate != Time.DayOfYear && GameManager.Instance.dailyGiftModule.lastDateAds != Time.DayOfYear)
                 {
                     databse.item[i].isNext = true;
                 }
@@ -112,10 +117,10 @@ namespace EazyEngine.Space.UI
         public void claim()
         {
       
-            if (GameManager.Instance.dailyGiftModule.lastDate != time.DayOfYear)
+            if (GameManager.Instance.dailyGiftModule.lastDate != Time.DayOfYear)
             {
                 bool claimed = false;
-                if (time.DayOfYear == GameManager.Instance.dailyGiftModule.lastDateAds || time.DayOfYear == GameManager.Instance.dailyGiftModule.lastDate)
+                if (Time.DayOfYear == GameManager.Instance.dailyGiftModule.lastDateAds || Time.DayOfYear == GameManager.Instance.dailyGiftModule.lastDate)
                 {
                     claimed = true;
                 }
@@ -130,7 +135,7 @@ namespace EazyEngine.Space.UI
                     ((IExtractItem)pData.mainData.item).disableExtracItem();
                 }
                 EzEventManager.TriggerEvent(new RewardEvent() { item = pData.mainData });
-                GameManager.Instance.dailyGiftModule.lastDate = time.DayOfYear;
+                GameManager.Instance.dailyGiftModule.lastDate = Time.DayOfYear;
                 if (!claimed)
                 {
                     GameManager.Instance.dailyGiftModule.currentDay++;
@@ -149,10 +154,10 @@ namespace EazyEngine.Space.UI
         {
             if (pSucess)
             {
-                if (GameManager.Instance.dailyGiftModule.lastDateAds != time.DayOfYear)
+                if (GameManager.Instance.dailyGiftModule.lastDateAds != Time.DayOfYear)
                 {
                     bool claimed = false;
-                    if (time.DayOfYear == GameManager.Instance.dailyGiftModule.lastDateAds || time.DayOfYear == GameManager.Instance.dailyGiftModule.lastDate)
+                    if (Time.DayOfYear == GameManager.Instance.dailyGiftModule.lastDateAds || Time.DayOfYear == GameManager.Instance.dailyGiftModule.lastDate)
                     {
                         claimed = true;
                     }
@@ -167,7 +172,7 @@ namespace EazyEngine.Space.UI
                         ((IExtractItem)pData.mainData.item).disableExtracItem();
                     }
                     EzEventManager.TriggerEvent(new RewardEvent() { item = new BaseItemGameInstanced() { item = pData.mainData.item, quantity = pData.mainData.quantity  } });
-                    GameManager.Instance.dailyGiftModule.lastDateAds = time.DayOfYear;
+                    GameManager.Instance.dailyGiftModule.lastDateAds = Time.DayOfYear;
                     if (!claimed)
                     {
                         GameManager.Instance.dailyGiftModule.currentDay++;
