@@ -71,6 +71,7 @@ namespace EazyEngine.Space.UI
             //  Home();
                 GameManager.Instance.Database.lastPlayStage = new Pos(GameManager.Instance.Database.lastPlayStage.x + 1, 0);
                 GameManager.Instance.ChoosedLevel++;
+            GameManager.Instance.scehduleUI = ScheduleUIMain.NONE;
             MidLayer.Instance.boxPrepare.show();
             //for (int i = GameManager.Instance.ConfigLevel.itemUsed.Count-1; i >=0; --i)
             //{
@@ -503,6 +504,7 @@ namespace EazyEngine.Space.UI
             TimeKeeper.Instance.getTimer("Global").TimScale = 1;
             LevelManger.InstanceRaw = null;
             SceneManager.Instance.loadScene("Main");
+            GameManager.Instance.scehduleUI = ScheduleUIMain.NONE;
             if (isUnlock && !GameManager.Instance.isFree)
             {
                 GameManager.Instance.Database.lastPlayStage = new Pos(GameManager.Instance.Database.lastPlayStage.x + 1, 0);
@@ -516,6 +518,7 @@ namespace EazyEngine.Space.UI
                 Home();
                 return;
             }
+            GameManager.Instance.scehduleUI = ScheduleUIMain.REPLAY;
             MidLayer.Instance.boxPrepare.show();
             //TimeKeeper.Instance.getTimer("Global").TimScale = 1;
             //LevelManger.InstanceRaw = null;
