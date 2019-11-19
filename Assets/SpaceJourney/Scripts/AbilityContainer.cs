@@ -229,6 +229,8 @@ namespace EazyEngine.Space
         public int startUnit = 0;
         [EzSerializeField]
         public int limitUnit = 0;
+        [EzSerializeField]
+        public int statUnit = 1;
         public AlgrothimPriceItem algrothimTypeUpgrade;
         [ShowIf("algrothimTypeUpgrade", AlgrothimPriceItem.StepConstrainEachLevel)]
         public int priceStep;

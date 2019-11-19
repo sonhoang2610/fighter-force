@@ -59,6 +59,7 @@ namespace EazyEngine.Space {
                 return Mathf.Min(info.limitUpgrade, limitUpgrade);
             }
         }
+
         [ShowInInspector]
         public Dictionary<string, int> upgradeSkill = new Dictionary<string, int>();
         [ShowInInspector]
@@ -246,6 +247,7 @@ namespace EazyEngine.Space {
 
         public Character modelPlane;
         public int limitUpgrade = 80;
+        public int RankPlane = 0;
         [System.NonSerialized, OdinSerialize]
         public List<SkillInfoInstance> skills = new List<SkillInfoInstance>();
         public List<AbilityConfig> currentAbility = new List<AbilityConfig>();

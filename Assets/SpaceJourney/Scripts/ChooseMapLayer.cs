@@ -71,7 +71,7 @@ namespace EazyEngine.Space.UI
                     pLineRender.transform.RotationDirect2D(items[i + 1].transform.localPosition - items[i].transform.localPosition);
                     if(GameManager.Instance.CurrentLevelUnlock -1 <= i)
                     {
-                        pLineRender.GetComponent<EazyFrameCache>().setFrameIndex(1);
+                        pLineRender.GetComponent<EazyFrameCache>().setFrameIndexUnPixelPerfect(1);
                     }
                 }
                 group.GroupTab.Add(items[i].GetComponent<EazyTabNGUI>());

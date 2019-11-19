@@ -11,6 +11,7 @@ namespace EazyEngine.Space.UI
         public string targetShop;
         public string targetShopUpgradeSkill;
         public UILabel namePlane;
+        public UILabel levelPlane;
         public BoxAbilityInfo boxAbility;
         public BoxSkillUI boxSkill;
         public UILabel des;
@@ -21,10 +22,12 @@ namespace EazyEngine.Space.UI
         public UILabel labelRequire;
 	    public GameObject attachMentSorting;
         public GameObject boxRank;
+        public GameObject btnFreePlay;
         public GameObject layerAbleUpgradePlane;
         public GameObject layerLimitSkillPlane;
         public GameObject layerOneWay, layerTwoWay,layerUnlock;
-        public void OnEzEvent(UIMessEvent eventType)
+        public UI_StatsRadarChart chart;
+    public void OnEzEvent(UIMessEvent eventType)
         {
             if (eventType.Event.StartsWith("ChangeLanguage"))
             {
@@ -40,10 +43,14 @@ namespace EazyEngine.Space.UI
                     ischange = true;
                 }
                 base.Data = value;
+                if (btnFreePlay)
+                {
+                    btnFreePlay.gameObject.SetActive(!(value.CurrentLevel > 0));
+                }
                 if (boxRank)
                 {
-                    boxRank.gameObject.SetActive((value.CurrentLevel > 0));
-                    boxRank.GetComponentInChildren<EazyFrameCache>().setFrameIndex(value.Rank);
+                    //     btnFreePlay.gameObject.SetActive((value.CurrentLevel > 0));
+                    boxRank.GetComponentInChildren<EazyFrameCache>().setFrameIndex(value.Info.RankPlane);
                 }
                 if (layerAbleUpgradePlane)
                 {
@@ -59,7 +66,11 @@ namespace EazyEngine.Space.UI
                     }
                 }
               
-                namePlane.text = value.Info.displayNameItem.Value + " (" +(  value.CurrentLevel.ToString()) + ")";
+                namePlane.text = value.Info.displayNameItem.Value + (levelPlane ? "" :  " (" +(  value.CurrentLevel.ToString()) + ")");
+                if (levelPlane)
+                {
+                    levelPlane.text = value.CurrentLevel.ToString();
+                }
                 boxAbility.DataSource = value.Info.currentAbility.ToObservableList();
                 des.text = value.Info.Desc;
  
@@ -222,6 +233,15 @@ namespace EazyEngine.Space.UI
                     else
                     {
                         labelRequire.gameObject.SetActive(false);
+                    }
+                    if (chart)
+                    {
+                        var pDamage = value.Info.currentAbility.Find(x => x._ability.ItemID == "Damage").statUnit;
+                        var pDef = value.Info.currentAbility.Find(x => x._ability.ItemID == "Defense").statUnit;
+                        var pHP = value.Info.currentAbility.Find(x => x._ability.ItemID == "Hp").statUnit;
+                        var pLucky = value.Info.currentAbility.Find(x => x._ability.ItemID == "LuckyRate").statUnit;
+                        var pSpeed = value.Info.currentAbility.Find(x => x._ability.ItemID == "SpeedFire").statUnit;
+                        chart.SetStats(new Stats(pDamage, pDef, pLucky, pSpeed, pHP));
                     }
                 }
             }

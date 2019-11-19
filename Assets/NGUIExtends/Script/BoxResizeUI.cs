@@ -15,7 +15,6 @@ public class BoxResizeUI : MonoBehaviour
     float _offsetOutY = 0;
     [SerializeField]
     Vector2 _min;
-    public bool isLocal = true;
     Vector2 _oldSize;
     bool isDirty = false;
 
@@ -100,7 +99,7 @@ public class BoxResizeUI : MonoBehaviour
 
             //Vector2 newSize = new Vector2(_content.localSize.x + _offsetOut, Self.localSize.y);
             calculatorMoreContent();
-            if ((Content.dirtyChange  || isDirty))
+            if ((/*Content.dirtyChange*/  /*||*/ true))
             {   
                 isDirty = false;
                 // Self.SetRect(0, 0, _content.localSize.x + _offsetOut, Self.localSize.y);
@@ -108,11 +107,11 @@ public class BoxResizeUI : MonoBehaviour
                 Self.height = (int)(Content.localSize.y + _offsetOutY);
                 _oldSize = Content.localSize;
             }
-            if (Content.localSize.x + _offsetOut < _min.x)
+            if (Self.width < _min.x)
             {
                 Self.width = (int)(_min.x);
             }
-            if (Content.localSize.y + _offsetOutY < _min.y)
+            if (Self.height < _min.y)
             {
                 Self.height = (int)(_min.y);
             }

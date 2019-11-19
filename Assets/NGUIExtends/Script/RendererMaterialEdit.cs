@@ -1,13 +1,31 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+[System.Serializable]
+public enum PropertyType
+{
+    Float,
+    Color,ColorHDR
+}
 [System.Serializable]
 public class PropertyShader
 {
     [SerializeField]
     string _nameProperty;
     [SerializeField]
+    PropertyType propertyType;
+    [SerializeField]
+    [ShowIf("propertyType", PropertyType.Float)]
     float effectAmount;
+    [SerializeField]
+    [ShowIf("propertyType", PropertyType.Color)]
+    Color color;
+    [SerializeField]
+    [ShowIf("propertyType", PropertyType.ColorHDR)]
+    [ColorUsage(true,true)]
+    Color colorHDR;
 
     public string NameProperty
     {
@@ -34,6 +52,10 @@ public class PropertyShader
             effectAmount = value;
         }
     }
+
+    public Color Color { get => color; set => color = value; }
+    public PropertyType PropertyType { get => propertyType; set => propertyType = value; }
+    public Color ColorHDR { get => colorHDR; set => colorHDR = value; }
 }
 public class RendererMaterialEdit : MonoBehaviour {
     [SerializeField]

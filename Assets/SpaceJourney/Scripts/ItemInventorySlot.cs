@@ -28,8 +28,10 @@ namespace EazyEngine.Space.UI
         public GameObject model;
         public bool EffectOnShow = false;
         public bool autoSelfLoad = true;
+        public bool isHome = false;
         public GameDatabaseInventoryEventUnity onChange;
         public UnityEvent onEffectShow;
+        public ParticleHomissile particleWhenClaim;
 
         [ShowIf("autoSelfLoad")]
         public BaseItemGame itemToLoad;
@@ -182,6 +184,31 @@ namespace EazyEngine.Space.UI
                 pSequence.AppendInterval(Index * 0.2f);
                 pSequence.AppendCallback(delegate
                 {
+                    if (particleWhenClaim)
+                    {
+              
+                        var pFinds = FindObjectsOfType<ItemInventorySlot>();
+                        GameObject pTarget = null;
+                        foreach(var pFind in pFinds)
+                        {
+                            if(Data != null && Data.item != null && pFind.Data != null && pFind.Data.item != null &&  Data.item.ItemID == pFind.Data.item.itemID && pFind.isHome)
+                            {
+                                pTarget = pFind.gameObject;
+                                break;
+                            }
+                        }
+                        if (pTarget != null)
+                        {
+                      
+                            var pRootParentTarget = pTarget.GetComponentInParent<UIRoot>();
+                            var pParticle = Instantiate(particleWhenClaim, pRootParentTarget.transform);
+                            pParticle.gameObject.SetLayerRecursively(pRootParentTarget.gameObject.layer);
+                            var pRootParent = transform.GetComponentInParent<UIRoot>();
+                            pParticle.transform.localPosition = pRootParent.transform.InverseTransformPoint( transform.position);
+                            pParticle.Target = pTarget.transform;
+                            pParticle.GetComponent<ParticleSystemRenderer>().material.mainTexture = Data.item.iconShop.texture;
+                        }
+                    }
                     onEffectShow.Invoke();
                 });
                 pSequence.Append(pFade);

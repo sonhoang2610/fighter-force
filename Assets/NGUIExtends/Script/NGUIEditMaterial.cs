@@ -11,6 +11,17 @@ public class NGUIEditMaterial : MonoBehaviour {
     UITexture uitexture;
     [SerializeField]
     bool includeChild = false;
+    [SerializeField]
+    bool groupModule = false;
+    [SerializeField]
+    string[] GroupID ;
+    [SerializeField]
+    int defaultIndex;
+
+    public void setGroupIndex(int index)
+    {
+        defaultIndex = index;
+    }
 
     int cacheIndex = 0;
     public UI2DSprite Sprite2D
@@ -26,7 +37,20 @@ public class NGUIEditMaterial : MonoBehaviour {
     {
         get
         {
-            return properties;
+            if (!groupModule || GroupID == null || GroupID.Length == 0 || defaultIndex >= GroupID.Length)
+            {
+                return properties;
+            }
+            else
+            {
+                List<PropertyShader> prop = new List<PropertyShader>();
+               var pstrs =  GroupID[defaultIndex].Split('|');
+                for (int i = 0;i < pstrs.Length; ++i)
+                {
+                    prop.Add(properties[int.Parse(pstrs[i])]);
+                }
+                return prop.ToArray();
+            }
         }
 
         set
@@ -80,11 +104,19 @@ public class NGUIEditMaterial : MonoBehaviour {
             Properties[1].EffectAmount = value;
         }
     }
-
+    public void setEffectAmountColorHDR(int index, Color effect)
+    {
+        Properties[index].ColorHDR = effect;
+    }
+    public void setEffectAmountColor(int index, Color effect)
+    {
+        Properties[index].Color = effect;
+    }
     public void setEffectAmount(int index,float effect)
     {
         Properties[index].EffectAmount = effect;
     }
+
     public void setEffectAmount(string name, float effect)
     {
         PropertyShader[] props = Properties;
@@ -107,28 +139,68 @@ public class NGUIEditMaterial : MonoBehaviour {
             }
         }
     }
+    public void setEffectAmountColor(string name, Color effect)
+    {
+        PropertyShader[] props = Properties;
+        if (IncludeChild)
+        {
+            List<PropertyShader> arrayProp = new List<PropertyShader>();
+            NGUIEditMaterial[] edits = GetComponentsInChildren<NGUIEditMaterial>();
+            for (int i = 0; i < edits.Length; ++i)
+            {
+                arrayProp.addFromList(edits[i].Properties);
+            }
+            props = arrayProp.ToArray();
+        }
+
+        for (int i = 0; i < props.Length; ++i)
+        {
+            if (props[i].NameProperty == name)
+            {
+                props[i].Color = effect;
+            }
+        }
+    }
 
     public void setEffectAmountCache(float effect)
     {
         Properties[cacheIndex].EffectAmount = effect;
     }
+    public void setEffectAmountCache(Color effect)
+    {
+        Properties[cacheIndex].Color = effect;
+    }
+    [ContextMenu("Test")]
+    public void test()
+    {
+        Material mat = GetComponent<UI2DSprite>().material;
+        for (int i = 0; i < Properties.Length; i++)
+        {
+            if (Sprite2D)
+            {
+                mat.mainTexture = Sprite2D.mainTexture;
+            }
+            else
+            {
+                mat.mainTexture = Uitexture.mainTexture;
+            }
+            if (Properties[i].PropertyType == PropertyType.Float)
+            {
+                mat.SetFloat(Properties[i].NameProperty, Properties[i].EffectAmount);
+            }
+            else if (Properties[i].PropertyType == PropertyType.Color)
+            {
+                mat.SetColor(Properties[i].NameProperty, Properties[i].Color);
+            }
+            else if (Properties[i].PropertyType == PropertyType.ColorHDR)
+            {
+                mat.SetColor(Properties[i].NameProperty, Properties[i].ColorHDR);
+            }
+        }
+    }
     // Use this for initialization
     void Start () {
         sprite2D = Sprite2D;
-        //uitexture = Uitexture;
-        //var Mat= GetComponent<UIWidget>().material;
-        //for (int i = 0; i < Properties.Length; i++)
-        //{
-        //    if (sprite2D)
-        //    {
-        //        mat.mainTexture = Sprite2D.mainTexture;
-        //    }
-        //    else
-        //    {
-        //        mat.mainTexture = Uitexture.mainTexture;
-        //    }
-        //    mat.SetFloat(Properties[i].NameProperty, Properties[i].EffectAmount);
-        //}
         GetComponent<UIWidget>().onRender = delegate (Material mat)
        {
            for (int i = 0; i < Properties.Length; i++)
@@ -141,8 +213,18 @@ public class NGUIEditMaterial : MonoBehaviour {
                {
                    mat.mainTexture = Uitexture.mainTexture;
                }
-               mat.SetFloat(Properties[i].NameProperty, Properties[i].EffectAmount);
-           }
+               if (Properties[i].PropertyType == PropertyType.Float)
+               {
+                   mat.SetFloat(Properties[i].NameProperty, Properties[i].EffectAmount);
+               }else if(Properties[i].PropertyType == PropertyType.Color)
+               {
+                   mat.SetColor(Properties[i].NameProperty, Properties[i].Color);
+               }
+               else if (Properties[i].PropertyType == PropertyType.ColorHDR)
+               {
+                   mat.SetColor(Properties[i].NameProperty, Properties[i].ColorHDR);
+               }
+            }
        };
 	}
 	

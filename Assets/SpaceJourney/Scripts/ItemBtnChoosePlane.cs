@@ -7,6 +7,8 @@ namespace EazyEngine.Space.UI
     public class ItemBtnChoosePlane : BaseItem<PlaneInfoConfig>
     {
         public UI2DSprite icon;
+        public NGUIEditMaterial effectBox,effectStroke;
+
 
         public override PlaneInfoConfig Data { get => base.Data; set {
                 icon.sprite2D = value.info.iconShop;
@@ -19,6 +21,8 @@ namespace EazyEngine.Space.UI
                 System.Array.Resize(ref pCheck.infos, 1);
                 pCheck.infos[0] = value.info;
                 pCheck.check();
+                effectBox.setGroupIndex(value.info.RankPlane);
+                effectStroke.setGroupIndex(value.info.RankPlane);
                 base.Data = value;
             }
         }

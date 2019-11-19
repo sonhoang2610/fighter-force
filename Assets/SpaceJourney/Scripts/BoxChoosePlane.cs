@@ -28,6 +28,7 @@ namespace EazyEngine.Space.UI
                 btnPrevious.isEnabled = false;
             }
             group.changeTab(currentPage);
+      
         }
 
         public void nextPage()
@@ -111,7 +112,8 @@ namespace EazyEngine.Space.UI
         {
             currentIndexTab = pIndex;
             List<PlaneInfoConfig> pInfos = new List<PlaneInfoConfig>();
-            if(pIndex == 0)
+        
+            if (pIndex == 0)
             {
                var pItems = GameDatabase.Instance.getAllItem(CategoryItem.PLANE);
                 var pItemExists = GameManager.Instance.Database.planes;
