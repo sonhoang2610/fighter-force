@@ -380,10 +380,14 @@ public class UIGrid : UIWidgetContainer
             }
             else
             {
-                int pX = x;
-                if(isCenter && (y +1)* maxPerLine  - imax > 0 &&  (y + 1) * maxPerLine  - imax < maxPerLine)
+                float pX = x;
+   
+                if (isCenter )
                 {
-                    pX += maxPerLine / 2 - ((y + 1) * maxPerLine - imax) / 2;
+                    float pMax = ((imax / maxPerLine) > 0 ? maxPerLine : imax) - 1;
+                    int index = (y * maxPerLine + x);
+                    int pCountInLine = imax >= (y+1)*maxPerLine ? maxPerLine : (imax % maxPerLine);
+                    pX += -(float)(pCountInLine - 1) / 2.0f + pMax / 2; /*+ (1 - (pCountInLine%2))* 0.5f;*/
                 }
                 pos = (arrangement == Arrangement.Horizontal) ?
                  new Vector3(cellWidth * pX, -cellHeight * y, depth) :

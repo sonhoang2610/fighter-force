@@ -14,93 +14,128 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Stats {
+public enum TypeStats
+{
+    Attack,
+    Defence,
+    Lucky,
+    SpeedAttach,
+    Health,
+}
+public class Stats
+{
 
     public event EventHandler OnStatsChanged;
 
     public static int STAT_MIN = 0;
     public static int STAT_MAX = 100;
 
-    public enum Type {
-        Attack,
-        Defence,
-        Lucky,
-        SpeedAttach,
-        Health,
+
+
+    private SingleStat[] stats;
+
+    public SingleStat[] _Stats { get => stats; set => stats = value; }
+
+    public Stats(int attackStatAmount, int defenceStatAmount, int lcuky, int speed, int healthStatAmount)
+    {
+        _Stats = new SingleStat[5] {
+            new SingleStat(TypeStats.Attack,attackStatAmount),
+              new SingleStat(TypeStats.Defence,defenceStatAmount),
+                new SingleStat(TypeStats.Lucky,lcuky),
+                    new SingleStat(TypeStats.SpeedAttach,speed),
+                new SingleStat(TypeStats.Health,healthStatAmount),
+                
+                
+        };
     }
 
-    private SingleStat attackStat;
-    private SingleStat defenceStat;
-    private SingleStat luckyStat;
-    private SingleStat speedAttack;
-    private SingleStat healthStat;
-
-    public Stats(int attackStatAmount, int defenceStatAmount, int lcuky, int speed, int healthStatAmount) {
-        attackStat = new SingleStat(attackStatAmount);
-        defenceStat = new SingleStat(defenceStatAmount);
-        luckyStat = new SingleStat(lcuky);
-        speedAttack = new SingleStat(speed);
-        healthStat = new SingleStat(healthStatAmount);
+    public Stats(int attackStatAmount, int lcuky, int speed)
+    {
+        _Stats = new SingleStat[3] {
+            new SingleStat(TypeStats.Attack,attackStatAmount),
+                  new SingleStat(TypeStats.Lucky,lcuky),
+                    new SingleStat(TypeStats.SpeedAttach,speed),
+        };
     }
 
 
-
-
-    private SingleStat GetSingleStat(Type statType) {
-        switch (statType) {
-        default:
-        case Type.Attack:       return attackStat;
-        case Type.Defence:      return defenceStat;
-        case Type.Lucky:        return luckyStat;
-        case Type.SpeedAttach:         return speedAttack;
-        case Type.Health:       return healthStat;
+    private SingleStat GetSingleStat(TypeStats statTypeStats)
+    {
+        foreach (var pSingle in _Stats)
+        {
+            if (pSingle.typeStat == statTypeStats)
+            {
+                return pSingle;
+            }
         }
+        return null;
     }
-    
-    public void SetStatAmount(Type statType, int statAmount) {
-        GetSingleStat(statType).SetStatAmount(statAmount);
+
+    public void SetStatAmount(TypeStats statTypeStats, int statAmount)
+    {
+        GetSingleStat(statTypeStats).SetStatAmount(statAmount);
+        if (OnStatsChanged != null) OnStatsChanged(this, EventArgs.Empty);
+    }
+    public void SetStatAmount(int indexStat, int statAmount)
+    {
+        stats[indexStat].SetStatAmount(statAmount);
         if (OnStatsChanged != null) OnStatsChanged(this, EventArgs.Empty);
     }
 
-    public void IncreaseStatAmount(Type statType) {
-        SetStatAmount(statType, GetStatAmount(statType) + 1);
+    public void IncreaseStatAmount(TypeStats statTypeStats)
+    {
+        SetStatAmount(statTypeStats, GetStatAmount(statTypeStats) + 1);
     }
 
-    public void DecreaseStatAmount(Type statType) {
-        SetStatAmount(statType, GetStatAmount(statType) - 1);
+    public void DecreaseStatAmount(TypeStats statTypeStats)
+    {
+        SetStatAmount(statTypeStats, GetStatAmount(statTypeStats) - 1);
     }
 
-    public int GetStatAmount(Type statType) {
-        return GetSingleStat(statType).GetStatAmount();
+    public int GetStatAmount(TypeStats statTypeStats)
+    {
+        return GetSingleStat(statTypeStats).GetStatAmount();
     }
-
-    public float GetStatAmountNormalized(Type statType) {
-        return GetSingleStat(statType).GetStatAmountNormalized();
+    public int GetStatAmount(int indexStat)
+    {
+        return stats[indexStat].GetStatAmount();
     }
-
+    public float GetStatAmountNormalized(TypeStats statTypeStats)
+    {
+        return GetSingleStat(statTypeStats).GetStatAmountNormalized();
+    }
+    public float GetStatAmountNormalized(int indexStat)
+    {
+        return stats[indexStat].GetStatAmountNormalized();
+    }
 
 
     /*
-     * Represents a Single Stat of any Type
+     * Represents a Single Stat of any TypeStats
      * */
-    private class SingleStat {
+    public class SingleStat
+    {
 
         private int stat;
-
-        public SingleStat(int statAmount) {
+        public TypeStats typeStat;
+        public SingleStat(TypeStats pType, int statAmount)
+        {
             SetStatAmount(statAmount);
+            typeStat = pType;
         }
 
-        public void SetStatAmount(int statAmount) {
+        public void SetStatAmount(int statAmount)
+        {
             stat = Mathf.Clamp(statAmount, STAT_MIN, STAT_MAX);
         }
 
-        public int GetStatAmount() {
+        public int GetStatAmount()
+        {
             return stat;
         }
 
-        public float GetStatAmountNormalized() {
+        public float GetStatAmountNormalized()
+        {
             return (float)stat / STAT_MAX;
         }
     }

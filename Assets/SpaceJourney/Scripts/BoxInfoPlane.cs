@@ -20,13 +20,15 @@ namespace EazyEngine.Space.UI
         public UILabel[] priceLabels;
         public UILabel priceLabelsOneWay;
         public UILabel labelRequire;
-	    public GameObject attachMentSorting;
+        public UILabel power; 
+        public EazyFrameCache[] stars;
+        public GameObject attachMentSorting;
         public GameObject boxRank;
         public GameObject btnFreePlay;
         public GameObject layerAbleUpgradePlane;
         public GameObject layerLimitSkillPlane;
         public GameObject layerOneWay, layerTwoWay,layerUnlock;
-        public UI_StatsRadarChart chart;
+        public UI_StatsRadarChart chart5,chart3;
     public void OnEzEvent(UIMessEvent eventType)
         {
             if (eventType.Event.StartsWith("ChangeLanguage"))
@@ -70,6 +72,22 @@ namespace EazyEngine.Space.UI
                 if (levelPlane)
                 {
                     levelPlane.text = value.CurrentLevel.ToString();
+                }
+                if (power)
+                {
+                    power.text = $"[FF9100]{I2.Loc.LocalizationManager.GetTranslation("ui/power")}: [-] [FFF200]{value.Info.power}[-]";
+                }
+
+                for(int i = 0; i < stars.Length; ++i)
+                {
+                    if(i <= value.Rank)
+                    {
+                        stars[i].setFrameIndexUnPixelPerfect(1);
+                    }
+                    else
+                    {
+                        stars[i].setFrameIndexUnPixelPerfect(0);
+                    }
                 }
                 boxAbility.DataSource = value.Info.currentAbility.ToObservableList();
                 des.text = value.Info.Desc;
@@ -234,14 +252,31 @@ namespace EazyEngine.Space.UI
                     {
                         labelRequire.gameObject.SetActive(false);
                     }
-                    if (chart)
+                    if (chart5 && value.GetType()== typeof(PlaneInfoConfig))
                     {
                         var pDamage = value.Info.currentAbility.Find(x => x._ability.ItemID == "Damage").statUnit;
                         var pDef = value.Info.currentAbility.Find(x => x._ability.ItemID == "Defense").statUnit;
                         var pHP = value.Info.currentAbility.Find(x => x._ability.ItemID == "Hp").statUnit;
                         var pLucky = value.Info.currentAbility.Find(x => x._ability.ItemID == "LuckyRate").statUnit;
                         var pSpeed = value.Info.currentAbility.Find(x => x._ability.ItemID == "SpeedFire").statUnit;
-                        chart.SetStats(new Stats(pDamage, pDef, pLucky, pSpeed, pHP));
+                        chart5.SetStats(new Stats(pDamage, pDef, pLucky, pSpeed, pHP));
+                        chart5.gameObject.SetActive(true);
+                        if (chart3)
+                        {
+                            chart3.gameObject.SetActive(false);
+                        }
+                    }
+                    else if(chart3 && value.GetType() == typeof(SupportPlaneInfoConfig))
+                    {
+                        var pDamage = value.Info.currentAbility.Find(x => x._ability.ItemID == "Damage").statUnit;
+                        var pLucky = value.Info.currentAbility.Find(x => x._ability.ItemID == "LuckyRate").statUnit;
+                        var pSpeed = value.Info.currentAbility.Find(x => x._ability.ItemID == "SpeedFire").statUnit;
+                        chart3.SetStats(new Stats(pDamage, pLucky, pSpeed));
+                        chart3.gameObject.SetActive(true);
+                        if (chart5)
+                        {
+                            chart5.gameObject.SetActive(false);
+                        }
                     }
                 }
             }

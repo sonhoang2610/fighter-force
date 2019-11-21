@@ -248,6 +248,7 @@ namespace EazyEngine.Space {
         public Character modelPlane;
         public int limitUpgrade = 80;
         public int RankPlane = 0;
+        public UnitDefineLevel power;
         [System.NonSerialized, OdinSerialize]
         public List<SkillInfoInstance> skills = new List<SkillInfoInstance>();
         public List<AbilityConfig> currentAbility = new List<AbilityConfig>();
@@ -267,6 +268,7 @@ namespace EazyEngine.Space {
 	    {
             upgradeRateCriticalConfig.setLevel(pLevel);
             upgradeIncreaseRate.setLevel(pLevel);
+            power.setLevel(pLevel);
             for (int i = 0; i < currentAbility.Count; ++i)
             {
                 currentAbility[i].CurrentLevel = pLevel;

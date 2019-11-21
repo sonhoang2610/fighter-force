@@ -84,7 +84,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
 --- !u!95 &4093811770441320947
 Animator:
   serializedVersion: 3
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b5c3ebb24c97464da319951cafe5a47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundGraphSerialization: '{"version":2.92,"type":"FlowCanvas.FlowScript","translation":{"x":-177.0,"y":-229.0},"zoomFactor":0.8984138,"nodes":[{"_position":{"x":542.0,"y":622.0},"$type":"FlowCanvas.Nodes.EnableEvent","$id":"2"},{"_method":{"_baseInfo":"UnityEngine.Animator|SetTrigger|System.Void","_paramsInfo":"System.String"},"_callable":true,"_inputPortValues":{},"_position":{"x":955.0,"y":618.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"3"},{"eventName":{"_value":"Enable"},"target":{},"targets":{"_value":[]},"_position":{"x":283.0,"y":348.0},"$type":"FlowCanvas.Nodes.CustomEvent`1[[System.Boolean,
+  boundGraphSerialization: '{"version":2.96,"type":"FlowCanvas.FlowScript","translation":{"x":-177.0,"y":-229.0},"zoomFactor":0.8984138,"nodes":[{"_position":{"x":542.0,"y":622.0},"$type":"FlowCanvas.Nodes.EnableEvent","$id":"2"},{"_method":{"_baseInfo":"UnityEngine.Animator|SetTrigger|System.Void","_paramsInfo":"System.String"},"_callable":true,"_inputPortValues":{},"_position":{"x":955.0,"y":618.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"3"},{"eventName":{"_value":"Enable"},"target":{},"targets":{"_value":[]},"_position":{"x":283.0,"y":348.0},"$type":"FlowCanvas.Nodes.CustomEvent`1[[System.Boolean,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]","$id":"6"},{"_inputPortValues":{},"_position":{"x":683.0,"y":352.0},"$type":"FlowCanvas.Nodes.SwitchBool","$id":"11"},{"_method":{"_baseInfo":"Spine.Unity.Modules.SkeletonRendererCustomMaterials|setPropertyFloat|System.Void","_paramsInfo":"System.String|System.Single"},"_callable":true,"_inputPortValues":{"name":{"$content":"_GrayPhase","$type":"System.String"}},"_position":{"x":973.0,"y":284.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"13"},{"_method":{"_baseInfo":"Spine.Unity.Modules.SkeletonRendererCustomMaterials|setPropertyFloat|System.Void","_paramsInfo":"System.String|System.Single"},"_callable":true,"_inputPortValues":{"name":{"$content":"_GrayPhase","$type":"System.String"},"pFloat":{"$content":1.0,"$type":"System.Single"}},"_position":{"x":968.0,"y":446.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"16"},{"value":{"_value":"Preview"},"_position":{"x":660.0,"y":761.0},"$type":"FlowCanvas.Nodes.GetVariable`1[[System.String,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]","$id":"19"}],"connections":[{"_sourcePortName":"Out","_targetPortName":"
     ","_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"Received","_targetPortName":"In","_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"11"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"Event
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_target: {fileID: 0}
-  m_type: 0
+  m_type: 2
   runOnUpdateObjectRender: 1
   sharedMat: 1
   isIncludeChild: 1
@@ -273,7 +273,7 @@ PrefabInstance:
     - target: {fileID: 4459419918888299866, guid: ef140c42b73105947b083df63f966bf7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4459419918888299866, guid: ef140c42b73105947b083df63f966bf7,
         type: 3}
@@ -370,22 +370,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 989647435827157759, guid: ef140c42b73105947b083df63f966bf7,
+    - target: {fileID: 648912789010310904, guid: ef140c42b73105947b083df63f966bf7,
         type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
+      propertyPath: m_LocalPosition.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 427218479010327259, guid: ef140c42b73105947b083df63f966bf7,
         type: 3}
       propertyPath: _graph
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 648912789010310904, guid: ef140c42b73105947b083df63f966bf7,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6428234506413991986, guid: ef140c42b73105947b083df63f966bf7,
+    - target: {fileID: 989647435827157759, guid: ef140c42b73105947b083df63f966bf7,
         type: 3}
       propertyPath: m_SortingOrder
       value: 0
@@ -394,6 +389,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _graph
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6428234506413991986, guid: ef140c42b73105947b083df63f966bf7,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef140c42b73105947b083df63f966bf7, type: 3}

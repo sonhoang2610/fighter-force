@@ -188,7 +188,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c30599d570c93524c810714c5a2f7583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MutualizeWaitingPools: 1
   GameObjectToPool: {fileID: 8269517097850452423, guid: 49071d7e3578cf34a9322384a91cb701,
     type: 3}
   PoolSize: 3
@@ -207,6 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boosterInfos: []
+  transitionAction: []
   typeFire: 1
   startWithReloadFirst: 0
   timeReloadFirst: 1.5
@@ -215,12 +215,11 @@ MonoBehaviour:
   prepareBulletWhenReload: 0
   sizeRemoveTarget: -1
   needTargetToFire: 0
+  forceDirectionFollowGun: 0
   requireFaceTargetToFire: 0
   onStartRotate:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   anchorRotation: {fileID: 0}
   rotationSpeedUnlock: 0.5
   rotationSpeedd: 0.5
@@ -240,94 +239,64 @@ MonoBehaviour:
     onUse:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
     AnimReload: Reload
     onReload:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
     TriggerShoot: Shoot
     onListenShoot:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
     TriggerShootDone: ShootDone
     onListenShootDone:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
     TriggerReloadDone: ReloadDone
     onListenReloadDone:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
   firstMachine:
     AnimUse: Shoot
     onUse:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
     AnimReload: Reload
     onReload:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
     TriggerShoot: Shoot
     onListenShoot:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
     TriggerShootDone: ShootDone
     onListenShootDone:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
     TriggerReloadDone: ReloadDone
     onListenReloadDone:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
   reactiveMachine:
     AnimUse: Shoot
     onUse:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
     AnimReload: Reload
     onReload:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
     TriggerShoot: Shoot
     onListenShoot:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
     TriggerShootDone: ShootDone
     onListenShootDone:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
     TriggerReloadDone: ReloadDone
     onListenReloadDone:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
   fixDamage: 0
   extraDamage:
   - type: 0
@@ -335,18 +304,15 @@ MonoBehaviour:
   onStartEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: EazyEngine.Space.UnityEventBool, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onUse:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onIdle:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  onInitDone:
+    m_PersistentCalls:
+      m_Calls: []
   particleEffects: []
   _listIgnoreObject: []
   _currentState: 0
@@ -358,23 +324,30 @@ MonoBehaviour:
   defaultIndex: 0
   attachMentPosStartNew:
   - pooler: {fileID: 0}
+    randomOffset: {x: 0, y: 0}
+    isShuffe: 0
     attachMentPosStart:
     - {fileID: 8733117108377437521}
     - {fileID: 3490598433825530071}
     - {fileID: 4632218008346211319}
   countBulletPerAttachment: 1
   delayEachProjecttile: 0
+  randomDelayEachProjTo: 0
+  posStartAtAttachMent: 0
   autoRotateIfHaveTarget: 0
+  trajectorPath: {fileID: 0}
+  onFireAttachMent:
+    m_PersistentCalls:
+      m_Calls: []
+  onFire:
+    m_PersistentCalls:
+      m_Calls: []
   onUseEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onPrepareBullet:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &8909308703406633852
 MonoBehaviour:
   m_ObjectHideFlags: 0

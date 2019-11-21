@@ -89,7 +89,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   ignoreOnDamaged: 0
+  autoGetOwnerMainPlane: 0
   DamageCaused: 10
+  factorDamageDecreaseSameObjects: 0
+  factorMinDamageDecrease: 1
   damagedEffect: {fileID: 0}
   durationForNextDame: 0.1
   TakenDamageMask:
@@ -127,12 +130,15 @@ MonoBehaviour:
   timeInvuAfterRevie: 0
   disableParrentOnDeath: 0
   disableOnDeath: 1
+  activeOnRevie: 1
   deffense: 0
   MaxiumHealth: 10
   InitialHealth: 10
   containerHealthBar: {fileID: 0}
   HealthBar: {fileID: 0}
   DamageSfx: {fileID: 0}
+  DeathSfx: {fileID: 0}
+  preloadDeathEffect: 5
   DeathEffect: {fileID: 152634, guid: c816e04fdd948ef479558e37f6acc4ae, type: 3}
   DamagedEffect: {fileID: 0}
   HealingEffect: {fileID: 0}
