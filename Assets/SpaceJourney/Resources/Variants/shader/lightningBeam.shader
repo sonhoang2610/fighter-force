@@ -10,6 +10,7 @@
 			_Noise("Noise",float) = 0.21
 		_OffsetX("OffsetX",float) = 0
 			_OffsetY("OffsetY",float) = 0
+		_ThreshHold("ThreshHold",float) = 0
 	}
 		SubShader
 	{
@@ -56,6 +57,7 @@
 		   }
 
 		   float _Noise;
+		   float _ThreshHold;
 		   float noise(in float2 p, in float s)
 		   {
 			   float2 i = floor(p);
@@ -106,7 +108,9 @@
 	   //        float t = abs(1.0 / ((uv.x + fbm( uv + worktime/i)) * (i*50.0)));
 			   float t = abs(1.0 / ((uv.y + fbm(uv + worktime / i)) * (i * _Size)));
 			   finalColor += t * float3(i * 0.3 + _Color.x, i * 0.3 + _Color.y, i * 0.3 + _Color.z);
+			   finalColor = clamp(finalColor, float3(0, 0, 0), float3(1, 1, 1));
 			   alpha += t*t;
+			   alpha = clamp(alpha, 0, 1);
 		   }
    float4 pColor = TurnBlackToAlpha(float4(finalColor, alpha), 1, 1);
    pColor.a *= alpha;

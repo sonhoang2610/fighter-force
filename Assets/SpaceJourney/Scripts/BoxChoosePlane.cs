@@ -153,10 +153,18 @@ namespace EazyEngine.Space.UI
                         pInfos.Add(pInfo);
                     }
                 }
+                pInfos.Sort(sortPlane);
                 DataSource = pInfos.ToObservableList();
             }
         }
-
+        public int sortPlane(PlaneInfoConfig a, PlaneInfoConfig b)
+        {
+            if(a.CurrentLevel == b.CurrentLevel)
+            {
+               return a.Info.RankPlane.CompareTo(b.Info.RankPlane);
+            }
+            return b.CurrentLevel.CompareTo(a.CurrentLevel);
+        } 
         public void choosedPlane(int index)
         {
 

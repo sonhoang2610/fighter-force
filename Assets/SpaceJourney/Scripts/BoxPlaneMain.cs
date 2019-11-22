@@ -120,7 +120,11 @@ namespace EazyEngine.Space.UI
             }
         
         }
-
+        public override void setDataItem(PlaneInfoConfig pData, ItemPlaneMain pItem)
+        {
+            base.setDataItem(pData, pItem);
+            pItem.transform.SetSiblingIndex(pItem.Index);
+        }
         public void refreshData()
         {
             PlaneInfo[] pInfos = (PlaneInfo[])GameDatabase.Instance.getAllItem(CategoryItem.PLANE);
@@ -139,7 +143,7 @@ namespace EazyEngine.Space.UI
                     pInfoIntanceds.Add(pInfoConfig);
                 }
             }
-            //pInfoIntanceds.Sort(sortPlane);
+            pInfoIntanceds.Sort(sortPlane);
             DataSource = pInfoIntanceds.ToObservableList();
         }
         // Start is called before the first frame update
@@ -175,9 +179,13 @@ namespace EazyEngine.Space.UI
                 }
             }
         }
-        public int sortPlane(PlaneInfoConfig pInfo1, PlaneInfoConfig pInfo2)
+        public int sortPlane(PlaneInfoConfig a, PlaneInfoConfig b)
         {
-            return pInfo2.CurrentLevel.CompareTo(pInfo1.CurrentLevel);
+            if (a.CurrentLevel == b.CurrentLevel)
+            {
+                return a.Info.RankPlane.CompareTo(b.Info.RankPlane);
+            }
+            return b.CurrentLevel.CompareTo(a.CurrentLevel);
         }
 
         // Update is called once per frame
