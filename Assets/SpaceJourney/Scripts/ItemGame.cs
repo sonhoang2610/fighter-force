@@ -47,6 +47,14 @@ namespace EazyEngine.Space
                 return "Duration Time " + Duration;
             }
         }
+
+        public string animationTimeLabel
+        {
+            get
+            {
+                return "Animation Time " + AnimationTime;
+            }
+        }
 #endif
         [HideLabel]
         [FoldoutGroup("@coolDownLabel")]
@@ -54,6 +62,9 @@ namespace EazyEngine.Space
         [HideLabel]
         [FoldoutGroup("@durationLabel")]
         public UnitDefineLevel duration = new UnitDefineLevel(5);
+        [HideLabel]
+        [FoldoutGroup("@animationTimeLabel")]
+        public UnitDefineLevel animationTime = new UnitDefineLevel(0);
         public FlowCanvas.FlowScript controller;
         [HideIf("isActive")]
         public FlowCanvas.FlowScript condition;
@@ -64,6 +75,13 @@ namespace EazyEngine.Space
             get
             {
                 return duration.getUnit(0);
+            }
+        }
+        public virtual float AnimationTime
+        {
+            get
+            {
+                return animationTime.getUnit(0);
             }
         }
     }

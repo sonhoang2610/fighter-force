@@ -51,6 +51,14 @@ namespace EazyEngine.Space
             }
         }
 
+        public override float AnimationTime
+        {
+            get
+            {
+                return animationTime.getUnit(CurrentLevel);
+            }
+        }
+
 
         public override string Desc {
             get {
