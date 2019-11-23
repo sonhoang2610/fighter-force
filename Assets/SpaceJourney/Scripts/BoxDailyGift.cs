@@ -100,7 +100,7 @@ namespace EazyEngine.Space.UI
                     status = 1;
 
                 }
-                else if (i == GameManager.Instance.dailyGiftModule.currentDay + 1 && GameManager.Instance.dailyGiftModule.lastDate != time.DayOfYear)
+                else if (i == GameManager.Instance.dailyGiftModule.currentDay + 1 && GameManager.Instance.dailyGiftModule.lastDate != time.DayOfYear && GameManager.Instance.dailyGiftModule.lastDateAds != time.DayOfYear)
                 {
                     databse.item[i].isNext = true;
                 }

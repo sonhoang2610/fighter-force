@@ -18,6 +18,7 @@ namespace EazyEngine.Space.UI
         public UIButton btnUnlock, btnFreePlay;
         public UIButton btnFight;
         public GameObject boxRank;
+        public GameObject boxLevel;
         public UILabel nameUser, idUser;
         protected List<BoxBasePlane> selectedBoxPlane = new List<BoxBasePlane>();
      
@@ -259,6 +260,7 @@ namespace EazyEngine.Space.UI
             if (pInfo.CurrentLevel == 0 && pInfo.Info.conditionUnlock.quantityRequire > 0)
             {
                 requireUnlock.gameObject.SetActive(true);
+                boxLevel.gameObject.SetActive(false);
                 if (pInfo.Info.conditionUnlock.craftItem)
                 {
                     requireUnlock.Data = pInfo.Info.conditionUnlock;
@@ -267,6 +269,11 @@ namespace EazyEngine.Space.UI
             }
             else
             {
+                if(pInfo.CurrentLevel > 0)
+                {
+                    boxLevel.transform.Find("level").GetComponent<UILabel>().text = pInfo.CurrentLevel.ToString();
+                    boxLevel.gameObject.SetActive(true);
+                }
                 requireUnlock.gameObject.SetActive(false);
             }
             if (pInfo.GetType() != typeof(EazyEngine.Space.SupportPlaneInfoConfig))

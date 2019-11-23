@@ -363,7 +363,6 @@ namespace EazyEngine.Space
                     break;
                 }
             }
-            if (GameManager.Instance.isFree)
             players = new Character[1];
             players[0] = Instantiate<Character>(GameManager.Instance.Database.planes[pSelectedPlane].Info.modelPlane);
             var pDataPlane = pSelectedPlane >=0 ? GameManager.Instance.Database.planes[pSelectedPlane] : null;
