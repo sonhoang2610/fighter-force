@@ -23,7 +23,7 @@ namespace EazyEngine.Space.UI
     {
 #if UNITY_EDITOR
         public bool isBoos;
-        public GameObject starContainer;
+
         public Vector2[] starposs;
         public int indexGeneratePos;
         [Button("GeneratePosStar")]
@@ -42,6 +42,7 @@ namespace EazyEngine.Space.UI
             boxCraft.transform.Find("line").localRotation = Quaternion.Euler(posContainer[indexGenerateBoxCraft].rotationLine);
         }
 #endif
+        public GameObject starContainer;
         public GameObject boxCraft;
         public UILabel level, levelBoss;
         public GameObject[] stars;
@@ -57,11 +58,11 @@ namespace EazyEngine.Space.UI
                     {
                         if(j - 3*i < value.star[i])
                         {
-                            stars[j].GetComponent<UIWidget>().alpha = 1;
+                            stars[j].GetComponent<EazyFrameCache>().setFrameIndexUnPixelPerfect(0);
                         }
                         else
                         {
-                            stars[j].GetComponent<UIWidget>().alpha = 0;
+                            stars[j].GetComponent<EazyFrameCache>().setFrameIndexUnPixelPerfect(1);
                         }
                     }
                 }
@@ -92,10 +93,12 @@ namespace EazyEngine.Space.UI
                         tab.pressedSprite2D = bossDisableSprite[1];
                     }
                    tab.GetComponentInChildren<Collider>().enabled = false;
+                    starContainer.gameObject.SetActive(false);
                 }
                 else
                 {
                     tab.GetComponentInChildren<Collider>().enabled = true;
+                    starContainer.gameObject.SetActive(true);
                 }
                 level.gameObject.SetActive(true);
                 levelBoss.gameObject.SetActive(true);

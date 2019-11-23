@@ -142,6 +142,19 @@ namespace EazyEngine.Space.UI
                         requireCraft = paymentInfos[0][1].quantity;
 
                     }
+                  var pCheck =  layerUnlock.GetComponentInChildren<CheckUnlockPlane>();
+                    if(pCheck.infos.Length == 1)
+                    {
+                        pCheck.infos[0] = value.info;
+                    }
+                    else
+                    {
+                        pCheck.infos = new PlaneInfo[]
+                        {
+                            value.info
+                        };
+                    }
+                    pCheck.check();
                     layerUnlock.gameObject.SetActive(false);
                     if (value.CurrentLevel == 0)
                     {

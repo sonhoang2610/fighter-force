@@ -38,6 +38,7 @@ namespace EazyEngine.Space.UI
                 Invoke(nameof(updatePage), 0.25f);
             }
             base.Start();
+            MainScene.Instance.addSelectedBoxPlane(this);
         }
 
         private void OnEnable()

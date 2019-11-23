@@ -20,7 +20,15 @@ namespace EazyEngine.Space.UI
                 {
                     var pItem = GameManager.Instance.Database.getComonItem(value.craftItem);
                     icon.sprite2D = pItem.item.CateGoryIcon;
-                    quantity.text = pItem.Quantity.ToString()+"/"+ value.quantityRequire;
+                    if(value.quantityRequire == 0)
+                    {
+                        quantity.text = pItem.Quantity.ToString();
+                    }
+                    else
+                    {
+                        quantity.text = pItem.Quantity.ToString() + "/" + value.quantityRequire;
+                    }
+                 
                 }
       
             }

@@ -80,7 +80,7 @@ namespace EazyEngine.Space.UI
             isSelected = pBool;
             if (layerButton)
             {
-                layerButton.gameObject.SetActive(pBool);
+               // layerButton.gameObject.SetActive(pBool);
             }
             if (pBool)
             {

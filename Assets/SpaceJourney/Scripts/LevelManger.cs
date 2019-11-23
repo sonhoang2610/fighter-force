@@ -343,7 +343,7 @@ namespace EazyEngine.Space
             {
                 Firebase.Analytics.FirebaseAnalytics.LogEvent("FreeFirst");
                 GameManager.Instance.freePlaneChoose = "MainPlane5";
-                GameManager.Instance.freeSpPlaneChoose = "SpPlane2";
+                GameManager.Instance.freeSpPlaneChoose = "SpPlane4";
             }
             int pSelectedPlane = -1;
             for (int i = 0; i < GameManager.Instance.Database.planes.Count; ++i)

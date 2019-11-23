@@ -98,41 +98,44 @@ namespace EazyEngine.Space.UI
         }
         public void clearBox()
         {
-            if(selectedBoxPlane.Count == 1)
-            {
-                upgrade();
-                return;
-            }
-            for (int i = 0; i < selectedBoxPlane.Count; ++i)
-            {
-                selectedBoxPlane[i].selected(false);
-            }
-            selectedBoxPlane.Clear();
+            //for (int i = 0; i < selectedBoxPlane.Count; ++i)
+            //{
+            //    selectedBoxPlane[i].selected(false);
+            //}
+            //selectedBoxPlane.Clear();
         }
 
         public void clearBoxIfHasItemInBox(BoxBasePlane pPlane)
         {
-            if (selectedBoxPlane.Contains(pPlane) && selectedBoxPlane.Count == 2)
-            {
-                upgradeSp();
-                return;
-            }
-            if (pPlane.DataSource.Count > 0)
-            {
+         
+            //if (pPlane.DataSource.Count > 0)
+            //{
 
-                for (int i = 0; i < selectedBoxPlane.Count; ++i)
-                {
-                    selectedBoxPlane[i].selected(false);
-                }
-                selectedBoxPlane.Clear();
-            }
+            //    for (int i = 0; i < selectedBoxPlane.Count; ++i)
+            //    {
+            //        selectedBoxPlane[i].selected(false);
+            //    }
+            //    selectedBoxPlane.Clear();
+            //}
         }
 
         public void addSelectedBoxPlane(BoxBasePlane pPlane)
         {
+        
             if (selectedBoxPlane.Contains(pPlane))
             {
-
+                if(stateGames[stateGames.Count-1] == "Upgrade")
+                {
+                    return;
+                }
+                if (pPlane.GetType() == typeof(BoxPlaneMain))
+                {
+                    upgrade();
+                }
+                else
+                {
+                    upgradeSp();
+                }
                 return;
             }
             if (pPlane.DataSource.Count <= 0) return;
@@ -163,7 +166,10 @@ namespace EazyEngine.Space.UI
         {
             for (int i = 0; i < selectedBoxPlane.Count; ++i)
             {
-                selectedBoxPlane[i].nextPage();
+                if (selectedBoxPlane[i].GetType() == typeof(BoxPlaneMain))
+                {
+                    selectedBoxPlane[i].nextPage();
+                }
             }
         }
 
@@ -171,7 +177,31 @@ namespace EazyEngine.Space.UI
         {
             for (int i = 0; i < selectedBoxPlane.Count; ++i)
             {
-                selectedBoxPlane[i].previousPage();
+                if (selectedBoxPlane[i].GetType() == typeof(BoxPlaneMain))
+                {
+                    selectedBoxPlane[i].previousPage();
+                }
+            }
+        }
+        public void nextPageSp()
+        {
+            for (int i = 0; i < selectedBoxPlane.Count; ++i)
+            {
+                if (selectedBoxPlane[i].GetType() == typeof(BoxSpPlaneMain))
+                {
+                    selectedBoxPlane[i].nextPage();
+                }
+            }
+        }
+
+        public void previousPageSp()
+        {
+            for (int i = 0; i < selectedBoxPlane.Count; ++i)
+            {
+                if (selectedBoxPlane[i].GetType() == typeof(BoxSpPlaneMain))
+                {
+                    selectedBoxPlane[i].previousPage();
+                }
             }
         }
 
@@ -195,6 +225,11 @@ namespace EazyEngine.Space.UI
             MidLayer.Instance.boxLucky.show();
         }
 
+        public void showBoxDaily()
+        {
+            MidLayer.Instance.showBoxDailyGift();
+        }
+
         public void showBoxOnline()
         {
             MidLayer.Instance.BoxGiftOnline.show();
@@ -215,12 +250,13 @@ namespace EazyEngine.Space.UI
         }
         public void setDataMainPlane(PlaneInfoConfig pInfo)
         {
+            if (pInfo.GetType() == typeof(SupportPlaneInfoConfig)) return;
             selectedPlane = pInfo;
             boxInfo.Data = pInfo;
             btnFreePlay.gameObject.SetActive(!(pInfo.CurrentLevel > 0));
             boxRank.gameObject.SetActive((pInfo.CurrentLevel > 0));
             boxRank.GetComponentInChildren<EazyFrameCache>().setFrameIndex(pInfo.Rank);
-            if (pInfo.CurrentLevel == 0)
+            if (pInfo.CurrentLevel == 0 && pInfo.Info.conditionUnlock.quantityRequire > 0)
             {
                 requireUnlock.gameObject.SetActive(true);
                 if (pInfo.Info.conditionUnlock.craftItem)

@@ -16,7 +16,7 @@ namespace EazyEngine.Space.UI
         public UIElement boxPrepare;
         public void showBoxDailyGift()
         {
-            boxLucky.show();
+            boxDailyGift.GetComponent<UIElement>().show();
         }
 
         public void showBoxLucky()

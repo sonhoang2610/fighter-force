@@ -102,8 +102,12 @@ public class BaseBox<TItem, TData> : MonoBehaviour where TItem : BaseItem<TData>
             items[i].hide();
         }
         List<TData> initData = new List<TData>();
+        Dictionary<TData, int> indexBoard = new Dictionary<TData, int>();
+        for(int i = 0; i < DataSource.Count; ++i)
+        {
+            indexBoard.Add(DataSource[i], i);
+        }
         initData.AddRange(DataSource.ToArray());
-        int index = 0;
         for (int i = initData.Count - 1; i >= 0; --i)
         {
             var pItem = obtainItemExistData(initData[i]);
@@ -118,16 +122,16 @@ public class BaseBox<TItem, TData> : MonoBehaviour where TItem : BaseItem<TData>
                 {
                     Item[initData[i]] = pItem;
                 }
-                pItem.Index = index;
+                pItem.Index = indexBoard[initData[i]];
+                setDataItem(initData[i], pItem);
                 pItem.show();
                 pItem.Using = true;
                 initData.RemoveAt(i);
-                index++;
             }
         }
         for (int i = 0; i < initData.Count; ++i)
         {
-            var pItem = obtainItemNewData(initData[i],index);
+            var pItem = obtainItemNewData(initData[i], indexBoard[initData[i]]);
 
             if (!Item.ContainsKey(initData[i]))
             {
@@ -137,7 +141,6 @@ public class BaseBox<TItem, TData> : MonoBehaviour where TItem : BaseItem<TData>
             {
                 Item[initData[i]] = pItem;
             }
-            index++;
             pItem.show();
             pItem.Using = true;
         }
