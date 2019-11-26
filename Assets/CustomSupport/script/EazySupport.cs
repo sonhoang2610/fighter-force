@@ -1251,6 +1251,18 @@ public static class ArrayExtension
         }
         return 0;
     }
+    public static List<T> Shuffle<T>(this List<T> list)
+    {
+        for (var i = list.Count - 1; i > 0; i--)
+        {
+            var j = (int)Mathf.Floor(UnityEngine.Random.value * (i + 1));
+            var temp = list[i];
+            list[i] = list[j];
+            list[j] = temp;
+        }
+
+        return list;
+    }
 }
 public static class GameObjectExtensions
 {

@@ -25,6 +25,7 @@ namespace EazyEngine.Space.UI
         public UI2DSprite iconCateGory;
         public UILabel quantity;
         public UIButton btnAddMore;
+        public GameObject[] behaviorScores;
         public GameObject model;
         public bool EffectOnShow = false;
         public bool autoSelfLoad = true;
@@ -63,10 +64,49 @@ namespace EazyEngine.Space.UI
                         iconCateGory.gameObject.SetActive(false);
                     }
                 }
+                calculateScore();
                 isInit = true;
             }
         }
+        public void setBehaviorScore(int pIndex)
+        {
+            foreach(var pBehavior in behaviorScores)
+            {
+                var monos = pBehavior.GetComponents<MonoBehaviour>();
+                foreach(var mono in monos)
+                {
+                   var pMethod = mono.GetType().GetMethod("setBehaviorIndex");
+                    if(pMethod != null)
+                    {
+                        pMethod.Invoke(mono,new object[] { pIndex });
+                    }
+                }
+            }
+        }
 
+        public void calculateScore()
+        {
+            var pScore = Data.item.score * Data.quantity;
+            if(pScore < 29999)
+            {
+                setBehaviorScore(0);
+            }else if( pScore < 59999)
+            {
+                setBehaviorScore(1);
+            }
+            else if (pScore < 99999)
+            {
+                setBehaviorScore(2);
+            }
+            else if (pScore < 200000)
+            {
+                setBehaviorScore(3);
+            }
+            else
+            {
+                setBehaviorScore(4);
+            }
+        }
         public void clickMore()
 	    {
 		    ShopManager.Instance.showBoxShop(Data.item.categoryItem.ToString());
@@ -214,6 +254,11 @@ namespace EazyEngine.Space.UI
                 pSequence.Append(pFade);
                 pSequence.Play();
                 cacheTween = pSequence;
+            }
+        }
+        public override int Index { get => base.Index; set {
+                name = value.ToString("D2");
+                base.Index = value;
             }
         }
     }

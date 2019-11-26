@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace EazyEngine.Space
 {
+    using Sirenix.Serialization;
 #if UNITY_EDITOR
     using UnityEditor;
     public class MissionItemCreator
@@ -32,6 +33,8 @@ namespace EazyEngine.Space
     public class MissionItem : BaseItemGame
     {
         public FlowCanvas.FlowScript checkComplete;
+        [OdinSerialize]
+        public Dictionary<string, object> VariableDict = new Dictionary<string, object>();
     }
 
     [System.Serializable]

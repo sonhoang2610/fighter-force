@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using EazyCustomAction;
 
+public interface ISetIndex
+{
 
+}
 public class NGUIEditMaterial : MonoBehaviour {
     [SerializeField]
     PropertyShader[] properties;
@@ -103,6 +106,11 @@ public class NGUIEditMaterial : MonoBehaviour {
         {
             Properties[1].EffectAmount = value;
         }
+    }
+
+    public void setBehaviorIndex(int pIndex)
+    {
+        setGroupIndex(pIndex);
     }
     public void setEffectAmountColorHDR(int index, Color effect)
     {

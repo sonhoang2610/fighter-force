@@ -23,6 +23,10 @@ public class EazyFrameCache : MonoBehaviour
     public bool disableAudio = false;
     public int intialFrame = -1;
     public int _nIndexNow = 0;
+    public void setBehaviorIndex(int pIndex)
+    {
+        setFrameIndexUnPixelPerfect(pIndex);
+    }
     public SpriteRenderer SpriteRenderer
     {
         get

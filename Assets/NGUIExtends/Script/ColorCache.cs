@@ -5,6 +5,7 @@ using UnityEngine;
 public class ColorCache : MonoBehaviour {
 
     public Color[] colors;
+    public bool isOutlineLabel;
      UIWidget widget;
     UIWidget Widget
     {
@@ -13,11 +14,36 @@ public class ColorCache : MonoBehaviour {
             return widget ? widget : widget = GetComponent<UIWidget>();
         }
     }
+    UILabel label;
+    UILabel Label
+    {
+        get
+        {
+            return label ? label : label = GetComponent<UILabel>();
+        }
+    }
+
+    public void setBehaviorIndex(int pIndex)
+    {
+        setColorIndex(pIndex);
+    }
+
     public void setColorIndex(int index)
     {
-        if(colors  != null && index < colors.Length)
+        if (isOutlineLabel)
         {
-            Widget.color = colors[index];
+            if (colors != null && index < colors.Length)
+            {
+                Label.effectColor = colors[index];
+            }
         }
+        else
+        {
+            if (colors != null && index < colors.Length)
+            {
+                Widget.color = colors[index];
+            }
+        }
+     
     }
 }

@@ -1,18 +1,25 @@
-﻿using System.Collections;
+﻿using EazyEngine.Tools;
+using Sirenix.Serialization;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MissionContainer : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+namespace EazyEngine.Space
+{
+    [System.Serializable]
+    public class MissionModule
     {
-        
+        public FlowCanvas.FlowScript condition;
+        [OdinSerialize]
+        public Dictionary<string, object> VariableDict = new Dictionary<string, object>();
+        public MissionItemInstanced[] missions;
+    }
+    [CreateAssetMenu( menuName = "EazyEngine/Space/MissionDatabase", order =0)]
+    public class MissionDatabase : EzScriptTableObject
+    {
+        [OdinSerialize,System.NonSerialized]
+        public MissionModule[] dailyMissions;
+        public MissionItemInstanced[] achievements;
     }
 }

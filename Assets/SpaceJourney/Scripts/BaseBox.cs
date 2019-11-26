@@ -27,7 +27,9 @@ public class BaseBox<TItem, TData> : MonoBehaviour where TItem : BaseItem<TData>
             _infos = value;
             if (attachMent)
             {
+                
                 SendMessage("Reposition", attachMent, SendMessageOptions.DontRequireReceiver);
+                SendMessage("SortAlphabetically", attachMent, SendMessageOptions.DontRequireReceiver);
             }
         }
         get
@@ -147,6 +149,7 @@ public class BaseBox<TItem, TData> : MonoBehaviour where TItem : BaseItem<TData>
         if (attachMent)
         {
             attachMent.SendMessage("Reposition", SendMessageOptions.DontRequireReceiver);
+            attachMent.SendMessage("SortAlphabetically", attachMent, SendMessageOptions.DontRequireReceiver);
         }
         
     }

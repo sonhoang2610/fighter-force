@@ -8,8 +8,8 @@ namespace EazyEngine.Space.UI
 {
     public class WheelManager : Singleton<WheelManager>,EzEventListener<GameDatabasePropertyChanged<int>>,EzEventListener<EventTimer>
     {
-        public EazyParallax parallax;
-        public ItemWheel[] items;
+        public SpinWheel parallax;
+       // public ItemWheel[] items;
         public BaseItemGame itemExchange;
         public BaseItemGame itemWatchExchange;
         public UIButton btnRoll;
@@ -28,10 +28,12 @@ namespace EazyEngine.Space.UI
         public UILabel labelTicketGet;
         public GameObject layerTicket;
         public GameObject layerGold;
+        public GameObject effectBuyTicket;
+        public List<BaseItemGameInstancedArray> cacheInfos = new List<BaseItemGameInstancedArray>();
 
         public float delayResult = 1;
 
-        protected BaseItemGameInstancedArray data;
+       // protected BaseItemGameInstancedArray data;
         // Start is called before the first frame update
         void Start()
         {
@@ -42,18 +44,14 @@ namespace EazyEngine.Space.UI
             labelPrice.text = priceTicket.ToString();
             labelTicketGet.text = quantityTicketCanGet.ToString();
             iconprice.sprite2D = itemExchangeTicket.CateGoryIcon;
-            List<BaseItemGameInstanced> pInfos = new List<BaseItemGameInstanced>();
-            for(int i = 0; i< GameDatabase.Instance.ItemWheelConfig.Length; ++i)
+            List<BaseItemGameInstancedArray> pInfos = new List<BaseItemGameInstancedArray>();
+            for (int i = 0; i < GameDatabase.Instance.ItemWheelConfig.Length; ++i)
             {
                 GameDatabase.Instance.ItemWheelConfig[i].CurrentLevel = GameManager.Instance.Database.CurrentLevelWheel;
-                items[i].Data = new BaseItemGameInstancedArray() { infos =  new ItemWheelInfoConfig[] { GameDatabase.Instance.ItemWheelConfig[i] } };
+                pInfos.Add( new BaseItemGameInstancedArray() { infos = new ItemWheelInfoConfig[] { GameDatabase.Instance.ItemWheelConfig[i] } });
             }
-            data = new BaseItemGameInstancedArray() { infos = GameDatabase.Instance.ItemWheelConfig };
-            for(int i = 0; i < parallax.Elements.Length; ++i)
-            {
-                parallax.Elements[i].GetComponent<ItemWheel>().Data = data;
-            }
-            
+            cacheInfos = pInfos;
+            parallax.DataSource = pInfos.ToObservableList();
         }
 
         private void OnEnable()
@@ -116,17 +114,27 @@ namespace EazyEngine.Space.UI
 
         public void onStopRoll()
         {
-            isRolling = false;
-            updateWheelChance();
-            updateTimeLeft();
-            TopLayer.Instance.boxReward.show();
-            var pStorage = GameManager.Instance.Database.getComonItem(data.infos[cacheResult].item.ItemID);
-            pStorage.Quantity+= data.infos[cacheResult].Quantity;
-            if (typeof(IExtractItem).IsAssignableFrom(data.infos[cacheResult].item.GetType()))
+           StartCoroutine( delayAction(0.3f, delegate
             {
-                ((IExtractItem)data.infos[cacheResult].item).disableExtracItem();
-            }
-            EzEventManager.TriggerEvent(new RewardEvent() { item = new BaseItemGameInstanced() { item = data.infos[cacheResult].item,quantity = data.infos[cacheResult].Quantity} });
+                isRolling = false;
+                updateWheelChance();
+                updateTimeLeft();
+                TopLayer.Instance.boxReward.show();
+                var pStorage = GameManager.Instance.Database.getComonItem(cacheInfos[cacheResult].infos[0].item.ItemID);
+                pStorage.Quantity += cacheInfos[cacheResult].infos[0].Quantity;
+                if (typeof(IExtractItem).IsAssignableFrom(cacheInfos[cacheResult].infos[0].item.GetType()))
+                {
+                    ((IExtractItem)cacheInfos[cacheResult].infos[0].item).disableExtracItem();
+                }
+                EzEventManager.TriggerEvent(new RewardEvent() { item = new BaseItemGameInstanced() { item = cacheInfos[cacheResult].infos[0].item, quantity = cacheInfos[cacheResult].infos[0].Quantity } });
+            }));
+     
+        }
+
+        public IEnumerator delayAction(float pSec , System.Action onAction)
+        {
+            yield return new WaitForSeconds(pSec);
+            onAction?.Invoke();
         }
         bool isRolling = false;
         public void startRoll()
@@ -134,9 +142,10 @@ namespace EazyEngine.Space.UI
             updateWheelChance();
             btnRoll.isEnabled = false;
             btnFree.isEnabled = false;
+            random();
+            parallax.itemNumber = cacheResult;
             parallax.startRoll();
             isRolling = true;
-            StartCoroutine(result());
 
         }
         public void watch()
@@ -219,6 +228,10 @@ namespace EazyEngine.Space.UI
         {
             if (isSucess)
             {
+                if (effectBuyTicket)
+                {
+                    effectBuyTicket.gameObject.SetActive(isSucess);
+                }
                 var pItemExchange = GameManager.Instance.Database.getComonItem(itemExchange);
                 pItemExchange.Quantity += 10;
                 GameManager.Instance.SaveGame();
@@ -252,9 +265,9 @@ namespace EazyEngine.Space.UI
         {
             float pCurrentPercent = 1;
             float pRandom = UnityEngine.Random.Range(0, 1.0f);
-            for(int i = data.infos.Length-1; i >= 0; --i)
+            for(int i = cacheInfos.Count-1; i >= 0; --i)
             {
-                pCurrentPercent -= data.infos[i].percent / 100.0f;
+                pCurrentPercent -= cacheInfos[i].infos[0].percent / 100.0f;
                 if (pRandom > pCurrentPercent)
                 {
                     cacheResult = i;
@@ -263,28 +276,19 @@ namespace EazyEngine.Space.UI
             }
         }
         int cacheResult = 0;
-        public IEnumerator result()
-        {
-            yield return new WaitForSeconds(delayResult);
-            parallax.isForever = false;
-            random();
-            parallax.Elements[3].GetComponent<ItemWheel>().fixItem(cacheResult);
-        }
 
         public void OnEzEvent(GameDatabasePropertyChanged<int> eventType)
         {
             if(eventType.nameProperty == "CurrentLevelWheel")
             {
+                List<BaseItemGameInstancedArray> pInfos = new List<BaseItemGameInstancedArray>();
                 for (int i = 0; i < GameDatabase.Instance.ItemWheelConfig.Length; ++i)
                 {
                     GameDatabase.Instance.ItemWheelConfig[i].CurrentLevel = GameManager.Instance.Database.CurrentLevelWheel;
-                    items[i].Data = new BaseItemGameInstancedArray() { infos = new ItemWheelInfoConfig[] { GameDatabase.Instance.ItemWheelConfig[i] } };
+                    pInfos.Add( new BaseItemGameInstancedArray() { infos = new ItemWheelInfoConfig[] { GameDatabase.Instance.ItemWheelConfig[i] } });
                 }
-                for (int i = 0; i < parallax.Elements.Length; ++i)
-                {
-                    parallax.Elements[i].GetComponent<ItemWheel>().Data = data;
-                }
-
+                parallax.DataSource = pInfos.ToObservableList();
+                cacheInfos = pInfos;
             }
         }
 
