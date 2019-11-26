@@ -2110,7 +2110,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     totalDeath: 0
-  - isExpaned: 1
+  - isExpaned: 0
     nameState: MiniBoss
     comment: 1
     nameGroup: MiniBoss (1)
@@ -2121,7 +2121,7 @@ MonoBehaviour:
       quantity: 1
       typeSpawn: 2
       typeFomation: 0
-      startSpawnPos: {x: -0.09261942, y: 10.463022}
+      startSpawnPos: {x: -0.1773362, y: 11.78131}
       AxisX: 0
       sizeDomain: {x: 1, y: 1}
       distanceEmiter: {x: 1, y: 1}
@@ -2137,8 +2137,8 @@ MonoBehaviour:
         points:
         - {x: -0.17733622, y: 11.781308, z: 0}
         - {x: -0.17733622, y: 11.281308, z: 0}
-        - {x: 2.9172153, y: 6.353466, z: 0}
-        - {x: -0.9359939, y: 6.0713005, z: 0}
+        - {x: 2.7970686, y: 6.043306, z: 0}
+        - {x: -0.03310615, y: 6.0786085, z: 0}
         modes: 00000000000000000000000000000000
         loop: 0
         lineMode: 1
@@ -2148,61 +2148,6 @@ MonoBehaviour:
         currentNode: 0
       lookType: 2
       durationMove: 1
-      speedBase: 0
-      curvesMoving:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      loop: 1
-      onCompleteNode: []
-      conditionComplete:
-      - condition: 0
-        destroyQuantity: 1
-        triggerString: 
-      onComplete:
-        m_PersistentCalls:
-          m_Calls: []
-      onStart:
-        m_PersistentCalls:
-          m_Calls: []
-    - indexStateMove: 0
-      DelayStart: 0
-      RowDelay: 0
-      splineRaw:
-        points:
-        - {x: -0.93599427, y: 6.0713005, z: 0}
-        - {x: -1.0653286, y: 8.920821, z: 0}
-        - {x: 3.9258654, y: 6.3400674, z: 0}
-        - {x: 0.07265496, y: 6.057901, z: 0}
-        modes: 00000000000000000000000000000000
-        loop: 0
-        lineMode: 1
-        relative: 1
-        snap: 0
-        snapGrid: {x: 0, y: 0}
-        currentNode: 0
-      lookType: 3
-      durationMove: 3
       speedBase: 0
       curvesMoving:
         serializedVersion: 2
@@ -2267,19 +2212,19 @@ MonoBehaviour:
       RowDelay: 0
       splineRaw:
         points:
-        - {x: 0.07265496, y: 6.057901, z: 0}
-        - {x: -3.7805545, y: 5.775735, z: 0}
-        - {x: -4.944175, y: 4.578622, z: 0}
-        - {x: -3.6872652, y: 3.9813986, z: 0}
-        - {x: -2.4303567, y: 3.384173, z: 0}
-        - {x: -0.9773443, y: 3.19937, z: 0}
-        - {x: 0.13392282, y: 3.2613835, z: 0}
-        - {x: 1.2451901, y: 3.3233972, z: 0}
-        - {x: 3.240139, y: 3.5067925, z: 0}
-        - {x: 4.2720156, y: 4.700061, z: 0}
-        - {x: 5.303895, y: 5.8933287, z: 0}
-        - {x: -0.8404925, y: 6.2791133, z: 0}
-        - {x: 0.15950775, y: 6.1612086, z: 0}
+        - {x: -0.03310615, y: 6.0786085, z: 0}
+        - {x: -2.8632808, y: 6.113911, z: 0}
+        - {x: -5.046934, y: 4.859256, z: 0}
+        - {x: -3.7900252, y: 4.2620325, z: 0}
+        - {x: -2.5331163, y: 3.6648092, z: 0}
+        - {x: -1.1002266, y: 4.642144, z: 0}
+        - {x: 0.011040419, y: 4.704158, z: 0}
+        - {x: 1.1223075, y: 4.7661715, z: 0}
+        - {x: 3.2093081, y: 3.5141006, z: 0}
+        - {x: 4.241185, y: 4.707369, z: 0}
+        - {x: 5.2730646, y: 5.9006367, z: 0}
+        - {x: 1.9736161, y: 6.337201, z: 0}
+        - {x: -0.003742218, y: 6.088147, z: 0}
         modes: 00000000000000000000000000000000000000000000000000000000
         loop: 0
         lineMode: 0
@@ -2315,7 +2260,59 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       loop: 99999
-      onCompleteNode: []
+      onCompleteNode:
+      - nodeListen: 0
+        onComplate:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 2360559591995646222}
+              m_MethodName: setObjectTarget
+              m_Mode: 0
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+            - m_Target: {fileID: 2360559591995646222}
+              m_MethodName: sendTriggerTargetSetBefore
+              m_Mode: 5
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: MID
+                m_BoolArgument: 0
+              m_CallState: 2
+      - nodeListen: 0
+        onComplate:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 2360559591995646222}
+              m_MethodName: setObjectTarget
+              m_Mode: 0
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+            - m_Target: {fileID: 2360559591995646222}
+              m_MethodName: sendTriggerTargetSetBefore
+              m_Mode: 5
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: MID
+                m_BoolArgument: 0
+              m_CallState: 2
       conditionComplete:
       - condition: 0
         destroyQuantity: 1
@@ -2506,7 +2503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aad115aca74ce3c4891b3f6de0b4aae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundGraphSerialization: '{"version":2.96,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","comments":"StateController","translation":{"x":559.0,"y":-25.0},"zoomFactor":0.5063729,"nodes":[{"_position":{"x":780.0,"y":270.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"2"},{"_action":{"messCompare":"StartGame","$type":"EazyEngine.Space.WaitEventGame"},"_position":{"x":577.0,"y":400.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"3"},{"_position":{"x":864.0,"y":398.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"5"},{"_position":{"x":-553.0,"y":528.0},"$type":"NodeCanvas.BehaviourTrees.Parallel","$id":"6"},{"_action":{"nameState":"State
+  boundGraphSerialization: '{"version":2.96,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","comments":"StateController","translation":{"x":889.0,"y":18.0},"zoomFactor":0.5063729,"nodes":[{"_position":{"x":780.0,"y":270.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"2"},{"_action":{"messCompare":"StartGame","$type":"EazyEngine.Space.WaitEventGame"},"_position":{"x":577.0,"y":400.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"3"},{"_position":{"x":864.0,"y":398.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"5"},{"_position":{"x":-553.0,"y":528.0},"$type":"NodeCanvas.BehaviourTrees.Parallel","$id":"6"},{"_action":{"nameState":"State
     1","wait":{},"$type":"EazyEngine.Space.RunState"},"_position":{"x":-1009.0,"y":848.0},"_tag":"S1","_comment":"States1","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"7"},{"_action":{"nameState":"State
     5","wait":{},"$type":"EazyEngine.Space.RunState"},"_position":{"x":-869.0,"y":844.0},"_tag":"S5","_comment":"States5","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"10"},{"_position":{"x":-246.0,"y":563.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"13"},{"_color":{"r":0.7490196,"g":0.4980392,"b":1.0,"a":1.0},"_position":{"x":-614.0,"y":764.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"14"},{"_action":{"waitTime":{"_value":5.0},"timerBehavior":{},"$type":"NodeCanvas.Tasks.Actions.Wait"},"_position":{"x":-610.0,"y":1064.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"15"},{"_position":{"x":-488.0,"y":1055.0},"$type":"NodeCanvas.BehaviourTrees.Parallel","$id":"19"},{"_action":{"nameState":"State
     1","wait":{},"$type":"EazyEngine.Space.RunState"},"_position":{"x":-625.0,"y":1232.0},"_tag":"S1","_comment":"States1","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"20"},{"_action":{"nameState":"State
