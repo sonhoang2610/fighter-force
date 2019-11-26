@@ -278,11 +278,11 @@ MonoBehaviour:
   displayNameItem:
     normalString: plane/sp_plane4
     isI2String: 1
-    value: Void Spike
+    value: "Gai H\u01B0 Kh\xF4ng"
   descriptionItem:
     normalString: plane/spplane4_info
     isI2String: 1
-    value: Fire several huge bullets
+    value: "B\u1EAFn m\u1ED9t lo\u1EA1t \u0111\u1EA1n l\u1EDBn"
   categoryItem: 1
   iconShop: {fileID: 21300000, guid: e6787d51ed6ae624287e54dadf1e0a7a, type: 3}
   iconShopDisable: {fileID: 21300000, guid: 96c0681a81eca064e88b6d8cc340e56b, type: 3}
@@ -294,11 +294,33 @@ MonoBehaviour:
   limitUpgrade: 80
   RankPlane: 3
   power:
-    startUnit: 1000
-    algrothimTypeUpgrade: 0
+    startUnit: 650
+    algrothimTypeUpgrade: 1
     stepUnit: 0
     isSpecifiedUnit: 0
-    unitDefines: []
+    unitDefines:
+    - levelRequire: 1
+      unit: 350
+    - levelRequire: 6
+      unit: 400
+    - levelRequire: 11
+      unit: 460
+    - levelRequire: 16
+      unit: 510
+    - levelRequire: 21
+      unit: 3500
+    - levelRequire: 22
+      unit: 620
+    - levelRequire: 26
+      unit: 690
+    - levelRequire: 31
+      unit: 760
+    - levelRequire: 36
+      unit: 820
+    - levelRequire: 41
+      unit: 10000
+    - levelRequire: 42
+      unit: 920
   currentAbility:
   - _ability: {fileID: 11400000, guid: 69ae6d9e9d87ee14f861be308d312702, type: 2}
     isDisplay: 1

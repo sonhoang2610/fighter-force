@@ -240,11 +240,11 @@ MonoBehaviour:
   displayNameItem:
     normalString: plane/main_plane4
     isI2String: 1
-    value: Golden Conqueror
+    value: "K\u1EBB ng\u1EF1 tr\u1ECB v\xE0ng"
   descriptionItem:
     normalString: plane/plane4_info
     isI2String: 1
-    value: Fire bullets in a horizontal line
+    value: "B\u1EAFn lo\u1EA1t \u0111\u1EA1n theo h\xE0ng ngang"
   categoryItem: 0
   iconShop: {fileID: 21300000, guid: 74d0d0775ae16e343bf33c62ec98c3c5, type: 3}
   iconShopDisable: {fileID: 21300000, guid: d87ede4132282e341a894e0a1512d7bb, type: 3}
@@ -256,11 +256,33 @@ MonoBehaviour:
   limitUpgrade: 80
   RankPlane: 2
   power:
-    startUnit: 1000
-    algrothimTypeUpgrade: 0
+    startUnit: 1600
+    algrothimTypeUpgrade: 1
     stepUnit: 0
     isSpecifiedUnit: 0
-    unitDefines: []
+    unitDefines:
+    - levelRequire: 1
+      unit: 330
+    - levelRequire: 6
+      unit: 460
+    - levelRequire: 11
+      unit: 580
+    - levelRequire: 16
+      unit: 650
+    - levelRequire: 21
+      unit: 3500
+    - levelRequire: 22
+      unit: 950
+    - levelRequire: 26
+      unit: 1150
+    - levelRequire: 31
+      unit: 1350
+    - levelRequire: 36
+      unit: 1550
+    - levelRequire: 41
+      unit: 15000
+    - levelRequire: 42
+      unit: 1750
   currentAbility:
   - _ability: {fileID: 11400000, guid: 69ae6d9e9d87ee14f861be308d312702, type: 2}
     isDisplay: 1

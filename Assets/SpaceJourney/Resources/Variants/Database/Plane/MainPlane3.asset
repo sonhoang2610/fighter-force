@@ -299,11 +299,13 @@ MonoBehaviour:
   displayNameItem:
     normalString: plane/main_plane3
     isI2String: 1
-    value: Night Hunter
+    value: "B\u01B0\u1EDBm \u0111\xEAm"
   descriptionItem:
     normalString: plane/plane3_info
     isI2String: 1
-    value: Fire bullets that penetrate through all enemies
+    value: "B\u1EAFn ra vi\xEAn \u0111\u1EA1n h\xECnh b\xE1n nguy\u1EC7t xuy\xEAn
+      th\u1EA5u v\xE0 g\xE2y s\xE1t th\u01B0\u01A1ng m\u1ECDi qu\xE2n \u0111\u1ECBch
+      tr\xEAn \u0111\u01B0\u1EDDng \u0111i"
   categoryItem: 0
   iconShop: {fileID: 21300000, guid: b481a0fff66a49448b5b4d11a7c8d158, type: 3}
   iconShopDisable: {fileID: 21300000, guid: 8c5b243c8e54d904b867a069cdfb9e09, type: 3}
@@ -315,11 +317,33 @@ MonoBehaviour:
   limitUpgrade: 80
   RankPlane: 2
   power:
-    startUnit: 1000
-    algrothimTypeUpgrade: 0
+    startUnit: 2000
+    algrothimTypeUpgrade: 1
     stepUnit: 0
     isSpecifiedUnit: 0
-    unitDefines: []
+    unitDefines:
+    - levelRequire: 1
+      unit: 330
+    - levelRequire: 6
+      unit: 440
+    - levelRequire: 11
+      unit: 550
+    - levelRequire: 16
+      unit: 650
+    - levelRequire: 21
+      unit: 3500
+    - levelRequire: 22
+      unit: 950
+    - levelRequire: 26
+      unit: 1150
+    - levelRequire: 31
+      unit: 1350
+    - levelRequire: 36
+      unit: 1550
+    - levelRequire: 41
+      unit: 15000
+    - levelRequire: 42
+      unit: 1750
   currentAbility:
   - _ability: {fileID: 11400000, guid: 69ae6d9e9d87ee14f861be308d312702, type: 2}
     isDisplay: 1

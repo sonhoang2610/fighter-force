@@ -278,11 +278,11 @@ MonoBehaviour:
   displayNameItem:
     normalString: plane/main_plane2
     isI2String: 1
-    value: Green Wings Bug
+    value: "B\u1ECD c\xE1nh xanh"
   descriptionItem:
     normalString: plane/plane2_info
     isI2String: 1
-    value: Fire bullets in a triangle
+    value: "B\u1EAFn lo\u1EA1t \u0111\u1EA1n theo h\xECnh n\xF3n"
   categoryItem: 0
   iconShop: {fileID: 21300000, guid: af2f31563570ff54494e991021aecc17, type: 3}
   iconShopDisable: {fileID: 21300000, guid: 185e7d72b041b5d41a12dd2539b51d80, type: 3}
@@ -294,11 +294,33 @@ MonoBehaviour:
   limitUpgrade: 80
   RankPlane: 1
   power:
-    startUnit: 1000
-    algrothimTypeUpgrade: 0
+    startUnit: 1300
+    algrothimTypeUpgrade: 1
     stepUnit: 0
     isSpecifiedUnit: 0
-    unitDefines: []
+    unitDefines:
+    - levelRequire: 1
+      unit: 290
+    - levelRequire: 6
+      unit: 400
+    - levelRequire: 11
+      unit: 510
+    - levelRequire: 16
+      unit: 600
+    - levelRequire: 21
+      unit: 3000
+    - levelRequire: 22
+      unit: 950
+    - levelRequire: 26
+      unit: 1100
+    - levelRequire: 31
+      unit: 1310
+    - levelRequire: 36
+      unit: 1440
+    - levelRequire: 41
+      unit: 15000
+    - levelRequire: 42
+      unit: 1650
   currentAbility:
   - _ability: {fileID: 11400000, guid: 69ae6d9e9d87ee14f861be308d312702, type: 2}
     isDisplay: 1
