@@ -9,14 +9,43 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 4f6efac116ccbd14d8c8102314789bfb, type: 3}
   m_Name: MissionDatabase
   m_EditorClassIdentifier: Assembly-CSharp:EazyEngine.Space:MissionDatabase
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 11400000, guid: 7a260ee04f989174f82b65574d3e865a, type: 2}
+    - {fileID: 11400000, guid: 7deb01795670f434297474c52e923ad9, type: 2}
+    - {fileID: 11400000, guid: e0502ae09cd346642b054e4e6fb04a6a, type: 2}
+    - {fileID: 11400000, guid: 7fe69affac39dd849b4cbac509386ec0, type: 2}
+    - {fileID: 11400000, guid: 6ed767f37e3f65643aa7d2b5fb4b818b, type: 2}
+    - {fileID: 11400000, guid: aee618de5d7d1c44cb04d45f15262be7, type: 2}
+    - {fileID: 11400000, guid: d6fd31dfcb94c71429257820536ef4d8, type: 2}
+    - {fileID: 11400000, guid: 3a0c01c796d950d41b53ccb86d06829c, type: 2}
+    - {fileID: 11400000, guid: 1343d235a284f2545be06a4d1d41f1ae, type: 2}
+    - {fileID: 11400000, guid: 90db49db7f9a36b4a8eb4d608b6407eb, type: 2}
+    - {fileID: 11400000, guid: ac87908e0134bb1439bb47b5fe87eb21, type: 2}
+    - {fileID: 11400000, guid: 56b8cd0e8be53e64d8ba1c9d182ab3d3, type: 2}
+    - {fileID: 11400000, guid: 7301eedc413113e428213a97fc5ba1b3, type: 2}
+    - {fileID: 11400000, guid: cf60f3bce7dd0a14aa1a08a9a5c48f3b, type: 2}
+    - {fileID: 11400000, guid: e04c9a404f0da214887338df1c9964f2, type: 2}
+    - {fileID: 11400000, guid: a72be3f5f9a4950469a254c38d51e474, type: 2}
+    - {fileID: 11400000, guid: aee81bf804195fd4b86d4a6ddbc06c17, type: 2}
+    - {fileID: 11400000, guid: 9faa578f34d81e4428cf31251b7ef071, type: 2}
+    - {fileID: 11400000, guid: f4eb5f911c07aa24889d6c82f8016752, type: 2}
+    - {fileID: 11400000, guid: 6eba5daa1cc571b4ebfa14ba202376c7, type: 2}
+    - {fileID: 11400000, guid: 219f045e452591d4c8b13bc3c8c0f180, type: 2}
+    - {fileID: 11400000, guid: f5fad7892af5bb848b6186b987d472a4, type: 2}
+    - {fileID: 11400000, guid: 9e6b8b46a6f403840bc891a2d8ec815f, type: 2}
+    - {fileID: 11400000, guid: c25e130cefcfb1b42a8ff274ab0c1803, type: 2}
+    - {fileID: 11400000, guid: 8a4c50f4fcb9f004191c88a2eb516e5c, type: 2}
+    - {fileID: 11400000, guid: 3b680d93c682b3c48874fc1708c25acf, type: 2}
+    - {fileID: 11400000, guid: c2937364b9c5b674991355878798b36e, type: 2}
+    - {fileID: 11400000, guid: 75f522bfc5c6ad54692b27667841f172, type: 2}
+    - {fileID: 11400000, guid: 0ebae1ce2eed2b94bba1cf1657113315, type: 2}
+    - {fileID: 11400000, guid: 8d125708718afee4e96035a899981992, type: 2}
+    - {fileID: 11400000, guid: 6c08eb809276af34e82106895457d61a, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -31,9 +60,15 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 1|EazyEngine.Space.MissionModule, Assembly-CSharp
+    - Name: IDMission
+      Entry: 1
+      Data: Beginner
     - Name: condition
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 0
+    - Name: weight
+      Entry: 3
+      Data: 0
     - Name: VariableDict
       Entry: 7
       Data: 2|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
@@ -59,19 +94,997 @@ MonoBehaviour:
       Data: 4|EazyEngine.Space.MissionItemInstanced[], Assembly-CSharp
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 8
     - Name: 
       Entry: 7
       Data: 5|EazyEngine.Space.MissionItemInstanced, Assembly-CSharp
+    - Name: condition
+      Entry: 6
+      Data: 
+    - Name: VariableDict
+      Entry: 7
+      Data: 6|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 7|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: isDaily
+    - Name: $v
+      Entry: 7
+      Data: 8|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Goal
+    - Name: $v
+      Entry: 7
+      Data: 9|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 0
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: mission
       Entry: 10
-      Data: 0
+      Data: 1
     - Name: process
       Entry: 4
       Data: 0
+    - Name: claimed
+      Entry: 5
+      Data: false
+    - Name: limitLevel
+      Entry: 3
+      Data: 0
+    - Name: currentLevel
+      Entry: 3
+      Data: 0
     - Name: rewards
       Entry: 7
-      Data: 6|EazyEngine.Space.RewardInfo[], Assembly-CSharp
+      Data: 10|EazyEngine.Space.RewardInfo[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 11|EazyEngine.Space.RewardInfo, Assembly-CSharp
+    - Name: item
+      Entry: 10
+      Data: 2
+    - Name: quantity
+      Entry: 3
+      Data: 1000
+    - Name: quantiyLevel
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 12|EazyEngine.Space.MissionItemInstanced, Assembly-CSharp
+    - Name: condition
+      Entry: 6
+      Data: 
+    - Name: VariableDict
+      Entry: 7
+      Data: 13|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 14|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: isDaily
+    - Name: $v
+      Entry: 7
+      Data: 15|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Goal
+    - Name: $v
+      Entry: 7
+      Data: 16|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 0
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: mission
+      Entry: 10
+      Data: 3
+    - Name: process
+      Entry: 4
+      Data: 0
+    - Name: claimed
+      Entry: 5
+      Data: false
+    - Name: limitLevel
+      Entry: 3
+      Data: 0
+    - Name: currentLevel
+      Entry: 3
+      Data: 0
+    - Name: rewards
+      Entry: 7
+      Data: 17|EazyEngine.Space.RewardInfo[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 18|EazyEngine.Space.RewardInfo, Assembly-CSharp
+    - Name: item
+      Entry: 10
+      Data: 4
+    - Name: quantity
+      Entry: 3
+      Data: 1000
+    - Name: quantiyLevel
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 19|EazyEngine.Space.MissionItemInstanced, Assembly-CSharp
+    - Name: condition
+      Entry: 6
+      Data: 
+    - Name: VariableDict
+      Entry: 7
+      Data: 20|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 21|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: isDaily
+    - Name: $v
+      Entry: 7
+      Data: 22|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Goal
+    - Name: $v
+      Entry: 7
+      Data: 23|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 0
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: mission
+      Entry: 10
+      Data: 5
+    - Name: process
+      Entry: 4
+      Data: 0
+    - Name: claimed
+      Entry: 5
+      Data: false
+    - Name: limitLevel
+      Entry: 3
+      Data: 0
+    - Name: currentLevel
+      Entry: 3
+      Data: 0
+    - Name: rewards
+      Entry: 7
+      Data: 24|EazyEngine.Space.RewardInfo[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 25|EazyEngine.Space.RewardInfo, Assembly-CSharp
+    - Name: item
+      Entry: 10
+      Data: 6
+    - Name: quantity
+      Entry: 3
+      Data: 10
+    - Name: quantiyLevel
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 26|EazyEngine.Space.MissionItemInstanced, Assembly-CSharp
+    - Name: condition
+      Entry: 6
+      Data: 
+    - Name: VariableDict
+      Entry: 7
+      Data: 27|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 28|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: isDaily
+    - Name: $v
+      Entry: 7
+      Data: 29|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Goal
+    - Name: $v
+      Entry: 7
+      Data: 30|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 0
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: mission
+      Entry: 10
+      Data: 7
+    - Name: process
+      Entry: 4
+      Data: 0
+    - Name: claimed
+      Entry: 5
+      Data: false
+    - Name: limitLevel
+      Entry: 3
+      Data: 0
+    - Name: currentLevel
+      Entry: 3
+      Data: 0
+    - Name: rewards
+      Entry: 7
+      Data: 31|EazyEngine.Space.RewardInfo[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 32|EazyEngine.Space.RewardInfo, Assembly-CSharp
+    - Name: item
+      Entry: 10
+      Data: 8
+    - Name: quantity
+      Entry: 3
+      Data: 3
+    - Name: quantiyLevel
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 33|EazyEngine.Space.MissionItemInstanced, Assembly-CSharp
+    - Name: condition
+      Entry: 6
+      Data: 
+    - Name: VariableDict
+      Entry: 7
+      Data: 34|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 35|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: isDaily
+    - Name: $v
+      Entry: 7
+      Data: 36|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Goal
+    - Name: $v
+      Entry: 7
+      Data: 37|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 0
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: mission
+      Entry: 10
+      Data: 9
+    - Name: process
+      Entry: 4
+      Data: 0
+    - Name: claimed
+      Entry: 5
+      Data: false
+    - Name: limitLevel
+      Entry: 3
+      Data: 0
+    - Name: currentLevel
+      Entry: 3
+      Data: 0
+    - Name: rewards
+      Entry: 7
+      Data: 38|EazyEngine.Space.RewardInfo[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 39|EazyEngine.Space.RewardInfo, Assembly-CSharp
+    - Name: item
+      Entry: 10
+      Data: 10
+    - Name: quantity
+      Entry: 3
+      Data: 10
+    - Name: quantiyLevel
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 40|EazyEngine.Space.MissionItemInstanced, Assembly-CSharp
+    - Name: condition
+      Entry: 6
+      Data: 
+    - Name: VariableDict
+      Entry: 7
+      Data: 41|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 42|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: isDaily
+    - Name: $v
+      Entry: 7
+      Data: 43|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Goal
+    - Name: $v
+      Entry: 7
+      Data: 44|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 0
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: mission
+      Entry: 10
+      Data: 11
+    - Name: process
+      Entry: 4
+      Data: 0
+    - Name: claimed
+      Entry: 5
+      Data: false
+    - Name: limitLevel
+      Entry: 3
+      Data: 0
+    - Name: currentLevel
+      Entry: 3
+      Data: 0
+    - Name: rewards
+      Entry: 7
+      Data: 45|EazyEngine.Space.RewardInfo[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 46|EazyEngine.Space.RewardInfo, Assembly-CSharp
+    - Name: item
+      Entry: 10
+      Data: 2
+    - Name: quantity
+      Entry: 3
+      Data: 1000
+    - Name: quantiyLevel
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 47|EazyEngine.Space.MissionItemInstanced, Assembly-CSharp
+    - Name: condition
+      Entry: 6
+      Data: 
+    - Name: VariableDict
+      Entry: 7
+      Data: 48|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 49|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: isDaily
+    - Name: $v
+      Entry: 7
+      Data: 50|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Goal
+    - Name: $v
+      Entry: 7
+      Data: 51|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 0
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: mission
+      Entry: 10
+      Data: 12
+    - Name: process
+      Entry: 4
+      Data: 0
+    - Name: claimed
+      Entry: 5
+      Data: false
+    - Name: limitLevel
+      Entry: 3
+      Data: 0
+    - Name: currentLevel
+      Entry: 3
+      Data: 0
+    - Name: rewards
+      Entry: 7
+      Data: 52|EazyEngine.Space.RewardInfo[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 53|EazyEngine.Space.RewardInfo, Assembly-CSharp
+    - Name: item
+      Entry: 10
+      Data: 8
+    - Name: quantity
+      Entry: 3
+      Data: 2
+    - Name: quantiyLevel
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 54|EazyEngine.Space.MissionItemInstanced, Assembly-CSharp
+    - Name: condition
+      Entry: 6
+      Data: 
+    - Name: VariableDict
+      Entry: 7
+      Data: 55|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 56|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: isDaily
+    - Name: $v
+      Entry: 7
+      Data: 57|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Goal
+    - Name: $v
+      Entry: 7
+      Data: 58|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 0
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: mission
+      Entry: 10
+      Data: 13
+    - Name: process
+      Entry: 4
+      Data: 0
+    - Name: claimed
+      Entry: 5
+      Data: false
+    - Name: limitLevel
+      Entry: 3
+      Data: 0
+    - Name: currentLevel
+      Entry: 3
+      Data: 0
+    - Name: rewards
+      Entry: 7
+      Data: 59|EazyEngine.Space.RewardInfo[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 60|EazyEngine.Space.RewardInfo, Assembly-CSharp
+    - Name: item
+      Entry: 10
+      Data: 14
+    - Name: quantity
+      Entry: 3
+      Data: 5
+    - Name: quantiyLevel
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: achievements
+      Entry: 7
+      Data: 61|EazyEngine.Space.MissionModule, Assembly-CSharp
+    - Name: IDMission
+      Entry: 6
+      Data: 
+    - Name: condition
+      Entry: 6
+      Data: 
+    - Name: weight
+      Entry: 3
+      Data: 0
+    - Name: VariableDict
+      Entry: 7
+      Data: 62|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 63|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 12
       Data: 0
@@ -81,6 +1094,2603 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: missions
+      Entry: 7
+      Data: 64|EazyEngine.Space.MissionItemInstanced[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 19
+    - Name: 
+      Entry: 7
+      Data: 65|EazyEngine.Space.MissionItemInstanced, Assembly-CSharp
+    - Name: condition
+      Entry: 6
+      Data: 
+    - Name: VariableDict
+      Entry: 7
+      Data: 66|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 67|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: isDaily
+    - Name: $v
+      Entry: 7
+      Data: 68|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Goal
+    - Name: $v
+      Entry: 7
+      Data: 69|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 3
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 1
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: mission
+      Entry: 10
+      Data: 5
+    - Name: process
+      Entry: 4
+      Data: 0
+    - Name: claimed
+      Entry: 5
+      Data: false
+    - Name: limitLevel
+      Entry: 3
+      Data: 6
+    - Name: currentLevel
+      Entry: 3
+      Data: 0
+    - Name: rewards
+      Entry: 7
+      Data: 70|EazyEngine.Space.RewardInfo[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 71|EazyEngine.Space.RewardInfo, Assembly-CSharp
+    - Name: item
+      Entry: 10
+      Data: 2
+    - Name: quantity
+      Entry: 3
+      Data: 0
+    - Name: quantiyLevel
+      Entry: 7
+      Data: 72|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1000
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 73|EazyEngine.Space.MissionItemInstanced, Assembly-CSharp
+    - Name: condition
+      Entry: 6
+      Data: 
+    - Name: VariableDict
+      Entry: 7
+      Data: 74|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 75|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: isDaily
+    - Name: $v
+      Entry: 7
+      Data: 76|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Goal
+    - Name: $v
+      Entry: 7
+      Data: 77|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 3
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 1
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: mission
+      Entry: 10
+      Data: 3
+    - Name: process
+      Entry: 4
+      Data: 0
+    - Name: claimed
+      Entry: 5
+      Data: false
+    - Name: limitLevel
+      Entry: 3
+      Data: 6
+    - Name: currentLevel
+      Entry: 3
+      Data: 0
+    - Name: rewards
+      Entry: 7
+      Data: 78|EazyEngine.Space.RewardInfo[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 79|EazyEngine.Space.RewardInfo, Assembly-CSharp
+    - Name: item
+      Entry: 10
+      Data: 2
+    - Name: quantity
+      Entry: 3
+      Data: 0
+    - Name: quantiyLevel
+      Entry: 7
+      Data: 80|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1000
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 81|EazyEngine.Space.MissionItemInstanced, Assembly-CSharp
+    - Name: condition
+      Entry: 6
+      Data: 
+    - Name: VariableDict
+      Entry: 7
+      Data: 82|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 83|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: isDaily
+    - Name: $v
+      Entry: 7
+      Data: 84|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Goal
+    - Name: $v
+      Entry: 7
+      Data: 85|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 0
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: mission
+      Entry: 10
+      Data: 1
+    - Name: process
+      Entry: 4
+      Data: 0
+    - Name: claimed
+      Entry: 5
+      Data: false
+    - Name: limitLevel
+      Entry: 3
+      Data: 6
+    - Name: currentLevel
+      Entry: 3
+      Data: 0
+    - Name: rewards
+      Entry: 7
+      Data: 86|EazyEngine.Space.RewardInfo[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 87|EazyEngine.Space.RewardInfo, Assembly-CSharp
+    - Name: item
+      Entry: 10
+      Data: 2
+    - Name: quantity
+      Entry: 3
+      Data: 0
+    - Name: quantiyLevel
+      Entry: 7
+      Data: 88|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1000
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 89|EazyEngine.Space.MissionItemInstanced, Assembly-CSharp
+    - Name: condition
+      Entry: 6
+      Data: 
+    - Name: VariableDict
+      Entry: 7
+      Data: 90|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 91|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: isDaily
+    - Name: $v
+      Entry: 7
+      Data: 92|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Goal
+    - Name: $v
+      Entry: 7
+      Data: 93|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 0
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: mission
+      Entry: 10
+      Data: 15
+    - Name: process
+      Entry: 4
+      Data: 0
+    - Name: claimed
+      Entry: 5
+      Data: false
+    - Name: limitLevel
+      Entry: 3
+      Data: 6
+    - Name: currentLevel
+      Entry: 3
+      Data: 0
+    - Name: rewards
+      Entry: 7
+      Data: 94|EazyEngine.Space.RewardInfo[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 95|EazyEngine.Space.RewardInfo, Assembly-CSharp
+    - Name: item
+      Entry: 10
+      Data: 2
+    - Name: quantity
+      Entry: 3
+      Data: 0
+    - Name: quantiyLevel
+      Entry: 7
+      Data: 96|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1000
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 97|EazyEngine.Space.MissionItemInstanced, Assembly-CSharp
+    - Name: condition
+      Entry: 6
+      Data: 
+    - Name: VariableDict
+      Entry: 7
+      Data: 98|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 99|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: isDaily
+    - Name: $v
+      Entry: 7
+      Data: 100|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Goal
+    - Name: $v
+      Entry: 7
+      Data: 101|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 1
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: mission
+      Entry: 10
+      Data: 16
+    - Name: process
+      Entry: 4
+      Data: 0
+    - Name: claimed
+      Entry: 5
+      Data: false
+    - Name: limitLevel
+      Entry: 3
+      Data: 6
+    - Name: currentLevel
+      Entry: 3
+      Data: 0
+    - Name: rewards
+      Entry: 7
+      Data: 102|EazyEngine.Space.RewardInfo[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 103|EazyEngine.Space.RewardInfo, Assembly-CSharp
+    - Name: item
+      Entry: 10
+      Data: 2
+    - Name: quantity
+      Entry: 3
+      Data: 0
+    - Name: quantiyLevel
+      Entry: 7
+      Data: 104|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1000
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 105|EazyEngine.Space.MissionItemInstanced, Assembly-CSharp
+    - Name: condition
+      Entry: 6
+      Data: 
+    - Name: VariableDict
+      Entry: 7
+      Data: 106|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 107|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: isDaily
+    - Name: $v
+      Entry: 7
+      Data: 108|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Goal
+    - Name: $v
+      Entry: 7
+      Data: 109|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 1
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: mission
+      Entry: 10
+      Data: 17
+    - Name: process
+      Entry: 4
+      Data: 0
+    - Name: claimed
+      Entry: 5
+      Data: false
+    - Name: limitLevel
+      Entry: 3
+      Data: 6
+    - Name: currentLevel
+      Entry: 3
+      Data: 0
+    - Name: rewards
+      Entry: 7
+      Data: 110|EazyEngine.Space.RewardInfo[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 111|EazyEngine.Space.RewardInfo, Assembly-CSharp
+    - Name: item
+      Entry: 10
+      Data: 2
+    - Name: quantity
+      Entry: 3
+      Data: 0
+    - Name: quantiyLevel
+      Entry: 7
+      Data: 112|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1000
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 113|EazyEngine.Space.MissionItemInstanced, Assembly-CSharp
+    - Name: condition
+      Entry: 6
+      Data: 
+    - Name: VariableDict
+      Entry: 7
+      Data: 114|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 115|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: isDaily
+    - Name: $v
+      Entry: 7
+      Data: 116|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Goal
+    - Name: $v
+      Entry: 7
+      Data: 117|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 1
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: mission
+      Entry: 10
+      Data: 18
+    - Name: process
+      Entry: 4
+      Data: 0
+    - Name: claimed
+      Entry: 5
+      Data: false
+    - Name: limitLevel
+      Entry: 3
+      Data: 6
+    - Name: currentLevel
+      Entry: 3
+      Data: 0
+    - Name: rewards
+      Entry: 7
+      Data: 118|EazyEngine.Space.RewardInfo[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 119|EazyEngine.Space.RewardInfo, Assembly-CSharp
+    - Name: item
+      Entry: 10
+      Data: 2
+    - Name: quantity
+      Entry: 3
+      Data: 0
+    - Name: quantiyLevel
+      Entry: 7
+      Data: 120|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1000
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 121|EazyEngine.Space.MissionItemInstanced, Assembly-CSharp
+    - Name: condition
+      Entry: 6
+      Data: 
+    - Name: VariableDict
+      Entry: 7
+      Data: 122|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 123|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: isDaily
+    - Name: $v
+      Entry: 7
+      Data: 124|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Goal
+    - Name: $v
+      Entry: 7
+      Data: 125|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 1
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: mission
+      Entry: 10
+      Data: 19
+    - Name: process
+      Entry: 4
+      Data: 0
+    - Name: claimed
+      Entry: 5
+      Data: false
+    - Name: limitLevel
+      Entry: 3
+      Data: 6
+    - Name: currentLevel
+      Entry: 3
+      Data: 0
+    - Name: rewards
+      Entry: 7
+      Data: 126|EazyEngine.Space.RewardInfo[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 127|EazyEngine.Space.RewardInfo, Assembly-CSharp
+    - Name: item
+      Entry: 10
+      Data: 2
+    - Name: quantity
+      Entry: 3
+      Data: 0
+    - Name: quantiyLevel
+      Entry: 7
+      Data: 128|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1000
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 129|EazyEngine.Space.MissionItemInstanced, Assembly-CSharp
+    - Name: condition
+      Entry: 6
+      Data: 
+    - Name: VariableDict
+      Entry: 7
+      Data: 130|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 131|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: isDaily
+    - Name: $v
+      Entry: 7
+      Data: 132|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Goal
+    - Name: $v
+      Entry: 7
+      Data: 133|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 1
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: mission
+      Entry: 10
+      Data: 20
+    - Name: process
+      Entry: 4
+      Data: 0
+    - Name: claimed
+      Entry: 5
+      Data: false
+    - Name: limitLevel
+      Entry: 3
+      Data: 6
+    - Name: currentLevel
+      Entry: 3
+      Data: 0
+    - Name: rewards
+      Entry: 7
+      Data: 134|EazyEngine.Space.RewardInfo[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 135|EazyEngine.Space.RewardInfo, Assembly-CSharp
+    - Name: item
+      Entry: 10
+      Data: 2
+    - Name: quantity
+      Entry: 3
+      Data: 0
+    - Name: quantiyLevel
+      Entry: 7
+      Data: 136|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1000
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 137|EazyEngine.Space.MissionItemInstanced, Assembly-CSharp
+    - Name: condition
+      Entry: 6
+      Data: 
+    - Name: VariableDict
+      Entry: 7
+      Data: 138|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 139|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: isDaily
+    - Name: $v
+      Entry: 7
+      Data: 140|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Goal
+    - Name: $v
+      Entry: 7
+      Data: 141|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 1
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: mission
+      Entry: 10
+      Data: 21
+    - Name: process
+      Entry: 4
+      Data: 0
+    - Name: claimed
+      Entry: 5
+      Data: false
+    - Name: limitLevel
+      Entry: 3
+      Data: 6
+    - Name: currentLevel
+      Entry: 3
+      Data: 0
+    - Name: rewards
+      Entry: 7
+      Data: 142|EazyEngine.Space.RewardInfo[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 143|EazyEngine.Space.RewardInfo, Assembly-CSharp
+    - Name: item
+      Entry: 10
+      Data: 2
+    - Name: quantity
+      Entry: 3
+      Data: 0
+    - Name: quantiyLevel
+      Entry: 7
+      Data: 144|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1000
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 145|EazyEngine.Space.MissionItemInstanced, Assembly-CSharp
+    - Name: condition
+      Entry: 6
+      Data: 
+    - Name: VariableDict
+      Entry: 7
+      Data: 146|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 147|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: isDaily
+    - Name: $v
+      Entry: 7
+      Data: 148|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Goal
+    - Name: $v
+      Entry: 7
+      Data: 149|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 1
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: mission
+      Entry: 10
+      Data: 22
+    - Name: process
+      Entry: 4
+      Data: 0
+    - Name: claimed
+      Entry: 5
+      Data: false
+    - Name: limitLevel
+      Entry: 3
+      Data: 6
+    - Name: currentLevel
+      Entry: 3
+      Data: 0
+    - Name: rewards
+      Entry: 7
+      Data: 150|EazyEngine.Space.RewardInfo[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 151|EazyEngine.Space.RewardInfo, Assembly-CSharp
+    - Name: item
+      Entry: 10
+      Data: 2
+    - Name: quantity
+      Entry: 3
+      Data: 0
+    - Name: quantiyLevel
+      Entry: 7
+      Data: 152|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1000
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 153|EazyEngine.Space.MissionItemInstanced, Assembly-CSharp
+    - Name: condition
+      Entry: 6
+      Data: 
+    - Name: VariableDict
+      Entry: 7
+      Data: 154|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 155|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: isDaily
+    - Name: $v
+      Entry: 7
+      Data: 156|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Goal
+    - Name: $v
+      Entry: 7
+      Data: 157|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 1
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: mission
+      Entry: 10
+      Data: 23
+    - Name: process
+      Entry: 4
+      Data: 0
+    - Name: claimed
+      Entry: 5
+      Data: false
+    - Name: limitLevel
+      Entry: 3
+      Data: 6
+    - Name: currentLevel
+      Entry: 3
+      Data: 0
+    - Name: rewards
+      Entry: 7
+      Data: 158|EazyEngine.Space.RewardInfo[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 159|EazyEngine.Space.RewardInfo, Assembly-CSharp
+    - Name: item
+      Entry: 10
+      Data: 2
+    - Name: quantity
+      Entry: 3
+      Data: 0
+    - Name: quantiyLevel
+      Entry: 7
+      Data: 160|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1000
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 161|EazyEngine.Space.MissionItemInstanced, Assembly-CSharp
+    - Name: condition
+      Entry: 6
+      Data: 
+    - Name: VariableDict
+      Entry: 7
+      Data: 162|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 163|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: isDaily
+    - Name: $v
+      Entry: 7
+      Data: 164|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Goal
+    - Name: $v
+      Entry: 7
+      Data: 165|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 1
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: mission
+      Entry: 10
+      Data: 15
+    - Name: process
+      Entry: 4
+      Data: 0
+    - Name: claimed
+      Entry: 5
+      Data: false
+    - Name: limitLevel
+      Entry: 3
+      Data: 6
+    - Name: currentLevel
+      Entry: 3
+      Data: 0
+    - Name: rewards
+      Entry: 7
+      Data: 166|EazyEngine.Space.RewardInfo[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 167|EazyEngine.Space.RewardInfo, Assembly-CSharp
+    - Name: item
+      Entry: 10
+      Data: 2
+    - Name: quantity
+      Entry: 3
+      Data: 0
+    - Name: quantiyLevel
+      Entry: 7
+      Data: 168|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1000
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 169|EazyEngine.Space.MissionItemInstanced, Assembly-CSharp
+    - Name: condition
+      Entry: 6
+      Data: 
+    - Name: VariableDict
+      Entry: 7
+      Data: 170|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 171|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: isDaily
+    - Name: $v
+      Entry: 7
+      Data: 172|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Goal
+    - Name: $v
+      Entry: 7
+      Data: 173|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 1
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: mission
+      Entry: 10
+      Data: 24
+    - Name: process
+      Entry: 4
+      Data: 0
+    - Name: claimed
+      Entry: 5
+      Data: false
+    - Name: limitLevel
+      Entry: 3
+      Data: 6
+    - Name: currentLevel
+      Entry: 3
+      Data: 0
+    - Name: rewards
+      Entry: 7
+      Data: 174|EazyEngine.Space.RewardInfo[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 175|EazyEngine.Space.RewardInfo, Assembly-CSharp
+    - Name: item
+      Entry: 10
+      Data: 2
+    - Name: quantity
+      Entry: 3
+      Data: 0
+    - Name: quantiyLevel
+      Entry: 7
+      Data: 176|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1000
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 177|EazyEngine.Space.MissionItemInstanced, Assembly-CSharp
+    - Name: condition
+      Entry: 6
+      Data: 
+    - Name: VariableDict
+      Entry: 7
+      Data: 178|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 179|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: isDaily
+    - Name: $v
+      Entry: 7
+      Data: 180|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Goal
+    - Name: $v
+      Entry: 7
+      Data: 181|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 1
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: mission
+      Entry: 10
+      Data: 25
+    - Name: process
+      Entry: 4
+      Data: 0
+    - Name: claimed
+      Entry: 5
+      Data: false
+    - Name: limitLevel
+      Entry: 3
+      Data: 6
+    - Name: currentLevel
+      Entry: 3
+      Data: 0
+    - Name: rewards
+      Entry: 7
+      Data: 182|EazyEngine.Space.RewardInfo[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 183|EazyEngine.Space.RewardInfo, Assembly-CSharp
+    - Name: item
+      Entry: 10
+      Data: 2
+    - Name: quantity
+      Entry: 3
+      Data: 0
+    - Name: quantiyLevel
+      Entry: 7
+      Data: 184|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1000
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 185|EazyEngine.Space.MissionItemInstanced, Assembly-CSharp
+    - Name: condition
+      Entry: 6
+      Data: 
+    - Name: VariableDict
+      Entry: 7
+      Data: 186|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 187|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: isDaily
+    - Name: $v
+      Entry: 7
+      Data: 188|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Goal
+    - Name: $v
+      Entry: 7
+      Data: 189|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 1
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: mission
+      Entry: 10
+      Data: 26
+    - Name: process
+      Entry: 4
+      Data: 0
+    - Name: claimed
+      Entry: 5
+      Data: false
+    - Name: limitLevel
+      Entry: 3
+      Data: 0
+    - Name: currentLevel
+      Entry: 3
+      Data: 0
+    - Name: rewards
+      Entry: 7
+      Data: 190|EazyEngine.Space.RewardInfo[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 191|EazyEngine.Space.RewardInfo, Assembly-CSharp
+    - Name: item
+      Entry: 10
+      Data: 2
+    - Name: quantity
+      Entry: 3
+      Data: 0
+    - Name: quantiyLevel
+      Entry: 7
+      Data: 192|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1000
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 193|EazyEngine.Space.MissionItemInstanced, Assembly-CSharp
+    - Name: condition
+      Entry: 6
+      Data: 
+    - Name: VariableDict
+      Entry: 7
+      Data: 194|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 195|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: isDaily
+    - Name: $v
+      Entry: 7
+      Data: 196|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Goal
+    - Name: $v
+      Entry: 7
+      Data: 197|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 1
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: mission
+      Entry: 10
+      Data: 27
+    - Name: process
+      Entry: 4
+      Data: 0
+    - Name: claimed
+      Entry: 5
+      Data: false
+    - Name: limitLevel
+      Entry: 3
+      Data: 0
+    - Name: currentLevel
+      Entry: 3
+      Data: 0
+    - Name: rewards
+      Entry: 7
+      Data: 198|EazyEngine.Space.RewardInfo[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 199|EazyEngine.Space.RewardInfo, Assembly-CSharp
+    - Name: item
+      Entry: 10
+      Data: 2
+    - Name: quantity
+      Entry: 3
+      Data: 0
+    - Name: quantiyLevel
+      Entry: 7
+      Data: 200|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1000
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 201|EazyEngine.Space.MissionItemInstanced, Assembly-CSharp
+    - Name: condition
+      Entry: 6
+      Data: 
+    - Name: VariableDict
+      Entry: 7
+      Data: 202|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 203|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: isDaily
+    - Name: $v
+      Entry: 7
+      Data: 204|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Goal
+    - Name: $v
+      Entry: 7
+      Data: 205|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 1
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: mission
+      Entry: 10
+      Data: 28
+    - Name: process
+      Entry: 4
+      Data: 0
+    - Name: claimed
+      Entry: 5
+      Data: false
+    - Name: limitLevel
+      Entry: 3
+      Data: 0
+    - Name: currentLevel
+      Entry: 3
+      Data: 0
+    - Name: rewards
+      Entry: 7
+      Data: 206|EazyEngine.Space.RewardInfo[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 207|EazyEngine.Space.RewardInfo, Assembly-CSharp
+    - Name: item
+      Entry: 10
+      Data: 2
+    - Name: quantity
+      Entry: 3
+      Data: 0
+    - Name: quantiyLevel
+      Entry: 7
+      Data: 208|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1000
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 209|EazyEngine.Space.MissionItemInstanced, Assembly-CSharp
+    - Name: condition
+      Entry: 6
+      Data: 
+    - Name: VariableDict
+      Entry: 7
+      Data: 210|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 211|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: isDaily
+    - Name: $v
+      Entry: 7
+      Data: 212|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Goal
+    - Name: $v
+      Entry: 7
+      Data: 213|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 1
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: mission
+      Entry: 10
+      Data: 29
+    - Name: process
+      Entry: 4
+      Data: 0
+    - Name: claimed
+      Entry: 5
+      Data: false
+    - Name: limitLevel
+      Entry: 3
+      Data: 0
+    - Name: currentLevel
+      Entry: 3
+      Data: 0
+    - Name: rewards
+      Entry: 7
+      Data: 214|EazyEngine.Space.RewardInfo[], Assembly-CSharp
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 215|EazyEngine.Space.RewardInfo, Assembly-CSharp
+    - Name: item
+      Entry: 10
+      Data: 2
+    - Name: quantity
+      Entry: 3
+      Data: 0
+    - Name: quantiyLevel
+      Entry: 7
+      Data: 216|EazyEngine.Space.UnitDefineLevel, Assembly-CSharp
+    - Name: startUnit
+      Entry: 3
+      Data: 1000
+    - Name: algrothimTypeUpgrade
+      Entry: 3
+      Data: 0
+    - Name: stepUnit
+      Entry: 3
+      Data: 0
+    - Name: isSpecifiedUnit
+      Entry: 5
+      Data: false
+    - Name: unitDefines
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -99,4 +3709,6 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  achievements: []
+    - Name: 
+      Entry: 8
+      Data: 

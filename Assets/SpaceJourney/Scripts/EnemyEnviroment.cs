@@ -33,6 +33,7 @@ public class EnemyEnviroment : PoolManagerGeneric<EnemyEnviroment>
                 var pInfo = pEnemy.info.elements[GameManager.Instance.ChoosedHard];
                 pInfo.score = scoreSmall[GameManager.Instance.ChoosedHard];
                 pChar.setDataConfig(pInfo);
+                pChar.enemyType = EazyEngine.Space.EnemyType.SMALL;
                 return;
             }
         }
@@ -51,6 +52,7 @@ public class EnemyEnviroment : PoolManagerGeneric<EnemyEnviroment>
                 var pInfo = pEnemy.info.elements[GameManager.Instance.ChoosedHard];
                 pInfo.score = scoremedium[GameManager.Instance.ChoosedHard];
                 pChar.setDataConfig(pInfo);
+                pChar.enemyType = EazyEngine.Space.EnemyType.MEDIUM;
                 return;
             }
         }
@@ -61,6 +63,7 @@ public class EnemyEnviroment : PoolManagerGeneric<EnemyEnviroment>
                 var pInfo = pEnemy.info.elements[GameManager.Instance.ChoosedHard];
                 pInfo.score = scoreBoss[GameManager.Instance.ChoosedHard];
                 pChar.setDataConfig(pInfo);
+                pChar.enemyType = EazyEngine.Space.EnemyType.BOSS;
                 return;
             }
         }
@@ -71,6 +74,7 @@ public class EnemyEnviroment : PoolManagerGeneric<EnemyEnviroment>
                 var pInfo = pEnemy.info.elements[GameManager.Instance.ChoosedHard];
                 pInfo.score = scoreBoss[GameManager.Instance.ChoosedHard];
                 pChar.setDataConfig(pInfo);
+                pChar.enemyType = EazyEngine.Space.EnemyType.MINIBOSS;
                 return;
             }
         }

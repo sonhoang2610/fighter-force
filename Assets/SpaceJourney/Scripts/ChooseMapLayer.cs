@@ -43,7 +43,7 @@ namespace EazyEngine.Space.UI
                     int pCount = 0;
                     foreach (var pMission in pMissions)
                     {
-                        if (pMission.process >= 1)
+                        if (pMission.Process >= 1)
                         {
                             pCount++;
                         }

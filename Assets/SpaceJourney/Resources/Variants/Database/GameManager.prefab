@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 552411871}
   - component: {fileID: 7675368127492379790}
   - component: {fileID: 3300027354392817316}
+  - component: {fileID: 7655909074768213935}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -293,6 +294,7 @@ Transform:
   - {fileID: 7610891969716659794}
   - {fileID: 2875653540219166057}
   - {fileID: 7210923572756427679}
+  - {fileID: 2582736631149812026}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -378,6 +380,47 @@ MonoBehaviour:
     currentLevelWheel: 0
     currentExpWheel: 0
     currentWheelToday: 0
+    collectionInfo:
+      enemySmall: 0
+      enemyMedium: 0
+      enemyMiniBoss: 0
+      enemyBoss: 0
+      coinTaken: 0
+      coinUsed: 0
+      crystalUsed: 0
+      winCount: 0
+      spinTime: 0
+      watchADS: 0
+      openBoxElite: 0
+      openBoxCommon: 0
+      openBoxSuper: 0
+      upgradeMainCount: 0
+      upgradeSpCount: 0
+    collectionDailyInfo:
+      enemySmall: 0
+      enemyMedium: 0
+      enemyMiniBoss: 0
+      enemyBoss: 0
+      coinTaken: 0
+      coinUsed: 0
+      crystalUsed: 0
+      winCount: 0
+      spinTime: 0
+      watchADS: 0
+      openBoxElite: 0
+      openBoxCommon: 0
+      openBoxSuper: 0
+      upgradeMainCount: 0
+      upgradeSpCount: 0
+    missionContainerInfo:
+      dailyMission:
+        dateOfYear: 0
+        missionProcessing:
+          IDMission: 
+          missions: []
+      mainMission:
+        IDMission: 
+        missions: []
     timers: []
     items:
     - item: {fileID: 11400000, guid: 7fe69affac39dd849b4cbac509386ec0, type: 2}
@@ -412,6 +455,47 @@ MonoBehaviour:
     currentLevelWheel: 0
     currentExpWheel: 0
     currentWheelToday: 0
+    collectionInfo:
+      enemySmall: 0
+      enemyMedium: 0
+      enemyMiniBoss: 0
+      enemyBoss: 0
+      coinTaken: 0
+      coinUsed: 0
+      crystalUsed: 0
+      winCount: 0
+      spinTime: 0
+      watchADS: 0
+      openBoxElite: 0
+      openBoxCommon: 0
+      openBoxSuper: 0
+      upgradeMainCount: 0
+      upgradeSpCount: 0
+    collectionDailyInfo:
+      enemySmall: 0
+      enemyMedium: 0
+      enemyMiniBoss: 0
+      enemyBoss: 0
+      coinTaken: 0
+      coinUsed: 0
+      crystalUsed: 0
+      winCount: 0
+      spinTime: 0
+      watchADS: 0
+      openBoxElite: 0
+      openBoxCommon: 0
+      openBoxSuper: 0
+      upgradeMainCount: 0
+      upgradeSpCount: 0
+    missionContainerInfo:
+      dailyMission:
+        dateOfYear: 0
+        missionProcessing:
+          IDMission: 
+          missions: []
+      mainMission:
+        IDMission: 
+        missions: []
     timers: []
     items: []
     giftOnlineModules: []
@@ -447,7 +531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b5c3ebb24c97464da319951cafe5a47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundGraphSerialization: '{"version":2.96,"type":"FlowCanvas.FlowScript","translation":{"x":32.0,"y":44.0},"zoomFactor":0.548847,"nodes":[{"_position":{"x":132.0,"y":145.0},"$type":"FlowCanvas.Nodes.StartEvent","$id":"2"},{"_inputPortValues":{},"_position":{"x":392.0,"y":159.0},"$type":"FlowCanvas.Nodes.ForLoop","$id":"3"},{"_method":{"_baseInfo":"UnityEngine.GameObject|SetActive|System.Void","_paramsInfo":"System.Boolean"},"_callable":true,"_inputPortValues":{},"_position":{"x":919.0,"y":147.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"5"},{"_method":{"_baseInfo":"System.Collections.Generic.List`1[[UnityEngine.GameObject,
+  boundGraphSerialization: '{"version":2.96,"type":"FlowCanvas.FlowScript","translation":{"x":59.0,"y":145.0},"nodes":[{"_position":{"x":70.0,"y":158.0},"$type":"FlowCanvas.Nodes.StartEvent","$id":"2"},{"_inputPortValues":{},"_position":{"x":406.0,"y":157.0},"$type":"FlowCanvas.Nodes.ForLoop","$id":"3"},{"_method":{"_baseInfo":"UnityEngine.GameObject|SetActive|System.Void","_paramsInfo":"System.Boolean"},"_callable":true,"_inputPortValues":{},"_position":{"x":938.0,"y":153.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"5"},{"_method":{"_baseInfo":"System.Collections.Generic.List`1[[UnityEngine.GameObject,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]|get_Item|UnityEngine.GameObject","_paramsInfo":"System.Int32"},"_inputPortValues":{},"_position":{"x":561.0,"y":233.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"8"},{"value":{"_name":"myList
     (GameObject)","_targetVariableID":"14197c23-6b1a-4ea7-91b4-87422261967d"},"_position":{"x":-61.0,"y":291.0},"$type":"FlowCanvas.Nodes.GetVariable`1[[System.Collections.Generic.List`1[[UnityEngine.GameObject,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
@@ -496,6 +580,28 @@ MonoBehaviour:
   - {fileID: 4712350088004213567}
   - {fileID: 6483128879415585030}
   - {fileID: 718347889128370458}
+--- !u!114 &7655909074768213935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3116318004972236533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9d65451ceb410e409c919d2e6c5e973, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  replaceNew: 1
 --- !u!1 &3424659460316915082
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,6 +1110,73 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &6842078446492893567
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2582736631149812026}
+  - component: {fileID: 8768665785704723042}
+  - component: {fileID: 4687909878641657632}
+  m_Layer: 0
+  m_Name: DefaultMission
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2582736631149812026
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6842078446492893567}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3116318004972236539}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8768665785704723042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6842078446492893567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _serializedBlackboard: '{"_variables":{"MainMission":{"_name":"MainMission","_id":"0a2c2045-46cc-4413-afe2-fe609dc3dd9c","$type":"NodeCanvas.Framework.Variable`1[[EazyEngine.Space.MissionItemInstanced,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"MissionID":{"_name":"MissionID","_id":"645442ae-8df7-4d6b-b4cf-d50c437e730e","$type":"NodeCanvas.Framework.Variable`1[[System.String,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"ListenID":{"_name":"ListenID","$type":"NodeCanvas.Framework.Variable`1[[System.String,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
+  _objectReferences: []
+--- !u!114 &4687909878641657632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6842078446492893567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad115aca74ce3c4891b3f6de0b4aae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boundGraphSerialization: 
+  boundGraphObjectReferences: []
+  enableAction: 0
+  disableAction: 0
+  _graph: {fileID: 11400000, guid: f199eea5add9ee547b9f55eff32c2dd1, type: 2}
+  _blackboard: {fileID: 8768665785704723042}
 --- !u!1 &8026292391968559580
 GameObject:
   m_ObjectHideFlags: 0

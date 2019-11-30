@@ -7,6 +7,7 @@ using UnityEngine;
 using DG.Tweening;
 using EasyMobile;
 using EazyEngine.Tools;
+using NodeCanvas.BehaviourTrees;
 
 namespace EazyEngine.Space.UI
 {
@@ -18,11 +19,12 @@ namespace EazyEngine.Space.UI
         public bool isSuccess = false;
         public System.Action<EazyNode> onFinishEvent;
         protected FlowScript currentInstance;
+        public GraphOwner owner;
         public void runGraph(System.Action<EazyNode> pFinish)
         {
             onFinishEvent = pFinish;
-            currentInstance = Graph.Clone<FlowScript>(flow, LevelManger.Instance.GetComponent<NodeCanvas.BehaviourTrees.BehaviourTreeOwner>().graph);
-            currentInstance.StartGraph(LevelManger.Instance.GetComponent<NodeCanvas.BehaviourTrees.BehaviourTreeOwner>(), LevelManger.Instance.GetComponent<IBlackboard>(), true, onFinish);
+            currentInstance = Graph.Clone<FlowScript>(flow, owner.graph);
+            currentInstance.StartGraph(owner, owner.GetComponent<IBlackboard>(), true, onFinish);
         }
         public void  onFinish(bool pBool)
         {
@@ -160,7 +162,7 @@ namespace EazyEngine.Space.UI
             LevelManger.Instance._infoLevel.score = 0;
             if (pWin) {
            
-                GameManager.Instance.wincount++;
+                GameManager.Instance.Wincount++;
                 win.SetActive(true);
                 lose.SetActive(false);
                 LevelManger.Instance._infoLevel.score +=
@@ -177,7 +179,8 @@ namespace EazyEngine.Space.UI
                     var pNode = new EazyNode()
                     {
                         flow = t.mission.checkComplete,
-                        misson = t
+                        misson = t,
+                        owner = LevelManger.Instance.GetComponent<BehaviourTreeOwner>()
                     };
                     pNodes.Add(pNode);
                     pNode.runGraph(onFinishNode);
@@ -248,6 +251,7 @@ namespace EazyEngine.Space.UI
 
             if (pWin)
             {
+
                 if (!GameManager.Instance.isFree)
                 {
                     Firebase.Analytics.FirebaseAnalytics.LogEvent($"Win_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedHard}");
@@ -265,6 +269,22 @@ namespace EazyEngine.Space.UI
                     //unlock high mode
                     if (GameManager.Instance.ChoosedHard < 2)
                     {
+                        GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel,
+                              GameManager.Instance.ChoosedHard).isPassed = true;
+                        var pOldPass = GameManager.Instance.ChoosedHard == 0 ? GameManager.Instance.Database.collectionInfo.passNormal : (GameManager.Instance.ChoosedHard == 1 ? GameManager.Instance.Database.collectionInfo.passHard : GameManager.Instance.Database.collectionInfo.passSuperHard);
+                        GameManager.Instance.Database.collectionInfo.singletonRecalculate();
+                        var pNewPass = GameManager.Instance.ChoosedHard == 0 ? GameManager.Instance.Database.collectionInfo.passNormal : (GameManager.Instance.ChoosedHard == 1 ? GameManager.Instance.Database.collectionInfo.passHard : GameManager.Instance.Database.collectionInfo.passSuperHard);
+                        if(GameManager.Instance.ChoosedHard == 0)
+                        {
+                            GameManager.Instance.Database.collectionDailyInfo.passNormal+= pOldPass-pNewPass;
+                        }else if(GameManager.Instance.ChoosedHard == 1)
+                        {
+                            GameManager.Instance.Database.collectionDailyInfo.passHard += pOldPass - pNewPass;
+                        }
+                        else if (GameManager.Instance.ChoosedHard == 2)
+                        {
+                            GameManager.Instance.Database.collectionDailyInfo.passSuperHard += pOldPass - pNewPass;
+                        }
                         GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel,
                             GameManager.Instance.ChoosedHard + 1).isLocked = false;
                     }
@@ -325,6 +345,7 @@ namespace EazyEngine.Space.UI
             {
                 t.gameObject.SetActive(GameManager.Instance.isFree);
             }
+            EzEventManager.TriggerEvent(new MessageGamePlayEvent("MissionDirty"));
         }
         protected float currentCoin;
         public void setGold(float pCoin)
@@ -434,13 +455,13 @@ namespace EazyEngine.Space.UI
             {
    
                 //mission complete 
-                if (pNode.misson.process != 1)
+                if (pNode.misson.Process != 1)
                 {
                     GameManager.Instance.Database.getComonItem("Star").Quantity++;
-                   for(int i  = 0; i < pNode.misson.rewards.Length; ++i)
+                    for (int i  = 0; i < pNode.misson.rewards.Length; ++i)
                     {
                       var pStorage =  GameManager.Instance.Database.getComonItem(pNode.misson.rewards[i].item);
-                        pStorage.Quantity += pNode.misson.rewards[i].quantity;
+                        pStorage.Quantity += pNode.misson.rewards[i].Quantity;
                         if (pStorage.item.ItemID != "Coin")
                         {
                            var pExist = listExtr.Find(x => x.item.itemID == pStorage.item.ItemID);
@@ -449,18 +470,18 @@ namespace EazyEngine.Space.UI
                                 listExtr.Add(new BaseItemGameInstanced()
                                 {
                                     item = pStorage.item,
-                                    quantity = pNode.misson.rewards[i].quantity
+                                    quantity = pNode.misson.rewards[i].Quantity
                                 });
                             }
                             else
                             {
-                                pExist.quantity += pNode.misson.rewards[i].quantity;
+                                pExist.quantity += pNode.misson.rewards[i].Quantity;
                             }
                             extraItem = listExtr.ToArray();
                         }
                     }
                 }
-                pNode.misson.process = 1;
+                pNode.misson.Process = 1;
             }
             if(pNodes.Count == 0)
             {

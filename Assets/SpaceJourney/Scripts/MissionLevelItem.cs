@@ -17,15 +17,15 @@ namespace EazyEngine.Space.UI
             {
                 base.Data = value;
                 content.text = value.mission.descriptionItem.Value;
-                status.setFrameIndex(value.process >= 1 ? 1 : 0);
-                iconComplete.SetActive(value.process >= 1);
-                rewardLayer.SetActive(value.process < 1);
+                status.setFrameIndex(value.Process >= 1 ? 1 : 0);
+                iconComplete.SetActive(value.Process >= 1);
+                rewardLayer.SetActive(value.Process < 1);
                 iconReward.sprite2D = value.rewards[0].item.iconShop;
-                rewardQuantity.text =StringUtils.addDotMoney( value.rewards[0].quantity);
+                rewardQuantity.text =StringUtils.addDotMoney( value.rewards[0].Quantity);
                 if (value.rewards.Length > 1)
                 {
                     iconReward1.sprite2D = value.rewards[1].item.iconShop;
-                    rewardQuantity1.text =StringUtils.addDotMoney( value.rewards[1].quantity);
+                    rewardQuantity1.text =StringUtils.addDotMoney( value.rewards[1].Quantity);
                     iconReward1.gameObject.SetActive(true);
                     rewardQuantity1.gameObject.SetActive(true);
                 }

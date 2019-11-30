@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a686a47eee2fa44cb0a34b5d86e4d5e, type: 3}
+  m_Name: MissionListener
+  m_EditorClassIdentifier: 
+  _serializedGraph: '{"version":2.96,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","translation":{"x":155.2614,"y":-69.69081},"nodes":[{"repeaterMode":"RepeatForever","repeatTimes":{"_value":1},"_position":{"x":403.0,"y":213.0},"$type":"NodeCanvas.BehaviourTrees.Repeater","$id":"2"},{"_condition":{"checkMode":"AnyTrueSuffice","conditions":[{"eventName":{"_value":"MissionDirty"},"value":{"_name":"MissionID","_targetVariableID":"645442ae-8df7-4d6b-b4cf-d50c437e730e"},"$type":"NodeCanvas.Tasks.Conditions.CheckEventValue`1[[System.String,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"eventName":{"_value":"MissionDirty"},"$type":"EazyEngine.Space.CheckEventGame"}],"$type":"NodeCanvas.Framework.ConditionList"},"_position":{"x":300.0,"y":347.0},"$type":"NodeCanvas.BehaviourTrees.ConditionalEvaluator","$id":"4"},{"_position":{"x":403.0,"y":467.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"12"},{"_flowScript":{"_name":"flow"},"_position":{"x":209.0,"y":618.0},"$type":"NodeCanvas.BehaviourTrees.BTNestedFlowScript","$id":"13"},{"_action":{"mess":{"_name":"MissionID","_targetVariableID":"645442ae-8df7-4d6b-b4cf-d50c437e730e"},"$type":"EazyEngine.Space.SendMissionEvent"},"_position":{"x":551.0,"y":644.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"15"}],"connections":[{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"12"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"12"},"_targetNode":{"$ref":"13"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"12"},"_targetNode":{"$ref":"15"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"localBlackboard":{"_name":"Local
+    Blackboard","_variables":{}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
+  _objectReferences: []
+  _deserializationFailed: 0
+  repeat: 1
+  updateInterval: 0

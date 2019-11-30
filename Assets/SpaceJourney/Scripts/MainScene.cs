@@ -35,7 +35,7 @@ namespace EazyEngine.Space.UI
                 layerPrepare.showInfo(0, 0);
             }
             stateGames.Add("Main");
-            if ( GameManager.Instance.wincount == 3)
+            if ( GameManager.Instance.Wincount == 3)
             {
                 GameManager.Instance.Database.lastOnline = System.DateTime.Now;
                 if (StoreReview.CanRequestRating() )
@@ -233,7 +233,10 @@ namespace EazyEngine.Space.UI
         {
             MidLayer.Instance.showBoxDailyGift();
         }
-
+        public void showBoxMission()
+        {
+            MidLayer.Instance.showBoxMission();
+        }
         public void showBoxOnline()
         {
             MidLayer.Instance.BoxGiftOnline.show();

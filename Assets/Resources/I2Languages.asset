@@ -121,44 +121,20 @@ MonoBehaviour:
       - "C\xF4ng"
       Flags: 0000
       Languages_Touch: []
-    - Term: ability/defense
-      TermType: 0
-      Description: 
-      Languages:
-      - Defense
-      - "Th\u1EE7"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ability/hp
-      TermType: 0
-      Description: 
-      Languages:
-      - HP
-      - "M\xE1u"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ability/lucky
-      TermType: 0
-      Description: 
-      Languages:
-      - Lucky
-      - "May M\u1EAFn"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: ability/speed
-      TermType: 0
-      Description: 
-      Languages:
-      - Fire Rate
-      - "T\u1ED1c \u0111\u1ED9 b\u1EAFn"
-      Flags: 0000
-      Languages_Touch: []
     - Term: ability/attackdes
       TermType: 0
       Description: 
       Languages:
       - Damage basic of plane
       - "S\xE1t th\u01B0\u01A1ng c\u01A1 b\u1EA3n c\u1EE7a m\xE1y bay"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ability/defense
+      TermType: 0
+      Description: 
+      Languages:
+      - Defense
+      - "Th\u1EE7"
       Flags: 0000
       Languages_Touch: []
     - Term: ability/defensedes
@@ -169,6 +145,14 @@ MonoBehaviour:
       - "Ch\u1EC9 s\u1ED1 ph\xF2ng th\u1EE7 c\u1EE7a m\xE1y bay"
       Flags: 0000
       Languages_Touch: []
+    - Term: ability/hp
+      TermType: 0
+      Description: 
+      Languages:
+      - HP
+      - "M\xE1u"
+      Flags: 0000
+      Languages_Touch: []
     - Term: ability/hpdes
       TermType: 0
       Description: 
@@ -177,12 +161,12 @@ MonoBehaviour:
       - "L\u01B0\u1EE3ng m\xE1u c\u1EE7a m\xE1y bay"
       Flags: 0000
       Languages_Touch: []
-    - Term: ability/speeddes
+    - Term: ability/lucky
       TermType: 0
       Description: 
       Languages:
-      - Speed attack plane
-      - "t\u1ED1c \u0111\u1ED9 b\u1EAFn c\u1EE7a m\xE1y bay"
+      - Lucky
+      - "May M\u1EAFn"
       Flags: 0000
       Languages_Touch: []
     - Term: ability/luckydes
@@ -192,6 +176,22 @@ MonoBehaviour:
       - Lucky extra money when play
       - "Ch\u1EC9 s\u1ED1 may m\u1EAFn gi\xFAp nh\u1EB7t \u0111c nhi\u1EC1u ti\u1EC1n
         h\u01A1n trong m\xE0n ch\u01A1i"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ability/speed
+      TermType: 0
+      Description: 
+      Languages:
+      - Fire Rate
+      - "T\u1ED1c \u0111\u1ED9 b\u1EAFn"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ability/speeddes
+      TermType: 0
+      Description: 
+      Languages:
+      - Speed attack plane
+      - "t\u1ED1c \u0111\u1ED9 b\u1EAFn c\u1EE7a m\xE1y bay"
       Flags: 0000
       Languages_Touch: []
     - Term: mission/destroy_all_content
@@ -216,6 +216,146 @@ MonoBehaviour:
       Languages:
       - Complete the level
       - "V\u01B0\u1EE3t qua b\xE0n ch\u01A1i"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: mission/destroy_enemies
+      TermType: 0
+      Description: 
+      Languages:
+      - Destroy[F3EE0D] $Goal [-]enemy
+      - "Ti\xEAu di\u1EC7t[F3EE0D] $Goal [-]m\xE1y bay \u0111\u1ECBch"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: mission/watch_ads
+      TermType: 0
+      Description: 
+      Languages:
+      - Watch the ads
+      - "Xem qu\u1EA3ng c\xE1o"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: mission/destroy_smallenemies
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Destroy[F3EE0D] $Goal [-]small enemy '
+      - "Ti\xEAu di\u1EC7t[F3EE0D] $Goal [-]m\xE1y bay \u0111\u1ECBch lo\u1EA1i nh\u1ECF"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: mission/pass_level
+      TermType: 0
+      Description: 
+      Languages:
+      - Complete[F3EE0D] $Goal [-]levels
+      - "Ho\xE0n th\xE0nh[F3EE0D] $Goal [-]m\xE0n ch\u01A1i"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: mission/upgrade_plane
+      TermType: 0
+      Description: 
+      Languages:
+      - Upgrade any main plane[F3EE0D] $Goal [-]times
+      - "N\xE2ng c\u1EA5p m\xE1y bay ch\xEDnh b\u1EA5t k\u1EF3[F3EE0D] $Goal [-]l\u1EA7n"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: mission/upgrade_sp_plane
+      TermType: 0
+      Description: 
+      Languages:
+      - Upgrade any support plane[F3EE0D] $Goal [-]times
+      - "N\xE2ng c\u1EA5p m\xE1y bay ph\u1EE5 b\u1EA5t k\u1EF3[F3EE0D] $Goal [-]l\u1EA7n"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: mission/open_elite_box
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Open[F3EE0D] $Goal [-]times  box elite '
+      - "M\u1EDF[F3EE0D] $Goal [-]l\u1EA7n h\u1ED9p cao c\u1EA5p"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: mission/spin
+      TermType: 0
+      Description: 
+      Languages:
+      - Spin[F3EE0D] $Goal [-]times
+      - "Quay th\u01B0\u1EDFng[F3EE0D] $Goal [-]l\u1EA7n"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: mission/upgrade_plane_to
+      TermType: 0
+      Description: 
+      Languages:
+      - Upgrade[F3EE0D] $Goal [-]planes to level[F3EE0D] $level [-]
+      - "C\xF3[F3EE0D] $Goal [-]m\xE1y bay ch\xEDnh l\xEAn c\u1EA5p[F3EE0D] $level
+        [-]"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: mission/upgrade_sp_plane_to
+      TermType: 0
+      Description: 
+      Languages:
+      - Upgrade[F3EE0D] $Goal [-]support planes to level[F3EE0D] $level [-]
+      - "C\xF3[F3EE0D] $Goal [-]m\xE1y bay ph\u1EE5 l\xEAn c\u1EA5p[F3EE0D] $level
+        [-]"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: mission/collection_star
+      TermType: 0
+      Description: 
+      Languages:
+      - Pass level mision to collect[F3EE0D] $Goal [-]stars
+      - "V\u01B0\u1EE3t qua nhi\u1EC7m v\u1EE5 m\xE0n ch\u01A1i thu th\u1EADp[F3EE0D]
+        $Goal [-]sao"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: mission/used_crystal
+      TermType: 0
+      Description: 
+      Languages:
+      - Spent[F3EE0D] $Goal [-]Crystal
+      - "Ti\xEAu[F3EE0D] $Goal [-]kim c\u01B0\u01A1ng"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: mission/used_coin
+      TermType: 0
+      Description: 
+      Languages:
+      - Spent[F3EE0D] $Goal [-]Coin
+      - "Ti\xEAu[F3EE0D] $Goal [-]v\xE0ng"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: mission/open_any_box
+      TermType: 0
+      Description: 
+      Languages:
+      - Open[F3EE0D] $Goal [-]times any gift box
+      - "M\u1EDF[F3EE0D] $Goal [-]l\u1EA7n h\u1ED9p nh\u1EADn th\u01B0\u1EDFng b\u1EA5t
+        k\u1EF3"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: mission/up_level_wheel
+      TermType: 0
+      Description: 
+      Languages:
+      - Up level wheel lucky to[F3EE0D] $Goal [-]
+      - "T\u0103ng c\u1EA5p v\xF2ng quay may m\u1EAFn l\xEAn[F3EE0D] $Goal [-]"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: mission/pass_level_hard
+      TermType: 0
+      Description: 
+      Languages:
+      - Pass level mode hard[F3EE0D] $Goal [-]times
+      - "V\u01B0\u1EE3t qua m\xE0n ch\u01A1i kh\xF3[F3EE0D] $Goal [-]l\u1EA7n"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: mission/pass_level_super_hard
+      TermType: 0
+      Description: 
+      Languages:
+      - Pass level mode super hard[F3EE0D] $Goal [-]times
+      - "V\u01B0\u1EE3t qua m\xE0n ch\u01A1i si\xEAu kh\xF3[F3EE0D] $Goal [-]l\u1EA7n"
       Flags: 0000
       Languages_Touch: []
     - Term: plane/CircleMain3
@@ -444,9 +584,8 @@ MonoBehaviour:
       Description: 
       Languages:
       - Fire bullets that penetrate through all enemies
-      - "B\u1EAFn ra vi\xEAn \u0111\u1EA1n h\xECnh b\xE1n nguy\u1EC7t xuy\xEAn th\u1EA5u
-        v\xE0 g\xE2y s\xE1t th\u01B0\u01A1ng m\u1ECDi qu\xE2n \u0111\u1ECBch tr\xEAn
-        \u0111\u01B0\u1EDDng \u0111i"
+      - "B\u1EAFn ra vi\xEAn \u0111\u1EA1n h\xECnh b\xE1n nguy\u1EC7t ti\xEAu di\u1EC7t
+        m\u1ECDi qu\xE1i v\u1EADt tr\xEAn \u0111\u01B0\u1EDDng \u0111i"
       Flags: 0000
       Languages_Touch: []
     - Term: plane/plane4_info
@@ -1621,6 +1760,14 @@ MonoBehaviour:
       - "G\xF3i Xu 6"
       Flags: 0000
       Languages_Touch: []
+    - Term: ui/achievement
+      TermType: 0
+      Description: 
+      Languages:
+      - achievement
+      - "th\xE0nh t\u1EF1u"
+      Flags: 0000
+      Languages_Touch: []
     - Term: ui/best_score
       TermType: 0
       Description: 
@@ -1849,6 +1996,14 @@ MonoBehaviour:
       - "Nhi\u1EC7m V\u1EE5"
       Flags: 0000
       Languages_Touch: []
+    - Term: ui/mission_daily
+      TermType: 0
+      Description: 
+      Languages:
+      - DAILY QUEST
+      - "NHI\u1EC6M V\u1EE4 H\xC0NG NG\xC0Y"
+      Flags: 0000
+      Languages_Touch: []
     - Term: ui/next
       TermType: 0
       Description: 
@@ -2066,6 +2221,14 @@ MonoBehaviour:
       - "Si\xEAu c\u1EA5p"
       Flags: 0000
       Languages_Touch: []
+    - Term: ui/supremedes
+      TermType: 0
+      Description: 
+      Languages:
+      - Special box with lost gift
+      - "H\u1ED9p qu\xE0 ch\u1EE9a nhi\u1EC1u ph\u1EA7n qu\xE0 h\u1EA5p d\u1EABn"
+      Flags: 0000
+      Languages_Touch: []
     - Term: ui/ticket
       TermType: 0
       Description: 
@@ -2164,14 +2327,6 @@ MonoBehaviour:
       - "C\u1EA5p \u0111\u1ED9 b\xE1nh xe"
       Flags: 0000
       Languages_Touch: []
-    - Term: ui/supremedes
-      TermType: 0
-      Description: 
-      Languages:
-      - Special box with lost gift
-      - "H\u1ED9p qu\xE0 ch\u1EE9a nhi\u1EC1u ph\u1EA7n qu\xE0 h\u1EA5p d\u1EABn"
-      Flags: 0000
-      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: 
@@ -2187,7 +2342,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbx8Wa8N32JyZ5C4pYOJ3jF2_oE2-cIG5ljH845Z/exec
     Google_SpreadsheetKey: 1pkO-Gbk-Dc8oWvX3kBUU66aMqePyy6D93nsLx9wsiAQ
     Google_SpreadsheetName: I2Loc Fighter Force Localization
-    Google_LastUpdatedVersion: 1574244449755
+    Google_LastUpdatedVersion: 1575088253001
     Google_Password: lengochan
     GoogleUpdateFrequency: 0
     GoogleInEditorCheckFrequency: 0

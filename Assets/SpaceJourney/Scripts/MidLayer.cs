@@ -14,12 +14,16 @@ namespace EazyEngine.Space.UI
         public UIElement BoxGiftOnline;
         public UIElement BoxRank;
         public UIElement boxPrepare;
+        public UIElement boxMission;
         public void showBoxDailyGift()
         {
             MidLayer.Instance.boxDailyGift.IsGetTime = false;
             boxDailyGift.GetComponent<UIElement>().show();
         }
-
+        public void showBoxMission()
+        {
+            boxMission.show();
+        }
         public void showBoxLucky()
         {
             boxLucky.show();

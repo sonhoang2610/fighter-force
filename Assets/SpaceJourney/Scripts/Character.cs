@@ -34,6 +34,7 @@ namespace EazyEngine.Space
         public CharacterHandleWeapon handleWeapon;
         CharacrerAbility[] abilities;
         public PlaneInfoConfig _info;
+        public EnemyType enemyType;
         private StateCharacter currentState =  StateCharacter.Birth;
 
         public StateCharacter CurrentState { get => currentState; set => currentState = value; }

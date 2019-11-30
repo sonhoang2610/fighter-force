@@ -202,8 +202,9 @@ namespace EazyEngine.Space.UI
                                 }
                             }
 
-                    
-                       
+                            GameManager.Instance.Database.collectionDailyInfo.upgradeMainCount++;
+                            GameManager.Instance.Database.collectionDailyInfo.upgradeSpCount++;
+                            SoundManager.Instance.PlaySound(sfxUpgradePlane, Vector3.zero);
                             selectedPlane.CurrentLevel++;
                             selectedPlane.ExtraInfo();
                             effectUpgrade.gameObject.SetActive(true);
@@ -267,8 +268,10 @@ namespace EazyEngine.Space.UI
                         PlayerPrefs.SetInt("firstGame", pStepGame);
                     }
                 }));
-     
-	            selectedPlane.CurrentLevel++;
+                GameManager.Instance.Database.collectionDailyInfo.upgradeMainCount++;
+                GameManager.Instance.Database.collectionDailyInfo.upgradeSpCount++;
+                SoundManager.Instance.PlaySound(sfxUpgradePlane, Vector3.zero);
+                selectedPlane.CurrentLevel++;
                 selectedPlane.ExtraInfo();
                 effectUpgrade.gameObject.SetActive(true);
                 SoundManager.Instance.PlaySound(sfxUpgradePlane, Vector3.zero);
@@ -364,6 +367,8 @@ namespace EazyEngine.Space.UI
                         selectedPlane.upgradeExtraAbility[pAbility._ability.ItemID] = pListInt.ToArray();
                     }
                 }
+                GameManager.Instance.Database.collectionDailyInfo.upgradeMainCount++;
+                GameManager.Instance.Database.collectionDailyInfo.upgradeSpCount++;
                 SoundManager.Instance.PlaySound(sfxUpgradePlane, Vector3.zero);
                 selectedPlane.CurrentLevel++;
                 selectedPlane.ExtraInfo();

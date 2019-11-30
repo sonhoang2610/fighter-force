@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace EazyEngine.Space
 {
+    using EazyEngine.Tools;
     using Sirenix.OdinInspector;
 #if UNITY_EDITOR
     using UnityEditor;
@@ -56,6 +57,27 @@ namespace EazyEngine.Space
         protected BaseItemGameInstanced[] cacheExtra;
         public BaseItemGameInstanced[] ExtractHere(bool isNew = true)
         {
+            if (isNew)
+            {
+                int pIndex = -1;
+                if (ItemID == "BoxElite")
+                {
+                    pIndex = 1;
+                }
+                else if (ItemID == "BoxCommon")
+                {
+                    pIndex = 0;
+                }
+                else if (ItemID == "BoxSupreme")
+                {
+                    pIndex = 2;
+                }
+                if (pIndex != -1)
+                {
+                    GameManager.Instance.Database.collectionInfo.addQuantityBoxOpen(1, pIndex);
+                    EzEventManager.TriggerEvent(new MessageGamePlayEvent("MissionDirty"));
+                }
+            }
             int pFirstBox = PlayerPrefs.GetInt("FirstBoxReward", 0);
             int pSecondBox = PlayerPrefs.GetInt("SecondBox", 0);
             if (itemID == "BoxElite")

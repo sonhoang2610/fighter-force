@@ -175,6 +175,7 @@ public static class EazySystemExtension
     public static T MergeLeft<T, K, V>(this T me, params IDictionary<K, V>[] others)
         where T : IDictionary<K, V>, new()
     {
+        if (others == null || others.Length == 0 || others.ElementAt(0) == null ) return me;
         T newMap = new T();
         foreach (IDictionary<K, V> src in
             (new List<IDictionary<K, V>> { me }).Concat(others))

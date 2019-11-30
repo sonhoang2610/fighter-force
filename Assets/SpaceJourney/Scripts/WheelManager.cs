@@ -139,6 +139,9 @@ namespace EazyEngine.Space.UI
         bool isRolling = false;
         public void startRoll()
         {
+            GameManager.Instance.Database.collectionDailyInfo.spinTime++;
+            GameManager.Instance.Database.collectionInfo.spinTime++;
+            EzEventManager.TriggerEvent(new MessageGamePlayEvent("MissionDirty"));
             updateWheelChance();
             btnRoll.isEnabled = false;
             btnFree.isEnabled = false;

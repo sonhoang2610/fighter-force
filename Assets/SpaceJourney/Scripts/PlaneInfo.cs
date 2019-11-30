@@ -186,6 +186,11 @@ namespace EazyEngine.Space {
      
 
         public int CurrentLevel { get => currentLevel; set {
+                bool dirty = false;
+                if(value != currentLevel)
+                {
+                    dirty = true;
+                }
                 for (int i = 0; i < info.skills.Count; ++i)
                 {
                     if (upgradeSkill.ContainsKey(info.skills[i].Info.ItemID))
@@ -208,6 +213,10 @@ namespace EazyEngine.Space {
                 }
                 currentLevel = value;
                 info.setLevel(CurrentLevel);
+                if (dirty)
+                {
+                    EzEventManager.TriggerEvent(new MessageGamePlayEvent("MissionDirty"));
+                }
             }
         }
 

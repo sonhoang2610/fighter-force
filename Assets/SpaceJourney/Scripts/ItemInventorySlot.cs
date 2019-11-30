@@ -206,6 +206,7 @@ namespace EazyEngine.Space.UI
             }
         }
         protected Tween cacheTween;
+        public Vector2 offsetParticleClaim = Vector2.zero;
         public override void show()
         {
             base.show();
@@ -224,36 +225,65 @@ namespace EazyEngine.Space.UI
                 pSequence.AppendInterval(Index * 0.2f);
                 pSequence.AppendCallback(delegate
                 {
-                    if (particleWhenClaim)
-                    {
-              
-                        var pFinds = FindObjectsOfType<ItemInventorySlot>();
-                        GameObject pTarget = null;
-                        foreach(var pFind in pFinds)
-                        {
-                            if(Data != null && Data.item != null && pFind.Data != null && pFind.Data.item != null &&  Data.item.ItemID == pFind.Data.item.itemID && pFind.isHome)
-                            {
-                                pTarget = pFind.gameObject;
-                                break;
-                            }
-                        }
-                        if (pTarget != null)
-                        {
-                      
-                            var pRootParentTarget = pTarget.GetComponentInParent<UIRoot>();
-                            var pParticle = Instantiate(particleWhenClaim, pRootParentTarget.transform);
-                            pParticle.gameObject.SetLayerRecursively(pRootParentTarget.gameObject.layer);
-                            var pRootParent = transform.GetComponentInParent<UIRoot>();
-                            pParticle.transform.localPosition = pRootParent.transform.InverseTransformPoint( transform.position);
-                            pParticle.Target = pTarget.transform;
-                            pParticle.GetComponent<ParticleSystemRenderer>().material.mainTexture = Data.item.iconShop.texture;
-                        }
-                    }
+                    showEffect();
                     onEffectShow.Invoke();
                 });
                 pSequence.Append(pFade);
                 pSequence.Play();
                 cacheTween = pSequence;
+            }
+        }
+
+        public void showEffect()
+        {
+            if (particleWhenClaim)
+            {
+
+                var pFinds = FindObjectsOfType<ItemInventorySlot>();
+                GameObject pTarget = null;
+                GameObject pTargetPlanB = null;
+                foreach (var pFind in pFinds)
+                {
+                    if (Data != null && Data.item != null && pFind.Data != null && pFind.Data.item != null && Data.item.ItemID == pFind.Data.item.itemID && pFind.isHome)
+                    {
+                        pTarget = pFind.gameObject;
+                        break;
+                    }
+                    if (Data != null && Data.item != null && pFind.Data != null && pFind.Data.item != null && pFind.Data.item.ItemID == "Coin" && pFind.isHome)
+                    {
+                        pTargetPlanB = pFind.gameObject;
+                    }
+                }
+                if(pTarget == null)
+                {
+                    pTarget = pTargetPlanB;
+                }
+                if (pTarget != null)
+                {
+
+                    var pRootParentTarget = pTarget.GetComponentInParent<UIRoot>();
+                    //  particleWhenClaim.GetComponent<ParticleSystemEm>
+                    var pParticle = Instantiate(particleWhenClaim, pRootParentTarget.transform);
+                    pParticle.gameObject.SetActive(false);
+                    pParticle.gameObject.SetLayerRecursively(pRootParentTarget.gameObject.layer);
+                    var pRootParent = transform.GetComponentInParent<UIRoot>();
+                    pParticle.transform.localPosition = pRootParent.transform.InverseTransformPoint(transform.position);
+                    pParticle.Target = pTarget.transform;
+                    pParticle.GetComponent<ParticleSystemRenderer>().material.mainTexture = Data.item.iconShop.texture;
+                    if(Data.quantity <= 10)
+                    {
+                       var e = pParticle.GetComponent<ParticleSystem>().emission;
+                        e.SetBursts(new ParticleSystem.Burst[] {
+                            new ParticleSystem.Burst(0, Data.quantity <= 3 ? Data.quantity : 3)
+                        });
+                        var pMainModule = pParticle.GetComponent<ParticleSystem>().main;
+                        var pSize = pMainModule.startSize;
+                        pSize.constantMin = 1.2f;
+                        pSize.constantMax = 1.2f;
+                        pMainModule.startSize = pSize;
+                    }
+                    pParticle.gameObject.SetActive(true);
+                }
             }
         }
         public override int Index { get => base.Index; set {

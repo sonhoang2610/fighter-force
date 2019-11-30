@@ -34,7 +34,7 @@ namespace EazyEngine.Space.UI
                 var pMissionDefaults = GameDatabase.Instance.getMissionForLevel(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard);
                 for (int i  =0; i < pMissionDefaults.Length; ++i)
                 {
-                    pMissions.Add(new MissionItemInstanced() { mission = pMissionDefaults[i].mission, process = 0 ,rewards = pMissionDefaults[i].rewards });
+                    pMissions.Add(new MissionItemInstanced() { mission = pMissionDefaults[i].mission, Process = 0 ,rewards = pMissionDefaults[i].rewards });
                 }
             }
             DataSource = pMissions.ToObservableList();

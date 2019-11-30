@@ -44,6 +44,7 @@ namespace EazyEngine.Space
         public int level = 0;
         public int hard = 0;
         public bool isLocked = true;
+        public bool isPassed = false; 
         public LevelInfo infos = new LevelInfo();
     }
     [System.Serializable]
@@ -180,6 +181,12 @@ namespace EazyEngine.Space
             {
                 LevelManger.Instance.BornEnemy.Remove(eventType.AffectedCharacter.gameObject);
                 LevelManger.Instance._infoLevel.enemyKill++;
+                var pChar = eventType.AffectedCharacter.gameObject.GetComponent<Character>();
+                if (pChar)
+                {
+                    GameManager.Instance.Database.collectionDailyInfo.addQuantityDestroyEnemy(1, pChar.enemyType);
+                    GameManager.Instance.Database.collectionInfo.addQuantityDestroyEnemy(1, pChar.enemyType);
+                }
             }
 
             if(eventType.Instigator  && eventType.AffectedCharacter == CurrentPlayer)
@@ -306,7 +313,7 @@ namespace EazyEngine.Space
                 var pMissionDefaults = GameDatabase.Instance.getMissionForLevel(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard);
                 for (int i = 0; i < pMissionDefaults.Length; ++i)
                 {
-                    pInfoOriginal.Missions.Add(new MissionItemInstanced() { mission = pMissionDefaults[i].mission, process = 0, rewards = pMissionDefaults[i].rewards });
+                    pInfoOriginal.Missions.Add(new MissionItemInstanced() { mission = pMissionDefaults[i].mission, Process = 0, rewards = pMissionDefaults[i].rewards });
                 }
             }
             _infoLevel = pInfoOriginal.CloneData();

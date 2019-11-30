@@ -76,7 +76,115 @@ namespace EazyEngine.Space
             return null;
         }
     }
+    [System.Serializable]
+    public enum EnemyType
+    {
+        NONE,
+        SMALL,
+        MEDIUM,
+        MINIBOSS,
+        BOSS
+    }
 
+    public static class MissionPropertyListen
+    {
+        public static readonly string[] IDS = { "Passlevel" ,"UseCoin","UserCrystal","DestroyEnemy","WatchADS","Upgrade","OpenBox","Spin"};
+
+       // public static string 
+    }
+    [System.Serializable]
+    public class CollectionInfo
+    {
+        public int enemySmall=0,enemyMedium = 0, enemyMiniBoss = 0, enemyBoss = 0;
+        public int coinTaken = 0;
+        public int coinUsed = 0, crystalUsed = 0;
+        public int winCount = 0;
+        public int spinTime=0;
+        public int watchADS = 0;
+        public int openBoxElite = 0, openBoxCommon = 0, openBoxSuper = 0;
+        public int upgradeMainCount = 0,upgradeSpCount;
+        public int passHard, passSuperHard, passNormal;
+
+        public int PassedAllLevelAndMode
+        {
+            get
+            {
+                return passHard + passSuperHard + passNormal;
+            }
+        }
+        public int PassedLevelMode(int pMode)
+        {
+            return pMode == 0 ? passNormal : (pMode == 1 ? passHard : passSuperHard);
+        }
+        public void singletonRecalculate()
+        {
+            var pLevels = GameManager.Instance.container.levels;
+            passNormal = 0;
+            passHard = 0;
+            passSuperHard = 0;
+            foreach (var pLevel in pLevels)
+            {
+                if (pLevel.isPassed)
+                {
+                    if(pLevel.hard == 0)
+                    {
+                        passNormal++;
+                    }
+                    if (pLevel.hard ==1)
+                    {
+                        passHard++;
+                    }
+                    if (pLevel.hard == 1)
+                    {
+                        passSuperHard++;
+                    }
+                }
+            }
+        }
+        public void addQuantityBoxOpen(int pQuantiyAdd, int index)
+        {
+            switch (index)
+            {
+                case 0: openBoxCommon += pQuantiyAdd; break;
+                case 1: openBoxElite += pQuantiyAdd; break;
+                case 2: openBoxSuper += pQuantiyAdd; break;
+            }
+        }
+        public int getAllOpened()
+        {
+            return openBoxElite + openBoxCommon + openBoxSuper ;
+        }
+        public void addQuantityDestroyEnemy(int pQuantiyAdd, EnemyType pType)
+        {
+            switch (pType)
+            {
+                case EnemyType.SMALL: enemySmall += pQuantiyAdd;break;
+                case EnemyType.MEDIUM: enemyMedium += pQuantiyAdd; break;
+                case EnemyType.MINIBOSS: enemyMiniBoss += pQuantiyAdd; break;
+                case EnemyType.BOSS: enemyBoss += pQuantiyAdd; break;
+            }
+        }
+        public int getQuantityEnemyDestroy(EnemyType pType)
+        {
+            switch (pType)
+            {
+                case EnemyType.SMALL: return enemySmall;
+                case EnemyType.MEDIUM: return enemyMedium;
+                case EnemyType.MINIBOSS: return enemyMiniBoss;
+                case EnemyType.BOSS: return enemyBoss;
+            }
+            return 0;
+        }
+        public int GetAllDestroyed()
+        {
+            return enemySmall + enemyMedium + enemyMiniBoss + enemyBoss;
+        }
+    }
+    [System.Serializable]
+    public class CollectionDailyInfo :CollectionInfo
+    {
+        public System.DateTime time;      
+    }
     [System.Serializable]
     public class GameDataBaseInstance
     {
@@ -91,6 +199,7 @@ namespace EazyEngine.Space
                 pPlane.ExtraInfo();
             }
             reupdateTimerCount();
+            collectionInfo.singletonRecalculate();
         }
 
         public void reupdateTimerCount()
@@ -203,7 +312,20 @@ namespace EazyEngine.Space
         public System.DateTime firstOnline;
         [HideInInspector]
         public int currentWheelToday = 0;
-     //   [HideInInspector]
+        [HideInInspector]
+        public CollectionInfo collectionInfo;
+        [HideInInspector]
+        public CollectionDailyInfo collectionDailyInfo;
+        public MissionContainerInfo missionContainerInfo;
+        public CollectionInfo getCollectionInfo(bool isDaily)
+        {
+            if (isDaily)
+            {
+                return collectionDailyInfo != null ? collectionDailyInfo : collectionDailyInfo = new CollectionDailyInfo();
+            }
+            return collectionInfo != null ? collectionInfo : collectionInfo = new CollectionInfo();
+        }
+        //   [HideInInspector]
         [SerializeField]
         public List<TimeCountDown> timers = new List<TimeCountDown>();
 
@@ -425,6 +547,23 @@ namespace EazyEngine.Space
                 
                 if (changeQuantity != 0)
                 {
+                    bool dirtyMission = false;
+                    if(item.ItemID == "Coin" && changeQuantity < 0)
+                    {
+                        GameManager.Instance.Database.collectionDailyInfo.coinUsed += -changeQuantity;
+                        GameManager.Instance.Database.collectionInfo.coinUsed += -changeQuantity;
+                        dirtyMission = true;
+                    }
+                    if (item.ItemID == "Crystal" && changeQuantity < 0)
+                    {
+                        GameManager.Instance.Database.collectionDailyInfo.crystalUsed += -changeQuantity;
+                        GameManager.Instance.Database.collectionInfo.crystalUsed += -changeQuantity;
+                        dirtyMission = true;
+                    }
+                    if (dirtyMission)
+                    {
+                        EzEventManager.TriggerEvent(new MessageGamePlayEvent("MissionDirty"));
+                    }
                     EzEventManager.TriggerEvent(new GameDatabaseInventoryEvent(BehaviorDatabase.CHANGE_QUANTITY_ITEM, this));
                 }
             }

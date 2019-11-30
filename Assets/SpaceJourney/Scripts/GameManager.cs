@@ -160,11 +160,11 @@ public static class LoadAssets
 
 public static class SerializeGameDataBase
 {
-    public static GameDataBaseInstance CloneData(this GameDataBaseInstance pInfo)
+    public static void EzSerializeData<T>(this T pInfo, Stream ms,ref BinaryFormatter formatter)
     {
-        using (var ms = new MemoryStream())
+        if (formatter == null)
         {
-            var formatter = new BinaryFormatter();
+             formatter = new BinaryFormatter();
             SurrogateSelector ss = new SurrogateSelector();
 
             AbilitySerialize ability = new AbilitySerialize();
@@ -179,6 +179,62 @@ public static class SerializeGameDataBase
             ss.AddSurrogate(typeof(BaseItemGame),
                             new StreamingContext(StreamingContextStates.All),
                             baseItem);
+            MissionSerialize missionInfo = new MissionSerialize();
+            ss.AddSurrogate(typeof(MissionItem),
+                            new StreamingContext(StreamingContextStates.All),
+                            missionInfo);
+            SkillInfoSerialize skillInfo = new SkillInfoSerialize();
+            ss.AddSurrogate(typeof(SkillInfo),
+                            new StreamingContext(StreamingContextStates.All), skillInfo);
+            GameDatabaseSerialize gameinfo = new GameDatabaseSerialize();
+            ss.AddSurrogate(typeof(GameDatabase),
+                            new StreamingContext(StreamingContextStates.All),
+                            gameinfo);
+            CharacterSerialize charInfo = new CharacterSerialize();
+            ss.AddSurrogate(typeof(Character),
+                            new StreamingContext(StreamingContextStates.All),
+                            charInfo);
+            SpriteSerialize spriteInfo = new SpriteSerialize();
+            ss.AddSurrogate(typeof(Sprite),
+                            new StreamingContext(StreamingContextStates.All),
+                            spriteInfo);
+            ItemGameSerialize iteomGameInfo = new ItemGameSerialize();
+            ss.AddSurrogate(typeof(ItemGame),
+                            new StreamingContext(StreamingContextStates.All),
+                            iteomGameInfo);
+            PackageInfoSerialize pack = new PackageInfoSerialize();
+            ss.AddSurrogate(typeof(ItemPackage),
+                            new StreamingContext(StreamingContextStates.All),
+                            pack);
+            formatter.SurrogateSelector = ss;
+        }
+        // 2. Have the formatter use our surrogate selector
+  
+       formatter.Serialize(ms, pInfo);
+    }
+    public static T EzDeSerializeData<T>(this Stream ms, ref BinaryFormatter formatter)
+    {
+        if (formatter == null)
+        {
+            formatter = new BinaryFormatter();
+            SurrogateSelector ss = new SurrogateSelector();
+
+            AbilitySerialize ability = new AbilitySerialize();
+            ss.AddSurrogate(typeof(AbilityInfo),
+                            new StreamingContext(StreamingContextStates.All),
+                            ability);
+            PlaneInfoSerialize planeinfo = new PlaneInfoSerialize();
+            ss.AddSurrogate(typeof(PlaneInfo),
+                            new StreamingContext(StreamingContextStates.All),
+                            planeinfo);
+            BaseItemSerialize baseItem = new BaseItemSerialize();
+            ss.AddSurrogate(typeof(BaseItemGame),
+                            new StreamingContext(StreamingContextStates.All),
+                            baseItem);
+            MissionSerialize missionInfo = new MissionSerialize();
+            ss.AddSurrogate(typeof(MissionItem),
+                            new StreamingContext(StreamingContextStates.All),
+                            missionInfo);
             SkillInfoSerialize skillInfo = new SkillInfoSerialize();
             ss.AddSurrogate(typeof(SkillInfo),
                             new StreamingContext(StreamingContextStates.All), skillInfo);
@@ -204,9 +260,17 @@ public static class SerializeGameDataBase
                             pack);
             // 2. Have the formatter use our surrogate selector
             formatter.SurrogateSelector = ss;
-            formatter.Serialize(ms, pInfo);
-            ms.Position = 0;
-            return (GameDataBaseInstance)formatter.Deserialize(ms);
+        }
+        ms.Position = 0;
+        return (T)formatter.Deserialize(ms);
+    }
+    public static T CloneData<T>(this T pInfo)
+    {
+        using (var ms = new MemoryStream())
+        {
+            BinaryFormatter formatter = null;
+            pInfo.EzSerializeData( ms,ref formatter);
+            return EzDeSerializeData<T>(ms,ref formatter);
         }
     }
 }
@@ -399,6 +463,8 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         if (first)
         {
             initGame();
+            MissionContainer.Instance.LoadState();
+
             first = false;
         }
     }
@@ -419,6 +485,13 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     }
 
     public LevelConfig ConfigLevel { get => configLevel; set => configLevel = value; }
+    public int Wincount { get => wincount; set {
+            GameManager.Instance.Database.collectionDailyInfo.winCount += (value - wincount);
+            GameManager.Instance.Database.collectionInfo.winCount += (value - wincount);
+            wincount = value;
+        }
+    }
+
     protected FileStream fileSaveGame;
 
     protected bool saveGameAgain = false;
@@ -453,22 +526,41 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                 // Serialize to memory instead of to file
                 var formatter = new BinaryFormatter();
                 SurrogateSelector ss = new SurrogateSelector();
+                AbilitySerialize ability = new AbilitySerialize();
+                ss.AddSurrogate(typeof(AbilityInfo),
+                                new StreamingContext(StreamingContextStates.All),
+                                ability);
                 PlaneInfoSerialize planeinfo = new PlaneInfoSerialize();
                 ss.AddSurrogate(typeof(PlaneInfo),
                                 new StreamingContext(StreamingContextStates.All),
                                 planeinfo);
-                BaseItemSerialize baseInfo = new BaseItemSerialize();
+                BaseItemSerialize baseItem = new BaseItemSerialize();
                 ss.AddSurrogate(typeof(BaseItemGame),
                                 new StreamingContext(StreamingContextStates.All),
-                                baseInfo);
+                                baseItem);
+                MissionSerialize missionInfo = new MissionSerialize();
+                ss.AddSurrogate(typeof(MissionItem),
+                                new StreamingContext(StreamingContextStates.All),
+                                missionInfo);
+                SkillInfoSerialize skillInfo = new SkillInfoSerialize();
+                ss.AddSurrogate(typeof(SkillInfo),
+                                new StreamingContext(StreamingContextStates.All), skillInfo);
+                GameDatabaseSerialize gameinfo = new GameDatabaseSerialize();
+                ss.AddSurrogate(typeof(GameDatabase),
+                                new StreamingContext(StreamingContextStates.All),
+                                gameinfo);
+                CharacterSerialize charInfo = new CharacterSerialize();
+                ss.AddSurrogate(typeof(Character),
+                                new StreamingContext(StreamingContextStates.All),
+                                charInfo);
+                SpriteSerialize spriteInfo = new SpriteSerialize();
+                ss.AddSurrogate(typeof(Sprite),
+                                new StreamingContext(StreamingContextStates.All),
+                                spriteInfo);
                 ItemGameSerialize iteomGameInfo = new ItemGameSerialize();
                 ss.AddSurrogate(typeof(ItemGame),
                                 new StreamingContext(StreamingContextStates.All),
                                 iteomGameInfo);
-                SkillInfoSerialize skill = new SkillInfoSerialize();
-                ss.AddSurrogate(typeof(SkillInfo),
-                                new StreamingContext(StreamingContextStates.All),
-                                skill);
                 PackageInfoSerialize pack = new PackageInfoSerialize();
                 ss.AddSurrogate(typeof(ItemPackage),
                                 new StreamingContext(StreamingContextStates.All),
@@ -508,22 +600,41 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                 // Serialize to memory instead of to file
                 var formatter = new BinaryFormatter();
                 SurrogateSelector ss = new SurrogateSelector();
+                AbilitySerialize ability = new AbilitySerialize();
+                ss.AddSurrogate(typeof(AbilityInfo),
+                                new StreamingContext(StreamingContextStates.All),
+                                ability);
                 PlaneInfoSerialize planeinfo = new PlaneInfoSerialize();
                 ss.AddSurrogate(typeof(PlaneInfo),
                                 new StreamingContext(StreamingContextStates.All),
                                 planeinfo);
-                BaseItemSerialize baseInfo = new BaseItemSerialize();
+                BaseItemSerialize baseItem = new BaseItemSerialize();
                 ss.AddSurrogate(typeof(BaseItemGame),
                                 new StreamingContext(StreamingContextStates.All),
-                                baseInfo);
+                                baseItem);
+                MissionSerialize missionInfo = new MissionSerialize();
+                ss.AddSurrogate(typeof(MissionItem),
+                                new StreamingContext(StreamingContextStates.All),
+                                missionInfo);
+                SkillInfoSerialize skillInfo = new SkillInfoSerialize();
+                ss.AddSurrogate(typeof(SkillInfo),
+                                new StreamingContext(StreamingContextStates.All), skillInfo);
+                GameDatabaseSerialize gameinfo = new GameDatabaseSerialize();
+                ss.AddSurrogate(typeof(GameDatabase),
+                                new StreamingContext(StreamingContextStates.All),
+                                gameinfo);
+                CharacterSerialize charInfo = new CharacterSerialize();
+                ss.AddSurrogate(typeof(Character),
+                                new StreamingContext(StreamingContextStates.All),
+                                charInfo);
+                SpriteSerialize spriteInfo = new SpriteSerialize();
+                ss.AddSurrogate(typeof(Sprite),
+                                new StreamingContext(StreamingContextStates.All),
+                                spriteInfo);
                 ItemGameSerialize iteomGameInfo = new ItemGameSerialize();
                 ss.AddSurrogate(typeof(ItemGame),
                                 new StreamingContext(StreamingContextStates.All),
                                 iteomGameInfo);
-                SkillInfoSerialize skill = new SkillInfoSerialize();
-                ss.AddSurrogate(typeof(SkillInfo),
-                                new StreamingContext(StreamingContextStates.All),
-                                skill);
                 PackageInfoSerialize pack = new PackageInfoSerialize();
                 ss.AddSurrogate(typeof(ItemPackage),
                                 new StreamingContext(StreamingContextStates.All),
@@ -577,22 +688,41 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
 
                 var formatter = new BinaryFormatter();
                 SurrogateSelector ss = new SurrogateSelector();
+                AbilitySerialize ability = new AbilitySerialize();
+                ss.AddSurrogate(typeof(AbilityInfo),
+                                new StreamingContext(StreamingContextStates.All),
+                                ability);
                 PlaneInfoSerialize planeinfo = new PlaneInfoSerialize();
                 ss.AddSurrogate(typeof(PlaneInfo),
                                 new StreamingContext(StreamingContextStates.All),
                                 planeinfo);
-                BaseItemSerialize baseInfo = new BaseItemSerialize();
+                BaseItemSerialize baseItem = new BaseItemSerialize();
                 ss.AddSurrogate(typeof(BaseItemGame),
                                 new StreamingContext(StreamingContextStates.All),
-                                baseInfo);
+                                baseItem);
+                MissionSerialize missionInfo = new MissionSerialize();
+                ss.AddSurrogate(typeof(MissionItem),
+                                new StreamingContext(StreamingContextStates.All),
+                                missionInfo);
+                SkillInfoSerialize skillInfo = new SkillInfoSerialize();
+                ss.AddSurrogate(typeof(SkillInfo),
+                                new StreamingContext(StreamingContextStates.All), skillInfo);
+                GameDatabaseSerialize gameinfo = new GameDatabaseSerialize();
+                ss.AddSurrogate(typeof(GameDatabase),
+                                new StreamingContext(StreamingContextStates.All),
+                                gameinfo);
+                CharacterSerialize charInfo = new CharacterSerialize();
+                ss.AddSurrogate(typeof(Character),
+                                new StreamingContext(StreamingContextStates.All),
+                                charInfo);
+                SpriteSerialize spriteInfo = new SpriteSerialize();
+                ss.AddSurrogate(typeof(Sprite),
+                                new StreamingContext(StreamingContextStates.All),
+                                spriteInfo);
                 ItemGameSerialize iteomGameInfo = new ItemGameSerialize();
                 ss.AddSurrogate(typeof(ItemGame),
                                 new StreamingContext(StreamingContextStates.All),
                                 iteomGameInfo);
-                SkillInfoSerialize skill = new SkillInfoSerialize();
-                ss.AddSurrogate(typeof(SkillInfo),
-                                new StreamingContext(StreamingContextStates.All),
-                                skill);
                 PackageInfoSerialize pack = new PackageInfoSerialize();
                 ss.AddSurrogate(typeof(ItemPackage),
                                 new StreamingContext(StreamingContextStates.All),
@@ -735,33 +865,11 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         {
             pData = new T();
         }
-        var formatter = new BinaryFormatter();
-        SurrogateSelector ss = new SurrogateSelector();
-        PlaneInfoSerialize planeinfo = new PlaneInfoSerialize();
-        ss.AddSurrogate(typeof(PlaneInfo),
-                        new StreamingContext(StreamingContextStates.All),
-                        planeinfo);
-        BaseItemSerialize baseInfo = new BaseItemSerialize();
-        ss.AddSurrogate(typeof(BaseItemGame),
-                        new StreamingContext(StreamingContextStates.All),
-                        baseInfo);
-        MissionSerialize missionInfo = new MissionSerialize();
-        ss.AddSurrogate(typeof(MissionItem),
-                        new StreamingContext(StreamingContextStates.All),
-                        missionInfo);
-        ItemGameSerialize iteomGameInfo = new ItemGameSerialize();
-        ss.AddSurrogate(typeof(ItemGame),
-                        new StreamingContext(StreamingContextStates.All),
-                        iteomGameInfo);
-        PackageInfoSerialize pack = new PackageInfoSerialize();
-        ss.AddSurrogate(typeof(ItemPackage),
-                        new StreamingContext(StreamingContextStates.All),
-                        pack);
-        // 2. Have the formatter use our surrogate selector
-        formatter.SurrogateSelector = ss;
+ 
         try
         {
-            formatter.Serialize(file, pData);
+            BinaryFormatter formatter = null;
+            pData.EzSerializeData(file, ref formatter);
         }
         catch (SerializationException e)
         {
@@ -779,7 +887,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         }
 #endif
     }
-    public T LoadFile<T>(string fileName) where T : class, new()
+    public T LoadFile<T>(string fileName,bool createNew = true) where T : class, new()
     {
         FileStream file = null;
         T data = null;
@@ -789,32 +897,11 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             file = File.OpenRead(destination);
             if (file != null)
             {
-                var formatter = new BinaryFormatter();
-                SurrogateSelector ss = new SurrogateSelector();
-                PlaneInfoSerialize planeinfo = new PlaneInfoSerialize();
-                ss.AddSurrogate(typeof(PlaneInfo),
-                                new StreamingContext(StreamingContextStates.All),
-                                planeinfo);
-                BaseItemSerialize baseInfo = new BaseItemSerialize();
-                ss.AddSurrogate(typeof(BaseItemGame),
-                                new StreamingContext(StreamingContextStates.All),
-                                baseInfo);
-                MissionSerialize missionInfo = new MissionSerialize();
-                ss.AddSurrogate(typeof(MissionItem),
-                                new StreamingContext(StreamingContextStates.All),
-                                missionInfo);
-                ItemGameSerialize iteomGameInfo = new ItemGameSerialize();
-                ss.AddSurrogate(typeof(ItemGame),
-                                new StreamingContext(StreamingContextStates.All),
-                                iteomGameInfo);
-                PackageInfoSerialize pack = new PackageInfoSerialize();
-                ss.AddSurrogate(typeof(ItemPackage),
-                                new StreamingContext(StreamingContextStates.All),
-                                pack);
-                formatter.SurrogateSelector = ss;
+             
                 try
                 {
-                    data = (T)formatter.Deserialize(file);
+                    BinaryFormatter formatter = null;
+                    data = file.EzDeSerializeData<T>(ref formatter);
                 }
                 catch (SerializationException e)
                 {
@@ -833,7 +920,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
 #endif
             }
         }
-        else
+        else if(createNew)
         {
             SaveFile<T>(fileName, data = new T());
         }
@@ -931,7 +1018,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             for (int g = timer[i].LabelTimer.Count - 1; g>= 0; g-- )
             {
                 var pLabel = timer[i].LabelTimer[g];
-                if (pLabel.IsDestroyed()) { timer[i].LabelTimer.RemoveAt(g); continue; }
+                if (pLabel.IsDestroyed() || pLabel == null) { timer[i].LabelTimer.RemoveAt(g); continue; }
                 pLabel.text = System.TimeSpan.FromSeconds(timer[i].length - pSec).ToString(@"hh\:mm\:ss");
             }
             if (pSec >= timer[i].length)
@@ -1018,7 +1105,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             var pLEvelInfo = container.levels[i];
             foreach (var pMission in pLEvelInfo.infos.missions)
             {
-                if (pMission.process == 1)
+                if (pMission.Process == 1)
                 {
                     totalStar++;
                 }
@@ -1119,6 +1206,8 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
 
     void onRewardedAdComplete(RewardedAdNetwork pNetWork, AdPlacement placement)
     {
+        GameManager.Instance.Database.collectionDailyInfo.watchADS++;
+        EzEventManager.TriggerEvent(new MessageGamePlayEvent("MissionDirty"));
         if (rewardAds.ContainsKey(placement.Name))
         {
             rewardAds[placement.Name](true);

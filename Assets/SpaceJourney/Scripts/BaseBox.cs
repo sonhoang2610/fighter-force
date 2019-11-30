@@ -4,6 +4,7 @@ using UnityEngine;
 using EazyEngine.Tools;
 using Sirenix.OdinInspector;
 using UnityEngine.Events;
+using System;
 
 public class BaseBox<TItem, TData> : MonoBehaviour where TItem : BaseItem<TData> where TData : class
 {
@@ -14,10 +15,13 @@ public class BaseBox<TItem, TData> : MonoBehaviour where TItem : BaseItem<TData>
     public List<TItem> items = new List<TItem>();
     public Dictionary<TData, TItem> Item = new Dictionary<TData, TItem>();
     public List<EventDelegate> onDataAction = new List<EventDelegate>();
+    private Comparison<TData> comparison;
+
     public virtual ObservableList<TData> DataSource
     {
         set
         {
+            value.Comparison = Comparison;
             if (value != _infos)
             {
                 _infos = value;
@@ -37,7 +41,22 @@ public class BaseBox<TItem, TData> : MonoBehaviour where TItem : BaseItem<TData>
             return _infos;
         }
     }
+    public Comparison<TData> Comparison
+    {
+        get
+        {
+            return comparison;
+        }
 
+        set
+        {
+            comparison = value;
+            if(DataSource != null)
+            {
+                DataSource.Comparison = value;
+            }
+        }
+    }
     public void reloadData()
     {
         _infos.CollectionChanged();

@@ -33,11 +33,14 @@ public class SpaceManagerWindow : OdinMenuEditorWindow
 
         string path1 = "Assets/SpaceJourney/Resources/Variants/DataBase/GameDatabase.asset";
         var database1 = AssetDatabase.LoadAssetAtPath<EazyEngine.Space.GameDatabase>(path1);
+        string pathMission = "Assets/SpaceJourney/Resources/Variants/DataBase/MissionDatabase.asset";
+        var databaseMission = AssetDatabase.LoadAssetAtPath<EazyEngine.Space.MissionDatabase>(pathMission);
         string pathMainPlane = "Assets/SpaceJourney/Resources/Variants/DataBase/Plane/TableMainPlane.asset";
         var databaseMain = AssetDatabase.LoadAssetAtPath<EazyEngine.Space.TablePlane>(pathMainPlane);
         string pathMainspPlane = "Assets/SpaceJourney/Resources/Variants/DataBase/SupportPlane/TableSPPlane.asset";
         var databasespMain = AssetDatabase.LoadAssetAtPath<EazyEngine.Space.TablePlane>(pathMainspPlane);
         tree.AddObjectAtPath("Space/Database", database1);
+        tree.AddObjectAtPath("Space/Missions", databaseMission);
         tree.AddObjectAtPath("Space/MainPlane", databaseMain);
         tree.AddObjectAtPath("Space/SupportPlane", databasespMain);
         tree.AddObjectAtPath("Space/Enemies/Small", database.smallEnemiesObs);
