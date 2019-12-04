@@ -46,7 +46,7 @@ namespace EazyEngine.Space {
                 }
                 else
                 {
-                    RaycastHit2D hit = MMDebug.RayCast(transform.position, Vector2.down.Rotate(transform.rotation.eulerAngles.z), 10, maskCam, Color.red, true);
+                    RaycastHit2D hit = MMDebug.RayCast(transform.position, Vector2.down.Rotate(transform.rotation.eulerAngles.z), 10, maskCam, Color.red, false);
                     if (hit)
                     {
                         cacheRotation = transform.rotation;

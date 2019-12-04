@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using EazyEngine.Space;
+using Sirenix.OdinInspector;
 
 namespace EazyEngine.Tools
 {
@@ -23,6 +24,8 @@ namespace EazyEngine.Tools
         public GameObject GameObjectToPool;
         /// the number of objects we'll add to the pool
         public int PoolSize = 20;
+        [HideInEditorMode]
+        public int RemainPoolSize = 0;
         /// if true, the pool will automatically add objects to the itself if needed
         public bool PoolCanExpand = true;
         public bool dontDestroyOnload = false;
@@ -60,7 +63,23 @@ namespace EazyEngine.Tools
                     AddOneObjectToThePool();
                 }
             }
+            StartCoroutine(delayCheckSpawnPool());
        
+        }
+
+        IEnumerator delayCheckSpawnPool()
+        {
+            if(RemainPoolSize > 0)
+            {
+                AddOneObjectToThePool();
+                RemainPoolSize--;
+            }
+            yield return new WaitForSeconds(0.2f);
+            StartCoroutine(delayCheckSpawnPool());
+        }
+        private void OnDisable()
+        {
+            StopAllCoroutines();
         }
 
         /// <summary>

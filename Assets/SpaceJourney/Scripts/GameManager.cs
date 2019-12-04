@@ -327,6 +327,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     [System.NonSerialized]
     public int lastResultWin = -1;
     public AudioClip btnSfx;
+    public MovingLeader leaderTemplate;
     public prefabBulletGroup getGroupPrefab(GameObject pObject)
     {
         for (int i = 0; i < groupPrefabBullet.Length; ++i)

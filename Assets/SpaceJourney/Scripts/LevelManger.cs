@@ -280,7 +280,8 @@ namespace EazyEngine.Space
             {
                 var pMainLeaderObject = new GameObject();
                 var pTime = pMainLeaderObject.AddComponent<TimeControllerElement>();
-                pTime._groupName = TimeKeeper.Instance.getTimeLineIndex("Enemies") + 1;
+                pTime._groupName = TimeKeeper.Instance.getTimeLineIndex("Enemies") ;
+                pMainLeaderObject.AddComponent<RootMotionController>();
                 var pLeader = pMainLeaderObject.AddComponent<MovingLeader>();
                 GroupManager.leaders.Add(pLeader);
                  pMainLeaderObject.SetActive(false);
@@ -292,6 +293,7 @@ namespace EazyEngine.Space
                 var pTime = pMainLeaderObject.AddComponent<TimeControllerElement>();
                 pTime._groupName = TimeKeeper.Instance.getTimeLineIndex("Enemies") + 1;
                 var pManager = pMainLeaderObject.AddComponent<GroupManager>();
+                pMainLeaderObject.AddComponent<AIMachine>();
                 GroupManager.managers.Add(pManager);
                 pMainLeaderObject.SetActive(false);
                 pMainLeaderObject.name = "manager";

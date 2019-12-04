@@ -97,10 +97,12 @@ namespace EazyEngine.Space
                 {
                     if (!pLeader)
                     {
-                        pMainLeaderObject = new GameObject();
-                        var pTime = pMainLeaderObject.AddComponent<TimeControllerElement>();
-                        pTime._groupName = TimeKeeper.Instance.getTimeLineIndex("Enemies") + 1;
-                        pLeader = pMainLeaderObject.AddComponent<MovingLeader>();
+                        //pMainLeaderObject = new GameObject();
+                        //var pTime = pMainLeaderObject.AddComponent<TimeControllerElement>();
+                        //pTime._groupName = TimeKeeper.Instance.getTimeLineIndex("Enemies") + 1;
+                        //pLeader = pMainLeaderObject.AddComponent<MovingLeader>();
+                        pLeader = Instantiate<MovingLeader>(GameManager.Instance.leaderTemplate);
+                        pMainLeaderObject = pLeader.gameObject;
                         leaders.Add(pLeader);
                     }
                     else
@@ -217,6 +219,27 @@ namespace EazyEngine.Space
             }
             var pState = _parentState;
             var arrayPos = JourneySpaceUlities.getPointFormat(pState.formatInfo, pState.formatInfo.quantity);
+            bool pMultipeLeader = false;
+            for(int i = 0; i < pState.moveInfos.Length; ++i)
+            {
+                if(pState.moveInfos[0].RowDelay != 0)
+                {
+                    pMultipeLeader = true;
+                }
+            }
+            if (!pMultipeLeader)
+            {
+                List<Vector2> pTempPos = new List<Vector2>();
+                for(int i = 0; i < arrayPos.Length; ++i)
+                {
+                    pTempPos.AddRange(arrayPos[i]);
+                }
+                arrayPos = new Vector2[][]
+                {
+                    pTempPos.ToArray()
+                };
+            }
+            List<Vector2> pRecalculate = new List<Vector2>();
             arrayPos = arrayPos.convertAfterRotation(Vector2.zero, 0);
             if (!pState.isManual)
             {

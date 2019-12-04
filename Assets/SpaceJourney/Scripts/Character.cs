@@ -162,8 +162,11 @@ namespace EazyEngine.Space
             _health.currentHealth = (int)pInfo.Health;
 
             if (!handleWeapon) handleWeapon = GetComponent<CharacterHandleWeapon>();
-            handleWeapon.FixDamage = (int)pInfo.DamgageBasic;
-            handleWeapon.setData(pInfo.weapon);
+            if (handleWeapon)
+            {
+                handleWeapon.FixDamage = (int)pInfo.DamgageBasic;
+                handleWeapon.setData(pInfo.weapon);
+            }
             for (int i = 0; i < pInfo.propEdits.Length; ++i)
             {
                 for (int j = 0; j < pInfo.propEdits[i].propEdits.Length; ++j)

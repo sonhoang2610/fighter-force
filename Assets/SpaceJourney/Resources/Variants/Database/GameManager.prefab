@@ -1,5 +1,249 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &961229229279583185
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4220788762158188165}
+  - component: {fileID: 201827133137300270}
+  - component: {fileID: 8076321230607411639}
+  - component: {fileID: 7750980405954699869}
+  m_Layer: 0
+  m_Name: leader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4220788762158188165
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961229229279583185}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3116318004972236539}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &201827133137300270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961229229279583185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 505d56c2fdde62a48be16280fcd9b269, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elements:
+    ResortOnCollectionChanged: 1
+    ResortOnCollectionItemChanged: 1
+    Items: []
+  _moveInfo:
+    indexStateMove: 0
+    DelayStart: 0
+    RowDelay: 0
+    splineRaw:
+      points:
+      - {x: 0, y: 3, z: 0}
+      - {x: 0, y: 2.5, z: 0}
+      - {x: 0, y: 0.5, z: 0}
+      - {x: 0, y: 0, z: 0}
+      modes: 00000000000000000000000000000000
+      loop: 0
+      lineMode: 1
+      relative: 1
+      snap: 0
+      snapGrid: {x: 0, y: 0}
+      currentNode: 0
+    lookType: 0
+    durationMove: 1
+    speedBase: 0
+    curvesMoving:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    loop: 1
+    onCompleteNode: []
+    conditionComplete:
+    - condition: 0
+      destroyQuantity: 1
+      triggerString: 
+    onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
+  _parentState:
+    isExpaned: 0
+    nameState: None
+    comment: None
+    nameGroup: 
+    isManual: 0
+    formatInfo:
+      prefabEnemies: []
+      quantity: 1
+      typeSpawn: 0
+      typeFomation: 0
+      startSpawnPos: {x: 0, y: 3}
+      AxisX: 0
+      sizeDomain: {x: 1, y: 1}
+      distanceEmiter: {x: 1, y: 1}
+      maxCollum: 1
+      radius: 1
+      directionStart: {x: 0, y: -1}
+    groupManager: {fileID: 0}
+    moveInfos:
+    - indexStateMove: 0
+      DelayStart: 0
+      RowDelay: 0
+      splineRaw:
+        points:
+        - {x: 0, y: 3, z: 0}
+        - {x: 0, y: 2.5, z: 0}
+        - {x: 0, y: 0.5, z: 0}
+        - {x: 0, y: 0, z: 0}
+        modes: 00000000000000000000000000000000
+        loop: 0
+        lineMode: 1
+        relative: 1
+        snap: 0
+        snapGrid: {x: 0, y: 0}
+        currentNode: 0
+      lookType: 0
+      durationMove: 1
+      speedBase: 0
+      curvesMoving:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      loop: 1
+      onCompleteNode: []
+      conditionComplete:
+      - condition: 0
+        destroyQuantity: 1
+        triggerString: 
+      onComplete:
+        m_PersistentCalls:
+          m_Calls: []
+      onStart:
+        m_PersistentCalls:
+          m_Calls: []
+    attackInfo:
+      BaseAI: 0
+      infoAI:
+        conditionStart: 0
+        triggerStringMachine: StartMachine
+        conditionAttack: 0
+        triggerStringAttack: StartAttack
+        firstDelay: {x: 0, y: 0}
+        reloadTime: {x: 2, y: 3}
+        countShoot: {x: 1, y: 2}
+        delayPerAttack: {x: 0.2, y: 0.5}
+        _typeDirection: 1
+    lootItems: []
+    _completeAction: 1
+    onCompleteState:
+      m_PersistentCalls:
+        m_Calls: []
+    totalDeath: 0
+  _manager: {fileID: 0}
+  currentStep: 0
+  completeAllandWait: 0
+--- !u!114 &8076321230607411639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961229229279583185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72f9fa5fa34e5746ab2967f297890ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _groupName: 2
+  timeLineParent: {fileID: 0}
+  timeScale: 1
+--- !u!114 &7750980405954699869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961229229279583185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e072c780b8e53b84eae3153ac7052217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoTest: []
+  _applyDefaultPos: 0
+  defaultPos: {x: 0, y: 0, z: 0}
+  cachePos: []
+  _arrayAction: []
+  _offsetToAnimation: {x: 0, y: 0, z: 0}
+  enableRootMotion: 0
+  _beforeRootType: 0
+  _parrentMoveBy: {fileID: 0}
+  _offsetParrent: {x: 0, y: 0, z: 0}
+  _isRunOnRealTime: 0
+  ignoreActive: 0
+  _rotateRoot: 0
+  _pointPivotPos: {x: 0, y: 0, z: 0}
+  _pointPivotRotate: {x: 0, y: 0, z: 0}
+  objectPreview: {fileID: 0}
 --- !u!1 &3116318004972236533
 GameObject:
   m_ObjectHideFlags: 0
@@ -35,6 +279,7 @@ Transform:
   - {fileID: 548455707904636269}
   - {fileID: 1557367379198161852}
   - {fileID: 2582736631149812026}
+  - {fileID: 4220788762158188165}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -91,6 +336,7 @@ MonoBehaviour:
     - {fileID: 8269517097850452423, guid: 0629dec0f8285854b990ed6a916f569b, type: 3}
     - {fileID: 8269517097850452423, guid: ba5d7a9b8459dc54eac40b4bbd1c4383, type: 3}
   btnSfx: {fileID: 8300000, guid: 004ef36c57b58ff428600909148139b5, type: 3}
+  leaderTemplate: {fileID: 201827133137300270}
   loadFromResources: 1
   isPlaying: 0
   container:
