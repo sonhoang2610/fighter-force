@@ -131,8 +131,8 @@ GameObject:
   - component: {fileID: 6691573508741671813}
   - component: {fileID: 7855990508748661375}
   - component: {fileID: 5558235865227668558}
-  - component: {fileID: 2345382094052449580}
   - component: {fileID: 7837323659991909111}
+  - component: {fileID: 2316212271670713650}
   m_Layer: 0
   m_Name: Trails (1)
   m_TagString: Untagged
@@ -4934,29 +4934,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &2345382094052449580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8928627030056955991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7aeda789381d84c49be952b5d7ab0e0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audios:
-  - {fileID: 8300000, guid: 8d2bffd41c0f17f42982ee2d6087ddbd, type: 3}
-  randomAudio:
-    x: 0
-    y: 0
-  backGroundMusic: {fileID: 0}
-  playOnAwake: 1
-  isLoop: 0
-  delay: 0
-  runAllGame: 1
-  factorVolume: 1
 --- !u!114 &7837323659991909111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4977,6 +4954,31 @@ MonoBehaviour:
   onDestroy:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2316212271670713650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8928627030056955991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73612c30edd7fc444ab340ecf02c24f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newGroup:
+    groupName: 
+    volume: 1
+    clips: []
+  controller:
+  - eventType: 0
+    eventID: 
+    action:
+    - conditionState: Matching
+      actionType: 0
+      volumeChange: 0
+      groupName:
+        groupName: TuSkill5
 --- !u!1001 &889141958550769999
 PrefabInstance:
   m_ObjectHideFlags: 0

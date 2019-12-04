@@ -6,6 +6,7 @@ using EazyEngine.Tools;
 using EazyEngine.Space.UI;
 using DG.Tweening;
 using EazyEngine.Timer;
+using EazyEngine.Audio;
 
 namespace EazyEngine.Space
 {
@@ -36,7 +37,7 @@ namespace EazyEngine.Space
         [SerializeField]
         protected GameObject posLeft, posRight, control1;
         public BoxResult boxResult;
-        public AudioClip sfxStartNomal, sfxStartBoss;
+        public AudioGroupSelector sfxStartNomal = AudioGroupConstrant.StartBoss;
 
         public Camera CamGUI { get => camGUI; set => camGUI = value; }
         public bool isPlaying
@@ -230,12 +231,7 @@ namespace EazyEngine.Space
 
             if (eventType._message == "StartGame")
             {
-                if (GameManager.Instance.ChoosedLevel % 5 == 0 || GameManager.Instance.ChoosedLevel % 5 == 3)
-                {
-                    SoundManager.Instance.PlaySound(sfxStartBoss,Vector3.zero);
-                }else{
-                    SoundManager.Instance.PlaySound(sfxStartNomal,Vector3.zero);
-                }
+                SoundManager.Instance.PlaySound(sfxStartNomal, Vector3.zero);
             }
         }
     }

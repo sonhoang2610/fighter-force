@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1761134945}
   - component: {fileID: 1761134944}
   - component: {fileID: 7763042803889742508}
+  - component: {fileID: 4609907990908928712}
   m_Layer: 0
   m_Name: Spine Mecanim GameObject (tru1)
   m_TagString: Untagged
@@ -145,6 +146,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boneRoot: {fileID: 3702117839915368717}
   skeletonRenderer: {fileID: 1761134944}
+--- !u!114 &4609907990908928712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761134942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8fd629f0f9c40e4f816822f00ebee10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorFill: {r: 1, g: 1, b: 1, a: 0.67058825}
+  allowIgnoreSetting: 0
 --- !u!1 &114746197667763405
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,38 +387,24 @@ MonoBehaviour:
   onStart:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onPlay:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onUpdate:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onStepComplete:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onComplete:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onTweenCreated:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onRewind:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   targetIsSelf: 1
   targetGO: {fileID: 0}
   tweenTargetIsTargetGO: 1
@@ -530,11 +531,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: 0_Tower1
       objectReference: {fileID: 0}
-    - target: {fileID: 5067758872840241705, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
-        type: 3}
-      propertyPath: _groupName
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8491613159191165207, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
         type: 3}
       propertyPath: DatabaseWeapon.Array.size
@@ -577,6 +573,36 @@ PrefabInstance:
       propertyPath: DatabaseWeapon.Array.data[0].weapons.Array.data[0].AttachmentWeapon
       value: 
       objectReference: {fileID: 4222900872720140531}
+    - target: {fileID: 3203288667016583975, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: DamageCaused
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203288667016583975, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: DamageTakenWithEveryThing
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 114565014092597948, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: MaxiumHealth
+      value: 18000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114565014092597948, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: InitialHealth
+      value: 18000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114704166811835620, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: machine.model
+      value: 
+      objectReference: {fileID: 1761134945}
+    - target: {fileID: 114704166811835620, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: modelObject
+      value: 
+      objectReference: {fileID: 1761134942}
     - target: {fileID: 4876120188185622, guid: 1d8cb7744763d36459cb5cb20a29e0ac, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -621,36 +647,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114704166811835620, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
-        type: 3}
-      propertyPath: machine.model
-      value: 
-      objectReference: {fileID: 1761134945}
-    - target: {fileID: 114704166811835620, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
-        type: 3}
-      propertyPath: modelObject
-      value: 
-      objectReference: {fileID: 1761134942}
-    - target: {fileID: 114565014092597948, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
-        type: 3}
-      propertyPath: MaxiumHealth
-      value: 18000
-      objectReference: {fileID: 0}
-    - target: {fileID: 114565014092597948, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
-        type: 3}
-      propertyPath: InitialHealth
-      value: 18000
-      objectReference: {fileID: 0}
-    - target: {fileID: 3203288667016583975, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
-        type: 3}
-      propertyPath: DamageCaused
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 3203288667016583975, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
-        type: 3}
-      propertyPath: DamageTakenWithEveryThing
-      value: 500
-      objectReference: {fileID: 0}
     - target: {fileID: 6801142509365525947, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
         type: 3}
       propertyPath: m_IsActive
@@ -660,6 +656,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 145
+      objectReference: {fileID: 0}
+    - target: {fileID: 5067758872840241705, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: _groupName
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 806831460, guid: 1d8cb7744763d36459cb5cb20a29e0ac, type: 3}

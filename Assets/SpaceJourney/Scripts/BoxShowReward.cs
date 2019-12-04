@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using EazyEngine.Tools;
+using EazyEngine.Audio;
 
 namespace EazyEngine.Space.UI
 {
@@ -24,7 +25,7 @@ namespace EazyEngine.Space.UI
         public BoxExtract boxExtract;
         public GameObject layerNormal;
         public UI2DSprite compareRender;
-        public AudioClip[] sfxOpen;
+        public AudioGroupSelector sfxOpen = AudioGroupConstrant.OpenBox;
         protected BaseItemGame itemPackage;
         public void OnEzEvent(RewardEvent eventType)
         {
@@ -107,7 +108,7 @@ namespace EazyEngine.Space.UI
         {
             if(pEvent.stringParameter == "Extract" && itemPackage)
             {
-                SoundManager.Instance.PlaySound(sfxOpen[Random.Range(0, sfxOpen.Length)],Vector3.zero);
+                SoundManager.Instance.PlaySound(sfxOpen,Vector3.zero);
                 BaseItemGameInstanced[] pItems = ((IExtractItem)itemPackage).ExtractHere(false);
                 boxExtract.DataSource = pItems.ToObservableList();
             }

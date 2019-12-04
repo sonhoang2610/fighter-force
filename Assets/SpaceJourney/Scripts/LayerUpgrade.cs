@@ -5,6 +5,7 @@ using UnityEngine;
 using EazyEngine.Tools;
 using EasyMobile;
 using Random = UnityEngine.Random;
+using EazyEngine.Audio;
 
 namespace EazyEngine.Space.UI
 {
@@ -19,7 +20,7 @@ namespace EazyEngine.Space.UI
 	    public GameObject effectUpgrade,effectBaokich;
         public GameObject textBaokick;
         public UIButton btnSelect;
-        public AudioClip sfxUpgradePlane,sfxUpgradeSkill;
+        public AudioGroupSelector sfxUpgradePlane = AudioGroupConstrant.UpgradePlane,sfxUpgradeSkill = AudioGroupConstrant.UpgradeSkill;
         protected PlaneInfoConfig selectedPlane;
         protected SkillInfoInstanced choosedSkill;
         

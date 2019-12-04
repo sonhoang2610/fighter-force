@@ -283,7 +283,7 @@ namespace EazyEngine.Space
         {
             _listIgnoreObject.Clear();
         }
-        public void onRestoreAmmo( int pRestoreCount)
+        public virtual void onRestoreAmmo( int pRestoreCount)
         {
             if(pRestoreCount > 0 && isShootingActive && restartOnRestoreAmmo)
             {

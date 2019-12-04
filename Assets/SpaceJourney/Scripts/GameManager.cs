@@ -20,6 +20,7 @@ using Spine.Unity.Modules;
 using System;
 using UnityEngine.Networking;
 using EazyEngine.Timer;
+using EazyEngine.Audio;
 #if UNITY_EDITOR
 using Sirenix.Utilities.Editor;
 #endif
@@ -206,6 +207,12 @@ public static class SerializeGameDataBase
             ss.AddSurrogate(typeof(ItemPackage),
                             new StreamingContext(StreamingContextStates.All),
                             pack);
+#if UNITY_EDITOR
+            AudioSerialize audio = new AudioSerialize();
+            ss.AddSurrogate(typeof(AudioClip),
+                            new StreamingContext(StreamingContextStates.All),
+                            audio);
+#endif
             formatter.SurrogateSelector = ss;
         }
         // 2. Have the formatter use our surrogate selector
@@ -258,6 +265,12 @@ public static class SerializeGameDataBase
             ss.AddSurrogate(typeof(ItemPackage),
                             new StreamingContext(StreamingContextStates.All),
                             pack);
+#if UNITY_EDITOR
+            AudioSerialize audio = new AudioSerialize();
+            ss.AddSurrogate(typeof(AudioClip),
+                            new StreamingContext(StreamingContextStates.All),
+                            audio);
+#endif
             // 2. Have the formatter use our surrogate selector
             formatter.SurrogateSelector = ss;
         }
@@ -313,8 +326,6 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     public bool inGame = false;
     [System.NonSerialized]
     public int lastResultWin = -1;
-    public AudioSource[] backgroundStage;
-    public AudioSource[] bossStage;
     public AudioClip btnSfx;
     public prefabBulletGroup getGroupPrefab(GameObject pObject)
     {

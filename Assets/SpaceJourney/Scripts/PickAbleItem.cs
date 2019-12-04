@@ -5,7 +5,7 @@ using EazyEngine.Space;
 using EazyEngine.Tools;
 using FlowCanvas;
 using Sirenix.OdinInspector;
-
+using EazyEngine.Audio;
 
 public class PickAbleItem : SerializedMonoBehaviour
 {
@@ -16,7 +16,7 @@ public class PickAbleItem : SerializedMonoBehaviour
     public FlowCanvas.FlowScript mainBehaviorEffect;
     public LayerMask _layerCanPick;
     public Dictionary<string, object> Variables = new Dictionary<string, object>();
-    public AudioClip sfx;
+    public AudioGroupSelector sfx = AudioGroupConstrant.CoinInGame;
     private void Awake()
     {
         if (effectOnPick && GameManager.Instance.inGame)

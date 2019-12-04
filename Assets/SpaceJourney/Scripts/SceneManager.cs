@@ -69,6 +69,7 @@ namespace EazyEngine.Space
                 pSeq.AppendCallback(delegate
                 {
                     camera.GetComponent<CropCamera>().clearRender();
+                    SoundManager.Instance.cleanAudio();
                 });
                 pSeq.Play();
             
@@ -113,6 +114,14 @@ namespace EazyEngine.Space
         protected override void Awake()
         {
             base.Awake();
+            if (GameManager._instance)
+            {
+                if (!GameManager._instance.IsDestroyed())
+                {
+                    DestroyImmediate(GameManager._instance);
+                }
+                GameManager._instance = null;
+            }
 #if UNITY_EDITOR
             Debug.unityLogger.logEnabled = true;
 #else

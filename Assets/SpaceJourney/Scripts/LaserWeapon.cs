@@ -4,6 +4,7 @@ using UnityEngine;
 using EazyEngine.Tools;
 using Sirenix.OdinInspector;
 using System.Linq;
+using EazyEngine.Audio;
 
 namespace EazyEngine.Space
 {
@@ -37,6 +38,7 @@ namespace EazyEngine.Space
         public int damagePerSec =100;
         public bool Infinite = false;
         public System.Action<int,bool> onShootingLevel;
+        public AudioGroupSelector sfxStart = AudioGroupConstrant.LaserStart, sfxLaser = AudioGroupConstrant.LaserMain1;
         protected float damageLeft = 0;
         protected Health _target = null;
         protected int countLine = 0;
@@ -55,11 +57,18 @@ namespace EazyEngine.Space
         public virtual void LaserWeaponUse()
         {
             if (IsPause) return;
+     
             Vector3 rotate = transform.rotation.eulerAngles;
             Vector2 directon = Vector2.up.Rotate(rotate.z);
             Vector3 disteny = (Vector3)directon.normalized * 10 + transform.position;
             lineLaser.gameObject.SetActive(true);
             startPoint.gameObject.SetActive(true);
+        }
+        public override void AnimUse()
+        {
+            SoundManager.Instance.PlaySound(sfxStart);
+            SoundManager.Instance.PlaySound(sfxLaser, gameObject, "Matching");
+            base.AnimUse();
         }
         public override void WeaponStart()
         {
@@ -158,6 +167,7 @@ namespace EazyEngine.Space
             lineLaser.gameObject.SetActive(false);
             startPoint.gameObject.SetActive(false);
             disableEnpoints();
+            SoundManager.Instance.StopSoundGroupName(sfxLaser, gameObject);
         }
         public float TotalDamage(Health health)
         {
@@ -211,7 +221,10 @@ namespace EazyEngine.Space
 
             }
         }
-
+        public override void ShootRequest()
+        {
+            base.ShootRequest();
+        }
         public LaserInfo[] laser(LaserInfo pInfo, int pLevel)
         {
             List<LaserInfo> pResults = new List<LaserInfo>(); float pDamageLeft = damageLeft;

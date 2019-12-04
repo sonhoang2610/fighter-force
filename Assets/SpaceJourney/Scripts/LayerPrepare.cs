@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using EazyEngine.Audio;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -91,10 +92,18 @@ namespace EazyEngine.Space.UI
                     pLevelInfo.isLocked = false;
                 }
             }
-            btnPlay.isEnabled = !pLevelInfo.isLocked;
+            int pRequireStar = 0;
+            for(int i = 0; i < GameDatabase.Instance.LevelConfigScene.Length; ++i)
+            {
+                if(GameDatabase.Instance.LevelConfigScene[i].level == GameManager.Instance.ChoosedLevel)
+                {
+                    pRequireStar = GameDatabase.Instance.LevelConfigScene[i].requrireStarToUnlock;
+                }
+            }
+            btnPlay.isEnabled = !pLevelInfo.isLocked && GameManager.Instance.Database.getComonItem("Star").Quantity >= pRequireStar;
             showInfo(GameManager.Instance.ChoosedLevel, index);
         }
-        public AudioClip fightSfx;
+        public AudioGroupSelector fightSfx = AudioGroupConstrant.Fight;
         public void play()
         {
             GameManager.Instance.isFree = false;

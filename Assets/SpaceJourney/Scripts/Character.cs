@@ -52,6 +52,25 @@ namespace EazyEngine.Space
                 return new Health[] {  };
             }
         }
+
+        public EnemyType EnemyType { get => enemyType; set {
+                enemyType = value;
+                if (!_health)
+                {
+                    _health.GetComponent<Health>();
+                }
+                _health.onDeath.RemoveListener(enemyTypeDeath);
+                _health.onDeath.AddListener(enemyTypeDeath);
+            } }
+        public void enemyTypeDeath()
+        {
+            if(EnemyType ==  EnemyType.BOSS || EnemyType == EnemyType.MINIBOSS)
+            {
+                SoundManager.Instance.PlaySound(AudioGroupConstrant.BossExplore);
+                CameraShake.Instance.shakeAmount = 0.25f;
+                CameraShake.Instance.shakeDuration = 0.2f;
+            }
+        }
         protected PlaneInfoToCoppy[] infoPreload;
         public void setDataPreload(PlaneInfoToCoppy[] pInfos)
         {

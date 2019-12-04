@@ -5,7 +5,7 @@ using System;
 
 public class FillColor : MonoBehaviour {
 	[SerializeField]
-	Color colorFill;
+	public Color colorFill;
     [SerializeField]
     bool allowIgnoreSetting = false;
     protected MaterialPropertyBlock block;
@@ -46,7 +46,7 @@ public class FillColor : MonoBehaviour {
 		{
 			fillAlpha = Shader.PropertyToID("_FillPhase");
 			fillColor = Shader.PropertyToID("_FillColor");
-			block.SetFloat(fillAlpha, 0.4f); // Make the fill opaque.
+			block.SetFloat(fillAlpha, 0.5f); // Make the fill opaque.
 			
 			block.SetColor(fillColor,colorFill); // Fill with white.
 		}

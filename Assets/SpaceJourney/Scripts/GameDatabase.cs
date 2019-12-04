@@ -81,6 +81,7 @@ namespace EazyEngine.Space
     {
         public int level;
         public string scene;
+        public int requrireStarToUnlock = 0;
     }
     [System.Serializable]
     public class MissionConfig

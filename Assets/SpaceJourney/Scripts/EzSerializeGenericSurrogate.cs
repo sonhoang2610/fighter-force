@@ -128,7 +128,22 @@ public class SpriteSerialize : EzSerializeGenericMonoSurrogate<Sprite>
 {
 
 }
+#if UNITY_EDITOR
+public class AudioSerialize : ISerializationSurrogate
+{
+    public void GetObjectData(object obj, SerializationInfo info, StreamingContext context)
+    {
+        string path = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(obj as AudioClip));
+        info.AddValue("path", path);
+    }
 
+    public object SetObjectData(object obj, SerializationInfo info, StreamingContext context, ISurrogateSelector selector)
+    {
+        obj = AssetDatabase.LoadAssetAtPath<AudioClip>(AssetDatabase.GUIDToAssetPath(info.GetValue("path", typeof(string)).ToString()));
+        return obj;
+    }
+}
+#endif
 public class ScriptTableObjectSerialize : EzSerializeGenericMonoSurrogate<ScriptableObject>
 {
 

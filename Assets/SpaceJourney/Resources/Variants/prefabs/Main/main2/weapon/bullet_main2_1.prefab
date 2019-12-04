@@ -1,28 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-4960434055806627556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6380496008328769485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7aeda789381d84c49be952b5d7ab0e0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audios:
-  - {fileID: 8300000, guid: e76ae397bdbff79428402fe4c7ba9f09, type: 3}
-  randomAudio:
-    x: 0
-    y: 0
-  backGroundMusic: {fileID: 0}
-  playOnAwake: 1
-  isLoop: 0
-  delay: 0
-  runAllGame: 1
-  factorVolume: 1
 --- !u!114 &2176955766582686081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37,6 +14,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: {r: 0.017013669, g: 0.56229883, b: 0.39412183, a: 1}
   typeDraw: 0
+--- !u!114 &517350715766017315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6380496008328769485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73612c30edd7fc444ab340ecf02c24f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newGroup:
+    groupName: 
+    volume: 1
+    clips: []
+  controller:
+  - eventType: 0
+    eventID: 
+    action:
+    - conditionState: Matching
+      actionType: 0
+      volumeChange: 0
+      groupName:
+        groupName: FireBulletMain2
 --- !u!1001 &6379744475213683271
 PrefabInstance:
   m_ObjectHideFlags: 0

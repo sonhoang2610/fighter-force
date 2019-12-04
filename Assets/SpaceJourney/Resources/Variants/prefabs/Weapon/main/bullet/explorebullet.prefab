@@ -5061,7 +5061,7 @@ GameObject:
   - component: {fileID: 2290545686930424202}
   - component: {fileID: 2290545686931154068}
   - component: {fileID: 7031651973668242877}
-  - component: {fileID: -7535441003880565190}
+  - component: {fileID: 3825828340802499765}
   m_Layer: 10
   m_Name: explorebullet
   m_TagString: Untagged
@@ -5077,7 +5077,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2290545686915555622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.04, y: -0.26, z: 0}
+  m_LocalPosition: {x: -0.074999996, y: 8.504999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2290545686915300992}
@@ -9714,7 +9714,7 @@ MonoBehaviour:
   onDestroy:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &-7535441003880565190
+--- !u!114 &3825828340802499765
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9723,20 +9723,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 2290545686915555622}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7aeda789381d84c49be952b5d7ab0e0c, type: 3}
+  m_Script: {fileID: 11500000, guid: 73612c30edd7fc444ab340ecf02c24f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audios:
-  - {fileID: 8300000, guid: 58c0c9e48e14dc345906722ac21d37f5, type: 3}
-  randomAudio:
-    x: 0
-    y: 0
-  backGroundMusic: {fileID: 0}
-  playOnAwake: 1
-  isLoop: 0
-  delay: 0
-  runAllGame: 0
-  factorVolume: 0.8
+  newGroup:
+    groupName: 
+    volume: 1
+    clips: []
+  controller:
+  - eventType: 0
+    eventID: 
+    action:
+    - conditionState: Matching
+      actionType: 0
+      volumeChange: 0
+      groupName:
+        isMusic: 0
+        groupName: BossExplore
+      singleton: 0
+      owner: {fileID: 0}
+      smoothTime: 0
 --- !u!1 &2290545686915576294
 GameObject:
   m_ObjectHideFlags: 0

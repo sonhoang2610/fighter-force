@@ -9528,7 +9528,7 @@ GameObject:
   - component: {fileID: 4451391297328514524}
   - component: {fileID: 4451391297328559074}
   - component: {fileID: 4451391297313775362}
-  - component: {fileID: 507170258257630937}
+  - component: {fileID: 3943391156258468222}
   m_Layer: 21
   m_Name: MagicNovaOrange
   m_TagString: Untagged
@@ -14297,7 +14297,7 @@ MonoBehaviour:
   onDestroy:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &507170258257630937
+--- !u!114 &3943391156258468222
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14306,20 +14306,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 4451391297313688400}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7aeda789381d84c49be952b5d7ab0e0c, type: 3}
+  m_Script: {fileID: 11500000, guid: 73612c30edd7fc444ab340ecf02c24f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audios:
-  - {fileID: 8300000, guid: 19b61776f39178143bad70ac34b38cc7, type: 3}
-  randomAudio:
-    x: 0
-    y: 0
-  backGroundMusic: {fileID: 0}
-  playOnAwake: 1
-  isLoop: 0
-  delay: 0
-  runAllGame: 0
-  factorVolume: 1
+  newGroup:
+    groupName: 
+    volume: 1
+    clips: []
+  controller:
+  - eventType: 0
+    eventID: 
+    action:
+    - conditionState: Matching
+      actionType: 0
+      volumeChange: 0
+      groupName:
+        groupName: MagicNovaPrefab
 --- !u!1 &4451391297313691600
 GameObject:
   m_ObjectHideFlags: 0

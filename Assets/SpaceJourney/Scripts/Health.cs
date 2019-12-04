@@ -15,7 +15,7 @@ namespace EazyEngine.Space
     {
 
     }
-    public class Health : MonoBehaviour, IRespawn,IListenerTriggerAnimator
+    public class Health : MonoBehaviour, IRespawn, IListenerTriggerAnimator
     {
         [Sirenix.OdinInspector.ReadOnly]
         public int currentHealth;
@@ -26,7 +26,7 @@ namespace EazyEngine.Space
         public bool invuOnStart = false;
         public float timeInvuAfterRevie = 0;
         public bool disableParrentOnDeath = false;
-        public bool disableOnDeath  = true;
+        public bool disableOnDeath = true;
         public bool activeOnRevie = true;
         public int deffense = 0;
         public int MaxiumHealth;
@@ -56,17 +56,17 @@ namespace EazyEngine.Space
         public string triggerAnimDeath = "";
         public string listenerDeathAnimFinish = "";
 
-        protected int  healDestiny = 0;
+        protected int healDestiny = 0;
         protected float currentTime = 0;
         protected float timeplan = 0.1f;
         protected float lastFrom = 0;
         protected float currentDeffense = 0;
-	    protected int currentChildAlive = 0;
-	    protected float currentDurationResetDamaged = 0;
-	    protected int indexDamaged = 0;
+        protected int currentChildAlive = 0;
+        protected float currentDurationResetDamaged = 0;
+        protected int indexDamaged = 0;
         protected Health parentHealth;
 
-    
+
         private void Awake()
         {
             if (DeathSfx && (DeathSfx.loadState != AudioDataLoadState.Loaded ||
@@ -86,7 +86,7 @@ namespace EazyEngine.Space
             {
                 pHealths.AddRange(t.getAllAvailableHealth());
             }
-            if((!subHealth  || currentChildAlive <= countChildMin) && CurrentHealth > 0)
+            if ((!subHealth || currentChildAlive <= countChildMin) && CurrentHealth > 0)
             {
                 pHealths.Add(this);
             }
@@ -118,7 +118,7 @@ namespace EazyEngine.Space
                     {
                         Kill();
                     }
-              
+
                 }
             }
         }
@@ -154,7 +154,7 @@ namespace EazyEngine.Space
             {
                 if (value < currentHealth)
                 {
-                    if(value > MaxiumHealth)
+                    if (value > MaxiumHealth)
                     {
                         value = MaxiumHealth;
                     }
@@ -164,14 +164,14 @@ namespace EazyEngine.Space
                         {
                             containerHealthBar.gameObject.SetActive(true);
                         }
-                    
+
                     }
                 }
                 if (HealthBar)
                 {
                     HealthBar.fillAmount = (float)value / (float)MaxiumHealth;
                 }
-          
+
                 currentHealth = value;
             }
         }
@@ -187,8 +187,10 @@ namespace EazyEngine.Space
                 return deffense;
             }
         }
-        public bool Invulnerable {
-            get {
+        public bool Invulnerable
+        {
+            get
+            {
                 if (InvulnerableIfOutSide)
                 {
                     if (LevelManger.InstanceRaw != null && LevelManger.Instance.mainPlayCamera.Rect().Contains(transform.position))
@@ -204,7 +206,9 @@ namespace EazyEngine.Space
                 {
                     return invulnerable;
                 }
-            } set => invulnerable = value; }
+            }
+            set => invulnerable = value;
+        }
 
         public Health ParentHealth { get => parentHealth; set => parentHealth = value; }
         public void triggerToParent(string pTrigger)
@@ -234,9 +238,9 @@ namespace EazyEngine.Space
             LevelManger.Instance.removeIgnoreObject(gameObject);
         }
 
-        public void healHealthTime(float pTime,int pHealth)
+        public void healHealthTime(float pTime, int pHealth)
         {
-           if(healDestiny == 0)
+            if (healDestiny == 0)
             {
                 healDestiny = currentHealth + pHealth;
             }
@@ -244,7 +248,7 @@ namespace EazyEngine.Space
             {
                 healDestiny += pHealth;
             }
-           if(healDestiny >= MaxiumHealth)
+            if (healDestiny >= MaxiumHealth)
             {
                 healDestiny = MaxiumHealth;
             }
@@ -273,7 +277,7 @@ namespace EazyEngine.Space
                     EzEventManager.TriggerEvent(new DamageTakenEvent(_character, gameObject, pHealth, pHealth - CurrentHealth, currentHealth));
                 }
                 CurrentHealth = pHealth;
-                if(percent >= 1)
+                if (percent >= 1)
                 {
                     healDestiny = 0;
                     if (HealingEffectTimer)
@@ -287,12 +291,34 @@ namespace EazyEngine.Space
         {
             Initialization();
         }
+        protected FillColor fillModel;
 
+        public void hit(int pDamage)
+        {
+            fillModel.flash(0.1f);
+        }
         protected virtual void Initialization()
         {
 
             currentDeffense = deffense;
             CharacterMain = GetComponent<Character>();
+            if (_character && _character.modelObject)
+            {
+                if (!fillModel)
+                {
+                    fillModel = _character.modelObject.GetComponent<FillColor>();
+                }
+
+                if (fillModel)
+                {
+                    var pColorFill = Color.white;
+                    pColorFill.a = 0.8f;
+                    fillModel.colorFill = pColorFill;
+                    onTakenDamage.RemoveListener(hit);
+                    onTakenDamage.AddListener(hit);
+                }
+
+            }
             CurrentHealth = InitialHealth;
             if (!invuOnStart)
             {
@@ -309,7 +335,7 @@ namespace EazyEngine.Space
                     childHealth[i].onDeath.AddListener(onDeathChild);
                     childHealth[i].ParentHealth = this;
                 }
-                    currentChildAlive = childHealth.Length;
+                currentChildAlive = childHealth.Length;
                 if (currentChildAlive > countChildMin)
                 {
                     Invulnerable = true;
@@ -317,41 +343,48 @@ namespace EazyEngine.Space
             }
         }
 
-        public virtual void Damage(int damage, GameObject instigator, float flickerDuration, float invincibilityDuration,bool reducedamage = true)
+        public virtual void Damage(int damage, GameObject instigator, float flickerDuration, float invincibilityDuration, bool reducedamage = true)
         {
             if (Invulnerable) return;
             if (CurrentHealth <= 0) return;
-            
+
             float previousHealth = CurrentHealth;
-            if(currentDeffense != 0)
+            if (currentDeffense != 0)
             {
-                if(currentDeffense > 0)
+                if (currentDeffense > 0)
                 {
-                    damage =(int)( (float)damage * 10000 / (10000 + currentDeffense));
+                    damage = (int)((float)damage * 10000 / (10000 + currentDeffense));
                 }
                 else
                 {
                     damage = (int)((float)damage * (2 - 10000 / (10000 - currentDeffense)));
                 }
             }
-	        if(damage > 0 && reducedamage)
+            if (damage > 0 && reducedamage)
             {
-	        	int pDownDamaged = 0;
-	        	for(int i  = 0 ; i < indexDamaged; ++i){
-	        		pDownDamaged += 15*i;
-	        	}
-	        	if(pDownDamaged > 90){
-	        		pDownDamaged = 90;
-	        	}
-	        	damage -= (int)((float)damage* (float)pDownDamaged/100.0f);
-	        	indexDamaged++;
-	        }
+                int pDownDamaged = 0;
+                for (int i = 0; i < indexDamaged; ++i)
+                {
+                    pDownDamaged += 15 * i;
+                }
+                if (pDownDamaged > 90)
+                {
+                    pDownDamaged = 90;
+                }
+                damage -= (int)((float)damage * (float)pDownDamaged / 100.0f);
+                indexDamaged++;
+            }
+            if (_character && (_character.EnemyType == EnemyType.MINIBOSS || _character.EnemyType == EnemyType.BOSS) && damage > (float)MaxiumHealth * 0.2f)
+            {
+                damage = (int)((float)MaxiumHealth * 0.2f);
+            }
             CurrentHealth -= damage;
-            if(damage > 0)
+            if (damage > 0)
             {
-            	if(currentDurationResetDamaged <= 0){
-	            	currentDurationResetDamaged = 0.1f;
-            	}
+                if (currentDurationResetDamaged <= 0)
+                {
+                    currentDurationResetDamaged = 0.1f;
+                }
                 if (DamagedEffect)
                 {
                     ParticleEnviroment.Instance.createEffect(DamagedEffect, transform.position, 1);
@@ -375,7 +408,7 @@ namespace EazyEngine.Space
             }
             EzEventManager.TriggerEvent<DamageTakenEvent>(new DamageTakenEvent(CharacterMain, instigator, CurrentHealth, damage, previousHealth));
 
-            if(CurrentHealth <= 0)
+            if (CurrentHealth <= 0)
             {
                 if (animDeath)
                 {
@@ -385,14 +418,14 @@ namespace EazyEngine.Space
                 else
                 {
                     Kill();
-                }         
+                }
             }
         }
         public virtual void onKill()
         {
-            
+
         }
-        public  void Kill()
+        public void Kill()
         {
             Kill(true);
         }
@@ -444,13 +477,13 @@ namespace EazyEngine.Space
 
         public void onRespawn()
         {
-            
+
         }
         bool revieing = false;
         public void Revive(bool pActiveObject)
         {
             onRevie.Invoke();
-         
+
             revieing = true;
             healDestiny = 0;
             CurrentHealth = InitialHealth;
@@ -463,10 +496,10 @@ namespace EazyEngine.Space
             {
                 Invulnerable = true;
             }
-            if (subHealth )
+            if (subHealth)
             {
                 currentChildAlive = childHealth.Length;
-                if(currentChildAlive > 0)
+                if (currentChildAlive > 0)
                 {
                     Invulnerable = true;
                 }
@@ -476,8 +509,8 @@ namespace EazyEngine.Space
                 HealthBar.fillAmount = (float)CurrentHealth / (float)MaxiumHealth;
                 containerHealthBar.gameObject.SetActive(false);
             }
-             var pRespawns = GetComponents<IRespawn>();
-            foreach(var pRespawn in pRespawns)
+            var pRespawns = GetComponents<IRespawn>();
+            foreach (var pRespawn in pRespawns)
             {
                 pRespawn.onRespawn();
             }
@@ -489,7 +522,7 @@ namespace EazyEngine.Space
                     childHealth[i].Revive();
                 }
             }
-            if(timeInvuAfterRevie > 0  && deathtime > 0)
+            if (timeInvuAfterRevie > 0 && deathtime > 0)
             {
                 invuSelf = true;
                 Invoke("disableInvu", timeInvuAfterRevie);
@@ -514,10 +547,10 @@ namespace EazyEngine.Space
         {
             throw new System.NotImplementedException();
         }
-       
+
         public void TriggerFromAnimator(AnimationEvent pEvent)
         {
-            if(pEvent.stringParameter == listenerDeathAnimFinish)
+            if (pEvent.stringParameter == listenerDeathAnimFinish)
             {
                 if (animDeath)
                 {
@@ -525,15 +558,17 @@ namespace EazyEngine.Space
                 }
             }
         }
-	    // LateUpdate is called every frame, if the Behaviour is enabled.
-	    protected void LateUpdate()
-	    {
-	    	if(currentDurationResetDamaged > 0){
-	    		currentDurationResetDamaged -= Time.deltaTime;
-	    		if(currentDurationResetDamaged <= 0){
-	    			indexDamaged = 0;
-	    		}
-	    	}
-	    }
+        // LateUpdate is called every frame, if the Behaviour is enabled.
+        protected void LateUpdate()
+        {
+            if (currentDurationResetDamaged > 0)
+            {
+                currentDurationResetDamaged -= Time.deltaTime;
+                if (currentDurationResetDamaged <= 0)
+                {
+                    indexDamaged = 0;
+                }
+            }
+        }
     }
 }

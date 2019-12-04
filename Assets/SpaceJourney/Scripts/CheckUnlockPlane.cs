@@ -79,15 +79,29 @@ namespace EazyEngine.Space.UI
                 onUnAbleUnlock.Invoke();
             }
         }
-
+        bool waiting = false;
         private void OnEnable()
         {
-            check();
+            if (GameManager.Instance._databaseInstanced != null) {
+                check();
+            }
+            else
+            {
+                waiting = true;
+            }
+      
             EzEventManager.AddListener(this);   
         }
-
+        private void LateUpdate()
+        {
+            if(waiting && GameManager.Instance._databaseInstanced != null)
+            {
+                check();
+            }
+        }
         private void OnDisable()
         {
+            waiting = false;
             EzEventManager.RemoveListener(this);
         }
 

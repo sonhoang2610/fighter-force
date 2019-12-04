@@ -249,7 +249,7 @@ public class UIButton : UIButtonColor
 			current = this;
 			if (GameManager.InstanceRaw != null)
 			{
-				SoundManager.Instance.PlaySound(GameManager.Instance.btnSfx, Vector3.zero);
+                SoundManager.Instance.PlaySound(AudioGroupConstrant.ButtonClick);
 			}
 			
 			EventDelegate.Execute(onClick);

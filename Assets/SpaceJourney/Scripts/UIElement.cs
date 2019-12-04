@@ -85,7 +85,12 @@ public class UIElement : MonoBehaviour,EzEventListener<UIMessEvent> {
 
     public virtual void show()
     {
-        showElement(delegate {onCompleteTweenShow.Invoke();  }); 
+        if (!gameObject.activeSelf)
+        {
+            SoundManager.Instance.PlaySound(AudioGroupConstrant.Appear);
+        }
+            showElement(delegate {onCompleteTweenShow.Invoke();  }); 
+    
     }
 
     public virtual void showElement(System.Action pComplete)
@@ -106,6 +111,7 @@ public class UIElement : MonoBehaviour,EzEventListener<UIMessEvent> {
         {
             return;
         }
+        SoundManager.Instance.PlaySound(AudioGroupConstrant.Disappear);
         var pAction = UIElementManager.Instance.doAction(this, false);
 
         if (!pAction)

@@ -1,51 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &3698204874007758289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 487654238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7aeda789381d84c49be952b5d7ab0e0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audios:
-  - {fileID: 8300000, guid: d42513dac6b8fef4dabba305c74f3a49, type: 3}
-  randomAudio:
-    x: 0
-    y: 0
-  backGroundMusic: {fileID: 0}
-  playOnAwake: 1
-  isLoop: 0
-  delay: 0
-  runAllGame: 0
-  factorVolume: 1.5
---- !u!114 &3930377036664191190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 487654238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7aeda789381d84c49be952b5d7ab0e0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audios:
-  - {fileID: 8300000, guid: 4e9704d03cc2f94428c077f13c11878e, type: 3}
-  randomAudio:
-    x: 0
-    y: 0
-  backGroundMusic: {fileID: 0}
-  playOnAwake: 1
-  isLoop: 1
-  delay: 0
-  runAllGame: 0
-  factorVolume: 1.2
 --- !u!114 &2073483785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,10 +78,6 @@ PrefabInstance:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 19956988, guid: 9b0245240330cec41893d8611880df8d, type: 3}
-      propertyPath: m_SortingOrder
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 19862390, guid: 9b0245240330cec41893d8611880df8d, type: 3}
       propertyPath: moveWithTransform
       value: 0
@@ -139,6 +89,10 @@ PrefabInstance:
     - target: {fileID: 19862390, guid: 9b0245240330cec41893d8611880df8d, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 19956988, guid: 9b0245240330cec41893d8611880df8d, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 19939072, guid: 9b0245240330cec41893d8611880df8d, type: 3}
       propertyPath: m_SortingOrder
@@ -324,11 +278,6 @@ PrefabInstance:
       propertyPath: Infinite
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -8961915195382884879, guid: 5325c033313125a41894ea5683a8fe2f,
-        type: 3}
-      propertyPath: GameObjectToPool
-      value: 
-      objectReference: {fileID: 169912, guid: abdc56b0f94d9a04c800560ba0e246aa, type: 3}
     - target: {fileID: 8604969448180366642, guid: 5325c033313125a41894ea5683a8fe2f,
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
@@ -364,6 +313,11 @@ PrefabInstance:
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8961915195382884879, guid: 5325c033313125a41894ea5683a8fe2f,
+        type: 3}
+      propertyPath: GameObjectToPool
+      value: 
+      objectReference: {fileID: 169912, guid: abdc56b0f94d9a04c800560ba0e246aa, type: 3}
     - target: {fileID: 4180916872256662, guid: 5325c033313125a41894ea5683a8fe2f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -5800,8 +5800,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 282557376}
-  - component: {fileID: 282557378}
-  - component: {fileID: 282557377}
   m_Layer: 5
   m_Name: music (1)
   m_TagString: Untagged
@@ -5823,124 +5821,6 @@ Transform:
   m_Father: {fileID: 1562791179}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &282557377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 282557375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7aeda789381d84c49be952b5d7ab0e0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audios: []
-  randomAudio:
-    x: 0
-    y: 0
-  backGroundMusic: {fileID: 282557378}
-  playOnAwake: 1
-  isLoop: 1
-  delay: 0
-  runAllGame: 1
-  factorVolume: 1
---- !u!82 &282557378
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 282557375}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a6f20bf76660ace43b3f2f150d4af6df, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &289740579
 GameObject:
   m_ObjectHideFlags: 0
@@ -8945,7 +8825,9 @@ MonoBehaviour:
   btnPlay: {fileID: 2060695031}
   _chooseHardMode: {fileID: 1662199011}
   desItemSp: {fileID: 526007756}
-  fightSfx: {fileID: 8300000, guid: aaa0ddf5ed9c1f84486414536531052d, type: 3}
+  fightSfx:
+    isMusic: 0
+    groupName: Fight
 --- !u!1 &443603269
 GameObject:
   m_ObjectHideFlags: 0
@@ -19382,6 +19264,21 @@ PrefabInstance:
       propertyPath: onInitEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1570095091001437174, guid: 31d9a9eb0b0581c4289dafe11f59b213,
+        type: 3}
+      propertyPath: onClick.Array.data[0].mParameters.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570095091001437174, guid: 31d9a9eb0b0581c4289dafe11f59b213,
+        type: 3}
+      propertyPath: onClick.Array.data[0].mTarget
+      value: 
+      objectReference: {fileID: 714253957}
+    - target: {fileID: 1570095091001437174, guid: 31d9a9eb0b0581c4289dafe11f59b213,
+        type: 3}
+      propertyPath: onClick.Array.data[0].mMethodName
+      value: hide
+      objectReference: {fileID: 0}
     - target: {fileID: 7108991899811662371, guid: 31d9a9eb0b0581c4289dafe11f59b213,
         type: 3}
       propertyPath: m_RootOrder
@@ -19438,21 +19335,6 @@ PrefabInstance:
     - target: {fileID: 1937433122, guid: 31d9a9eb0b0581c4289dafe11f59b213, type: 3}
       propertyPath: m_RootOrder
       value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1570095091001437174, guid: 31d9a9eb0b0581c4289dafe11f59b213,
-        type: 3}
-      propertyPath: onClick.Array.data[0].mParameters.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1570095091001437174, guid: 31d9a9eb0b0581c4289dafe11f59b213,
-        type: 3}
-      propertyPath: onClick.Array.data[0].mTarget
-      value: 
-      objectReference: {fileID: 714253957}
-    - target: {fileID: 1570095091001437174, guid: 31d9a9eb0b0581c4289dafe11f59b213,
-        type: 3}
-      propertyPath: onClick.Array.data[0].mMethodName
-      value: hide
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31d9a9eb0b0581c4289dafe11f59b213, type: 3}
@@ -41619,6 +41501,7 @@ GameObject:
   - component: {fileID: 1562791180}
   - component: {fileID: 1562791182}
   - component: {fileID: 1562791181}
+  - component: {fileID: 1562791183}
   m_Layer: 5
   m_Name: UI Root
   m_TagString: Untagged
@@ -41793,6 +41676,35 @@ MonoBehaviour:
   disableAction: 0
   _graph: {fileID: 0}
   _blackboard: {fileID: 1562791181}
+--- !u!114 &1562791183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562791175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73612c30edd7fc444ab340ecf02c24f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newGroup:
+    groupName: 
+    volume: 1
+    clips: []
+  controller:
+  - eventType: 0
+    eventID: 
+    action:
+    - conditionState: 
+      actionType: 1
+      volumeChange: 0
+      groupName:
+        isMusic: 1
+        groupName: MusicHome
+      singleton: 1
+      owner: {fileID: 0}
+      smoothTime: 1
 --- !u!1 &1564261098
 GameObject:
   m_ObjectHideFlags: 0
@@ -42238,8 +42150,12 @@ MonoBehaviour:
   effectBaokich: {fileID: 1459236739}
   textBaokick: {fileID: 1616596542}
   btnSelect: {fileID: 573218407}
-  sfxUpgradePlane: {fileID: 8300000, guid: 145954e2a3f6fba46b9dc4756da4f657, type: 3}
-  sfxUpgradeSkill: {fileID: 8300000, guid: 73b5bda72eb74e248bc2a794294a1cf6, type: 3}
+  sfxUpgradePlane:
+    isMusic: 0
+    groupName: UpgradePlane
+  sfxUpgradeSkill:
+    isMusic: 0
+    groupName: UpgradeSkill
 --- !u!114 &1580728150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51203,9 +51119,8 @@ MonoBehaviour:
   layerNormal: {fileID: 2097543565}
   compareRender: {fileID: 486400148}
   sfxOpen:
-  - {fileID: 8300000, guid: efb554e3b616d834392cc2cbb8253498, type: 3}
-  - {fileID: 8300000, guid: 19a3bc0604a7d12449f0202213f292b4, type: 3}
-  - {fileID: 8300000, guid: 126f311a3d572304e9476d8ab87223ab, type: 3}
+    isMusic: 0
+    groupName: OpenBox
 --- !u!1 &1782414295 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 408225134, guid: 31d9a9eb0b0581c4289dafe11f59b213,

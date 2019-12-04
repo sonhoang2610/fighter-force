@@ -177,6 +177,10 @@ MonoBehaviour:
   lineElement: []
   damagePerSec: 500
   Infinite: 0
+  sfxStart:
+    groupName: LaserStart
+  sfxLaser:
+    groupName: LaserMain1
 --- !u!114 &8301747952259065163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,29 +369,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 0
   m_Loop: 0
---- !u!114 &925494754400513522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6358457371016332751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7aeda789381d84c49be952b5d7ab0e0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audios:
-  - {fileID: 8300000, guid: 4e9704d03cc2f94428c077f13c11878e, type: 3}
-  randomAudio:
-    x: 0
-    y: 0
-  backGroundMusic: {fileID: 0}
-  playOnAwake: 1
-  isLoop: 1
-  delay: 0
-  runAllGame: 0
-  factorVolume: 1
 --- !u!1001 &6358457371016375783
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -447,18 +428,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 10894124, guid: 9b0245240330cec41893d8611880df8d, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 10894124, guid: 9b0245240330cec41893d8611880df8d, type: 3}
-      propertyPath: m_Color.g
-      value: 0.614023
-      objectReference: {fileID: 0}
-    - target: {fileID: 10894124, guid: 9b0245240330cec41893d8611880df8d, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 19812820, guid: 9b0245240330cec41893d8611880df8d, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
       value: 0
@@ -483,18 +452,6 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 0.9529412
       objectReference: {fileID: 0}
-    - target: {fileID: 19847376, guid: 9b0245240330cec41893d8611880df8d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 19847376, guid: 9b0245240330cec41893d8611880df8d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.37760258
-      objectReference: {fileID: 0}
-    - target: {fileID: 19847376, guid: 9b0245240330cec41893d8611880df8d, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 19861318, guid: 9b0245240330cec41893d8611880df8d, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key1.r
       value: 0
@@ -517,6 +474,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19861318, guid: 9b0245240330cec41893d8611880df8d, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key2.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19847376, guid: 9b0245240330cec41893d8611880df8d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19847376, guid: 9b0245240330cec41893d8611880df8d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.37760258
+      objectReference: {fileID: 0}
+    - target: {fileID: 19847376, guid: 9b0245240330cec41893d8611880df8d, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 10894124, guid: 9b0245240330cec41893d8611880df8d, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 10894124, guid: 9b0245240330cec41893d8611880df8d, type: 3}
+      propertyPath: m_Color.g
+      value: 0.614023
+      objectReference: {fileID: 0}
+    - target: {fileID: 10894124, guid: 9b0245240330cec41893d8611880df8d, type: 3}
+      propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

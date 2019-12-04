@@ -184,8 +184,8 @@ namespace EazyEngine.Space
                 var pChar = eventType.AffectedCharacter.gameObject.GetComponent<Character>();
                 if (pChar)
                 {
-                    GameManager.Instance.Database.collectionDailyInfo.addQuantityDestroyEnemy(1, pChar.enemyType);
-                    GameManager.Instance.Database.collectionInfo.addQuantityDestroyEnemy(1, pChar.enemyType);
+                    GameManager.Instance.Database.collectionDailyInfo.addQuantityDestroyEnemy(1, pChar.EnemyType);
+                    GameManager.Instance.Database.collectionInfo.addQuantityDestroyEnemy(1, pChar.EnemyType);
                 }
             }
 
@@ -263,10 +263,11 @@ namespace EazyEngine.Space
                 DOTween.To(() => AudioListener.volume, x => AudioListener.volume = x, 1, 0.5f);
             }
         
-            SoundManager.Instance.PlayBackgroundMusic(GameManager.Instance.backgroundStage[GameManager.Instance.ChoosedHard]);
+           // SoundManager.Instance.PlayBackgroundMusic(GameManager.Instance.backgroundStage[GameManager.Instance.ChoosedHard]);
         }
         protected override void Awake()
         {
+            SoundManager.Instance.PlayMusic(GameManager.Instance.ChoosedHard ==0 ? AudioGroupConstrant.MusicRegion.MusicGameEasy : (GameManager.Instance.ChoosedHard == 1 ? AudioGroupConstrant.MusicRegion.MusicGameHard : AudioGroupConstrant.MusicRegion.MusicGameSuperHard),true,SoundManager.Instance.gameObject,"",1);
             if (SceneManager.Instance.currentScene.Contains("Main"))
             {
                 Destroy(gameObject);
@@ -295,11 +296,12 @@ namespace EazyEngine.Space
                 pMainLeaderObject.SetActive(false);
                 pMainLeaderObject.name = "manager";
             }
-            cacheVolum = AudioListener.volume;
-            AudioListener.volume = 0;
-            GameManager.Instance.backgroundStage[GameManager.Instance.ChoosedHard].gameObject.SetActive(true);
-            GameManager.Instance.bossStage[GameManager.Instance.ChoosedHard].gameObject.SetActive(true);
-            Invoke("turnOnVolume", 2);      
+          //  cacheVolum = AudioListener.volume;
+            //AudioListener.volume = 0;
+            //  GameManager.Instance.backgroundStage[GameManager.Instance.ChoosedHard].gameObject.SetActive(true);
+ 
+
+           // Invoke("turnOnVolume", 2);      
             GameManager.Instance.scehduleUI = ScheduleUIMain.NONE;
             GUIManager.Instance.enableEnergy(false);
             GUIManager.Instance.setBarBooster(0);
@@ -492,6 +494,7 @@ namespace EazyEngine.Space
 
         private void OnDestroy()
         {
+            SoundManager.Instance.StopMusicGroupName(GameManager.Instance.ChoosedHard == 0 ? AudioGroupConstrant.MusicRegion.MusicGameEasy : (GameManager.Instance.ChoosedHard == 1 ? AudioGroupConstrant.MusicRegion.MusicGameHard : AudioGroupConstrant.MusicRegion.MusicGameSuperHard), null, 1);
             if (PlayerEnviroment.eviromentInstant != null)
             {
                 PlayerEnviroment.eviromentInstant.Clear();
@@ -594,7 +597,21 @@ namespace EazyEngine.Space
         }
 
         public bool IsPlaying { get => isPlaying; set => isPlaying = value; }
-        public bool IsMatching { get => isMatching; set => isMatching = value; }
+        public bool IsMatching { get => isMatching; set {
+                isMatching = value;
+                if (value)
+                {
+                    if (!SoundManager.Instance.states.Contains("Matching"))
+                    {
+                        SoundManager.Instance.states.Add("Matching");
+                    }
+                }
+                else
+                {
+                    SoundManager.Instance.states.Remove("Matching");
+                }
+            }
+        }
   
     }
 }
