@@ -95,6 +95,10 @@ namespace EazyEngine.Space
         private string moduleID;
         public void extraInfo()
         {
+            if(currentLevel == 0)
+            {
+                currentLevel = 1;
+            }
             if (currentLevel < limitLevel)
             {
                 claimed = false;
