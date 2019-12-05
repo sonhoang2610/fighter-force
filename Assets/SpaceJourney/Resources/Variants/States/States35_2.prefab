@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1388811975286592234
+--- !u!1 &878570892069998549
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,60 +8,165 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1388811975286592232}
-  - component: {fileID: 1388811975286592233}
+  - component: {fileID: 9054062813319287620}
+  - component: {fileID: 555017210716113970}
   m_Layer: 0
-  m_Name: PrefabComon
+  m_Name: Item_Eviroment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1388811975286592232
+--- !u!4 &9054062813319287620
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1388811975286592234}
+  m_GameObject: {fileID: 878570892069998549}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7669233491044620979}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1388811975286592233
+--- !u!114 &555017210716113970
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1388811975286592234}
+  m_GameObject: {fileID: 878570892069998549}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4010580f56bc3b45a20bf463af91527, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c280afbf2806ed4494b8bdca9af97b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   replaceNew: 1
   _storage:
     _array:
-    - key: {fileID: 3591821763798330855, guid: 880c9c53cfef07043b9672ae657eef6f, type: 3}
-      info:
-        isIgnore: 1
-        countPreload: 3
-        pooler: {fileID: 0}
-        dontDestroyOnload: 0
-    - key: {fileID: 3591821763798330855, guid: aa6e0332b93b90040b86f25f459c4249, type: 3}
-      info:
-        isIgnore: 1
-        countPreload: 3
-        pooler: {fileID: 0}
-        dontDestroyOnload: 0
-    - key: {fileID: 2290545686915555622, guid: 5a3977b479baf634283a87c577c9d99a, type: 3}
+    - key: {fileID: 6875481962810221246, guid: 09ab89a6f9bea17469559696f243a759, type: 3}
       info:
         isIgnore: 0
-        countPreload: 2
+        countPreload: 30
+        countloadSequenceInGame: 25
+        pooler: {fileID: 0}
+        dontDestroyOnload: 1
+    - key: {fileID: 2725560285071857338, guid: 0971f79f08ce8854b82f023123fb1334, type: 3}
+      info:
+        isIgnore: 0
+        countPreload: 4
+        countloadSequenceInGame: 0
+        pooler: {fileID: 0}
+        dontDestroyOnload: 1
+    - key: {fileID: 2725560285071857338, guid: 01fa4b2cb0e33934282e101e7859129b, type: 3}
+      info:
+        isIgnore: 0
+        countPreload: 3
+        countloadSequenceInGame: 0
+        pooler: {fileID: 0}
+        dontDestroyOnload: 1
+    - key: {fileID: 6875481962810221246, guid: ee8cb0f293c94f944a3e293980cf0f13, type: 3}
+      info:
+        isIgnore: 0
+        countPreload: 3
+        countloadSequenceInGame: 0
+        pooler: {fileID: 0}
+        dontDestroyOnload: 1
+    - key: {fileID: 2725560285071857338, guid: b3563a708a29ffb4d8d744ee8a043d04, type: 3}
+      info:
+        isIgnore: 0
+        countPreload: 3
+        countloadSequenceInGame: 0
+        pooler: {fileID: 0}
+        dontDestroyOnload: 1
+--- !u!1 &2769476529276464576
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8965939248324689501}
+  - component: {fileID: 8778057026143387276}
+  m_Layer: 0
+  m_Name: Particle_Enviroment
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8965939248324689501
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2769476529276464576}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7669233491044620979}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8778057026143387276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2769476529276464576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48da661bb5a179347b4df4d5da6b8d90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  replaceNew: 1
+  _storage:
+    _array:
+    - key: {fileID: 178932, guid: 0ddc06916aaf2f442a9f5af39ac920e9, type: 3}
+      info:
+        isIgnore: 0
+        countPreload: 3
+        countloadSequenceInGame: 0
+        pooler: {fileID: 0}
+        dontDestroyOnload: 0
+    - key: {fileID: 4690541965793796162, guid: fc1be9e35d97d3242a38fbfdeb1470cb, type: 3}
+      info:
+        isIgnore: 0
+        countPreload: 3
+        countloadSequenceInGame: 0
+        pooler: {fileID: 0}
+        dontDestroyOnload: 0
+    - key: {fileID: 3340574256467975602, guid: 515dde775d9b05d43b02d5c9e83e2e66, type: 3}
+      info:
+        isIgnore: 0
+        countPreload: 10
+        countloadSequenceInGame: 0
+        pooler: {fileID: 0}
+        dontDestroyOnload: 1
+    - key: {fileID: 152634, guid: c816e04fdd948ef479558e37f6acc4ae, type: 3}
+      info:
+        isIgnore: 0
+        countPreload: 30
+        countloadSequenceInGame: 10
+        pooler: {fileID: 0}
+        dontDestroyOnload: 1
+    - key: {fileID: 1561269459470396, guid: 9a2b4141d5a70ae4baebf6e0ac706313, type: 3}
+      info:
+        isIgnore: 0
+        countPreload: 30
+        countloadSequenceInGame: 10
+        pooler: {fileID: 0}
+        dontDestroyOnload: 1
+    - key: {fileID: 7712717325186529190, guid: 4e5f322388e212242895585269c07da7, type: 3}
+      info:
+        isIgnore: 0
+        countPreload: 3
+        countloadSequenceInGame: 0
         pooler: {fileID: 0}
         dontDestroyOnload: 0
 --- !u!1 &6285065859031000532
@@ -114,84 +219,98 @@ MonoBehaviour:
       info:
         isIgnore: 0
         countPreload: 48
+        countloadSequenceInGame: 36
         pooler: {fileID: 0}
         dontDestroyOnload: 0
     - key: {fileID: 2471145985186011652, guid: be9e9c06d97c6dd49a8935f7db7b69a3, type: 3}
       info:
         isIgnore: 0
         countPreload: 5
+        countloadSequenceInGame: 0
         pooler: {fileID: 0}
         dontDestroyOnload: 0
     - key: {fileID: 3094362236577191586, guid: 5f0100ef76448e343a347eed1e9b09e0, type: 3}
       info:
         isIgnore: 0
         countPreload: 3
+        countloadSequenceInGame: 0
         pooler: {fileID: 0}
         dontDestroyOnload: 0
     - key: {fileID: 7788581899229243069, guid: 99b83ece3c55ab049bf31a392b34464a, type: 3}
       info:
         isIgnore: 0
         countPreload: 3
+        countloadSequenceInGame: 0
         pooler: {fileID: 0}
         dontDestroyOnload: 0
     - key: {fileID: 6559501798258503714, guid: f91b9fa0cc899ad4c9b09394838b6b01, type: 3}
       info:
         isIgnore: 0
         countPreload: 3
+        countloadSequenceInGame: 0
         pooler: {fileID: 0}
         dontDestroyOnload: 0
     - key: {fileID: 4906141339235065535, guid: 54c70c781ee1bc745886f7d9ba3e69be, type: 3}
       info:
         isIgnore: 0
         countPreload: 3
+        countloadSequenceInGame: 0
         pooler: {fileID: 0}
         dontDestroyOnload: 0
     - key: {fileID: 2484218859286932059, guid: cae6aa904dc009b40bbc60045d377279, type: 3}
       info:
         isIgnore: 0
         countPreload: 6
+        countloadSequenceInGame: 0
         pooler: {fileID: 0}
         dontDestroyOnload: 0
     - key: {fileID: 7074295023724667274, guid: 65065533d11cdbd43903e226db37ea42, type: 3}
       info:
         isIgnore: 0
         countPreload: 48
+        countloadSequenceInGame: 36
         pooler: {fileID: 0}
         dontDestroyOnload: 0
     - key: {fileID: 8666511167644931436, guid: 7c1c78c0d52121b42a3b909737e7ac05, type: 3}
       info:
         isIgnore: 0
         countPreload: 3
+        countloadSequenceInGame: 0
         pooler: {fileID: 0}
         dontDestroyOnload: 0
     - key: {fileID: 7999839863641311002, guid: fefe6a1b43c786845912a3926ec07c6d, type: 3}
       info:
         isIgnore: 0
         countPreload: 3
+        countloadSequenceInGame: 0
         pooler: {fileID: 0}
         dontDestroyOnload: 0
     - key: {fileID: 6306049781506410120, guid: 0ac2669baf109594e83329f4c0e222bb, type: 3}
       info:
         isIgnore: 0
         countPreload: 10
+        countloadSequenceInGame: 5
         pooler: {fileID: 0}
         dontDestroyOnload: 0
     - key: {fileID: 7931814162312892516, guid: 182372f59c87f914b99f505f2fbdfbdd, type: 3}
       info:
         isIgnore: 0
         countPreload: 40
+        countloadSequenceInGame: 30
         pooler: {fileID: 0}
         dontDestroyOnload: 0
     - key: {fileID: 7980440511462250532, guid: eca7d0490e955c4458c863097f823910, type: 3}
       info:
         isIgnore: 0
         countPreload: 60
+        countloadSequenceInGame: 50
         pooler: {fileID: 0}
         dontDestroyOnload: 0
     - key: {fileID: 5542222136454567359, guid: 9dbb418ce76847140baf837c95c5eb17, type: 3}
       info:
         isIgnore: 0
         countPreload: 1
+        countloadSequenceInGame: 0
         pooler: {fileID: 0}
         dontDestroyOnload: 0
 --- !u!1 &7669233491044620977
@@ -226,9 +345,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6285065859031000531}
-  - {fileID: 7669233491631257650}
-  - {fileID: 7669233492560232326}
-  - {fileID: 1388811975286592232}
+  - {fileID: 9054062813319287620}
+  - {fileID: 8965939248324689501}
+  - {fileID: 3170202767674165491}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7603,7 +7722,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _serializedBlackboard: '{"_variables":{}}'
   _objectReferences: []
---- !u!1 &7669233491631257648
+--- !u!1 &8849104346965298774
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7611,135 +7730,62 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7669233491631257650}
-  - component: {fileID: 7669233491631257651}
+  - component: {fileID: 3170202767674165491}
+  - component: {fileID: 7045813616524229047}
   m_Layer: 0
-  m_Name: Item_Eviroment
+  m_Name: PrefabComon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7669233491631257650
+--- !u!4 &3170202767674165491
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7669233491631257648}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 7669233491044620979}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7669233491631257651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7669233491631257648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c280afbf2806ed4494b8bdca9af97b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  replaceNew: 1
-  _storage:
-    _array:
-    - key: {fileID: 6875481962810221246, guid: 09ab89a6f9bea17469559696f243a759, type: 3}
-      info:
-        isIgnore: 0
-        countPreload: 3
-        pooler: {fileID: 0}
-        dontDestroyOnload: 0
-    - key: {fileID: 6875481962810221246, guid: 985df31c0c382da4fa7602fef502f84d, type: 3}
-      info:
-        isIgnore: 0
-        countPreload: 3
-        pooler: {fileID: 0}
-        dontDestroyOnload: 0
---- !u!1 &7669233492560232324
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7669233492560232326}
-  - component: {fileID: 7669233492560232327}
-  m_Layer: 0
-  m_Name: Particle_Enviroment
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7669233492560232326
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7669233492560232324}
+  m_GameObject: {fileID: 8849104346965298774}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7669233491044620979}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7669233492560232327
+--- !u!114 &7045813616524229047
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7669233492560232324}
+  m_GameObject: {fileID: 8849104346965298774}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48da661bb5a179347b4df4d5da6b8d90, type: 3}
+  m_Script: {fileID: 11500000, guid: b4010580f56bc3b45a20bf463af91527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   replaceNew: 1
   _storage:
     _array:
-    - key: {fileID: 178932, guid: 0ddc06916aaf2f442a9f5af39ac920e9, type: 3}
+    - key: {fileID: 3591821763798330855, guid: 880c9c53cfef07043b9672ae657eef6f, type: 3}
       info:
-        isIgnore: 0
+        isIgnore: 1
         countPreload: 3
+        countloadSequenceInGame: 0
         pooler: {fileID: 0}
         dontDestroyOnload: 0
-    - key: {fileID: 4690541965793796162, guid: fc1be9e35d97d3242a38fbfdeb1470cb, type: 3}
+    - key: {fileID: 3591821763798330855, guid: aa6e0332b93b90040b86f25f459c4249, type: 3}
       info:
-        isIgnore: 0
+        isIgnore: 1
         countPreload: 3
+        countloadSequenceInGame: 0
         pooler: {fileID: 0}
         dontDestroyOnload: 0
-    - key: {fileID: 3340574256467975602, guid: 515dde775d9b05d43b02d5c9e83e2e66, type: 3}
+    - key: {fileID: 2290545686915555622, guid: 5a3977b479baf634283a87c577c9d99a, type: 3}
       info:
         isIgnore: 0
-        countPreload: 10
-        pooler: {fileID: 0}
-        dontDestroyOnload: 0
-    - key: {fileID: 152634, guid: c816e04fdd948ef479558e37f6acc4ae, type: 3}
-      info:
-        isIgnore: 0
-        countPreload: 30
-        pooler: {fileID: 0}
-        dontDestroyOnload: 0
-    - key: {fileID: 1561269459470396, guid: 9a2b4141d5a70ae4baebf6e0ac706313, type: 3}
-      info:
-        isIgnore: 0
-        countPreload: 30
-        pooler: {fileID: 0}
-        dontDestroyOnload: 0
-    - key: {fileID: 7712717325186529190, guid: 4e5f322388e212242895585269c07da7, type: 3}
-      info:
-        isIgnore: 0
-        countPreload: 3
+        countPreload: 2
+        countloadSequenceInGame: 0
         pooler: {fileID: 0}
         dontDestroyOnload: 0

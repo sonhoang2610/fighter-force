@@ -50,18 +50,21 @@ MonoBehaviour:
       info:
         isIgnore: 0
         countPreload: 3
+        countloadSequenceInGame: 0
         pooler: {fileID: 0}
         dontDestroyOnload: 0
     - key: {fileID: 1539162687017401993, guid: 62b5cafe0a8103444a301d62ab588cd1, type: 3}
       info:
         isIgnore: 0
         countPreload: 7
+        countloadSequenceInGame: 0
         pooler: {fileID: 0}
         dontDestroyOnload: 0
     - key: {fileID: 8644569780587809145, guid: 0c635eafe2d71f04d91075f5ac65598d, type: 3}
       info:
         isIgnore: 0
         countPreload: 44
+        countloadSequenceInGame: 32
         pooler: {fileID: 0}
         dontDestroyOnload: 0
 --- !u!1 &3049838990699596677
@@ -114,36 +117,42 @@ MonoBehaviour:
       info:
         isIgnore: 0
         countPreload: 3
+        countloadSequenceInGame: 0
         pooler: {fileID: 0}
         dontDestroyOnload: 0
     - key: {fileID: 4690541965793796162, guid: fc1be9e35d97d3242a38fbfdeb1470cb, type: 3}
       info:
         isIgnore: 0
         countPreload: 3
+        countloadSequenceInGame: 0
         pooler: {fileID: 0}
         dontDestroyOnload: 0
     - key: {fileID: 3340574256467975602, guid: 515dde775d9b05d43b02d5c9e83e2e66, type: 3}
       info:
         isIgnore: 0
         countPreload: 10
+        countloadSequenceInGame: 0
         pooler: {fileID: 0}
         dontDestroyOnload: 1
     - key: {fileID: 152634, guid: c816e04fdd948ef479558e37f6acc4ae, type: 3}
       info:
         isIgnore: 0
         countPreload: 30
+        countloadSequenceInGame: 10
         pooler: {fileID: 0}
         dontDestroyOnload: 1
     - key: {fileID: 1561269459470396, guid: 9a2b4141d5a70ae4baebf6e0ac706313, type: 3}
       info:
         isIgnore: 0
         countPreload: 30
+        countloadSequenceInGame: 10
         pooler: {fileID: 0}
         dontDestroyOnload: 1
     - key: {fileID: 7712717325186529190, guid: 4e5f322388e212242895585269c07da7, type: 3}
       info:
         isIgnore: 0
         countPreload: 3
+        countloadSequenceInGame: 0
         pooler: {fileID: 0}
         dontDestroyOnload: 0
 --- !u!1 &3049838991062068912
@@ -198,7 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   replaceNew: 1
   states:
-  - isExpaned: 0
+  - isExpaned: 1
     nameState: State 1
     comment: small R
     nameGroup: State 1 (small R)
@@ -1686,7 +1695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aad115aca74ce3c4891b3f6de0b4aae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundGraphSerialization: '{"version":2.96,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","comments":"StateController","translation":{"x":-815.0,"y":-80.0},"zoomFactor":0.5000146,"nodes":[{"_position":{"x":780.0,"y":270.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"2"},{"_action":{"messCompare":"StartGame","$type":"EazyEngine.Space.WaitEventGame"},"_position":{"x":546.0,"y":354.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"3"},{"_position":{"x":738.0,"y":407.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"5"},{"_position":{"x":104.0,"y":560.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"6"},{"failureRemap":"Success","_position":{"x":-983.0,"y":704.0},"$type":"NodeCanvas.BehaviourTrees.Remapper","$id":"7"},{"timeout":{"_value":4.0},"_position":{"x":-1097.0,"y":765.0},"$type":"NodeCanvas.BehaviourTrees.Timeout","$id":"8"},{"_position":{"x":-1111.0,"y":857.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"10"},{"_color":{"r":1.0,"g":0.3921569,"b":0.7960784,"a":1.0},"_position":{"x":-1189.0,"y":922.0},"$type":"NodeCanvas.BehaviourTrees.Parallel","$id":"11"},{"_action":{"nameState":"State
+  boundGraphSerialization: '{"version":2.96,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","comments":"StateController","translation":{"x":1049.0,"y":-48.0},"zoomFactor":0.5000146,"nodes":[{"_position":{"x":780.0,"y":270.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"2"},{"_action":{"messCompare":"StartGame","$type":"EazyEngine.Space.WaitEventGame"},"_position":{"x":546.0,"y":354.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"3"},{"_position":{"x":738.0,"y":407.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"5"},{"_position":{"x":104.0,"y":560.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"6"},{"failureRemap":"Success","_position":{"x":-983.0,"y":704.0},"$type":"NodeCanvas.BehaviourTrees.Remapper","$id":"7"},{"timeout":{"_value":4.0},"_position":{"x":-1097.0,"y":765.0},"$type":"NodeCanvas.BehaviourTrees.Timeout","$id":"8"},{"_position":{"x":-1111.0,"y":857.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"10"},{"_color":{"r":1.0,"g":0.3921569,"b":0.7960784,"a":1.0},"_position":{"x":-1189.0,"y":922.0},"$type":"NodeCanvas.BehaviourTrees.Parallel","$id":"11"},{"_action":{"nameState":"State
     1","wait":{"_value":true},"$type":"EazyEngine.Space.RunState"},"_position":{"x":-1297.0,"y":1064.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"12"},{"_action":{"nameState":"State
     2","wait":{"_value":true},"$type":"EazyEngine.Space.RunState"},"_position":{"x":-1120.0,"y":1065.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"15"},{"_action":{"waitTime":{"_value":1.0},"timerBehavior":{},"$type":"NodeCanvas.Tasks.Actions.Wait"},"_position":{"x":-1011.0,"y":934.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"18"},{"failureRemap":"Success","_position":{"x":-711.0,"y":711.0},"$type":"NodeCanvas.BehaviourTrees.Remapper","$id":"22"},{"timeout":{"_value":4.0},"_position":{"x":-715.0,"y":824.0},"$type":"NodeCanvas.BehaviourTrees.Timeout","$id":"23"},{"_position":{"x":-722.0,"y":917.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"25"},{"_action":{"nameState":"State
     3","wait":{"_value":true},"$type":"EazyEngine.Space.RunState"},"_position":{"x":-835.0,"y":1006.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"26"},{"_action":{"waitTime":{"_value":1.0},"timerBehavior":{},"$type":"NodeCanvas.Tasks.Actions.Wait"},"_position":{"x":-694.0,"y":1015.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"29"},{"failureRemap":"Success","_position":{"x":-420.0,"y":720.0},"$type":"NodeCanvas.BehaviourTrees.Remapper","$id":"33"},{"timeout":{"_value":4.0},"_position":{"x":-445.0,"y":842.0},"$type":"NodeCanvas.BehaviourTrees.Timeout","$id":"34"},{"_position":{"x":-397.0,"y":932.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"36"},{"_action":{"nameState":"State
@@ -1774,31 +1783,36 @@ MonoBehaviour:
     - key: {fileID: 6875481962810221246, guid: 09ab89a6f9bea17469559696f243a759, type: 3}
       info:
         isIgnore: 0
-        countPreload: 10
+        countPreload: 30
+        countloadSequenceInGame: 25
         pooler: {fileID: 0}
         dontDestroyOnload: 1
     - key: {fileID: 2725560285071857338, guid: 0971f79f08ce8854b82f023123fb1334, type: 3}
       info:
         isIgnore: 0
         countPreload: 4
+        countloadSequenceInGame: 0
         pooler: {fileID: 0}
         dontDestroyOnload: 1
     - key: {fileID: 2725560285071857338, guid: 01fa4b2cb0e33934282e101e7859129b, type: 3}
       info:
         isIgnore: 0
         countPreload: 3
+        countloadSequenceInGame: 0
         pooler: {fileID: 0}
         dontDestroyOnload: 1
     - key: {fileID: 6875481962810221246, guid: ee8cb0f293c94f944a3e293980cf0f13, type: 3}
       info:
         isIgnore: 0
         countPreload: 3
+        countloadSequenceInGame: 0
         pooler: {fileID: 0}
         dontDestroyOnload: 1
     - key: {fileID: 2725560285071857338, guid: b3563a708a29ffb4d8d744ee8a043d04, type: 3}
       info:
         isIgnore: 0
-        countPreload: 0
+        countPreload: 3
+        countloadSequenceInGame: 0
         pooler: {fileID: 0}
         dontDestroyOnload: 1
 --- !u!1 &6015593588968761067
@@ -1851,17 +1865,20 @@ MonoBehaviour:
       info:
         isIgnore: 1
         countPreload: 3
+        countloadSequenceInGame: 0
         pooler: {fileID: 0}
         dontDestroyOnload: 0
     - key: {fileID: 3591821763798330855, guid: aa6e0332b93b90040b86f25f459c4249, type: 3}
       info:
         isIgnore: 1
         countPreload: 3
+        countloadSequenceInGame: 0
         pooler: {fileID: 0}
         dontDestroyOnload: 0
     - key: {fileID: 2290545686915555622, guid: 5a3977b479baf634283a87c577c9d99a, type: 3}
       info:
         isIgnore: 0
         countPreload: 2
+        countloadSequenceInGame: 0
         pooler: {fileID: 0}
         dontDestroyOnload: 0
