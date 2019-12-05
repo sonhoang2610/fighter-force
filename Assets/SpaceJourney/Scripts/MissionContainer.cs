@@ -173,20 +173,25 @@ namespace EazyEngine.Space
             currentMissionModule.missions = pTempMission.ToArray();
             for (int i = currentMissionModule.missions.Length - 1; i >= 0; --i)
             {
-                excuteMission(currentMissionModule.missions[i]);
+                excuteMission(currentMissionModule.missions[i], currentMissionModule.IDMission);
             }
             return dirty;
         }
-        protected void excuteMission(MissionItemInstanced pMission)
+        protected void excuteMission(MissionItemInstanced pMission,string pIdModule)
         {
-            var pOwnerMission = transform.Find(pMission.mission.ItemID);
-           // var pVaraiables = pMission.mission.VariableDict == null ? pMission.mission.VariableDict : pMission.mission.VariableDict.MergeLeft(pMission.VariableDict);
+            var pOwnerMission = transform.Find(pMission.mission.ItemID + pIdModule);
+            pMission.ModuleID = pMission.mission.ItemID + pIdModule;
+            // var pVaraiables = pMission.mission.VariableDict == null ? pMission.mission.VariableDict : pMission.mission.VariableDict.MergeLeft(pMission.VariableDict);
             var pVaraiables = pMission.mission.VariableDict.MergeLeft(pMission.VariableDict);
-            pMission.mission.VariableDictInstanced = pVaraiables;
+            if(!pMission.mission.VariableDictInstanced.ContainsKey(pMission.mission.ItemID + pIdModule))
+            {
+                pMission.mission.VariableDictInstanced.Add(pMission.mission.ItemID + pIdModule, pVaraiables);
+            }
+            pMission.mission.VariableDictInstanced[pMission.mission.ItemID + pIdModule] = pVaraiables;
             if (pOwnerMission == null)
             {
                 pOwnerMission = Instantiate(transform.Find("DefaultMission"),transform);
-                pOwnerMission.name = pMission.mission.ItemID;
+                pOwnerMission.name = pMission.mission.ItemID + pIdModule;
             }
             var blackBoard = pOwnerMission.GetComponent<IBlackboard>();
             if (pMission.mission.checkComplete)

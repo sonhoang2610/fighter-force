@@ -10,7 +10,11 @@ namespace EazyEngine.Space
         public Vector2 deltaOffset;
         public float speed = 5;
         public bool Horizontal = true;
-        public bool Vertical = true; 
+        public bool Vertical = true;
+        public bool isBlockRotation()
+        {
+            return false;
+        }
         public int getIndex()
         {
             return 0;

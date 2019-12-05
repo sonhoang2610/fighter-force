@@ -257,6 +257,9 @@ namespace EazyEngine.Space {
         public Character modelPlane;
         public int limitUpgrade = 80;
         public int RankPlane = 0;
+        public float[] speedBoosters = new float[] {
+            0.2f,0.2f,0.4f,0.4f,0.6f,0.8f
+        };
         public UnitDefineLevel power;
         [System.NonSerialized, OdinSerialize]
         public List<SkillInfoInstance> skills = new List<SkillInfoInstance>();

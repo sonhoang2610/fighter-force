@@ -25,6 +25,7 @@ namespace EazyEngine.Space.UI
             set
             {
                 base.Data = value;
+                value.mission.InstancedModuleId = value.ModuleID;
                 content.text = value.mission.Desc;
                 status.setFrameIndex((value.Process >= 1 && !value.Claimed) ? 1 : 0);
                 if (iconComplete)

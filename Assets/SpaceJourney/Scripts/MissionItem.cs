@@ -41,21 +41,28 @@ namespace EazyEngine.Space
         [OdinSerialize]
         public Dictionary<string, object> VariableDict = new Dictionary<string, object>();
         [System.NonSerialized]
-        public Dictionary<string, object> VariableDictInstanced = new Dictionary<string, object>();
+        public Dictionary<string, Dictionary<string, object>> VariableDictInstanced = new Dictionary<string, Dictionary<string, object>>();
+        [System.NonSerialized]
+        private string instancedModuleId;
         public override string Desc
         {
             get
             {
                 var pStr = base.Desc;
                 var pStrs = pStr.Split(' ');
+                var pDict = VariableDictInstanced.ElementAt(0).Value;
+                if (!string.IsNullOrEmpty(instancedModuleId))
+                {
+                    pDict = VariableDictInstanced[instancedModuleId];
+                }
                 foreach (var pString in pStrs)
                 {
                     if (pString.StartsWith("$"))
                     {
                         var pVar = pString.Remove(0, 1);
-                        if (VariableDictInstanced.ContainsKey(pVar) && VariableDictInstanced[pVar] != null)
+                        if (pDict.ContainsKey(pVar) && pDict[pVar] != null)
                         {
-                            pStr = pStr.Replace(pString, VariableDictInstanced[pVar].ToString());
+                            pStr = pStr.Replace(pString, pDict[pVar].ToString());
                         }
                     }
                 }
@@ -63,6 +70,8 @@ namespace EazyEngine.Space
                 return pStr;
             }
         }
+
+        public string InstancedModuleId { get => instancedModuleId; set => instancedModuleId = value; }
     }
 
     [System.Serializable]
@@ -82,7 +91,8 @@ namespace EazyEngine.Space
         [HideInEditorMode]
         public int currentLevel = 0;
         public RewardInfo[] rewards;
-
+        [System.NonSerialized]
+        private string moduleID;
         public void extraInfo()
         {
             if (currentLevel < limitLevel)
@@ -116,6 +126,7 @@ namespace EazyEngine.Space
         public bool Claimed { get => claimed; set { claimed = value; OnChangeObject(); } }
         [ShowInInspector]
         public IBlackboard BlackBoard { get => blackBoard; set => blackBoard = value; }
+        public string ModuleID { get => moduleID; set => moduleID = value; }
 
         [field: NonSerialized]
         public event OnChange OnChange;

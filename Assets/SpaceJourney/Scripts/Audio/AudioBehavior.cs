@@ -65,17 +65,18 @@ namespace EazyEngine.Audio
             {
                 pIndex = 0;
             }
+            var oldIndex = pIndex;
             pIndex = EditorGUI.Popup(rect.AlignLeft(rect.width * 0.5f), pIndex, pStringArray);
             value.groupName = pStringArray[pIndex];
             bool oldValue = value.isMusic;
             value.isMusic = EditorGUI.Toggle(rect.AlignLeft(rect.width * 0.25f).AddX(rect.width*0.5f +20), value.isMusic);
-            if(value.isMusic != oldValue)
+            if(value.isMusic != oldValue || oldIndex != pIndex)
             {
-                Debug.Log("toogle");
+
+                this.ValueEntry.SmartValue = value;
             }
             // GUIHelper.PopLabelWidth();
 
-            this.ValueEntry.SmartValue = value;
         }
     }
 #endif

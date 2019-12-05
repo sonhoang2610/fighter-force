@@ -27,6 +27,10 @@ namespace EazyEngine.Space
         [ShowInInspector]
         protected float CurrentSpeed;
         protected Sequence seq;
+        public bool isBlockRotation()
+        {
+            return false;
+        }
         private void OnEnable()
         {
              seq = DOTween.Sequence();

@@ -229,6 +229,9 @@ namespace EazyEngine.Space
         protected Sequence seqX;
         public virtual void setDirectionAxis(Vector2 direction,Vector2 pAxis)
         {
+      
+            cachePos = transform.position;
+            transform.RotationDirect2D(direction, TranformExtension.FacingDirection.DOWN);
             if (movementModules != null)
             {
                 for (int i = 0; i < movementModules.Length; ++i)
@@ -236,8 +239,6 @@ namespace EazyEngine.Space
                     movementModules[i].setDirection(direction);
                 }
             }
-            cachePos = transform.position;
-            transform.RotationDirect2D(direction, TranformExtension.FacingDirection.DOWN);
             Direction = direction.normalized;
             velocityX = UnityEngine.Random.Range(velocityXRandom.x, velocityXRandom.y);
             currentVelocityX = 0;
@@ -358,11 +359,17 @@ namespace EazyEngine.Space
             Vector2 pOldVec = transform.position;
             Vector2 movement = Direction * (CurrentSpeed) * time.deltaTime;
             bool block = false;
+            bool blockRotation = false;
             if (movementModules != null && movementModules.Length > 0)
             {
                 for (int i = 0; i < movementModules.Length; ++i)
                 {
+                    movementModules[i].setSpeed(Speed);
                      movement = movementModules[i].Movement();
+                    if (movementModules[i].isBlockRotation())
+                    {
+                        blockRotation = true;
+                    }
                     transform.Translate(movement, UnityEngine.Space.World);
                     cachePos = cachePos + movement;
                     if (movementModules[i].isBlock()) {
@@ -393,7 +400,7 @@ namespace EazyEngine.Space
                 }
             }
           
-            if (time.deltaTime != 0 && !moveSin && !IgnoreMove)
+            if (time.deltaTime != 0 && !moveSin && !IgnoreMove && !blockRotation)
             {
                 transform.RotationDirect2D((Vector2)transform.position - pOldVec, TranformExtension.FacingDirection.DOWN);
             }
