@@ -108,7 +108,7 @@ namespace EazyEngine.Space.UI
             {
                 Data.extraInfo();
             }
-            MissionContainer.Instance.excuteMission(Data, Data.ModuleID);
+            EzEventManager.TriggerEvent(new MessageGamePlayEvent("MissionDirty"));
             Data = Data;
             itemReward.showEffect();
             GameManager.Instance.SaveGame();
