@@ -195,7 +195,7 @@ namespace EazyEngine.Space
             }
             return dirty;
         }
-        protected void excuteMission(MissionItemInstanced pMission,string pIdModule)
+        public void excuteMission(MissionItemInstanced pMission,string pIdModule)
         {
             var pOwnerMission = transform.Find(pMission.mission.ItemID + pIdModule);
             pMission.ModuleID = pMission.mission.ItemID + pIdModule;

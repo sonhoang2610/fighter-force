@@ -108,6 +108,7 @@ namespace EazyEngine.Space.UI
             {
                 Data.extraInfo();
             }
+            MissionContainer.Instance.excuteMission(Data, Data.ModuleID);
             Data = Data;
             itemReward.showEffect();
             GameManager.Instance.SaveGame();
