@@ -114,7 +114,14 @@ namespace EazyEngine.Space
                         ((ILevelSetter)pDict.Values.ElementAt(j)).setLevel(currentLevel);
                     }
                 }
-            }       
+            }
+            for (int i = 0; i < rewards.Length; ++i)
+            {
+                if (rewards[i].quantiyLevel != null)
+                {
+                    rewards[i].quantiyLevel.setLevel(currentLevel);
+                }
+            }
             EzEventManager.TriggerEvent(new MessageGamePlayEvent("MissionDirty"));
         }
 

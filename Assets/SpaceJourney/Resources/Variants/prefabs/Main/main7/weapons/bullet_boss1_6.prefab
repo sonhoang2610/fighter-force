@@ -5188,134 +5188,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &480484859072044906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8269517097850452423}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e96a746204b4e24ab6e662607f9ad1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  countFindTarget: 1
-  speed: 0
-  rotatingSpeed: 720
-  limitRotate: 99999
-  target: {fileID: 0}
-  facingDefault: 270
-  autoTarget: 0
-  useSpeedMain: 1
-  range: 24
-  isBlockMove: 1
-  defaultDirection: {x: 0, y: 1}
-  TargetLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  onFindTarget:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &9150010392971420708
-MonoBehaviour:
+--- !u!58 &6801956954340446618
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8269517097850452423}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 840ce6581e080834eb1a8ef6c4b16883, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speeds:
-  - delayStart: 0
-    noStart: 0
-    start: -12
-    destiny: 0
-    duration: 1
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    onComplete:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 480484859072044906}
-          m_MethodName: set_enabled
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-        - m_Target: {fileID: 480484859072044906}
-          m_MethodName: forceFoundTarget
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-  - delayStart: 0
-    noStart: 1
-    start: 0
-    destiny: 19
-    duration: 1
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    onComplete:
-      m_PersistentCalls:
-        m_Calls: []
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.25
 --- !u!1 &7112925129029341310
 GameObject:
   m_ObjectHideFlags: 0
@@ -10221,7 +10109,7 @@ PrefabInstance:
     - target: {fileID: 1206410207470012646, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
       propertyPath: m_Name
-      value: bullet_boss1_5
+      value: bullet_boss1_6
       objectReference: {fileID: 0}
     - target: {fileID: 1206410207470012646, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
@@ -10246,7 +10134,7 @@ PrefabInstance:
     - target: {fileID: 6020482961877232874, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
       propertyPath: onEndLifeTime.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6020482961877232874, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
@@ -10266,7 +10154,7 @@ PrefabInstance:
     - target: {fileID: 6020482961877232874, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
       propertyPath: ignoreMove
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6020482961877232874, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
@@ -10322,7 +10210,7 @@ PrefabInstance:
         type: 3}
       propertyPath: onEndLifeTime.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 480484859072044906}
+      objectReference: {fileID: 0}
     - target: {fileID: 6020482961877232874, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
       propertyPath: onEndLifeTime.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -10418,7 +10306,7 @@ PrefabInstance:
         type: 3}
       propertyPath: onTakenDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8786043614257490751}
+      objectReference: {fileID: 0}
     - target: {fileID: 1874432911900596458, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
       propertyPath: onTakenDamage.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -10608,7 +10496,7 @@ PrefabInstance:
         type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 480484859072044906}
+      objectReference: {fileID: 0}
     - target: {fileID: 1874432911900596458, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -10638,7 +10526,7 @@ PrefabInstance:
         type: 3}
       propertyPath: onTakenDamage.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
-      objectReference: {fileID: 480484859072044906}
+      objectReference: {fileID: 0}
     - target: {fileID: 1874432911900596458, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
       propertyPath: onTakenDamage.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
@@ -10663,7 +10551,7 @@ PrefabInstance:
         type: 3}
       propertyPath: onRevie.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 480484859072044906}
+      objectReference: {fileID: 0}
     - target: {fileID: 1874432911900596458, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
       propertyPath: onRevie.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
@@ -10708,6 +10596,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.y
       value: 0.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987057550204000798, guid: 29dd208871ea98a48afc6b178a355927,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
@@ -10781,6 +10674,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -2300432488026386945, guid: 29dd208871ea98a48afc6b178a355927, type: 3}
+    - {fileID: 1987057550204000798, guid: 29dd208871ea98a48afc6b178a355927, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 29dd208871ea98a48afc6b178a355927, type: 3}
 --- !u!1 &8269517097850452423 stripped
 GameObject:
@@ -10791,12 +10685,6 @@ GameObject:
 --- !u!4 &9110511114930373100 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2022740598048338125, guid: 29dd208871ea98a48afc6b178a355927,
-    type: 3}
-  m_PrefabInstance: {fileID: 7096897090466541857}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &8786043614257490751 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 1987057550204000798, guid: 29dd208871ea98a48afc6b178a355927,
     type: 3}
   m_PrefabInstance: {fileID: 7096897090466541857}
   m_PrefabAsset: {fileID: 0}

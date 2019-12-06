@@ -242,6 +242,8 @@ namespace EazyEngine.Space
         }
         [FoldoutGroup("Event Setting")]
         [SerializeField]
+        public UnityEvent onActiveWeapon;
+        [SerializeField]
         public UnityEventBool onStartEvent;
         [FoldoutGroup("Event Setting")]
         public UnityEvent onUse;
@@ -497,6 +499,7 @@ namespace EazyEngine.Space
             WaitingTarget = false;
             UnlockFire = false;
             currentIndexBullet = 0;
+            onActiveWeapon.Invoke();
             if (startWithReloadFirst)
             {
                 _currentTimReload = TimeReload;

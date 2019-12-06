@@ -433,7 +433,7 @@ namespace EazyEngine.Space
                     else
                     {
                         CurrentSpeed = SpeedStart;
-                        DOTween.To(() => currentSpeed, x => currentSpeed = x, Speed, durationToMax).SetEase(curve);
+                        DOTween.To(() => CurrentSpeed, x => CurrentSpeed = x, Speed, durationToMax).SetEase(curve);
                     }
                 }
                 return;
