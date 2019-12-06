@@ -96,20 +96,38 @@ namespace EazyEngine.Space
             if (currentMissionModule == null)
             {
                 System.Array.Sort(database.dailyMissions, compareMission);
+    
                 for (int i = 0; i < database.dailyMissions.Length; ++i)
                 {
+
+                    var pOwnerMission = Instantiate(transform.Find("DefaultDailyMissionChecker"), transform);
+                    pOwnerMission.name = "Checker";
+                    var blackBoard = pOwnerMission.GetComponent<Blackboard>();
+                    if (database.dailyMissions[i].VariableDict != null)
+                    {
+                        for (int j = 0; j < database.dailyMissions[i].VariableDict.Count; ++j)
+                        {
+                            var pDict = database.dailyMissions[i].VariableDict;
+                            blackBoard.AddVariable(pDict.Keys.ElementAt(j), pDict[pDict.Keys.ElementAt(j)]);
+                        }
+                    }
                     var pNode = new EazyNode()
                     {
                         flow = database.dailyMissions[i].condition,
-                        owner = GetComponent<GraphOwner>()
+                        owner = pOwnerMission.GetComponent<GraphOwner>()
                     };
                     successCondition = false;
-                    pNode.runGraph(onFinishNode);
+                    pNode.runGraph(onFinishNode,"flow");
                     if (successCondition)
                     {
                         currentMissionModule = database.dailyMissions[i].CloneData();
                         break;
                     }
+                    else
+                    {
+                        Destroy(pOwnerMission.gameObject);
+                    }
+
                 }
             }
             defaultMissionModule = System.Array.Find(database.dailyMissions, x => x.IDMission == currentMissionModule.IDMission);

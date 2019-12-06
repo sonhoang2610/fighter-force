@@ -26,14 +26,15 @@ namespace EazyEngine.Space
             seq = DOTween.Sequence();
             for (int i = 0; i < speeds.Length; ++i)
             {
-               var pAction = DOTween.To(() => proj.CurrentSpeed, x => proj.CurrentSpeed = x, speeds[i].destiny, speeds[i].duration).SetEase(speeds[i].curve);
-                if (!speeds[i].noStart)
-                {
-                    pAction.From(speeds[i].start);
-                }
-                seq.AppendInterval(speeds[i].delayStart);
-                seq.Append(pAction);
                 var pSpeed = speeds[i];
+                var pAction = DOTween.To(() => proj.CurrentSpeed, x => proj.CurrentSpeed = x, pSpeed.destiny, pSpeed.duration).SetEase(pSpeed.curve);
+                if (!pSpeed.noStart)
+                {
+                    pAction.From(pSpeed.start);
+                }
+                seq.AppendInterval(pSpeed.delayStart);
+                seq.Append(pAction);
+            
                 seq.AppendCallback(delegate
                 {
                     pSpeed.onComplete.Invoke();

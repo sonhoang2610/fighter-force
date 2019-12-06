@@ -375,7 +375,7 @@ namespace EazyEngine.Space
             {
                 for (int i = 0; i < movementModules.Length; ++i)
                 {
-                    movementModules[i].setSpeed(Speed);
+                    movementModules[i].setSpeed(CurrentSpeed);
                      movement = movementModules[i].Movement();
                     if (movementModules[i].isBlockRotation())
                     {

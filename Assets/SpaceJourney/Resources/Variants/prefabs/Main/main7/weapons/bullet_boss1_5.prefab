@@ -9905,14 +9905,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countFindTarget: 1
   speed: 0
-  rotatingSpeed: 99999
+  rotatingSpeed: 720
   limitRotate: 99999
   target: {fileID: 0}
   facingDefault: 270
-  autoTarget: 1
+  autoTarget: 0
   useSpeedMain: 1
   range: 24
   isBlockMove: 1
+  defaultDirection: {x: 0, y: 1}
   TargetLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -9975,10 +9976,21 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+        - m_Target: {fileID: 480484859072044906}
+          m_MethodName: forceFoundTarget
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
   - delayStart: 0
     noStart: 1
     start: 0
-    destiny: 9
+    destiny: 19
     duration: 1
     curve:
       serializedVersion: 2
@@ -10585,7 +10597,7 @@ PrefabInstance:
     - target: {fileID: 1874432911900596458, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1874432911900596458, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
@@ -10600,7 +10612,7 @@ PrefabInstance:
     - target: {fileID: 1874432911900596458, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: set_enabled
+      value: KillProcess
       objectReference: {fileID: 0}
     - target: {fileID: 1874432911900596458, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
@@ -10662,6 +10674,21 @@ PrefabInstance:
       propertyPath: onRevie.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1874432911900596458, guid: 29dd208871ea98a48afc6b178a355927,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874432911900596458, guid: 29dd208871ea98a48afc6b178a355927,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874432911900596458, guid: 29dd208871ea98a48afc6b178a355927,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 8269517097850452423}
     - target: {fileID: 1987057550204000798, guid: 29dd208871ea98a48afc6b178a355927,
         type: 3}
       propertyPath: m_Size.x

@@ -20,11 +20,16 @@ namespace EazyEngine.Space.UI
         public System.Action<EazyNode> onFinishEvent;
         protected FlowScript currentInstance;
         public GraphOwner owner;
-        public void runGraph(System.Action<EazyNode> pFinish)
+        public void runGraph(System.Action<EazyNode> pFinish,string pVarFlow = "")
         {
             onFinishEvent = pFinish;
             currentInstance = Graph.Clone<FlowScript>(flow, owner.graph);
-            currentInstance.StartGraph(owner, owner.GetComponent<IBlackboard>(), true, onFinish);
+            var pBlackBoard = owner.GetComponent<IBlackboard>();
+            if (!string.IsNullOrEmpty(pVarFlow))
+            {
+                pBlackBoard.AddVariable(pVarFlow, currentInstance);
+            }
+            currentInstance.StartGraph(owner, pBlackBoard, true, onFinish);
         }
         public void  onFinish(bool pBool)
         {

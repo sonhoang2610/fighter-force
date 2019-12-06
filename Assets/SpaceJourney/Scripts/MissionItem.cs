@@ -99,16 +99,20 @@ namespace EazyEngine.Space
             {
                 currentLevel = 1;
             }
-            if (currentLevel < limitLevel)
+            if ((currentLevel -1) < limitLevel)
             {
                 claimed = false;
             }
             for (int i = 0; i < mission. VariableDictInstanced.Count; ++i)
             {
                 if (mission.VariableDictInstanced.Values.ElementAt(i) == null) continue;
-                if (typeof(ILevelSetter).IsAssignableFrom(mission.VariableDictInstanced.Values.ElementAt(i).GetType()))
+                var pDict = mission.VariableDictInstanced.Values.ElementAt(i);
+                for (int j = 0; j < pDict.Count; ++j)
                 {
-                    ((ILevelSetter)mission.VariableDictInstanced.Values.ElementAt(i)).setLevel(currentLevel);
+                    if (typeof(ILevelSetter).IsAssignableFrom(pDict.Values.ElementAt(j).GetType()))
+                    {
+                        ((ILevelSetter)pDict.Values.ElementAt(j)).setLevel(currentLevel);
+                    }
                 }
             }       
             EzEventManager.TriggerEvent(new MessageGamePlayEvent("MissionDirty"));

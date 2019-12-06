@@ -22,6 +22,7 @@ public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>, ISet
     public bool useSpeedMain = false;
     public float range;
     public bool isBlockMove;
+    public Vector2 defaultDirection = Vector2.up;
     public LayerMask TargetLayer;
     public UnityEvent onFindTarget;
     protected Rigidbody2D rb;
@@ -32,6 +33,7 @@ public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>, ISet
     private bool isSelfDamage;
     private DamageOnTouch _dameOnTouch;
     protected float currentRotate = 0;
+    protected Vector2 CachePosLastTarget;
     public bool IsEnable()
     {
         return enabled;
@@ -67,6 +69,12 @@ public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>, ISet
         EzEventManager.AddListener(this);
     }
 
+    public void forceFoundTarget()
+    {
+        target = null;
+        findTargetMinDistance();
+    }
+
     private void OnDisable()
     {
         EzEventManager.RemoveListener(this);
@@ -81,7 +89,7 @@ public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>, ISet
     public virtual void findTargetMinDistance()
     {
         if (target && target.gameObject.activeSelf) return;
-        if (autoTarget)
+ 
         {
             target = null;
             var _chars = findChar();
@@ -116,11 +124,45 @@ public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>, ISet
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!isUpdateAble()) return;
-        if (target && target.gameObject.activeSelf)
         {
-            if (currentRotate > limitRotate) { rb.angularVelocity = 0; return; }
-            Vector2 point2Target = (Vector2)transform.position - (Vector2)target.transform.position;
+            if (target && target.gameObject.activeSelf)
+            {
+                if (currentRotate > limitRotate) { rb.angularVelocity = 0; return; }
+                CachePosLastTarget = target.transform.position;
+                Vector2 point2Target = (Vector2)transform.position - (Vector2)target.transform.position;
+
+                point2Target.Normalize();
+
+                float value = Vector3.Cross(point2Target, -transform.up).z;
+                if (facingDefault == TranformExtension.FacingDirection.UP)
+                {
+                    value = Vector3.Cross(point2Target, transform.up).z;
+                }
+
+                rb.angularVelocity = rotatingSpeed * (value);
+                currentRotate += Mathf.Abs(rotatingSpeed * value) * Time.deltaTime;
+
+            }
+            else
+            {
+                rb.angularVelocity = 0;
+                if (isUpdateAble() && autoTarget)
+                {
+                    if (target != null && currentCountFindTarget > 0)
+                    {
+                        currentCountFindTarget--;
+                    }
+                    findTargetMinDistance();
+                }
+            }
+        }
+        if(!target || !target.gameObject.activeSelf) {
+            Vector2 pDirectionPoint = defaultDirection;
+            //if (CachePosLastTarget != Vector2.zero)
+            //{
+            //    pDirectionPoint = CachePosLastTarget;
+            //}
+            Vector2 point2Target = -defaultDirection;
 
             point2Target.Normalize();
 
@@ -129,23 +171,9 @@ public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>, ISet
             {
                 value = Vector3.Cross(point2Target, transform.up).z;
             }
+            rb.angularVelocity = rotatingSpeed * (value);
+        }
 
-             rb.angularVelocity = rotatingSpeed * (value);
-            currentRotate += Mathf.Abs(rotatingSpeed * value)*Time.deltaTime;
-           
-        }
-        else
-        {
-            if(target != null)
-            {
-                if (currentCountFindTarget > 0)
-                {
-                    currentCountFindTarget--;
-                }
-            }
-            rb.angularVelocity = 0;
-            findTargetMinDistance();
-        }
         rb.velocity = -transform.up * speed;
         if (facingDefault == TranformExtension.FacingDirection.UP)
         {
@@ -154,6 +182,13 @@ public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>, ISet
         else if (facingDefault == TranformExtension.FacingDirection.DOWN) {
             rb.velocity = -transform.up * speed;
         }
+    }
+
+    public void KillProcess()
+    {
+        rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0;
+        enabled = false;
     }
 
     public void addIgnoreObject(Collider2D pCollider)
@@ -169,7 +204,10 @@ public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>, ISet
         {
             isSelfDamage = false;
             _listIgnoreCollider.Add(collision.gameObject);
-            findTargetMinDistance();
+            if (autoTarget)
+            {
+                findTargetMinDistance();
+            }
         }
         else
         {
@@ -184,7 +222,10 @@ public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>, ISet
             if (_cacheCollider != null)
             {
                 addIgnoreObject(_cacheCollider);
-                findTargetMinDistance();
+                if (autoTarget)
+                {
+                    findTargetMinDistance();
+                }
                 _cacheCollider = null;
             }
             else
@@ -224,7 +265,7 @@ public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>, ISet
 
     public bool isBlockRotation()
     {
-        return false;
+        return true;
     }
 
     public int getIndex()
