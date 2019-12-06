@@ -33,6 +33,11 @@ namespace EazyEngine.Space
                 }
                 seq.AppendInterval(speeds[i].delayStart);
                 seq.Append(pAction);
+                var pSpeed = speeds[i];
+                seq.AppendCallback(delegate
+                {
+                    pSpeed.onComplete.Invoke();
+                });
             }
             seq.Play();
         }

@@ -11,6 +11,10 @@ namespace EazyEngine.Space
         public float speed = 5;
         public bool Horizontal = true;
         public bool Vertical = true;
+        public bool IsEnable()
+        {
+            return enabled;
+        }
         public bool isBlockRotation()
         {
             return false;

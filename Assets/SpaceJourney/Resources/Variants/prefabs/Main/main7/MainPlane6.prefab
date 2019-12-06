@@ -368,6 +368,55 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4142724891017708693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5704251869848791252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73612c30edd7fc444ab340ecf02c24f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newGroup:
+    groupName: 
+    volume: 1
+    clips: []
+  controller:
+  - eventType: 0
+    eventID: 
+    action:
+    - conditionState: Matching
+      actionType: 0
+      volumeChange: 0
+      groupName:
+        isMusic: 0
+        groupName: TuSkill6
+      singleton: 0
+      owner: {fileID: 0}
+      smoothTime: 0
+--- !u!114 &7804385604190599057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5704251869848791252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f97f813e50e6847ba7f8bf1ca6966e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDestroy: 0
+  forceDestroyAfter: -1
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onDestroy:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3484929396188771101
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,55 +672,6 @@ MonoBehaviour:
   disableAction: 0
   _graph: {fileID: 0}
   _blackboard: {fileID: 49689294007063672}
---- !u!114 &4142724891017708693
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5704251869848791252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73612c30edd7fc444ab340ecf02c24f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  newGroup:
-    groupName: 
-    volume: 1
-    clips: []
-  controller:
-  - eventType: 0
-    eventID: 
-    action:
-    - conditionState: Matching
-      actionType: 0
-      volumeChange: 0
-      groupName:
-        isMusic: 0
-        groupName: TuSkill6
-      singleton: 0
-      owner: {fileID: 0}
-      smoothTime: 0
---- !u!114 &7804385604190599057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5704251869848791252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30f97f813e50e6847ba7f8bf1ca6966e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isDestroy: 0
-  forceDestroyAfter: -1
-  onStart:
-    m_PersistentCalls:
-      m_Calls: []
-  onDestroy:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &7391988782229902121
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,7 +893,7 @@ PrefabInstance:
     - target: {fileID: 1069622426666738281, guid: 31762111a6b42ab4aa6fb92d765851e9,
         type: 3}
       propertyPath: DatabaseWeapon.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1069622426666738281, guid: 31762111a6b42ab4aa6fb92d765851e9,
         type: 3}
@@ -948,12 +948,12 @@ PrefabInstance:
     - target: {fileID: 1069622426666738281, guid: 31762111a6b42ab4aa6fb92d765851e9,
         type: 3}
       propertyPath: DatabaseWeapon.Array.data[4].triggerToForceChange.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1069622426666738281, guid: 31762111a6b42ab4aa6fb92d765851e9,
         type: 3}
       propertyPath: DatabaseWeapon.Array.data[4].triggerToForceDisable.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1069622426666738281, guid: 31762111a6b42ab4aa6fb92d765851e9,
         type: 3}
@@ -1108,19 +1108,19 @@ PrefabInstance:
     - target: {fileID: 1069622426666738281, guid: 31762111a6b42ab4aa6fb92d765851e9,
         type: 3}
       propertyPath: DatabaseWeapon.Array.data[4].isUseOnInnital
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1069622426666738281, guid: 31762111a6b42ab4aa6fb92d765851e9,
         type: 3}
       propertyPath: DatabaseWeapon.Array.data[4].weapons.Array.data[0].IntialWeapon
       value: 
-      objectReference: {fileID: -1738794546107893160, guid: 4ba697520db0afe43840f9854610469f,
+      objectReference: {fileID: 1096034330227073849, guid: 20043844a6880804fb70461157882e44,
         type: 3}
     - target: {fileID: 1069622426666738281, guid: 31762111a6b42ab4aa6fb92d765851e9,
         type: 3}
       propertyPath: DatabaseWeapon.Array.data[4].weapons.Array.data[0].AttachmentWeapon
       value: 
-      objectReference: {fileID: 3484929396188771101}
+      objectReference: {fileID: 184315569934736769}
     - target: {fileID: 1069622426666738281, guid: 31762111a6b42ab4aa6fb92d765851e9,
         type: 3}
       propertyPath: DatabaseWeapon.Array.data[4].triggerToForceChange.Array.data[0]
@@ -1134,7 +1134,7 @@ PrefabInstance:
     - target: {fileID: 1069622426666738281, guid: 31762111a6b42ab4aa6fb92d765851e9,
         type: 3}
       propertyPath: DatabaseWeapon.Array.data[4].removeOnStop
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1069622426666738281, guid: 31762111a6b42ab4aa6fb92d765851e9,
         type: 3}
@@ -1962,6 +1962,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 889141958550769999}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2846101200234313723 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3110223798215321268, guid: 31762111a6b42ab4aa6fb92d765851e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 889141958550769999}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b5c3ebb24c97464da319951cafe5a47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &2185062428336651322 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1298227829374102901, guid: 31762111a6b42ab4aa6fb92d765851e9,
@@ -1998,6 +2010,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 889141958550769999}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &184315569934736769 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1069622427632848078, guid: 31762111a6b42ab4aa6fb92d765851e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 889141958550769999}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8677899349248850858 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8374666285149219557, guid: 31762111a6b42ab4aa6fb92d765851e9,
@@ -2008,24 +2026,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &184315569934736769 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1069622427632848078, guid: 31762111a6b42ab4aa6fb92d765851e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 889141958550769999}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2846101200234313723 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3110223798215321268, guid: 31762111a6b42ab4aa6fb92d765851e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 889141958550769999}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b5c3ebb24c97464da319951cafe5a47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2903584341724665049
@@ -2225,6 +2225,66 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 0.7924528
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357126173888182511, guid: 257099ed8e6b0a74d9560558d9649269,
+        type: 3}
+      propertyPath: LightningTintColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357126173888182511, guid: 257099ed8e6b0a74d9560558d9649269,
+        type: 3}
+      propertyPath: LightningTintColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357126173888182511, guid: 257099ed8e6b0a74d9560558d9649269,
+        type: 3}
+      propertyPath: LightningTintColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357126173888182511, guid: 257099ed8e6b0a74d9560558d9649269,
+        type: 3}
+      propertyPath: GlowTintColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357126173888182511, guid: 257099ed8e6b0a74d9560558d9649269,
+        type: 3}
+      propertyPath: GlowTintColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357126173888182511, guid: 257099ed8e6b0a74d9560558d9649269,
+        type: 3}
+      propertyPath: GlowTintColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470638974344626718, guid: 257099ed8e6b0a74d9560558d9649269,
+        type: 3}
+      propertyPath: LightningTintColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470638974344626718, guid: 257099ed8e6b0a74d9560558d9649269,
+        type: 3}
+      propertyPath: LightningTintColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470638974344626718, guid: 257099ed8e6b0a74d9560558d9649269,
+        type: 3}
+      propertyPath: LightningTintColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470638974344626718, guid: 257099ed8e6b0a74d9560558d9649269,
+        type: 3}
+      propertyPath: GlowTintColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470638974344626718, guid: 257099ed8e6b0a74d9560558d9649269,
+        type: 3}
+      propertyPath: GlowTintColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470638974344626718, guid: 257099ed8e6b0a74d9560558d9649269,
+        type: 3}
+      propertyPath: GlowTintColor.b
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 257099ed8e6b0a74d9560558d9649269, type: 3}

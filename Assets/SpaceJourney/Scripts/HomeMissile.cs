@@ -10,7 +10,7 @@ public interface ISetTarget
 {
     void setTarget(GameObject pObject);
 }
-public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>, ISetTarget
+public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>, ISetTarget, IMovementProjectile
 {
     public int countFindTarget = -1;
     public float speed = 5;
@@ -19,7 +19,9 @@ public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>, ISet
     public GameObject target;
     public TranformExtension.FacingDirection facingDefault = TranformExtension.FacingDirection.DOWN;
     public bool autoTarget;
+    public bool useSpeedMain = false;
     public float range;
+    public bool isBlockMove;
     public LayerMask TargetLayer;
     public UnityEvent onFindTarget;
     protected Rigidbody2D rb;
@@ -30,6 +32,10 @@ public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>, ISet
     private bool isSelfDamage;
     private DamageOnTouch _dameOnTouch;
     protected float currentRotate = 0;
+    public bool IsEnable()
+    {
+        return enabled;
+    }
     public void Revie()
     {
         if (_health == null) _health = GetComponent<Health>();
@@ -191,6 +197,39 @@ public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>, ISet
     public void setTarget(GameObject pObject)
     {
         target = pObject;
+    }
+
+    public void setDirection(Vector2 pDir)
+    {
+        
+    }
+
+    public void setSpeed(float pSpeed)
+    {
+        if (useSpeedMain)
+        {
+            speed = pSpeed;
+        }
+    }
+
+    public Vector2 Movement()
+    {
+        return Vector2.zero;
+    }
+
+    public bool isBlock()
+    {
+        return isBlockMove;
+    }
+
+    public bool isBlockRotation()
+    {
+        return false;
+    }
+
+    public int getIndex()
+    {
+        return 0;
     }
     //void OnTriggerEnter2D(Collider2D other)
     //{

@@ -200,7 +200,18 @@ namespace EazyEngine.Space
 
             set
             {
+                if (currentSpeed != value)
+                {
+                    if (movementModules != null && movementModules.Length > 0)
+                    {
+                        for (int i = 0; i < movementModules.Length; ++i)
+                        {
+                            movementModules[i].setSpeed(value);
+                        }
+                    }
+                }
                 currentSpeed = value;
+               
             }
         }
 
@@ -372,7 +383,7 @@ namespace EazyEngine.Space
                     }
                     transform.Translate(movement, UnityEngine.Space.World);
                     cachePos = cachePos + movement;
-                    if (movementModules[i].isBlock()) {
+                    if (movementModules[i].isBlock() && movementModules[i].IsEnable()) {
                         block = true;
                         break;
                     }

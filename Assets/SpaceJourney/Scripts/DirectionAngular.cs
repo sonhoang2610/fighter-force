@@ -13,6 +13,10 @@ namespace EazyEngine.Space
         protected Vector2 defaultDirection;
         protected float pSide = 0;
         protected Rigidbody2D rb;
+        public bool IsEnable()
+        {
+            return enabled;
+        }
         public bool isBlockRotation()
         {
             return true;

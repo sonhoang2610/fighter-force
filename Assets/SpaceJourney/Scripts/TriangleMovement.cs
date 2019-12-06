@@ -10,6 +10,10 @@ namespace EazyEngine.Space
         public Vector2 axis = Vector2.down;
         protected float currentPos;
         protected Vector2 cachePos, oldPos,dir;
+        public bool IsEnable()
+        {
+            return enabled;
+        }
         public bool isBlockRotation()
         {
             return false;

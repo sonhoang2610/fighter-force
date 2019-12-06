@@ -782,11 +782,7 @@ namespace EazyEngine.Space
                 {
                     if (startLevelBooster > 0)
                     {
-                        factorSpeed -= (startLevelBooster / 2 + startLevelBooster % 2) * 0.2f;
-                        if (startLevelBooster == 6)
-                        {
-                            factorSpeed -= 0.2f;
-                        }
+                        factorSpeed -= (startLevelBooster == 0 ? 0 : (_char._info.Info.speedBoosters[startLevelBooster - 1]));
                     }
                 }
 
@@ -839,7 +835,7 @@ namespace EazyEngine.Space
                         startLevelBooster = 5;
                     }
                     CacheLevelBooster = startLevelBooster;
-                    setFactorSpeedWeapon(factorSpeed + (pLevelBooster == 0 ? 0 : (_char._info.Info.speedBoosters[pLevelBooster - 1])));
+                    setFactorSpeedWeapon(factorSpeed + (startLevelBooster == 0 ? 0 : (_char._info.Info.speedBoosters[startLevelBooster - 1])));
                 }
 
 

@@ -13,6 +13,8 @@ namespace EazyEngine.Space
         bool isBlock();
         bool isBlockRotation();
         int getIndex();
+
+        bool IsEnable();
     }
     public class CircleHoleMovement : TimeControlBehavior, IMovementProjectile
     {
@@ -38,6 +40,11 @@ namespace EazyEngine.Space
         public bool isBlockRotation()
         {
             return false;
+        }
+
+        public bool IsEnable()
+        {
+            return enabled;
         }
 
         public Vector2 Movement()

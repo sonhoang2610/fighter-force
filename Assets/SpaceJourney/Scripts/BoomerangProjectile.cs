@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using DG.Tweening;
+using UnityEngine.Events;
 
 namespace EazyEngine.Space
 {
@@ -16,8 +17,8 @@ namespace EazyEngine.Space
         public float destiny;
         public float duration = 2;
         public AnimationCurve curve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1));
+        public UnityEvent onComplete;
 
-  
     }
     public class BoomerangProjectile : Projectile
     {
