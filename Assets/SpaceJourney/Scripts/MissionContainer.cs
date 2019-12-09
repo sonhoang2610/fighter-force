@@ -30,10 +30,16 @@ namespace EazyEngine.Space
     public struct MissionEvent
     {
         public string missionID;
-
+        public string moduleID;
         public MissionEvent(string pID)
         {
             missionID = pID;
+            moduleID = "";
+        }
+        public MissionEvent(string pID,string pModuleID)
+        {
+            missionID = pID;
+            moduleID = pModuleID;
         }
     }
 
