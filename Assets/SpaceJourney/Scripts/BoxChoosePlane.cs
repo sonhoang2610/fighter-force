@@ -77,7 +77,7 @@ namespace EazyEngine.Space.UI
              
                 
                         pObjectNew.SetLayerRecursively(attachMentModel.layer);
-                        pObjectNew.GetComponentInChildren<RenderQueueModifier>().setTarget(compareRender);
+                        pObjectNew.GetComponentInChildren<RenderQueueModifier>(true).setTarget(compareRender);
                         group.GroupLayer.Add(pObjectNew.transform);
                     }
               

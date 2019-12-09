@@ -17,6 +17,32 @@ namespace EazyEngine.Space.UI
         public UILabel labelQuantity;
         public UIButton btnOpen;
 
+        public override void OnEzEvent(GameDatabaseInventoryEvent eventType)
+        {
+            base.OnEzEvent(eventType);
+            if(eventType.item.item.ItemID == Data.itemSell.ItemID)
+            {
+                if (labelQuantity)
+                {
+                    var pQuantity = GameManager.Instance.Database.getComonItem(Data.itemSell.ItemID).Quantity;
+                    labelQuantity.transform.parent.gameObject.SetActive(pQuantity > 0);
+                    labelQuantity.text = pQuantity.ToString();
+                    if (pQuantity > 0)
+                    {
+                        buttonBuy.gameObject.SetActive(false);
+                        btnOpen.gameObject.SetActive(true);
+                    }
+                    else
+                    {
+                        buttonBuy.gameObject.SetActive(true);
+                        btnOpen.gameObject.SetActive(false);
+                    }
+
+                }
+                buttonBuy.transform.parent.gameObject.SendMessage("Reposition", SendMessageOptions.DontRequireReceiver);
+            }
+        }
+
         public override ShopItemInfo Data { get => base.Data;
             set {
                 base.Data = value;

@@ -37,8 +37,12 @@ namespace EazyEngine.Space.UI
                 }
 	            RenderQueueModifier render = model.GetComponentInChildren<RenderQueueModifier>();
 	            if(render && compareRender){
-	            	render.setTarget(compareRender);
-		            render.GetComponent<Renderer>().sortingOrder = 0;
+	            	render.setTarget(compareRender); var pRender = render.GetComponent<Renderer>();
+                    if (pRender)
+                    {
+                        pRender.sortingOrder = 0;
+                    }
+                    
 	            }
                 Invoke("Trigger", 0.1f);
             }

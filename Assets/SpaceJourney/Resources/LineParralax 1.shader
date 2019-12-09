@@ -117,6 +117,8 @@ Shader "LineParralax 1"
 				c.rgb *= c.a;
 				float2 factor = (float2(1.0, 1.0) - abs(IN.worldPos)) * _ClipArgs0;
 				c.a *= clamp(min(factor.x, factor.y), 0.0, 1.0);
+				c.rgb = clamp(c.rgb, float3(0, 0, 0), float3(1, 1, 1));
+				c.a = clamp(c.a, 0, 1);
 				return c;
 			}
 		ENDCG

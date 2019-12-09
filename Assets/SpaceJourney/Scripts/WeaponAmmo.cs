@@ -39,6 +39,8 @@ namespace EazyEngine.Space
         public int InitStorage { get => initStorage; set => initStorage = value; }
         public int CountBullet { set { InitStorage = value;QuantityRestoreEachTime = value; } }
 
+        public float CurrentRestoreTime { get => currentRestoreTime; set => currentRestoreTime = value; }
+
         bool idle = true;
         private void Awake()
         {
@@ -76,10 +78,10 @@ namespace EazyEngine.Space
                     onStartRestore.Invoke();
                     RestoreTimeReal = isRandomTimeRestore ? Random.Range(randomTimeRestore.x, randomTimeRestore.y) : timeToRestore;
                 }
-                currentRestoreTime += time.deltaTime * _weapon.FactorSpeed* _weapon.FactorSpeedWeapon;
-                if(currentRestoreTime >= TimeToRestore)
+                CurrentRestoreTime += time.deltaTime * _weapon.FactorSpeed* _weapon.FactorSpeedWeapon;
+                if(CurrentRestoreTime >= TimeToRestore)
                 {
-                    currentRestoreTime = 0;
+                    CurrentRestoreTime = 0;
                     TotalRestore += QuantityRestoreEachTime;
                     storageBullet+=  QuantityRestoreEachTime;
                     _weapon.onRestoreAmmo(QuantityRestoreEachTime);
@@ -97,7 +99,7 @@ namespace EazyEngine.Space
             storageBullet = InitStorage;
             TotalRestore = 0;
             idle = true;
-            currentRestoreTime = 0;
+            CurrentRestoreTime = 0;
         }
     }
 }

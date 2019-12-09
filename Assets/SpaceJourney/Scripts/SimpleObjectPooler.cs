@@ -71,7 +71,7 @@ namespace EazyEngine.Tools
         {
             if(RemainPoolSize > 0)
             {
-                AddOneObjectToThePool();
+                AddOneObjectToThePoolRemainTime();
                 RemainPoolSize--;
             }
             yield return new WaitForSeconds(0.2f);
@@ -163,6 +163,61 @@ namespace EazyEngine.Tools
             newGameObject.transform.position = new Vector3(9000, 9000, 9000 );
             newGameObject.name = GameObjectToPool.name + "-" + _pooledGameObjects.Count;
             if (timeRaw != null) {
+                var pTime = newGameObject.GetComponent<EazyEngine.Timer.TimeControllerElement>();
+                if (pTime == null)
+                {
+                    pTime = newGameObject.AddComponent<EazyEngine.Timer.TimeControllerElement>();
+                    pTime._groupName = time._groupName;
+                }
+            }
+            _pooledGameObjects.Add(newGameObject);
+            return newGameObject;
+        }
+        protected virtual GameObject AddOneObjectToThePoolRemainTime()
+        {
+            if (GameObjectToPool == null)
+            {
+                Debug.LogWarning("The " + gameObject.name + " ObjectPooler doesn't have any GameObjectToPool defined.", gameObject);
+                return null;
+            }
+            bool pCacheMatching = LevelManger.Instance.IsMatching;
+            if (pCacheMatching)
+            {
+                LevelManger.Instance.IsMatching = false;
+            }
+            GameObject newGameObject = (GameObject)Instantiate(GameObjectToPool);
+            if (pCacheMatching)
+            {
+                LevelManger.Instance.IsMatching = true;
+            }
+            _cachePreloadObject.Add(newGameObject);
+            if (onNewGameObjectCreated != null)
+            {
+                onNewGameObjectCreated(newGameObject, GameObjectToPool);
+            }
+            if (LevelManger.InstanceRaw != null)
+            {
+                if (LevelManger.Instance.IsMatching)
+                {
+                    newGameObject.gameObject.SetActive(false);
+                }
+                else
+                {
+                    // newGameObject.gameObject.SetActive(false);
+                    StartCoroutine(delayActionDeactive(newGameObject));
+
+                }
+            }
+            else
+            {
+                newGameObject.gameObject.SetActive(false);
+            }
+
+            newGameObject.transform.SetParent(poolLocal[GameObjectToPool].parrent.transform);
+            newGameObject.transform.position = new Vector3(9000, 9000, 9000);
+            newGameObject.name = GameObjectToPool.name + "-" + _pooledGameObjects.Count;
+            if (timeRaw != null)
+            {
                 var pTime = newGameObject.GetComponent<EazyEngine.Timer.TimeControllerElement>();
                 if (pTime == null)
                 {

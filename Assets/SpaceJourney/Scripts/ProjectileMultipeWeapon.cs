@@ -43,6 +43,7 @@ namespace EazyEngine.Space
         [SerializeField]
         protected bool autoRotateIfHaveTarget = false;
         protected Dictionary<GameObject, GameObject> prepareBullet = new Dictionary<GameObject, GameObject>();
+        public bool isLocal = false;
         public WeaponTrajectorPath trajectorPath;
         public UnityEventGameObject onFireAttachMent;
         public UnityEvent2GameObject onFire;
@@ -190,6 +191,15 @@ namespace EazyEngine.Space
             return totalCount;
         }
 
+        public override void setTimeLifeProj(float pTimeLife)
+        {
+            base.setTimeLifeProj(pTimeLife);
+            foreach(var pBullet in holdBullet)
+            {
+                pBullet.LifeTime = pTimeLife;
+            }
+        }
+
         [System.NonSerialized]
         [ShowInInspector]
         [HideInEditorMode]
@@ -228,6 +238,10 @@ namespace EazyEngine.Space
                          {
 
                              GameObject pObjectProjectile = pPool.GetPooledGameObject();
+                             if (isLocal)
+                             {
+                                 pObjectProjectile.transform.parent = transform;
+                             }
                              pObjectProjectile.SetActive(false);
                              pObjectProjectile.transform.position = transform.position;
                              var ignores = pObjectProjectile.GetComponents<IgnoreObject>();
@@ -261,6 +275,7 @@ namespace EazyEngine.Space
                                      proj.transform.localScale =
                                          pPool.GetLastOriginal().transform.localScale * Owner.transform.localScale.x;
                                  }
+                                 proj.LifeTime = !forceTimeLife ? proj.LifeTime : timelife;
                                  proj.setWeapon(this);
                                  proj.setOwner(Owner);
                                  proj.time._groupName = time._groupName;

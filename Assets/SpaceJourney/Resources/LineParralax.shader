@@ -112,6 +112,8 @@ Shader "LineParralax"
 				
 				fixed4 c = ( tex2D( _MainTex, panner7 ) + ( _Color0 * ( tex2D( _TextureSample1, rotator20 ).a * tex2DNode11.r * tex2DNode11.a ) ) );
 				c.rgb *= c.a;
+				c.rgb = clamp(c.rgb ,float3(0, 0, 0), float3(1, 1, 1));
+				c.a = clamp(c.a, 0,1);
 				return c;
 			}
 		ENDCG

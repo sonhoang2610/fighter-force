@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1848474572745869983}
   - component: {fileID: 1848474572744260127}
   - component: {fileID: 8575268568617900478}
+  - component: {fileID: 9083177755436218351}
   m_Layer: 21
   m_Name: MagicSoftExplosionBlue
   m_TagString: Untagged
@@ -4781,6 +4782,35 @@ MonoBehaviour:
   onDestroy:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &9083177755436218351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848474572764029957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73612c30edd7fc444ab340ecf02c24f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newGroup:
+    groupName: 
+    volume: 1
+    clips: []
+  controller:
+  - eventType: 0
+    eventID: 
+    action:
+    - conditionState: Matching
+      actionType: 0
+      volumeChange: 0
+      groupName:
+        isMusic: 0
+        groupName: ScifiExplo
+      singleton: 0
+      owner: {fileID: 0}
+      smoothTime: 0
 --- !u!1 &1848474572764060341
 GameObject:
   m_ObjectHideFlags: 0

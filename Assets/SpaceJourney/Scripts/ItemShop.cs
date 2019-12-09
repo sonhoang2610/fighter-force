@@ -284,7 +284,7 @@ namespace EazyEngine.Space.UI
             //}
         }
 
-        public void OnEzEvent(GameDatabaseInventoryEvent eventType)
+        public virtual void OnEzEvent(GameDatabaseInventoryEvent eventType)
         {
             if (eventType.behavior == BehaviorDatabase.CHANGE_QUANTITY_ITEM || eventType.behavior == BehaviorDatabase.NEWITEM)
             {

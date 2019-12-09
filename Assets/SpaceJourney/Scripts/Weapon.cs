@@ -243,6 +243,7 @@ namespace EazyEngine.Space
         [FoldoutGroup("Event Setting")]
         [SerializeField]
         public UnityEvent onActiveWeapon;
+        [FoldoutGroup("Event Setting")]
         [SerializeField]
         public UnityEventBool onStartEvent;
         [FoldoutGroup("Event Setting")]
@@ -277,6 +278,14 @@ namespace EazyEngine.Space
         public float factorDamage = 1;
         protected bool _isRandom, _ignoreReloadAnim = false;
         protected bool isShootingActive = false;
+        protected bool forceTimeLife = false;
+        protected float timelife = 0;
+
+        public virtual void setTimeLifeProj(float pTimeLife)
+        {
+            timelife = pTimeLife;
+            forceTimeLife = true;
+        }
         public void IgnoreGameObject(GameObject pObject)
         {
             _listIgnoreObject.Add(pObject);

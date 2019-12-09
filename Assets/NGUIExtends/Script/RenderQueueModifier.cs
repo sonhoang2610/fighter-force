@@ -60,7 +60,7 @@ public class RenderQueueModifier : MonoBehaviour
             return;
         if (_renderers == null)
         {
-            _renderers = GetComponentsInChildren<Renderer>();
+            _renderers = GetComponentsInChildren<Renderer>(true);
         }
         if (!isHaveMat)
         {
@@ -115,7 +115,7 @@ public class RenderQueueModifier : MonoBehaviour
     }
     void Start()
     {
-        _renderers = GetComponentsInChildren<Renderer>();
+        _renderers = GetComponentsInChildren<Renderer>(true);
         customMat = GetComponent<SkeletonAnimation>();
     }
 
@@ -201,6 +201,14 @@ public class RenderQueueModifier : MonoBehaviour
     //}
     void LateUpdate()
     {
+        //if (sharedMat)
+        //{
+        //    foreach (Renderer r in _renderers)
+        //    {
+        //        if (!isIncludeChild && r.gameObject != gameObject) continue;
+        //        r.sharedMaterial.renderQueue = _lastQueue;
+        //    }
+        //}
         //if (m_target.drawCall != cacheDrawCall)
         //{
         //    m_target.onRender -= resort;

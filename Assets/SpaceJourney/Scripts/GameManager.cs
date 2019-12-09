@@ -1002,7 +1002,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         }));
 
     }
-    IEnumerator delayAction(float pDelay, System.Action action)
+    public IEnumerator delayAction(float pDelay, System.Action action)
     {
         yield return new WaitForSeconds(pDelay);
         action();

@@ -16,7 +16,7 @@ namespace EazyEngine.Space
 #if UNITY_EDITOR
         public bool checkRandomLifeTime(float value)
         {
-            if (lifeTimeRandomTo != 0 && lifeTimeRandomTo < lifeTime)
+            if (lifeTimeRandomTo != 0 && lifeTimeRandomTo < LifeTime)
             {
                 return false;
             }
@@ -27,9 +27,19 @@ namespace EazyEngine.Space
         protected bool ignoreLiveTime = false;
         [System.NonSerialized]
         public  float delayLifeTime = 0;
+
+        public float LifeTime { get => lifeTime; set {
+                if (value != lifeTime)
+                {
+                    delayLifeTime = lifeTimeRandomTo != 0 ? Random.Range(value, lifeTimeRandomTo) : value;
+                }
+                lifeTime = value;
+            }
+        }
+
         protected virtual void OnEnable()
         {
-            delayLifeTime = lifeTimeRandomTo != 0 ? Random.Range(lifeTime, lifeTimeRandomTo) : lifeTime;
+            delayLifeTime = lifeTimeRandomTo != 0 ? Random.Range(LifeTime, lifeTimeRandomTo) : LifeTime;
         }
 
         protected virtual void OnDisable()

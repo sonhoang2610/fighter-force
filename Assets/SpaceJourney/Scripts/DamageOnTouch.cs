@@ -95,16 +95,16 @@ namespace EazyEngine.Space
         protected float factorDamage = 1;
 
 
-
+        [HideInEditorMode]
         protected List<GameObjectIgnoreTime> nextDamageSameObject = new List<GameObjectIgnoreTime>();
         public bool getObjectIgnore(GameObject pObjectCompare, out int pObjectIndex)
         {
-            for (int i = 0; i < nextDamageSameObject.Count; ++i)
+            for (int i = 0; i < NextDamageSameObject.Count; ++i)
             {
-                if (nextDamageSameObject[i].pObject == pObjectCompare)
+                if (NextDamageSameObject[i].pObject == pObjectCompare)
                 {
                     pObjectIndex = i;
-                    if (nextDamageSameObject[i].duration <= 0)
+                    if (NextDamageSameObject[i].duration <= 0)
                     {
                         return false;
                     }
@@ -115,6 +115,7 @@ namespace EazyEngine.Space
             pObjectIndex = -1;
             return false;
         }
+        [System.Serializable]
         public struct GameObjectIgnoreTime
         {
             public GameObject pObject;
@@ -209,15 +210,19 @@ namespace EazyEngine.Space
 
             }
         }
+
+        protected List<GameObjectIgnoreTime> NextDamageSameObject { get => NextDamageSameObject1; set => NextDamageSameObject1 = value; }
+        public List<GameObjectIgnoreTime> NextDamageSameObject1 { get => nextDamageSameObject; set => nextDamageSameObject = value; }
+
         private void Update()
         {
-            for (int i = nextDamageSameObject.Count - 1; i >= 0; --i)
+            for (int i = NextDamageSameObject.Count - 1; i >= 0; --i)
             {
-                GameObjectIgnoreTime pObject = nextDamageSameObject[i];
+                GameObjectIgnoreTime pObject = NextDamageSameObject[i];
                 if (pObject.duration > 0)
                 {
                     pObject.duration -= time.deltaTime;
-                    nextDamageSameObject[i] = pObject;
+                    NextDamageSameObject[i] = pObject;
                 }
             }
         }
@@ -289,15 +294,15 @@ namespace EazyEngine.Space
             {
                 if (pObjectOut < 0)
                 {
-                    nextDamageSameObject.Add(new GameObjectIgnoreTime() { pObject = collision.gameObject, duration = durationForNextDame, indexDamaged = 1 });
+                    NextDamageSameObject.Add(new GameObjectIgnoreTime() { pObject = collision.gameObject, duration = durationForNextDame, indexDamaged = 1 });
                 }
                 else
                 {
-                    var pObject = nextDamageSameObject[pObjectOut];
+                    var pObject = NextDamageSameObject[pObjectOut];
                     indexDamagedSamObject = pObject.indexDamaged;
                     pObject.indexDamaged++;
                     pObject.duration = durationForNextDame;
-                    nextDamageSameObject[pObjectOut] = pObject;
+                    NextDamageSameObject[pObjectOut] = pObject;
                 }
 
             }
@@ -351,7 +356,7 @@ namespace EazyEngine.Space
                 }
             }
         }
-        [HideInInspector]
+        [HideInEditorMode]
         public List<GameObject> _listIgnoreObject = new List<GameObject>();
         public void IgnoreGameObject(GameObject pObject)
         {
@@ -378,11 +383,11 @@ namespace EazyEngine.Space
         }
         private void OnEnable()
         {
-            nextDamageSameObject.Clear();
+            NextDamageSameObject.Clear();
         }
         public void onRespawn()
         {
-            nextDamageSameObject.Clear();
+            NextDamageSameObject.Clear();
             if (damageChilds != null)
             {
                 for (int i = 0; i < damageChilds.Length; ++i)

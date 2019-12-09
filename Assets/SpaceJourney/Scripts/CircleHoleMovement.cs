@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,6 +21,8 @@ namespace EazyEngine.Space
     {
 
         public float SpeedRad = 120;
+        public bool UseSpeedMain = false;
+        [HideIf("UseSpeedMain")]
         public float SpeedSpread = 5;
         public int piorityIndex = 0;
         public bool _isBlock = true;
@@ -67,7 +70,7 @@ namespace EazyEngine.Space
 
         public void setSpeed(float pSpeed)
         {
-           
+            if (UseSpeedMain) { SpeedSpread = pSpeed; }  
         }
 
         // Start is called before the first frame update

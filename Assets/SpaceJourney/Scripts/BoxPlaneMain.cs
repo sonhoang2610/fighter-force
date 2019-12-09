@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using EazyEngine.Tools;
+using NodeCanvas.Framework;
 
 namespace EazyEngine.Space.UI
 {
