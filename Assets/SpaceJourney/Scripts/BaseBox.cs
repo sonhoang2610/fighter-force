@@ -17,6 +17,14 @@ public class BaseBox<TItem, TData> : MonoBehaviour where TItem : BaseItem<TData>
     public List<EventDelegate> onDataAction = new List<EventDelegate>();
     private Comparison<TData> comparison;
 
+    public virtual void resortItem()
+    {
+        attachMent.SendMessage("Reposition", SendMessageOptions.DontRequireReceiver);
+        attachMent.SendMessage("SortAlphabetically", attachMent, SendMessageOptions.DontRequireReceiver);
+       // SendMessage("Reposition", attachMent, SendMessageOptions.DontRequireReceiver);
+     //   SendMessage("SortAlphabetically", attachMent, SendMessageOptions.DontRequireReceiver);
+    }
+
     public virtual ObservableList<TData> DataSource
     {
         set
@@ -31,9 +39,8 @@ public class BaseBox<TItem, TData> : MonoBehaviour where TItem : BaseItem<TData>
             _infos = value;
             if (attachMent)
             {
-                
-                SendMessage("Reposition", attachMent, SendMessageOptions.DontRequireReceiver);
-                SendMessage("SortAlphabetically", attachMent, SendMessageOptions.DontRequireReceiver);
+
+                resortItem();
             }
         }
         get
@@ -86,10 +93,19 @@ public class BaseBox<TItem, TData> : MonoBehaviour where TItem : BaseItem<TData>
             {
                 items[i].Using = true;
                 items[i].Data = pData;
+                if (items[i].Dirty)
+                {
+                    showNewItem(items[i]);
+;                }
                 return items[i];
             }
         }
         return null;
+    }
+
+    public virtual void showNewItem(TItem pItem)
+    {
+
     }
 
     public TItem obtainItemNewData(TData pData,int index)
@@ -101,6 +117,7 @@ public class BaseBox<TItem, TData> : MonoBehaviour where TItem : BaseItem<TData>
                 items[i].Index = index;
                 items[i].Dirty = true;
                 setDataItem(pData, items[i]);
+                showNewItem(items[i]);
                 return items[i];
             }
         }
@@ -108,6 +125,7 @@ public class BaseBox<TItem, TData> : MonoBehaviour where TItem : BaseItem<TData>
         pItem.Dirty = true;
         pItem.Index = index;
         setDataItem(pData, pItem);
+        showNewItem(pItem);
         pItem.onData = onDataAction;
         items.Add(pItem);
         return pItem;
@@ -167,8 +185,7 @@ public class BaseBox<TItem, TData> : MonoBehaviour where TItem : BaseItem<TData>
         }
         if (attachMent)
         {
-            attachMent.SendMessage("Reposition", SendMessageOptions.DontRequireReceiver);
-            attachMent.SendMessage("SortAlphabetically", attachMent, SendMessageOptions.DontRequireReceiver);
+            resortItem();
         }
         
     }

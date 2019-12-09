@@ -257,7 +257,11 @@ namespace EazyEngine.Space
         public MissionContainerInfo Info {
             get
             {
-                return GameManager.Instance.Database.missionContainerInfo;
+                if (Application.isPlaying)
+                {
+                    return GameManager.Instance.Database.missionContainerInfo;
+                }
+                return null;
             }
             set
             {

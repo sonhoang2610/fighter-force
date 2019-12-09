@@ -220,7 +220,7 @@ namespace EazyEngine.Space.UI
             quantityDestroy.text =  $"{( (float)LevelManger.Instance._infoLevel.enemyKill / (float)(LevelManger.Instance._infoLevel.enemyKill + LevelManger.Instance.BornEnemy.Count))*100}%";
         
             gameObject.SetActive(true);
-            StartCoroutine(delayaction(0.25f, delegate
+            StartCoroutine(delayaction(0.5f, delegate
             {
                 if (extraItem != null && extraItem.Length > 0)
                 {

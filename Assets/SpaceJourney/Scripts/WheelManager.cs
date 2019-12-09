@@ -6,10 +6,10 @@ using System;
 
 namespace EazyEngine.Space.UI
 {
-    public class WheelManager : Singleton<WheelManager>,EzEventListener<GameDatabasePropertyChanged<int>>,EzEventListener<EventTimer>
+    public class WheelManager : Singleton<WheelManager>, EzEventListener<GameDatabasePropertyChanged<int>>, EzEventListener<EventTimer>
     {
         public SpinWheel parallax;
-       // public ItemWheel[] items;
+        // public ItemWheel[] items;
         public BaseItemGame itemExchange;
         public BaseItemGame itemWatchExchange;
         public UIButton btnRoll;
@@ -33,7 +33,7 @@ namespace EazyEngine.Space.UI
 
         public float delayResult = 1;
 
-       // protected BaseItemGameInstancedArray data;
+        // protected BaseItemGameInstancedArray data;
         // Start is called before the first frame update
         void Start()
         {
@@ -48,7 +48,7 @@ namespace EazyEngine.Space.UI
             for (int i = 0; i < GameDatabase.Instance.ItemWheelConfig.Length; ++i)
             {
                 GameDatabase.Instance.ItemWheelConfig[i].CurrentLevel = GameManager.Instance.Database.CurrentLevelWheel;
-                pInfos.Add( new BaseItemGameInstancedArray() { infos = new ItemWheelInfoConfig[] { GameDatabase.Instance.ItemWheelConfig[i] } });
+                pInfos.Add(new BaseItemGameInstancedArray() { infos = new ItemWheelInfoConfig[] { GameDatabase.Instance.ItemWheelConfig[i] } });
             }
             cacheInfos = pInfos;
             parallax.DataSource = pInfos.ToObservableList();
@@ -59,13 +59,13 @@ namespace EazyEngine.Space.UI
 
             updateTimeLeft();
             updateWheelChance();
-            EzEventManager.AddListener< GameDatabasePropertyChanged<int>>(this);
+            EzEventManager.AddListener<GameDatabasePropertyChanged<int>>(this);
             EzEventManager.AddListener<EventTimer>(this);
         }
 
         private void OnDisable()
         {
-            EzEventManager.RemoveListener< GameDatabasePropertyChanged<int>>(this);
+            EzEventManager.RemoveListener<GameDatabasePropertyChanged<int>>(this);
             EzEventManager.RemoveListener<EventTimer>(this);
         }
 
@@ -75,7 +75,7 @@ namespace EazyEngine.Space.UI
             //if(timeCountDown.TotalMilliseconds > 0)
             //{
             //    timeCountDown -= TimeSpan.FromSeconds(Time.deltaTime);
-    
+
             //    cacheTextFreeCountDown.text = timeCountDown.ToString(@"hh\:mm\:ss");
             //}
         }
@@ -85,16 +85,39 @@ namespace EazyEngine.Space.UI
             var pItemCoin = GameManager.Instance.Database.getComonItem("Coin");
             var pItemExchange = GameManager.Instance.Database.getComonItem(itemExchange);
             bool isAble = false;
-            if(pItemExchange.Quantity > 0)
+            if (pItemExchange.Quantity > 0)
             {
                 pItemExchange.Quantity--;
                 isAble = true;
             }
-            else if (GameManager.Instance.Database.CurrentWheelToday < 10 && pItemCoin.Quantity >= GameDatabase.Instance.ConfigWheelGold[GameManager.Instance.Database.CurrentWheelToday])
+            else if (GameManager.Instance.Database.CurrentWheelToday < 10)
             {
-                pItemCoin.Quantity-= GameDatabase.Instance.ConfigWheelGold[GameManager.Instance.Database.CurrentWheelToday];
-                GameManager.Instance.Database.CurrentWheelToday++;
-                isAble = true;
+                if (pItemCoin.Quantity >= GameDatabase.Instance.ConfigWheelGold[GameManager.Instance.Database.CurrentWheelToday])
+                {
+                    pItemCoin.Quantity -= GameDatabase.Instance.ConfigWheelGold[GameManager.Instance.Database.CurrentWheelToday];
+                    GameManager.Instance.Database.CurrentWheelToday++;
+                    isAble = true;
+                }
+                else
+                {
+                    HUDLayer.Instance.showDialogNotEnoughMoney(pItemCoin.item.displayNameItem.Value, delegate
+                    {
+                        ShopManager.Instance.showBoxShop(pItemCoin.item.categoryItem.ToString());
+
+                        HUDLayer.Instance.BoxDialog.close();
+                    });
+                }
+
+
+            }
+            else
+            {
+                HUDLayer.Instance.showDialogNotEnoughMoney(pItemExchange.item.displayNameItem.Value, delegate
+                {
+                    ShopManager.Instance.showBoxShop(pItemExchange.item.categoryItem.ToString());
+
+                    HUDLayer.Instance.BoxDialog.close();
+                });
             }
             if (isAble)
             {
@@ -106,15 +129,15 @@ namespace EazyEngine.Space.UI
             {
 
             }
-            limit.text = GameManager.Instance.Database.CurrentWheelToday.ToString() + "/"+ "10";
+            limit.text = GameManager.Instance.Database.CurrentWheelToday.ToString() + "/" + "10";
             exp.text = GameManager.Instance.Database.CurrentExpWheel.ToString() + "/" + GameDatabase.Instance.WheelLevelExp[GameManager.Instance.Database.CurrentLevelWheel + 1].ToString();
             expprocess.fillAmount = (float)GameManager.Instance.Database.CurrentExpWheel / (float)GameDatabase.Instance.WheelLevelExp[GameManager.Instance.Database.CurrentLevelWheel + 1];
-            level.text = (GameManager.Instance.Database.CurrentLevelWheel+1).ToString();
+            level.text = (GameManager.Instance.Database.CurrentLevelWheel + 1).ToString();
         }
 
         public void onStopRoll()
         {
-           StartCoroutine( delayAction(0.3f, delegate
+            StartCoroutine(delayAction(0.3f, delegate
             {
                 isRolling = false;
                 updateWheelChance();
@@ -128,10 +151,10 @@ namespace EazyEngine.Space.UI
                 }
                 EzEventManager.TriggerEvent(new RewardEvent() { item = new BaseItemGameInstanced() { item = cacheInfos[cacheResult].infos[0].item, quantity = cacheInfos[cacheResult].infos[0].Quantity } });
             }));
-     
+
         }
 
-        public IEnumerator delayAction(float pSec , System.Action onAction)
+        public IEnumerator delayAction(float pSec, System.Action onAction)
         {
             yield return new WaitForSeconds(pSec);
             onAction?.Invoke();
@@ -153,7 +176,7 @@ namespace EazyEngine.Space.UI
         }
         public void watch()
         {
-            if(itemWatchExchange.categoryItem == CategoryItem.WATCH)
+            if (itemWatchExchange.categoryItem == CategoryItem.WATCH)
             {
                 GameManager.Instance.showRewardAds(itemWatchExchange.ItemID, delegate (bool pBool)
                 {
@@ -167,13 +190,13 @@ namespace EazyEngine.Space.UI
 
         public void startRollFree()
         {
-           var pTime  = GameManager.Instance.addTimer(new TimeCountDown()
+            var pTime = GameManager.Instance.addTimer(new TimeCountDown()
             {
                 key = "WheelFree",
                 lastimeWheelFree = System.DateTime.Now,
                 length = GameDatabase.Instance.timeWheelFree,
             });
-     
+
             GameManager.Instance.SaveGame();
             startRoll();
             updateTimeLeft();
@@ -184,20 +207,20 @@ namespace EazyEngine.Space.UI
             var pTimer = GameManager.Instance.Database.timers.Find(x => x.key == "WheelFree");
             //if(pTimer != null)
             //{
-                var pTime = (pTimer!= null? pTimer.lastimeWheelFree.AddSeconds(pTimer.length) : System.DateTime.Now) - System.DateTime.Now;
-                btnFree.isEnabled = !(pTime.Seconds > 0);
-                btnFree.transform.Find("Label").gameObject.SetActive(!(pTime.Seconds > 0));
-                btnFree.transform.Find("time").gameObject.SetActive((pTime.Seconds > 0));
-                if (pTime.TotalSeconds > 0)
-                {
-                    btnFree.transform.Find("time").GetComponent<UILabel>().text = pTime.ToString(@"hh\:mm\:ss");
-                }
-                if (pTimer != null && !pTimer.LabelTimer.Contains(cacheTextFreeCountDown))
-                {
-                    pTimer.LabelTimer.Add(cacheTextFreeCountDown);
-                }
+            var pTime = (pTimer != null ? pTimer.lastimeWheelFree.AddSeconds(pTimer.length) : System.DateTime.Now) - System.DateTime.Now;
+            btnFree.isEnabled = !(pTime.Seconds > 0);
+            btnFree.transform.Find("Label").gameObject.SetActive(!(pTime.Seconds > 0));
+            btnFree.transform.Find("time").gameObject.SetActive((pTime.Seconds > 0));
+            if (pTime.TotalSeconds > 0)
+            {
+                btnFree.transform.Find("time").GetComponent<UILabel>().text = pTime.ToString(@"hh\:mm\:ss");
+            }
+            if (pTimer != null && !pTimer.LabelTimer.Contains(cacheTextFreeCountDown))
+            {
+                pTimer.LabelTimer.Add(cacheTextFreeCountDown);
+            }
             //}
-          
+
         }
 
 
@@ -209,21 +232,26 @@ namespace EazyEngine.Space.UI
             limit.text = GameManager.Instance.Database.CurrentWheelToday.ToString() + "/" + "10";
             exp.text = GameManager.Instance.Database.CurrentExpWheel.ToString() + "/" + GameDatabase.Instance.WheelLevelExp[GameManager.Instance.Database.CurrentLevelWheel + 1].ToString();
             expprocess.fillAmount = (float)GameManager.Instance.Database.CurrentExpWheel / (float)GameDatabase.Instance.WheelLevelExp[GameManager.Instance.Database.CurrentLevelWheel + 1];
-            level.text = (GameManager.Instance.Database.CurrentLevelWheel+1).ToString();
-           // btnRoll.isEnabled = pItemExchange.Quantity > 0 ||(GameManager.Instance.Database.CurrentWheelToday < 10  && pItemCoin.Quantity >=  GameDatabase.Instance.ConfigWheelGold[GameManager.Instance.Database.CurrentWheelToday]);
+            level.text = (GameManager.Instance.Database.CurrentLevelWheel + 1).ToString();
+            // btnRoll.isEnabled = pItemExchange.Quantity > 0 ||(GameManager.Instance.Database.CurrentWheelToday < 10  && pItemCoin.Quantity >=  GameDatabase.Instance.ConfigWheelGold[GameManager.Instance.Database.CurrentWheelToday]);
             layerTicket.gameObject.SetActive(false);
             layerGold.gameObject.SetActive(false);
+            btnRoll.isEnabled = true;
             if (pItemExchange.Quantity > 0)
             {
-                btnRoll.isEnabled = true;
+              
                 layerTicket.gameObject.SetActive(true);
                 countTicket.text = pItemExchange.Quantity.ToString();
             }
-            else if (GameManager.Instance.Database.CurrentWheelToday < 10 && pItemCoin.Quantity >= GameDatabase.Instance.ConfigWheelGold[GameManager.Instance.Database.CurrentWheelToday])
+            else if (GameManager.Instance.Database.CurrentWheelToday < 10)
             {
-                btnRoll.isEnabled = true;
                 layerGold.gameObject.SetActive(true);
                 countGoldRequire.text = GameDatabase.Instance.ConfigWheelGold[GameManager.Instance.Database.CurrentWheelToday].ToString();
+            }
+            else
+            {
+                layerTicket.gameObject.SetActive(true);
+                countTicket.text = pItemExchange.Quantity.ToString();
             }
         }
 
@@ -248,7 +276,7 @@ namespace EazyEngine.Space.UI
         public void buyTicket()
         {
             var pMoney = GameManager.Instance.Database.getComonItem(itemExchangeTicket.ItemID);
-            if(pMoney.Quantity >= priceTicket)
+            if (pMoney.Quantity >= priceTicket)
             {
                 pMoney.Quantity -= priceTicket;
                 callBackBuyTicket(true);
@@ -261,14 +289,14 @@ namespace EazyEngine.Space.UI
                     HUDLayer.Instance.BoxDialog.close();
                 });
             }
-           
+
         }
 
         public void random()
         {
             float pCurrentPercent = 1;
             float pRandom = UnityEngine.Random.Range(0, 1.0f);
-            for(int i = cacheInfos.Count-1; i >= 0; --i)
+            for (int i = cacheInfos.Count - 1; i >= 0; --i)
             {
                 pCurrentPercent -= cacheInfos[i].infos[0].percent / 100.0f;
                 if (pRandom > pCurrentPercent)
@@ -282,13 +310,13 @@ namespace EazyEngine.Space.UI
 
         public void OnEzEvent(GameDatabasePropertyChanged<int> eventType)
         {
-            if(eventType.nameProperty == "CurrentLevelWheel")
+            if (eventType.nameProperty == "CurrentLevelWheel")
             {
                 List<BaseItemGameInstancedArray> pInfos = new List<BaseItemGameInstancedArray>();
                 for (int i = 0; i < GameDatabase.Instance.ItemWheelConfig.Length; ++i)
                 {
                     GameDatabase.Instance.ItemWheelConfig[i].CurrentLevel = GameManager.Instance.Database.CurrentLevelWheel;
-                    pInfos.Add( new BaseItemGameInstancedArray() { infos = new ItemWheelInfoConfig[] { GameDatabase.Instance.ItemWheelConfig[i] } });
+                    pInfos.Add(new BaseItemGameInstancedArray() { infos = new ItemWheelInfoConfig[] { GameDatabase.Instance.ItemWheelConfig[i] } });
                 }
                 parallax.DataSource = pInfos.ToObservableList();
                 cacheInfos = pInfos;
@@ -297,9 +325,9 @@ namespace EazyEngine.Space.UI
 
         public void OnEzEvent(EventTimer eventType)
         {
-           if(eventType.key == "WheelFree")
+            if (eventType.key == "WheelFree")
             {
-                if(eventType.state == TimerState.Complete)
+                if (eventType.state == TimerState.Complete)
                 {
                     updateTimeLeft();
                 }

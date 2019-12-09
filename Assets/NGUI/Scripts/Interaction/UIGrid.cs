@@ -90,6 +90,9 @@ public class UIGrid : UIWidgetContainer
 
 	public bool keepWithinPanel = false;
 
+
+    public bool isSortBlock = false;
+
 	/// <summary>
 	/// Callback triggered when the grid repositions its contents.
 	/// </summary>
@@ -118,7 +121,18 @@ public class UIGrid : UIWidgetContainer
 	/// <summary>
 	/// Get the current list of the grid's children.
 	/// </summary>
-
+    int sortBlock(Transform a,Transform b)
+    {
+        if(a.name.Contains("[block]") && !b.name.Contains("[block]"))
+        {
+            return -1;
+        }
+        if (b.name.Contains("[block]") && !a.name.Contains("[block]"))
+        {
+            return 1;
+        }
+        return 0;
+    }
 	public List<Transform> GetChildList ()
 	{
 		Transform myTrans = transform;
@@ -143,7 +157,12 @@ public class UIGrid : UIWidgetContainer
 			else if (onCustomSort != null) list.Sort(onCustomSort);
 			else Sort(list);
 		}
-		return list;
+        if (isSortBlock) {
+            list.Sort(sortBlock);
+        }
+       
+
+        return list;
 	}
 
 	/// <summary>
@@ -367,6 +386,7 @@ public class UIGrid : UIWidgetContainer
 		for (int i = 0, imax = list.Count; i < imax; ++i)
 		{
 			Transform t = list[i];
+      
 			// See above
 			//t.parent = myTrans;
 
@@ -393,13 +413,17 @@ public class UIGrid : UIWidgetContainer
                  new Vector3(cellWidth * pX, -cellHeight * y, depth) :
                  new Vector3(cellWidth * y, -cellHeight * x, depth);
             }
-			if (animateSmoothly && Application.isPlaying && (pivot != UIWidget.Pivot.TopLeft || Vector3.SqrMagnitude(t.localPosition - pos) >= 0.0001f))
-			{
-				var sp = SpringPosition.Begin(t.gameObject, pos, 15f);
-				sp.updateScrollView = true;
-				sp.ignoreTimeScale = true;
-			}
-			else t.localPosition = pos;
+            if (!t.name.Contains("[block]"))
+            {
+                if (animateSmoothly && Application.isPlaying && (pivot != UIWidget.Pivot.TopLeft || Vector3.SqrMagnitude(t.localPosition - pos) >= 0.0001f))
+                {
+                    var sp = SpringPosition.Begin(t.gameObject, pos, 15f);
+                    sp.updateScrollView = true;
+                    sp.ignoreTimeScale = true;
+                }
+                else t.localPosition = pos;
+            }
+ 
 
 			maxX = Mathf.Max(maxX, x);
 			maxY = Mathf.Max(maxY, y);

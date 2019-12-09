@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BaseItem<T> : MonoBehaviour where T  : class
 {
    // [HideInInspector]
     public List<EventDelegate> onData; 
     public T _data;
+    public UnityEvent onUsing;
     [HideInInspector]
     private int index;
     public virtual T Data
@@ -20,9 +22,21 @@ public class BaseItem<T> : MonoBehaviour where T  : class
             return _data;
         }
     }
+    protected bool _using;
     public bool Using
     {
-        get;set;
+        get
+        {
+            return _using;
+        }
+        set
+        {
+            _using = value;
+            if (value && Dirty)
+            {
+                onUsing.Invoke();
+            }
+        }
     }
     public bool Dirty
     {
