@@ -132,6 +132,7 @@ namespace EazyEngine.Space.UI
                         pInfos.Add(pInfo);
                     }
                 }
+                pInfos.Sort(sortPlane);
                 DataSource = pInfos.ToObservableList();
             }
             else
