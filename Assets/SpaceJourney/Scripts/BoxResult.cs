@@ -274,8 +274,14 @@ namespace EazyEngine.Space.UI
                     //unlock high mode
                     if (GameManager.Instance.ChoosedHard < 2)
                     {
-                        GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel,
-                              GameManager.Instance.ChoosedHard).isPassed = true;
+                        var pLevelInfoNow = GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel,
+                              GameManager.Instance.ChoosedHard);
+                        if (!pLevelInfoNow.isPassed)
+                        {
+                            GameManager.Instance.Database.collectionInfo.PassedLevelMode(GameManager.Instance.ChoosedHard);
+                            GameManager.Instance.Database.collectionDailyInfo.PassedLevelMode(GameManager.Instance.ChoosedHard);
+                        }
+                        pLevelInfoNow.isPassed = true;
                         var pOldPass = GameManager.Instance.ChoosedHard == 0 ? GameManager.Instance.Database.collectionInfo.passNormal : (GameManager.Instance.ChoosedHard == 1 ? GameManager.Instance.Database.collectionInfo.passHard : GameManager.Instance.Database.collectionInfo.passSuperHard);
                         GameManager.Instance.Database.collectionInfo.singletonRecalculate();
                         var pNewPass = GameManager.Instance.ChoosedHard == 0 ? GameManager.Instance.Database.collectionInfo.passNormal : (GameManager.Instance.ChoosedHard == 1 ? GameManager.Instance.Database.collectionInfo.passHard : GameManager.Instance.Database.collectionInfo.passSuperHard);
