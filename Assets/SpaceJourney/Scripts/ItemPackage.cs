@@ -64,7 +64,7 @@ namespace EazyEngine.Space
                 {
                     pIndex = 1;
                 }
-                else if (ItemID == "BoxCommon")
+                else if (ItemID == "BoxComon")
                 {
                     pIndex = 0;
                 }
