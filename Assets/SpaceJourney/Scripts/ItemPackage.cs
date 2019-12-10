@@ -75,6 +75,7 @@ namespace EazyEngine.Space
                 if (pIndex != -1)
                 {
                     GameManager.Instance.Database.collectionInfo.addQuantityBoxOpen(1, pIndex);
+                    GameManager.Instance.Database.collectionDailyInfo.addQuantityBoxOpen(1, pIndex);
                     EzEventManager.TriggerEvent(new MessageGamePlayEvent("MissionDirty"));
                 }
             }

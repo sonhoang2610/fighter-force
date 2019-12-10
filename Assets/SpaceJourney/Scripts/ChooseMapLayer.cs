@@ -12,7 +12,9 @@ namespace EazyEngine.Space.UI
     {
         public GameObject lineDefault;
         public EazyGroupTabNGUI group;
+        public UILabel[] blockMap;
         public GameObject select;
+        protected bool isInit = false;
 
         public void chooseMap(int index)
         {
@@ -24,10 +26,36 @@ namespace EazyEngine.Space.UI
             select.transform.parent = Item[DataSource[index]].transform;
             select.transform.localPosition = Vector3.zero;
         }
-        public override void Awake()
+        private void OnEnable()
         {
-            base.Awake();
+            if (isInit)
+            {
+                List<Vector2> blockStars = new List<Vector2>();
+                for (int i = 0; i < GameDatabase.Instance.LevelConfigScene.Length; ++i)
+                {
+                    if (GameDatabase.Instance.LevelConfigScene[i].requrireStarToUnlock > 0)
+                    {
+                        blockStars.Add(new Vector2(GameDatabase.Instance.LevelConfigScene[i].level, GameDatabase.Instance.LevelConfigScene[i].requrireStarToUnlock));
+                        var pLevel = GameManager.Instance.container.getLevelInfo(GameDatabase.Instance.LevelConfigScene[i].level, 0);
+                        if (pLevel.isLocked && GameManager.Instance.Database.getComonItem("Star").Quantity >= GameDatabase.Instance.LevelConfigScene[i].requrireStarToUnlock)
+                        {
+                            pLevel.isLocked = false;
+                        }
+                    }
+                }
+                for (int i = 0; i < blockStars.Count; ++i)
+                {
+                    if (i < blockMap.Length)
+                    {
+                        blockMap[i].text = $"{(int)GameManager.Instance.Database.getComonItem("Star").Quantity}/{(int)blockStars[i].y}";
+                    }
+                }
+                reloadMap();
+            }
+        }
 
+        public void reloadMap()
+        {
             var PosDatabase = LoadAssets.loadAsset<PositionDatabase>("PositionChooseMap", "Variants/Database/");
             for (int i = 0; i < attachMent.transform.childCount; ++i)
             {
@@ -51,7 +79,7 @@ namespace EazyEngine.Space.UI
                     pStar.Add(pCount);
                 }
 
-                pDatas.Add(new ChooseMapInfo() { pos = PosDatabase.pos[i].pos, star = pStar.ToArray(),isBoss = PosDatabase.pos[i].isBoss });
+                pDatas.Add(new ChooseMapInfo() { pos = PosDatabase.pos[i].pos, star = pStar.ToArray(), isBoss = PosDatabase.pos[i].isBoss });
             }
             DataSource = pDatas.ToObservableList();
             group.GroupTab.Clear();
@@ -69,7 +97,7 @@ namespace EazyEngine.Space.UI
                     pLineRender.width = (int)pDistance;
                     // pLineRender.transform.transform.localScale = pScale;
                     pLineRender.transform.RotationDirect2D(items[i + 1].transform.localPosition - items[i].transform.localPosition);
-                    if(GameManager.Instance.CurrentLevelUnlock -1 <= i)
+                    if (GameManager.Instance.CurrentLevelUnlock - 1 <= i)
                     {
                         pLineRender.GetComponent<EazyFrameCache>().setFrameIndexUnPixelPerfect(1);
                     }
@@ -78,14 +106,14 @@ namespace EazyEngine.Space.UI
                 group.reloadTabs();
                 if (GameManager.Instance.Database.lastPlayStage.x == 0)
                 {
-                    GameManager.Instance.Database.lastPlayStage = new Pos(1,GameManager.Instance.ChoosedHard);
+                    GameManager.Instance.Database.lastPlayStage = new Pos(1, GameManager.Instance.ChoosedHard);
                 }
                 int pLow = GameManager.Instance.Database.lastPlayStage.x;
                 var pLevelInfo = GameManager.Instance.container.getLevelInfo(GameManager.Instance.Database.lastPlayStage.x, 0);
                 while (pLevelInfo.isLocked)
                 {
                     pLow--;
-                    if(pLow <= 0)
+                    if (pLow <= 0)
                     {
                         pLow = 1;
                         break;
@@ -96,6 +124,13 @@ namespace EazyEngine.Space.UI
                 group.changeTab(GameManager.Instance.Database.lastPlayStage.x - 1);
 
             }
+        }
+        public override void Awake()
+        {
+            base.Awake();
+
+            reloadMap();
+            isInit = true;
             //GetComponentInChildren<UIScrollView>().ResetPosition();
 
         }

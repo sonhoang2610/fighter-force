@@ -20,7 +20,7 @@ namespace EazyEngine.Space.UI
         public System.Action<EazyNode> onFinishEvent;
         protected FlowScript currentInstance;
         public GraphOwner owner;
-        public void runGraph(System.Action<EazyNode> pFinish,string pVarFlow = "")
+        public void runGraph(System.Action<EazyNode> pFinish, string pVarFlow = "")
         {
             onFinishEvent = pFinish;
             currentInstance = Graph.Clone<FlowScript>(flow, owner.graph);
@@ -31,18 +31,18 @@ namespace EazyEngine.Space.UI
             }
             currentInstance.StartGraph(owner, pBlackBoard, true, onFinish);
         }
-        public void  onFinish(bool pBool)
+        public void onFinish(bool pBool)
         {
             isSuccess = pBool;
-            onFinishEvent(this);     
+            onFinishEvent(this);
         }
-      
+
     }
     public class BoxResult : MonoBehaviour
     {
-        public UILabel stage, level,coinTaken,quantityDestroy,time,score,goldReward;
+        public UILabel stage, level, coinTaken, quantityDestroy, time, score, goldReward;
         public GameObject win, lose;
-        public UIButton[] btnWins, btnLoses,btnLayerFrees;
+        public UIButton[] btnWins, btnLoses, btnLayerFrees;
         public BoxMissionLevel boxMission;
         public BoxExtract boxShowReward;
         public GameObject btnX2Ads;
@@ -63,42 +63,40 @@ namespace EazyEngine.Space.UI
         protected List<BaseItemGameInstanced> listExtr = new List<BaseItemGameInstanced>();
         private Coroutine adsCourountine;
         private int scoreCount;
+        protected bool isNext = false;
         public void nextPlay()
         {
             if (!GameManager.Instance.isFree)
             {
-                //GameManager.Instance.scehduleUI = ScheduleUIMain.GAME_IMEDIATELY;
                 LevelInfoInstance pLevelInfo = GameManager.Instance.container.getLevelInfo(GameManager.Instance.Database.lastPlayStage.x + 1, GameManager.Instance.ChoosedHard);
+                var levelConfig = System.Array.Find(GameDatabase.Instance.LevelConfigScene, x => x.level == GameManager.Instance.Database.lastPlayStage.x + 1);
+                if (levelConfig.requrireStarToUnlock > 0 && GameManager.Instance.Database.getComonItem("Star").Quantity < levelConfig.requrireStarToUnlock)
+                {
+                    HUDLayer.Instance.showDialog(I2.Loc.LocalizationManager.GetTranslation("ui/notice"), I2.Loc.LocalizationManager.GetTranslation("ui/not_enough_star"),null,null, false);
+                    return;
+                }
                 if (pLevelInfo.isLocked)
                 {
                     GameManager.Instance.ChoosedHard = 0;
                 }
-                GameManager.Instance.Database.lastPlayStage = new Pos(GameManager.Instance.Database.lastPlayStage.x + 1, GameManager.Instance.ChoosedHard);
+                if (!isNext)
+                {
+                    GameManager.Instance.Database.lastPlayStage = new Pos(GameManager.Instance.Database.lastPlayStage.x + 1, GameManager.Instance.ChoosedHard);
+                    GameManager.Instance.ChoosedLevel++;
+                    isNext = true;
+                }
             }
-            //  Home();
-                GameManager.Instance.Database.lastPlayStage = new Pos(GameManager.Instance.Database.lastPlayStage.x + 1, 0);
-                GameManager.Instance.ChoosedLevel++;
+            //  Home();     
             GameManager.Instance.scehduleUI = ScheduleUIMain.NONE;
             MidLayer.Instance.boxPrepare.show();
-            //for (int i = GameManager.Instance.ConfigLevel.itemUsed.Count-1; i >=0; --i)
-            //{
-            //    var pItem = GameManager.Instance.ConfigLevel.itemUsed[i];
-            //   if (!pItem.isActive)
-            //    {
-            //        GameManager.Instance.ConfigLevel.itemUsed.RemoveAt(i);
-            //    }
-            //}
-            //GameManager.Instance.ChoosedHard = 0;
-            //GameManager.Instance.ChoosedLevel++;
-            //GameManager.Instance.LoadLevel(GameManager.Instance.ChoosedLevel);
         }
 
         public IEnumerator delayaction(float pSec, System.Action pACtion)
         {
-            yield return  new WaitForSeconds(pSec);
+            yield return new WaitForSeconds(pSec);
             pACtion();
         }
-        protected Vector3 cachePosBoxReward,cacheScaleBoxReward;
+        protected Vector3 cachePosBoxReward, cacheScaleBoxReward;
         protected bool isInit = false;
         protected bool isUnlock = false;
         private void Awake()
@@ -109,12 +107,13 @@ namespace EazyEngine.Space.UI
         }
         public void showResult(bool pWin)
         {
-            GameManager.Instance.lastResultWin = pWin ? 1 :0;
+            GameManager.Instance.lastResultWin = pWin ? 1 : 0;
             if (GameManager.Instance.isFree)
             {
                 btnX2Ads.gameObject.SetActive(false);
             }
-            if (!pWin && timeShowLose == 0) {
+            if (!pWin && timeShowLose == 0)
+            {
                 if (GameManager.Instance.isFree)
                 {
                     timeShowLose++;
@@ -152,7 +151,7 @@ namespace EazyEngine.Space.UI
                 }
                 else
                 {
-                    PlayerPrefs.SetInt("ShowBoxRewardRandom", pShow-1);
+                    PlayerPrefs.SetInt("ShowBoxRewardRandom", pShow - 1);
                 }
             }
             else
@@ -163,15 +162,16 @@ namespace EazyEngine.Space.UI
             LevelManger.Instance.IsPlaying = false;
             GameManager.Instance.inGame = false;
             TimeKeeper.Instance.getTimer("Global").TimScale = 0;
-      
+
             LevelManger.Instance._infoLevel.score = 0;
-            if (pWin) {
-           
+            if (pWin)
+            {
+
                 GameManager.Instance.Wincount++;
                 win.SetActive(true);
                 lose.SetActive(false);
                 LevelManger.Instance._infoLevel.score +=
-                    (600 - (int) LevelManger.Instance.CurrentTime.TotalSeconds) * 50 +
+                    (600 - (int)LevelManger.Instance.CurrentTime.TotalSeconds) * 50 +
                     LevelManger.Instance._infoLevel.goldTaken * 5 +
                     LevelManger.Instance.CurrentPlayer._health.CurrentHealth * 3;
 
@@ -201,24 +201,24 @@ namespace EazyEngine.Space.UI
                     boxShowReward.DataSource = new ObservableList<BaseItemGameInstanced>();
                 }
                 #endregion
-               
+
 
             }
             else
             {
                 win.SetActive(false);
-                lose.SetActive(true);    
+                lose.SetActive(true);
                 GameManager.Instance.SaveLevel();
             }
-            stage.text  = GameManager.Instance.isFree ? "0" : GameManager.Instance.ChoosedLevel.ToString();
+            stage.text = GameManager.Instance.isFree ? "0" : GameManager.Instance.ChoosedLevel.ToString();
             string[] pStrs = new string[3] { "ui/normal", "ui/hard", "ui/super_hard" };
             level.text = I2.Loc.LocalizationManager.GetTranslation(pStrs[GameManager.Instance.ChoosedHard]);
             coinTaken.text = StringUtils.addDotMoney(LevelManger.Instance._infoLevel.goldTaken);
             currentCoin = LevelManger.Instance._infoLevel.goldTaken;
-            boxMission.DataSource = LevelManger.Instance._infoLevel.missions.ToObservableList();  
+            boxMission.DataSource = LevelManger.Instance._infoLevel.missions.ToObservableList();
             time.text = LevelManger.Instance.CurrentTime.ToString(@"mm\:ss");
-            quantityDestroy.text =  $"{( (float)LevelManger.Instance._infoLevel.enemyKill / (float)(LevelManger.Instance._infoLevel.enemyKill + LevelManger.Instance.BornEnemy.Count))*100}%";
-        
+            quantityDestroy.text = $"{((float)LevelManger.Instance._infoLevel.enemyKill / (float)(LevelManger.Instance._infoLevel.enemyKill + LevelManger.Instance.BornEnemy.Count)) * 100}%";
+
             gameObject.SetActive(true);
             StartCoroutine(delayaction(0.5f, delegate
             {
@@ -243,10 +243,11 @@ namespace EazyEngine.Space.UI
                     }
                 }
             }));
-        
+
             if (!GameManager.Instance.isFree)
             {
-                adsCourountine =  StartCoroutine(delayaction(1.5f,delegate{
+                adsCourountine = StartCoroutine(delayaction(1.5f, delegate
+                {
                     if (SceneManager.Instance.currentScene.StartsWith("Zone"))
                     {
                         GameManager.Instance.showInterstitialAds();
@@ -270,7 +271,7 @@ namespace EazyEngine.Space.UI
                                         : (pStarNotEngough * 0.2f > 0.6f ? 0.6f : pStarNotEngough * 0.2f));
                     // update coin
                     GameManager.Instance.Database.getComonItem("Coin").Quantity +=
-                        (int) (LevelManger.Instance._infoLevel.goldTaken * percent);
+                        (int)(LevelManger.Instance._infoLevel.goldTaken * percent);
                     //unlock high mode
                     if (GameManager.Instance.ChoosedHard < 2)
                     {
@@ -285,10 +286,11 @@ namespace EazyEngine.Space.UI
                         var pOldPass = GameManager.Instance.ChoosedHard == 0 ? GameManager.Instance.Database.collectionInfo.passNormal : (GameManager.Instance.ChoosedHard == 1 ? GameManager.Instance.Database.collectionInfo.passHard : GameManager.Instance.Database.collectionInfo.passSuperHard);
                         GameManager.Instance.Database.collectionInfo.singletonRecalculate();
                         var pNewPass = GameManager.Instance.ChoosedHard == 0 ? GameManager.Instance.Database.collectionInfo.passNormal : (GameManager.Instance.ChoosedHard == 1 ? GameManager.Instance.Database.collectionInfo.passHard : GameManager.Instance.Database.collectionInfo.passSuperHard);
-                        if(GameManager.Instance.ChoosedHard == 0)
+                        if (GameManager.Instance.ChoosedHard == 0)
                         {
-                            GameManager.Instance.Database.collectionDailyInfo.passNormal+= pOldPass-pNewPass;
-                        }else if(GameManager.Instance.ChoosedHard == 1)
+                            GameManager.Instance.Database.collectionDailyInfo.passNormal += pOldPass - pNewPass;
+                        }
+                        else if (GameManager.Instance.ChoosedHard == 1)
                         {
                             GameManager.Instance.Database.collectionDailyInfo.passHard += pOldPass - pNewPass;
                         }
@@ -296,6 +298,7 @@ namespace EazyEngine.Space.UI
                         {
                             GameManager.Instance.Database.collectionDailyInfo.passSuperHard += pOldPass - pNewPass;
                         }
+
                         GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel,
                             GameManager.Instance.ChoosedHard + 1).isLocked = false;
                     }
@@ -321,9 +324,13 @@ namespace EazyEngine.Space.UI
                     //unlock level
                     if (GameManager.Instance.ChoosedLevel == GameManager.Instance.CurrentLevelUnlock)
                     {
-                        GameManager.Instance.CurrentLevelUnlock++;
+                        var levelConfig = System.Array.Find(GameDatabase.Instance.LevelConfigScene, x => x.level == GameManager.Instance.CurrentLevelUnlock + 1);
+                        if (levelConfig == null || levelConfig.requrireStarToUnlock <= GameManager.Instance.Database.getComonItem("Star").Quantity)
+                        {
+                            GameManager.Instance.CurrentLevelUnlock++;
+                        }
                         isUnlock = true;
-                       // GameManager.Instance.ChoosedLevel++;
+                        // GameManager.Instance.ChoosedLevel++;
                     }
 
                     //save game
@@ -362,9 +369,9 @@ namespace EazyEngine.Space.UI
         public void setGold(float pCoin)
         {
             currentCoin = pCoin;
-            goldReward.text = StringUtils.addDotMoney((int)pCoin)+ " +";
+            goldReward.text = StringUtils.addDotMoney((int)pCoin) + " +";
         }
-        
+
 
         public void watch()
         {
@@ -375,7 +382,7 @@ namespace EazyEngine.Space.UI
                 StopCoroutine(adsCourountine);
             }
 
-            GameManager.Instance.showRewardAds("WatchX2WinGame", delegate(bool pSucess)
+            GameManager.Instance.showRewardAds("WatchX2WinGame", delegate (bool pSucess)
             {
                 if (pSucess)
                 {
@@ -394,7 +401,7 @@ namespace EazyEngine.Space.UI
                     int pQuantityReward = (int)(LevelManger.Instance._infoLevel.goldTaken * percent);
                     //  goldReward.gameObject.SetActive(true);
                     var pItem = GameManager.Instance.Database.getComonItem("Coin");
-                   var pCoin = listExtr.Find(x => x.item.itemID == "Coin");
+                    var pCoin = listExtr.Find(x => x.item.itemID == "Coin");
                     pCoin = new BaseItemGameInstanced()
                     {
                         item = pItem.item,
@@ -404,7 +411,7 @@ namespace EazyEngine.Space.UI
                     boxShowReward.DataSource = listExtr.ToObservableList();
                     pItem.Quantity += pQuantityReward;
                     currentCoin = 0;
-                    int pTo = (int) (LevelManger.Instance._infoLevel.goldTaken * percent );
+                    int pTo = (int)(LevelManger.Instance._infoLevel.goldTaken * percent);
                     DOTween.To(() => currentCoin, setGold, pTo, 0.5f);
                     GameManager.Instance.SaveGame();
                 }
@@ -433,7 +440,7 @@ namespace EazyEngine.Space.UI
         public void claimRewardRandom()
         {
             BaseItemGameInstanced[] pItems = null;
-            pItems = itemBoxRewardRandom[ GameManager.Instance.ChoosedHard == 0 ?( (GameManager.Instance.ChoosedLevel / 5) - 1) : (GameManager.Instance.ChoosedLevel / 5)].ExtractHere();
+            pItems = itemBoxRewardRandom[GameManager.Instance.ChoosedHard == 0 ? ((GameManager.Instance.ChoosedLevel / 5) - 1) : (GameManager.Instance.ChoosedLevel / 5)].ExtractHere();
             foreach (var pItemAdd in pItems)
             {
                 var pCheckStorage = GameManager.Instance.Database.getComonItem(pItemAdd.item);
@@ -456,7 +463,7 @@ namespace EazyEngine.Space.UI
         public void setScore(int pScore)
         {
             scoreCount = pScore;
-            this.score.text =StringUtils.addDotMoney(pScore);
+            this.score.text = StringUtils.addDotMoney(pScore);
         }
 
         public void onFinishNode(EazyNode pNode)
@@ -464,18 +471,18 @@ namespace EazyEngine.Space.UI
             pNodes.Remove(pNode);
             if (pNode.isSuccess)
             {
-   
+
                 //mission complete 
                 if (pNode.misson.Process != 1)
                 {
                     GameManager.Instance.Database.getComonItem("Star").Quantity++;
-                    for (int i  = 0; i < pNode.misson.rewards.Length; ++i)
+                    for (int i = 0; i < pNode.misson.rewards.Length; ++i)
                     {
-                      var pStorage =  GameManager.Instance.Database.getComonItem(pNode.misson.rewards[i].item);
+                        var pStorage = GameManager.Instance.Database.getComonItem(pNode.misson.rewards[i].item);
                         pStorage.Quantity += pNode.misson.rewards[i].Quantity;
                         if (pStorage.item.ItemID != "Coin")
                         {
-                           var pExist = listExtr.Find(x => x.item.itemID == pStorage.item.ItemID);
+                            var pExist = listExtr.Find(x => x.item.itemID == pStorage.item.ItemID);
                             if (pExist == null)
                             {
                                 listExtr.Add(new BaseItemGameInstanced()
@@ -494,14 +501,14 @@ namespace EazyEngine.Space.UI
                 }
                 pNode.misson.Process = 1;
             }
-            if(pNodes.Count == 0)
+            if (pNodes.Count == 0)
             {
                 boxMission.DataSource = LevelManger.Instance._infoLevel.missions.ToObservableList();
                 boxMission.reloadData();
-                for(int i = 0; i < boxMission.items.Count; ++i)
+                for (int i = 0; i < boxMission.items.Count; ++i)
                 {
                     Sequence pSeq = DOTween.Sequence();
-                    pSeq.AppendInterval(1.2f+ (i * 0.2f));
+                    pSeq.AppendInterval(1.2f + (i * 0.2f));
                     pSeq.Append(boxMission.items[i].transform.DOScale(1.1f, 0.25f));
                     pSeq.Append(boxMission.items[i].transform.DOScale(1, 0.25f));
                     pSeq.Play();
@@ -513,14 +520,15 @@ namespace EazyEngine.Space.UI
                 Sequence pSeq2 = DOTween.Sequence();
                 int pGold = 0;
                 pSeq2.AppendInterval(1.6f);
-                pSeq2.Append(DOTween.To(()=> pGold, x => {
+                pSeq2.Append(DOTween.To(() => pGold, x =>
+                {
                     pGold = x;
                     coinTaken.text = x.ToString();
                 }, LevelManger.Instance._infoLevel.goldTaken, 0.5f).From(0));
                 pSeq2.Play();
-               
+
             }
-        
+
         }
         private void OnDisable()
         {
@@ -556,8 +564,8 @@ namespace EazyEngine.Space.UI
             //LevelManger.InstanceRaw = null;
             ////  GameManager.Instance.pla
             //GameManager.Instance.LoadLevel(GameManager.Instance.ChoosedLevel);      
-  
-           // SceneManager.Instance.loadScene("Main");
+
+            // SceneManager.Instance.loadScene("Main");
         }
 
         public void Upgrade()
@@ -583,7 +591,7 @@ namespace EazyEngine.Space.UI
         // Update is called once per frame
         private void Update()
         {
-   
+
         }
     }
 }

@@ -203,8 +203,14 @@ namespace EazyEngine.Space.UI
                                 }
                             }
 
-                            GameManager.Instance.Database.collectionDailyInfo.upgradeMainCount++;
-                            GameManager.Instance.Database.collectionDailyInfo.upgradeSpCount++;
+                            if (selectedPlane.GetType() == typeof(SupportPlaneInfoConfig))
+                            {
+                                GameManager.Instance.Database.collectionDailyInfo.upgradeSpCount++;
+                            }
+                            else
+                            {
+                                GameManager.Instance.Database.collectionDailyInfo.upgradeMainCount++;
+                            }
                             SoundManager.Instance.PlaySound(sfxUpgradePlane, Vector3.zero);
                             selectedPlane.CurrentLevel++;
                             selectedPlane.ExtraInfo();
@@ -269,8 +275,16 @@ namespace EazyEngine.Space.UI
                         PlayerPrefs.SetInt("firstGame", pStepGame);
                     }
                 }));
-                GameManager.Instance.Database.collectionDailyInfo.upgradeMainCount++;
-                GameManager.Instance.Database.collectionDailyInfo.upgradeSpCount++;
+                if( selectedPlane.GetType() == typeof(SupportPlaneInfoConfig))
+                {
+                    GameManager.Instance.Database.collectionDailyInfo.upgradeSpCount++;
+                }
+                else
+                {
+                    GameManager.Instance.Database.collectionDailyInfo.upgradeMainCount++;
+                }
+            
+                
                 SoundManager.Instance.PlaySound(sfxUpgradePlane, Vector3.zero);
                 selectedPlane.CurrentLevel++;
                 selectedPlane.ExtraInfo();
@@ -368,8 +382,14 @@ namespace EazyEngine.Space.UI
                         selectedPlane.upgradeExtraAbility[pAbility._ability.ItemID] = pListInt.ToArray();
                     }
                 }
-                GameManager.Instance.Database.collectionDailyInfo.upgradeMainCount++;
-                GameManager.Instance.Database.collectionDailyInfo.upgradeSpCount++;
+                if (selectedPlane.GetType() == typeof(SupportPlaneInfoConfig))
+                {
+                    GameManager.Instance.Database.collectionDailyInfo.upgradeSpCount++;
+                }
+                else
+                {
+                    GameManager.Instance.Database.collectionDailyInfo.upgradeMainCount++;
+                }
                 SoundManager.Instance.PlaySound(sfxUpgradePlane, Vector3.zero);
                 selectedPlane.CurrentLevel++;
                 selectedPlane.ExtraInfo();

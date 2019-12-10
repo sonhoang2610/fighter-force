@@ -180,8 +180,9 @@ namespace EazyEngine.Space
                 else
                 {
                     pMission.rewards = pDefaultMission.rewards;
-                    pMission.limitLevel = pDefaultMission.limitLevel;
+               
                 }
+                pMission.limitLevel = pDefaultMission.limitLevel;
                 pMission.VariableDict = pDefaultMission.VariableDict;
             }
             List<MissionItemInstanced> pTempMission = new List<MissionItemInstanced>(currentMissionModule.missions);
