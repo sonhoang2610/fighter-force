@@ -144,6 +144,12 @@ public class RenderQueueModifier : MonoBehaviour
                             foreach (Renderer r in _renderers)
                             {
                                 if (!isIncludeChild && r.gameObject != gameObject) continue;
+                                if(r.GetType() == typeof(SpriteRenderer))
+                                {
+                                    if (r.material == null) continue;
+                                    r.material.renderQueue = _lastQueue;
+                                    continue;
+                                }
                                 if (r.sharedMaterials != null)
                                 {
                                     for (int i = 0; i < r.sharedMaterials.Length; ++i)

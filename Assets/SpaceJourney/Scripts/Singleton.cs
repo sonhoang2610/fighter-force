@@ -34,10 +34,6 @@ namespace EazyEngine.Tools
             {
                 if (_instance == null)
                 {
-                    if (typeof(T) == typeof(LevelManger))
-                    {
-                        Debug.Log("hear");
-                    }
                     _instance = FindObjectOfType<T>();
                     if (_instance == null)
                     {

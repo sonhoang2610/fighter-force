@@ -1219,6 +1219,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     void onRewardedAdComplete(RewardedAdNetwork pNetWork, AdPlacement placement)
     {
         GameManager.Instance.Database.collectionDailyInfo.watchADS++;
+        GameManager.Instance.Database.collectionInfo.watchADS++;
         EzEventManager.TriggerEvent(new MessageGamePlayEvent("MissionDirty"));
         if (rewardAds.ContainsKey(placement.Name))
         {

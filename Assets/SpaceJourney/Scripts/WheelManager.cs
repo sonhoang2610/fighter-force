@@ -196,7 +196,7 @@ namespace EazyEngine.Space.UI
                 lastimeWheelFree = System.DateTime.Now,
                 length = GameDatabase.Instance.timeWheelFree,
             });
-
+            GameManager.Instance.Database.CurrentExpWheel++;
             GameManager.Instance.SaveGame();
             startRoll();
             updateTimeLeft();
@@ -312,6 +312,10 @@ namespace EazyEngine.Space.UI
         {
             if (eventType.nameProperty == "CurrentLevelWheel")
             {
+                if (effectBuyTicket)
+                {
+                    effectBuyTicket.gameObject.SetActive(true);
+                } 
                 List<BaseItemGameInstancedArray> pInfos = new List<BaseItemGameInstancedArray>();
                 for (int i = 0; i < GameDatabase.Instance.ItemWheelConfig.Length; ++i)
                 {

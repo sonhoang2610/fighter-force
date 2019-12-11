@@ -348,7 +348,9 @@ namespace EazyEngine.Space
                     pItems.Add(new ItemGameInstanced() { item = pItem[i], quantity = 1 });
                 }
             }
+            Debug.Log("ez log1");
             BoxItemInGame.Instance.DataSource = pItems.ToObservableList();
+            Debug.Log("ez log2");
             int pStepGame = PlayerPrefs.GetInt("firstGame", 0);
             if (GameManager.Instance.isFree && GameManager.Instance.isGuide)
             {
@@ -431,7 +433,9 @@ namespace EazyEngine.Space
                  players[0].addChild(spPlane2);
                 skills.AddRange(convert(spPlane2._info.Info.skills.ToArray(), spPlane2));
             }
+            Debug.Log("ez log3");
             SkillContainer.Instance.DataSource = skills.ToObservableList();
+            Debug.Log("ez log4");
             NodeCanvas.Framework.GlobalBlackboard.Find("Global").SetValue("Main", players[0]);
             GetComponent<IBlackboard>().SetValue("Main", players[0]);
             currentDelayStartGame = delayStartGame;

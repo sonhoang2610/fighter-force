@@ -9,6 +9,10 @@ public class BaseBoxSingleton<T,TItem,TData> : BaseBox<TItem, TData> where TItem
     {
         get
         {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<T>();
+            }
             return instance;
         }
     }
