@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 8528245798567546399}
   - component: {fileID: 2086784178149793846}
   - component: {fileID: 8695247199966717630}
+  - component: {fileID: 17658867338538151}
   m_Layer: 0
   m_Name: Spine Mecanim GameObject (tru2)
   m_TagString: Untagged
@@ -265,6 +266,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boneRoot: {fileID: 3759298739553221220}
   skeletonRenderer: {fileID: 2086784178149793846}
+--- !u!114 &17658867338538151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5631572943415203616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8fd629f0f9c40e4f816822f00ebee10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorFill: {r: 0.9622642, g: 0.602142, b: 0.5310609, a: 0.67058825}
+  allowIgnoreSetting: 0
 --- !u!1 &6643513633311386873
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,6 +626,16 @@ PrefabInstance:
       propertyPath: DatabaseWeapon.Array.data[1].weapons.Array.data[0].AnchorGunToRotate
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3203288667016583975, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: DamageCaused
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203288667016583975, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: DamageTakenWithEveryThing
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 4876120188185622, guid: 1d8cb7744763d36459cb5cb20a29e0ac, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -667,16 +692,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.9
       objectReference: {fileID: 0}
-    - target: {fileID: 114704166811835620, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
-        type: 3}
-      propertyPath: machine.model
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114704166811835620, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
-        type: 3}
-      propertyPath: modelObject
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 114565014092597948, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
         type: 3}
       propertyPath: MaxiumHealth
@@ -687,15 +702,15 @@ PrefabInstance:
       propertyPath: InitialHealth
       value: 170000
       objectReference: {fileID: 0}
-    - target: {fileID: 3203288667016583975, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+    - target: {fileID: 114704166811835620, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
         type: 3}
-      propertyPath: DamageCaused
-      value: 500
+      propertyPath: machine.model
+      value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 3203288667016583975, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+    - target: {fileID: 114704166811835620, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
         type: 3}
-      propertyPath: DamageTakenWithEveryThing
-      value: 500
+      propertyPath: modelObject
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6801142509365525947, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
         type: 3}
@@ -720,12 +735,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 806831460, guid: 1d8cb7744763d36459cb5cb20a29e0ac, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1d8cb7744763d36459cb5cb20a29e0ac, type: 3}
---- !u!1 &1539162687017401993 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1270524560222676, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
-    type: 3}
-  m_PrefabInstance: {fileID: 1538181334149764957}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1534008971249122123 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4876120188185622, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
@@ -735,6 +744,12 @@ Transform:
 --- !u!1 &5713793162537567243 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6490759489182602070, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+    type: 3}
+  m_PrefabInstance: {fileID: 1538181334149764957}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1539162687017401993 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1270524560222676, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
     type: 3}
   m_PrefabInstance: {fileID: 1538181334149764957}
   m_PrefabAsset: {fileID: 0}

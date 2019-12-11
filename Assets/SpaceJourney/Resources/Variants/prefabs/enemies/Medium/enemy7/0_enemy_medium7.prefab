@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3550269784251597566}
   - component: {fileID: 8451415548538420138}
   - component: {fileID: 7690163758152713706}
+  - component: {fileID: 1099384001241596851}
   m_Layer: 0
   m_Name: Spine Mecanim GameObject (quaitrung8)
   m_TagString: Untagged
@@ -129,6 +130,20 @@ MonoBehaviour:
   translator:
     autoReset: 1
     layerMixModes: 00000000
+--- !u!114 &1099384001241596851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943250819187819665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8fd629f0f9c40e4f816822f00ebee10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorFill: {r: 0.9622642, g: 0.602142, b: 0.5310609, a: 0.67058825}
+  allowIgnoreSetting: 0
 --- !u!1001 &8592818518062674868
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -139,6 +154,59 @@ PrefabInstance:
     - target: {fileID: 1270524560222676, guid: 1d8cb7744763d36459cb5cb20a29e0ac, type: 3}
       propertyPath: m_Name
       value: 0_enemy_medium7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8491613159191165207, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: DatabaseWeapon.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8491613159191165207, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: DatabaseWeapon.Array.data[0].weapons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8491613159191165207, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: DatabaseWeapon.Array.data[0].isUseOnInnital
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8491613159191165207, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: DatabaseWeapon.Array.data[0].weapons.Array.data[0].IntialWeapon
+      value: 
+      objectReference: {fileID: 2109083374620563600, guid: e27e9a40567bf144b8d6c6b52750a8bd,
+        type: 3}
+    - target: {fileID: 8491613159191165207, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: DatabaseWeapon.Array.data[0].weapons.Array.data[0].AttachmentWeapon
+      value: 
+      objectReference: {fileID: 3255009306654777570}
+    - target: {fileID: 8491613159191165207, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: shoortOnStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8491613159191165207, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: DatabaseWeapon.Array.data[0].weapons.Array.data[1].IntialWeapon
+      value: 
+      objectReference: {fileID: 1096034330227073849, guid: 350ca4c7986c86a43ae4252fba90e6f8,
+        type: 3}
+    - target: {fileID: 8491613159191165207, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: DatabaseWeapon.Array.data[0].weapons.Array.data[1].AttachmentWeapon
+      value: 
+      objectReference: {fileID: 3255009306654777570}
+    - target: {fileID: 8491613159191165207, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: DatabaseWeapon.Array.data[0].onStop.m_TypeName
+      value: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
+    - target: {fileID: 8491613159191165207, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: insideScreenRequire
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3203288667016583975, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
         type: 3}
@@ -155,32 +223,6 @@ PrefabInstance:
       propertyPath: DamageCaused
       value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: 114704166811835620, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
-        type: 3}
-      propertyPath: machine.model
-      value: 
-      objectReference: {fileID: 8451415548538420138}
-    - target: {fileID: 114704166811835620, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
-        type: 3}
-      propertyPath: modelObject
-      value: 
-      objectReference: {fileID: 943250819187819665}
-    - target: {fileID: 114565014092597948, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
-        type: 3}
-      propertyPath: MaxiumHealth
-      value: 25000
-      objectReference: {fileID: 0}
-    - target: {fileID: 114565014092597948, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
-        type: 3}
-      propertyPath: InitialHealth
-      value: 25000
-      objectReference: {fileID: 0}
-    - target: {fileID: 114565014092597948, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
-        type: 3}
-      propertyPath: DeathEffect
-      value: 
-      objectReference: {fileID: 3340574256467975602, guid: 515dde775d9b05d43b02d5c9e83e2e66,
-        type: 3}
     - target: {fileID: 806831460, guid: 1d8cb7744763d36459cb5cb20a29e0ac, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
       value: 8
@@ -305,68 +347,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114565014092597948, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: MaxiumHealth
+      value: 25000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114565014092597948, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: InitialHealth
+      value: 25000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114565014092597948, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: DeathEffect
+      value: 
+      objectReference: {fileID: 3340574256467975602, guid: 515dde775d9b05d43b02d5c9e83e2e66,
+        type: 3}
+    - target: {fileID: 114704166811835620, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: machine.model
+      value: 
+      objectReference: {fileID: 8451415548538420138}
+    - target: {fileID: 114704166811835620, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: modelObject
+      value: 
+      objectReference: {fileID: 943250819187819665}
     - target: {fileID: 508393020164589131, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
         type: 3}
       propertyPath: RotationSpeed
       value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 8491613159191165207, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
-        type: 3}
-      propertyPath: DatabaseWeapon.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8491613159191165207, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
-        type: 3}
-      propertyPath: DatabaseWeapon.Array.data[0].weapons.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8491613159191165207, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
-        type: 3}
-      propertyPath: DatabaseWeapon.Array.data[0].isUseOnInnital
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8491613159191165207, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
-        type: 3}
-      propertyPath: DatabaseWeapon.Array.data[0].weapons.Array.data[0].IntialWeapon
-      value: 
-      objectReference: {fileID: 2109083374620563600, guid: e27e9a40567bf144b8d6c6b52750a8bd,
-        type: 3}
-    - target: {fileID: 8491613159191165207, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
-        type: 3}
-      propertyPath: DatabaseWeapon.Array.data[0].weapons.Array.data[0].AttachmentWeapon
-      value: 
-      objectReference: {fileID: 3255009306654777570}
-    - target: {fileID: 8491613159191165207, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
-        type: 3}
-      propertyPath: shoortOnStart
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8491613159191165207, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
-        type: 3}
-      propertyPath: DatabaseWeapon.Array.data[0].weapons.Array.data[1].IntialWeapon
-      value: 
-      objectReference: {fileID: 1096034330227073849, guid: 350ca4c7986c86a43ae4252fba90e6f8,
-        type: 3}
-    - target: {fileID: 8491613159191165207, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
-        type: 3}
-      propertyPath: DatabaseWeapon.Array.data[0].weapons.Array.data[1].AttachmentWeapon
-      value: 
-      objectReference: {fileID: 3255009306654777570}
-    - target: {fileID: 8491613159191165207, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
-        type: 3}
-      propertyPath: DatabaseWeapon.Array.data[0].onStop.m_TypeName
-      value: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      objectReference: {fileID: 0}
-    - target: {fileID: 8491613159191165207, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
-        type: 3}
-      propertyPath: insideScreenRequire
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067758872840241705, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
-        type: 3}
-      propertyPath: _groupName
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8230309856123708977, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
         type: 3}
@@ -387,6 +397,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5067758872840241705, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: _groupName
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d8cb7744763d36459cb5cb20a29e0ac, type: 3}

@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 3368152382336989280}
   - component: {fileID: 5766715114497732033}
   - component: {fileID: 3221938548178250313}
+  - component: {fileID: 5861196935718068777}
   m_Layer: 0
   m_Name: Spine Mecanim GameObject (tru3)
   m_TagString: Untagged
@@ -346,6 +347,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boneRoot: {fileID: 3862186257019901480}
   skeletonRenderer: {fileID: 5766715114497732033}
+--- !u!114 &5861196935718068777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4076587810420986177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8fd629f0f9c40e4f816822f00ebee10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorFill: {r: 0.9622642, g: 0.602142, b: 0.5310609, a: 0.67058825}
+  allowIgnoreSetting: 0
 --- !u!1 &4990575918344080729
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,6 +678,16 @@ PrefabInstance:
       propertyPath: DatabaseWeapon.Array.data[1].weapons.Array.data[0].AnchorGunToRotate
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3203288667016583975, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: DamageCaused
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203288667016583975, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+        type: 3}
+      propertyPath: DamageTakenWithEveryThing
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 4876120188185622, guid: 1d8cb7744763d36459cb5cb20a29e0ac, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -719,16 +744,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.9
       objectReference: {fileID: 0}
-    - target: {fileID: 114704166811835620, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
-        type: 3}
-      propertyPath: machine.model
-      value: 
-      objectReference: {fileID: 3368152382336989280}
-    - target: {fileID: 114704166811835620, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
-        type: 3}
-      propertyPath: modelObject
-      value: 
-      objectReference: {fileID: 4076587810420986177}
     - target: {fileID: 114565014092597948, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
         type: 3}
       propertyPath: MaxiumHealth
@@ -739,16 +754,16 @@ PrefabInstance:
       propertyPath: InitialHealth
       value: 170000
       objectReference: {fileID: 0}
-    - target: {fileID: 3203288667016583975, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+    - target: {fileID: 114704166811835620, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
         type: 3}
-      propertyPath: DamageCaused
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 3203288667016583975, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
+      propertyPath: machine.model
+      value: 
+      objectReference: {fileID: 3368152382336989280}
+    - target: {fileID: 114704166811835620, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
         type: 3}
-      propertyPath: DamageTakenWithEveryThing
-      value: 500
-      objectReference: {fileID: 0}
+      propertyPath: modelObject
+      value: 
+      objectReference: {fileID: 4076587810420986177}
     - target: {fileID: 6801142509365525947, guid: 1d8cb7744763d36459cb5cb20a29e0ac,
         type: 3}
       propertyPath: m_IsActive
