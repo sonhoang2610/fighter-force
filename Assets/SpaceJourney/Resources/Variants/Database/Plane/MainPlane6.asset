@@ -410,6 +410,13 @@ MonoBehaviour:
     type: 3}
   limitUpgrade: 80
   RankPlane: 4
+  speedBoosters:
+  - 0.2
+  - 0.2
+  - 0.4
+  - 0.4
+  - 0.6
+  - 0.8
   power:
     startUnit: 5000
     algrothimTypeUpgrade: 1
@@ -531,24 +538,54 @@ MonoBehaviour:
       unit: 1000
   - _ability: {fileID: 11400000, guid: e4fadd20590716743a3bf553cbccd26d, type: 2}
     isDisplay: 1
-    startUnit: 0
-    limitUnit: 0
+    startUnit: 950
+    limitUnit: 26000
     statUnit: 100
-    algrothimTypeUpgrade: 0
+    algrothimTypeUpgrade: 1
     priceStep: 0
     priceDefines:
-    - levelRequire: 0
-      unit: 0
+    - levelRequire: 1
+      unit: 166
+    - levelRequire: 6
+      unit: 186
+    - levelRequire: 11
+      unit: 242
+    - levelRequire: 16
+      unit: 257
+    - levelRequire: 21
+      unit: 3000
+    - levelRequire: 22
+      unit: 338
+    - levelRequire: 26
+      unit: 358
+    - levelRequire: 31
+      unit: 393
+    - levelRequire: 36
+      unit: 464
+    - levelRequire: 41
+      unit: 8000
+    - levelRequire: 42
+      unit: 525
   - _ability: {fileID: 11400000, guid: 3f5211ef405c0ee49bddb0f30da86caa, type: 2}
     isDisplay: 1
-    startUnit: 100
-    limitUnit: 0
+    startUnit: 2000
+    limitUnit: 5500
     statUnit: 95
-    algrothimTypeUpgrade: 0
+    algrothimTypeUpgrade: 1
     priceStep: 0
     priceDefines:
-    - levelRequire: 0
-      unit: 0
+    - levelRequire: 1
+      unit: 25
+    - levelRequire: 16
+      unit: 23
+    - levelRequire: 21
+      unit: 450
+    - levelRequire: 22
+      unit: 35
+    - levelRequire: 23
+      unit: 45
+    - levelRequire: 30
+      unit: 40
   conditionUnlock:
     craftItem: {fileID: 11400000, guid: 3a0c01c796d950d41b53ccb86d06829c, type: 2}
     quantityRequire: 0
