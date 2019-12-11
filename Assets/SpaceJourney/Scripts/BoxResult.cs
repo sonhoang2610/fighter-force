@@ -70,7 +70,7 @@ namespace EazyEngine.Space.UI
             {
                 LevelInfoInstance pLevelInfo = GameManager.Instance.container.getLevelInfo(GameManager.Instance.Database.lastPlayStage.x + 1, GameManager.Instance.ChoosedHard);
                 var levelConfig = System.Array.Find(GameDatabase.Instance.LevelConfigScene, x => x.level == GameManager.Instance.Database.lastPlayStage.x + 1);
-                if (levelConfig.requrireStarToUnlock > 0 && GameManager.Instance.Database.getComonItem("Star").Quantity < levelConfig.requrireStarToUnlock)
+                if (levelConfig != null && levelConfig.requrireStarToUnlock > 0 && GameManager.Instance.Database.getComonItem("Star").Quantity < levelConfig.requrireStarToUnlock)
                 {
                     HUDLayer.Instance.showDialog(I2.Loc.LocalizationManager.GetTranslation("ui/notice"), I2.Loc.LocalizationManager.GetTranslation("text/not_enough_star"),null,null, false);
                     return;
