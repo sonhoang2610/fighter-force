@@ -207,10 +207,10 @@ namespace EazyEngine.Space.UI
         }
         protected Tween cacheTween;
         public Vector2 offsetParticleClaim = Vector2.zero;
-        public override void show()
+        public override void show(bool imediately)
         {
             base.show();
-            if (EffectOnShow && Dirty)
+            if (!imediately && EffectOnShow && Dirty)
             {
 
                 //var widget = GetComponent<UIWidget>();

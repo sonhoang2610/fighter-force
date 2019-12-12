@@ -25,8 +25,24 @@ namespace EazyEngine.Space.UI
         public BoxExtract boxExtract;
         public GameObject layerNormal;
         public UI2DSprite compareRender;
+        public GameObject claimButton;
         public AudioGroupSelector sfxOpen = AudioGroupConstrant.OpenBox;
         protected BaseItemGame itemPackage;
+        protected bool waiting= false;
+
+        public void claim()
+        {
+      
+            SoundManager.Instance.PlaySound(sfxOpen, Vector3.zero);
+            BaseItemGameInstanced[] pItems = ((IExtractItem)itemPackage).ExtractHere(false);
+            boxExtract.DataSource = pItems.ToObservableList();
+            claimButton.SetActive(false);
+            waiting = false;
+            StartCoroutine(GameManager.Instance.delayAction(0.25f, delegate
+            {
+                GetComponent<UIElement>().close();
+            }));
+        }
         public void OnEzEvent(RewardEvent eventType)
         {
             attachmentModel.transform.DestroyChildren();
@@ -64,6 +80,7 @@ namespace EazyEngine.Space.UI
                 {
                     pAnimator.SetTrigger("Extract");
                     boxExtract.DataSource = (new BaseItemGameInstanced[] { }).ToObservableList();
+                    waiting = true;
                 }
                 else
                 {
@@ -106,7 +123,7 @@ namespace EazyEngine.Space.UI
 
         public void TriggerFromAnimator(AnimationEvent pEvent)
         {
-            if(pEvent.stringParameter == "Extract" && itemPackage)
+            if(pEvent.stringParameter == "Extract" && itemPackage && waiting)
             {
                 SoundManager.Instance.PlaySound(sfxOpen,Vector3.zero);
                 BaseItemGameInstanced[] pItems = ((IExtractItem)itemPackage).ExtractHere(false);

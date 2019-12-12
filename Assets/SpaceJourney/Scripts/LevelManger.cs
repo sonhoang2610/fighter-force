@@ -436,7 +436,7 @@ namespace EazyEngine.Space
             Debug.Log("ez log4");
             NodeCanvas.Framework.GlobalBlackboard.Find("Global").SetValue("Main", players[0]);
             GetComponent<IBlackboard>().SetValue("Main", players[0]);
-            currentDelayStartGame = delayStartGame;
+      
             players[0].transform.position = startPoint.transform.position;
             Sequence pSeq = DOTween.Sequence();
             pSeq.AppendInterval(0.5f);
@@ -466,7 +466,14 @@ namespace EazyEngine.Space
                 }
             }
         }
-        
+        public void StartGame()
+        {
+            currentDelayStartGame = delayStartGame;
+            StartCoroutine(delayAction(delayStartGame, delegate
+            {
+                Physics2D.autoSimulation = true;
+            }));
+        }
         public SkillInputData[] convert(SkillInfoInstance[] pInfos ,Character pTarget)
         {
             List<SkillInputData> pDatas = new List<SkillInputData>();
@@ -485,10 +492,7 @@ namespace EazyEngine.Space
 
         private void Start()
         {
-            StartCoroutine(delayAction(delayStartGame, delegate
-            {
-                Physics2D.autoSimulation = true;
-            }));
+     
            
             if (PlayerEnviroment.eviromentInstant != null)
             {

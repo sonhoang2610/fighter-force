@@ -89,7 +89,7 @@ public class BaseItem<T> : MonoBehaviour where T  : class
         
     }
 
-    public virtual void show()
+    public virtual void show(bool imediately = true)
     {
         gameObject.SetActive(true);
     }

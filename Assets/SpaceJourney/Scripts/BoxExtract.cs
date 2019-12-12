@@ -6,6 +6,11 @@ namespace EazyEngine.Space.UI
 {
     public class BoxExtract : BaseBox<ItemInventorySlot, BaseItemGameInstanced>
     {
+        public bool effectOnShow = true;
+        public override bool isItemEffect()
+        {
+            return effectOnShow;
+        }
         // Start is called before the first frame update
         void Start()
         {

@@ -57,7 +57,7 @@ namespace EazyEngine.Space.UI
             }
         }
 
-        public override void show()
+        public override void show(bool pBol)
         {
             base.show();
            // if ( Dirty)

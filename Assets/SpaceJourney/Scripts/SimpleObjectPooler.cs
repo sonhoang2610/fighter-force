@@ -63,28 +63,33 @@ namespace EazyEngine.Tools
                     AddOneObjectToThePool();
                 }
             }
-            if(RemainPoolSize > 0)
+            if (RemainPoolSize > 0)
             {
-                var pool = GameManager.Instance.loadSequences.Find(x => x.pooler == this);
-                if (pool.pooler != this)
+                if (SceneManager.Instance.isLoading)
                 {
-                    GameManager.Instance.loadSequences.Add(new PoolElementSequence() { pooler = this, count = RemainPoolSize });
+                    SceneManager.Instance.addloading(RemainPoolSize);
                 }
+                //var pool = GameManager.Instance.loadSequences.Find(x => x.pooler == this);
+                //if (pool.pooler != this)
+                //{
+                //    GameManager.Instance.loadSequences.Add(new PoolElementSequence() { pooler = this, count = RemainPoolSize });
+                //}
             }
-          //  StartCoroutine(delayCheckSpawnPool());
+            StartCoroutine(delayCheckSpawnPool());
        
         }
 
-        //IEnumerator delayCheckSpawnPool()
-        //{
-        //    if(RemainPoolSize > 0)
-        //    {
-        //        AddOneObjectToThePoolRemainTime();
-        //        RemainPoolSize--;
-        //    }
-        //    yield return new WaitForSeconds(0.2f);
-        //    StartCoroutine(delayCheckSpawnPool());
-        //}
+        IEnumerator delayCheckSpawnPool()
+        {
+            if (RemainPoolSize > 0)
+            {
+                AddOneObjectToThePoolRemainTime(false);
+                RemainPoolSize--;
+                SceneManager.Instance.loadingDirty();
+            }
+            yield return new WaitForSeconds(0.01f);
+            StartCoroutine(delayCheckSpawnPool());
+        }
         private void OnDisable()
         {
             StopAllCoroutines();

@@ -432,8 +432,31 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         base.Awake();
         databaseGame = GameDatabase.Instance;
         Application.targetFrameRate = 60;
-
+   //     StartCoroutine(delayAction(0.2f, spawnPool));
         // Database = Instantiate(Database);
+    }
+    public void spawnPool()
+    {
+        
+        while (loadSequences.Count > 0)
+        {
+
+            if (loadSequences[loadSequences.Count - 1].count > 0)
+            {
+                var pool = loadSequences[loadSequences.Count - 1];
+                pendingObject = pool.pooler.AddOneObjectToThePoolRemainTime(false);
+                pool.count--;
+                loadSequences[loadSequences.Count - 1] = pool;
+  
+                break;
+            }
+            else
+            {
+                loadSequences.RemoveAt(loadSequences.Count - 1);
+            }
+        }
+        StartCoroutine(delayAction(0.2f, spawnPool));
+
     }
     public void initGame()
     {
@@ -478,7 +501,6 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         }
     }
     bool first = true;
-    protected float delaySpawn = 0.05f;
     protected GameObject pendingObject = null;
     private void LateUpdate()
     {
@@ -489,36 +511,13 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
 
             first = false;
         }
-        if(delaySpawn > 0)
-        {
-            delaySpawn -= Time.deltaTime;
-        }
-        if (delaySpawn <= 0)
-        {
-            while (loadSequences.Count > 0)
-            {
-        
-                if (loadSequences[loadSequences.Count - 1].count > 0)
-                {
-                    var pool = loadSequences[loadSequences.Count - 1];
-                    pendingObject = pool.pooler.AddOneObjectToThePoolRemainTime(true);
-                    pool.count--;
-                    loadSequences[loadSequences.Count - 1] = pool;
-                    delaySpawn = 0.05f;
-                    break;
-                }
-                else
-                {
-                    loadSequences.RemoveAt(loadSequences.Count - 1);
-                }
-            }
-        }
+
     }
     private void FixedUpdate()
     {
         if (pendingObject)
         {
-            pendingObject.gameObject.SetActive(false);
+          //  pendingObject.gameObject.SetActive(false);
         }
     }
     public GameDataBaseInstance _databaseDefault;

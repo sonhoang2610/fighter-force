@@ -30,7 +30,7 @@ namespace EazyEngine.Space
         public GameObject loadingAds;
         AsyncOperation async;
         bool isStart = false;
-        public string currentScene; 
+        public string currentScene;
         public static Dictionary<string, AssetBundle> BUNDLES = new Dictionary<string, AssetBundle>();
 
 
@@ -40,6 +40,7 @@ namespace EazyEngine.Space
             currentScene = pScene;
             SoundManager.Instance.StopAllCoroutines();
             //   fadeLayout.alpha = 0;
+            isLoading = true;
             Sequence pSeq = DOTween.Sequence();
             if (process)
             {
@@ -57,12 +58,46 @@ namespace EazyEngine.Space
             pSeq.Play();
         }
 
-        
-        
+        protected float blockScene = 0,maxBlock =0;
+        protected Tween tween = null;
+        [System.NonSerialized]
+        public bool isLoading = false;
+        public void addloading(int pQuantity)
+        {
+            blockScene += pQuantity;
+            maxBlock = blockScene;
+        }
+
+        public void loadingDirty()
+        {
+            blockScene--;
+            if (tween != null)
+            {
+                tween.Kill();
+                tween = null;
+            }
+            tween = DOTween.To(() => process.fillAmount, x => process.fillAmount = x, (1- (blockScene / maxBlock)) * 0.5f + 0.5f, 0.25f);
+            if(blockScene == 0)
+            {
+                complete();
+            }
+        }
+
+
         public void complete()
         {
-        
-                fadeLayout.alpha = 1;
+
+            fadeLayout.alpha = 1;
+            if (blockScene <= 0)
+            {
+                isLoading = false;
+                if (currentScene.Contains("Zone"))
+                {
+                    if (LevelManger.InstanceRaw)
+                    {
+                        LevelManger.Instance.StartGame();
+                    }
+                }
                 Sequence pSeq = DOTween.Sequence();
                 pSeq.AppendInterval(0.25f);
                 pSeq.Append(DOTween.To(() => fadeLayout.alpha, a => fadeLayout.alpha = a, 0, 1));
@@ -72,11 +107,11 @@ namespace EazyEngine.Space
                     SoundManager.Instance.cleanAudio();
                 });
                 pSeq.Play();
-            
-      
+            }
+
 
         }
-        public IEnumerator delayAction(float pDelay,System.Action pAction)
+        public IEnumerator delayAction(float pDelay, System.Action pAction)
         {
             yield return new WaitForSeconds(pDelay);
             pAction();
@@ -86,8 +121,9 @@ namespace EazyEngine.Space
             if (SceneManager.Instance.isLocal)
             {
                 loadScene("SpaceJourney/Scene/variant/Main");
-             
-                StartCoroutine(delayAction(0.3f, delegate {
+
+                StartCoroutine(delayAction(0.3f, delegate
+                {
                     Instantiate(Resources.Load<GameObject>("Variants/Database/GameManager"));
                     Instantiate(Resources.Load<GameObject>("Variants/prefabs/ui/HUD"), transform);
 
@@ -110,7 +146,7 @@ namespace EazyEngine.Space
                 pSeq.Play();
             }
         }
-        
+
         protected override void Awake()
         {
             base.Awake();
@@ -153,10 +189,10 @@ namespace EazyEngine.Space
                 boxlostConnection.show();
             }));
             lastAssetLoaded = I2.Loc.LocalizationManager.GetTranslation(pTag) + "assetmanager";
-            yield return loader.DownloadAndCache(I2.Loc.LocalizationManager.GetTranslation(pTag), "assetmanager",pNewVer,(LoadAssetBundleStatus pNew,AssetBundle pBundle) =>
-                {
-                    status = pNew;
-            });
+            yield return loader.DownloadAndCache(I2.Loc.LocalizationManager.GetTranslation(pTag), "assetmanager", pNewVer, (LoadAssetBundleStatus pNew, AssetBundle pBundle) =>
+                  {
+                      status = pNew;
+                  });
             if (status == LoadAssetBundleStatus.LOST_CONNECT_NOT_HAVE_CACHE)
             {
                 boxlostConnection.show();
@@ -185,22 +221,22 @@ namespace EazyEngine.Space
                 }
                 List<ModuleAssetInfo> queue = new List<ModuleAssetInfo>();
 
-        
-                    queue.AddRange(pManager.currentModule.modules);
 
-                    float totalSize = 0;
-                    for (int j = 0; j < pManager.currentModule.modules.Length; ++j)
-                    {
-                        totalSize += pManager.currentModule.modules[j].sizeFile;
-                    }
+                queue.AddRange(pManager.currentModule.modules);
+
+                float totalSize = 0;
+                for (int j = 0; j < pManager.currentModule.modules.Length; ++j)
+                {
+                    totalSize += pManager.currentModule.modules[j].sizeFile;
+                }
 
 
-                    for (int i = 0; i < queue.Count; ++i)
-                    {
-                        queue[i].Percent = queue[i].sizeFile / totalSize;
-                    }
-                
-                yield return loadModules(queue,status == LoadAssetBundleStatus.NEW);
+                for (int i = 0; i < queue.Count; ++i)
+                {
+                    queue[i].Percent = queue[i].sizeFile / totalSize;
+                }
+
+                yield return loadModules(queue, status == LoadAssetBundleStatus.NEW);
             }
         }
 
@@ -225,24 +261,24 @@ namespace EazyEngine.Space
             StartCoroutine(loadManager(true));
         }
 
-        public IEnumerator tryReconect(float pSec,string pUrl,string pAsset,System.Action<LoadAssetBundleStatus,AssetBundle> pOnResult)
+        public IEnumerator tryReconect(float pSec, string pUrl, string pAsset, System.Action<LoadAssetBundleStatus, AssetBundle> pOnResult)
         {
             yield return new WaitForSeconds(pSec);
             AssetBundleLoader loader = new AssetBundleLoader();
             LoadAssetBundleStatus pStatusSub = LoadAssetBundleStatus.NEW;
-            yield return loader.DownloadAndCache(pUrl,pAsset,true,(LoadAssetBundleStatus pStatus,AssetBundle pBundle) =>
-            {
-                pStatusSub = pStatus;
-                pOnResult?.Invoke(pStatus,pBundle);
-            });
+            yield return loader.DownloadAndCache(pUrl, pAsset, true, (LoadAssetBundleStatus pStatus, AssetBundle pBundle) =>
+               {
+                   pStatusSub = pStatus;
+                   pOnResult?.Invoke(pStatus, pBundle);
+               });
             if (pStatusSub != LoadAssetBundleStatus.LOST_CONNECT_NOT_HAVE_CACHE)
             {
                 yield break;
             }
-            yield return tryReconect(pSec, pUrl,pAsset, pOnResult);
+            yield return tryReconect(pSec, pUrl, pAsset, pOnResult);
         }
         List<GameObject> objectPlanInstiate = new List<GameObject>();
-        public IEnumerator loadModules(List<ModuleAssetInfo> queue,bool pNew)
+        public IEnumerator loadModules(List<ModuleAssetInfo> queue, bool pNew)
         {
             float percent = 0;
             string pTag = "ui/uri_assetbundle";
@@ -269,10 +305,10 @@ namespace EazyEngine.Space
                 }));
                 LoadAssetBundleStatus status = LoadAssetBundleStatus.NEW;
                 lastAssetLoaded = pUrl + queue[i].nameModule;
-                yield return loader.DownloadAndCache(pUrl, queue[i].nameModule,pNew,(LoadAssetBundleStatus pStatus,AssetBundle pBundle) =>
-                {
-                    status = pStatus;
-                });
+                yield return loader.DownloadAndCache(pUrl, queue[i].nameModule, pNew, (LoadAssetBundleStatus pStatus, AssetBundle pBundle) =>
+                  {
+                      status = pStatus;
+                  });
                 if (status == LoadAssetBundleStatus.LOST_CONNECT_NOT_HAVE_CACHE)
                 {
                     boxlostConnection.show();
@@ -292,7 +328,7 @@ namespace EazyEngine.Space
                     StopCoroutine(corountineNotice);
                     corountineNotice = null;
                 }
-  
+
                 if (loader.result != null && !BUNDLES.ContainsKey(pUrl + queue[i].nameModule))
                 {
                     if (queue[i].nameModule.Contains("material"))
@@ -322,7 +358,7 @@ namespace EazyEngine.Space
 
             Instantiate((GameObject)BUNDLES[pUrl + "resources/scripttableobject/container"].LoadAsset("GameManager"));
             yield return new WaitForSeconds(0.25f);
-            Instantiate((GameObject)BUNDLES[pUrl + "resources/prefab/ui"].LoadAsset("HUD"),transform);
+            Instantiate((GameObject)BUNDLES[pUrl + "resources/prefab/ui"].LoadAsset("HUD"), transform);
             yield return new WaitForSeconds(0.25f);
 
             process.fillAmount = 0;
@@ -352,9 +388,9 @@ namespace EazyEngine.Space
 
         private void Update()
         {
-            if(objectPlanInstiate.Count > 0)
+            if (objectPlanInstiate.Count > 0)
             {
-                for(int i = objectPlanInstiate.Count-1; i >= 0; i--)
+                for (int i = objectPlanInstiate.Count - 1; i >= 0; i--)
                 {
                     Instantiate(objectPlanInstiate[i], transform);
                     objectPlanInstiate.RemoveAt(i);
@@ -362,19 +398,20 @@ namespace EazyEngine.Space
             }
             if (isStart)
             {
+                float pAnchor = currentScene.Contains("Zone") ? 0.5f : 1;
                 if (!async.isDone)
                 {
                     if (process)
                     {
-                        DOTween.To(() => process.fillAmount, x => process.fillAmount = x, async.progress, 0.25f);
+                        DOTween.To(() => process.fillAmount, x => process.fillAmount = x, async.progress * pAnchor, 0.25f);
                     }
                 }
                 else
                 {
-              
+
                     Sequence pSeq = DOTween.Sequence();
 
-                    pSeq.Append(DOTween.To(() => process.fillAmount, x => process.fillAmount = x, 1, 0.35f));
+                    pSeq.Append(DOTween.To(() => process.fillAmount, x => process.fillAmount = x, pAnchor, 0.25f));
                     pSeq.AppendCallback(delegate
                     {
 

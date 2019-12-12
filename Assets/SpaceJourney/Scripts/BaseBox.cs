@@ -131,7 +131,10 @@ public class BaseBox<TItem, TData> : MonoBehaviour where TItem : BaseItem<TData>
         items.Add(pItem);
         return pItem;
     }
-
+    public virtual bool isItemEffect()
+    {
+        return false;
+    }
     public void onCollectionChange()
     {
         Item.Clear();
@@ -164,7 +167,7 @@ public class BaseBox<TItem, TData> : MonoBehaviour where TItem : BaseItem<TData>
                 }
                 pItem.Index = indexBoard[initData[i]];
                 setDataItem(initData[i], pItem);
-                pItem.show();
+                pItem.show(!isItemEffect());
                 pItem.Using = true;
                 initData.RemoveAt(i);
             }
@@ -181,7 +184,7 @@ public class BaseBox<TItem, TData> : MonoBehaviour where TItem : BaseItem<TData>
             {
                 Item[initData[i]] = pItem;
             }
-            pItem.show();
+            pItem.show(!isItemEffect());
             pItem.Using = true;
         }
         if (attachMent)
