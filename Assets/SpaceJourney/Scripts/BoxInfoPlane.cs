@@ -52,7 +52,7 @@ namespace EazyEngine.Space.UI
                 if (boxRank)
                 {
                     //     btnFreePlay.gameObject.SetActive((value.CurrentLevel > 0));
-                    boxRank.GetComponentInChildren<EazyFrameCache>().setFrameIndex(value.Info.RankPlane);
+                    boxRank.GetComponentInChildren<EazyFrameCache>().setFrameIndex(value.info.RankPlane);
                 }
                 if (layerAbleUpgradePlane)
                 {

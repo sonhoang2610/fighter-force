@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784eeb15959ae5f46a7fd014718cf571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  ignoreColor: 0
   colorNormal: {r: 1, g: 1, b: 1, a: 1}
   colorPressed: {r: 1, g: 1, b: 1, a: 1}
   normalSprite2D: {fileID: 0}
@@ -34,8 +36,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   eventOnUnPress:
     m_PersistentCalls:
       m_Calls:
@@ -50,8 +50,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &8195927179526290908
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,6 +122,7 @@ MonoBehaviour:
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 1.8064516
+  dirtyChange: 0
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 7b1babd7348f0104eab1315642572a9b, type: 3}
   mFont: {fileID: 0}
@@ -184,8 +183,6 @@ MonoBehaviour:
   LocalizeEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   AlwaysForceLocalize: 0
   LocalizeCallBack:
     Target: {fileID: 0}
@@ -210,6 +207,7 @@ MonoBehaviour:
   colors:
   - {r: 0, g: 0, b: 0, a: 0}
   - {r: 0, g: 0, b: 0, a: 0}
+  isOutlineLabel: 0
 --- !u!1001 &3685596313173174347
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -306,8 +304,13 @@ PrefabInstance:
         type: 3}
       propertyPath: mSprite
       value: 
-      objectReference: {fileID: 21300000, guid: a21181fd59131ed44ad71f37dfbb645e,
+      objectReference: {fileID: -4871395483552137045, guid: 1fbf3b028c258ed4bb8eab4f5e626cc5,
         type: 3}
+    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+        type: 3}
+      propertyPath: dirtyChange
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2539561911282382920, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
         type: 3}
       propertyPath: m_Size.x

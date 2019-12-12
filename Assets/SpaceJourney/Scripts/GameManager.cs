@@ -315,6 +315,11 @@ public struct EventTimer
     public TimerState state;
     public string key;
 }
+public struct PoolElementSequence
+{
+    public SimpleObjectPooler pooler;
+    public int count;
+}
 public class GameManager : PersistentSingleton<GameManager>, EzEventListener<GameDatabaseInventoryEvent>
 {
 
@@ -328,6 +333,9 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     public int lastResultWin = -1;
     public AudioClip btnSfx;
     public MovingLeader leaderTemplate;
+
+    public List<PoolElementSequence> loadSequences = new List<PoolElementSequence>();
+
     public prefabBulletGroup getGroupPrefab(GameObject pObject)
     {
         for (int i = 0; i < groupPrefabBullet.Length; ++i)
@@ -470,6 +478,8 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         }
     }
     bool first = true;
+    protected float delaySpawn = 0.05f;
+    protected GameObject pendingObject = null;
     private void LateUpdate()
     {
         if (first)
@@ -478,6 +488,37 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             MissionContainer.Instance.LoadState();
 
             first = false;
+        }
+        if(delaySpawn > 0)
+        {
+            delaySpawn -= Time.deltaTime;
+        }
+        if (delaySpawn <= 0)
+        {
+            while (loadSequences.Count > 0)
+            {
+        
+                if (loadSequences[loadSequences.Count - 1].count > 0)
+                {
+                    var pool = loadSequences[loadSequences.Count - 1];
+                    pendingObject = pool.pooler.AddOneObjectToThePoolRemainTime(true);
+                    pool.count--;
+                    loadSequences[loadSequences.Count - 1] = pool;
+                    delaySpawn = 0.05f;
+                    break;
+                }
+                else
+                {
+                    loadSequences.RemoveAt(loadSequences.Count - 1);
+                }
+            }
+        }
+    }
+    private void FixedUpdate()
+    {
+        if (pendingObject)
+        {
+            pendingObject.gameObject.SetActive(false);
         }
     }
     public GameDataBaseInstance _databaseDefault;

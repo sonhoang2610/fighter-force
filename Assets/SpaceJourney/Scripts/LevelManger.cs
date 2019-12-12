@@ -90,7 +90,7 @@ namespace EazyEngine.Space
     {
         public GameObject startPoint;
         public GameObject endPoint;
-        public float delayStartGame = 2;
+        public float delayStartGame = 3;
         [HideInEditorMode]
         public bool isPlaying = false;
         [HideInEditorMode]
@@ -348,9 +348,7 @@ namespace EazyEngine.Space
                     pItems.Add(new ItemGameInstanced() { item = pItem[i], quantity = 1 });
                 }
             }
-            Debug.Log("ez log1");
             BoxItemInGame.Instance.DataSource = pItems.ToObservableList();
-            Debug.Log("ez log2");
             int pStepGame = PlayerPrefs.GetInt("firstGame", 0);
             if (GameManager.Instance.isFree && GameManager.Instance.isGuide)
             {
@@ -487,7 +485,7 @@ namespace EazyEngine.Space
 
         private void Start()
         {
-            StartCoroutine(delayAction(0.2f, delegate
+            StartCoroutine(delayAction(delayStartGame, delegate
             {
                 Physics2D.autoSimulation = true;
             }));

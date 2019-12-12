@@ -63,20 +63,28 @@ namespace EazyEngine.Tools
                     AddOneObjectToThePool();
                 }
             }
-            StartCoroutine(delayCheckSpawnPool());
+            if(RemainPoolSize > 0)
+            {
+                var pool = GameManager.Instance.loadSequences.Find(x => x.pooler == this);
+                if (pool.pooler != this)
+                {
+                    GameManager.Instance.loadSequences.Add(new PoolElementSequence() { pooler = this, count = RemainPoolSize });
+                }
+            }
+          //  StartCoroutine(delayCheckSpawnPool());
        
         }
 
-        IEnumerator delayCheckSpawnPool()
-        {
-            if(RemainPoolSize > 0)
-            {
-                AddOneObjectToThePoolRemainTime();
-                RemainPoolSize--;
-            }
-            yield return new WaitForSeconds(0.2f);
-            StartCoroutine(delayCheckSpawnPool());
-        }
+        //IEnumerator delayCheckSpawnPool()
+        //{
+        //    if(RemainPoolSize > 0)
+        //    {
+        //        AddOneObjectToThePoolRemainTime();
+        //        RemainPoolSize--;
+        //    }
+        //    yield return new WaitForSeconds(0.2f);
+        //    StartCoroutine(delayCheckSpawnPool());
+        //}
         private void OnDisable()
         {
             StopAllCoroutines();
@@ -141,23 +149,24 @@ namespace EazyEngine.Tools
             {
                 onNewGameObjectCreated(newGameObject,GameObjectToPool);
             }
-            if(LevelManger.InstanceRaw != null)
-            {
-                if (LevelManger.Instance.IsPlaying)
-                {
-                    newGameObject.gameObject.SetActive(false);
-                }
-                else
-                {
-                   // newGameObject.gameObject.SetActive(false);
-                    StartCoroutine(delayActionDeactive(newGameObject));
+            newGameObject.gameObject.SetActive(false);
+            //if (LevelManger.InstanceRaw != null)
+            //{
+            //    if (LevelManger.Instance.IsPlaying)
+            //    {
+            //        newGameObject.gameObject.SetActive(false);
+            //    }
+            //    else
+            //    {
+            //       // newGameObject.gameObject.SetActive(false);
+            //        StartCoroutine(delayActionDeactive(newGameObject));
 
-                }
-            }
-            else
-            {
-                newGameObject.gameObject.SetActive(false);
-            }
+            //    }
+            //}
+            //else
+            //{
+            //    newGameObject.gameObject.SetActive(false);
+            //}
       
             newGameObject.transform.SetParent(poolLocal[GameObjectToPool].parrent.transform);
             newGameObject.transform.position = new Vector3(9000, 9000, 9000 );
@@ -173,7 +182,7 @@ namespace EazyEngine.Tools
             _pooledGameObjects.Add(newGameObject);
             return newGameObject;
         }
-        protected virtual GameObject AddOneObjectToThePoolRemainTime()
+        public virtual GameObject AddOneObjectToThePoolRemainTime(bool isActive)
         {
             if (GameObjectToPool == null)
             {
@@ -195,23 +204,24 @@ namespace EazyEngine.Tools
             {
                 onNewGameObjectCreated(newGameObject, GameObjectToPool);
             }
-            if (LevelManger.InstanceRaw != null)
-            {
-                if (LevelManger.Instance.IsMatching)
-                {
-                    newGameObject.gameObject.SetActive(false);
-                }
-                else
-                {
-                    // newGameObject.gameObject.SetActive(false);
-                    StartCoroutine(delayActionDeactive(newGameObject));
+            newGameObject.gameObject.SetActive(isActive);
+            //if (LevelManger.InstanceRaw != null)
+            //{
+            //    if (LevelManger.Instance.IsMatching)
+            //    {
+            //        newGameObject.gameObject.SetActive(false);
+            //    }
+            //    else
+            //    {
+            //        // newGameObject.gameObject.SetActive(false);
+            //        StartCoroutine(delayActionDeactive(newGameObject));
 
-                }
-            }
-            else
-            {
-                newGameObject.gameObject.SetActive(false);
-            }
+            //    }
+            //}
+            //else
+            //{
+            //    newGameObject.gameObject.SetActive(false);
+            //}
 
             newGameObject.transform.SetParent(poolLocal[GameObjectToPool].parrent.transform);
             newGameObject.transform.position = new Vector3(9000, 9000, 9000);

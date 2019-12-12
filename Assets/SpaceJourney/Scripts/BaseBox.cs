@@ -110,26 +110,19 @@ public class BaseBox<TItem, TData> : MonoBehaviour where TItem : BaseItem<TData>
 
     public TItem obtainItemNewData(TData pData,int index)
     {
-        Debug.Log("ez type" +typeof(TItem).ToString());
         for (int i = 0; i < items.Count; ++i)
         {
             if (!items[i].Using)
             {
-                Debug.Log("ez here1");
                 items[i].Index = index;
-                Debug.Log("ez here2");
                 items[i].Dirty = true;
-                Debug.Log("ez here3");
                 setDataItem(pData, items[i]);
-                Debug.Log("ez here4");
                 showNewItem(items[i]);
                 return items[i];
             }
         }
-        Debug.Log("ez here6");
 
      var pItem = Instantiate<TItem>(prefabItem, attachMent.transform);
-        Debug.Log("ez here7");
         pItem.Dirty = true;
         pItem.Index = index;
         setDataItem(pData, pItem);

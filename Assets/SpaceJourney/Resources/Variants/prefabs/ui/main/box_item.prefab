@@ -70,6 +70,7 @@ MonoBehaviour:
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 5
+  dirtyChange: 0
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 7b1babd7348f0104eab1315642572a9b, type: 3}
   mFont: {fileID: 0}
@@ -171,6 +172,7 @@ MonoBehaviour:
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 1.0689656
+  dirtyChange: 0
   mType: 0
   mFillDirection: 4
   mFillAmount: 1
@@ -264,6 +266,7 @@ MonoBehaviour:
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 3.5769231
+  dirtyChange: 0
   mType: 0
   mFillDirection: 4
   mFillAmount: 1
@@ -277,7 +280,7 @@ MonoBehaviour:
   rightType: 1
   bottomType: 1
   topType: 1
-  mSprite: {fileID: 21300000, guid: 0f3470ef2dbe51e4ebe507ee04f30445, type: 3}
+  mSprite: {fileID: 1503909277757436671, guid: 1fbf3b028c258ed4bb8eab4f5e626cc5, type: 3}
   mShader: {fileID: 4800000, guid: e75727d9555d9d14ca51d91908c681bc, type: 3}
   mBorder: {x: 0, y: 0, z: 0, w: 0}
   mFixedAspect: 0
@@ -299,13 +302,28 @@ MonoBehaviour:
   _data:
     item: {fileID: 0}
     quantity: 1
+  onUsing:
+    m_PersistentCalls:
+      m_Calls: []
   icon: {fileID: 1544238153}
+  iconCateGory: {fileID: 0}
   quantity: {fileID: 1395104337}
   btnAddMore: {fileID: 2528708661881529196}
+  behaviorScores: []
+  model: {fileID: 0}
   EffectOnShow: 0
   autoSelfLoad: 1
+  isHome: 0
+  onChange:
+    m_PersistentCalls:
+      m_Calls: []
+  onEffectShow:
+    m_PersistentCalls:
+      m_Calls: []
+  particleWhenClaim: {fileID: 0}
   itemToLoad: {fileID: 0}
   onAddMore: []
+  offsetParticleClaim: {x: 0, y: 0}
 --- !u!1001 &4858529417465815853
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -317,47 +335,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BaseButton
-      objectReference: {fileID: 0}
-    - target: {fileID: 6952205297065852993, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
-        type: 3}
-      propertyPath: onClick.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6952205297065852993, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
-        type: 3}
-      propertyPath: onClick.Array.data[0].mTarget
-      value: 
-      objectReference: {fileID: 5544782542639714797}
-    - target: {fileID: 6952205297065852993, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
-        type: 3}
-      propertyPath: onClick.Array.data[0].mMethodName
-      value: clickMore
-      objectReference: {fileID: 0}
-    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
-        type: 3}
-      propertyPath: mSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 08a21d43587a942439dfa0bd12a058d3,
-        type: 3}
-    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
-        type: 3}
-      propertyPath: mWidth
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
-        type: 3}
-      propertyPath: mHeight
-      value: 56
-      objectReference: {fileID: 0}
-    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
-        type: 3}
-      propertyPath: aspectRatio
-      value: 1.1428572
-      objectReference: {fileID: 0}
-    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
-        type: 3}
-      propertyPath: autoResizeBoxCollider
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3346290375905700156, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
         type: 3}
@@ -412,6 +389,47 @@ PrefabInstance:
     - target: {fileID: 3346290375905700156, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952205297065852993, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+        type: 3}
+      propertyPath: onClick.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952205297065852993, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+        type: 3}
+      propertyPath: onClick.Array.data[0].mTarget
+      value: 
+      objectReference: {fileID: 5544782542639714797}
+    - target: {fileID: 6952205297065852993, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+        type: 3}
+      propertyPath: onClick.Array.data[0].mMethodName
+      value: clickMore
+      objectReference: {fileID: 0}
+    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+        type: 3}
+      propertyPath: mSprite
+      value: 
+      objectReference: {fileID: -6505091444363513190, guid: 1fbf3b028c258ed4bb8eab4f5e626cc5,
+        type: 3}
+    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+        type: 3}
+      propertyPath: mWidth
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+        type: 3}
+      propertyPath: mHeight
+      value: 56
+      objectReference: {fileID: 0}
+    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+        type: 3}
+      propertyPath: aspectRatio
+      value: 1.1428572
+      objectReference: {fileID: 0}
+    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+        type: 3}
+      propertyPath: autoResizeBoxCollider
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2539561911282382920, guid: aaa6c9b254bbcfa4aac049b71319e1ad,

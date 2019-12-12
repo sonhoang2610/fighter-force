@@ -140,7 +140,7 @@ namespace EazyEngine.Space
                 _health.InitialHealth = (int)(getAbility("Hp", pData.info.currentAbility).CurrentUnit *factorHP);
                 _health.Deffense = getAbility("Defense", pData.info.currentAbility).CurrentUnit;
                 var pSpeed = getAbility("SpeedFire", pData.info.currentAbility);
-                if (pSpeed != null)
+                if (pSpeed != null && pData.GetType() == typeof(SupportPlaneInfoConfig))
                 {
                     handleWeapon.setFactorSpeedWeapon(((float)pSpeed.CurrentUnit) / 100.0f);
                 }
