@@ -487,7 +487,11 @@ namespace EazyEngine.Space
             revieing = true;
             healDestiny = 0;
             CurrentHealth = InitialHealth;
-            GetComponent<Collider2D>().enabled = true;
+            //var collider2D = GetComponent<Collider2D>();
+            //if (collider2D)
+            //{
+            //    GetComponent<Collider2D>().enabled = true;
+            //}
             if (!invuOnStart)
             {
                 Invulnerable = false;

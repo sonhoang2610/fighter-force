@@ -5,7 +5,9 @@ using EazyEngine.Timer;
 
 public class TimeControlBehavior : MonoBehaviour
 {
+
     TimeControllerElement _time;
+
     public TimeControllerElement time
     {
         get
