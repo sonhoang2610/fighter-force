@@ -427,6 +427,9 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     public string freePlaneChoose = "";
     [System.NonSerialized]
     public string freeSpPlaneChoose = "";
+
+    public List<GameObject> pendingObjects = new List<GameObject>();
+    protected int countPending;
     protected override void Awake()
     {
         base.Awake();
@@ -435,29 +438,29 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
    //     StartCoroutine(delayAction(0.2f, spawnPool));
         // Database = Instantiate(Database);
     }
-    public void spawnPool()
-    {
+    //public void spawnPool()
+    //{
         
-        while (loadSequences.Count > 0)
-        {
+    //    while (loadSequences.Count > 0)
+    //    {
 
-            if (loadSequences[loadSequences.Count - 1].count > 0)
-            {
-                var pool = loadSequences[loadSequences.Count - 1];
-                pendingObject = pool.pooler.AddOneObjectToThePoolRemainTime(false);
-                pool.count--;
-                loadSequences[loadSequences.Count - 1] = pool;
+    //        if (loadSequences[loadSequences.Count - 1].count > 0)
+    //        {
+    //            var pool = loadSequences[loadSequences.Count - 1];
+    //            pendingObject = pool.pooler.AddOneObjectToThePoolRemainTime(false);
+    //            pool.count--;
+    //            loadSequences[loadSequences.Count - 1] = pool;
   
-                break;
-            }
-            else
-            {
-                loadSequences.RemoveAt(loadSequences.Count - 1);
-            }
-        }
-        StartCoroutine(delayAction(0.2f, spawnPool));
+    //            break;
+    //        }
+    //        else
+    //        {
+    //            loadSequences.RemoveAt(loadSequences.Count - 1);
+    //        }
+    //    }
+    //    StartCoroutine(delayAction(0.2f, spawnPool));
 
-    }
+    //}
     public void initGame()
     {
         if (PlayerPrefs.GetInt("firstGame", 0) == 5)
@@ -501,7 +504,6 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         }
     }
     bool first = true;
-    protected GameObject pendingObject = null;
     private void LateUpdate()
     {
         if (first)
@@ -511,14 +513,16 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
 
             first = false;
         }
-
+        for(int i = 0; i < pendingObjects.Count; ++i)
+        {
+            if (pendingObjects[i].activeSelf)
+            {
+                countPending++;
+            }
+        }
     }
     private void FixedUpdate()
     {
-        if (pendingObject)
-        {
-          //  pendingObject.gameObject.SetActive(false);
-        }
     }
     public GameDataBaseInstance _databaseDefault;
     [Sirenix.OdinInspector.ReadOnly]

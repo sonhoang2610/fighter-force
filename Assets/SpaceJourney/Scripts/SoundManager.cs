@@ -483,7 +483,10 @@ public class SoundManager : PersistentSingleton<SoundManager>
         _backgroundMusic.Play();
     }
 
-
+    private void OnApplicationPause(bool pause)
+    {
+        AudioListener.volume = pause ? 0 : (SfxOn ? 1 :0);
+    }
     //Dictionary<AudioClip,GameObject> sounds = new List<AudioClip,GameObject>();
     /// <summary>
     /// Plays a sound

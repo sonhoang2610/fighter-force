@@ -82,7 +82,7 @@ namespace EazyEngine.Space
             }
             if (Info.dailyMission ==null  || Info.dailyMission.dateOfYear != System.DateTime.Now.DayOfYear)
             {
-
+                GameManager.Instance.Database.collectionDailyInfo = new CollectionDailyInfo();
                 Info.dailyMission = new MissionDailyModule()
                 {
                     dateOfYear = System.DateTime.Now.DayOfYear

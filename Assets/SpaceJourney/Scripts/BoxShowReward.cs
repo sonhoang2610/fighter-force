@@ -32,16 +32,22 @@ namespace EazyEngine.Space.UI
 
         public void claim()
         {
-      
-            SoundManager.Instance.PlaySound(sfxOpen, Vector3.zero);
-            BaseItemGameInstanced[] pItems = ((IExtractItem)itemPackage).ExtractHere(false);
-            boxExtract.DataSource = pItems.ToObservableList();
+            if (itemPackage)
+            {
+                SoundManager.Instance.PlaySound(sfxOpen, Vector3.zero);
+                BaseItemGameInstanced[] pItems = ((IExtractItem)itemPackage).ExtractHere(false);
+                boxExtract.DataSource = pItems.ToObservableList();
+             
+                StartCoroutine(GameManager.Instance.delayAction(0.25f, delegate
+                {
+                    GetComponent<UIElement>().close();
+                }));
+            }
+            else {
+                GetComponent<UIElement>().close();
+            }
             claimButton.SetActive(false);
             waiting = false;
-            StartCoroutine(GameManager.Instance.delayAction(0.25f, delegate
-            {
-                GetComponent<UIElement>().close();
-            }));
         }
         public void OnEzEvent(RewardEvent eventType)
         {

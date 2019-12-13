@@ -131,7 +131,7 @@ namespace EazyEngine.Space
                 int indexBreak = 0;
                 while (true)
                 {
-                    if (pCurrent >= 100)
+                    if (pCurrent >= 100 || pItems.Count == 0)
                     {
                         break;
                     }

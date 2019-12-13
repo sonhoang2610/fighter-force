@@ -150,6 +150,7 @@ namespace EazyEngine.Space
         protected override void Awake()
         {
             base.Awake();
+            Application.backgroundLoadingPriority = ThreadPriority.High;
             if (GameManager._instance)
             {
                 if (!GameManager._instance.IsDestroyed())

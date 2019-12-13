@@ -75,6 +75,10 @@ namespace EazyEngine.Tools
                 //    GameManager.Instance.loadSequences.Add(new PoolElementSequence() { pooler = this, count = RemainPoolSize });
                 //}
             }
+            else
+            {
+                GameManager.Instance.pendingObjects.Add(GameObjectToPool);
+            }
             StartCoroutine(delayCheckSpawnPool());
        
         }
@@ -88,7 +92,10 @@ namespace EazyEngine.Tools
                 SceneManager.Instance.loadingDirty();
             }
             yield return new WaitForSeconds(0.01f);
-            StartCoroutine(delayCheckSpawnPool());
+            if (RemainPoolSize > 0)
+            {
+                StartCoroutine(delayCheckSpawnPool());
+            }
         }
         private void OnDisable()
         {

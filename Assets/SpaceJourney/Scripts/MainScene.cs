@@ -262,7 +262,7 @@ namespace EazyEngine.Space.UI
             boxInfo.Data = pInfo;
             btnFreePlay.gameObject.SetActive(!(pInfo.CurrentLevel > 0));
             boxRank.gameObject.SetActive((pInfo.CurrentLevel > 0));
-            boxRank.GetComponentInChildren<EazyFrameCache>().setFrameIndex(pInfo.Rank);
+            boxRank.GetComponentInChildren<EazyFrameCache>().setFrameIndex(pInfo.info.RankPlane);
             if (pInfo.CurrentLevel == 0 && pInfo.Info.conditionUnlock.quantityRequire > 0)
             {
                 requireUnlock.gameObject.SetActive(true);
