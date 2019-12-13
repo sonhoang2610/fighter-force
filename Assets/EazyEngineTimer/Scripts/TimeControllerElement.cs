@@ -17,7 +17,6 @@ namespace EazyEngine.Timer
         public TimeControllerElement timeLineParent;
         [SerializeField]
         private float timeScale = 1;
-
         public int customParent(int pValue, GUIContent pLabel)
         {
             var keeper = FindObjectOfType<TimeKeeper>();

@@ -6,7 +6,7 @@ Shader "HDRSprite"{
 		_Color ("Color", Color) = (1,1,1,1)
 		_Color_ROOT ("Color ROOT", Color) = (1,1,1,1)
 		[HDR]_Color_dummy1 ("Color dummy1", Color) = (1,1,1,1)
-		_MainTex ("_MainTex", 2D) = "white" { }
+		[PerRendererData] _MainTex ("_MainTex", 2D) = "white" { }
 		[MaterialToggle] PixelSnap ("Pixel snap", Float) = 0
 	}   
 	SubShader {   
