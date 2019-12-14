@@ -295,7 +295,7 @@ public class UITable : UIWidgetContainer
 	/// </summary>
 
 	[ContextMenu("Execute")]
-	public virtual void Reposition ()
+	public virtual void Reposition()
 	{
 		if (Application.isPlaying && !mInitDone && NGUITools.GetActive(this)) Init();
 

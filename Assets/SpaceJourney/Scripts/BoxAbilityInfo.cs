@@ -7,14 +7,18 @@ namespace EazyEngine.Space.UI
 {
     public class BoxAbilityInfo : BaseBox<AbilityItem,AbilityConfig>
     {
+        private void OnEnable()
+        {
+            attachMent.SendMessage("Reposition", SendMessageOptions.DontRequireReceiver);
+        }
         public override void setDataItem(AbilityConfig pData, AbilityItem pItem)
         {
             base.setDataItem(pData, pItem);
             pItem.name = "a" + pItem.Index;
-            if (!pData.isDisplay)
-            {
-                StartCoroutine(delayDeactive(pItem));
-            }
+            //if (!pData.isDisplay)
+            //{
+            //    StartCoroutine(delayDeactive(pItem));
+            //}
         }
 
         public IEnumerator delayDeactive(AbilityItem pItem)
