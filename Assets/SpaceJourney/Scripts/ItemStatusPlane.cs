@@ -9,6 +9,7 @@ namespace EazyEngine.Space.UI
     {
         public string id;
         public string[] idOverride;
+        public object[] parameters;
         public Sprite icon;
         public float Duration { get; set; }
         public float CurrentDuration { get; set; }
@@ -17,6 +18,7 @@ namespace EazyEngine.Space.UI
     {
         public UI2DSprite icon;
         public UI2DSprite fill;
+        public UILabel param1;
 
         protected Tween tweenDuration;
         public override StatusInfo Data { get => base.Data; set {
@@ -37,6 +39,13 @@ namespace EazyEngine.Space.UI
                 }
 
                 icon.sprite2D = value.icon;
+                if (param1 && value.parameters!= null && value.parameters.Length> 0)
+                {
+                    param1.text = value.parameters[0].ToString();
+                }else if (param1)
+                {
+                    param1.text = "";   
+                }
             }
         }
         // Start is called before the first frame update

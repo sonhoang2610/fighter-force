@@ -12,7 +12,7 @@ namespace EazyEngine.Space.UI
         public TimeControlBehavior timeLine;
         public UIRoot root;
         protected List<StatusInfo> cacheData = new List<StatusInfo>();
-        public void addStatus(string pId, float pDuration)
+        public void addStatusWithParams(string pId, float pDuration,params object[] pVars)
         {
             for (int i = 0; i < database.Length; ++i)
             {
@@ -36,11 +36,15 @@ namespace EazyEngine.Space.UI
                     }
                     pData.Duration = pDuration;
                     pData.CurrentDuration = pDuration;
+                    pData.parameters = pVars;
                 }
             }
             DataSource = cacheData.ToObservableList();
         }
-
+        public void addStatus(string pId, float pDuration)
+        {
+            addStatusWithParams(pId, pDuration);
+        }
         private void LateUpdate()
         {
             bool dirty = false;

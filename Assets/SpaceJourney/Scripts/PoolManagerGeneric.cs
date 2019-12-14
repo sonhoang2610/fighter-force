@@ -117,7 +117,11 @@ public class PoolManagerGeneric<T> : Singleton<T> where T : Component
             pooler.onNewGameObjectCreated = (onNewCreateObject);
             pooler.GameObjectToPool = _storage.Keys.ElementAt(i);
             pooler.PoolSize = 1; /*_storage[_storage.Keys.ElementAt(i)].countPreload - _storage[_storage.Keys.ElementAt(i)].countloadSequenceInGame;*/
-            pooler.RemainPoolSize = _storage[_storage.Keys.ElementAt(i)].countPreload;
+            pooler.RemainPoolSize = _storage[_storage.Keys.ElementAt(i)].countPreload-1 ;
+            if (pooler.RemainPoolSize < 0)
+            {
+                pooler.RemainPoolSize = 0;
+            }
             pooler.FillObjectPool();
             _storage[_storage.Keys.ElementAt(i)].pooler = pooler;
         }

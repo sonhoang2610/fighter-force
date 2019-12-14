@@ -319,6 +319,18 @@ namespace EazyEngine.Space
                 }
 
             }
+            else
+            {
+                fillModel = GetComponent<FillColor>();
+                if (fillModel)
+                {
+                    var pColorFill = Color.white;
+                    pColorFill.a = 0.8f;
+                    fillModel.colorFill = pColorFill;
+                    onTakenDamage.RemoveListener(hit);
+                    onTakenDamage.AddListener(hit);
+                }
+            }
             CurrentHealth = InitialHealth;
             if (!invuOnStart)
             {

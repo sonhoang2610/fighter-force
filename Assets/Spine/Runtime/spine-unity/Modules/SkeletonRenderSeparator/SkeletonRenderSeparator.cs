@@ -64,9 +64,11 @@ namespace Spine.Unity.Modules {
 			}
 		}
 
-		MeshRenderer mainMeshRenderer;
-		public bool copyPropertyBlock = true;
-		[Tooltip("Copies MeshRenderer flags into each parts renderer")]
+        public bool CopyPropertyBlock { get => copyPropertyBlock; set => copyPropertyBlock = value; }
+
+        MeshRenderer mainMeshRenderer;
+        public bool copyPropertyBlock = true;
+        [Tooltip("Copies MeshRenderer flags into each parts renderer")]
 		public bool copyMeshRendererFlags = true;
 		public List<Spine.Unity.Modules.SkeletonPartsRenderer> partsRenderers = new List<SkeletonPartsRenderer>();
 
@@ -202,7 +204,7 @@ namespace Spine.Unity.Modules {
 			int rendererCount = partsRenderers.Count;
 			if (rendererCount <= 0) return;
 
-			if (copyPropertyBlock)
+			if (CopyPropertyBlock)
 				mainMeshRenderer.GetPropertyBlock(copiedBlock);
 
 			var settings = new MeshGenerator.Settings {
@@ -227,7 +229,7 @@ namespace Spine.Unity.Modules {
 					var meshGenerator = currentRenderer.MeshGenerator;
 					meshGenerator.settings = settings;
 
-					if (copyPropertyBlock)
+					if (CopyPropertyBlock)
 						currentRenderer.SetPropertyBlock(copiedBlock);
 
 					// Render

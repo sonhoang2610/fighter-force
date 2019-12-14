@@ -50,7 +50,12 @@ namespace EazyEngine.Space.UI
         }
         private void OnEnable()
         {
+            EzEventManager.AddListener(this);
             checkSelf();
+        }
+        private void OnDisable()
+        {
+            EzEventManager.RemoveListener(this);
         }
         // Start is called before the first frame update
         void Start()
