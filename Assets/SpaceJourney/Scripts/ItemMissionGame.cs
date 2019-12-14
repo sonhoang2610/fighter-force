@@ -109,8 +109,10 @@ namespace EazyEngine.Space.UI
                 Data.extraInfo();
             }
             EzEventManager.TriggerEvent(new MessageGamePlayEvent("MissionDirty"));
+  
             StartCoroutine(GameManager.Instance.delayAction(0.1f, delegate {
                 Data = Data;
+                EzEventManager.TriggerEvent(new MissionEvent());
                 GameManager.Instance.SaveGame();
             }));
 

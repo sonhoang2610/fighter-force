@@ -106,11 +106,11 @@ MonoBehaviour:
       Flags: 0000
       Languages_Touch: []
     - Term: recieved_icon
-      TermType: 5
+      TermType: 2
       Description: 
       Languages:
       - ui/onlinegift/item_nhan_en
-      - ui/onlinegift/item_nhan_vi[item_nhan_vi]
+      - ui/onlinegift/item_nhan_vi
       Flags: 0000
       Languages_Touch: []
     - Term: ability/attack
@@ -1175,16 +1175,24 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - chua co
-      - chua co
+      - New Moon part
+      - "M\u1EA3nh gh\xE9p Tr\u0103ng Non"
       Flags: 0000
       Languages_Touch: []
     - Term: ui/CraftPlane8
       TermType: 0
       Description: 
       Languages:
-      - chua co
-      - chua co
+      - Void Rift part
+      - "M\u1EA3nh gh\xE9p V\u1EBFt R\xE1ch H\u01B0 Kh\xF4ng"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: ui/crit
+      TermType: 0
+      Description: 
+      Languages:
+      - Critical
+      - "B\u1EA1o k\xEDch"
       Flags: 0000
       Languages_Touch: []
     - Term: plane/CircleMain3
@@ -1458,7 +1466,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - Gun Goddess
-      - "Th\u1EA7n kh\xF4ng gian"
+      - "Th\u1EA7n Kh\xF4ng Gian"
       Flags: 0000
       Languages_Touch: []
     - Term: plane/sp_plane2
@@ -1466,7 +1474,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - Green Flash
-      - "Tia ch\u1EDBp xanh"
+      - "Tia Ch\u1EDBp Xanh"
       Flags: 0000
       Languages_Touch: []
     - Term: plane/sp_plane3
@@ -1474,7 +1482,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - Destroyer
-      - "K\u1EBB h\u1EE7y di\u1EC7t"
+      - "K\u1EBB H\u1EE7y Di\u1EC7t"
       Flags: 0000
       Languages_Touch: []
     - Term: plane/sp_plane4
@@ -1490,7 +1498,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - Fire God
-      - "Th\u1EA7n l\u1EEDa"
+      - "Th\u1EA7n L\u1EEDa"
       Flags: 0000
       Languages_Touch: []
     - Term: plane/sp_plane6
@@ -1498,7 +1506,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - Pulsefire Spike
-      - "Gai t\u1ED1i th\u01B0\u1EE3ng"
+      - "Gai T\u1ED1i Th\u01B0\u1EE3ng"
       Flags: 0000
       Languages_Touch: []
     - Term: plane/sp_plane7
@@ -1506,7 +1514,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - Deadly Ray
-      - "Tia ch\u1EBFt ch\xF3c"
+      - "Tia Ch\u1EBFt Ch\xF3c"
       Flags: 0000
       Languages_Touch: []
     - Term: plane/sp_plane8
@@ -1514,7 +1522,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - Big Bang
-      - "V\u1EE5 n\u1ED5 l\u1EDBn"
+      - "V\u1EE5 N\u1ED5 L\u1EDBn"
       Flags: 0000
       Languages_Touch: []
     - Term: plane/sp_plane9
@@ -1522,7 +1530,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - Demolition Star
-      - "Ng\xF4i sao h\u1EE7y di\u1EC7t"
+      - "Ng\xF4i Sao H\u1EE7y Di\u1EC7t"
       Flags: 0000
       Languages_Touch: []
     - Term: plane/spplane1_info
@@ -1688,7 +1696,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Attack power increases by 100%
+      - Attack power increases by $damageBooster %
       - "S\u1EE9c t\u1EA5n c\xF4ng t\u0103ng $damageBooster %"
       Flags: 0000
       Languages_Touch: []
@@ -1696,80 +1704,88 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - Increase the power of accompaning Main Ship by 20%
-      - chua co
+      - Increase the power of accompaning Main Ship by $damageBooster %
+      - "T\u0103ng s\u1EE9c m\u1EA1nh t\xE0u ch\xEDnh \u0111i k\xE8m th\xEAm $damageBooster
+        %"
       Flags: 0000
       Languages_Touch: []
     - Term: plane/plane8_skill1
       TermType: 0
       Description: 
       Languages:
-      - chua co
-      - chua co
+      - Creates an energy ball that shoots a laser around
+      - "T\u1EA1o 1 qu\u1EA3 c\u1EA7u n\u0103ng l\u01B0\u1EE3ng b\u1EAFn tia laser
+        ra xung quanh"
       Flags: 0000
       Languages_Touch: []
     - Term: plane/plane8_skill2
       TermType: 0
       Description: 
       Languages:
-      - chua co
-      - chua co
+      - Increase damage by $damageBooster % when taking damage
+      - "Khi nh\xE2n s\xE1t th\u01B0\u01A1ng s\u1EBD t\u0103ng th\xEAm $damageBooster
+        % s\xE1t th\u01B0\u01A1ng c\u1EE7a m\xE1y bay"
       Flags: 0000
       Languages_Touch: []
     - Term: plane/plane8_skill3
       TermType: 0
       Description: 
       Languages:
-      - chua co
-      - chua co
+      - Receive a shield that blocks one damage. When the shield breaks enter the
+        super state
+      - "Nh\u1EADn 1 khi\xEAn \u0111\u1EE1 1 l\u1EA7n s\xE1t th\u01B0\u01A1ng. Khi
+        khi\xEAn n\xE0y v\u1EE1 s\u1EBD ti\u1EBFn v\xE0o tr\u1EA1ng th\xE1i super"
       Flags: 0000
       Languages_Touch: []
     - Term: plane/plane7_skill1
       TermType: 0
       Description: 
       Languages:
-      - chua co
-      - chua co
+      - Shoot the round of bullets
+      - "B\u1EAFn lo\u1EA1t \u0111\u1EA1n xoay v\xF2ng"
       Flags: 0000
       Languages_Touch: []
     - Term: plane/plane7_skill2
       TermType: 0
       Description: 
       Languages:
-      - chua co
-      - chua co
+      - 'Receive a shield that blocks one damage. When the shield breaks create a
+        Shield '
+      - "Nh\u1EADn 1 khi\xEAn \u0111\u1EE1 1 l\u1EA7n s\xE1t th\u01B0\u01A1ng. Khi
+        khi\xEAn n\xE0y v\u1EE1 s\u1EBD t\u1EA1o ra 1 v\xF2ng tr\xF2n b\u1EA3o v\u1EC7"
       Flags: 0000
       Languages_Touch: []
     - Term: plane/MainPlane8
       TermType: 0
       Description: 
       Languages:
-      - chua co
-      - chua co
+      - Void Rift
+      - "V\u1EBFt R\xE1ch H\u01B0 Kh\xF4ng"
       Flags: 0000
       Languages_Touch: []
     - Term: plane/plane8_info
       TermType: 0
       Description: 
       Languages:
-      - chua co
-      - chua co
+      - Fire bullets in a horizontal line and super strong laser beam
+      - "B\u1EAFn lo\u1EA1t \u0111\u1EA1n theo h\xE0ng ngang v\xE0 chi\u1EBFu m\u1ED9t
+        tia laser c\u1EF1c m\u1EA1nh"
       Flags: 0000
       Languages_Touch: []
     - Term: plane/main_plane7
       TermType: 0
       Description: 
       Languages:
-      - chua co
-      - chua co
+      - New Moon
+      - "Tr\u0103ng Non"
       Flags: 0000
       Languages_Touch: []
     - Term: plane/plane_info7
       TermType: 0
       Description: 
       Languages:
-      - chua co
-      - chua co
+      - Shoot bullets focusing on the middle
+      - "B\u1EAFn \u0111\u1EA1n t\u1EADp trung v\xE0o gi\u1EEFa"
       Flags: 0000
       Languages_Touch: []
     - Term: text/FirstRewardBoxContent
@@ -2439,7 +2455,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbx8Wa8N32JyZ5C4pYOJ3jF2_oE2-cIG5ljH845Z/exec
     Google_SpreadsheetKey: 1pkO-Gbk-Dc8oWvX3kBUU66aMqePyy6D93nsLx9wsiAQ
     Google_SpreadsheetName: I2Loc Fighter Force Localization
-    Google_LastUpdatedVersion: 1575955686381
+    Google_LastUpdatedVersion: 1576308913632
     Google_Password: lengochan
     GoogleUpdateFrequency: 0
     GoogleInEditorCheckFrequency: 0

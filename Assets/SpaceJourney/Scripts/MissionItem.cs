@@ -137,7 +137,16 @@ namespace EazyEngine.Space
                 return pResult;
             }
         }
-        public float Process { get => process; set { process = value; OnChangeObject(); } }
+        public float Process { get => process; set {
+                //if (value != process)
+                //{
+                //    EzEventManager.TriggerEvent(new MissionEvent());
+                //}
+                process = value;
+                OnChangeObject();
+  
+            }
+        }
         public bool Claimed { get => claimed; set { claimed = value; OnChangeObject(); } }
         [ShowInInspector]
         public IBlackboard BlackBoard { get => blackBoard; set => blackBoard = value; }
