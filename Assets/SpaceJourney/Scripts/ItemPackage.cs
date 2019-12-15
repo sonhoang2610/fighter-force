@@ -135,7 +135,10 @@ namespace EazyEngine.Space
                     {
                         break;
                     }
-                    int index = Random.Range(0, pItems.Count);
+	                int index = Random.Range(0, pItems.Count);
+	                if(index >= pItems.Count){
+	                	continue;
+	                }
                     pCurrent += (int)pItems[index].percent;
                     if (pRandom <= pCurrent)
                     {
