@@ -89,13 +89,14 @@ namespace EazyEngine.Tools
 
         IEnumerator delayCheckSpawnPool()
         {
+            yield return new WaitForSeconds(0.01f);
             if (_remainPoolsize > 0)
             {
                 AddOneObjectToThePoolRemainTime(false);
                 _remainPoolsize--;
                 SceneManager.Instance.loadingDirty();
             }
-            yield return new WaitForSeconds(0.01f);
+        
             if (_remainPoolsize > 0)
             {
                 StartCoroutine(delayCheckSpawnPool());
