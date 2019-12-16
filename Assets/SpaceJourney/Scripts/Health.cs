@@ -112,7 +112,10 @@ namespace EazyEngine.Space
                 {
                     if (animDeath)
                     {
-                        Collider2D.enabled = false;
+                        if (Collider2D)
+                        {
+                            Collider2D.enabled = false;
+                        }
                         CharacterMain.SetTrigger(triggerAnimDeath);
                     }
                     else
@@ -427,7 +430,10 @@ namespace EazyEngine.Space
             {
                 if (animDeath)
                 {
-                    Collider2D.enabled = false;
+                    if (Collider2D)
+                    {
+                        Collider2D.enabled = false;
+                    }
                     CharacterMain.SetTrigger(triggerAnimDeath);
                 }
                 else
