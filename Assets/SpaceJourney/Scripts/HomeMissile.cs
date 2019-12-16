@@ -10,6 +10,7 @@ public interface ISetTarget
 {
     void setTarget(GameObject pObject);
 }
+
 public class HomeMissile : MonoBehaviour, ISetTarget, IMovementProjectile, IgnoreObject
 {
     public int countFindTarget = -1;
@@ -30,9 +31,6 @@ public class HomeMissile : MonoBehaviour, ISetTarget, IMovementProjectile, Ignor
     Health _health;
     protected int currentCountFindTarget;
     List<GameObject> _listIgnoreCollider = new List<GameObject>();
- //   private Collider2D _cacheCollider;
- //   private bool isSelfDamage;
- //   private DamageOnTouch _dameOnTouch;
     protected float currentRotate = 0;
     protected Vector2 CachePosLastTarget;
     public bool IsEnable()
@@ -57,17 +55,7 @@ public class HomeMissile : MonoBehaviour, ISetTarget, IMovementProjectile, Ignor
     private void OnEnable()
     {
         currentRotate = 0;
-        //if (!_dameOnTouch)
-        //{
-        //    _dameOnTouch = GetComponent<DamageOnTouch>();
-        //}
-       // target = null;
         currentCountFindTarget = countFindTarget;
-      //  _cacheCollider = null;
-      //  isSelfDamage = false;
-     //   _dameOnTouch.ClearIgnoreList();
-      //  _listIgnoreCollider.Clear();
-   //     EzEventManager.AddListener(this);
     }
 
     public void forceFoundTarget()
@@ -78,7 +66,6 @@ public class HomeMissile : MonoBehaviour, ISetTarget, IMovementProjectile, Ignor
 
     private void OnDisable()
     {
-       // EzEventManager.RemoveListener(this);
         target = null;
     }
 
@@ -165,10 +152,6 @@ public class HomeMissile : MonoBehaviour, ISetTarget, IMovementProjectile, Ignor
         }
         if(!target || !target.gameObject.activeSelf) {
             Vector2 pDirectionPoint = defaultDirection;
-            //if (CachePosLastTarget != Vector2.zero)
-            //{
-            //    pDirectionPoint = CachePosLastTarget;
-            //}
             Vector2 point2Target = -defaultDirection;
 
             point2Target.Normalize();
@@ -197,50 +180,6 @@ public class HomeMissile : MonoBehaviour, ISetTarget, IMovementProjectile, Ignor
         rb.angularVelocity = 0;
         enabled = false;
     }
-
-    //public void addIgnoreObject(Collider2D pCollider)
-    //{
-    //    _listIgnoreCollider.Add(pCollider.gameObject);
-    //    _dameOnTouch.IgnoreGameObject(pCollider.gameObject);
-    //    GetComponent<Health>().showDeathEffect();
-    //}
-
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (isSelfDamage)
-    //    {
-    //        isSelfDamage = false;
-    //        _listIgnoreCollider.Add(collision.gameObject);
-    //        if (autoTarget)
-    //        {
-    //            findTargetMinDistance();
-    //        }
-    //    }
-    //    else
-    //    {
-    //        _cacheCollider = collision;
-    //    }
-    //}
-
-    //void EzEventListener<DamageTakenEvent>.OnEzEvent(DamageTakenEvent eventType)
-    //{
-    //    if(eventType.AffectedCharacter == eventType.Instigator == gameObject || (eventType.AffectedCharacter == null && eventType.Instigator == gameObject))
-    //    {
-    //        if (_cacheCollider != null)
-    //        {
-    //            addIgnoreObject(_cacheCollider);
-    //            if (autoTarget)
-    //            {
-    //                findTargetMinDistance();
-    //            }
-    //            _cacheCollider = null;
-    //        }
-    //        else
-    //        {
-    //            isSelfDamage = true;
-    //        }
-    //    }
-    //}
 
     public void setTarget(GameObject pObject)
     {
@@ -295,15 +234,4 @@ public class HomeMissile : MonoBehaviour, ISetTarget, IMovementProjectile, Ignor
     {
         _listIgnoreCollider.Clear();
     }
-    //void OnTriggerEnter2D(Collider2D other)
-    //{
-
-    //    if (destroyOnCollider)
-    //    {
-
-    //        Destroy(this.gameObject, 0.02f);
-
-    //    }
-
-    //}
 }

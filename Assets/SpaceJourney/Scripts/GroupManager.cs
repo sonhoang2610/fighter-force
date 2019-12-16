@@ -417,6 +417,7 @@ namespace EazyEngine.Space
         {
             leaders.Clear();
             managers.Clear();
+            GameManager.Instance.pendingObjects.Clear();
             PlayerEnviroment.eviromentInstant.Clear();
             SoundManager.PoolInGameAudios.Clear();
             SoundManager.Instance.StopAllCoroutines();

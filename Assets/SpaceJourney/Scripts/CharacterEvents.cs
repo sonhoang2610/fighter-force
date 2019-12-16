@@ -29,8 +29,32 @@ namespace EazyEngine.Space
             PreviousHealth = previousHealth;
         }
     }
+    [System.Serializable]
+    public struct DamageGivenEvent
+    {
+        public GameObject Affected;
+        public GameObject Instigator;
+        public float CurrentHealth;
+        public float DamageCaused;
+        public float PreviousHealth;
 
-   
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MoreMountains.CorgiEngine.MMDamageTakenEvent"/> struct.
+        /// </summary>
+        /// <param name="affectedCharacter">Affected character.</param>
+        /// <param name="instigator">Instigator.</param>
+        /// <param name="currentHealth">Current health.</param>
+        /// <param name="damageCaused">Damage caused.</param>
+        /// <param name="previousHealth">Previous health.</param>
+        public DamageGivenEvent(GameObject affectedCharacter, GameObject instigator, float currentHealth, float damageCaused, float previousHealth)
+        {
+            Affected = affectedCharacter;
+            Instigator = instigator;
+            CurrentHealth = currentHealth;
+            DamageCaused = damageCaused;
+            PreviousHealth = previousHealth;
+        }
+    }
 
     public struct PickEvent
     {

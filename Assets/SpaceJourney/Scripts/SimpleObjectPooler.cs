@@ -41,9 +41,11 @@ namespace EazyEngine.Tools
         {
             return GameObjectToPool;
         }
+        int _remainPoolsize = 0;
         /// <summary>
         /// Fills the object pool with the gameobject type you've specified in the inspector
         /// </summary>
+        /// 
         public override void FillObjectPool()
         {
             if (!LevelManger.InstanceRaw) return;
@@ -54,6 +56,7 @@ namespace EazyEngine.Tools
                 DontDestroyOnLoad(poolLocal[GameObjectToPool].parrent);
             }
             _pooledGameObjects = poolLocal[GameObjectToPool].poolObjects;
+     
             if (poolLocal[GameObjectToPool].poolObjects.Count < PoolSize)
             {
 
@@ -63,11 +66,12 @@ namespace EazyEngine.Tools
                     AddOneObjectToThePool();
                 }
             }
-            if (RemainPoolSize > 0)
+            _remainPoolsize = ((PoolSize + RemainPoolSize) - poolLocal[GameObjectToPool].poolObjects.Count) <= 0 ? 0 : ((PoolSize + RemainPoolSize) - poolLocal[GameObjectToPool].poolObjects.Count);
+            if (_remainPoolsize > 0)
             {
                 if (SceneManager.Instance.isLoading)
                 {
-                    SceneManager.Instance.addloading(RemainPoolSize);
+                    SceneManager.Instance.addloading(_remainPoolsize);
                 }
                 //var pool = GameManager.Instance.loadSequences.Find(x => x.pooler == this);
                 //if (pool.pooler != this)
@@ -85,14 +89,14 @@ namespace EazyEngine.Tools
 
         IEnumerator delayCheckSpawnPool()
         {
-            if (RemainPoolSize > 0)
+            if (_remainPoolsize > 0)
             {
                 AddOneObjectToThePoolRemainTime(false);
-                RemainPoolSize--;
+                _remainPoolsize--;
                 SceneManager.Instance.loadingDirty();
             }
             yield return new WaitForSeconds(0.01f);
-            if (RemainPoolSize > 0)
+            if (_remainPoolsize > 0)
             {
                 StartCoroutine(delayCheckSpawnPool());
             }

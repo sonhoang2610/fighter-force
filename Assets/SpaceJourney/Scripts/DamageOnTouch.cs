@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using EazyEngine.Tools;
 using Sirenix.OdinInspector;
+using UnityEngine.Events;
 
 namespace EazyEngine.Space
 {
@@ -71,6 +72,11 @@ namespace EazyEngine.Space
             return pArray.ToArray();
         }
     }
+    [System.Serializable]
+    public class DamageGivenEventUnity : UnityEvent<DamageGivenEvent>
+    {
+
+    }
     public class DamageOnTouch : TimeControlBehavior, IRespawn, IgnoreObject
     {
         public LayerMask TargetMaskLayer;
@@ -83,6 +89,7 @@ namespace EazyEngine.Space
         public float durationForNextDame = 0.1f;
         public LayerMask TakenDamageMask = ~0;
         public int DamageTakenWithEveryThing = 0;
+        public DamageGivenEventUnity onDamageAnother;
         [HideInInspector]
         public DamageOnTouch parentDamage;
         [HideInInspector]
@@ -328,7 +335,10 @@ namespace EazyEngine.Space
             {
                 pDecrease = factorMinDamageDecrease;
             }
+            var previousHealth = health.CurrentHealth;
+            var pDamageCause = (int)((pCurrentDamge + pExtraDamage) * pDecrease);
             health.Damage((int)((pCurrentDamge + pExtraDamage) * pDecrease), gameObject, 0, 0);
+            onDamageAnother?.Invoke(new DamageGivenEvent(health.gameObject, gameObject, health.CurrentHealth, pDamageCause, previousHealth));
             if (ignoreOnDamaged)
             {
                 IgnoreGameObject(health.gameObject);
