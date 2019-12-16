@@ -328,6 +328,7 @@ namespace EazyEngine.Space.UI
                     boxTimer.gameObject.SetActive(false);
                 }
             }
+            boxTimer.transform.parent.gameObject.SendMessage("Reposition", SendMessageOptions.DontRequireReceiver);
         }
         protected TimeSpan timeCountDown;
         protected bool isInit = false;

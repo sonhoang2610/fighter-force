@@ -10,13 +10,14 @@ public interface ISetTarget
 {
     void setTarget(GameObject pObject);
 }
-public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>, ISetTarget, IMovementProjectile
+public class HomeMissile : MonoBehaviour, ISetTarget, IMovementProjectile, IgnoreObject
 {
     public int countFindTarget = -1;
     public float speed = 5;
     public float rotatingSpeed = 200;
     public float limitRotate = 200;
     public GameObject target;
+    protected Health  healTarget;
     public TranformExtension.FacingDirection facingDefault = TranformExtension.FacingDirection.DOWN;
     public bool autoTarget;
     public bool useSpeedMain = false;
@@ -29,9 +30,9 @@ public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>, ISet
     Health _health;
     protected int currentCountFindTarget;
     List<GameObject> _listIgnoreCollider = new List<GameObject>();
-    private Collider2D _cacheCollider;
-    private bool isSelfDamage;
-    private DamageOnTouch _dameOnTouch;
+ //   private Collider2D _cacheCollider;
+ //   private bool isSelfDamage;
+ //   private DamageOnTouch _dameOnTouch;
     protected float currentRotate = 0;
     protected Vector2 CachePosLastTarget;
     public bool IsEnable()
@@ -56,17 +57,17 @@ public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>, ISet
     private void OnEnable()
     {
         currentRotate = 0;
-        if (!_dameOnTouch)
-        {
-            _dameOnTouch = GetComponent<DamageOnTouch>();
-        }
+        //if (!_dameOnTouch)
+        //{
+        //    _dameOnTouch = GetComponent<DamageOnTouch>();
+        //}
        // target = null;
         currentCountFindTarget = countFindTarget;
-        _cacheCollider = null;
-        isSelfDamage = false;
-        _dameOnTouch.ClearIgnoreList();
-        _listIgnoreCollider.Clear();
-        EzEventManager.AddListener(this);
+      //  _cacheCollider = null;
+      //  isSelfDamage = false;
+     //   _dameOnTouch.ClearIgnoreList();
+      //  _listIgnoreCollider.Clear();
+   //     EzEventManager.AddListener(this);
     }
 
     public void forceFoundTarget()
@@ -77,7 +78,7 @@ public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>, ISet
 
     private void OnDisable()
     {
-        EzEventManager.RemoveListener(this);
+       // EzEventManager.RemoveListener(this);
         target = null;
     }
 
@@ -105,6 +106,7 @@ public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>, ISet
                     {
                         distance = pDistance;
                         target = _chars[i].gameObject;
+                        healTarget = target.GetComponent<Health>();
                         onFindTarget.Invoke();
                         OnFindTarget();
                   
@@ -125,8 +127,13 @@ public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>, ISet
     void FixedUpdate()
     {
         {
+            if (_listIgnoreCollider.Contains(target) || healTarget.CurrentHealth <= 0 || healTarget.Invulnerable ||!healTarget.Collider2D.enabled)
+            {
+                target = null;
+            }
             if (target && target.gameObject.activeSelf)
             {
+               
                 if (currentRotate > limitRotate) { rb.angularVelocity = 0; return; }
                 CachePosLastTarget = target.transform.position;
                 Vector2 point2Target = (Vector2)transform.position - (Vector2)target.transform.position;
@@ -191,53 +198,54 @@ public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>, ISet
         enabled = false;
     }
 
-    public void addIgnoreObject(Collider2D pCollider)
-    {
-        _listIgnoreCollider.Add(pCollider.gameObject);
-        _dameOnTouch.IgnoreGameObject(pCollider.gameObject);
-        GetComponent<Health>().showDeathEffect();
-    }
+    //public void addIgnoreObject(Collider2D pCollider)
+    //{
+    //    _listIgnoreCollider.Add(pCollider.gameObject);
+    //    _dameOnTouch.IgnoreGameObject(pCollider.gameObject);
+    //    GetComponent<Health>().showDeathEffect();
+    //}
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (isSelfDamage)
-        {
-            isSelfDamage = false;
-            _listIgnoreCollider.Add(collision.gameObject);
-            if (autoTarget)
-            {
-                findTargetMinDistance();
-            }
-        }
-        else
-        {
-            _cacheCollider = collision;
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (isSelfDamage)
+    //    {
+    //        isSelfDamage = false;
+    //        _listIgnoreCollider.Add(collision.gameObject);
+    //        if (autoTarget)
+    //        {
+    //            findTargetMinDistance();
+    //        }
+    //    }
+    //    else
+    //    {
+    //        _cacheCollider = collision;
+    //    }
+    //}
 
-    void EzEventListener<DamageTakenEvent>.OnEzEvent(DamageTakenEvent eventType)
-    {
-        if(eventType.AffectedCharacter == eventType.Instigator == gameObject || (eventType.AffectedCharacter == null && eventType.Instigator == gameObject))
-        {
-            if (_cacheCollider != null)
-            {
-                addIgnoreObject(_cacheCollider);
-                if (autoTarget)
-                {
-                    findTargetMinDistance();
-                }
-                _cacheCollider = null;
-            }
-            else
-            {
-                isSelfDamage = true;
-            }
-        }
-    }
+    //void EzEventListener<DamageTakenEvent>.OnEzEvent(DamageTakenEvent eventType)
+    //{
+    //    if(eventType.AffectedCharacter == eventType.Instigator == gameObject || (eventType.AffectedCharacter == null && eventType.Instigator == gameObject))
+    //    {
+    //        if (_cacheCollider != null)
+    //        {
+    //            addIgnoreObject(_cacheCollider);
+    //            if (autoTarget)
+    //            {
+    //                findTargetMinDistance();
+    //            }
+    //            _cacheCollider = null;
+    //        }
+    //        else
+    //        {
+    //            isSelfDamage = true;
+    //        }
+    //    }
+    //}
 
     public void setTarget(GameObject pObject)
     {
         target = pObject;
+        healTarget = target.GetComponent<Health>();
     }
 
     public void setDirection(Vector2 pDir)
@@ -262,15 +270,30 @@ public class HomeMissile : MonoBehaviour,EzEventListener<DamageTakenEvent>, ISet
     {
         return isBlockMove;
     }
+    public bool blockRotation= true;
+
+    public GameObject[] IgnoreObjects { get => _listIgnoreCollider.ToArray(); set {
+            _listIgnoreCollider.Clear();
+            _listIgnoreCollider.AddRange(value); } }
 
     public bool isBlockRotation()
     {
-        return true;
+        return blockRotation;
     }
 
     public int getIndex()
     {
         return 0;
+    }
+
+    public void IgnoreGameObject(GameObject pObject)
+    {
+        _listIgnoreCollider.Add(pObject);
+    }
+
+    public void ClearIgnoreList()
+    {
+        _listIgnoreCollider.Clear();
     }
     //void OnTriggerEnter2D(Collider2D other)
     //{

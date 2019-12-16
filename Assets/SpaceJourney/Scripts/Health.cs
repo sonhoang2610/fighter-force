@@ -65,6 +65,7 @@ namespace EazyEngine.Space
         protected float currentDurationResetDamaged = 0;
         protected int indexDamaged = 0;
         protected Health parentHealth;
+        private Collider2D _collider2D;
 
 
         private void Awake()
@@ -111,7 +112,7 @@ namespace EazyEngine.Space
                 {
                     if (animDeath)
                     {
-                        GetComponent<Collider2D>().enabled = false;
+                        Collider2D.enabled = false;
                         CharacterMain.SetTrigger(triggerAnimDeath);
                     }
                     else
@@ -211,6 +212,8 @@ namespace EazyEngine.Space
         }
 
         public Health ParentHealth { get => parentHealth; set => parentHealth = value; }
+        public Collider2D Collider2D { get => _collider2D; set => _collider2D = value; }
+
         public void triggerToParent(string pTrigger)
         {
             if (ParentHealth)
@@ -299,7 +302,7 @@ namespace EazyEngine.Space
         }
         protected virtual void Initialization()
         {
-
+            Collider2D = GetComponent<Collider2D>();
             currentDeffense = deffense;
             CharacterMain = GetComponent<Character>();
             if (_character && _character.modelObject)
@@ -424,7 +427,7 @@ namespace EazyEngine.Space
             {
                 if (animDeath)
                 {
-                    GetComponent<Collider2D>().enabled = false;
+                    Collider2D.enabled = false;
                     CharacterMain.SetTrigger(triggerAnimDeath);
                 }
                 else
