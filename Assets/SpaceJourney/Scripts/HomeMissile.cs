@@ -127,7 +127,7 @@ public class HomeMissile : MonoBehaviour, ISetTarget, IMovementProjectile, Ignor
     void FixedUpdate()
     {
         {
-            if (_listIgnoreCollider.Contains(target) || healTarget.CurrentHealth <= 0 || healTarget.Invulnerable || !healTarget.Collider2D || !healTarget.Collider2D.enabled)
+            if (target && (_listIgnoreCollider.Contains(target) || healTarget.CurrentHealth <= 0 || healTarget.Invulnerable || !healTarget.Collider2D || !healTarget.Collider2D.enabled))
             {
                 target = null;
             }
