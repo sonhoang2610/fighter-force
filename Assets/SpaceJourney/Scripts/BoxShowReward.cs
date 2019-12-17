@@ -32,7 +32,7 @@ namespace EazyEngine.Space.UI
 
         public void claim()
         {
-            if (itemPackage)
+            if (itemPackage && waiting)
             {
                 SoundManager.Instance.PlaySound(sfxOpen, Vector3.zero);
                 BaseItemGameInstanced[] pItems = ((IExtractItem)itemPackage).ExtractHere(false);
@@ -134,6 +134,7 @@ namespace EazyEngine.Space.UI
                 SoundManager.Instance.PlaySound(sfxOpen,Vector3.zero);
                 BaseItemGameInstanced[] pItems = ((IExtractItem)itemPackage).ExtractHere(false);
                 boxExtract.DataSource = pItems.ToObservableList();
+                waiting = false;
             }
         }
     }
