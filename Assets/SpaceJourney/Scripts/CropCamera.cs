@@ -27,13 +27,28 @@ public class CropCamera : MonoBehaviour
         
     }
     bool isClearRender = false;
+    [ContextMenu("Clear Manual")]
     public void clearRender()
     {
+
         isClearRender = true;
+       
     }
-  
-    // Start is called before the first frame update
-    void Start()
+    private void OnPostRender()
+    {
+        if (isClearRender)
+        {
+            isClearRender = false;
+            //GL.Clear(true, true, Color.black);
+        }
+    }
+    public void OnRenderObject()
+    {
+ 
+    }
+
+        // Start is called before the first frame update
+        void Start()
     {
         cropCamera();
     }
