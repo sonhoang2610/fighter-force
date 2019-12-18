@@ -24,7 +24,6 @@ namespace EazyEngine.Tools
         public GameObject GameObjectToPool;
         /// the number of objects we'll add to the pool
         public int PoolSize = 20;
-        [HideInEditorMode]
         public int RemainPoolSize = 0;
         /// if true, the pool will automatically add objects to the itself if needed
         public bool PoolCanExpand = true;
@@ -79,11 +78,11 @@ namespace EazyEngine.Tools
                 //    GameManager.Instance.loadSequences.Add(new PoolElementSequence() { pooler = this, count = RemainPoolSize });
                 //}
             }
-            else
+            else if (!GameManager.Instance.pendingObjects.Contains(GameObjectToPool))
             {
                 GameManager.Instance.pendingObjects.Add(GameObjectToPool);
             }
-            StartCoroutine(delayCheckSpawnPool());
+            SceneManager.Instance.StartCoroutine(delayCheckSpawnPool());
        
         }
 
@@ -92,14 +91,18 @@ namespace EazyEngine.Tools
             yield return new WaitForSeconds(0.01f);
             if (_remainPoolsize > 0)
             {
-                AddOneObjectToThePoolRemainTime(false);
+                var pRemain = ((PoolSize + RemainPoolSize) - poolLocal[GameObjectToPool].poolObjects.Count);
+                if (pRemain > 0)
+                {
+                    AddOneObjectToThePoolRemainTime(false);
+                }
                 _remainPoolsize--;
                 SceneManager.Instance.loadingDirty();
             }
         
             if (_remainPoolsize > 0)
             {
-                StartCoroutine(delayCheckSpawnPool());
+                SceneManager.Instance.StartCoroutine(delayCheckSpawnPool());
             }
         }
         private void OnDisable()

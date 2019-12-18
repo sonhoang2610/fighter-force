@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using EazyEngine.Tools;
+using MK.Glow.Legacy;
 
 namespace EazyEngine.Space.UI
 {
@@ -42,6 +43,12 @@ namespace EazyEngine.Space.UI
         void Update()
         {
 
+        }
+
+        public void disableMkGlow(GameObject pButton)
+        {
+            FindObjectOfType<MKGlow>().enabled = false;
+            pButton.gameObject.SetActive(false);
         }
     }
 }
