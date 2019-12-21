@@ -24,8 +24,6 @@ MonoBehaviour:
   onEmptyStorage:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onStartRestore:
     m_PersistentCalls:
       m_Calls:
@@ -40,13 +38,9 @@ MonoBehaviour:
           m_StringArgument: ShootDone
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onNotEnough:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &3557118928562762126
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,7 +80,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1072918119399550, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}
       propertyPath: m_Name
-      value: enemy12_weapon_sin 2
+      value: weaponsin
       objectReference: {fileID: 0}
     - target: {fileID: 2055980546, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}
       propertyPath: attachMentPosStartNew.Array.size
@@ -209,12 +203,6 @@ PrefabInstance:
       propertyPath: particleEffects.Array.data[0].orderlayer
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114506514760959066, guid: 2874c1af8f7d48e4da308bafe7aea49a,
-        type: 3}
-      propertyPath: GameObjectToPool
-      value: 
-      objectReference: {fileID: 8269517097850452423, guid: e8b124eb87bb74b4aa07d6747c44359d,
-        type: 3}
     - target: {fileID: 4180916872256662, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -258,6 +246,17 @@ PrefabInstance:
     - target: {fileID: 4180916872256662, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114506514760959066, guid: 2874c1af8f7d48e4da308bafe7aea49a,
+        type: 3}
+      propertyPath: GameObjectToPool
+      value: 
+      objectReference: {fileID: 8269517097850452423, guid: e8b124eb87bb74b4aa07d6747c44359d,
+        type: 3}
+    - target: {fileID: 114506514760959066, guid: 2874c1af8f7d48e4da308bafe7aea49a,
+        type: 3}
+      propertyPath: RemainPoolSize
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}

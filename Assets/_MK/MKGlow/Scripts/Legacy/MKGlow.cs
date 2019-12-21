@@ -169,6 +169,9 @@ namespace MK.Glow.Legacy
 
 		public void OnEnable()
 		{
+//#if UNITY_IOS
+//            allowGeometryShaders = true;
+//#endif
             _effect = new Effect();
 			_effect.Enable(RenderPipeline.Legacy);
 

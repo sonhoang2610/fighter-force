@@ -46,6 +46,7 @@ MonoBehaviour:
   GameObjectToPool: {fileID: 8269517097850452423, guid: 5080686951c5df94daba823caeb8964c,
     type: 3}
   PoolSize: 3
+  RemainPoolSize: 9
   PoolCanExpand: 1
   dontDestroyOnload: 0
 --- !u!114 &2407462514692682219
@@ -66,18 +67,12 @@ MonoBehaviour:
   onEnableEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onDisableEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onStartEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onInitEvent:
     m_PersistentCalls:
       m_Calls:
@@ -92,13 +87,12 @@ MonoBehaviour:
           m_StringArgument: 0|1
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onEnableLateUpdateEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  onCompleteTweenShow:
+    m_PersistentCalls:
+      m_Calls: []
   relative: 0
 --- !u!1 &3557118928562762126
 GameObject:
@@ -176,6 +170,7 @@ MonoBehaviour:
   GameObjectToPool: {fileID: 8269517097850452423, guid: 7fa78e664f050674ea24ac6ceae85a04,
     type: 3}
   PoolSize: 3
+  RemainPoolSize: 9
   PoolCanExpand: 1
   dontDestroyOnload: 0
 --- !u!1 &6635658989599981584
@@ -392,7 +387,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114506514760959066, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}
 --- !u!1 &2715724407745995169 stripped
 GameObject:

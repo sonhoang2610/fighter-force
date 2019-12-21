@@ -95,7 +95,12 @@ public class DictionnaryPrefabInfo
         _array.RemoveAt(index);
     }
 }
-public class PoolManagerGeneric<T> : Singleton<T> where T : Component
+
+public interface IPool
+{
+   void GameObjectPools(List<GameObject> pListObjectPool);
+}
+public class PoolManagerGeneric<T> : Singleton<T>, IPool where T : Component
 {
     [SerializeField]
     [HideLabel]
@@ -117,7 +122,7 @@ public class PoolManagerGeneric<T> : Singleton<T> where T : Component
             pooler.onNewGameObjectCreated = (onNewCreateObject);
             pooler.GameObjectToPool = _storage.Keys.ElementAt(i);
             pooler.PoolSize = 1; /*_storage[_storage.Keys.ElementAt(i)].countPreload - _storage[_storage.Keys.ElementAt(i)].countloadSequenceInGame;*/
-            pooler.RemainPoolSize = _storage[_storage.Keys.ElementAt(i)].countPreload-1 ;
+            pooler.RemainPoolSize = (_storage[_storage.Keys.ElementAt(i)].countPreload + _storage[_storage.Keys.ElementAt(i)].countloadSequenceInGame )- 1 ;
             if (pooler.RemainPoolSize < 0)
             {
                 pooler.RemainPoolSize = 0;
@@ -177,5 +182,23 @@ public class PoolManagerGeneric<T> : Singleton<T> where T : Component
         }
         if (_storage[pObject].pooler == null) { return null; }
         return _storage[pObject].pooler.GetPooledGameObject();
+    }
+
+    public void GameObjectPools( List<GameObject> pListPool)
+    {
+        for(int i =0;i < _storage.Count; ++i)
+        {
+            if (_storage.ElementAt(i).IsDestroyed()) continue;
+            pListPool.Add(_storage.ElementAt(i));
+            var pPools = _storage.ElementAt(i).GetComponentsInChildren<SimpleObjectPooler>();
+            foreach(var pPool in pPools)
+            {
+                if (!pListPool.Contains(pPool.GameObjectToPool))
+                {
+                    pListPool.Add(pPool.GameObjectToPool);
+                }
+             
+            }
+        }
     }
 }

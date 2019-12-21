@@ -30,7 +30,6 @@ Shader "Amplify/GrayScale"
 			
 			#pragma vertex vert
 			#pragma fragment frag
-			#pragma target 3.0
 			#pragma multi_compile _ PIXELSNAP_ON
 			#pragma multi_compile _ ETC1_EXTERNAL_ALPHA
 			#include "UnityCG.cginc"

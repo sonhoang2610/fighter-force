@@ -13,7 +13,7 @@ namespace NodeCanvas.BehaviourTrees
     {
 
         public BBParameter<float> timeout = 1;
-
+        public BBParameter<TimeControlBehavior> timerBehavior;
         private float timer;
 
         protected override Status OnExecute(Component agent, IBlackboard blackboard) {
@@ -21,11 +21,14 @@ namespace NodeCanvas.BehaviourTrees
             if ( decoratedConnection == null ) {
                 return Status.Optional;
             }
-
+            if (timerBehavior.value == null && graph && graph.agent)
+            {
+                timerBehavior.value =  graph.agent.GetComponent<TimeControlBehavior>();
+            }
             status = decoratedConnection.Execute(agent, blackboard);
 
             if ( status == Status.Running ) {
-                timer += Time.deltaTime;
+                timer += timerBehavior.value  ? timerBehavior.value.time.deltaTime : Time.deltaTime;
                 if ( timer >= timeout.value ) {
                     timer = 0;
                     decoratedConnection.Reset();

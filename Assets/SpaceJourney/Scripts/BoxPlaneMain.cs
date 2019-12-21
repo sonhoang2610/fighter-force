@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using EazyEngine.Tools;
 using NodeCanvas.Framework;
+using EazyEngine.Tools.Space;
 
 namespace EazyEngine.Space.UI
 {
@@ -70,8 +71,8 @@ namespace EazyEngine.Space.UI
             {
                 Item[DataSource[currentPage]].onExecute();
             }
-            Item[DataSource[currentPage]].GetComponentInChildren<Animator>().SetTrigger("Default");
-            Item[DataSource[currentPage]].GetComponentInChildren<Animator>().SetTrigger("Preview");
+            Item[DataSource[currentPage]].GetComponentInChildren<Animator>().triggerAnimator("Default");
+            Item[DataSource[currentPage]].GetComponentInChildren<Animator>().triggerAnimator("Preview");
             onChoosePlaneIndex.Invoke(currentPage);
 
         }

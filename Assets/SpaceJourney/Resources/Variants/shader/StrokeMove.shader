@@ -29,7 +29,6 @@ Shader "Shader Weaver/StrokeMove"{
 			CGPROGRAM  
 			#pragma vertex vert   
 			#pragma fragment frag   
-			#pragma target 2.0   
 			#include "UnityCG.cginc"   
 			#include "UnityUI.cginc"
 			fixed4 _Color;

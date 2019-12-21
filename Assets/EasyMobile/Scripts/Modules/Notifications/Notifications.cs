@@ -164,7 +164,6 @@ namespace EasyMobile
                 var consent = GetApplicableDataPrivacyConsent();
                 if (consent == ConsentStatus.Granted)
                 {
-                    Debug.Log("registered notification");
                     Firebase.Messaging.FirebaseMessaging.TokenRegistrationOnInitEnabled = true;
                     
                 }

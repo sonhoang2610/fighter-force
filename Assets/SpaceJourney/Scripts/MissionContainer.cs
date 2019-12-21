@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using EazyEngine.Tools.Space;
 
 
 namespace EazyEngine.Space
@@ -114,7 +115,8 @@ namespace EazyEngine.Space
                         for (int j = 0; j < database.dailyMissions[i].VariableDict.Count; ++j)
                         {
                             var pDict = database.dailyMissions[i].VariableDict;
-                            blackBoard.AddVariable(pDict.Keys.ElementAt(j), pDict[pDict.Keys.ElementAt(j)]);
+                            blackBoard.AddVariablesExtension(pDict.Keys.ElementAt(j), pDict[pDict.Keys.ElementAt(j)]);
+
                         }
                     }
                     var pNode = new EazyNode()
@@ -221,17 +223,17 @@ namespace EazyEngine.Space
             var blackBoard = pOwnerMission.GetComponent<IBlackboard>();
             if (pMission.mission.checkComplete)
             {
-                blackBoard.AddVariable("flow", pMission.mission.checkComplete);
+                blackBoard.AddVariablesExtension("flow", pMission.mission.checkComplete);
             }
-            blackBoard.AddVariable("MainMission", pMission);
-            blackBoard.AddVariable("MissionID", pMission.mission.ItemID);
-            blackBoard.AddVariable("ListenID", pMission.mission.listenID);
+            blackBoard.AddVariablesExtension("MainMission", pMission);
+            blackBoard.AddVariablesExtension("MissionID", pMission.mission.ItemID);
+            blackBoard.AddVariablesExtension("ListenID", pMission.mission.listenID);
             if (pVaraiables != null)
             {
                 for (int i = 0; i < pVaraiables.Count; ++i)
                 {
                     var pDict = pVaraiables;
-                    blackBoard.AddVariable(pDict.Keys.ElementAt(i), pDict[pDict.Keys.ElementAt(i)]);
+                    blackBoard.AddVariablesExtension(pDict.Keys.ElementAt(i), pDict[pDict.Keys.ElementAt(i)]);
                 }
             }
             pMission.BlackBoard = blackBoard;

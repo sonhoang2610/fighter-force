@@ -398,6 +398,10 @@ namespace EazyEngine.Space.UI
             int pFirstBox = PlayerPrefs.GetInt("FirstBoxReward", 0);
           
             int pFirstGame = PlayerPrefs.GetInt("firstGame", 0);
+            if (pFirstGame != 0 && SceneManager.Instance.previousScene.Contains("Home"))
+            {
+                GameServices.ManagedInit();
+            }
             if (pFirstGame == 0)
             {
                 GameManager.Instance.Database.firstOnline = System.DateTime.Now;

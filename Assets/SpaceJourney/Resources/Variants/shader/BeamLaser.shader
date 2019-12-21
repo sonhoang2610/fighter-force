@@ -24,7 +24,6 @@ Shader "Shader Weaver/BeamLaser"{
 			CGPROGRAM  
 			#pragma vertex vert   
 			#pragma fragment frag   
-			#pragma target 2.0   
 			#include "UnityCG.cginc"   
 			fixed4 _Color;
 			float4 _Color_ROOT;
