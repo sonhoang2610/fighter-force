@@ -308,7 +308,7 @@ namespace EazyEngine.Space
             GUIManager.Instance.enableEnergy(false);
             GUIManager.Instance.setBarBooster(0);
             string stringState = GameManager.Instance.isFree ? "Statesfree" : "States" + GameManager.Instance.ChoosedLevel + "_" + GameManager.Instance.ChoosedHard ;
-            var psate = LoadAssets.loadAsset<GameObject>(stringState, "Variants/States/");
+            var psate = SceneManager.Instance.cacheStatePreload;
             Instantiate(psate);
             var pInfoOriginal = GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard).infos;
         

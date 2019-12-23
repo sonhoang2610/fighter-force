@@ -107,6 +107,7 @@ MonoBehaviour:
   countAttachMent: 8
   type: 1
   total: 120
+  radiusStartPos: 0
   randomReloadTine: {x: 0.2, y: 0.2}
   isSemiType: 0
   countEachSemi: 3
@@ -156,6 +157,7 @@ MonoBehaviour:
   GameObjectToPool: {fileID: 7856084060703962862, guid: e8d11fe3f368b3b49916d3133e4b27d4,
     type: 3}
   PoolSize: 16
+  RemainPoolSize: 32
   PoolCanExpand: 1
   dontDestroyOnload: 0
 --- !u!1 &3981834236137207763
@@ -573,17 +575,6 @@ PrefabInstance:
       propertyPath: reactiveMachine.TriggerReloadDone
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 1930181967980925157, guid: 2874c1af8f7d48e4da308bafe7aea49a,
-        type: 3}
-      propertyPath: _groupName
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114506514760959066, guid: 2874c1af8f7d48e4da308bafe7aea49a,
-        type: 3}
-      propertyPath: GameObjectToPool
-      value: 
-      objectReference: {fileID: 4978765762718284869, guid: 74cb141d6a7d1fd46a77a8a70aff44fb,
-        type: 3}
     - target: {fileID: 4180916872256662, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -628,6 +619,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1930181967980925157, guid: 2874c1af8f7d48e4da308bafe7aea49a,
+        type: 3}
+      propertyPath: _groupName
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114506514760959066, guid: 2874c1af8f7d48e4da308bafe7aea49a,
+        type: 3}
+      propertyPath: GameObjectToPool
+      value: 
+      objectReference: {fileID: 4978765762718284869, guid: 74cb141d6a7d1fd46a77a8a70aff44fb,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114506514760959066, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}

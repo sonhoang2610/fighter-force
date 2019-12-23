@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b5c3ebb24c97464da319951cafe5a47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundGraphSerialization: '{"version":2.92,"type":"FlowCanvas.FlowScript","translation":{"x":149.0,"y":-47.0},"nodes":[{"_field":{"_baseInfo":"EazyEngine.Space.ProjectileMultipeWeapon|onFireAttachMent"},"_inputPortValues":{},"_position":{"x":-150.0,"y":281.0},"$type":"FlowCanvas.Nodes.UnityEventAutoCallbackEvent","$id":"2"},{"fieldName":"z","targetType":"UnityEngine.Vector3","accessMode":"SetField","_inputPortValues":{},"_position":{"x":419.0,"y":311.0},"$type":"FlowCanvas.Nodes.ReflectedFieldNodeWrapper","$id":"5"},{"_method":{"_baseInfo":"UnityEngine.Transform|set_localEulerAngles|System.Void","_paramsInfo":"UnityEngine.Vector3"},"_callable":true,"_inputPortValues":{},"_position":{"x":720.0,"y":259.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"7"},{"value":{},"_position":{"x":192.0,"y":513.0},"$type":"FlowCanvas.Nodes.GetVariable`1[[UnityEngine.Vector3,
+  boundGraphSerialization: '{"version":2.96,"type":"FlowCanvas.FlowScript","translation":{"x":149.0,"y":-47.0},"nodes":[{"_field":{"_baseInfo":"EazyEngine.Space.ProjectileMultipeWeapon|onFireAttachMent"},"_inputPortValues":{},"_position":{"x":-150.0,"y":281.0},"$type":"FlowCanvas.Nodes.UnityEventAutoCallbackEvent","$id":"2"},{"fieldName":"z","targetType":"UnityEngine.Vector3","accessMode":"SetField","_inputPortValues":{},"_position":{"x":419.0,"y":311.0},"$type":"FlowCanvas.Nodes.ReflectedFieldNodeWrapper","$id":"5"},{"_method":{"_baseInfo":"UnityEngine.Transform|set_localEulerAngles|System.Void","_paramsInfo":"UnityEngine.Vector3"},"_callable":true,"_inputPortValues":{},"_position":{"x":720.0,"y":259.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"7"},{"value":{},"_position":{"x":192.0,"y":513.0},"$type":"FlowCanvas.Nodes.GetVariable`1[[UnityEngine.Vector3,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"10"},{"_method":{"_baseInfo":"UnityEngine.Random|Range|System.Single","_paramsInfo":"System.Single|System.Single"},"_inputPortValues":{"min":{"$content":-45.0,"$type":"System.Single"},"max":{"$content":45.0,"$type":"System.Single"}},"_position":{"x":34.0,"y":401.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"12"}],"connections":[{"_sourcePortName":"Event","_targetPortName":"
     ","_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"5"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"arg0","_targetPortName":"Transform","_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"7"},"$type":"FlowCanvas.BinderConnection`1[[UnityEngine.Transform,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"
@@ -399,17 +399,6 @@ PrefabInstance:
       propertyPath: attachMentPosStartNew.Array.data[0].attachMentPosStart.Array.data[3]
       value: 
       objectReference: {fileID: 4889374086180829909}
-    - target: {fileID: 114506514760959066, guid: 2874c1af8f7d48e4da308bafe7aea49a,
-        type: 3}
-      propertyPath: GameObjectToPool
-      value: 
-      objectReference: {fileID: 8269517097850452423, guid: c9e3d1f8f34f52b4780d575ed35c5836,
-        type: 3}
-    - target: {fileID: 114506514760959066, guid: 2874c1af8f7d48e4da308bafe7aea49a,
-        type: 3}
-      propertyPath: PoolSize
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 4180916872256662, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -453,6 +442,22 @@ PrefabInstance:
     - target: {fileID: 4180916872256662, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114506514760959066, guid: 2874c1af8f7d48e4da308bafe7aea49a,
+        type: 3}
+      propertyPath: GameObjectToPool
+      value: 
+      objectReference: {fileID: 8269517097850452423, guid: c9e3d1f8f34f52b4780d575ed35c5836,
+        type: 3}
+    - target: {fileID: 114506514760959066, guid: 2874c1af8f7d48e4da308bafe7aea49a,
+        type: 3}
+      propertyPath: PoolSize
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 114506514760959066, guid: 2874c1af8f7d48e4da308bafe7aea49a,
+        type: 3}
+      propertyPath: RemainPoolSize
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}

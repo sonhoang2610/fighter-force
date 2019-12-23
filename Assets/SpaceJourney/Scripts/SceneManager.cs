@@ -8,6 +8,8 @@ using DG.Tweening;
 using EasyMobile;
 using EazyEngine.Space.UI;
 using I2.Loc;
+using Firebase;
+using Firebase.Analytics;
 
 namespace EazyEngine.Space
 {
@@ -15,6 +17,12 @@ namespace EazyEngine.Space
     public class EventFloat : UnityEvent<float>
     {
 
+    }
+
+    public enum StateLoadingGame
+    {
+        PoolFirst,
+        PoolAfter
     }
     public class SceneManager : PersistentSingleton<SceneManager>
     {
@@ -28,34 +36,67 @@ namespace EazyEngine.Space
         public bool isLocal = true;
         public UIElement boxlostConnection;
         public GameObject loadingAds;
+        public int loadObjectPerFrame = 2;
         AsyncOperation async;
+        protected ResourceRequest reuestGameManager =null,requestHUD=null,requestState = null;
+        protected List<GameObject> loadObjectAsync = new List<GameObject>();
         bool isStart = false;
-        public string currentScene;
+        [System.NonSerialized]
+        public string currentScene = "Home";
+        [System.NonSerialized] 
+        public string previousScene = "Home";
         public static Dictionary<string, AssetBundle> BUNDLES = new Dictionary<string, AssetBundle>();
-
-
-
+        private bool loadState = false;
+        [System.NonSerialized]
+        public List<SimpleObjectPooler> poolRegisterLoading = new List<SimpleObjectPooler>();
+        protected int nextIndexFirstPool;
+        [System.NonSerialized]
+        public StateLoadingGame stateLoading;
+        IEnumerator preloadPool()
+        {
+            while(nextIndexFirstPool < poolRegisterLoading.Count)
+            {
+                yield return new WaitForEndOfFrame();
+                poolRegisterLoading[nextIndexFirstPool].FillObjectNow();
+                loadingDirty(StateLoadingGame.PoolFirst);
+                nextIndexFirstPool++;
+            }
+        }
         public void loadScene(string pScene)
         {
+            if(pScene != currentScene)
+            {
+                previousScene = currentScene;
+            }
             currentScene = pScene;
             SoundManager.Instance.StopAllCoroutines();
             //   fadeLayout.alpha = 0;
             isLoading = true;
-            Sequence pSeq = DOTween.Sequence();
-            if (process)
+            if (currentScene.Contains("Zone") && !LoadState)
             {
-                process.fillAmount = 0;
+                LoadState = true;
+                string stringState = GameManager.Instance.isFree ? "Statesfree" : "States" + GameManager.Instance.ChoosedLevel + "_" + GameManager.Instance.ChoosedHard;
+                requestState = LoadAssets.loadAssetAsync<GameObject>(stringState, "Variants/States/");
             }
-            pSeq.Append(DOTween.To(() => fadeLayout.alpha, a => fadeLayout.alpha = a, 1, 0.25f));
-            pSeq.AppendCallback(delegate ()
+            else
             {
-                onStartLoad.Invoke();
-                isStart = true;
+                Sequence pSeq = DOTween.Sequence();
+                if (process && process.fillAmount >= 1)
+                {
+                   process.fillAmount = 0;
+                }
+                pSeq.Append(DOTween.To(() => fadeLayout.alpha, a => fadeLayout.alpha = a, 1, 0.25f));
+                pSeq.AppendCallback(delegate ()
+                {
+                    onStartLoad.Invoke();
+                    isStart = true;
 
-                async = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(pScene);
-            });
+                    async = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(pScene);
+                });
 
-            pSeq.Play();
+                pSeq.Play();
+            }
+     
         }
 
         protected float blockScene = 0,maxBlock =0;
@@ -68,7 +109,7 @@ namespace EazyEngine.Space
             maxBlock = blockScene;
         }
 
-        public void loadingDirty()
+        public void loadingDirty(StateLoadingGame pState)
         {
             blockScene--;
             if (tween != null)
@@ -76,14 +117,32 @@ namespace EazyEngine.Space
                 tween.Kill();
                 tween = null;
             }
-            tween = DOTween.To(() => process.fillAmount, x => process.fillAmount = x, (1- (blockScene / maxBlock)) * 0.5f + 0.5f, 0.25f);
-            if(blockScene == 0)
+            if (pState == StateLoadingGame.PoolFirst)
             {
-                complete();
+                tween = DOTween.To(() => process.fillAmount, x => process.fillAmount = x, (1 - (blockScene / maxBlock)) * 0.2f + 0.6f, 0.25f);
+                if(blockScene <= 0)
+                {
+                    for (int i = 0; i < poolRegisterLoading.Count; ++i)
+                    {
+                        poolRegisterLoading[i].FillRemain();
+                        StartCoroutine(poolRegisterLoading[i].delayCheckSpawnPool());
+                    }
+                }
+                stateLoading = StateLoadingGame.PoolAfter;
             }
+            else if(pState == StateLoadingGame.PoolAfter)
+            {
+                tween = DOTween.To(() => process.fillAmount, x => process.fillAmount = x, (1 - (blockScene / maxBlock)) * 0.2f + 0.8f, 0.25f);
+                Debug.Log("blockScene " + blockScene);
+                if (blockScene == 0)
+                {
+                    complete();
+                }
+            }
+       
         }
 
-
+        protected Coroutine corountineFirstPool = null;
         public void complete()
         {
 
@@ -105,8 +164,26 @@ namespace EazyEngine.Space
                 {
                     camera.GetComponent<CropCamera>().clearRender();
                     SoundManager.Instance.cleanAudio();
+                    if (currentScene.Contains("Main"))
+                    {
+                        if (!RuntimeManager.IsInitialized())
+                        {
+                            RuntimeManager.Init();
+                        }
+                        bool isInitialized = InAppPurchasing.IsInitialized();
+                        if (!isInitialized)
+                        {
+                            InAppPurchasing.InitializePurchasing();
+                        }
+                    }
                 });
                 pSeq.Play();
+            }
+            else  if(corountineFirstPool == null)
+            {
+                nextIndexFirstPool = 0;
+                stateLoading = StateLoadingGame.PoolFirst;
+                corountineFirstPool = StartCoroutine(preloadPool());
             }
 
 
@@ -120,14 +197,21 @@ namespace EazyEngine.Space
         {
             if (SceneManager.Instance.isLocal)
             {
-                loadScene("SpaceJourney/Scene/variant/Main");
+             //   DOTween.To(() => fadeLayout.alpha, a => fadeLayout.alpha = a, 1, 0.25f);
 
-                StartCoroutine(delayAction(0.3f, delegate
+     
+                Sequence pSeq = DOTween.Sequence();
+                if (process)
                 {
-                    Instantiate(Resources.Load<GameObject>("Variants/Database/GameManager"));
-                    Instantiate(Resources.Load<GameObject>("Variants/prefabs/ui/HUD"), transform);
+                    process.fillAmount = 0;
+                }
+                pSeq.Append(DOTween.To(() => fadeLayout.alpha, a => fadeLayout.alpha = a, 1, 0.25f));
+                pSeq.AppendCallback(delegate ()
+                {
+                    reuestGameManager = Resources.LoadAsync<GameObject>("Variants/Database/GameManager");
+                });
 
-                }));
+                pSeq.Play();
             }
             else
             {
@@ -150,6 +234,13 @@ namespace EazyEngine.Space
         protected override void Awake()
         {
             base.Awake();
+
+
+            FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
+            {
+                FirebaseAnalytics.SetAnalyticsCollectionEnabled(true);
+            });
+            Application.targetFrameRate = 60;
             Application.backgroundLoadingPriority = ThreadPriority.High;
             if (GameManager._instance)
             {
@@ -386,6 +477,15 @@ namespace EazyEngine.Space
             }
             return -1;
         }
+        public GameObject cacheStatePreload;
+        public void ResetGame()
+        {
+            poolRegisterLoading.Clear();
+            corountineFirstPool = null;
+            LoadState = false;
+            stateLoading = StateLoadingGame.PoolFirst;
+        }
+        public bool LoadState { get => loadState; set => loadState = value; }
 
         private void Update()
         {
@@ -397,14 +497,67 @@ namespace EazyEngine.Space
                     objectPlanInstiate.RemoveAt(i);
                 }
             }
+            if (requestState != null)
+            {
+                if (requestState.isDone)
+                {
+                    cacheStatePreload = (GameObject)requestState.asset;
+                    //var pState = (GameObject)requestState.asset;
+                    //List<GameObject> pLoadObjects = new List<GameObject>();
+                    //var pPools = pState.GetComponentsInChildren<IPool>();
+                    //foreach (var pPool in pPools)
+                    //{
+                    //    pPool.GameObjectPools(pLoadObjects);
+                    //}
+                    //foreach (var pGameObject in pLoadObjects)
+                    //{
+                    //    Instantiate(pGameObject);
+                    // }
+                    requestState = null;
+                    loadScene(currentScene);
+                }
+                else
+                {
+                    DOTween.To(() => process.fillAmount, x => process.fillAmount = x, requestState.progress * 0.2f, 0.25f);
+                }
+            }
+            if (requestHUD != null)
+            {
+                if (requestHUD.isDone)
+                {
+                 
+                    Instantiate((GameObject)requestHUD.asset,transform);
+                    requestHUD = null;
+                    loadScene("SpaceJourney/Scene/variant/Main");
+                }
+                else
+                {
+                    DOTween.To(() => process.fillAmount, x => process.fillAmount = x,0.2f + requestHUD.progress * 0.2f, 0.25f);
+                }
+            }
+            if (reuestGameManager != null)
+            {
+                if (reuestGameManager.isDone)
+                {
+                
+                    Instantiate((GameObject)reuestGameManager.asset);
+                    reuestGameManager = null;
+                    requestHUD =  Resources.LoadAsync<GameObject>("Variants/prefabs/ui/HUD");
+                }
+                else
+                {
+                    DOTween.To(() => process.fillAmount, x => process.fillAmount = x, reuestGameManager.progress * 0.2f, 0.25f);
+                }
+            }
             if (isStart)
             {
-                float pAnchor = currentScene.Contains("Zone") ? 0.5f : 1;
+                float pAnchor = currentScene.Contains("Zone") ? 0.4f : 0.6f;
+                float pFrom = currentScene.Contains("Zone") ? 0.2f : 0.4f;
                 if (!async.isDone)
                 {
                     if (process)
                     {
-                        DOTween.To(() => process.fillAmount, x => process.fillAmount = x, async.progress * pAnchor, 0.25f);
+                        DOTween.To(() => process.fillAmount, x => process.fillAmount = x, pFrom+ async.progress * pAnchor, 0.25f);
                     }
                 }
                 else
@@ -412,7 +565,7 @@ namespace EazyEngine.Space
 
                     Sequence pSeq = DOTween.Sequence();
 
-                    pSeq.Append(DOTween.To(() => process.fillAmount, x => process.fillAmount = x, pAnchor, 0.25f));
+                    pSeq.Append(DOTween.To(() => process.fillAmount, x => process.fillAmount = x, pFrom + pAnchor, 0.25f));
                     pSeq.AppendCallback(delegate
                     {
 

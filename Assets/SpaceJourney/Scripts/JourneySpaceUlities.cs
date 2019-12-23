@@ -10,8 +10,36 @@ using UnityEngine.Scripting;
 namespace EazyEngine.Tools.Space
 {
     [Preserve]
-    public static class JourneySpaceUlities 
+    public static class JourneySpaceUlities
     {
+        public static void triggerAnimator(this Animator pAnim, string pTrigger)
+        {
+            bool pExist = false;
+            foreach(var par in pAnim.parameters)
+            {
+                if(par.name == pTrigger)
+                {
+                    pExist = true;
+                    break;
+                }
+            }
+            if (pExist)
+            {
+                pAnim.SetTrigger(pTrigger);
+            }
+        }
+        public static void AddVariablesExtension<T>(this IBlackboard pBlackBoard,string pNameKey,T pValue)
+        {
+           var pVar = pBlackBoard.GetVariable<T>(pNameKey);
+            if(pVar != null)
+            {
+                pVar.value = pValue;
+            }
+            else
+            {
+                pBlackBoard.AddVariable(pNameKey, pValue);
+            }
+        }
         [Preserve]
         public static void PassVariables(Blackboard pBlackBoardOriginal,Blackboard pBlackBoardClone)
         {

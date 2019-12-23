@@ -15,7 +15,7 @@ namespace EazyEngine.Tools
 #if UNITY_EDITOR
             UnityEditor.SerializedObject pOb = new UnityEditor.SerializedObject(this);
             var prop = pOb.FindProperty("m_Icon");
-      
+
 #endif
         }
         [HideInInspector]
@@ -24,7 +24,6 @@ namespace EazyEngine.Tools
         public GameObject GameObjectToPool;
         /// the number of objects we'll add to the pool
         public int PoolSize = 20;
-        [HideInEditorMode]
         public int RemainPoolSize = 0;
         /// if true, the pool will automatically add objects to the itself if needed
         public bool PoolCanExpand = true;
@@ -48,7 +47,7 @@ namespace EazyEngine.Tools
         /// 
         public override void FillObjectPool()
         {
-            if (!LevelManger.InstanceRaw) return;
+            // if (!LevelManger.InstanceRaw) return;
             if (GameObjectToPool == null) return;
             CreateWaitingPool(GameObjectToPool);
             if (dontDestroyOnload)
@@ -56,16 +55,55 @@ namespace EazyEngine.Tools
                 DontDestroyOnLoad(poolLocal[GameObjectToPool].parrent);
             }
             _pooledGameObjects = poolLocal[GameObjectToPool].poolObjects;
-     
+
+            if ((poolLocal[GameObjectToPool].poolObjects.Count < PoolSize && SceneManager.Instance.isLoading && SceneManager.Instance.stateLoading == StateLoadingGame.PoolFirst))
+            {
+                if (PoolSize > 1)
+                {
+                    RemainPoolSize += PoolSize - 1;
+                    PoolSize = 1;
+                }
+                SceneManager.Instance.addloading(1);
+                SceneManager.Instance.poolRegisterLoading.Add(this);
+            }
+            else if (!SceneManager.Instance.isLoading)
+            {
+                var pRemain = ((PoolSize + RemainPoolSize) - poolLocal[GameObjectToPool].poolObjects.Count) <= 0 ? 0 : ((PoolSize + RemainPoolSize) - poolLocal[GameObjectToPool].poolObjects.Count);
+                if (pRemain > 0)
+                {
+                    for (int i = 0; i < pRemain; i++)
+                    {
+                        AddOneObjectToThePool();
+                    }
+                }
+            }
+            //SceneManager.Instance.StartCoroutine(delayCheckSpawnPool());
+
+        }
+        public void FillObjectNow()
+        {
+            if (GameObjectToPool == null) return;
+            CreateWaitingPool(GameObjectToPool);
+            if (dontDestroyOnload)
+            {
+                DontDestroyOnLoad(poolLocal[GameObjectToPool].parrent);
+            }
+            _pooledGameObjects = poolLocal[GameObjectToPool].poolObjects;
             if (poolLocal[GameObjectToPool].poolObjects.Count < PoolSize)
             {
-
-                // we add to the pool the specified number of objects
                 for (int i = 0; i < PoolSize; i++)
                 {
                     AddOneObjectToThePool();
                 }
             }
+            if (!GameManager.Instance.pendingObjects.Contains(GameObjectToPool))
+            {
+                GameManager.Instance.pendingObjects.Add(GameObjectToPool);
+            }
+        }
+
+        public void FillRemain()
+        {
             _remainPoolsize = ((PoolSize + RemainPoolSize) - poolLocal[GameObjectToPool].poolObjects.Count) <= 0 ? 0 : ((PoolSize + RemainPoolSize) - poolLocal[GameObjectToPool].poolObjects.Count);
             if (_remainPoolsize > 0)
             {
@@ -73,33 +111,36 @@ namespace EazyEngine.Tools
                 {
                     SceneManager.Instance.addloading(_remainPoolsize);
                 }
-                //var pool = GameManager.Instance.loadSequences.Find(x => x.pooler == this);
-                //if (pool.pooler != this)
-                //{
-                //    GameManager.Instance.loadSequences.Add(new PoolElementSequence() { pooler = this, count = RemainPoolSize });
-                //}
             }
-            else
-            {
-                GameManager.Instance.pendingObjects.Add(GameObjectToPool);
-            }
-            StartCoroutine(delayCheckSpawnPool());
-       
         }
-
-        IEnumerator delayCheckSpawnPool()
+        public IEnumerator delayCheckSpawnPool()
         {
-            yield return new WaitForSeconds(0.01f);
-            if (_remainPoolsize > 0)
+            yield return new WaitForEndOfFrame();
+            if (SceneManager.Instance.isLoading)
             {
-                AddOneObjectToThePoolRemainTime(false);
-                _remainPoolsize--;
-                SceneManager.Instance.loadingDirty();
-            }
-        
-            if (_remainPoolsize > 0)
-            {
-                StartCoroutine(delayCheckSpawnPool());
+                if (_remainPoolsize > 0)
+                {
+                    var pRemain = ((PoolSize + RemainPoolSize) - poolLocal[GameObjectToPool].poolObjects.Count);
+                    var pCountDown = Mathf.Min(pRemain, SceneManager.Instance.loadObjectPerFrame);
+                    if (pRemain > 0)
+                    {
+                        for(int i = 0; i < pCountDown; ++i)
+                        {
+                            AddOneObjectToThePoolRemainTime(false);
+                        }                        
+                    }
+                    var pCountDownRaw = Mathf.Min(_remainPoolsize, SceneManager.Instance.loadObjectPerFrame);
+                    _remainPoolsize -= pCountDownRaw;
+                    for (int i = 0; i < pCountDownRaw; ++i)
+                    {
+                        SceneManager.Instance.loadingDirty(StateLoadingGame.PoolAfter);
+                    }
+                }
+
+                if (_remainPoolsize > 0)
+                {
+                    SceneManager.Instance.StartCoroutine(delayCheckSpawnPool());
+                }
             }
         }
         private void OnDisable()
@@ -127,11 +168,11 @@ namespace EazyEngine.Tools
             {
                 if (!_pooledGameObjects[i].gameObject.activeInHierarchy)
                 {
-                    if (_pooledGameObjects[i].name.StartsWith("[block]") ){ continue; }
+                    if (_pooledGameObjects[i].name.StartsWith("[block]")) { continue; }
                     TrailRenderer[] trails = null;
                     if ((trails = _pooledGameObjects[i].GetComponentsInChildren<TrailRenderer>()) != null)
                     {
-                        foreach(var pTrail in trails)
+                        foreach (var pTrail in trails)
                         {
                             pTrail.Clear();
                         }
@@ -164,7 +205,7 @@ namespace EazyEngine.Tools
             _cachePreloadObject.Add(newGameObject);
             if (onNewGameObjectCreated != null)
             {
-                onNewGameObjectCreated(newGameObject,GameObjectToPool);
+                onNewGameObjectCreated(newGameObject, GameObjectToPool);
             }
             newGameObject.gameObject.SetActive(false);
             //if (LevelManger.InstanceRaw != null)
@@ -184,11 +225,12 @@ namespace EazyEngine.Tools
             //{
             //    newGameObject.gameObject.SetActive(false);
             //}
-      
+
             newGameObject.transform.SetParent(poolLocal[GameObjectToPool].parrent.transform);
-            newGameObject.transform.position = new Vector3(9000, 9000, 9000 );
+            newGameObject.transform.position = new Vector3(9000, 9000, 9000);
             newGameObject.name = GameObjectToPool.name + "-" + _pooledGameObjects.Count;
-            if (timeRaw != null) {
+            if (timeRaw != null)
+            {
                 var pTime = newGameObject.GetComponent<EazyEngine.Timer.TimeControllerElement>();
                 if (pTime == null)
                 {

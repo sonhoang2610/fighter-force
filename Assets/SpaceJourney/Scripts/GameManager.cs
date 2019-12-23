@@ -54,6 +54,14 @@ public static class LoadAssets
         }
 
     }
+    public static ResourceRequest loadAssetAsync<T>(string pName, string path = "") where T : UnityEngine.Object
+    {
+        if (SceneManager.Instance.isLocal)
+        {
+            return Resources.LoadAsync<T>(path + pName);
+        }
+        return null;
+    }
     public static T loadAsset<T>(string pName, string path = "") where T : UnityEngine.Object
     {
         if (cacheAssets.ContainsKey(pName))
@@ -70,26 +78,6 @@ public static class LoadAssets
                 cacheAssets.Remove(pName);
             }
         }
-        //if (GameManager.Instance.loadFromResources)
-        //{
-        //T pObjectss = Resources.Load<T>(path + pName);
-        //return pObjectss;
-        //foreach (var pObjects in pObjectss)
-        //{
-        //    if (pObjects && pObjects.name == pName)
-        //    {
-        //        if (cacheAssets.ContainsKey(pName))
-        //        {
-        //            cacheAssets[pName] = pObjects;
-        //        }
-        //        else
-        //        {
-        //            cacheAssets.Add(pName, pObjects);
-        //        }
-        //        return pObjects;
-        //    }
-        //}
-        //}
         if (SceneManager.Instance.isLocal)
         {
             T pObjectss = Resources.Load<T>(path + pName);
@@ -315,11 +303,7 @@ public struct EventTimer
     public TimerState state;
     public string key;
 }
-public struct PoolElementSequence
-{
-    public SimpleObjectPooler pooler;
-    public int count;
-}
+
 public class GameManager : PersistentSingleton<GameManager>, EzEventListener<GameDatabaseInventoryEvent>
 {
 
@@ -334,7 +318,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     public AudioClip btnSfx;
     public MovingLeader leaderTemplate;
 
-    public List<PoolElementSequence> loadSequences = new List<PoolElementSequence>();
+    
 
     public prefabBulletGroup getGroupPrefab(GameObject pObject)
     {
@@ -434,7 +418,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     {
         base.Awake();
         databaseGame = GameDatabase.Instance;
-        Application.targetFrameRate = 60;
+ 
    //     StartCoroutine(delayAction(0.2f, spawnPool));
         // Database = Instantiate(Database);
     }
@@ -1325,32 +1309,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
 
     private void Start()
     {
-        if (!RuntimeManager.IsInitialized())
-        {
-            RuntimeManager.Init();
-        }
-        bool isInitialized = InAppPurchasing.IsInitialized();
-        if (!isInitialized)
-        {
-            InAppPurchasing.InitializePurchasing();
-        }
-        if (!GameServices.IsInitialized())
-        {
-            GameServices.ManagedInit();
-        }
-        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
-        {
-            FirebaseAnalytics.SetAnalyticsCollectionEnabled(true);
-            //Notifications.GrantDataPrivacyConsent();
-            //if (!Notifications.IsInitialized())
-            //{
-            //    Notifications.Init();
-            //}
-            //else
-            //{
-            //    Debug.Log("notification inited");
-            //}
-        });
+   
 
     }
 

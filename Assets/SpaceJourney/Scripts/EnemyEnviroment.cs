@@ -7,6 +7,7 @@ using Sirenix.OdinInspector;
 using System.Linq;
 using EazyEngine.Space;
 
+
 public class EnemyEnviroment : PoolManagerGeneric<EnemyEnviroment>
 {
     // [ShowInInspector,HideInEditorMode]

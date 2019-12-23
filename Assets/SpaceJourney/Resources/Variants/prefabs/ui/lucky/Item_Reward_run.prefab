@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 641355502655250813}
   - component: {fileID: 1962620341206730596}
   - component: {fileID: 2162766638204619008}
-  m_Layer: 17
+  m_Layer: 16
   m_Name: Item_Reward_run
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,6 +234,9 @@ MonoBehaviour:
   _data:
     item: {fileID: 0}
     quantity: 1
+  onUsing:
+    m_PersistentCalls:
+      m_Calls: []
   icon: {fileID: 6270811404305214023}
   iconCateGory: {fileID: 7200672524282032986}
   quantity: {fileID: 641355501791751187}
@@ -267,6 +270,7 @@ MonoBehaviour:
     type: 3}
   itemToLoad: {fileID: 0}
   onAddMore: []
+  offsetParticleClaim: {x: 0, y: 0}
 --- !u!114 &1962620341206730596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -463,7 +467,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1893570311984190254}
-  m_Layer: 17
+  m_Layer: 16
   m_Name: model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,7 +499,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1604610546377916036}
   - component: {fileID: 6270811404305214023}
-  m_Layer: 17
+  m_Layer: 16
   m_Name: icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -586,7 +590,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4632084422049223547}
   - component: {fileID: 7200672524282032986}
-  m_Layer: 17
+  m_Layer: 16
   m_Name: 2D Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -738,7 +742,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3005
+  startingRenderQueue: 3004
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -909,6 +913,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6148580500300224872, guid: 67f51d76944b4cc40ab8d06c4dfea512,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 6148580500300474940, guid: 67f51d76944b4cc40ab8d06c4dfea512,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -979,10 +988,20 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6148580500300194046, guid: 67f51d76944b4cc40ab8d06c4dfea512,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 6148580500300174104, guid: 67f51d76944b4cc40ab8d06c4dfea512,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148580500300174104, guid: 67f51d76944b4cc40ab8d06c4dfea512,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6148580500285262472, guid: 67f51d76944b4cc40ab8d06c4dfea512,
         type: 3}
@@ -1033,6 +1052,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ShapeModule.radiusThickness
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148580500300195800, guid: 67f51d76944b4cc40ab8d06c4dfea512,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67f51d76944b4cc40ab8d06c4dfea512, type: 3}
