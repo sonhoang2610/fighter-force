@@ -162,10 +162,58 @@ Support
 
 Release Notes
 -------------
+### 6.8.1
+  - Overview
+     - Fixed Crashlytics and core editor plugin.
+  - Changes
+    - Crashlytics (Editor): Fixed Crashlytics editor plugin so that it loads
+      without the iOS Unity extension installed.
+    - Editor: Fixed core editor plugin so that it loads without the iOS Unity
+      extension installed.
+
+### 6.8.0
+  - Overview
+    - Updated dependencies and fixed resource generation issue with python3.
+  - Changes
+    - Editor: Fixed an issue where resource generation from
+      google-services.json or GoogleService-Info.plist would fail if python3
+      was used to execute the resource generation script.
+
+### 6.7.0
+  - Overview
+    - Updated dependencies, fixed issues in Analytics, Database, Dynamic Links,
+      Crashlytics, and Storage.
+  - Changes
+    - Storage (iOS/Android): Fixed an issue where
+      FirebaseStorage.GetReferenceFromUrl would return an invalid
+      StorageReference.
+    - Dynamic Links: Fixed an issue where removing delegate from
+      DynamicLinks.DynamicLinkReceived does not stop the delegate from being
+      called.
+    - Database: Fixed an issue causing timestamps to not be populated correctly
+      when using DatabaseReference.UpdateChildren().
+    - Database (Desktop): Fixed an issue preventing listener events from being
+      triggered after DatabaseReference.UpdateChildren() is called.
+    - Database (Desktop): Functions that take string parameters will now
+      fail gracefully if passed a null pointer.
+    - Database (Desktop): Fixed an issue that could result in an incorrect
+      snapshot being passed to listeners under specific circumstances.
+    - Database (Desktop): Fixed an issue causing
+      DatabaseReference.RunTransaction() to fail due to datastale when the
+      location previously stored a list with more than 10 items or a dictionary
+      with integer keys.
+    - Crashlytics: Fixed an [issue](https://github.com/firebase/quickstart-unity/issues/493)
+      on iOS with Unity 2019.3 beta where the plugin fails to create a XCode run
+      script to upload symbols.
+    - Analytics (iOS): Fixed the racy behavior of
+      `FirebaseAnalytics.GetAnalyticsInstanceId()` after calling
+      `FirebaseAnalytics.ResetAnalyticsData()`.
+
 ### 6.6.0
   - Overview
-    - Updated dependencies, fixed issues in Database.
+    - Updated dependencies, fixed issues in Auth & Database.
   - Changes
+    - Auth (Desktop): Fixed not loading provider list from cached user data.
     - Database (Desktop): Fixed a crash that could occur when trying to keep a
       location in the database synced when you do not have permission.
     - Database (Desktop): Queries on locations in the database with query rules
