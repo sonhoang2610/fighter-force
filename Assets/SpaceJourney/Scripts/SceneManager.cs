@@ -166,15 +166,15 @@ namespace EazyEngine.Space
                     SoundManager.Instance.cleanAudio();
                     if (currentScene.Contains("Main"))
                     {
-                        if (!RuntimeManager.IsInitialized())
-                        {
-                            RuntimeManager.Init();
-                        }
-                        bool isInitialized = InAppPurchasing.IsInitialized();
-                        if (!isInitialized)
-                        {
-                            InAppPurchasing.InitializePurchasing();
-                        }
+                        //if (!RuntimeManager.IsInitialized())
+                        //{
+                        //    RuntimeManager.Init();
+                        //}
+                        //bool isInitialized = InAppPurchasing.IsInitialized();
+                        //if (!isInitialized)
+                        //{
+                        //    InAppPurchasing.InitializePurchasing();
+                        //}
                     }
                 });
                 pSeq.Play();
@@ -236,12 +236,13 @@ namespace EazyEngine.Space
             base.Awake();
 
 
-            FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
-            {
-                FirebaseAnalytics.SetAnalyticsCollectionEnabled(true);
-            });
+            //FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
+            //{
+            //    FirebaseAnalytics.SetAnalyticsCollectionEnabled(true);
+            //});
+            Screen.SetResolution(1080, 1920, false);
             Application.targetFrameRate = 60;
-            Application.backgroundLoadingPriority = ThreadPriority.High;
+            Application.backgroundLoadingPriority = ThreadPriority.Normal;
             if (GameManager._instance)
             {
                 if (!GameManager._instance.IsDestroyed())
@@ -253,7 +254,7 @@ namespace EazyEngine.Space
 #if UNITY_EDITOR
             Debug.unityLogger.logEnabled = true;
 #else
-            Debug.unityLogger.logEnabled = false;
+            Debug.unityLogger.logEnabled = true;
 #endif
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
         }

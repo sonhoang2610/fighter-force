@@ -478,10 +478,10 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             Database.dailyGiftModules.Add(dailyGiftModule);
             Database.clearDailyModules(currentModuleDailyGift.moduleClearID);
         }
-        if (!InAppPurchasing.IsInitialized())
-        {
-            InAppPurchasing.InitializePurchasing();
-        }
+        //if (!InAppPurchasing.IsInitialized())
+        //{
+        //    InAppPurchasing.InitializePurchasing();
+        //}
         for(int i = 0; i < GameManager.Instance.Database.timers.Count; ++i)
         {
             addTimer(GameManager.Instance.Database.timers[i]);
@@ -493,7 +493,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         if (first)
         {
             initGame();
-            MissionContainer.Instance.LoadState();
+         //   MissionContainer.Instance.LoadState();
 
             first = false;
         }
@@ -504,9 +504,6 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                 countPending++;
             }
         }
-    }
-    private void FixedUpdate()
-    {
     }
     public GameDataBaseInstance _databaseDefault;
     [Sirenix.OdinInspector.ReadOnly]
