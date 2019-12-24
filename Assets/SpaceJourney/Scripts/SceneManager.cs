@@ -166,15 +166,15 @@ namespace EazyEngine.Space
                     SoundManager.Instance.cleanAudio();
                     if (currentScene.Contains("Main"))
                     {
-                        //if (!RuntimeManager.IsInitialized())
-                        //{
-                        //    RuntimeManager.Init();
-                        //}
-                        //bool isInitialized = InAppPurchasing.IsInitialized();
-                        //if (!isInitialized)
-                        //{
-                        //    InAppPurchasing.InitializePurchasing();
-                        //}
+                        if (!RuntimeManager.IsInitialized())
+                        {
+                            RuntimeManager.Init();
+                        }
+                        bool isInitialized = InAppPurchasing.IsInitialized();
+                        if (!isInitialized)
+                        {
+                            InAppPurchasing.InitializePurchasing();
+                        }
                     }
                 });
                 pSeq.Play();
@@ -240,8 +240,7 @@ namespace EazyEngine.Space
             //{
             //    FirebaseAnalytics.SetAnalyticsCollectionEnabled(true);
             //});
-            Screen.SetResolution(1080, 1920, false);
-            Application.targetFrameRate = 60;
+            //Application.targetFrameRate = 60;
             Application.backgroundLoadingPriority = ThreadPriority.Normal;
             if (GameManager._instance)
             {
@@ -254,7 +253,7 @@ namespace EazyEngine.Space
 #if UNITY_EDITOR
             Debug.unityLogger.logEnabled = true;
 #else
-            Debug.unityLogger.logEnabled = true;
+            Debug.unityLogger.logEnabled = false;
 #endif
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
         }

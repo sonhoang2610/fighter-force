@@ -478,11 +478,11 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             Database.dailyGiftModules.Add(dailyGiftModule);
             Database.clearDailyModules(currentModuleDailyGift.moduleClearID);
         }
-        //if (!InAppPurchasing.IsInitialized())
-        //{
-        //    InAppPurchasing.InitializePurchasing();
-        //}
-        for(int i = 0; i < GameManager.Instance.Database.timers.Count; ++i)
+        if (!InAppPurchasing.IsInitialized())
+        {
+            InAppPurchasing.InitializePurchasing();
+        }
+        for (int i = 0; i < GameManager.Instance.Database.timers.Count; ++i)
         {
             addTimer(GameManager.Instance.Database.timers[i]);
         }
@@ -493,9 +493,10 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         if (first)
         {
             initGame();
-         //   MissionContainer.Instance.LoadState();
-
             first = false;
+            MissionContainer.Instance.LoadState();
+
+      
         }
         for(int i = 0; i < pendingObjects.Count; ++i)
         {
@@ -1343,6 +1344,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     }
     IEnumerator checkInternetConnection(Action<bool> action)
     {
+        Debug.Log("internet");
         UnityWebRequest www = new UnityWebRequest("http://google.com");
         yield return www;
         action(www.error == null);
