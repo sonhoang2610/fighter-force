@@ -236,12 +236,12 @@ namespace EazyEngine.Space
             base.Awake();
 
 
-            //FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
-            //{
-            //    FirebaseAnalytics.SetAnalyticsCollectionEnabled(true);
-            //});
-            //Application.targetFrameRate = 60;
-            Application.backgroundLoadingPriority = ThreadPriority.Normal;
+            FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
+            {
+                FirebaseAnalytics.SetAnalyticsCollectionEnabled(true);
+            });
+            Application.targetFrameRate = 60;
+            Application.backgroundLoadingPriority = ThreadPriority.High;
             if (GameManager._instance)
             {
                 if (!GameManager._instance.IsDestroyed())
