@@ -100,7 +100,7 @@ namespace EazyEngine.Space.UI
                     pRequireStar = GameDatabase.Instance.LevelConfigScene[i].requrireStarToUnlock;
                 }
             }
-            btnPlay.isEnabled = !pLevelInfo.isLocked && GameManager.Instance.Database.getComonItem("Star").Quantity >= pRequireStar;
+            btnPlay.isEnabled = true;/* !pLevelInfo.isLocked && GameManager.Instance.Database.getComonItem("Star").Quantity >= pRequireStar;*/
             showInfo(GameManager.Instance.ChoosedLevel, index);
         }
         public AudioGroupSelector fightSfx = AudioGroupConstrant.Fight;

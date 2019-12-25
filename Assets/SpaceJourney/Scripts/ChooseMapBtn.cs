@@ -92,7 +92,7 @@ namespace EazyEngine.Space.UI
                         tab.normalSprite2D = bossDisableSprite[0];
                         tab.pressedSprite2D = bossDisableSprite[1];
                     }
-                   tab.GetComponentInChildren<Collider>().enabled = false;
+               //    tab.GetComponentInChildren<Collider>().enabled = false;
                     starContainer.gameObject.SetActive(false);
                 }
                 else
