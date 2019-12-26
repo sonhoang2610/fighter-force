@@ -54,11 +54,26 @@ public static class LoadAssets
         }
 
     }
-    public static ResourceRequest loadAssetAsync<T>(string pName, string path = "") where T : UnityEngine.Object
+    public static AsyncOperation loadAssetAsync<T>(string pName, string path = "") where T : UnityEngine.Object
     {
         if (SceneManager.Instance.isLocal)
         {
             return Resources.LoadAsync<T>(path + pName);
+        }
+        else
+        {
+            var pListBundle = AssetBundle.GetAllLoadedAssetBundles();
+            foreach (var pBundle in pListBundle)
+            {
+                var pNames = pBundle.GetAllAssetNames();
+                foreach(var pLocalName in pNames)
+                {
+                    if(pLocalName.Contains(pName.ToLower()))
+                    {
+                        return pBundle.LoadAssetAsync<T>(pLocalName);
+                    }
+                }
+            }
         }
         return null;
     }
@@ -78,7 +93,7 @@ public static class LoadAssets
                 cacheAssets.Remove(pName);
             }
         }
-        if (SceneManager.Instance.isLocal)
+        if (SceneManager.Instance.isLocal || !Application.isPlaying)
         {
             T pObjectss = Resources.Load<T>(path + pName);
             return pObjectss;
@@ -1348,6 +1363,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         UnityWebRequest www = new UnityWebRequest("http://google.com");
         yield return www;
         action(www.error == null);
+        www.Dispose();
     }
     public void showRewardAds(string pID, System.Action<bool> onResult)
     {

@@ -91,6 +91,7 @@ namespace EazyEngine.Space.UI
             UnityWebRequest www = new UnityWebRequest("http://google.com");
             yield return www;
             action(www.error == null);
+            www.Dispose();
         }
         public void reload()
         {

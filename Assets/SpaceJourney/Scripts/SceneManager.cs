@@ -10,6 +10,8 @@ using EazyEngine.Space.UI;
 using I2.Loc;
 using Firebase;
 using Firebase.Analytics;
+using Firebase.Storage;
+using System.Threading.Tasks;
 
 namespace EazyEngine.Space
 {
@@ -38,7 +40,8 @@ namespace EazyEngine.Space
         public GameObject loadingAds;
         public int loadObjectPerFrame = 2;
         AsyncOperation async;
-        protected ResourceRequest reuestGameManager =null,requestHUD=null,requestState = null;
+        protected ResourceRequest reuestGameManager =null,requestHUD=null;
+        protected AsyncOperation requestState = null;
         protected List<GameObject> loadObjectAsync = new List<GameObject>();
         bool isStart = false;
         [System.NonSerialized]
@@ -215,6 +218,7 @@ namespace EazyEngine.Space
             }
             else
             {
+          
                 fadeLayout.alpha = 0;
                 Sequence pSeq = DOTween.Sequence();
                 if (process)
@@ -264,10 +268,10 @@ namespace EazyEngine.Space
         {
             AssetBundleLoader loader = new AssetBundleLoader();
             string pTag = "ui/uri_assetbundle";
-#if UNITY_ANDROID 
+#if UNITY_ANDROID && !UNITY_EDITOR
             pTag = "ui/uri_assetbundle_android";
 #endif
-#if UNITY_IOS
+#if UNITY_IOS && !UNITY_EDITOR
              pTag = "ui/uri_assetbundle_ios";
 #endif
             LoadAssetBundleStatus status = LoadAssetBundleStatus.NEW;
@@ -281,6 +285,20 @@ namespace EazyEngine.Space
                 boxlostConnection.show();
             }));
             lastAssetLoaded = I2.Loc.LocalizationManager.GetTranslation(pTag) + "assetmanager";
+            //FirebaseStorage storage = Firebase.Storage.FirebaseStorage.DefaultInstance;
+            //var pRefManaget = storage.GetReference("StreamingAssets/PC/assetmanager");
+            //string pLink = "";
+            //pRefManaget.GetDownloadUrlAsync().ContinueWith((Task<Uri> task) => {
+            //    if (!task.IsFaulted && !task.IsCanceled)
+            //    {
+            //        pLink = task.Result.AbsoluteUri;
+            //        Debug.Log(pLink);
+            //    }
+            //});
+            //while (string.IsNullOrEmpty(pLink))
+            //{
+            //    yield return new WaitForEndOfFrame();
+            //}
             yield return loader.DownloadAndCache(I2.Loc.LocalizationManager.GetTranslation(pTag), "assetmanager", pNewVer, (LoadAssetBundleStatus pNew, AssetBundle pBundle) =>
                   {
                       status = pNew;
@@ -374,10 +392,10 @@ namespace EazyEngine.Space
         {
             float percent = 0;
             string pTag = "ui/uri_assetbundle";
-#if UNITY_ANDROID 
+#if UNITY_ANDROID && !UNITY_EDITOR
             pTag = "ui/uri_assetbundle_android";
 #endif
-#if UNITY_IOS
+#if UNITY_IOS && !UNITY_EDITOR
              pTag = "ui/uri_assetbundle_ios";
 #endif
             var pUrl = I2.Loc.LocalizationManager.GetTranslation(pTag);
@@ -501,7 +519,7 @@ namespace EazyEngine.Space
             {
                 if (requestState.isDone)
                 {
-                    cacheStatePreload = (GameObject)requestState.asset;
+                    cacheStatePreload = !SceneManager.Instance.isLocal ? (GameObject)((AssetBundleRequest)requestState).asset : (GameObject)((ResourceRequest)requestState).asset;
                     //var pState = (GameObject)requestState.asset;
                     //List<GameObject> pLoadObjects = new List<GameObject>();
                     //var pPools = pState.GetComponentsInChildren<IPool>();

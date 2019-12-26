@@ -39,7 +39,6 @@ namespace EazyEngine.Tools
 
             // get current bundle hash from server, random value added to avoid caching
           www = UnityWebRequest.Get(bundleURL+ assetName + ".manifest?r=" + (Random.value * 9999999));
-
             // wait for load to finish
             yield return www.SendWebRequest();
             Hash128 hashString = (default(Hash128));// new Hash128(0, 0, 0, 0);
@@ -76,16 +75,19 @@ namespace EazyEngine.Tools
                 else
                 {
                     // invalid loaded hash, just try loading latest bundle
-                  //  Debug.LogError("Invalid hash:" + hashString);
-                    yield break;
+                    //  Debug.LogError("Invalid hash:" + hashString);
+                    www.Dispose();
+                      yield break;
                 }
 
             }
             else
             {
-               // Debug.LogError("Manifest doesn't contain string 'ManifestFileVersion': " + bundleURL + ".manifest");
+                // Debug.LogError("Manifest doesn't contain string 'ManifestFileVersion': " + bundleURL + ".manifest");
+                www.Dispose();
                 yield break;
             }
+            Debug.Log(Time.realtimeSinceStartup + "before");
             using (UnityWebRequest uwr = UnityWebRequestAssetBundle.GetAssetBundle(bundleURL + assetName   , hashString, 0))
             {
                 yield return uwr.SendWebRequest();
@@ -102,7 +104,8 @@ namespace EazyEngine.Tools
                 www.Dispose();
                 www = null;
                 resultCallBack?.Invoke(LoadAssetBundleStatus.NEW,bundle);
-                 yield break;      
+                Debug.Log(Time.realtimeSinceStartup + "after");
+                yield break;      
             }
             lostinternet:
     
@@ -125,8 +128,9 @@ namespace EazyEngine.Tools
                   
                         result = bundle;
                         resultCallBack?.Invoke(LoadAssetBundleStatus.CACHE,bundle);
-                        yield break;
+                      
                     }
+                    uwr.Dispose();
                 }
             }
            
