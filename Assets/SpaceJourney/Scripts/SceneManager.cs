@@ -67,7 +67,7 @@ namespace EazyEngine.Space
         }
         public void loadScene(string pScene)
         {
-            if(pScene != currentScene)
+            if (pScene != currentScene)
             {
                 previousScene = currentScene;
             }
@@ -257,7 +257,7 @@ namespace EazyEngine.Space
 #if UNITY_EDITOR
             Debug.unityLogger.logEnabled = true;
 #else
-            Debug.unityLogger.logEnabled = false;
+            Debug.unityLogger.logEnabled = true;
 #endif
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
         }
