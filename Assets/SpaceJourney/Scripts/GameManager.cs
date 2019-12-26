@@ -321,7 +321,7 @@ public struct EventTimer
 
 public class GameManager : PersistentSingleton<GameManager>, EzEventListener<GameDatabaseInventoryEvent>
 {
-
+    public float frameTarget = 60;
     public List<GameObject> objectExcludes;
     public prefabBulletGroup[] groupPrefabBullet;
     [System.NonSerialized]
@@ -433,7 +433,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     {
         base.Awake();
         databaseGame = GameDatabase.Instance;
- 
+        Application.targetFrameRate = (int)frameTarget;
    //     StartCoroutine(delayAction(0.2f, spawnPool));
         // Database = Instantiate(Database);
     }
