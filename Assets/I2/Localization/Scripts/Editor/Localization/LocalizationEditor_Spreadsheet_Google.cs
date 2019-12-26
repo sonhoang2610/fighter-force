@@ -589,7 +589,11 @@ namespace I2.Loc
 
 		void StopConnectionWWW()
 		{
-			EditorApplication.update -= CheckForConnection;				
+			EditorApplication.update -= CheckForConnection;			
+            if(mConnection_WWW != null)
+            {
+                mConnection_WWW.Dispose();
+            }
 			mConnection_WWW = null;
 			mConnection_Callback = null;
 			mConnection_Text = string.Empty;
