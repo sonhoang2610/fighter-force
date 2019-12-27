@@ -242,6 +242,7 @@ namespace EazyEngine.Audio
 
         public void excuteActionAudio(params AudioAction[] pActions)
         {
+            return;
             if (pActions == null) return;
             foreach (var pAction in pActions)
             {
