@@ -259,7 +259,7 @@ namespace EazyEngine.Space
 #if UNITY_EDITOR
             Debug.unityLogger.logEnabled = true;
 #else
-            Debug.unityLogger.logEnabled = true;
+            Debug.unityLogger.logEnabled = false;
 #endif
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
         }
