@@ -63,7 +63,6 @@ public class SoundManager : PersistentSingleton<SoundManager>
     }
     public virtual void PlayMusic(string pGroupName, bool singleton = false, GameObject pOwner = null, string conditionstate = "",float pSmoothTime = 0)
     {
-        return ;
         var pDatabase = AudioDatabase.Instance;
         foreach (var pGroup in pDatabase.musics)
         {
@@ -253,7 +252,6 @@ public class SoundManager : PersistentSingleton<SoundManager>
     }
     public void PlaySound(string pGroupName, GameObject pOwner = null, string conditionstate = "")
     {
-        return ;
         var pDatabase = AudioDatabase.Instance;
         foreach (var pGroup in pDatabase.groups)
         {

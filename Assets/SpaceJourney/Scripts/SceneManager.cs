@@ -245,15 +245,7 @@ namespace EazyEngine.Space
                 FirebaseAnalytics.SetAnalyticsCollectionEnabled(true);
           
             });
-            if (!RuntimeManager.IsInitialized())
-            {
-                RuntimeManager.Init();
-            }
-            bool isInitialized = InAppPurchasing.IsInitialized();
-            if (!isInitialized)
-            {
-                InAppPurchasing.InitializePurchasing();
-            }
+           
             Application.targetFrameRate = 60;
             Application.backgroundLoadingPriority = ThreadPriority.High;
             if (GameManager._instance)
