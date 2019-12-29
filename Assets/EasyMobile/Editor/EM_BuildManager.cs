@@ -111,7 +111,7 @@ namespace EasyMobile.Editor
 
                 // Add required flags.
                 project.AddBuildProperty(targetGUID, "OTHER_LDFLAGS", "-ObjC");
-
+                project.AddFrameworkToProject(targetGUID, "UserNotifications.framework", false);
                 // Write PBX project.
                 project.WriteToFile(pbxPath);
 
@@ -165,8 +165,21 @@ namespace EasyMobile.Editor
             if (requiredInfoPlistItems != null)
             {
                 foreach (var moduleItems in requiredInfoPlistItems)
+                {
                     foreach (var item in moduleItems.Value)
+                    {
                         plist.root.AddIOSInfoPlistItem(item.Key, item.Value);
+
+                    }
+                    if (moduleItems.Key == Module.Notifications)
+                    {
+                        PlistElementArray bgModes = (plist.root["UIBackgroundModes"] == null) ? plist.root.CreateArray("UIBackgroundModes") : plist.root["UIBackgroundModes"].AsArray();
+                        bgModes.AddString("remote-notification");
+                        bgModes.AddString("fetch");
+                    }
+                }
+
+
             }
 
             return plist;
