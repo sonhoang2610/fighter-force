@@ -1245,7 +1245,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     void OnDisable()
     {
        
-        SaveGame();
+      //  SaveGame();
         InAppPurchasing.PurchaseCompleted -= PurchaseCompletedHandler;
         InAppPurchasing.PurchaseFailed -= PurchaseFailedHandler;
         GameServices.UserLoginSucceeded -= OnUserLoginSucceeded;
