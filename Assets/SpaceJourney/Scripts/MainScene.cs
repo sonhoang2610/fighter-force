@@ -5,6 +5,7 @@ using EazyEngine.Tools;
 using EasyMobile;
 using System;
 using UnityEngine.Networking;
+using ParadoxNotion.Services;
 
 namespace EazyEngine.Space.UI
 {
@@ -117,6 +118,49 @@ namespace EazyEngine.Space.UI
         {
             Notifications.Init();
             pObject.gameObject.SetActive(false);
+        }
+
+        public void deactiveGameAndMono()
+        {
+            GameManager.Instance.gameObject.SetActive(false);
+            MonoManager.current.gameObject.SetActive(false);
+        }
+        public void deactiveAll()
+        {
+            var pObjects = GameObject.FindObjectsOfType<GameObject>();
+            foreach(var pObject in pObjects)
+            {
+                if (pObject.activeInHierarchy && pObject.transform.parent == null)
+                {
+                    pObject.gameObject.SetActive(false);
+                }
+            }
+            Resources.UnloadUnusedAssets();
+            //GameManager.Instance.gameObject.SetActive(true);
+            // MonoManager.current.gameObject.SetActive(true);
+        }
+
+        public void clean()
+        {
+            var pObjects = GameObject.FindObjectsOfType<GameObject>();
+            foreach (var pObject in pObjects)
+            {
+                if (!pObject.IsDestroyed() && pObject.activeInHierarchy && pObject.transform.parent == null)
+                {
+                    Destroy(pObject);
+                }
+            }
+            Resources.UnloadUnusedAssets();
+        }
+
+        public void downResolution()
+        {
+            Screen.SetResolution(720, 1280, true);
+        }
+
+        public void downFps()
+        {
+            Application.targetFrameRate = 30;
         }
         IEnumerator checkInternetConnection(Action<bool> action)
         {
