@@ -94,6 +94,30 @@ namespace EazyEngine.Space.UI
 
         //    }
         //}
+        public void activeRuntime(GameObject pObject)
+        {
+            if (!RuntimeManager.IsInitialized())
+            {
+                RuntimeManager.Init();
+            }
+            pObject.gameObject.SetActive(false);
+
+        }
+        public void activeInapp(GameObject pObject)
+        {
+            bool isInitialized = InAppPurchasing.IsInitialized();
+            if (!isInitialized)
+            {
+                InAppPurchasing.InitializePurchasing();
+            }
+            pObject.gameObject.SetActive(false);
+        }
+
+        public void activeNotifi(GameObject pObject)
+        {
+            Notifications.Init();
+            pObject.gameObject.SetActive(false);
+        }
         IEnumerator checkInternetConnection(Action<bool> action)
         {
             UnityWebRequest www = new UnityWebRequest("http://google.com");
@@ -402,7 +426,7 @@ namespace EazyEngine.Space.UI
             int pFirstOpenGoogle = PlayerPrefs.GetInt("FirstOpenGoogle", 0);
             if (pFirstGame != 0 && (SceneManager.Instance.previousScene.Contains("Home") || pFirstOpenGoogle == 0))
             {
-                GameServices.ManagedInit();
+               // GameServices.ManagedInit();
                 PlayerPrefs.SetInt("FirstOpenGoogle", 1);
             }
             if (pFirstGame == 0)
@@ -454,7 +478,7 @@ namespace EazyEngine.Space.UI
 #if UNITY_ANDROID
                 GameServices.Init();    // start a new initialization process
 #elif UNITY_IOS
-    Debug.Log("Cannot show leaderboard UI: The user is not logged in to Game Center.");
+                GameServices.Init();
 #endif
             }
         }

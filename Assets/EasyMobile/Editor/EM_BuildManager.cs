@@ -112,6 +112,8 @@ namespace EasyMobile.Editor
                 // Add required flags.
                 project.AddBuildProperty(targetGUID, "OTHER_LDFLAGS", "-ObjC");
                 project.AddFrameworkToProject(targetGUID, "UserNotifications.framework", false);
+                project.AddCapability(targetGUID, PBXCapabilityType.BackgroundModes);
+                project.AddCapability(targetGUID, PBXCapabilityType.PushNotifications);
                 // Write PBX project.
                 project.WriteToFile(pbxPath);
 

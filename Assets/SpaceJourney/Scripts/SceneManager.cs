@@ -169,15 +169,15 @@ namespace EazyEngine.Space
                     SoundManager.Instance.cleanAudio();
                     if (currentScene.Contains("Main"))
                     {
-                        if (!RuntimeManager.IsInitialized())
-                        {
-                            RuntimeManager.Init();
-                        }
-                        bool isInitialized = InAppPurchasing.IsInitialized();
-                        if (!isInitialized)
-                        {
-                            InAppPurchasing.InitializePurchasing();
-                        }
+                        //if (!RuntimeManager.IsInitialized())
+                        //{
+                        //    RuntimeManager.Init();
+                        //}
+                        //bool isInitialized = InAppPurchasing.IsInitialized();
+                        //if (!isInitialized)
+                        //{
+                        //    InAppPurchasing.InitializePurchasing();
+                        //}
                     }
                 });
                 pSeq.Play();
