@@ -6,7 +6,7 @@ using EasyMobile.Internal;
 namespace EasyMobile
 {
     [System.Serializable]
-    public class NotificationsSettings : IAndroidPermissionRequired
+    public class NotificationsSettings : IAndroidPermissionRequired,IIOSInfoItemRequired
     {
         public const string DEFAULT_CATEGORY_ID = "notification.category.default";
         public const string DEFAULT_CATEGORY_NAME = "Default";
@@ -135,6 +135,11 @@ namespace EasyMobile
         public List<AndroidPermission> GetAndroidPermissions()
         {
             return mAndroidPermissions;
+        }
+
+        public List<iOSInfoPlistItem> GetIOSInfoPlistKeys()
+        {
+           return new List<iOSInfoPlistItem>();
         }
 
         #endregion

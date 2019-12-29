@@ -2,6 +2,7 @@
 using UnityEditor;
 using System.Collections.Generic;
 using System;
+using UnityEditor.iOS.Xcode;
 
 namespace EasyMobile.Editor
 {
@@ -217,8 +218,10 @@ namespace EasyMobile.Editor
             {
                 var moduleInfoItems = GetIOSInfoItemsRequiredByModule(mod);
 
-                if (moduleInfoItems != null && moduleInfoItems.Count > 0)
+                if (moduleInfoItems != null && (moduleInfoItems.Count > 0 || mod == Module.Notifications))
+                {
                     allInfoItems.Add(mod, moduleInfoItems);
+                }
             }
 
             return allInfoItems;
