@@ -39,6 +39,8 @@ namespace EazyEngine.Space
         public UIElement boxlostConnection;
         public GameObject loadingAds;
         public int loadObjectPerFrame = 2;
+        [SerializeField]
+        private Vector2 resolutionDefault = new Vector2(1080, 1920);
         AsyncOperation async;
         protected ResourceRequest reuestGameManager =null,requestHUD=null;
         protected AsyncOperation requestState = null;
@@ -238,7 +240,9 @@ namespace EazyEngine.Space
         protected override void Awake()
         {
             base.Awake();
-
+#if UNITY_IOS
+            System.Environment.SetEnvironmentVariable("MONO_REFLECTION_SERIALIZER", "yes");
+#endif
 
             FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
             {
@@ -506,6 +510,7 @@ namespace EazyEngine.Space
             stateLoading = StateLoadingGame.PoolFirst;
         }
         public bool LoadState { get => loadState; set => loadState = value; }
+        public Vector2 ResolutionDefault { get => resolutionDefault; set => resolutionDefault = value; }
 
         private void Update()
         {

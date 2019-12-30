@@ -72,6 +72,7 @@ public class UIWidget : UIRect
 		}
 		set
 		{
+            if (drawCall.IsDestroyed()) return;
 #if UNITY_FLASH
 			if (!(mOnRender == value))
 #else
@@ -79,7 +80,7 @@ public class UIWidget : UIRect
 #endif
 			{
 #if !UNITY_FLASH
-				if (drawCall != null && drawCall.onRender != null && mOnRender != null)
+				if ( drawCall != null && drawCall.onRender != null && mOnRender != null)
 					drawCall.onRender -= mOnRender;
 #endif
 				mOnRender = value;

@@ -473,7 +473,10 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             var pSke5 = gameObject.AddComponent<SkeletonRenderSeparator>();
         }
         LoadGame();
-        SaveGameCache();
+        if (_databaseInstanced.spPlanes.Count > 0 && _databaseInstanced.planes.Count > 0)
+        {
+            SaveGameCache();
+        }
         LoadAllLevel();
         reCalCulateStar();
         var currentModuleGiftOnline = GameDatabase.Instance.databaseGiftOnline;
@@ -1245,7 +1248,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     void OnDisable()
     {
        
-      //  SaveGame();
+      //  
         InAppPurchasing.PurchaseCompleted -= PurchaseCompletedHandler;
         InAppPurchasing.PurchaseFailed -= PurchaseFailedHandler;
         GameServices.UserLoginSucceeded -= OnUserLoginSucceeded;
@@ -1319,7 +1322,13 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     {
         InAppPurchasing.Purchase(pID);
     }
-
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause)
+        {
+            SaveGame();
+        }
+    }
     private void Start()
     {
    
