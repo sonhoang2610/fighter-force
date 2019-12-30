@@ -109,7 +109,7 @@ public class RenderQueueModifier : MonoBehaviour
 
     private void OnDisable()
     {
-        if (m_target == null)
+        if (m_target == null || m_target.IsDestroyed())
             return;
         m_target.onRender -= resort;
     }

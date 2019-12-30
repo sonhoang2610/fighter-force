@@ -30,6 +30,7 @@ namespace EazyEngine.Space.UI
         }
         private void OnDestroy()
         {
+            if (!GameManager.Instance || GameManager.Instance.IsDestroyed()) return;
             var pCounting = GameManager.Instance.Database.timers.Find(x => x.key == "GiftOnline");
             if (pCounting != null)
             {

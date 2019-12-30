@@ -154,8 +154,9 @@ namespace EazyEngine.Space.UI
         }
 
         public void downResolution()
-        {
-            Screen.SetResolution(720, 1280, true);
+        {       
+            Screen.SetResolution(720, 1280, false);
+            SceneManager.overrideResolution = Screen.currentResolution;
         }
 
         public void downFps()
