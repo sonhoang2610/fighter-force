@@ -28,8 +28,6 @@ namespace EazyEngine.Space
     }
     public class SceneManager : PersistentSingleton<SceneManager>
     {
-        public static Resolution defaultResolution = new Resolution() { width =0,height =0};
-        public static Resolution overrideResolution = new Resolution() { width = 0, height = 0 };
         public UIWidget fadeLayout;
         public UI2DSprite process;
         public UILabel loadingcontent;
@@ -241,7 +239,6 @@ namespace EazyEngine.Space
 
         protected override void Awake()
         {
-            defaultResolution = Screen.currentResolution;
             base.Awake();
 #if UNITY_IOS
             System.Environment.SetEnvironmentVariable("MONO_REFLECTION_SERIALIZER", "yes");

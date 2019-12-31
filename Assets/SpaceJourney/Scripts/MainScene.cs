@@ -154,9 +154,19 @@ namespace EazyEngine.Space.UI
         }
 
         public void downResolution()
-        {       
-            Screen.SetResolution(720, 1280, false);
-            SceneManager.overrideResolution = Screen.currentResolution;
+        {
+            if (Screen.currentResolution.height > Screen.currentResolution.width)
+            {
+                float ratio = (float)Screen.currentResolution.height / (float)Screen.currentResolution.width;
+                Debug.Log("resolution" + 720 + "," + (int)(720.0f * ratio));
+                Screen.SetResolution(720, (int)(720.0f * ratio), false);
+            }
+            else
+            {
+                float ratio = (float)Screen.currentResolution.width / (float)Screen.currentResolution.height;
+                Screen.SetResolution((int)(1280*ratio), 1280, false);
+            }
+        
         }
 
         public void downFps()

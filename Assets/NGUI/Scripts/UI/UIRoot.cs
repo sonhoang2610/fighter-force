@@ -286,17 +286,7 @@ public class UIRoot : MonoBehaviour
 					!(Mathf.Abs(ls.y - size) <= float.Epsilon) ||
 					!(Mathf.Abs(ls.z - size) <= float.Epsilon))
 				{
-                    float pSizeX = size;
-                    float pSizeY = size;
-                    if (EazyEngine.Space.SceneManager.overrideResolution.width > 0)
-                    {
-                        pSizeX *= EazyEngine.Space.SceneManager.overrideResolution.width / EazyEngine.Space.SceneManager.defaultResolution.width;
-                    }
-                    if (EazyEngine.Space.SceneManager.overrideResolution.height > 0)
-                    {
-                        pSizeY *= EazyEngine.Space.SceneManager.overrideResolution.height / EazyEngine.Space.SceneManager.defaultResolution.height;
-                    }
-                    mTrans.localScale = new Vector3(pSizeX, pSizeY, size);
+                    mTrans.localScale = new Vector3(size, size, size);
 					if (updateAnchors) BroadcastMessage("UpdateAnchors", SendMessageOptions.DontRequireReceiver);
 				}
 			}
