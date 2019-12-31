@@ -30,7 +30,7 @@ namespace EazyEngine.Space.UI
         protected override void Awake()
         {
             base.Awake();
-
+            downResolution();
             if (layerPrepare)
             {
                 layerPrepare.showInfo(0, 0);
@@ -481,7 +481,7 @@ namespace EazyEngine.Space.UI
             int pFirstOpenGoogle = PlayerPrefs.GetInt("FirstOpenGoogle", 0);
             if (pFirstGame != 0 && (SceneManager.Instance.previousScene.Contains("Home") || pFirstOpenGoogle == 0))
             {
-               // GameServices.ManagedInit();
+                GameServices.ManagedInit();
                 PlayerPrefs.SetInt("FirstOpenGoogle", 1);
             }
             if (pFirstGame == 0)
