@@ -34,9 +34,12 @@ namespace EazyEngine.Space.UI
                 MainScene.Instance.addSelectedBoxPlane(this);
             }
         }
+        protected int callFps = 0;
         public virtual void nextPage()
         {
             currentPage++;
+            callFps++;
+            SceneManager.Instance.markDirtySlowFps();
             updatePage();
         }
 
@@ -44,6 +47,8 @@ namespace EazyEngine.Space.UI
         public virtual void previousPage()
         {
             currentPage--;
+            callFps++;
+            SceneManager.Instance.markDirtySlowFps();
             updatePage();
         }
         public void onFinishFocus()
@@ -58,6 +63,11 @@ namespace EazyEngine.Space.UI
                     }
                 }
             }
+            for(int i = 0; i < callFps; ++i)
+            {
+                SceneManager.Instance.removeDirtySlowFps();
+            }
+            callFps = 0;
         }
         public virtual void updatePage()
         {

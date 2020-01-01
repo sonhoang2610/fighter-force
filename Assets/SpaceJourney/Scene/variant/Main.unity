@@ -3414,7 +3414,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3081
+  startingRenderQueue: 3082
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -8710,6 +8710,7 @@ GameObject:
   - component: {fileID: 438731337}
   - component: {fileID: 438731336}
   - component: {fileID: 438731338}
+  - component: {fileID: 438731339}
   m_Layer: 16
   m_Name: box
   m_TagString: Untagged
@@ -8823,7 +8824,7 @@ MonoBehaviour:
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 0.6157965
-  dirtyChange: 0
+  dirtyChange: 1
   mType: 1
   mFillDirection: 4
   mFillAmount: 1
@@ -8868,6 +8869,19 @@ MonoBehaviour:
   fightSfx:
     isMusic: 0
     groupName: Fight
+--- !u!114 &438731339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438731334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c40e2764cf25f0c42b9f74c2cd56da2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  negative: 1
 --- !u!1 &443603269
 GameObject:
   m_ObjectHideFlags: 0
@@ -9386,6 +9400,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 397937920, guid: 31d9a9eb0b0581c4289dafe11f59b213, type: 3}
       propertyPath: mType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760673349473746365, guid: 31d9a9eb0b0581c4289dafe11f59b213,
+        type: 3}
+      propertyPath: downFpsOnShow
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -19458,6 +19477,11 @@ PrefabInstance:
       propertyPath: onInitEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3760673349473746365, guid: 31d9a9eb0b0581c4289dafe11f59b213,
+        type: 3}
+      propertyPath: downFpsOnShow
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1570095091001437174, guid: 31d9a9eb0b0581c4289dafe11f59b213,
         type: 3}
       propertyPath: onClick.Array.data[0].mParameters.Array.size
@@ -29053,6 +29077,11 @@ PrefabInstance:
       propertyPath: onStartEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2951843568516820622, guid: 1f86cb066b0c49b4fa0041133b4e363b,
+        type: 3}
+      propertyPath: downFpsOnShow
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 980154786259325348, guid: 1f86cb066b0c49b4fa0041133b4e363b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -30297,7 +30326,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3082
+  startingRenderQueue: 3083
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 3
@@ -33957,7 +33986,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243524013}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9441d5450817c342a45e4b8dd66de6e, type: 3}
   m_Name: 
@@ -44553,6 +44582,11 @@ PrefabInstance:
       propertyPath: onInitEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3760673349473746365, guid: 31d9a9eb0b0581c4289dafe11f59b213,
+        type: 3}
+      propertyPath: downFpsOnShow
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7108991899811662371, guid: 31d9a9eb0b0581c4289dafe11f59b213,
         type: 3}
       propertyPath: m_RootOrder
@@ -46723,6 +46757,11 @@ PrefabInstance:
         type: 3}
       propertyPath: onEnableEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760673349473746365, guid: 31d9a9eb0b0581c4289dafe11f59b213,
+        type: 3}
+      propertyPath: downFpsOnShow
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7108991899811662371, guid: 31d9a9eb0b0581c4289dafe11f59b213,
         type: 3}
@@ -50191,6 +50230,11 @@ PrefabInstance:
       propertyPath: mLocalizeTarget
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3760673349473746365, guid: 31d9a9eb0b0581c4289dafe11f59b213,
+        type: 3}
+      propertyPath: downFpsOnShow
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31d9a9eb0b0581c4289dafe11f59b213, type: 3}
 --- !u!4 &1696689201 stripped
@@ -52533,6 +52577,19 @@ MonoBehaviour:
   sfxOpen:
     isMusic: 0
     groupName: OpenBox
+--- !u!114 &1782414294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782414292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c40e2764cf25f0c42b9f74c2cd56da2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  negative: 0
 --- !u!1 &1782414295 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 408225134, guid: 31d9a9eb0b0581c4289dafe11f59b213,
@@ -65783,6 +65840,11 @@ PrefabInstance:
         type: 3}
       propertyPath: onEnableEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3760673349473746365, guid: 31d9a9eb0b0581c4289dafe11f59b213,
+        type: 3}
+      propertyPath: downFpsOnShow
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7108991899811662371, guid: 31d9a9eb0b0581c4289dafe11f59b213,
         type: 3}

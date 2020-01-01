@@ -15,6 +15,7 @@ namespace EazyEngine.Space.UI
 
         protected ItemGiftOnlineInfo item;
 
+
         public void claim()
         {
             var pCounting = GameManager.Instance.Database.timers.Find(x => x.key == "GiftOnline");

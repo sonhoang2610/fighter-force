@@ -23,6 +23,11 @@ namespace EazyEngine.Space.UI
         protected TimeCountDown timerPending;
         protected int timeCounting = 0;
         protected bool isNotice = false;
+
+        private IEnumerator Awake()
+        {
+            yield return new WaitForSeconds(5);
+        }
         public void OnEzEvent(GameDatabaseInventoryEvent eventType)
         {
             reload();
@@ -104,19 +109,7 @@ namespace EazyEngine.Space.UI
             EzEventManager.RemoveListener<GameDatabaseInventoryEvent>(this);
             EzEventManager.RemoveListener<EventTimer>(this);
         }
-
-        // Start is called before the first frame update
-        void Start()
-        {
-      
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
+        
         public void OnEzEvent(EventTimer eventType)
         {
             if (eventType.state == TimerState.Start)

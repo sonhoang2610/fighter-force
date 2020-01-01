@@ -36,6 +36,7 @@ public class UIElement : MonoBehaviour,EzEventListener<UIMessEvent> {
     [SerializeField]
     UnityEvent onCompleteTweenShow;
 
+
     public Action _actionOnClose;
     public int relative = 0;
     public void handleEffect(bool active)
@@ -81,26 +82,50 @@ public class UIElement : MonoBehaviour,EzEventListener<UIMessEvent> {
     {
         gameObject.SetActive(!gameObject.activeSelf);
     }
-
-
+    
     public virtual void show()
     {
         if (!gameObject.activeSelf)
         {
             SoundManager.Instance.PlaySound(AudioGroupConstrant.Appear);
         }
-            showElement(delegate {onCompleteTweenShow.Invoke();  }); 
+            showElement(
+                delegate {
+                    onCompleteTweenShow.Invoke();
+                }
+                ); 
     
     }
-
+    protected int callFps = 0;
     public virtual void showElement(System.Action pComplete)
     {
         GameObject o;
         (o = gameObject).SetActive(true);
         RootMotionController.stopAllAction(o);
-        if( UIElementManager.Instance.doAction(this, true,pComplete))
+  
+        if (cateGory.Contains("Fade") || cateGory.Contains("MoveFrom"))
+        {
+            SceneManager.Instance.markDirtySlowFps();
+            callFps++;
+        }
+        if (pComplete != null)
+        {
+            pComplete += delegate
+            {
+                for (int i = 0; i < callFps; ++i)
+                {
+                    SceneManager.Instance.removeDirtySlowFps();
+                }
+                callFps = 0;
+            };
+        }
+        if ( UIElementManager.Instance.doAction(this, true,pComplete))
         {
             gameObject.GetComponent<RootMotionController>()._isRunOnRealTime = true;
+        }
+        else
+        {
+            pComplete?.Invoke();
         }
     }
 
@@ -144,7 +169,7 @@ public class UIElement : MonoBehaviour,EzEventListener<UIMessEvent> {
     }
     private void OnEnable()
     {
-
+  
         isFirst = true;
         onEnableEvent?.Invoke();
         onStartEvent?.Invoke();
@@ -156,6 +181,11 @@ public class UIElement : MonoBehaviour,EzEventListener<UIMessEvent> {
         //{
         //    EzEventManager.RemoveListener(this);
         //}
+        for(int i = 0; i < callFps; ++i)
+        {
+            SceneManager.Instance.removeDirtySlowFps();
+        }
+        callFps = 0;
         onDisableEvent?.Invoke();
     }
     protected virtual void Start()

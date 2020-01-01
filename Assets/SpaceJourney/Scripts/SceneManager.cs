@@ -12,6 +12,7 @@ using Firebase;
 using Firebase.Analytics;
 using Firebase.Storage;
 using System.Threading.Tasks;
+using MK.Glow.Legacy;
 
 namespace EazyEngine.Space
 {
@@ -236,7 +237,50 @@ namespace EazyEngine.Space
                 pSeq.Play();
             }
         }
-
+        protected int dirtySlowFps = 0;
+        protected MKGlow _mk;
+        public MKGlow mk
+        {
+            get
+            {
+                return (_mk == null || _mk.IsDestroyed()) ? _mk = FindObjectOfType<MKGlow>() : _mk;
+            }
+        }
+        public void markDirtySlowFps()
+        {
+            dirtySlowFps++;
+            if(dirtySlowFps >= 1)
+            {
+                Application.targetFrameRate = 60;
+                Debug.Log("FPS" + Application.targetFrameRate);
+            }
+        }
+        public void removeDirtySlowFps()
+        {
+            dirtySlowFps--;
+            if(dirtySlowFps <= 0)
+            {
+                Application.targetFrameRate = 30;
+                Debug.Log("FPS" + Application.targetFrameRate);
+            }
+        }
+        protected int dirtyBloomMK = 0;
+        public void markDirtyBloomMK()
+        {
+            dirtyBloomMK++;
+            if (dirtyBloomMK >= 1)
+            {
+                if(mk)mk.enabled = true;
+            }
+        }
+        public void removeDirtyBloomMK()
+        {
+            dirtyBloomMK--;
+            if (dirtyBloomMK <= 0)
+            {
+                if (mk)mk.enabled = false;
+            }
+        }
         protected override void Awake()
         {
             base.Awake();
