@@ -46,7 +46,19 @@ namespace EazyEngine.Space.UI
             currentPage--;
             updatePage();
         }
-
+        public void onFinishFocus()
+        {
+            for(int i = 0; i < DataSource.Count; ++i)
+            {
+                if(i != currentPage)
+                {
+                    if (Item[DataSource[i]].gameObject.activeSelf)
+                    {
+                        Item[DataSource[i]].gameObject.SetActive(false);
+                    }
+                }
+            }
+        }
         public virtual void updatePage()
         {
             btnNext.isEnabled = true;
@@ -65,12 +77,16 @@ namespace EazyEngine.Space.UI
             if(!pCenter)
             {
                 pCenter = GetComponentInChildren<UICenterOnChild>();
+              
             }
+            pCenter.onFinished -= onFinishFocus;
+            pCenter.onFinished += onFinishFocus;
             pCenter.CenterOn(Item[DataSource[currentPage]].transform);
             if (isSelected)
             {
                 Item[DataSource[currentPage]].onExecute();
             }
+            Item[DataSource[currentPage]].gameObject.SetActive(true);
             Item[DataSource[currentPage]].GetComponentInChildren<Animator>().triggerAnimator("Default");
             Item[DataSource[currentPage]].GetComponentInChildren<Animator>().triggerAnimator("Preview");
             onChoosePlaneIndex.Invoke(currentPage);
