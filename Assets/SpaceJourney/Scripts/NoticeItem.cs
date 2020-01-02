@@ -23,11 +23,7 @@ namespace EazyEngine.Space.UI
         protected TimeCountDown timerPending;
         protected int timeCounting = 0;
         protected bool isNotice = false;
-
-        private IEnumerator Awake()
-        {
-            yield return new WaitForSeconds(5);
-        }
+        
         public void OnEzEvent(GameDatabaseInventoryEvent eventType)
         {
             reload();
