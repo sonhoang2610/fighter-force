@@ -29,10 +29,7 @@ namespace EazyEngine.Space.UI
             {
                 base.Data = value;
                 if (attachMentObject == null) {
-                    attachMentObject = new GameObject();
-                    attachMentObject.transform.parent = transform;
-                    attachMentObject.transform.localPosition = Vector3.zero;
-                    attachMentObject.transform.localScale = new Vector3(1, 1, 1);
+                    attachMentObject = gameObject.AddWidget<UIWidget>().gameObject;
                 }
                 if (model == null && value.info.model != null)
                 {
