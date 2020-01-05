@@ -255,6 +255,7 @@ namespace EazyEngine.Space {
     {
 
         public Character modelPlane;
+        public AssetSelectorRef modelPlaneRef;
         public int limitUpgrade = 80;
         public int RankPlane = 0;
         public float[] speedBoosters = new float[] {

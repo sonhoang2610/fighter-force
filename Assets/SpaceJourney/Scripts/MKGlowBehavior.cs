@@ -17,7 +17,7 @@ public class MKGlowBehavior : MonoBehaviour
     {
         for (int i = 0; i < callBloom; ++i)
         {
-            SceneManager.Instance.removeDirtyBloomMK();
+            SceneManager.Instance?.removeDirtyBloomMK();
         }
         callBloom = 0;
     }

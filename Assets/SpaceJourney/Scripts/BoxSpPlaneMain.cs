@@ -61,7 +61,7 @@ namespace EazyEngine.Space.UI
         {
             base.setDataItem(pData, pItem);
             pItem.transform.SetSiblingIndex(pItem.Index);
-            pItem.transform.localScale = pData.Info.modelPlane.transform.localScale * 0.6f;
+            pItem.attachMentObject.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
         }
         public int refStencil;
         public override ObservableList<PlaneInfoConfig> DataSource { get => base.DataSource; set { base.DataSource = value;

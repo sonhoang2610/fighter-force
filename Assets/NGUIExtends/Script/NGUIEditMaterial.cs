@@ -206,39 +206,60 @@ public class NGUIEditMaterial : MonoBehaviour {
             }
         }
     }
+
+    public void refreshProp()
+    {
+        var pdrawcall = GetComponent<UIWidget>().drawCall;
+        if (pdrawcall)
+        {
+            updateProp(pdrawcall.dynamicMaterial);
+        }
+    }
+    int timeUpdate = 0;
+    private void OnEnable()
+    {
+        timeUpdate = 0;
+    }
+    public void updateProp(Material mat)
+    {
+        timeUpdate = 1;
+        for (int i = 0; i < Properties.Length; i++)
+        {
+            if (sprite2D)
+            {
+                mat.mainTexture = Sprite2D.mainTexture;
+            }
+            else
+            {
+                mat.mainTexture = Uitexture.mainTexture;
+            }
+            if (Properties[i].PropertyType == PropertyType.Float)
+            {
+                mat.SetFloat(Properties[i].NameProperty, Properties[i].EffectAmount);
+            }
+            else if (Properties[i].PropertyType == PropertyType.Color)
+            {
+                mat.SetColor(Properties[i].NameProperty, Properties[i].Color);
+            }
+            else if (Properties[i].PropertyType == PropertyType.ColorHDR)
+            {
+                mat.SetColor(Properties[i].NameProperty, Properties[i].ColorHDR);
+            }
+        }
+    }
     // Use this for initialization
     void Start () {
         sprite2D = Sprite2D;
-        GetComponent<UIWidget>().onRender = delegate (Material mat)
-       {
-           for (int i = 0; i < Properties.Length; i++)
-           {
-               if (sprite2D)
-               {
-                   mat.mainTexture = Sprite2D.mainTexture;
-               }
-               else
-               {
-                   mat.mainTexture = Uitexture.mainTexture;
-               }
-               if (Properties[i].PropertyType == PropertyType.Float)
-               {
-                   mat.SetFloat(Properties[i].NameProperty, Properties[i].EffectAmount);
-               }else if(Properties[i].PropertyType == PropertyType.Color)
-               {
-                   mat.SetColor(Properties[i].NameProperty, Properties[i].Color);
-               }
-               else if (Properties[i].PropertyType == PropertyType.ColorHDR)
-               {
-                   mat.SetColor(Properties[i].NameProperty, Properties[i].ColorHDR);
-               }
-            }
-       };
-	}
+        GetComponent<UIWidget>().onRender = updateProp;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(timeUpdate == 0)
+        {
+            refreshProp();
+        }
 	}
 }
 

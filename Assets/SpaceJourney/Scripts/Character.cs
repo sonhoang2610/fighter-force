@@ -258,6 +258,7 @@ namespace EazyEngine.Space
 
         private void OnDisable()
         {
+            if (GameManager.Instance.IsDestroyed()) return;
             if (GameManager.Instance.isPlaying && LevelManger.InstanceRaw && LevelManger.Instance._charList.Contains(this))
             {
                 LevelManger.Instance._charList.Remove(this);

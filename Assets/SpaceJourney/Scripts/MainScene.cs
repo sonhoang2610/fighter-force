@@ -481,7 +481,9 @@ namespace EazyEngine.Space.UI
             int pFirstOpenGoogle = PlayerPrefs.GetInt("FirstOpenGoogle", 0);
             if (pFirstGame != 0 && (SceneManager.Instance.previousScene.Contains("Home") || pFirstOpenGoogle == 0))
             {
+#if UNITY_MOBILE
                 GameServices.ManagedInit();
+#endif
                 PlayerPrefs.SetInt("FirstOpenGoogle", 1);
             }
             if (pFirstGame == 0)

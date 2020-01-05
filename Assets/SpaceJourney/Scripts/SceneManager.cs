@@ -10,7 +10,6 @@ using EazyEngine.Space.UI;
 using I2.Loc;
 using Firebase;
 using Firebase.Analytics;
-using Firebase.Storage;
 using System.Threading.Tasks;
 using MK.Glow.Legacy;
 
@@ -171,7 +170,8 @@ namespace EazyEngine.Space
                     camera.GetComponent<CropCamera>().clearRender();
                     SoundManager.Instance.cleanAudio();
                     if (currentScene.Contains("Main"))
-                    {
+                {
+#if UNITY_MOBILE
                         if (!RuntimeManager.IsInitialized())
                         {
                             RuntimeManager.Init();
@@ -181,6 +181,7 @@ namespace EazyEngine.Space
                         {
                             InAppPurchasing.InitializePurchasing();
                         }
+#endif
                     }
                 });
                 pSeq.Play();
@@ -287,15 +288,15 @@ namespace EazyEngine.Space
 #if UNITY_IOS
             System.Environment.SetEnvironmentVariable("MONO_REFLECTION_SERIALIZER", "yes");
 #endif
-
+#if UNITY_MOBILE
             FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
             {
                 FirebaseAnalytics.SetAnalyticsCollectionEnabled(true);
           
             });
-           
+#endif
             Application.targetFrameRate = 60;
-            Application.backgroundLoadingPriority = ThreadPriority.High;
+            Application.backgroundLoadingPriority = ThreadPriority.Low;
             if (GameManager._instance)
             {
                 if (!GameManager._instance.IsDestroyed())
@@ -335,20 +336,6 @@ namespace EazyEngine.Space
                 boxlostConnection.show();
             }));
             lastAssetLoaded = I2.Loc.LocalizationManager.GetTranslation(pTag) + "assetmanager";
-            //FirebaseStorage storage = Firebase.Storage.FirebaseStorage.DefaultInstance;
-            //var pRefManaget = storage.GetReference("StreamingAssets/PC/assetmanager");
-            //string pLink = "";
-            //pRefManaget.GetDownloadUrlAsync().ContinueWith((Task<Uri> task) => {
-            //    if (!task.IsFaulted && !task.IsCanceled)
-            //    {
-            //        pLink = task.Result.AbsoluteUri;
-            //        Debug.Log(pLink);
-            //    }
-            //});
-            //while (string.IsNullOrEmpty(pLink))
-            //{
-            //    yield return new WaitForEndOfFrame();
-            //}
             yield return loader.DownloadAndCache(I2.Loc.LocalizationManager.GetTranslation(pTag), "assetmanager", pNewVer, (LoadAssetBundleStatus pNew, AssetBundle pBundle) =>
                   {
                       status = pNew;

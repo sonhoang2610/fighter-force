@@ -97,8 +97,8 @@ namespace EazyEngine.Space.UI
                 Item[DataSource[currentPage]].onExecute();
             }
             Item[DataSource[currentPage]].gameObject.SetActive(true);
-            Item[DataSource[currentPage]].GetComponentInChildren<Animator>().triggerAnimator("Default");
-            Item[DataSource[currentPage]].GetComponentInChildren<Animator>().triggerAnimator("Preview");
+            Item[DataSource[currentPage]].AnimatorModel?.triggerAnimator("Default");
+            Item[DataSource[currentPage]].AnimatorModel?.triggerAnimator("Preview");
             onChoosePlaneIndex.Invoke(currentPage);
 
         }

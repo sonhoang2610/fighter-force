@@ -70,14 +70,35 @@ namespace EazyEngine.Space.UI
                         }
                         else
                         {
-                            pObjectNew = Instantiate(items[i].Data.Info.model, attachMentModel.transform);
+                            pObjectNew = new GameObject();
+                            pObjectNew.transform.parent = attachMentModel.transform;
+                            pObjectNew.transform.localScale = new Vector3(1, 1, 1);
+                            pObjectNew.transform.localPosition = Vector3.zero;
+
+                            if (!string.IsNullOrEmpty(items[i].Data.Info.modelRef.runtimeKey))
+                            {
+                                var pAsync = items[i].Data.Info.modelRef.loadAssetAsync<GameObject>();
+                                pAsync.completed += delegate (AsyncOperation a)
+                                {
+                                    if (a.GetType() == typeof(ResourceRequest))
+                                    {
+                                        Instantiate((GameObject)((ResourceRequest)a).asset, pObjectNew.transform);
+                                        pObjectNew.SetLayerRecursively(attachMentModel.layer);
+                                        pObjectNew.GetComponentInChildren<RenderQueueModifier>(true)?.setTarget(compareRender);
+                                    }
+                                };
+                            }
+                            else
+                            {
+                                Instantiate(items[i].Data.Info.model, pObjectNew.transform);
+                            }
                             cacheModel.Add(items[i].Data.Info.ItemID, pObjectNew);
 
                         }
              
                 
                         pObjectNew.SetLayerRecursively(attachMentModel.layer);
-                        pObjectNew.GetComponentInChildren<RenderQueueModifier>(true).setTarget(compareRender);
+                        pObjectNew.GetComponentInChildren<RenderQueueModifier>(true)?.setTarget(compareRender);
                         group.GroupLayer.Add(pObjectNew.transform);
                     }
               

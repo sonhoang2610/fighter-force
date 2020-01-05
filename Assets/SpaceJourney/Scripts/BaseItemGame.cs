@@ -88,6 +88,7 @@ namespace EazyEngine.Space
         public Sprite iconGame;
         public Sprite iconGameDisable;
         public GameObject model;
+        public AssetSelectorRef modelRef;
         public int score;
         [System.NonSerialized,OdinSerialize]
         public LimitedModule limitModule;

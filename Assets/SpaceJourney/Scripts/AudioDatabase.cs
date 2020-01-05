@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using EazyEngine.Space;
 
 #if UNITY_EDITOR
 using System.IO;
@@ -41,11 +42,17 @@ namespace EazyEngine.Audio
     [System.Serializable]
     public class AudioElementInfo
     {
-        public AudioClip clip;
+#if UNITY_EDITOR
+        [SerializeField]
+        private AudioClip clip;
+#endif
+        public AssetSelectorRef clipRef;
         [Range(0,1)]
         public float volume = 1;
         public float delay = 0;
         public bool isLoop = false;
+
+        public AudioClip Clip { get; set; }
     }
     [System.Serializable]
     public class AudioElementInfos
@@ -185,6 +192,32 @@ namespace EazyEngine.Audio
                     File.WriteAllText(pPath, pString);
                     Debug.Log(pConstrainRegion);
                     AssetDatabase.Refresh();
+                }
+            }
+        }
+        [Button("Convert Legacy to Addressable")]
+        public void ConvertLegacyToAddressable()
+        {
+           for(int i = 0; i < groups.Length; ++i)
+            {
+                for(int j  = 0; j < groups[i].clips.Length; ++j)
+                {
+                    foreach(var pelement in groups[i].clips[j].elements)
+                    {
+                        pelement.clipRef.Asset = pelement.Clip;
+                        pelement.clipRef.refresh();
+                    }
+                }
+            }
+            for (int i = 0; i < musics.Length; ++i)
+            {
+                for (int j = 0; j < musics[i].clips.Length; ++j)
+                {
+                    foreach (var pelement in musics[i].clips[j].elements)
+                    {
+                        pelement.clipRef.Asset = pelement.Clip;
+                        pelement.clipRef.refresh();
+                    }
                 }
             }
         }

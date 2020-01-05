@@ -146,7 +146,7 @@ public class SoundManager : PersistentSingleton<SoundManager>
                     var pElementInfo = pClipInfo.elements[j];
                     System.Action pAction = delegate
                     {
-                        var sources = PlayBackgroundMusic(pElementInfo.clip ,singleton, pFactor * pElementInfo.volume,pSmoothTime);
+                        var sources = PlayBackgroundMusic(pElementInfo.Clip ,singleton, pFactor * pElementInfo.volume,pSmoothTime);
                         if (pOwner&& sources != null)
                         {
                             var pExistCaller = musicCallers.Find(x => x.owner == pOwner);
@@ -173,14 +173,34 @@ public class SoundManager : PersistentSingleton<SoundManager>
                             pSoundInfo.audios.Add(sources);
                         }
                     };
-                    if (pElementInfo.delay == 0)
+                    if(pElementInfo.Clip == null)
                     {
-                        pAction();
+                        var pAsync = pElementInfo.clipRef.loadAssetAsync<AudioClip>();
+                        pAsync.completed += delegate (AsyncOperation a)
+                        {
+                            pElementInfo.Clip = (AudioClip)(((ResourceRequest)a).asset);
+                            if (pElementInfo.delay == 0)
+                            {
+                                pAction();
+                            }
+                            else
+                            {
+                                StartCoroutine(delayAction(pElementInfo.delay, pAction));
+                            }
+                        };
                     }
                     else
                     {
-                        StartCoroutine(delayAction(pElementInfo.delay, pAction));
+                        if (pElementInfo.delay == 0)
+                        {
+                            pAction();
+                        }
+                        else
+                        {
+                            StartCoroutine(delayAction(pElementInfo.delay, pAction));
+                        }
                     }
+                  
 
 
                 }
@@ -324,9 +344,11 @@ public class SoundManager : PersistentSingleton<SoundManager>
                 for (int j = 0; j < pClipInfo.elements.Length; ++j)
                 {
                     var pElementInfo = pClipInfo.elements[j];
+             
                     System.Action pAction = delegate
                     {
-                        var sources = PlaySound(pElementInfo.clip, Vector3.zero, pElementInfo.isLoop, pFactor * pElementInfo.volume);
+
+                        var sources = PlaySound(pElementInfo.Clip, Vector3.zero, pElementInfo.isLoop, pFactor * pElementInfo.volume);
                         if (pOwner && sources && sources.loop)
                         {
                             var pExistCaller = callers.Find(x => x.owner == pOwner);
@@ -353,14 +375,34 @@ public class SoundManager : PersistentSingleton<SoundManager>
                             pSoundInfo.audios.Add(sources);
                         }
                     };
-                    if (pElementInfo.delay == 0)
+                    if (pElementInfo.Clip == null)
                     {
-                        pAction();
+                        var pAsync = pElementInfo.clipRef.loadAssetAsync<AudioClip>();
+                        pAsync.completed += delegate(AsyncOperation a)
+                        {
+                            pElementInfo.Clip = (AudioClip)((ResourceRequest)a).asset;
+                            if (pElementInfo.delay == 0)
+                            {
+                                pAction();
+                            }
+                            else
+                            {
+                                StartCoroutine(delayAction(pElementInfo.delay, pAction));
+                            }
+                        };
                     }
                     else
                     {
-                        StartCoroutine(delayAction(pElementInfo.delay, pAction));
+                        if (pElementInfo.delay == 0)
+                        {
+                            pAction();
+                        }
+                        else
+                        {
+                            StartCoroutine(delayAction(pElementInfo.delay, pAction));
+                        }
                     }
+                 
 
 
                 }

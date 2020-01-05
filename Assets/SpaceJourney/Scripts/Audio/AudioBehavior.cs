@@ -243,29 +243,33 @@ namespace EazyEngine.Audio
         public void excuteActionAudio(params AudioAction[] pActions)
         {
             if (pActions == null) return;
+            if (SoundManager.Instance.IsDestroyed()) return;
             foreach (var pAction in pActions)
             {
                 if (!string.IsNullOrEmpty(pAction.conditionState) && !SoundManager.Instance.checkStateCondition(pAction.conditionState))
                 {
                     continue;
                 }
-                switch (pAction.actionType)
+                if (!SoundManager.Instance.IsDestroyed())
                 {
-                    case AudioActionType.PlaySoundGroup:
-                        SoundManager.Instance.PlaySound(pAction.groupName, pAction.owner == null ? gameObject : pAction.owner, pAction.conditionState);
-                        break;
-                    case AudioActionType.Playlist:
-                        SoundManager.Instance.PlayMusic(pAction.groupName, pAction.singleton, pAction.owner == null ? SoundManager.Instance.gameObject : pAction.owner, pAction.conditionState,pAction.smoothTime);
-                        break;
-                    case AudioActionType.StopSoundGroup:
-                        SoundManager.Instance.StopSoundGroupName(pAction.groupName, pAction.owner == null ? gameObject : pAction.owner);
-                        break;
-                    case AudioActionType.StopPlaylist:
-                        SoundManager.Instance.StopMusicGroupName(pAction.groupName, pAction.owner == null ? SoundManager.Instance.gameObject : pAction.owner, pAction.smoothTime);
-                        break;
-                    case AudioActionType.StopAllPlaylist:
-                        SoundManager.Instance.StopAllMusic(pAction.smoothTime);
-                        break;
+                    switch (pAction.actionType)
+                    {
+                        case AudioActionType.PlaySoundGroup:
+                            SoundManager.Instance.PlaySound(pAction.groupName, pAction.owner == null ? gameObject : pAction.owner, pAction.conditionState);
+                            break;
+                        case AudioActionType.Playlist:
+                            SoundManager.Instance.PlayMusic(pAction.groupName, pAction.singleton, pAction.owner == null ? SoundManager.Instance.gameObject : pAction.owner, pAction.conditionState, pAction.smoothTime);
+                            break;
+                        case AudioActionType.StopSoundGroup:
+                            SoundManager.Instance.StopSoundGroupName(pAction.groupName, pAction.owner == null ? gameObject : pAction.owner);
+                            break;
+                        case AudioActionType.StopPlaylist:
+                            SoundManager.Instance.StopMusicGroupName(pAction.groupName, pAction.owner == null ? SoundManager.Instance.gameObject : pAction.owner, pAction.smoothTime);
+                            break;
+                        case AudioActionType.StopAllPlaylist:
+                            SoundManager.Instance.StopAllMusic(pAction.smoothTime);
+                            break;
+                    }
                 }
             }
         }

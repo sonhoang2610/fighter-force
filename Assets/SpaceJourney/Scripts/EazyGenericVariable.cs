@@ -81,8 +81,11 @@ public class CharacterInstancedConfigGroup : IExternalStringReferenceResolver
 [System.Serializable]
 public class CharacterInstancedConfig
 {
-
-    public GameObject target;
+#if UNITY_EDITOR
+    [SerializeField]
+#endif
+    private GameObject target;
+    public AssetSelectorRef targetRef;
     public float Health;
     public float DamgageBasic;
     public float Defense;
@@ -95,28 +98,32 @@ public class CharacterInstancedConfig
     [OnValueChanged("addProp")]
     public EazyVariableConfigGroup[] propEdits;
 
+    public GameObject Target { get => target; set => target = value; }
+
+
+#if UNITY_EDITOR
     public void addProp()
     {
         if (propEdits.Length > 0)
         {
-            propEdits[propEdits.Length - 1]._target = target;
+            propEdits[propEdits.Length - 1]._target = Target;
         }
     }
     [Button("Generate Sub Health")]
     public void generateSubHealth()
     {
-        var pHealths = target.GetComponentsInChildren<Health>(true);
+        var pHealths = Target.GetComponentsInChildren<Health>(true);
         List<EazyVariableConfigGroup> props = new List<EazyVariableConfigGroup>();
         foreach (var pHealthh in pHealths)
         {
-            if (pHealthh.gameObject == target) continue;
+            if (pHealthh.gameObject == Target) continue;
             props.Add(new EazyVariableConfigGroup()
             {
-                _target = target,
-                nameProp = pHealthh.gameObject.GetGameObjectPath(target),
+                _target = Target,
+                nameProp = pHealthh.gameObject.GetGameObjectPath(Target),
                 propEdits = new EazyVariableConfig[] {
-                        new EazyVariableConfig(){ target = target,typeConfig = TypeConFig.Float,ApplyTargetNow = false,component = "Health.InitialHealth:",newTarget = new GameObjectPath(){ path = pHealthh.gameObject.GetGameObjectPath(target) },value = 10000 },
-                              new EazyVariableConfig(){ target = target,typeConfig = TypeConFig.Float,ApplyTargetNow = false,component = "Health.MaxiumHealth:",newTarget = new GameObjectPath(){ path = pHealthh.gameObject.GetGameObjectPath(target)},value = 10000  }
+                        new EazyVariableConfig(){ target = Target,typeConfig = TypeConFig.Float,ApplyTargetNow = false,component = "Health.InitialHealth:",newTarget = new GameObjectPath(){ path = pHealthh.gameObject.GetGameObjectPath(Target) },value = 10000 },
+                              new EazyVariableConfig(){ target = Target,typeConfig = TypeConFig.Float,ApplyTargetNow = false,component = "Health.MaxiumHealth:",newTarget = new GameObjectPath(){ path = pHealthh.gameObject.GetGameObjectPath(Target)},value = 10000  }
                     }
             });
           
@@ -134,29 +141,29 @@ public class CharacterInstancedConfig
     [Button("Generate")]
     public void autoGenerate()
     {
-        if (target)
+        if (Target)
         {
-            var pHealth = target.GetComponent<Health>();
+            var pHealth = Target.GetComponent<Health>();
             if (pHealth)
             {
                 Health = pHealth.MaxiumHealth;
                 Defense = pHealth.deffense;
             }
-            var pHealths = target.GetComponentsInChildren<Health>();
+            var pHealths = Target.GetComponentsInChildren<Health>();
             List<EazyVariableConfigGroup> props = new List<EazyVariableConfigGroup>();
             foreach (var pHealthh in pHealths)
             {
-                if (pHealthh.gameObject == target) continue;
+                if (pHealthh.gameObject == Target) continue;
                 props.Add(new EazyVariableConfigGroup()
                 {
-                    _target = target,
+                    _target = Target,
                     propEdits = new EazyVariableConfig[] {
-                        new EazyVariableConfig(){ target = target,typeConfig = TypeConFig.Float,ApplyTargetNow = false,component = "Health.InitialHealth:",newTarget = new GameObjectPath(){ path = pHealthh.gameObject.GetGameObjectPath(target) } },
-                              new EazyVariableConfig(){ target = target,typeConfig = TypeConFig.Float,ApplyTargetNow = false,component = "Health.MaxiumHealth:",newTarget = new GameObjectPath(){ path = pHealthh.gameObject.GetGameObjectPath(target) } }
+                        new EazyVariableConfig(){ target = Target,typeConfig = TypeConFig.Float,ApplyTargetNow = false,component = "Health.InitialHealth:",newTarget = new GameObjectPath(){ path = pHealthh.gameObject.GetGameObjectPath(Target) } },
+                              new EazyVariableConfig(){ target = Target,typeConfig = TypeConFig.Float,ApplyTargetNow = false,component = "Health.MaxiumHealth:",newTarget = new GameObjectPath(){ path = pHealthh.gameObject.GetGameObjectPath(Target) } }
                     }
                 });
             }
-            var hanlde = target.GetComponent<CharacterHandleWeapon>();
+            var hanlde = Target.GetComponent<CharacterHandleWeapon>();
             DamgageBasic = hanlde.FixDamage;
 
             if (hanlde.DatabaseWeapon.Length > 0)
@@ -204,6 +211,7 @@ public class CharacterInstancedConfig
 
         }
     }
+#endif
 }
 
 [System.Serializable]
@@ -212,20 +220,25 @@ public class WeaponInstancedConfig
     [HorizontalGroup("Weapon")]
     [HideLabel]
     public string desWeapon;
+#if UNITY_EDITOR
     [HorizontalGroup("Weapon")]
     [HideLabel]
     public Weapon target;
+#endif
+    public AssetSelectorRef targetRef;
     [HideLabel]
     public DamageExtra extraDamge;
     [OnValueChanged("addWeapon")]
     public EazyVariableConfigGroup[] propEdits;
-
+#if UNITY_EDITOR
     public void addWeapon()
     {
         propEdits[propEdits.Length - 1]._target = target.gameObject;
     }
+#endif
     public BulletInstancedConfig[] bullets;
 
+#if UNITY_EDITOR
     [Button("Revert All")]
     public void revertAll()
     {
@@ -237,6 +250,7 @@ public class WeaponInstancedConfig
             }
         }
     }
+#endif
 }
 [System.Serializable]
 public class EazyVariableConfigGroup
@@ -257,14 +271,18 @@ public class EazyVariableConfigGroup
 [System.Serializable]
 public class BulletInstancedConfig
 {
+#if UNITY_EDITOR
     [PreviewField]
     public GameObject prefab;
+#endif
+    public AssetSelectorRef prefabRef;
     public float speedBullet;
     public EazyVariableConfigGroup[] propEdits;
 }
 [System.Serializable]
 public class GameObjectPath
 {
+#if UNITY_EDITOR
     [HorizontalGroup("Object")]
     [HideLabel]
     [ShowIf("isEdit")]
@@ -273,10 +291,12 @@ public class GameObjectPath
     [ShowIf("isEdit")]
     [HideLabel]
     public GameObject target;
+#endif
     [HideIf("isEdit")]
     [HideLabel]
     [HorizontalGroup("Object")]
     public string path;
+#if UNITY_EDITOR
     protected bool isEdit;
     [HideLabel]
     [HorizontalGroup("Object", Width = 100)]
@@ -301,7 +321,7 @@ public class GameObjectPath
     {
         return !isEdit ? "Edit" : "Apply";
     }
-
+#endif
 }
 [System.Serializable]
 public class EazyVariableConfig
@@ -461,10 +481,15 @@ public class EazyVariableConfig
     [HideLabel]
     [ShowIf("isEdit")]
     public GameObjectPath newTarget;
+
     [HorizontalGroup("Prop")]
     [HideLabel]
     [ShowIf("isEdit")]
+#if !UNITY_EDITOR
+    [System.NonSerialized]
+#endif
     public GameObject target;
+
     [HideLabel]
     [HorizontalGroup("Prop")]
     [ShowIf("isEdit")]
@@ -473,6 +498,9 @@ public class EazyVariableConfig
     [HorizontalGroup("Type")]
     [ShowIf("isEdit")]
     public bool ApplyTargetNow = false;
+    [HideInInspector]
+    public TypeConFig typeConfig;
+#if UNITY_EDITOR
     [ShowIf("isEdit")]
     [HorizontalGroup("Type")]
     [DisableIf("typeConfig", TypeConFig.Float)]
@@ -495,8 +523,7 @@ public class EazyVariableConfig
         typeConfig = TypeConFig.Vector2;
         reload();
     }
-    [HideInInspector]
-    public TypeConFig typeConfig;
+
     [ShowIf("isEdit")]
     [Sirenix.OdinInspector.Button("Reload")]
     public void reload()
@@ -555,7 +582,7 @@ public class EazyVariableConfig
             if (cacheMethods == null || cacheMethods.Length == 0) { cacheMethods = props.convertToStringMethods(); }
         }
     }
-
+#endif
     //[HideLabel]
     //[HorizontalGroup("Prop")]
     //public string Prop;
@@ -592,7 +619,7 @@ public class EazyVariableConfig
         }
         set => target = value;
     }
-
+#if UNITY_EDITOR
     private IList<ValueDropdownItem<string>> ValuesFunctionComponents()
     {
         if (cache == null || cache.Count == 0)
@@ -610,7 +637,7 @@ public class EazyVariableConfig
         }
         return cache;
     }
-
+#endif
     //private IList<ValueDropdownItem<string>> ValuesFunctionProp()
     //{
     //    var drops = new ValueDropdownList<string>();

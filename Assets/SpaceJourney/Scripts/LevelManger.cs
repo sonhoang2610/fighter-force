@@ -265,53 +265,17 @@ namespace EazyEngine.Space
         
            // SoundManager.Instance.PlayBackgroundMusic(GameManager.Instance.backgroundStage[GameManager.Instance.ChoosedHard]);
         }
-        protected override void Awake()
+        protected bool isInitDone = false;
+        IEnumerator preloadAwake()
         {
-            SoundManager.Instance.PlayMusic(GameManager.Instance.ChoosedHard ==0 ? AudioGroupConstrant.MusicRegion.MusicGameEasy : (GameManager.Instance.ChoosedHard == 1 ? AudioGroupConstrant.MusicRegion.MusicGameHard : AudioGroupConstrant.MusicRegion.MusicGameSuperHard),true,SoundManager.Instance.gameObject,"",1);
-            if (SceneManager.Instance.currentScene.Contains("Main"))
-            {
-                Destroy(gameObject);
-                return;
-            }
-            base.Awake();
-            Firebase.Analytics.FirebaseAnalytics.LogEvent($"Start_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedHard}");
-            TimeKeeper.Instance.getTimer("Map").TimScale = 1 ;
-            for (int i = 0; i < 24; i++)
-            {
-                var pMainLeaderObject = new GameObject();
-                var pTime = pMainLeaderObject.AddComponent<TimeControllerElement>();
-                pTime._groupName = TimeKeeper.Instance.getTimeLineIndex("Enemies") ;
-                pMainLeaderObject.AddComponent<RootMotionController>();
-                var pLeader = pMainLeaderObject.AddComponent<MovingLeader>();
-                GroupManager.leaders.Add(pLeader);
-                 pMainLeaderObject.SetActive(false);
-                 pMainLeaderObject.name = "leader";
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                var pMainLeaderObject = new GameObject();
-                var pTime = pMainLeaderObject.AddComponent<TimeControllerElement>();
-                pTime._groupName = TimeKeeper.Instance.getTimeLineIndex("Enemies") + 1;
-                var pManager = pMainLeaderObject.AddComponent<GroupManager>();
-                pMainLeaderObject.AddComponent<AIMachine>();
-                GroupManager.managers.Add(pManager);
-                pMainLeaderObject.SetActive(false);
-                pMainLeaderObject.name = "manager";
-            }
-          //  cacheVolum = AudioListener.volume;
-            //AudioListener.volume = 0;
-            //  GameManager.Instance.backgroundStage[GameManager.Instance.ChoosedHard].gameObject.SetActive(true);
- 
-
-           // Invoke("turnOnVolume", 2);      
             GameManager.Instance.scehduleUI = ScheduleUIMain.NONE;
             GUIManager.Instance.enableEnergy(false);
             GUIManager.Instance.setBarBooster(0);
-            string stringState = GameManager.Instance.isFree ? "Statesfree" : "States" + GameManager.Instance.ChoosedLevel + "_" + GameManager.Instance.ChoosedHard ;
+            string stringState = GameManager.Instance.isFree ? "Statesfree" : "States" + GameManager.Instance.ChoosedLevel + "_" + GameManager.Instance.ChoosedHard;
             var psate = SceneManager.Instance.cacheStatePreload;
             Instantiate(psate);
             var pInfoOriginal = GameManager.Instance.container.getLevelInfo(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard).infos;
-        
+
             if (pInfoOriginal.Missions.Count == 0)
             {
                 var pMissionDefaults = GameDatabase.Instance.getMissionForLevel(GameManager.Instance.ChoosedLevel, GameManager.Instance.ChoosedHard);
@@ -375,15 +339,24 @@ namespace EazyEngine.Space
                 }
             }
             players = new Character[1];
-            players[0] = Instantiate<Character>(GameManager.Instance.Database.planes[pSelectedPlane].Info.modelPlane);
-            var pDataPlane = pSelectedPlane >=0 ? GameManager.Instance.Database.planes[pSelectedPlane] : null;
+            var pAsync = GameManager.Instance.Database.planes[pSelectedPlane].Info.modelPlaneRef.loadAssetAsync<Character>();
+            pAsync.completed += delegate (AsyncOperation a)
+            {
+                players[0] = Instantiate<Character>((Character)((ResourceRequest)a).asset);
+            };
+            while (players[0] == null)
+            {
+                yield return new WaitForEndOfFrame();
+            }
+            var pDataPlane = pSelectedPlane >= 0 ? GameManager.Instance.Database.planes[pSelectedPlane] : null;
             var pAllItemMainPlane = GameDatabase.Instance.getAllItem(CategoryItem.PLANE);
-            if (pDataPlane == null || pDataPlane.CurrentLevel == 0) {
-                foreach(var pItemPlane in pAllItemMainPlane)
+            if (pDataPlane == null || pDataPlane.CurrentLevel == 0)
+            {
+                foreach (var pItemPlane in pAllItemMainPlane)
                 {
-                   if( pItemPlane.ItemID == GameManager.Instance.freePlaneChoose)
+                    if (pItemPlane.ItemID == GameManager.Instance.freePlaneChoose)
                     {
-                        pDataPlane = PlaneInfoConfig.CloneDefault((PlaneInfo) pItemPlane,20);
+                        pDataPlane = PlaneInfoConfig.CloneDefault((PlaneInfo)pItemPlane, 20);
                     }
                 }
             }
@@ -399,7 +372,7 @@ namespace EazyEngine.Space
             GUIManager.Instance.setIconPlane(pDataPlane.info.iconGame);
             List<SkillInputData> skills = new List<SkillInputData>();
             skills.AddRange(convert(players[0]._info.Info.skills.ToArray(), players[0]));
-      
+
             int pSelectedSPPlane1 = pSelectedspPlane;
             var pDataSpPlane = pSelectedSPPlane1 >= 0 ? GameManager.Instance.Database.spPlanes[pSelectedSPPlane1] : null;
             if (pDataSpPlane == null || pDataSpPlane.CurrentLevel == 0)
@@ -413,9 +386,18 @@ namespace EazyEngine.Space
                     }
                 }
             }
+           var pAsyncSpPlane = pDataSpPlane.Info.modelPlaneRef.loadAssetAsync<Character>();
+            pAsyncSpPlane.completed += delegate (AsyncOperation a)
+            {
+                pDataSpPlane.Info.modelPlane = ((Character)((ResourceRequest)a).asset);
+            };
+                while (pDataSpPlane.Info.modelPlane == null)
+            {
+                yield return new WaitForEndOfFrame();
+            }
             if (pDataSpPlane != null)
             {
-              
+
                 var spPlane1 = Instantiate(pDataSpPlane.Info.modelPlane);
                 spPlane1.setData(pDataSpPlane);
                 spPlane1.GetComponent<FollowerMainPlayer>().OffsetSupportPlane = players[0].transform.Find("slot1").transform.localPosition;
@@ -428,15 +410,13 @@ namespace EazyEngine.Space
                 spPlane2.setData(pDataSpPlane);
                 spPlane2.GetComponent<FollowerMainPlayer>().OffsetSupportPlane = players[0].transform.Find("slot2").transform.localPosition;
                 spPlane2.GetComponent<CharacterHandleWeapon>().DatabaseWeapon[0].weapons[0].AttachmentWeapon.transform.localScale = new Vector3(-1, 1, 1);
-                 players[0].addChild(spPlane2);
+                players[0].addChild(spPlane2);
                 skills.AddRange(convert(spPlane2._info.Info.skills.ToArray(), spPlane2));
             }
-            Debug.Log("ez log3");
             SkillContainer.Instance.DataSource = skills.ToObservableList();
-            Debug.Log("ez log4");
             NodeCanvas.Framework.GlobalBlackboard.Find("Global").SetValue("Main", players[0]);
             GetComponent<IBlackboard>().SetValue("Main", players[0]);
-      
+
             players[0].transform.position = startPoint.transform.position;
             Sequence pSeq = DOTween.Sequence();
             pSeq.AppendInterval(0.5f);
@@ -452,6 +432,50 @@ namespace EazyEngine.Space
                 GameManager.Instance.Database.SelectedSupportPlane1 = GameManager.Instance.Database.CacheSelectedSpPlane;
                 GameManager.Instance.SaveGame();
             }
+            isInitDone = true;
+            GUIManager.Instance.initLevelDone();
+        }
+        protected override void Awake()
+        {
+            SoundManager.Instance.PlayMusic(GameManager.Instance.ChoosedHard ==0 ? AudioGroupConstrant.MusicRegion.MusicGameEasy : (GameManager.Instance.ChoosedHard == 1 ? AudioGroupConstrant.MusicRegion.MusicGameHard : AudioGroupConstrant.MusicRegion.MusicGameSuperHard),true,SoundManager.Instance.gameObject,"",1);
+            if (SceneManager.Instance.currentScene.Contains("Main"))
+            {
+                Destroy(gameObject);
+                return;
+            }
+            base.Awake();
+            Firebase.Analytics.FirebaseAnalytics.LogEvent($"Start_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedHard}");
+            TimeKeeper.Instance.getTimer("Map").TimScale = 1 ;
+            for (int i = 0; i < 24; i++)
+            {
+                var pMainLeaderObject = new GameObject();
+                var pTime = pMainLeaderObject.AddComponent<TimeControllerElement>();
+                pTime._groupName = TimeKeeper.Instance.getTimeLineIndex("Enemies") ;
+                pMainLeaderObject.AddComponent<RootMotionController>();
+                var pLeader = pMainLeaderObject.AddComponent<MovingLeader>();
+                GroupManager.leaders.Add(pLeader);
+                 pMainLeaderObject.SetActive(false);
+                 pMainLeaderObject.name = "leader";
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                var pMainLeaderObject = new GameObject();
+                var pTime = pMainLeaderObject.AddComponent<TimeControllerElement>();
+                pTime._groupName = TimeKeeper.Instance.getTimeLineIndex("Enemies") + 1;
+                var pManager = pMainLeaderObject.AddComponent<GroupManager>();
+                pMainLeaderObject.AddComponent<AIMachine>();
+                GroupManager.managers.Add(pManager);
+                pMainLeaderObject.SetActive(false);
+                pMainLeaderObject.name = "manager";
+            }
+            //  cacheVolum = AudioListener.volume;
+            //AudioListener.volume = 0;
+            //  GameManager.Instance.backgroundStage[GameManager.Instance.ChoosedHard].gameObject.SetActive(true);
+
+
+            // Invoke("turnOnVolume", 2);      
+            StartCoroutine(preloadAwake());
+          
            
         }
 
@@ -502,6 +526,7 @@ namespace EazyEngine.Space
 
         private void OnDestroy()
         {
+            if (SoundManager.Instance.IsDestroyed() || GameManager.Instance.IsDestroyed()) return;
             SoundManager.Instance.StopMusicGroupName(GameManager.Instance.ChoosedHard == 0 ? AudioGroupConstrant.MusicRegion.MusicGameEasy : (GameManager.Instance.ChoosedHard == 1 ? AudioGroupConstrant.MusicRegion.MusicGameHard : AudioGroupConstrant.MusicRegion.MusicGameSuperHard), null, 1);
             if (PlayerEnviroment.eviromentInstant != null)
             {
@@ -512,7 +537,7 @@ namespace EazyEngine.Space
         private float currentTime = 0;
         private void Update()
         {
- 
+            if (!isInitDone) return;
             if (startTime)
             {
                 currentTime += Time.deltaTime;
@@ -578,7 +603,8 @@ namespace EazyEngine.Space
         {
             var pChar = pObject.GetComponent<Character>();
             if (!pChar) return;
-            if (!GameManager.Instance.objectExcludes.Contains(pChar.originalPreb))
+            string pKey = "";
+            if (pChar.originalPreb.tryGetRuntimeKey(out pKey))
             {
                 BornEnemy.Add(pObject);
             }
