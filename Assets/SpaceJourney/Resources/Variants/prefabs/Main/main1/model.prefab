@@ -49,10 +49,10 @@ GameObject:
   - component: {fileID: 7606655445822877810}
   - component: {fileID: 994327800378157075}
   - component: {fileID: 2920754121900010661}
-  - component: {fileID: 4737923268453437767}
   - component: {fileID: 2711195364287108798}
   - component: {fileID: 31771081661127486}
   - component: {fileID: 108818274274383733}
+  - component: {fileID: 3296765080330666833}
   m_Layer: 9
   m_Name: model
   m_TagString: Untagged
@@ -71,7 +71,7 @@ Transform:
   m_LocalPosition: {x: 0, y: -106, z: 0}
   m_LocalScale: {x: 150, y: 150, z: 150}
   m_Children:
-  - {fileID: 186051781026066922}
+  - {fileID: 2405902353358949011}
   m_Father: {fileID: 977478916833950482}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -170,25 +170,6 @@ MonoBehaviour:
   translator:
     autoReset: 1
     layerMixModes: 00000000
---- !u!114 &4737923268453437767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7543247742143546242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26947ae098a8447408d80c0c86e35b48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skeletonRenderer: {fileID: 2920754121900010661}
-  customSlotMaterials: []
-  customMaterialOverrides:
-  - overrideDisabled: 1
-    originalMaterial: {fileID: 2100000, guid: 99ad6b6a535d3994fb71675c93b1eaac, type: 2}
-    replacementMaterial: {fileID: 2100000, guid: 660c7507699ef1447a929dfd919f372f,
-      type: 2}
 --- !u!114 &2711195364287108798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +227,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _serializedBlackboard: '{"_variables":{}}'
   _objectReferences: []
+--- !u!114 &3296765080330666833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7543247742143546242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26947ae098a8447408d80c0c86e35b48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonRenderer: {fileID: 2920754121900010661}
+  customSlotMaterials: []
+  customMaterialOverrides:
+  - overrideDisabled: 1
+    originalMaterial: {fileID: 2100000, guid: 99ad6b6a535d3994fb71675c93b1eaac, type: 2}
+    replacementMaterial: {fileID: 2100000, guid: 99ad6b6a535d3994fb71675c93b1eaac,
+      type: 2}
 --- !u!1001 &2405902353358949012
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -385,7 +385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f3682c1a53e75246bcfcb34cb4c0457, type: 3}
---- !u!224 &186051781026066922 stripped
+--- !u!224 &2405902353358949011 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2591687902243044222, guid: 1f3682c1a53e75246bcfcb34cb4c0457,
     type: 3}

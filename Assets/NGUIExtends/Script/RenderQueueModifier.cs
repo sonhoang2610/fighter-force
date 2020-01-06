@@ -45,6 +45,7 @@ public class RenderQueueModifier : MonoBehaviour
     }
     public void setTarget(UIWidget pTarget)
     {
+        updateAtleatOne = false;
         if (pTarget != null && m_target != pTarget)
         {
             pTarget.onRender += resort;
@@ -66,6 +67,7 @@ public class RenderQueueModifier : MonoBehaviour
             m_target.onRender += resort;
         }
     }
+
 
     public void refreshRender()
     {
@@ -130,6 +132,7 @@ public class RenderQueueModifier : MonoBehaviour
     {
         _renderers = GetComponentsInChildren<Renderer>(true);
         customMat = GetComponent<SkeletonAnimation>();
+        updateAtleatOne = false;
     }
 
     float currentTime = 0;
