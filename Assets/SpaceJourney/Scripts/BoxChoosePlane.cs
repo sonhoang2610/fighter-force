@@ -90,7 +90,7 @@ namespace EazyEngine.Space.UI
                             }
                             else
                             {
-                                Instantiate(items[i].Data.Info.model, pObjectNew.transform);
+                                Instantiate(items[i].Data.Info.Model, pObjectNew.transform);
                             }
                             cacheModel.Add(items[i].Data.Info.ItemID, pObjectNew);
 

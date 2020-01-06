@@ -162,4 +162,6 @@ public class DatabaseReference : MonoBehaviour
             GameDatabase.Instance.SerializeEzScriptTableObject(new List<EzScriptTableObject>());
         }
     }
+
+
 }

@@ -62,10 +62,11 @@ namespace EazyEngine.Space.UI
             base.setDataItem(pData, pItem);
             pItem.transform.SetSiblingIndex(pItem.Index);
             pItem.attachMentObject.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+            pItem.onLoadModelDone.RemoveListener(delayClip);
+            pItem.onLoadModelDone.AddListener(delayClip);
         }
         public int refStencil;
         public override ObservableList<PlaneInfoConfig> DataSource { get => base.DataSource; set { base.DataSource = value;
-                StartCoroutine(delayClip());
                 if (DataSource != null && DataSource.Count > 0)
                 {
                     for (int i = 0; i < DataSource.Count; ++i)
@@ -82,16 +83,19 @@ namespace EazyEngine.Space.UI
         {
             return pInfo2.CurrentLevel.CompareTo(pInfo1.CurrentLevel);
         }
-        public IEnumerator delayClip()
+        public void delayClip()
         {
-            yield return new WaitForSeconds(0.1f);
+            StartCoroutine(delayClip1());
+        }
+        public IEnumerator delayClip1()
+        {
+            yield return new WaitForSeconds(0.25f);
             var renders = GetComponentsInChildren<RendererMaterialEdit>();
             foreach (var render in renders)
             {
                 render.setEffectAmount(0, refStencil);
             }
         }
-
         public override void updatePage()
         {
             base.updatePage();

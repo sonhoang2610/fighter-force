@@ -5,6 +5,7 @@ using Spine.Unity.Modules;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace EazyEngine.Space.UI
 {
@@ -14,6 +15,8 @@ namespace EazyEngine.Space.UI
 	    public UIWidget compareRender;
         [System.NonSerialized]
         public GameObject attachMentObject;
+
+        public UnityEvent onLoadModelDone;
         public Animator AnimatorModel
         {
             get
@@ -31,10 +34,10 @@ namespace EazyEngine.Space.UI
                 if (attachMentObject == null) {
                     attachMentObject = gameObject.AddWidget<UIWidget>().gameObject;
                 }
-                if (model == null && value.info.model != null)
+                if (model == null && value.info.Model != null)
                 {
                  
-                    model = Instantiate(value.info.model.gameObject, attachMentObject.transform).transform;
+                    model = Instantiate(value.info.Model.gameObject, attachMentObject.transform).transform;
                     model.gameObject.SetActive(false);
                 }
             
@@ -67,16 +70,19 @@ namespace EazyEngine.Space.UI
                         model.gameObject.SetActive(true);
                     }
                     Invoke("Trigger", 0.1f);
-                }else
+                 
+                }
+                else
                 if(!string.IsNullOrEmpty(Data.Info.modelRef.runtimeKey))
                 {
                     var pAsync = Data.Info.modelRef.loadAssetAsync<GameObject>();
                     pAsync.completed += delegate (AsyncOperation a){
                         if(a.GetType() == typeof(ResourceRequest))
                         {
-                            value.info.model = (GameObject)((ResourceRequest)a).asset;
+                            value.info.Model = (GameObject)((ResourceRequest)a).asset;
                             Data = Data;
                         }
+                        onLoadModelDone?.Invoke();
                     };
                 }
             }
@@ -84,6 +90,7 @@ namespace EazyEngine.Space.UI
 
         public void Trigger()
         {
+            onLoadModelDone?.Invoke();
             var pModel = model.Find("model");
             if (pModel)
             {

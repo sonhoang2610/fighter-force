@@ -155,15 +155,15 @@ namespace EazyEngine.Space.UI
 
         public void downResolution()
         {
-            if (Screen.currentResolution.height > Screen.currentResolution.width)
+            Vector2 pCurrenResolution = FindObjectOfType<UIRoot>().GetComponent<UIPanel>().GetViewSize();
+            if (pCurrenResolution.x > pCurrenResolution.y)
             {
-                float ratio = (float)Screen.currentResolution.height / (float)Screen.currentResolution.width;
-                Debug.Log("resolution" + 720 + "," + (int)(720.0f * ratio));
+                float ratio = (float)pCurrenResolution.x / (float)pCurrenResolution.y;
                 Screen.SetResolution(720, (int)(720.0f * ratio), false);
             }
             else
             {
-                float ratio = (float)Screen.currentResolution.width / (float)Screen.currentResolution.height;
+                float ratio = (float)pCurrenResolution.x / (float)pCurrenResolution.y;
                 Screen.SetResolution((int)(1280*ratio), 1280, false);
             }
         
@@ -481,7 +481,7 @@ namespace EazyEngine.Space.UI
             int pFirstOpenGoogle = PlayerPrefs.GetInt("FirstOpenGoogle", 0);
             if (pFirstGame != 0 && (SceneManager.Instance.previousScene.Contains("Home") || pFirstOpenGoogle == 0))
             {
-#if UNITY_MOBILE
+#if !UNITY_STANDALONE
                 GameServices.ManagedInit();
 #endif
                 PlayerPrefs.SetInt("FirstOpenGoogle", 1);

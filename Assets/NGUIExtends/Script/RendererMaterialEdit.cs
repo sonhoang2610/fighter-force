@@ -141,22 +141,11 @@ public class RendererMaterialEdit : MonoBehaviour {
 
     }
 
-
-    private void OnValidate()
-    {
-        //if (Application.isPlaying)
-        //{
-        //    updateMaterial();
-        //}
-    }
+    
     // Use this for initialization
     void Start () {
         updateMaterial();
 
     }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

@@ -171,7 +171,7 @@ namespace EazyEngine.Space
                     SoundManager.Instance.cleanAudio();
                     if (currentScene.Contains("Main"))
                 {
-#if UNITY_MOBILE
+#if !UNITY_STANDALONE
                         if (!RuntimeManager.IsInitialized())
                         {
                             RuntimeManager.Init();
