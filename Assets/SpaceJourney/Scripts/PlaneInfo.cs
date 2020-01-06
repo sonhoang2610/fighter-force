@@ -253,7 +253,7 @@ namespace EazyEngine.Space {
     [System.Serializable]
     public class PlaneInfo : BaseItemGame
     {
-
+        [System.NonSerialized]
         public Character modelPlane;
         public AssetSelectorRef modelPlaneRef;
         public int limitUpgrade = 80;

@@ -348,6 +348,7 @@ namespace EazyEngine.Space
             {
                 yield return new WaitForEndOfFrame();
             }
+            players[0].GetComponent<Blackboard>().SetValue("Main", players[0].gameObject);
             var pDataPlane = pSelectedPlane >= 0 ? GameManager.Instance.Database.planes[pSelectedPlane] : null;
             var pAllItemMainPlane = GameDatabase.Instance.getAllItem(CategoryItem.PLANE);
             if (pDataPlane == null || pDataPlane.CurrentLevel == 0)
