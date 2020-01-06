@@ -171,7 +171,7 @@ namespace EazyEngine.Space
                     SoundManager.Instance.cleanAudio();
                     if (currentScene.Contains("Main"))
                 {
-#if !UNITY_STANDALONE
+#if !UNITY_STANDALONE 
                         if (!RuntimeManager.IsInitialized())
                         {
                             RuntimeManager.Init();
@@ -288,7 +288,7 @@ namespace EazyEngine.Space
 #if UNITY_IOS
             System.Environment.SetEnvironmentVariable("MONO_REFLECTION_SERIALIZER", "yes");
 #endif
-#if UNITY_MOBILE
+#if !UNITY_STANDALONE 
             FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
             {
                 FirebaseAnalytics.SetAnalyticsCollectionEnabled(true);
