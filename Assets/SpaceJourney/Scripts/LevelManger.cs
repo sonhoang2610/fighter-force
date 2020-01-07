@@ -607,7 +607,7 @@ namespace EazyEngine.Space
             var pChar = pObject.GetComponent<Character>();
             if (!pChar) return;
             string pKey = "";
-            if (pChar.originalPreb.tryGetRuntimeKey(out pKey))
+            if (pChar.originalPreb.tryGetRuntimeKey(out pKey) && !pObject.name.Contains("stone"))
             {
                 BornEnemy.Add(pObject);
             }
