@@ -82,6 +82,7 @@ namespace EazyEngine.Space
         public LayerMask TargetMaskLayer;
         public bool ignoreOnDamaged = false;
         public bool autoGetOwnerMainPlane = false;
+        public float limitDamage = 1.5f;
         public int DamageCaused = 10;
         public float factorDamageDecreaseSameObjects = 0;
         public float factorMinDamageDecrease = 1;
@@ -322,9 +323,12 @@ namespace EazyEngine.Space
                     (PExtras[i].type == DamageType.PecentMaxHp ? (float)health.MaxiumHealth * PExtras[i].damageExtra : (pCurrentDamge * PExtras[i].damageExtra / 100.0f)));
                 if (PExtras[i].type == DamageType.PecentHp || PExtras[i].type == DamageType.PecentMaxHp)
                 {
-                    if (pDamageExtraLocal > DamageCausedProp * 1.5f)
+                    if (limitDamage > 0)
                     {
-                        pDamageExtraLocal = DamageCausedProp * 1.5f;
+                        if (pDamageExtraLocal > DamageCausedProp * limitDamage)
+                        {
+                            pDamageExtraLocal = DamageCausedProp * limitDamage;
+                        }
                     }
                 }
                 pExtraDamage += pDamageExtraLocal;
