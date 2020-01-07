@@ -6,6 +6,7 @@ using EasyMobile;
 using System;
 using UnityEngine.Networking;
 using ParadoxNotion.Services;
+using MK.Glow.Legacy;
 
 namespace EazyEngine.Space.UI
 {
@@ -159,12 +160,12 @@ namespace EazyEngine.Space.UI
             if (pCurrenResolution.x > pCurrenResolution.y)
             {
                 float ratio = (float)pCurrenResolution.x / (float)pCurrenResolution.y;
-                Screen.SetResolution(720, (int)(720.0f * ratio), false);
+                Screen.SetResolution(720, (int)(720.0f * ratio), true);
             }
             else
             {
                 float ratio = (float)pCurrenResolution.x / (float)pCurrenResolution.y;
-                Screen.SetResolution((int)(1280*ratio), 1280, false);
+                Screen.SetResolution((int)(1280*ratio), 1280, true);
             }
         
         }
@@ -488,10 +489,12 @@ namespace EazyEngine.Space.UI
             }
             if (pFirstGame == 0)
             {
+                SceneManager.Instance.markDirtyBloomMK();
                 GameManager.Instance.Database.firstOnline = System.DateTime.Now;
                 GameManager.Instance.SaveGame();
                 EzEventManager.TriggerEvent(new GuideEvent("FirstGame", delegate
                 {
+                    SceneManager.Instance.removeDirtyBloomMK();
                     PlayerPrefs.SetInt("firstGame", 9999);
                     MainScene.Instance.freePlayGuide();
                 }));

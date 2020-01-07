@@ -268,6 +268,7 @@ namespace EazyEngine.Space
         protected bool isInitDone = false;
         IEnumerator preloadAwake()
         {
+            SceneManager.Instance.addloading(1);
             GameManager.Instance.scehduleUI = ScheduleUIMain.NONE;
             GUIManager.Instance.enableEnergy(false);
             GUIManager.Instance.setBarBooster(0);
@@ -435,6 +436,7 @@ namespace EazyEngine.Space
             }
             isInitDone = true;
             GUIManager.Instance.initLevelDone();
+            SceneManager.Instance.loadingDirty(StateLoadingGame.PoolFirst);
         }
         protected override void Awake()
         {

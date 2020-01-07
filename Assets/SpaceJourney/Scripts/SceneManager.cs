@@ -138,7 +138,6 @@ namespace EazyEngine.Space
             else if(pState == StateLoadingGame.PoolAfter)
             {
                 tween = DOTween.To(() => process.fillAmount, x => process.fillAmount = x, (1 - (blockScene / maxBlock)) * 0.2f + 0.8f, 0.25f);
-                Debug.Log("blockScene " + blockScene);
                 if (blockScene == 0)
                 {
                     complete();
