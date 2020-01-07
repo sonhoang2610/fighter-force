@@ -160,12 +160,12 @@ namespace EazyEngine.Space.UI
             if (pCurrenResolution.x > pCurrenResolution.y)
             {
                 float ratio = (float)pCurrenResolution.x / (float)pCurrenResolution.y;
-                Screen.SetResolution(720, (int)(720.0f * ratio), true);
+                Screen.SetResolution(1080, (int)(1080.0f * ratio), true);
             }
             else
             {
                 float ratio = (float)pCurrenResolution.x / (float)pCurrenResolution.y;
-                Screen.SetResolution((int)(1280*ratio), 1280, true);
+                Screen.SetResolution((int)(1920.0f*ratio), 1920, true);
             }
         
         }
