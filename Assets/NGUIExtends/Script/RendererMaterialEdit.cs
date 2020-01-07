@@ -131,17 +131,32 @@ public class RendererMaterialEdit : MonoBehaviour {
         }
         updateMaterial();
     }
+    public bool sharedMat;
     [ContextMenu("Reupdate")]
     public void updateMaterial()
     {
-        for (int i = 0; i < Properties.Length; i++)
-        {         
-            Render.material.SetFloat(Properties[i].NameProperty, Properties[i].EffectAmount);
+        if (sharedMat)
+        {
+            for (int i = 0; i < Properties.Length; i++)
+            {
+                Render.sharedMaterial.SetFloat(Properties[i].NameProperty, Properties[i].EffectAmount);
+            }
         }
+        else
+        {
+            for (int i = 0; i < Properties.Length; i++)
+            {
+                Render.material.SetFloat(Properties[i].NameProperty, Properties[i].EffectAmount);
+            }
+        }
+    
 
     }
+    private void OnEnable()
+    {
+        Invoke(nameof( updateMaterial),0.1f);
+    }
 
-    
     // Use this for initialization
     void Start () {
         updateMaterial();

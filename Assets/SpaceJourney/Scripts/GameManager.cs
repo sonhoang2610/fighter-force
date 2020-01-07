@@ -333,7 +333,12 @@ public struct EventTimer
     public TimerState state;
     public string key;
 }
-
+public enum ResultStatusAds
+{
+    Success,
+    Failed,
+    TimeOut
+}
 public class GameManager : PersistentSingleton<GameManager>, EzEventListener<GameDatabaseInventoryEvent>
 {
     public float frameTarget = 60;
@@ -1138,7 +1143,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                     if (rewardAds.ContainsKey(timeoutAds[i].placeMent.Name))
                     {
                         TopLayer.Instance.LoadingAds.gameObject.SetActive(false);
-                        rewardAds[timeoutAds[i].placeMent.Name](false);
+                        rewardAds[timeoutAds[i].placeMent.Name](ResultStatusAds.TimeOut);
                         rewardAds.Remove(timeoutAds[i].placeMent.Name);
                     }
                 }
@@ -1286,7 +1291,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         EzEventManager.TriggerEvent(new MessageGamePlayEvent("MissionDirty"));
         if (rewardAds.ContainsKey(placement.Name))
         {
-            rewardAds[placement.Name](true);
+            rewardAds[placement.Name](ResultStatusAds.Success);
             rewardAds.Remove(placement.Name);
         }
     }
@@ -1294,7 +1299,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     {
         if (rewardAds.ContainsKey(placement.Name))
         {
-            rewardAds[placement.Name](false);
+            rewardAds[placement.Name](ResultStatusAds.Failed);
             rewardAds.Remove(placement.Name);
         }
     }
@@ -1367,7 +1372,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             Advertising.HideBannerAd();
         }
     }
-    public Dictionary<string, System.Action<bool>> rewardAds = new Dictionary<string, System.Action<bool>>();
+    public Dictionary<string, System.Action<ResultStatusAds>> rewardAds = new Dictionary<string, System.Action<ResultStatusAds>>();
     public struct CountdownAds
     {
         public AdPlacement placeMent;
@@ -1393,10 +1398,10 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         action(www.error == null);
         www.Dispose();
     }
-    public void showRewardAds(string pID, System.Action<bool> onResult)
+    public void showRewardAds(string pID, System.Action<ResultStatusAds> onResult)
     {
 #if UNITY_EDITOR
-        onResult(true);
+        onResult(ResultStatusAds.Success);
         return;
 #endif
         StartCoroutine(checkInternetConnection(delegate (bool pResult)
@@ -1423,13 +1428,13 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                     Advertising.LoadRewardedAd(placement);
                     if (indexOfads(placement) < 0)
                     {
-                        timeoutAds.Add(new CountdownAds() { placeMent = placement, currentTime = 5 });
+                        timeoutAds.Add(new CountdownAds() { placeMent = placement, currentTime = 10 });
                     }
                 }
             }
             else
             {
-                onResult?.Invoke(false);
+                onResult?.Invoke(ResultStatusAds.TimeOut);
             }
         }));
 

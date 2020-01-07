@@ -253,9 +253,9 @@ namespace EazyEngine.Space.UI
             }
         }
 
-        public void callBackResultWatch(bool pSuccess)
+        public void callBackResultWatch(ResultStatusAds pSuccess)
         {
-            if (pSuccess)
+            if (pSuccess == ResultStatusAds.Success)
             {
                 free();
             }

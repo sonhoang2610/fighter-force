@@ -101,6 +101,14 @@ namespace EazyEngine.Space.UI
             base.updatePage();
             GameManager.Instance.Database.SelectedSupportPlane1 = DataSource[currentPage].Info.ItemID;
             GameManager.Instance.freeSpPlaneChoose = DataSource[currentPage].Info.ItemID;
+            foreach (var item in items)
+            {
+                var render = item.GetComponentInChildren<RendererMaterialEdit>(true);
+                if (render)
+                {
+                    render.setEffectAmount(0, refStencil);
+                }
+            }
         }
         // Update is called once per frame
         void Update()
