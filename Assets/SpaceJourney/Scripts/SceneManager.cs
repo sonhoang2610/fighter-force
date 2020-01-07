@@ -79,6 +79,7 @@ namespace EazyEngine.Space
             isLoading = true;
             if (currentScene.Contains("Zone") && !LoadState)
             {
+                DOTween.To(() => fadeLayout.alpha, a => fadeLayout.alpha = a, 1, 0.25f);
                 LoadState = true;
                 string stringState = GameManager.Instance.isFree ? "Statesfree" : "States" + GameManager.Instance.ChoosedLevel + "_" + GameManager.Instance.ChoosedHard;
                 requestState = LoadAssets.loadAssetAsync<GameObject>(stringState, "Variants/States/");

@@ -396,14 +396,16 @@ namespace EazyEngine.Space.UI
 
         }
 
-        public void freePlay()
+        public void freePlay(UIButton btnDisable)
         {
             GameManager.Instance.isGuide = false;
             GameManager.Instance.isFree = true;
             GameManager.Instance.ConfigLevel = new LevelConfig();
             GameManager.Instance.ChoosedLevel = -1;
             GameManager.Instance.LoadLevel(GameManager.Instance.ChoosedLevel);
-      
+            btnDisable.isEnabled = false;
+
+
         }
         public void freePlayGuide()
         {
