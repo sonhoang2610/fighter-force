@@ -5,6 +5,7 @@
 // www.michaelkremmel.de                            //
 // Copyright © 2019 All rights reserved.            //
 //////////////////////////////////////////////////////
+using EazyEngine.Space;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,7 +31,28 @@ namespace MK.Glow
 
         internal static MK.Glow.Resources LoadResourcesAsset()
         {
-            return UnityEngine.Resources.Load<MK.Glow.Resources>("MKGlowResources");
+            return instance!= null ? instance : UnityEngine.Resources.Load<MK.Glow.Resources>("MKGlowResources");
+        }
+        static MK.Glow.Resources instance;
+        internal static void LoadResourcesAsyncAsset()
+        {
+           var pAsync = UnityEngine.Resources.LoadAsync<MK.Glow.Resources>("MKGlowResources");
+            pAsync.completed += delegate (AsyncOperation a)
+            {
+                instance = (MK.Glow.Resources)((ResourceRequest)a).asset;
+                instance.init();
+            };
+        }
+        public void init()
+        {
+            if (SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.OpenGLES3)
+            {
+                var pAsync = _computeShaderGles.loadAssetAsync<ComputeShader>();
+                pAsync.completed += delegate (AsyncOperation a)
+                {
+                    _computeShaderGles.Asset = (ComputeShader)(((ResourceRequest)a).asset);
+                };
+            }
         }
 
         /*
@@ -86,7 +108,7 @@ namespace MK.Glow
         [SerializeField]
         private ComputeShader _computeShader;
         [SerializeField]
-        private ComputeShader _computeShaderGles;
-        internal ComputeShader computeShader { get { return SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.OpenGLES3 ? _computeShaderGles : _computeShader; } }
+        private AssetSelectorRef _computeShaderGles;
+        internal ComputeShader computeShader { get { return SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.OpenGLES3 ? (ComputeShader)_computeShaderGles.Asset : _computeShader; } }
     }
 }

@@ -285,6 +285,7 @@ namespace EazyEngine.Space
         protected override void Awake()
         {
             base.Awake();
+            MK.Glow.Resources.LoadResourcesAsyncAsset();
 #if UNITY_IOS
             System.Environment.SetEnvironmentVariable("MONO_REFLECTION_SERIALIZER", "yes");
 #endif
