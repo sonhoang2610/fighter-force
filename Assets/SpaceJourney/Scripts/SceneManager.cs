@@ -11,7 +11,7 @@ using I2.Loc;
 using Firebase;
 using Firebase.Analytics;
 using System.Threading.Tasks;
-using MK.Glow.Legacy;
+//using MK.Glow.Legacy;
 
 namespace EazyEngine.Space
 {
@@ -239,14 +239,14 @@ namespace EazyEngine.Space
             }
         }
         protected int dirtySlowFps = 0;
-        protected MKGlow _mk;
-        public MKGlow mk
-        {
-            get
-            {
-                return (_mk == null || _mk.IsDestroyed()) ? _mk = FindObjectOfType<MKGlow>() : _mk;
-            }
-        }
+    //    protected MKGlow _mk;
+        //public MKGlow mk
+        //{
+        //    get
+        //    {
+        //        return (_mk == null || _mk.IsDestroyed()) ? _mk = FindObjectOfType<MKGlow>() : _mk;
+        //    }
+        //}
         public void markDirtySlowFps()
         {
             dirtySlowFps++;
@@ -269,23 +269,23 @@ namespace EazyEngine.Space
         public void markDirtyBloomMK()
         {
             dirtyBloomMK++;
-            if (dirtyBloomMK >= 1)
-            {
-                if(mk)mk.enabled = true;
-            }
+            //if (dirtyBloomMK >= 1)
+            //{
+            //    if(mk)mk.enabled = true;
+            //}
         }
         public void removeDirtyBloomMK()
         {
             dirtyBloomMK--;
-            if (dirtyBloomMK <= 0)
-            {
-                if (mk)mk.enabled = false;
-            }
+            //if (dirtyBloomMK <= 0)
+            //{
+            //    if (mk)mk.enabled = false;
+            //}
         }
         protected override void Awake()
         {
             base.Awake();
-            MK.Glow.Resources.LoadResourcesAsyncAsset();
+         //   MK.Glow.Resources.LoadResourcesAsyncAsset();
 #if UNITY_IOS
             System.Environment.SetEnvironmentVariable("MONO_REFLECTION_SERIALIZER", "yes");
 #endif

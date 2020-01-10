@@ -6,7 +6,6 @@ using EasyMobile;
 using System;
 using UnityEngine.Networking;
 using ParadoxNotion.Services;
-using MK.Glow.Legacy;
 
 namespace EazyEngine.Space.UI
 {
