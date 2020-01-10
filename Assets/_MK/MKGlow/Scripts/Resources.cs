@@ -52,7 +52,8 @@ namespace MK.Glow
                 {
                     if(((ResourceRequest)a).asset == null)
                     {
-                        _computeShaderGles.Asset = _computeShader;
+                        //_computeShaderGles.Asset = _computeShader;
+                        _computeShaderGles.Asset = (ComputeShader)(((ResourceRequest)a).asset);
                     }
                     else{
                         _computeShaderGles.Asset = (ComputeShader)(((ResourceRequest)a).asset);
