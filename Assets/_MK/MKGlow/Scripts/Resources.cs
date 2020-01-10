@@ -45,12 +45,19 @@ namespace MK.Glow
         }
         public void init()
         {
-            if (SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.OpenGLES3)
+            if (SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.OpenGLES3 && Application.platform != RuntimePlatform.IPhonePlayer )
             {
                 var pAsync = _computeShaderGles.loadAssetAsync<ComputeShader>();
                 pAsync.completed += delegate (AsyncOperation a)
                 {
-                    _computeShaderGles.Asset = (ComputeShader)(((ResourceRequest)a).asset);
+                    if(((ResourceRequest)a).asset == null)
+                    {
+                        _computeShaderGles.Asset = _computeShader;
+                    }
+                    else{
+                        _computeShaderGles.Asset = (ComputeShader)(((ResourceRequest)a).asset);
+                    }
+                   
                 };
             }
         }
@@ -109,6 +116,6 @@ namespace MK.Glow
         private ComputeShader _computeShader;
         [SerializeField]
         private AssetSelectorRef _computeShaderGles;
-        internal ComputeShader computeShader { get { return SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.OpenGLES3 ? (ComputeShader)_computeShaderGles.Asset : _computeShader; } }
+        internal ComputeShader computeShader { get { return (SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.OpenGLES3 && Application.platform != RuntimePlatform.IPhonePlayer) ? (ComputeShader)_computeShaderGles.Asset : _computeShader; } }
     }
 }
