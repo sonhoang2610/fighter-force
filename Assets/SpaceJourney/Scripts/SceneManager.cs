@@ -261,7 +261,7 @@ namespace EazyEngine.Space
             dirtySlowFps--;
             if(dirtySlowFps <= 0)
             {
-                Application.targetFrameRate = 30;
+               // Application.targetFrameRate = 30;
                 Debug.Log("FPS" + Application.targetFrameRate);
             }
         }

@@ -30,7 +30,7 @@ namespace EazyEngine.Space.UI
         protected override void Awake()
         {
             base.Awake();
-            downResolution();
+           // downResolution();
             if (layerPrepare)
             {
                 layerPrepare.showInfo(0, 0);
