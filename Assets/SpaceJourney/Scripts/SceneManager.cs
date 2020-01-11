@@ -171,6 +171,14 @@ namespace EazyEngine.Space
                     SoundManager.Instance.cleanAudio();
                     if (currentScene.Contains("Main"))
                 {
+                        if (dirtyBloomMK <= 0)
+                        {
+                            if (mk)
+                            {
+                                mk.enabled = false;
+                                mk.GetComponent<Camera>().allowHDR = false;
+                            }
+                        }
 #if !UNITY_STANDALONE 
                         if (!RuntimeManager.IsInitialized())
                         {
