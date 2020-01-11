@@ -271,7 +271,10 @@ namespace EazyEngine.Space
             dirtyBloomMK++;
             if (dirtyBloomMK >= 1)
             {
-                if (mk) mk.enabled = true;
+                if (mk) {
+                    mk.enabled = true;
+                    mk.GetComponent<Camera>().allowHDR = true;
+                }
             }
         }
         public void removeDirtyBloomMK()
@@ -279,7 +282,11 @@ namespace EazyEngine.Space
             dirtyBloomMK--;
             if (dirtyBloomMK <= 0)
             {
-                if (mk) mk.enabled = false;
+                if (mk)
+                {
+                    mk.enabled = false;
+                    mk.GetComponent<Camera>().allowHDR = false;
+                }
             }
         }
         protected override void Awake()
