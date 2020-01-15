@@ -9,6 +9,13 @@ public class ScaleColliderCamera : MonoBehaviour
     public BoxCollider2D _collider;
     void Start()
     {
+        var pSize = FindObjectOfType<UIRoot>().GetComponent<UIPanel>().GetWindowSize();
+      
+        if ((pSize.y / pSize.x) > (19.2f / 10.8f))
+        {
+            _cam.orthographicSize = (pSize.y / pSize.x) * 5.4f;
+        }
+   
         if (_collider != null && _cam != null)
         {
             _collider.size = new Vector2(_cam.orthographicSize * 2 * 1080.0f/1920.0f, _cam.orthographicSize * 2);
