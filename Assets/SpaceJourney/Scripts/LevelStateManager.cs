@@ -11,6 +11,9 @@ using UnityEngine.Events;
 using EazyReflectionSupport;
 using System.Reflection;
 using System;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 [System.Serializable]
 public class UnityEventGameObject : UnityEvent<GameObject>
@@ -493,7 +496,32 @@ public struct BehaviorStateEvent
         _behavior = pBehavior;
     }
 }
-
+[System.Serializable]
+public class FactorEnemy
+{
+    [Range(0, 5)]
+    public float scaleHealth = 1;
+    [Range(0, 5)]
+    public float scaleDeffense = 1;
+    [Range(0, 5)]
+    public float scaleDamage = 1;
+    [Range(0, 5)]
+    public float scaleDamageSelf = 1;
+}
+[System.Serializable]
+public struct FactorSpecifiedEnemy
+{
+    public GameObject prefabEnemy;
+    [HideLabel]
+    public FactorEnemy factor;
+}
+[System.Serializable]
+public class FactorEnemyState
+{
+    [HideLabel]
+    public FactorEnemy scaleGlobal;
+    public FactorSpecifiedEnemy[] scaleSpecifedEnemies;
+}
 public class LevelStateManager : Singleton<LevelStateManager>, EzEventListener<BehaviorStateEvent>
 {
     public static string currentState;
@@ -501,6 +529,44 @@ public class LevelStateManager : Singleton<LevelStateManager>, EzEventListener<B
     [ListDrawerSettings(NumberOfItemsPerPage = 10,ShowItemCount = true)]
     //[InfoBox("Nơi define các đợt quái việc khi nào ra đợt nào trình tự ra sao nằm ở component Behaviour Tree bên dưới ấn open, mỏ rộng từng state play game ấn button preview để xem trước từng đợt")]
     public LevelState[] states;
+    public FactorEnemyState scaleState;
+    public FactorEnemy getScaleFactor(GameObject prefab)
+    {
+        for(int i = 0; i < scaleState.scaleSpecifedEnemies.Length; ++i)
+        {
+            var pEnemy = scaleState.scaleSpecifedEnemies[i].prefabEnemy;
+            if(pEnemy == prefab)
+            {
+                return scaleState.scaleSpecifedEnemies[i].factor;
+            }
+        }
+        return new FactorEnemy();
+    }
+#if UNITY_EDITOR
+    [Button("Gernerate")]
+    public void GernerateEnemyScale()
+    {
+        List<GameObject> prefabs = new List<GameObject>();
+        for(int i = 0; i < states.Length; ++i)
+        {
+           var pEnemies = states[i].formatInfo.prefabEnemies;
+            foreach(var pEnemy in pEnemies)
+            {
+                if (!prefabs.Contains(pEnemy))
+                {
+                    prefabs.Add(pEnemy);
+                }
+            }
+        }
+        scaleState.scaleSpecifedEnemies = new FactorSpecifiedEnemy[prefabs.Count];
+        for(int i  =0; i < prefabs.Count; ++i)
+        {
+            scaleState.scaleSpecifedEnemies[i] = new FactorSpecifiedEnemy();
+            scaleState.scaleSpecifedEnemies[i].prefabEnemy = prefabs[i];
+        }
+        EditorUtility.SetDirty(this);
+    }
+#endif
     public void changeStartValue(int indexState,Vector3 oldPos,Vector3 newPos)
     {
         for (int i =0; i < states[indexState].moveInfos.Length; ++i)
