@@ -522,6 +522,14 @@ public class FactorEnemyState
     public FactorEnemy scaleGlobal;
     public FactorSpecifiedEnemy[] scaleSpecifedEnemies;
 }
+[System.Serializable]
+public class LootInfoForGroup
+{
+    public LootInfo[] lootInfo;
+    public bool forAll;
+    [HideIf("forAll")]
+    public string[] states;
+}
 public class LevelStateManager : Singleton<LevelStateManager>, EzEventListener<BehaviorStateEvent>
 {
     public static string currentState;
@@ -529,6 +537,8 @@ public class LevelStateManager : Singleton<LevelStateManager>, EzEventListener<B
     [ListDrawerSettings(NumberOfItemsPerPage = 10,ShowItemCount = true)]
     //[InfoBox("Nơi define các đợt quái việc khi nào ra đợt nào trình tự ra sao nằm ở component Behaviour Tree bên dưới ấn open, mỏ rộng từng state play game ấn button preview để xem trước từng đợt")]
     public LevelState[] states;
+    [FoldoutGroup("Scale State")]
+    [HideLabel]
     public FactorEnemyState scaleState;
     public FactorEnemy getScaleFactor(GameObject prefab)
     {
@@ -544,6 +554,7 @@ public class LevelStateManager : Singleton<LevelStateManager>, EzEventListener<B
     }
 #if UNITY_EDITOR
     [Button("Gernerate")]
+    [FoldoutGroup("Scale State")]
     public void GernerateEnemyScale()
     {
         List<GameObject> prefabs = new List<GameObject>();
@@ -567,6 +578,8 @@ public class LevelStateManager : Singleton<LevelStateManager>, EzEventListener<B
         EditorUtility.SetDirty(this);
     }
 #endif
+
+    public LootInfoForGroup[] lootInfo;
     public void changeStartValue(int indexState,Vector3 oldPos,Vector3 newPos)
     {
         for (int i =0; i < states[indexState].moveInfos.Length; ++i)
@@ -641,6 +654,27 @@ public class LevelStateManager : Singleton<LevelStateManager>, EzEventListener<B
         UnityEditor.EditorUtility.SetDirty(this);
 #endif
     }
+
+    public LootInfo[] findLootInfo(string pStateName)
+    {
+        List<LootInfo> pLoot = new List<LootInfo>();
+        for(int i =0; i < lootInfo.Length; ++i)
+        {
+            if (lootInfo[i].forAll)
+            {
+                pLoot.AddRange(lootInfo[i].lootInfo);
+                continue;
+            }
+            for(int j = 0; j < lootInfo[i].states.Length; ++j)
+            {
+                if(lootInfo[i].states[j] == pStateName)
+                {
+                    pLoot.AddRange(lootInfo[i].lootInfo);
+                }
+            }
+        }
+        return pLoot.ToArray();
+    }
     public LevelState runState(string pState)
     {
         currentState = pState;
@@ -649,6 +683,10 @@ public class LevelStateManager : Singleton<LevelStateManager>, EzEventListener<B
             if(states[i].nameState == pState)
             {
                 var pStatee = states[i].DeepClone();
+                if(lootInfo.Length > 0)
+                {
+                    pStatee.lootItems = findLootInfo(pState);
+                }
                 runState(pStatee);       
                 return pStatee;
             }
