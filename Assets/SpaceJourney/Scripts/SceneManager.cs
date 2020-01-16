@@ -12,6 +12,7 @@ using Firebase;
 using Firebase.Analytics;
 using System.Threading.Tasks;
 using MK.Glow.Legacy;
+using Facebook.Unity;
 
 namespace EazyEngine.Space
 {
@@ -297,10 +298,63 @@ namespace EazyEngine.Space
                 }
             }
         }
+        private void InitCallback()
+        {
+            if (FB.IsInitialized)
+            {
+                // Signal an app activation App Event
+                FB.ActivateApp();
+                // Continue with Facebook SDK
+                // ...
+            }
+            else
+            {
+                Debug.Log("Failed to Initialize the Facebook SDK");
+            }
+        }
+
+        private void OnHideUnity(bool isGameShown)
+        {
+            if (!isGameShown)
+            {
+                // Pause the game - we will need to hide
+                Time.timeScale = 0;
+            }
+            else
+            {
+                // Resume the game - we're getting focus again
+                Time.timeScale = 1;
+            }
+        }
         protected override void Awake()
         {
             base.Awake();
+            if (!FB.IsInitialized)
+            {
+                // Initialize the Facebook SDK
+                FB.Init(InitCallback, OnHideUnity);
+            }
+            else
+            {
+                // Already initialized, signal an app activation App Event
+                FB.ActivateApp();
+            }
             MK.Glow.Resources.LoadResourcesAsyncAsset();
+            /* Mandatory - set your AppsFlyer’s Developer key. */
+            AppsFlyer.setAppsFlyerKey(I2.Loc.LocalizationManager.GetTranslation("appsflyer_devkey"));
+            /* For detailed logging */
+            /* AppsFlyer.setIsDebug (true); */
+#if UNITY_IOS
+  /* Mandatory - set your apple app ID
+   NOTE: You should enter the number only and not the "ID" prefix */
+  AppsFlyer.setAppID (I2.Loc.LocalizationManager.GetTranslation("ios_id"));
+  AppsFlyer.trackAppLaunch ();
+#elif UNITY_ANDROID
+            /* Mandatory - set your Android package name */
+            AppsFlyer.setAppID(I2.Loc.LocalizationManager.GetTranslation("android_package"));
+            /* For getting the conversion data in Android, you need to add the "AppsFlyerTrackerCallbacks" listener.*/
+            AppsFlyer.init(I2.Loc.LocalizationManager.GetTranslation("appsflyer_devkey"), "AppsFlyerTrackerCallbacks");
+#endif
 #if UNITY_IOS
             System.Environment.SetEnvironmentVariable("MONO_REFLECTION_SERIALIZER", "yes");
 #endif
