@@ -156,7 +156,7 @@ namespace EazyEngine.Space.UI
         public void downResolution()
         {
             Vector2 pCurrenResolution = FindObjectOfType<UIRoot>().GetComponent<UIPanel>().GetViewSize();
-            if (pCurrenResolution.y > 1920)
+            if (Screen.height > 1920 || Screen.width > 1920)
             {
                 if (pCurrenResolution.x > pCurrenResolution.y)
                 {
