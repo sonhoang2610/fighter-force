@@ -80,6 +80,7 @@ namespace EazyEngine.Space.UI
         }
         private void OnDisable()
         {
+            if (GameManager.Instance.IsDestroyed()) return;
             GameManager.Instance.showBannerAds(false);
         }
         public void turnVibrate(bool pBool)
