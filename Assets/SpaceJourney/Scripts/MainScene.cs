@@ -152,9 +152,11 @@ namespace EazyEngine.Space.UI
             }
             Resources.UnloadUnusedAssets();
         }
-
+        static bool setresolotuon = false;
         public void downResolution()
         {
+            if (setresolotuon) return;
+            setresolotuon = true;
             Vector2 pCurrenResolution = FindObjectOfType<UIRoot>().GetComponent<UIPanel>().GetViewSize();
             if (Screen.height > 1920 || Screen.width > 1920)
             {
