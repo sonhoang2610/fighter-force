@@ -157,33 +157,33 @@ namespace EazyEngine.Space.UI
         {
             if (setresolotuon) return;
             setresolotuon = true;
-            Vector2 pCurrenResolution = FindObjectOfType<UIRoot>().GetComponent<UIPanel>().GetViewSize();
-            if (Screen.height > 1920 || Screen.width > 1920)
-            {
-                if (pCurrenResolution.x > pCurrenResolution.y)
-                {
-                    float ratio = (float)pCurrenResolution.x / (float)pCurrenResolution.y;
-                    Screen.SetResolution(1080, (int)(1080.0f * ratio), true);
-                }
-                else
-                {
-                    float ratio = (float)pCurrenResolution.x / (float)pCurrenResolution.y;
-                    Screen.SetResolution((int)(1920.0f * ratio), 1920, true);
-                }
-            }
-            else
-            {
-                if (pCurrenResolution.x > pCurrenResolution.y)
-                {
-                    float ratio = (float)pCurrenResolution.x / (float)pCurrenResolution.y;
-                    Screen.SetResolution(720, (int)(720.0f * ratio), true);
-                }
-                else
-                {
-                    float ratio = (float)pCurrenResolution.x / (float)pCurrenResolution.y;
-                    Screen.SetResolution((int)(1280.0f * ratio), 1280, true);
-                }
-            }
+            //Vector2 pCurrenResolution = FindObjectOfType<UIRoot>().GetComponent<UIPanel>().GetViewSize();
+            //if (Screen.height > 1920 || Screen.width > 1920)
+            //{
+            //    if (pCurrenResolution.x > pCurrenResolution.y)
+            //    {
+            //        float ratio = (float)pCurrenResolution.x / (float)pCurrenResolution.y;
+            //        Screen.SetResolution(1080, (int)(1080.0f * ratio), true);
+            //    }
+            //    else
+            //    {
+            //        float ratio = (float)pCurrenResolution.x / (float)pCurrenResolution.y;
+            //        Screen.SetResolution((int)(1920.0f * ratio), 1920, true);
+            //    }
+            //}
+            //else
+            //{
+            //    if (pCurrenResolution.x > pCurrenResolution.y)
+            //    {
+            //        float ratio = (float)pCurrenResolution.x / (float)pCurrenResolution.y;
+            //        Screen.SetResolution(720, (int)(720.0f * ratio), true);
+            //    }
+            //    else
+            //    {
+            //        float ratio = (float)pCurrenResolution.x / (float)pCurrenResolution.y;
+            //        Screen.SetResolution((int)(1280.0f * ratio), 1280, true);
+            //    }
+            //}
         
         }
 
