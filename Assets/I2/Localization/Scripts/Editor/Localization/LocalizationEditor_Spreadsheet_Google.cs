@@ -13,7 +13,9 @@ namespace I2.Loc
 		public static Dictionary<string, string> mGoogleSpreadsheets = new Dictionary<string, string>(StringComparer.Ordinal);
 
 		public UnityWebRequest mConnection_WWW;
-		Action<string, string> mConnection_Callback;
+
+        delegate void fnConnectionCallback(string Result, string Error);
+        event fnConnectionCallback mConnection_Callback;
 		//float mConnection_TimeOut;
 
 		string mConnection_Text = string.Empty;
@@ -49,7 +51,7 @@ namespace I2.Loc
 			GUILayout.Space(20);
 
 			GUI.backgroundColor = Color.Lerp(Color.gray, Color.white, 0.5f);
-			GUILayout.BeginVertical(EditorStyles.textArea, GUILayout.Height (1));
+			GUILayout.BeginVertical(LocalizeInspector.GUIStyle_OldTextArea, GUILayout.Height (1));
 			GUI.backgroundColor = Color.white;
 				GUILayout.Space(10);
 
@@ -67,7 +69,7 @@ namespace I2.Loc
 				int time = (int)((Time.realtimeSinceStartup % 2) * 2.5);
 				string Loading = mConnection_Text + ".....".Substring(0, time);
 				GUI.color = Color.gray;
-				GUILayout.BeginHorizontal(EditorStyles.textArea);
+				GUILayout.BeginHorizontal(LocalizeInspector.GUIStyle_OldTextArea);
 				GUILayout.Label (Loading, EditorStyles.miniLabel);
 				GUI.color = Color.white;
 				if (GUILayout.Button("Cancel", EditorStyles.toolbarButton, GUILayout.ExpandWidth(false)))
@@ -379,7 +381,7 @@ namespace I2.Loc
 		eSpreadsheetUpdateMode SynchronizationButtons( string Operation, bool ForceReplace = false )
 		{
 			eSpreadsheetUpdateMode Result = eSpreadsheetUpdateMode.None;
-			GUILayout.BeginVertical(EditorStyles.textArea, GUILayout.Width (1));
+			GUILayout.BeginVertical(LocalizeInspector.GUIStyle_OldTextArea, GUILayout.Width (1));
 			GUI.backgroundColor = Color.white;
 
 				GUILayout.BeginHorizontal();
@@ -564,7 +566,7 @@ namespace I2.Loc
 		{
 			if (mConnection_WWW!=null && mConnection_WWW.isDone)
 			{
-				Action<string, string> callback = mConnection_Callback;
+				fnConnectionCallback callback = mConnection_Callback;
 				string Result = string.Empty;
 				string Error = mConnection_WWW.error;
 
@@ -577,23 +579,19 @@ namespace I2.Loc
 				if (callback!=null)
 					callback(Result, Error);
 			}
-			/*else
+            /*else
 			if (Time.realtimeSinceStartup > mConnection_TimeOut+30)
 			{
-				Action<string, string> callback = mConnection_Callback;
+				fnConnectionCallback callback = mConnection_Callback;
 				StopConnectionWWW();
 				if (callback!=null)
 					callback(string.Empty, "Time Out");
 			}*/
-		}
+        }
 
-		void StopConnectionWWW()
+        void StopConnectionWWW()
 		{
-			EditorApplication.update -= CheckForConnection;			
-            if(mConnection_WWW != null)
-            {
-                mConnection_WWW.Dispose();
-            }
+			EditorApplication.update -= CheckForConnection;				
 			mConnection_WWW = null;
 			mConnection_Callback = null;
 			mConnection_Text = string.Empty;

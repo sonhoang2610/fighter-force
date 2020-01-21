@@ -40,8 +40,9 @@ namespace I2.Loc
             get{ 
                 if (mStyle_WrapTextField==null)
                 {
-                    mStyle_WrapTextField = new GUIStyle("textField");
+                    mStyle_WrapTextField = new GUIStyle(EditorStyles.textArea);
                     mStyle_WrapTextField.wordWrap = true;
+                    mStyle_WrapTextField.fixedHeight = 0;
                 }
                 return mStyle_WrapTextField;
             }
@@ -171,9 +172,13 @@ namespace I2.Loc
 
 				GUILayout.Space(10);
 
-				OnGUI_Main();
+                GUI.backgroundColor = Color.Lerp(GUITools.LightGray, Color.white, 0.5f);
+                GUILayout.BeginVertical(LocalizeInspector.GUIStyle_Background);
+                GUI.backgroundColor = Color.white;
+                OnGUI_Main();
+                GUILayout.EndVertical();
 
-			GUILayout.Space (10);
+            GUILayout.Space (10);
 			GUILayout.FlexibleSpace();
 
             GUITools.OnGUI_Footer("I2 Localization", LocalizationManager.GetVersion(), LocalizeInspector.HelpURL_forum, LocalizeInspector.HelpURL_Documentation, LocalizeInspector.HelpURL_AssetStore);

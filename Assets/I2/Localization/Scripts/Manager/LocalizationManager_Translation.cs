@@ -60,22 +60,29 @@ namespace I2.Loc
             return false;
         }
 
-        public static T GetTranslatedObject<T>( string Term, Localize optionalLocComp=null) where T : Object
+        public static T GetTranslatedObject<T>( string AssetName, Localize optionalLocComp=null) where T : Object
         {
             if (optionalLocComp != null)
             {
-                return optionalLocComp.FindTranslatedObject<T>(Term);
+                return optionalLocComp.FindTranslatedObject<T>(AssetName);
             }
             else
             {
-                T obj = FindAsset(Term) as T;
+                T obj = FindAsset(AssetName) as T;
                 if (obj)
                     return obj;
 
-                obj = ResourceManager.pInstance.GetAsset<T>(Term);
+                obj = ResourceManager.pInstance.GetAsset<T>(AssetName);
                 return obj;
             }
         }
+        
+        public static T GetTranslatedObjectByTermName<T>( string Term, Localize optionalLocComp=null) where T : Object
+        {
+            string    translation = GetTranslation(Term, FixForRTL: false);
+            return GetTranslatedObject<T>(translation);
+        }
+        
 
         public static string GetAppName(string languageCode)
         {

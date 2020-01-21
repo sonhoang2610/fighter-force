@@ -199,7 +199,7 @@ namespace I2.Loc
 
         public void EnableLanguage(string Language, bool bEnabled)
         {
-            int idx = GetLanguageIndex(Language, false);
+            int idx = GetLanguageIndex(Language, false, false);
             if (idx >= 0)
                 mLanguages[idx].SetEnabled(bEnabled);
         }

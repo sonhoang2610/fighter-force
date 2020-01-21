@@ -43,7 +43,8 @@ namespace I2.Loc
 
         public float GoogleUpdateDelay = 5; // How many second to delay downloading data from google (to avoid lag on the startup)
 
-        public event Action<LanguageSourceData, bool, string> Event_OnSourceUpdateFromGoogle;    // (LanguageSource, bool ReceivedNewData, string errorMsg)
+        public delegate void fnOnSourceUpdated(LanguageSourceData source, bool ReceivedNewData, string errorMsg);
+        public event fnOnSourceUpdated Event_OnSourceUpdateFromGoogle;
 
         public List<LanguageData> mLanguages = new List<LanguageData>();
 

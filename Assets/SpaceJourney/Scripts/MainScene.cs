@@ -136,6 +136,8 @@ namespace EazyEngine.Space.UI
                 }
             }
             Resources.UnloadUnusedAssets();
+
+
             //GameManager.Instance.gameObject.SetActive(true);
             // MonoManager.current.gameObject.SetActive(true);
         }

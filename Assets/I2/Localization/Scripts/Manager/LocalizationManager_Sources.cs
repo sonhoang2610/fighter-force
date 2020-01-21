@@ -77,7 +77,7 @@ namespace I2.Loc
                     Source.Import_Google_FromCache();
                     bool justCheck = false;
                 #else
-                    bool justCheck=false;
+                    bool justCheck=true;
                 #endif
                 if (Source.GoogleUpdateDelay > 0)
 						CoroutineManager.Start( Delayed_Import_Google(Source, Source.GoogleUpdateDelay, justCheck) );

@@ -128,6 +128,8 @@ namespace I2.Loc
 							case eGoogleUpdateFrequency.Monthly: if (TimeDifference<31) return;
 								break;
 							case eGoogleUpdateFrequency.OnlyOnce: return;
+							case eGoogleUpdateFrequency.EveryOtherDay : if (TimeDifference < 2) return;
+								break;
 						}
 					}
 				}
@@ -193,7 +195,7 @@ namespace I2.Loc
                         Debug.LogWarning("Spreadsheet is not up-to-date and Google Live Synchronization is enabled\nWhen playing in the device the Spreadsheet will be downloaded and translations may not behave as what you see in the editor.\nTo fix this, Import or Export replace to Google");
                         GoogleLiveSyncIsUptoDate = false;
                     }
-                    www.Dispose();
+
                     yield break;
                 }
 
@@ -216,7 +218,7 @@ namespace I2.Loc
                                 break;
                             }
                     }
-                    www.Dispose();
+
                     yield break;
                 }
 			}
@@ -225,9 +227,7 @@ namespace I2.Loc
 				Event_OnSourceUpdateFromGoogle(this, false, www.error);
 
 			Debug.Log("Language Source was up-to-date with Google Spreadsheet");
-            www.Dispose();
-
-        }
+		}
 
         void ApplyDownloadedDataOnSceneLoaded(Scene scene, LoadSceneMode mode)
         {

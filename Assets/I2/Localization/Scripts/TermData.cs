@@ -36,7 +36,12 @@ namespace I2.Loc
 	{
 		public string 			Term 			= string.Empty;
 		public eTermType		TermType 		= eTermType.Text;
+		
+		#if !UNITY_EDITOR
+		[NonSerialized]
+		#endif
 		public string 			Description;
+		
         public string[]         Languages = new string[0];
         public byte[]			Flags 			= new byte[0];  // flags for each translation
 

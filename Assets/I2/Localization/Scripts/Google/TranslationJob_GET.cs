@@ -14,11 +14,11 @@ namespace I2.Loc
     public class TranslationJob_GET : TranslationJob_WWW
     {
         TranslationDictionary _requests;
-        Action<TranslationDictionary, string> _OnTranslationReady;
+        GoogleTranslation.fnOnTranslationReady _OnTranslationReady;
         List<string> mQueries;
         public string mErrorMessage;
 
-        public TranslationJob_GET(TranslationDictionary requests, Action<TranslationDictionary, string> OnTranslationReady)
+        public TranslationJob_GET(TranslationDictionary requests, GoogleTranslation.fnOnTranslationReady OnTranslationReady)
         {
             _requests = requests;
             _OnTranslationReady = OnTranslationReady;

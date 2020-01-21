@@ -14,7 +14,7 @@ namespace I2.Loc
     public class TranslationJob_WEB : TranslationJob_WWW
     {
         TranslationDictionary _requests;
-        Action<TranslationDictionary, string> _OnTranslationReady;
+        GoogleTranslation.fnOnTranslationReady _OnTranslationReady;
         public string mErrorMessage;
 
         string mCurrentBatch_ToLanguageCode;
@@ -23,7 +23,7 @@ namespace I2.Loc
 
         List<KeyValuePair<string, string>> mQueries;
 
-        public TranslationJob_WEB(TranslationDictionary requests, Action<TranslationDictionary, string> OnTranslationReady)
+        public TranslationJob_WEB(TranslationDictionary requests, GoogleTranslation.fnOnTranslationReady OnTranslationReady)
         {
             _requests = requests;
             _OnTranslationReady = OnTranslationReady;
