@@ -52,6 +52,7 @@ public class CropCamera : MonoBehaviour
         // Start is called before the first frame update
         void Start()
     {
+
         cropCamera();
     }
 
