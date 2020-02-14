@@ -92,7 +92,7 @@ namespace EazyEngine.Space.UI
                 }
                 else
                 {
-                    selectedPlane.UpgradeSkill.Add(choosedSkill.info.Info.ItemID, 1);
+                    selectedPlane.UpgradeSkill.Add(choosedSkill.info.Info.ItemID, 0);
                 }
             }
             else
@@ -153,7 +153,7 @@ namespace EazyEngine.Space.UI
                 }
                 else
                 {
-                    selectedPlane.UpgradeSkill.Add(choosedSkill.info.Info.ItemID, 1);
+                    selectedPlane.UpgradeSkill.Add(choosedSkill.info.Info.ItemID, 0);
                 }
             }
             else
