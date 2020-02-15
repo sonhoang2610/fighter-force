@@ -32,7 +32,10 @@ public class HomeMissile : MonoBehaviour, ISetTarget, IMovementProjectile, Ignor
     protected int currentCountFindTarget;
     List<GameObject> _listIgnoreCollider = new List<GameObject>();
     protected float currentRotate = 0;
-    protected Vector2 CachePosLastTarget;
+	protected Vector2 CachePosLastTarget;
+    
+	public Vector2  velocity {get;set;
+	}
     public bool IsEnable()
     {
         return enabled;
@@ -164,19 +167,25 @@ public class HomeMissile : MonoBehaviour, ISetTarget, IMovementProjectile, Ignor
             rb.angularVelocity = rotatingSpeed * (value);
         }
 
-        rb.velocity = -transform.up * speed;
+	    velocity = -transform.up * speed;
         if (facingDefault == TranformExtension.FacingDirection.UP)
         {
-            rb.velocity = transform.up * speed;
+            velocity = transform.up * speed;
         }
         else if (facingDefault == TranformExtension.FacingDirection.DOWN) {
-            rb.velocity = -transform.up * speed;
+            velocity = -transform.up * speed;
         }
     }
+    
+	// Update is called every frame, if the MonoBehaviour is enabled.
+	protected void Update()
+	{
+        transform.position += (Vector3)(velocity * Time.deltaTime);
+	}
 
     public void KillProcess()
     {
-        rb.velocity = Vector2.zero;
+        velocity = Vector2.zero;
         rb.angularVelocity = 0;
         enabled = false;
     }

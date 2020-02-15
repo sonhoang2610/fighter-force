@@ -12,6 +12,7 @@ using Firebase;
 using Firebase.Analytics;
 using System.Threading.Tasks;
 using MK.Glow.Legacy;
+using Facebook.Unity;
 
 namespace EazyEngine.Space
 {
@@ -188,6 +189,10 @@ namespace EazyEngine.Space
                         if (!isInitialized)
                         {
                             InAppPurchasing.InitializePurchasing();
+                        }
+                        if (!FB.IsInitialized)
+                        {
+                            FB.Init();
                         }
 #endif
                     }

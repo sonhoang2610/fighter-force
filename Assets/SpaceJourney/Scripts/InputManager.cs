@@ -25,7 +25,14 @@ public class InputManager : Singleton<InputManager> {
             return Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
     }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        fixedTimeDefault = Time.fixedDeltaTime;
+    }
     protected bool cacheTouch = false;
+    protected float fixedTimeDefault;
     private void LateUpdate()
     {
         if (LevelManger.InstanceRaw != null && LevelManger.Instance.IsPlaying && LevelManger.Instance.IsMatching)
@@ -36,10 +43,12 @@ public class InputManager : Singleton<InputManager> {
                 if (!isTouch)
                 {
                     Time.timeScale = 0.3f;
+                    Time.fixedDeltaTime = 0.3f * Time.fixedDeltaTime;
                 }
                 else
                 {
                     Time.timeScale = 1;
+                    Time.fixedDeltaTime = fixedTimeDefault;
                 }
             }
         }
