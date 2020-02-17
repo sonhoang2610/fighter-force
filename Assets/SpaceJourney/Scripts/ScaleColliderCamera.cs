@@ -10,12 +10,12 @@ public class ScaleColliderCamera : MonoBehaviour
 
     private void Awake()
     {
-        //var pSize = FindObjectOfType<UIRoot>().GetComponent<UIPanel>().GetWindowSize();
+        var pSize = FindObjectOfType<UIRoot>().GetComponent<UIPanel>().GetWindowSize();
 
-        //if ((pSize.y / pSize.x) > (19.2f / 10.8f))
-        //{
-        //    _cam.orthographicSize = (pSize.y / pSize.x) * 5.4f;
-        //}
+        if ((pSize.y / pSize.x) > (19.2f / 10.8f))
+        {
+            _cam.orthographicSize = (pSize.y / pSize.x) * 5.4f;
+        }
 
         if (_collider != null && _cam != null)
         {
