@@ -191,7 +191,7 @@ namespace EazyEngine.Space.UI
 
         public void downFps()
         {
-            Application.targetFrameRate = 30;
+            Application.targetFrameRate = 60;
         }
         IEnumerator checkInternetConnection(Action<bool> action)
         {

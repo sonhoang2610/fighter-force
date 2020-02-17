@@ -19,7 +19,7 @@ public class ScaleColliderCamera : MonoBehaviour
 
         if (_collider != null && _cam != null)
         {
-            _collider.size = new Vector2(_cam.orthographicSize * 2 * 1080.0f / 1920.0f, _cam.orthographicSize * 2);
+            _collider.size = new Vector2(10.8f, 19.2f);
         }
     }
     // Update is called once per frame
@@ -27,7 +27,7 @@ public class ScaleColliderCamera : MonoBehaviour
     {
         if (!Application.isPlaying && _collider != null && _cam != null)
         {
-            _collider.size = new Vector2(_cam.orthographicSize * 2 * Screen.width / Screen.height, _cam.orthographicSize * 2);
+            _collider.size = new Vector2(10.8f, 19.2f);
         }
     }
 }
