@@ -1303,6 +1303,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             rewardAds.Remove(placement.Name);
         }
     }
+    
     // Event handlers
     void OnUserLoginSucceeded()
     {
@@ -1419,7 +1420,6 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                 }
                 if (Advertising.IsRewardedAdReady(placement))
                 {
-
                     Advertising.ShowRewardedAd(placement);
                 }
                 else

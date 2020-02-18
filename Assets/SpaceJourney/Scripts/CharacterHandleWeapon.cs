@@ -128,10 +128,25 @@ namespace EazyEngine.Space
                         {
                             foreach (var pWeaponInfo in cacheWeaponData)
                             {
-                                if (pWeaponInfo.targetRef.Asset == weaponPaths[pWeapon])
+                                if(pWeaponInfo.targetRef.Asset == null)
                                 {
-                                    pWeapon.setData(pWeaponInfo);
+                                   var pAsync = pWeaponInfo.targetRef.loadAssetAsync<Weapon>();
+                                    pAsync.completed += (AsyncOperation r) => {
+                                        pWeaponInfo.targetRef.Asset = ((ResourceRequest)r).asset;
+                                        if (pWeaponInfo.targetRef.Asset == weaponPaths[pWeapon])
+                                        {
+                                            pWeapon.setData(pWeaponInfo);
+                                        }
+                                    };
                                 }
+                                else
+                                {
+                                    if (pWeaponInfo.targetRef.Asset == weaponPaths[pWeapon])
+                                    {
+                                        pWeapon.setData(pWeaponInfo);
+                                    }
+                                }
+                         
                             }
                         }
                     }

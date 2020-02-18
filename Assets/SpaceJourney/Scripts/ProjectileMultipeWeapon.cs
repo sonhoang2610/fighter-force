@@ -263,10 +263,26 @@ namespace EazyEngine.Space
                                  {
                                      foreach (var pBulletInfo in data.bullets)
                                      {
-                                         if (pBulletInfo.prefabRef.Asset == pPool.GetLastOriginal())
+                                         if (pBulletInfo.prefabRef.Asset == null)
                                          {
-                                             proj.setData(pBulletInfo);
+                                             var pAsync = pBulletInfo.prefabRef.loadAssetAsync<Weapon>();
+                                             pAsync.completed += (AsyncOperation r) =>
+                                             {
+                                                 pBulletInfo.prefabRef.Asset = ((ResourceRequest)r).asset;
+                                                 if (pBulletInfo.prefabRef.Asset == pPool.GetLastOriginal())
+                                                 {
+                                                     proj.setData(pBulletInfo);
+                                                 }
+                                             };
                                          }
+                                         else
+                                         {
+                                             if (pBulletInfo.prefabRef.Asset == pPool.GetLastOriginal())
+                                             {
+                                                 proj.setData(pBulletInfo);
+                                             }
+                                         }
+                                    
                                      }
                                  }
 
