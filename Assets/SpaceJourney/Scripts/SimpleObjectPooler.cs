@@ -34,7 +34,7 @@ namespace EazyEngine.Tools
 #endif
         public void recover()
         {
-            if (GameObjectToPool) return;
+            if (GameObjectToPool || string.IsNullOrEmpty(backUpPath)) return;
             int index = backUpPath.IndexOf("Resources/");
             var path = backUpPath.Substring(index + 10, backUpPath.Length - index - 10).Split('.')[0];
             GameObjectToPool = Resources.Load<GameObject>(path);
