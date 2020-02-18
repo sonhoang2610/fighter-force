@@ -22,6 +22,23 @@ namespace EazyEngine.Tools
         public System.Action<GameObject, GameObject> onNewGameObjectCreated;
         /// the game object we'll instantiate 
         public GameObject GameObjectToPool;
+
+        public string backUpPath;
+#if UNITY_EDITOR
+        [Button("Generate Backup")]
+        public void generateBackUp()
+        {
+            if (!GameObjectToPool) return;
+            backUpPath = UnityEditor.AssetDatabase.GetAssetPath(GameObjectToPool);
+        }
+#endif
+        public void recover()
+        {
+            if (GameObjectToPool) return;
+            int index = backUpPath.IndexOf("Resources/");
+            var path = backUpPath.Substring(index + 10, backUpPath.Length - index - 10).Split('.')[0];
+            GameObjectToPool = Resources.Load<GameObject>(path);
+        }
         /// the number of objects we'll add to the pool
         public int PoolSize = 20;
         public int RemainPoolSize = 0;
@@ -48,6 +65,7 @@ namespace EazyEngine.Tools
         public override void FillObjectPool()
         {
             // if (!LevelManger.InstanceRaw) return;
+            recover();
             if (GameObjectToPool == null) return;
             CreateWaitingPool(GameObjectToPool);
             if (dontDestroyOnload)
