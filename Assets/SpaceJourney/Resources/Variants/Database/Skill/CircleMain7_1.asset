@@ -190,8 +190,7 @@ MonoBehaviour:
   descriptionItem:
     normalString: plane/plane7_skill2
     isI2String: 1
-    value: 'Receive a shield that blocks one damage. When the shield breaks create
-      a Shield '
+    value: Create a circle of bullets orbiting the aircraft in a short time
   categoryItem: 3
   iconShop: {fileID: -3971251956757186032, guid: c336f33155863f74d9acfd73a1e6e9d4,
     type: 3}
@@ -201,13 +200,15 @@ MonoBehaviour:
     type: 3}
   iconGameDisable: {fileID: -6379986311760498460, guid: c336f33155863f74d9acfd73a1e6e9d4,
     type: 3}
-  model: {fileID: 0}
+  modelRef:
+    asset: {fileID: 0}
+    runtimeKey: 
   score: 0
   isActive: 0
   coolDownTime:
-    startUnit: 45
-    algrothimTypeUpgrade: 1
-    stepUnit: 0
+    startUnit: 60
+    algrothimTypeUpgrade: 0
+    stepUnit: -3
     isSpecifiedUnit: 0
     unitDefines:
     - levelRequire: 2
