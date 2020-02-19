@@ -3,11 +3,15 @@
 //					                                //
 // Created by Michael Kremmel                       //
 // www.michaelkremmel.de                            //
-// Copyright © 2019 All rights reserved.            //
+// Copyright © 2020 All rights reserved.            //
 //////////////////////////////////////////////////////
-#if UNITY_EDITOR
+#if UNITY_EDITOR && !UNITY_CLOUD_BUILD
 using UnityEditor;
 using UnityEngine;
+
+//Disable XRManagement warning for selective workflow
+//XRpackage has to be imported...
+#pragma warning disable CS0618
 
 namespace MK.Glow.Editor
 {
@@ -20,7 +24,7 @@ namespace MK.Glow.Editor
                 //Main
                 internal static readonly GUIContent allowGeometryShaders = new GUIContent("Allow Geometry Shaders", "Allowing the pipeline to use geometry shader if available.");
                 internal static readonly GUIContent allowComputeShaders = new GUIContent("Allow Compute Shaders", "Allowing the pipeline to use compute shader if available.");
-                internal static readonly GUIContent renderPriority = new GUIContent("Render Priority", "Define if the pipeline should focus on quality or performance.");
+                internal static readonly GUIContent renderPriority = new GUIContent("Render Priority", "Define if the pipeline should focus on quality or performance. Balanced gives you the best trade-off in terms of performance and visual quality.");
                 internal static readonly GUIContent debugView = new GUIContent("Debug View", "Displaying of different render steps. \n \n" +
                                                                                "None: Debug view is disabled. \n\n" +
                                                                                "Raw Bloom: Shows extracted bloom map. \n\n" +
@@ -30,7 +34,7 @@ namespace MK.Glow.Editor
                                                                                "Lens Flare: Shows created lens flare without lens surface. \n\n" +
                                                                                "Glare: Shows created glare without lens surface. \n\n" +
                                                                                "Composite: Shows combined bloom, lensflare, glare and lens surface, just without source image. \n");
-                internal static readonly GUIContent quality = new GUIContent("Quality", "General rendered quality of the glow. Higher setting results in better looking and less aliasing.");
+                internal static readonly GUIContent quality = new GUIContent("Quality", "General rendered quality of the glow. Higher setting results in better looking and less aliasing. High/Medium is recommend in most cases.");
                 internal static readonly GUIContent workflow = new GUIContent("Workflow", "Basic definition of the workflow. \n\n" +
                                                                               "Luminance: Glow map is defined by the pixels brightness and a threshold value. Just use the emission of the shaders and raise it up. Performs significantly faster than selective workflow.\n\n" +
                                                                                "Selective: Glow map is created by using separate shaders (MK/Glow/Selective).\n\n" +
@@ -57,6 +61,7 @@ namespace MK.Glow.Editor
 
                 //Lens flare
                 internal static readonly GUIContent allowLensFlare = new GUIContent("", "");
+                internal static readonly GUIContent lensFlareStyle = new GUIContent("Style", "Style of the lens flare effect. Switch between presets or a custom style to mix up ghosts and halo.");
                 internal static readonly GUIContent lensFlareGhostFade = new GUIContent("Fade", "Fading of the ghosts. A higher value make the ghosts less visible");
                 internal static readonly GUIContent lensFlareGhostIntensity = new GUIContent("Intensity", "Intensity of the ghosts in gamma space.");
                 internal static readonly GUIContent lensFlareThreshold = new GUIContent("Threshold", "Threshold in gamma space for extraction of bright areas. \n\n Min: Minimum brightness until the lens flare starts. \n Max: Maximum brightness for cutting off colors.");
@@ -157,11 +162,11 @@ namespace MK.Glow.Editor
             {
                 if(UnityEngine.Rendering.GraphicsSettings.renderPipelineAsset != null && workflow == Workflow.Selective)
                 {
-                    EditorGUILayout.HelpBox("Selective workflow isn't supported if a scriptable rendering pipeline is active. Please use Luminance workflow instead.", MessageType.Warning);
+                    EditorGUILayout.HelpBox("Selective workflow isn't supported if a scriptable rendering pipeline is active. Please use Threshold or Natural workflow instead.", MessageType.Warning);
                 }
                 if(PlayerSettings.virtualRealitySupported && workflow == Workflow.Selective)
                 {
-                    EditorGUILayout.HelpBox("Selective workflow isn't supported in XR. Please use Luminance workflow instead.", MessageType.Warning);
+                    EditorGUILayout.HelpBox("Selective workflow isn't supported in XR. Please use Threshold or Natural workflow instead.", MessageType.Warning);
                 }
             }
 

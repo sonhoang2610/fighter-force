@@ -3,7 +3,7 @@
 //					                                //
 // Created by Michael Kremmel                       //
 // www.michaelkremmel.de                            //
-// Copyright © 2019 All rights reserved.            //
+// Copyright © 2020 All rights reserved.            //
 //////////////////////////////////////////////////////
 Shader "Hidden/MK/Glow/MKGlowSM25"
 {
@@ -39,8 +39,8 @@ Shader "Hidden/MK/Glow/MKGlowSM25"
 			#pragma fragmentoption ARB_precision_hint_fastest
 
 			#define _NORMALMAP
-			#pragma multi_compile __ POINT_COOKIE _COLORCOLOR_ON
-			#pragma multi_compile __ SPOT
+			#pragma multi_compile __ OUTLINE_ON _COLORCOLOR_ON
+			#pragma multi_compile __ UNDERLAY_ON
 
 			#include "../Inc/Presample.hlsl"
 			ENDHLSL
@@ -58,7 +58,7 @@ Shader "Hidden/MK/Glow/MKGlowSM25"
 			#pragma fragmentoption ARB_precision_hint_fastest
 
 			#define _NORMALMAP
-			#pragma multi_compile __ POINT_COOKIE _COLORCOLOR_ON
+			#pragma multi_compile __ OUTLINE_ON _COLORCOLOR_ON
 
 			#include "../Inc/Downsample.hlsl"
 			ENDHLSL
@@ -76,7 +76,7 @@ Shader "Hidden/MK/Glow/MKGlowSM25"
 			#pragma fragmentoption ARB_precision_hint_fastest
 
 			#define _NORMALMAP
-			#pragma multi_compile __ POINT_COOKIE _COLORCOLOR_ON
+			#pragma multi_compile __ OUTLINE_ON _COLORCOLOR_ON
 
 			#include "../Inc/Upsample.hlsl"
 			ENDHLSL
@@ -96,8 +96,8 @@ Shader "Hidden/MK/Glow/MKGlowSM25"
 			#pragma multi_compile __ _COLOROVERLAY_ON
 
 			#pragma multi_compile __ _ALPHATEST_ON
-			#pragma multi_compile __ POINT_COOKIE _COLORCOLOR_ON
-			#pragma multi_compile __ SPOT
+			#pragma multi_compile __ OUTLINE_ON _COLORCOLOR_ON
+			#pragma multi_compile __ UNDERLAY_ON
 
 			#include "../Inc/Composite.hlsl"
 			ENDHLSL
@@ -118,8 +118,8 @@ Shader "Hidden/MK/Glow/MKGlowSM25"
 			
 			#pragma multi_compile __ _EMISSION EDITOR_VISUALIZATION
 			#pragma multi_compile __ _ALPHATEST_ON
-			#pragma multi_compile __ POINT_COOKIE _COLORCOLOR_ON
-			#pragma multi_compile __ SPOT
+			#pragma multi_compile __ OUTLINE_ON _COLORCOLOR_ON
+			#pragma multi_compile __ UNDERLAY_ON
 
 			#include "../Inc/Debug.hlsl"
 			ENDHLSL

@@ -3,7 +3,7 @@
 //					                                //
 // Created by Michael Kremmel                       //
 // www.michaelkremmel.de                            //
-// Copyright © 2019 All rights reserved.            //
+// Copyright © 2020 All rights reserved.            //
 //////////////////////////////////////////////////////
 using UnityEngine;
 
@@ -72,12 +72,12 @@ namespace MK.Glow
 		/// <param name="depthBufferBits"></param>
 		/// <param name="enableRandomWrite"></param>
 		/// <param name="dimension"></param>
-		internal void UpdateRenderContext(UnityEngine.Camera camera, RenderTextureFormat format, int depthBufferBits, bool enableRandomWrite, RenderDimension dimension)
+		internal void UpdateRenderContext(bool stereoEnabled, RenderTextureFormat format, int depthBufferBits, bool enableRandomWrite, RenderDimension dimension)
         {
 			#if UNITY_2018_3_OR_NEWER
-			_descriptor.dimension = camera.stereoEnabled ? UnityEngine.XR.XRSettings.eyeTextureDesc.dimension : UnityEngine.Rendering.TextureDimension.Tex2D;
-            _descriptor.vrUsage = camera.stereoEnabled ? UnityEngine.XR.XRSettings.eyeTextureDesc.vrUsage : VRTextureUsage.None;
-            _descriptor.volumeDepth = camera.stereoEnabled ? UnityEngine.XR.XRSettings.eyeTextureDesc.volumeDepth : 1;
+			_descriptor.dimension = stereoEnabled ? UnityEngine.XR.XRSettings.eyeTextureDesc.dimension : UnityEngine.Rendering.TextureDimension.Tex2D;
+            _descriptor.vrUsage = stereoEnabled ? UnityEngine.XR.XRSettings.eyeTextureDesc.vrUsage : VRTextureUsage.None;
+            _descriptor.volumeDepth = stereoEnabled ? UnityEngine.XR.XRSettings.eyeTextureDesc.volumeDepth : 1;
 			#elif UNITY_2017_1_OR_NEWER
 			_descriptor.dimension = UnityEngine.Rendering.TextureDimension.Tex2D;
             _descriptor.vrUsage = VRTextureUsage.None;

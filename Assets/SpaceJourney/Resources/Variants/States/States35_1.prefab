@@ -6908,7 +6908,7 @@ MonoBehaviour:
     isManual: 0
     formatInfo:
       prefabEnemies:
-      - {fileID: 5542222136454567359, guid: 8228032a42f681e46a853df43afb4585, type: 3}
+      - {fileID: 7999101140590002541, guid: 8228032a42f681e46a853df43afb4585, type: 3}
       quantity: 1
       typeSpawn: 0
       typeFomation: 0
@@ -7434,6 +7434,14 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     totalDeath: 0
+  scaleState:
+    scaleGlobal:
+      scaleHealth: 1
+      scaleDeffense: 1
+      scaleDamage: 1
+      scaleDamageSelf: 1
+    scaleSpecifedEnemies: []
+  lootInfo: []
 --- !u!114 &2291780706860579686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7459,7 +7467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aad115aca74ce3c4891b3f6de0b4aae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundGraphSerialization: '{"version":2.96,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","comments":"StateController","translation":{"x":800.0,"y":234.0},"zoomFactor":0.254573,"nodes":[{"_position":{"x":-1747.0,"y":619.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"2"},{"_action":{"messCompare":"StartGame","$type":"EazyEngine.Space.WaitEventGame"},"_position":{"x":-3202.0,"y":1099.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"3"},{"_position":{"x":-1792.0,"y":889.0},"$type":"NodeCanvas.BehaviourTrees.Parallel","$id":"5"},{"_position":{"x":-2167.0,"y":1114.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"6"},{"_position":{"x":-2935.0,"y":1261.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"7"},{"_color":{"r":1.0,"g":0.3921569,"b":0.7960784,"a":1.0},"_position":{"x":-6160.0,"y":1520.0},"$type":"NodeCanvas.BehaviourTrees.Parallel","$id":"8"},{"_action":{"nameState":"State
+  boundGraphSerialization: '{"version":2.96,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","comments":"StateController","translation":{"x":2299.0,"y":-2063.0},"zoomFactor":0.9998853,"nodes":[{"_position":{"x":-1747.0,"y":619.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"2"},{"_action":{"messCompare":"StartGame","$type":"EazyEngine.Space.WaitEventGame"},"_position":{"x":-3202.0,"y":1099.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"3"},{"_position":{"x":-1792.0,"y":889.0},"$type":"NodeCanvas.BehaviourTrees.Parallel","$id":"5"},{"_position":{"x":-2167.0,"y":1114.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"6"},{"_position":{"x":-2935.0,"y":1261.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"7"},{"_color":{"r":1.0,"g":0.3921569,"b":0.7960784,"a":1.0},"_position":{"x":-6160.0,"y":1520.0},"$type":"NodeCanvas.BehaviourTrees.Parallel","$id":"8"},{"_action":{"nameState":"State
     1b","wait":{"_value":true},"$type":"EazyEngine.Space.RunState"},"_position":{"x":-6428.0,"y":1701.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"9"},{"_action":{"nameState":"State
     2b","wait":{"_value":true},"$type":"EazyEngine.Space.RunState"},"_position":{"x":-6322.0,"y":1694.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"12"},{"_action":{"nameState":"State
     24","wait":{"_value":true},"$type":"EazyEngine.Space.RunState"},"_position":{"x":-6195.0,"y":1686.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"15"},{"_position":{"x":-5815.0,"y":1544.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"18"},{"_action":{"waitTime":{"_value":4.0},"timerBehavior":{},"$type":"NodeCanvas.Tasks.Actions.Wait"},"_position":{"x":-6081.0,"y":1738.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"19"},{"_action":{"nameState":"State

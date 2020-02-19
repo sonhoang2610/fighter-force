@@ -3,7 +3,7 @@
 //					                                //
 // Created by Michael Kremmel                       //
 // www.michaelkremmel.de                            //
-// Copyright © 2019 All rights reserved.            //
+// Copyright © 2020 All rights reserved.            //
 //////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////
@@ -15,9 +15,9 @@
 // _MK_LENS_SURFACE      	    | _ALPHATEST_ON                        | MK_LENS_SURFACE      	
 // _MK_LENS_FLARE        	    | _ALPHABLEND_ON                       | MK_LENS_FLARE        	
 // _MK_GLARE_1             	    | _ALPHAPREMULTIPLY_ON                 | MK_GLARE_1             
-// _MK_GLARE_2             	    | DIRECTIONAL                          | MK_GLARE_2             
-// _MK_GLARE_3             	    | DIRECTIONAL_COOKIE                   | MK_GLARE_3             
-// _MK_GLARE_4             	    | POINT                                | MK_GLARE_4             
+// _MK_GLARE_2             	    | BILLBOARD_FACE_CAMERA_POS            | MK_GLARE_2             
+// _MK_GLARE_3             	    | LOD_FADE_CROSSFADE                   | MK_GLARE_3             
+// _MK_GLARE_4             	    | _SUNDISK_NONE                        | MK_GLARE_4             
 // _MK_DEBUG_RAW_BLOOM      	| _EMISSION                            | MK_DEBUG_RAW_BLOOM      	
 // _MK_DEBUG_RAW_LENS_FLARE 	| _METALLICGLOSSMAP                    | MK_DEBUG_RAW_LENS_FLARE 	
 // _MK_DEBUG_RAW_GLARE      	| _DETAIL_MULX2                        | MK_DEBUG_RAW_GLARE      	
@@ -28,8 +28,8 @@
 // _MK_DEBUG_COMPOSITE      	| EDITOR_VISUALIZATION                 | MK_DEBUG_COMPOSITE      	
 // _MK_LEGACY_BLIT      		| _COLOROVERLAY_ON                     | MK_LEGACY_BLIT      		
 // _MK_RENDER_PRIORITY_QUALITY  | _COLORCOLOR_ON                       | MK_RENDER_PRIORITY_QUALITY
-// _MK_RENDER_PRIORITY_BALANCED | POINT_COOKIE                         | MK_RENDER_PRIORITY_BALANCED
-// _MK_NATURAL                  | SPOT                                 | MK_NATURAL         
+// _MK_RENDER_PRIORITY_BALANCED | OUTLINE_ON                   		   | MK_RENDER_PRIORITY_BALANCED
+// _MK_NATURAL                  | UNDERLAY_ON                  		   | MK_NATURAL         
 
 //////////////////////////////////////////////////////
 // Supported features based on shader model         //
@@ -109,9 +109,16 @@
 		#endif
 	#endif
 
+	uniform float2 _ScreenSize;
+	#if defined(_HDRP) && SHADER_TARGET >= 35
+		#ifndef HDRP
+			#define HDRP
+		#endif
+	#endif
+
 	#if defined(_COLORCOLOR_ON) && (defined(COMPUTE_SHADER) || SHADER_TARGET >= 25)
 		#define MK_RENDER_PRIORITY_QUALITY
-	#elif defined(POINT_COOKIE) && (defined(COMPUTE_SHADER) || SHADER_TARGET >= 25)
+	#elif defined(OUTLINE_ON) && (defined(COMPUTE_SHADER) || SHADER_TARGET >= 25)
 		#define MK_RENDER_PRIORITY_BALANCED
 	#else
 		#define RENDER_PRIORITY_PERFORMANCE
@@ -156,6 +163,15 @@
 		#define PASS_TEXTURE_2D(textureName, samplerName) textureName
 	#endif
 
+	#ifdef HDRP
+		#define UNIFORM_SOURCE_SAMPLER_AND_TEXTURE(textureName) uniform Texture2DArray<half4> textureName; uniform SamplerState sampler##textureName;
+		#define DECLARE_SOURCE_TEXTURE_2D_ARGS(textureName, samplerName) Texture2DArray<half4> textureName, SamplerState samplerName
+		#define PASS_SOURCE_TEXTURE_2D(textureName, samplerName) textureName, samplerName
+	#else
+		#define UNIFORM_SOURCE_SAMPLER_AND_TEXTURE(textureName) UNIFORM_SAMPLER_AND_TEXTURE_2D(textureName)
+		#define DECLARE_SOURCE_TEXTURE_2D_ARGS(textureName, samplerName) DECLARE_TEXTURE_2D_ARGS(textureName, samplerName)
+		#define PASS_SOURCE_TEXTURE_2D(textureName, samplerName) PASS_TEXTURE_2D(textureName, samplerName)
+	#endif
 
 	#ifdef COMPUTE_SHADER
 		#if defined(UNITY_STEREO_INSTANCING_ENABLED) || defined(UNITY_STEREO_MULTIVIEW_ENABLED)
@@ -176,6 +192,7 @@
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	#ifdef COMPUTE_SHADER
 		//Other
+		#define SCREEN_SIZE ComputeFloat2FromBuffer(_CArgBuffer, 0)
 		#define SINGLE_PASS_STEREO_TEXEL_SCALE ComputeFloatFromBuffer(_CArgBuffer, 65)
 		#define SOURCE_TEXEL_SIZE AutoScaleTexelSize(ComputeTexelSize(_SourceTex))
 		#define COPY_RENDER_TARGET _CopyTargetTex[id]
@@ -248,13 +265,14 @@
 		#define GLARE_GLOBAL_INTENSITY ComputeFloatFromBuffer(_CArgBuffer, 48)
 	#else
 		//Other
+		#define SCREEN_SIZE _ScreenSize
 		#define SINGLE_PASS_STEREO_TEXEL_SCALE _SinglePassStereoScale
 		#define UV_COPY o.uv0.xy
 		#define SOURCE_TEXEL_SIZE AutoScaleTexelSize(_SourceTex_TexelSize)
 		#define COPY_RENDER_TARGET fO.GET_COPY_RT
 		#define SOURCE_UV o.uv0.xy
 		#define RETURN_TARGET_TEX return
-		#define SAMPLE_SOURCE SampleTex2D(PASS_TEXTURE_2D(_SourceTex, sampler_SourceTex), SOURCE_UV)
+		#define SAMPLE_SOURCE SampleSourceTex(PASS_SOURCE_TEXTURE_2D(_SourceTex, sampler_SourceTex), SOURCE_UV)
 		#define RESOLUTION_SCALE _ResolutionScale
 		#define UV_0 o.uv0.xy
 		#define LUMA_SCALE _LumaScale
@@ -330,7 +348,7 @@
 		#define BLOOM_RT 0
 	#endif
 
-	#ifdef SPOT
+	#ifdef UNDERLAY_ON
 		#define MK_NATURAL
 	#endif
 
@@ -352,39 +370,28 @@
 	#endif
 
 	//Glare
-	#if (defined(_ALPHAPREMULTIPLY_ON) || defined(DIRECTIONAL) || defined(DIRECTIONAL_COOKIE) || defined(POINT)) && (SHADER_TARGET >= 35 || defined(COMPUTE_SHADER))
+	#if (defined(_ALPHAPREMULTIPLY_ON) || defined(BILLBOARD_FACE_CAMERA_POS) || defined(LOD_FADE_CROSSFADE) || defined(_SUNDISK_NONE)) && (SHADER_TARGET >= 35 || defined(COMPUTE_SHADER))
 		#ifdef _ALPHAPREMULTIPLY_ON
-			#ifdef MK_GLOW_UPSAMPLE
-				#define MK_GLARE 1
-			#endif
+			#define MK_GLARE 1
 			#define MK_GLARE_1
 		#endif
-		#ifdef DIRECTIONAL
-			#ifdef MK_GLOW_UPSAMPLE
-				#define MK_GLARE 2
-			#endif
+		#ifdef BILLBOARD_FACE_CAMERA_POS
+			#define MK_GLARE 2
 			#define MK_GLARE_1
 			#define MK_GLARE_2
 		#endif
-		#ifdef DIRECTIONAL_COOKIE
-			#ifdef MK_GLOW_UPSAMPLE
-				#define MK_GLARE 3
-			#endif
+		#ifdef LOD_FADE_CROSSFADE
+			#define MK_GLARE 3
 			#define MK_GLARE_1
 			#define MK_GLARE_2
 			#define MK_GLARE_3
 		#endif
-		#ifdef POINT
-			#ifdef MK_GLOW_UPSAMPLE
-				#define MK_GLARE 4
-			#endif
+		#ifdef _SUNDISK_NONE
+			#define MK_GLARE 4
 			#define MK_GLARE_1
 			#define MK_GLARE_2
 			#define MK_GLARE_3
 			#define MK_GLARE_4
-		#endif
-		#ifndef MK_GLOW_UPSAMPLE
-			#define MK_GLARE 1
 		#endif
 		#define GLARE_RT MK_BLOOM + MK_COPY + MK_LENS_FLARE
 	#endif
@@ -492,6 +499,20 @@
 		#endif
 	}
 
+	//Wrap around bicubic sampling - TexelSize unused
+	inline half4 SampleTex2D(DECLARE_TEXTURE_2D_ARGS(tex, samplerTex), float2 uv, float2 texelSize)
+	{
+		#if defined(COMPUTE_SHADER) || SHADER_TARGET >= 35
+			#if defined(UNITY_STEREO_INSTANCING_ENABLED) || defined(UNITY_STEREO_MULTIVIEW_ENABLED)
+				return tex.SampleLevel(samplerTex, float3((uv).xy, (float)unity_StereoEyeIndex), 0);
+			#else
+				return tex.SampleLevel(samplerTex, UnityStereoTransformScreenSpaceTex(uv), 0);
+			#endif
+		#else
+			return tex2D(tex, UnityStereoTransformScreenSpaceTex(uv));
+		#endif
+	}
+
 	inline half4 SampleTex2DNoScale(DECLARE_TEXTURE_2D_NO_SCALE_ARGS(tex, samplerTex), float2 uv)
 	{
 		#if defined(COMPUTE_SHADER) || SHADER_TARGET >= 35
@@ -504,6 +525,24 @@
 			return tex2D(tex, uv);
 		#endif
 	}
+
+	#ifdef HDRP
+		inline half4 SampleSourceTex(DECLARE_SOURCE_TEXTURE_2D_ARGS(tex, samplerTex), float2 uv)
+		{
+			#if defined(UNITY_STEREO_INSTANCING_ENABLED) || defined(UNITY_STEREO_MULTIVIEW_ENABLED)
+				return tex.Load(int4(uv * _ScreenSize.xy, unity_StereoEyeIndex, 0));
+				//return tex.SampleLevel(samplerTex, float3((uv).xy, (float)unity_StereoEyeIndex), 0);
+			#else
+				return tex.Load(int4(UnityStereoTransformScreenSpaceTex(uv) * _ScreenSize.xy, unity_StereoEyeIndex, 0));
+				//return tex.SampleLevel(samplerTex, float3(UnityStereoTransformScreenSpaceTex(uv).xy, (float)unity_StereoEyeIndex), 0);
+			#endif
+		}
+	#else
+		inline half4 SampleSourceTex(DECLARE_TEXTURE_2D_ARGS(tex, samplerTex), float2 uv)
+		{
+			return SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv);
+		}
+	#endif
 
 	inline float2 AutoScaleTexelSize(float2 texelSize)
 	{
@@ -606,35 +645,61 @@
 		return max(0, LumaScale(c, lumaScale));
 	}
 
+	inline half ScreenFade(float2 uv, half x, half y)
+	{
+		return smoothstep(x, y, distance(uv, float2(0.5, 0.5)));
+	}
+
+	#if defined(MK_RENDER_PRIORITY_QUALITY)
+		//For now used lower quality to save performance
+		#define GAUSSIAN_BLUR_SAMPLE_1D SampleTex2D
+		//#define GAUSSIAN_BLUR_SAMPLE_1D SampleTex2DBicubic
+	#else
+		#define GAUSSIAN_BLUR_SAMPLE_1D SampleTex2D
+	#endif
 	inline half4 GaussianBlur1D(DECLARE_TEXTURE_2D_ARGS(tex, samplerTex), float2 uv, float2 texelSize, float blurWidth, half2 direction, float offset)
 	{
 		half4 color = half4(0,0,0,1);
 		float sum = 0;
 		float w = 0;
 
-		for(int i0 = 1; i0 <= 5; i0++)
+		for(int i0 = 1; i0 <= 3; i0++)
 		{
 			w = Gaussian(i0);
 			sum += w;
-			color.rgb += SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + blurWidth * direction * i0 * texelSize + blurWidth * direction * texelSize * offset) * w;
+			color.rgb += GAUSSIAN_BLUR_SAMPLE_1D(PASS_TEXTURE_2D(tex, samplerTex), uv + blurWidth * direction * i0 * texelSize + blurWidth * direction * texelSize * offset, texelSize) * w;
 
 			w = Gaussian(-i0);
 			sum += w;
-			color.rgb += SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv - blurWidth * direction * i0 * texelSize + blurWidth * direction * texelSize * offset) * w;
+			color.rgb += GAUSSIAN_BLUR_SAMPLE_1D(PASS_TEXTURE_2D(tex, samplerTex), uv - blurWidth * direction * i0 * texelSize + blurWidth * direction * texelSize * offset, texelSize) * w;
 		}
 
 		w = Gaussian(0);
 		sum += w;
-		color.rgb += SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv).rgb * w;
+		color.rgb += GAUSSIAN_BLUR_SAMPLE_1D(PASS_TEXTURE_2D(tex, samplerTex), uv, texelSize).rgb * w;
 
 		color.rgb /= sum;
 
 		return color;
 	}
 
+	inline half4 SampleLine(DECLARE_TEXTURE_2D_ARGS(tex, samplerTex), float2 uv, float2 texelSize)
+	{
+		float3 d = texelSize.xyx * float3(1.0, -1.0, 0);
+
+		float2 uvIn = uv;
+
+		half4 s;
+		s.rgb =  SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + d.xz).rgb;
+		s.rgb += SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + d.yz).rgb;
+		s.a = 1;
+
+		return s * 0.5;
+	}
+
 	inline half4 SampleBox(DECLARE_TEXTURE_2D_ARGS(tex, samplerTex), float2 uv, float2 texelSize)
 	{
-		float4 d = texelSize.xyxy * float4(-0.9, -0.9, 0.9, 0.9);
+		float4 d = texelSize.xyxy * float4(-1.0, -1.0, 1.0, 1.0);
 
 		half4 s;
 		s.rgb =  SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + d.xy).rgb;
@@ -643,40 +708,39 @@
 		s.rgb += SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + d.zw).rgb;
 		s.a = 1;
 
-		return s * (1.0 / 4.0);
+		return s * 0.25;
 	}
 
 	static const half2 DOWNSAMPLE_LQ_WEIGHT = half2(0.125, 0.03125);
-	static const float4 DOWNSAMPLE_LQ_DIRECTION0 = float4(0.9, -0.9, 0.45, -0.45);
-	static const float3 DOWNSAMPLE_LQ_DIRECTION1 = float3(0.9, 0.45, 0);
+	static const float4 DOWNSAMPLE_LQ_DIRECTION0 = float4(1.0, -1.0, 0.5, -0.5);
+	static const float3 DOWNSAMPLE_LQ_DIRECTION1 = float3(1.0, 0.5, 0);
 	//0 X 1 X 2
 	//X 3 X 4 X
 	//5 X 6 X 7
 	//X 8 X 9 X
 	//0 X 1 X 2
-	inline half4 DownsampleLQ(DECLARE_TEXTURE_2D_ARGS(tex, samplerTex), float2 uv, float2 texelSize)
-	{
+	inline half4 DownsampleMQ(DECLARE_TEXTURE_2D_ARGS(tex, samplerTex), float2 uv, float2 texelSize)
+	{	
 		#if defined(MK_RENDER_PRIORITY_QUALITY) || defined(MK_RENDER_PRIORITY_BALANCED)
-			half3 sample0 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.yy).rgb;
-			half3 sample1 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv - texelSize * DOWNSAMPLE_LQ_DIRECTION1.zx).rgb;
-			half3 sample2 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.xy).rgb;
-			half3 sample3 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.ww).rgb;
-			half3 sample4 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.zw).rgb;
-			half3 sample5 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv - texelSize * DOWNSAMPLE_LQ_DIRECTION1.xz).rgb;
-			half3 sample6 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv).rgb;
-			half3 sample7 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION1.xz).rgb;
-			half3 sample8 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.wz).rgb;
-			half3 sample9 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.zz).rgb;
-			half3 sample10 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.yx).rgb;
-			half3 sample11 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION1.zx).rgb;
-			half3 sample12 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.xx).rgb;
+			half3 sample0 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.yy, texelSize).rgb;
+			half3 sample1 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv - texelSize * DOWNSAMPLE_LQ_DIRECTION1.zx, texelSize).rgb;
+			half3 sample2 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.xy, texelSize).rgb;
+			half3 sample3 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.ww, texelSize).rgb;
+			half3 sample4 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.zw, texelSize).rgb;
+			half3 sample5 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv - texelSize * DOWNSAMPLE_LQ_DIRECTION1.xz, texelSize).rgb;
+			half3 sample6 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv, texelSize).rgb;
+			half3 sample7 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION1.xz, texelSize).rgb;
+			half3 sample8 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.wz, texelSize).rgb;
+			half3 sample9 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.zz, texelSize).rgb;
+			half3 sample10 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.yx, texelSize).rgb;
+			half3 sample11 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION1.zx, texelSize).rgb;
+			half3 sample12 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.xx, texelSize).rgb;
 
 			half4 o = half4((sample3 + sample4 + sample8 + sample9) * DOWNSAMPLE_LQ_WEIGHT.x, 1);
 			o.rgb += (sample0 + sample1 + sample6 + sample5).rgb * DOWNSAMPLE_LQ_WEIGHT.y;
 			o.rgb += (sample1 + sample2 + sample7 + sample6).rgb * DOWNSAMPLE_LQ_WEIGHT.y;
 			o.rgb += (sample5 + sample6 + sample11 + sample10).rgb * DOWNSAMPLE_LQ_WEIGHT.y;
 			o.rgb += (sample6 + sample7 + sample12 + sample11).rgb * DOWNSAMPLE_LQ_WEIGHT.y;
-
 			return o;
 		#else
 			return SampleBox(PASS_TEXTURE_2D(tex, samplerTex), uv, texelSize);
@@ -684,10 +748,15 @@
 		#endif
 	}
 	
+	#if defined(MK_RENDER_PRIORITY_QUALITY)
+		#define DOWNSAMPLE SampleTex2DBicubic
+	#else
+		#define DOWNSAMPLE SampleTex2D
+	#endif
 	static const half3 DOWNSAMPLE_HQ_WEIGHT = half3(0.0833333, 0.0208333, 0.0092333);
-	//static const float4 DOWNSAMPLE_HQ_DIRECTION0 = float4(1.45, -1.45, 0.9, -0.9);
-	//static const float4 DOWNSAMPLE_HQ_DIRECTION1 = float4(1.45, -1.45, 0.45, -0.45);
-	//static const float2 DOWNSAMPLE_HQ_DIRECTION2 = float2(0.9, 0);
+	//static const float4 DOWNSAMPLE_HQ_DIRECTION0 = float4(1.45, -1.45, 1.0, -1.0);
+	//static const float4 DOWNSAMPLE_HQ_DIRECTION1 = float4(1.45, -1.45, 0.5, -0.5);
+	//static const float2 DOWNSAMPLE_HQ_DIRECTION2 = float2(1.0, 0);
 	// 0 X 1 X 2 X 3
 	// X 4 X 5 X 6 X
 	// 7 X 8 X 9 X 0
@@ -697,7 +766,7 @@
 	// 1 X 2 X 3 X 4
 	inline half4 DownsampleHQ(DECLARE_TEXTURE_2D_ARGS(tex, samplerTex), float2 uv, float2 texelSize)
 	{	
-		#if defined(MK_RENDER_PRIORITY_QUALITY)
+		#if defined(MK_RENDER_PRIORITY_QUALITY) || defined(MK_RENDER_PRIORITY_BALANCED)
 			/*
 			half3 sample0 = SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_HQ_DIRECTION0.yx, texelSize).rgb;
 			half3 sample1 = SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_HQ_DIRECTION1.wx, texelSize).rgb;
@@ -751,19 +820,19 @@
 			return color;
 			*/
 
-			half3 sample0 = SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.yy, texelSize).rgb;
-			half3 sample1 = SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv - texelSize * DOWNSAMPLE_LQ_DIRECTION1.zx, texelSize).rgb;
-			half3 sample2 = SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.xy, texelSize).rgb;
-			half3 sample3 = SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.ww, texelSize).rgb;
-			half3 sample4 = SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.zw, texelSize).rgb;
-			half3 sample5 = SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv - texelSize * DOWNSAMPLE_LQ_DIRECTION1.xz, texelSize).rgb;
-			half3 sample6 = SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv, texelSize).rgb;
-			half3 sample7 = SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION1.xz, texelSize).rgb;
-			half3 sample8 = SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.wz, texelSize).rgb;
-			half3 sample9 = SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.zz, texelSize).rgb;
-			half3 sample10 = SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.yx, texelSize).rgb;
-			half3 sample11 = SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION1.zx, texelSize).rgb;
-			half3 sample12 = SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.xx, texelSize).rgb;
+			half3 sample0 = DOWNSAMPLE(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.yy, texelSize).rgb;
+			half3 sample1 = DOWNSAMPLE(PASS_TEXTURE_2D(tex, samplerTex), uv - texelSize * DOWNSAMPLE_LQ_DIRECTION1.zx, texelSize).rgb;
+			half3 sample2 = DOWNSAMPLE(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.xy, texelSize).rgb;
+			half3 sample3 = DOWNSAMPLE(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.ww, texelSize).rgb;
+			half3 sample4 = DOWNSAMPLE(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.zw, texelSize).rgb;
+			half3 sample5 = DOWNSAMPLE(PASS_TEXTURE_2D(tex, samplerTex), uv - texelSize * DOWNSAMPLE_LQ_DIRECTION1.xz, texelSize).rgb;
+			half3 sample6 = DOWNSAMPLE(PASS_TEXTURE_2D(tex, samplerTex), uv, texelSize).rgb;
+			half3 sample7 = DOWNSAMPLE(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION1.xz, texelSize).rgb;
+			half3 sample8 = DOWNSAMPLE(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.wz, texelSize).rgb;
+			half3 sample9 = DOWNSAMPLE(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.zz, texelSize).rgb;
+			half3 sample10 = DOWNSAMPLE(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.yx, texelSize).rgb;
+			half3 sample11 = DOWNSAMPLE(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION1.zx, texelSize).rgb;
+			half3 sample12 = DOWNSAMPLE(PASS_TEXTURE_2D(tex, samplerTex), uv + texelSize * DOWNSAMPLE_LQ_DIRECTION0.xx, texelSize).rgb;
 
 			half4 o = half4((sample3 + sample4 + sample8 + sample9) * DOWNSAMPLE_LQ_WEIGHT.x, 1);
 			o.rgb += (sample0 + sample1 + sample6 + sample5).rgb * DOWNSAMPLE_LQ_WEIGHT.y;
@@ -772,10 +841,61 @@
 			o.rgb += (sample6 + sample7 + sample12 + sample11).rgb * DOWNSAMPLE_LQ_WEIGHT.y;
 
 			return o;
-		#elif defined(MK_RENDER_PRIORITY_BALANCED)
-			return DownsampleLQ(PASS_TEXTURE_2D(tex, samplerTex), uv, texelSize);
 		#else
 			return SampleBox(PASS_TEXTURE_2D(tex, samplerTex), uv, texelSize);
+			//return SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv, texelSize);
+		#endif
+	}
+
+	static const half DOWNSAMPLE_LINE_LQ_WEIGHT = 0.5;
+	static const float3 DOWNSAMPLE_LINE_LQ_DIRECTION0 = float3(1.0, -1.0, 0.0);
+	static const float3 DOWNSAMPLE_LINE_LQ_DIRECTION1 = float3(3.0, -3.0, 0.0);
+	static const float3 DOWNSAMPLE_LINE_LQ_DIRECTION2 = float3(5.0, -5.0, 0.0);
+	//X X X X X X X X X X X
+	//0 X 1 X 2 X 3 X 4 X 5
+	//X X X X X X X X X X X
+	inline half4 DownsampleLineMQ(DECLARE_TEXTURE_2D_ARGS(tex, samplerTex), float2 uv, float2 texelSize, float2 dir, float offset)
+	{
+		#if defined(MK_RENDER_PRIORITY_QUALITY) || defined(MK_RENDER_PRIORITY_BALANCED)
+			half3 sample1 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + dir * offset * texelSize * DOWNSAMPLE_LINE_LQ_DIRECTION1.yz + dir * texelSize * DOWNSAMPLE_LINE_LQ_DIRECTION1.yz, texelSize).rgb;
+			half3 sample2 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + dir * offset * texelSize * DOWNSAMPLE_LINE_LQ_DIRECTION0.yz + dir * texelSize * DOWNSAMPLE_LINE_LQ_DIRECTION0.yz, texelSize).rgb;
+			half3 sample3 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + dir * offset * texelSize * DOWNSAMPLE_LINE_LQ_DIRECTION0.xz + dir * texelSize * DOWNSAMPLE_LINE_LQ_DIRECTION0.xz, texelSize).rgb;
+			half3 sample4 = SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + dir * offset * texelSize * DOWNSAMPLE_LINE_LQ_DIRECTION1.xz + dir * texelSize * DOWNSAMPLE_LINE_LQ_DIRECTION1.xz, texelSize).rgb;
+
+			half4 o = half4((sample1 + sample2) * DOWNSAMPLE_LINE_LQ_WEIGHT, 1);
+			o.rgb += (sample3 + sample4).rgb * DOWNSAMPLE_LINE_LQ_WEIGHT;
+			o.rgb *= DOWNSAMPLE_LINE_LQ_WEIGHT;
+
+			return o;
+		#else
+			return SampleLine(PASS_TEXTURE_2D(tex, samplerTex), uv, texelSize);
+			//return SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv, texelSize);
+		#endif
+	}
+	
+	#if defined(MK_RENDER_PRIORITY_QUALITY)
+		#define DOWNSAMPLE_LINE SampleTex2DBicubic
+	#else
+		#define DOWNSAMPLE_LINE SampleTex2D
+	#endif
+	//X X X X X X X X X X X X X X X
+	//0 X 1 X 2 X 3 X 4 X 5 X 6 X 7
+	//X X X X X X X X X X X X X X X
+	inline half4 DownsampleLineHQ(DECLARE_TEXTURE_2D_ARGS(tex, samplerTex), float2 uv, float2 texelSize, float2 dir, float offset)
+	{
+		#if defined(MK_RENDER_PRIORITY_QUALITY) || defined(MK_RENDER_PRIORITY_BALANCED)
+			half3 sample1 = DOWNSAMPLE_LINE(PASS_TEXTURE_2D(tex, samplerTex), uv + dir * offset * texelSize * DOWNSAMPLE_LINE_LQ_DIRECTION1.yz + dir * texelSize * DOWNSAMPLE_LINE_LQ_DIRECTION1.yz, texelSize).rgb;
+			half3 sample2 = DOWNSAMPLE_LINE(PASS_TEXTURE_2D(tex, samplerTex), uv + dir * offset * texelSize * DOWNSAMPLE_LINE_LQ_DIRECTION0.yz + dir * texelSize * DOWNSAMPLE_LINE_LQ_DIRECTION0.yz, texelSize).rgb;
+			half3 sample3 = DOWNSAMPLE_LINE(PASS_TEXTURE_2D(tex, samplerTex), uv + dir * offset * texelSize * DOWNSAMPLE_LINE_LQ_DIRECTION0.xz + dir * texelSize * DOWNSAMPLE_LINE_LQ_DIRECTION0.xz, texelSize).rgb;
+			half3 sample4 = DOWNSAMPLE_LINE(PASS_TEXTURE_2D(tex, samplerTex), uv + dir * offset * texelSize * DOWNSAMPLE_LINE_LQ_DIRECTION1.xz + dir * texelSize * DOWNSAMPLE_LINE_LQ_DIRECTION1.xz, texelSize).rgb;
+
+			half4 o = half4((sample1 + sample2) * DOWNSAMPLE_LINE_LQ_WEIGHT, 1);
+			o.rgb += (sample3 + sample4).rgb * DOWNSAMPLE_LINE_LQ_WEIGHT;
+			o.rgb *= DOWNSAMPLE_LINE_LQ_WEIGHT;
+
+			return o;
+		#else
+			return SampleLine(PASS_TEXTURE_2D(tex, samplerTex), uv, texelSize);
 			//return SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv, texelSize);
 		#endif
 	}
@@ -785,21 +905,21 @@
 	//012
 	//345
 	//678
-	inline half4 UpsampleLQ(DECLARE_TEXTURE_2D_ARGS(tex, samplerTex), float2 uv, float2 texelSize)
-	{
+	inline half4 UpsampleMQ(DECLARE_TEXTURE_2D_ARGS(tex, samplerTex), float2 uv, float2 texelSize)
+	{	
 		#if defined(MK_RENDER_PRIORITY_QUALITY) || defined(MK_RENDER_PRIORITY_BALANCED)
 			half4 s = half4(0,0,0,1);
-			s.rgb += SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv).rgb * UPSAMPLE_LQ_WEIGHT.x;
+			s.rgb += SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv, texelSize).rgb * UPSAMPLE_LQ_WEIGHT.x;
 
-			s.rgb += SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv - UPSAMPLE_LQ_DIRECTION.zx * texelSize).rgb * UPSAMPLE_LQ_WEIGHT.y;
-			s.rgb += SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv - UPSAMPLE_LQ_DIRECTION.xz * texelSize).rgb * UPSAMPLE_LQ_WEIGHT.y;
-			s.rgb += SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + UPSAMPLE_LQ_DIRECTION.xz * texelSize).rgb * UPSAMPLE_LQ_WEIGHT.y;
-			s.rgb += SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + UPSAMPLE_LQ_DIRECTION.zx * texelSize).rgb * UPSAMPLE_LQ_WEIGHT.y;
+			s.rgb += SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv - UPSAMPLE_LQ_DIRECTION.zx * texelSize, texelSize).rgb * UPSAMPLE_LQ_WEIGHT.y;
+			s.rgb += SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv - UPSAMPLE_LQ_DIRECTION.xz * texelSize, texelSize).rgb * UPSAMPLE_LQ_WEIGHT.y;
+			s.rgb += SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + UPSAMPLE_LQ_DIRECTION.xz * texelSize, texelSize).rgb * UPSAMPLE_LQ_WEIGHT.y;
+			s.rgb += SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + UPSAMPLE_LQ_DIRECTION.zx * texelSize, texelSize).rgb * UPSAMPLE_LQ_WEIGHT.y;
 
-			s.rgb += SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv - UPSAMPLE_LQ_DIRECTION.xx * texelSize).rgb * UPSAMPLE_LQ_WEIGHT.z;
-			s.rgb += SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + UPSAMPLE_LQ_DIRECTION.xy * texelSize).rgb * UPSAMPLE_LQ_WEIGHT.z;
-			s.rgb += SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + UPSAMPLE_LQ_DIRECTION.yx * texelSize).rgb * UPSAMPLE_LQ_WEIGHT.z;
-			s.rgb += SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + UPSAMPLE_LQ_DIRECTION.xx * texelSize).rgb * UPSAMPLE_LQ_WEIGHT.z;
+			s.rgb += SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv - UPSAMPLE_LQ_DIRECTION.xx * texelSize, texelSize).rgb * UPSAMPLE_LQ_WEIGHT.z;
+			s.rgb += SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + UPSAMPLE_LQ_DIRECTION.xy * texelSize, texelSize).rgb * UPSAMPLE_LQ_WEIGHT.z;
+			s.rgb += SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + UPSAMPLE_LQ_DIRECTION.yx * texelSize, texelSize).rgb * UPSAMPLE_LQ_WEIGHT.z;
+			s.rgb += SampleTex2D(PASS_TEXTURE_2D(tex, samplerTex), uv + UPSAMPLE_LQ_DIRECTION.xx * texelSize, texelSize).rgb * UPSAMPLE_LQ_WEIGHT.z;
 
 			return s;
 		#else
@@ -808,6 +928,11 @@
 		#endif
 	}
 
+	#if defined(MK_RENDER_PRIORITY_QUALITY)
+		#define UPSAMPLE SampleTex2DBicubic
+	#else
+		#define UPSAMPLE SampleTex2D
+	#endif
 	static const half UPSAMPLE_HQ_WEIGHT[5] = {0.16, 0.08, 0.04, 0.02, 0.01};
 	//static const float4 UPSAMPLE_HQ_DIRECTION0 = float4(1, -1, 2, -2);
 	//static const float3 UPSAMPLE_HQ_DIRECTION1 = float3(2, -2, 0);
@@ -819,7 +944,7 @@
 	//01234
 	inline half4 UpsampleHQ(DECLARE_TEXTURE_2D_ARGS(tex, samplerTex), float2 uv, float2 texelSize)
 	{	
-		#if defined(MK_RENDER_PRIORITY_QUALITY)
+		#if defined(MK_RENDER_PRIORITY_QUALITY) || defined(MK_RENDER_PRIORITY_BALANCED)
 			/*
 			half4 s = half4(0,0,0,1);
 			s.rgb += SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv, texelSize).rgb * UPSAMPLE_HQ_WEIGHT[0];
@@ -856,21 +981,19 @@
 			*/
 
 			half4 s = half4(0,0,0,1);
-			s.rgb += SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv, texelSize).rgb * UPSAMPLE_LQ_WEIGHT.x;
+			s.rgb += UPSAMPLE(PASS_TEXTURE_2D(tex, samplerTex), uv, texelSize).rgb * UPSAMPLE_LQ_WEIGHT.x;
 
-			s.rgb += SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv - UPSAMPLE_LQ_DIRECTION.zx * texelSize, texelSize).rgb * UPSAMPLE_LQ_WEIGHT.y;
-			s.rgb += SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv - UPSAMPLE_LQ_DIRECTION.xz * texelSize, texelSize).rgb * UPSAMPLE_LQ_WEIGHT.y;
-			s.rgb += SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv + UPSAMPLE_LQ_DIRECTION.xz * texelSize, texelSize).rgb * UPSAMPLE_LQ_WEIGHT.y;
-			s.rgb += SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv + UPSAMPLE_LQ_DIRECTION.zx * texelSize, texelSize).rgb * UPSAMPLE_LQ_WEIGHT.y;
+			s.rgb += UPSAMPLE(PASS_TEXTURE_2D(tex, samplerTex), uv - UPSAMPLE_LQ_DIRECTION.zx * texelSize, texelSize).rgb * UPSAMPLE_LQ_WEIGHT.y;
+			s.rgb += UPSAMPLE(PASS_TEXTURE_2D(tex, samplerTex), uv - UPSAMPLE_LQ_DIRECTION.xz * texelSize, texelSize).rgb * UPSAMPLE_LQ_WEIGHT.y;
+			s.rgb += UPSAMPLE(PASS_TEXTURE_2D(tex, samplerTex), uv + UPSAMPLE_LQ_DIRECTION.xz * texelSize, texelSize).rgb * UPSAMPLE_LQ_WEIGHT.y;
+			s.rgb += UPSAMPLE(PASS_TEXTURE_2D(tex, samplerTex), uv + UPSAMPLE_LQ_DIRECTION.zx * texelSize, texelSize).rgb * UPSAMPLE_LQ_WEIGHT.y;
 
-			s.rgb += SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv - UPSAMPLE_LQ_DIRECTION.xx * texelSize, texelSize).rgb * UPSAMPLE_LQ_WEIGHT.z;
-			s.rgb += SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv + UPSAMPLE_LQ_DIRECTION.xy * texelSize, texelSize).rgb * UPSAMPLE_LQ_WEIGHT.z;
-			s.rgb += SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv + UPSAMPLE_LQ_DIRECTION.yx * texelSize, texelSize).rgb * UPSAMPLE_LQ_WEIGHT.z;
-			s.rgb += SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv + UPSAMPLE_LQ_DIRECTION.xx * texelSize, texelSize).rgb * UPSAMPLE_LQ_WEIGHT.z;
+			s.rgb += UPSAMPLE(PASS_TEXTURE_2D(tex, samplerTex), uv - UPSAMPLE_LQ_DIRECTION.xx * texelSize, texelSize).rgb * UPSAMPLE_LQ_WEIGHT.z;
+			s.rgb += UPSAMPLE(PASS_TEXTURE_2D(tex, samplerTex), uv + UPSAMPLE_LQ_DIRECTION.xy * texelSize, texelSize).rgb * UPSAMPLE_LQ_WEIGHT.z;
+			s.rgb += UPSAMPLE(PASS_TEXTURE_2D(tex, samplerTex), uv + UPSAMPLE_LQ_DIRECTION.yx * texelSize, texelSize).rgb * UPSAMPLE_LQ_WEIGHT.z;
+			s.rgb += UPSAMPLE(PASS_TEXTURE_2D(tex, samplerTex), uv + UPSAMPLE_LQ_DIRECTION.xx * texelSize, texelSize).rgb * UPSAMPLE_LQ_WEIGHT.z;
 
 			return s;
-		#elif defined(MK_RENDER_PRIORITY_BALANCED)
-			return UpsampleLQ(PASS_TEXTURE_2D(tex, samplerTex), uv, texelSize);
 		#else
 			return SampleBox(PASS_TEXTURE_2D(tex, samplerTex), uv, texelSize);
 			//return SampleTex2DBicubic(PASS_TEXTURE_2D(tex, samplerTex), uv, texelSize);
@@ -1086,32 +1209,24 @@
 
 		#if GLARE_RT == 0
 			#define GET_GLARE0_RT GET_RT(0)
-			#ifdef MK_GLOW_UPSAMPLE
-				#define GET_GLARE1_RT GET_RT(1)
-				#define GET_GLARE2_RT GET_RT(2)
-				#define GET_GLARE3_RT GET_RT(3)
-			#endif
+			#define GET_GLARE1_RT GET_RT(1)
+			#define GET_GLARE2_RT GET_RT(2)
+			#define GET_GLARE3_RT GET_RT(3)
 		#elif GLARE_RT == 1
 			#define GET_GLARE0_RT rt1
-			#ifdef MK_GLOW_UPSAMPLE
-				#define GET_GLARE1_RT GET_RT(2)
-				#define GET_GLARE2_RT GET_RT(3)
-				#define GET_GLARE3_RT GET_RT(4)
-			#endif
+			#define GET_GLARE1_RT GET_RT(2)
+			#define GET_GLARE2_RT GET_RT(3)
+			#define GET_GLARE3_RT GET_RT(4)
 		#elif GLARE_RT == 2
 			#define GET_GLARE0_RT GET_RT(2)
-			#ifdef MK_GLOW_UPSAMPLE
-				#define GET_GLARE1_RT GET_RT(3)
-				#define GET_GLARE2_RT GET_RT(4)
-				#define GET_GLARE3_RT GET_RT(5)
-			#endif
+			#define GET_GLARE1_RT GET_RT(3)
+			#define GET_GLARE2_RT GET_RT(4)
+			#define GET_GLARE3_RT GET_RT(5)
 		#elif GLARE_RT == 3
 			#define GET_GLARE0_RT GET_RT(3)
-			#ifdef MK_GLOW_UPSAMPLE
-				#define GET_GLARE1_RT GET_RT(4)
-				#define GET_GLARE2_RT GET_RT(5)
-				#define GET_GLARE3_RT GET_RT(6)
-			#endif
+			#define GET_GLARE1_RT GET_RT(4)
+			#define GET_GLARE2_RT GET_RT(5)
+			#define GET_GLARE3_RT GET_RT(6)
 		#endif
 		
 		struct FragmentOutputAuto

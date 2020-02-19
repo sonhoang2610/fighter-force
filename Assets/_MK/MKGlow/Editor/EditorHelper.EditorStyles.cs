@@ -3,9 +3,9 @@
 //					                                //
 // Created by Michael Kremmel                       //
 // www.michaelkremmel.de                            //
-// Copyright © 2019 All rights reserved.            //
+// Copyright © 2020 All rights reserved.            //
 //////////////////////////////////////////////////////
-#if UNITY_EDITOR
+#if UNITY_EDITOR && !UNITY_CLOUD_BUILD
 using UnityEngine;
 using UnityEditor;
 

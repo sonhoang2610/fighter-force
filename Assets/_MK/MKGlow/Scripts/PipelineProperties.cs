@@ -3,7 +3,7 @@
 //					                                //
 // Created by Michael Kremmel                       //
 // www.michaelkremmel.de                            //
-// Copyright © 2019 All rights reserved.            //
+// Copyright © 2020 All rights reserved.            //
 //////////////////////////////////////////////////////
 
 using System.Collections;
@@ -107,6 +107,7 @@ namespace MK.Glow
             }
 
             //Main, Bloom
+            internal static readonly CBufferProperty screenSize                      = new CBufferProperty("_DisplaySize", 0, 2);
             internal static readonly CBufferProperty singlePassStereoScale           = new CBufferProperty("_SinglePassStereoScale", 65, 1);
             internal static readonly CBufferProperty viewMatrix                      = new CBufferProperty("_ViewMatrix", 49, 16);
             internal static readonly DefaultProperty cArgBuffer                      = new DefaultProperty("_CArgBuffer");
@@ -172,7 +173,10 @@ namespace MK.Glow
             internal static readonly string sourceBuffer              = "_SourceBuffer";
 
             //Glare   
-            internal static readonly string glareDownsampleBuffer     = "GlareDownsampleBuffer";
+            internal static readonly string glareDownsampleBuffer0    = "GlareDownsampleBuffer0";
+            internal static readonly string glareDownsampleBuffer1    = "GlareDownsampleBuffer1";
+            internal static readonly string glareDownsampleBuffer2    = "GlareDownsampleBuffer2";
+            internal static readonly string glareDownsampleBuffer3    = "GlareDownsampleBuffer3";
             internal static readonly string glareUpsampleBuffer0      = "GlareUpsampleBuffer0";
             internal static readonly string glareUpsampleBuffer1      = "GlareUpsampleBuffer1";
             internal static readonly string glareUpsampleBuffer2      = "GlareUpsampleBuffer2";

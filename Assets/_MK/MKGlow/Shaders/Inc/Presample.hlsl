@@ -3,7 +3,7 @@
 //					                                //
 // Created by Michael Kremmel                       //
 // www.michaelkremmel.de                            //
-// Copyright © 2019 All rights reserved.            //
+// Copyright © 2020 All rights reserved.            //
 //////////////////////////////////////////////////////
 
 #ifndef MK_GLOW_PRE_SAMPLE
@@ -11,7 +11,7 @@
 
 	#include "../Inc/Common.hlsl"
 
-	UNIFORM_SAMPLER_AND_TEXTURE_2D(_SourceTex)
+	UNIFORM_SOURCE_SAMPLER_AND_TEXTURE(_SourceTex)
 	#ifndef COMPUTE_SHADER
 		uniform float2 _SourceTex_TexelSize;
 		uniform half _LumaScale;
@@ -83,6 +83,8 @@
 			UNITY_INITIALIZE_OUTPUT(FragmentOutputAuto, fO);
 		#endif
 		
+		half4 source = SampleSourceTex(PASS_SOURCE_TEXTURE_2D(_SourceTex, sampler_SourceTex), BLOOM_UV); //Bloom is always presampled
+
 		#ifdef MK_BLOOM
 			half4 bloom = 0;
 
@@ -93,8 +95,9 @@
 				bloom = SampleTex2D(PASS_TEXTURE_2D(_SourceTex, sampler_SourceTex), BLOOM_UV);
 			#endif
 			*/
-			bloom = SampleTex2D(PASS_TEXTURE_2D(_SourceTex, sampler_SourceTex), BLOOM_UV);
-			
+			//bloom = SampleSourceTex(PASS_SOURCE_TEXTURE_2D(_SourceTex, sampler_SourceTex), BLOOM_UV);
+			bloom = source;
+
 			#ifdef MK_NATURAL
 				bloom = half4(NaturalRel(bloom.rgb, LUMA_SCALE), 1);
 			#else
@@ -110,42 +113,24 @@
 			#ifdef COMPUTE_SHADER
 				COPY_RENDER_TARGET = _SourceTex[id];
 			#else
-				COPY_RENDER_TARGET = SampleTex2D(PASS_TEXTURE_2D(_SourceTex, sampler_SourceTex), UV_COPY);
+				COPY_RENDER_TARGET = SampleSourceTex(PASS_SOURCE_TEXTURE_2D(_SourceTex, sampler_SourceTex), UV_COPY);
 			#endif
 		#endif
 
 		#ifdef MK_LENS_FLARE
 			half4 lensFlare = 0;
 
-			/*
-			#if SHADER_TARGET >= 35
-				[unroll(5)]
-				for (int i = 0; i < LENS_FLARE_GHOST_COUNT; ++i)
-			#else //shader model 3 has some issues with dynamic loop lengts, [loop] seems also not to be an option on some hardware
-				for (int i = 0; i < 3; ++i)
-			#endif
-			*/
-			//to avoid compiler errors on some mobile platforms, could be optimized some day
-			#if SHADER_TARGET >= 35
-				for (int i = 0; i < 4; ++i)
-			#else
-				for (int i = 0; i < 3; ++i)
-			#endif
+			[unroll(5)]
+			for (int i = 1; i <= LENS_FLARE_GHOST_COUNT; i++)
 			{ 
-				#if SHADER_TARGET >= 35
-					UNITY_BRANCH
-					if(i >= LENS_FLARE_GHOST_COUNT)
-						break;
-				#endif
-
 				float2 offset = frac(LENS_FLARE_UV + (UV_HALF - LENS_FLARE_UV) * LENS_FLARE_GHOST_DISPERSAL * i);
 
 				half weight = pow(1.0 - length(UV_HALF - offset) / length(UV_HALF), LENS_FLARE_GHOST_FADE);
 
 				#ifdef MK_NATURAL
-					lensFlare += half4(NaturalRel(SampleTex2D(PASS_TEXTURE_2D(_SourceTex, sampler_SourceTex), offset).rgb, LUMA_SCALE).rgb * weight, 0) * LENS_FLARE_GHOST_INTENSITY;
+					lensFlare += half4(NaturalRel(SampleSourceTex(PASS_SOURCE_TEXTURE_2D(_SourceTex, sampler_SourceTex), offset).rgb, LUMA_SCALE).rgb * weight, 0) * LENS_FLARE_GHOST_INTENSITY;
 				#else
-					lensFlare += half4(LuminanceThreshold(SampleTex2D(PASS_TEXTURE_2D(_SourceTex, sampler_SourceTex), offset).rgb, LENS_FLARE_THRESHOLD, LUMA_SCALE).rgb * weight, 0) * LENS_FLARE_GHOST_INTENSITY;
+					lensFlare += half4(LuminanceThreshold(SampleSourceTex(PASS_SOURCE_TEXTURE_2D(_SourceTex, sampler_SourceTex), offset).rgb, LENS_FLARE_THRESHOLD, LUMA_SCALE).rgb * weight, 0) * LENS_FLARE_GHOST_INTENSITY;
 				#endif
 			}
 			
@@ -163,9 +148,9 @@
 			#endif
 
 			#ifdef MK_NATURAL
-				lensFlare += half4(NaturalRel(SampleTex2D(PASS_TEXTURE_2D(_SourceTex, sampler_SourceTex), LENS_FLARE_UV + haloSize).rgb * weight, LUMA_SCALE), 0);
+				lensFlare += half4(NaturalRel(SampleSourceTex(PASS_SOURCE_TEXTURE_2D(_SourceTex, sampler_SourceTex), LENS_FLARE_UV + haloSize).rgb * weight, LUMA_SCALE), 0);
 			#else
-				lensFlare += half4(LuminanceThreshold(SampleTex2D(PASS_TEXTURE_2D(_SourceTex, sampler_SourceTex), LENS_FLARE_UV + haloSize).rgb * weight, LENS_FLARE_THRESHOLD, LUMA_SCALE), 0);
+				lensFlare += half4(LuminanceThreshold(SampleSourceTex(PASS_SOURCE_TEXTURE_2D(_SourceTex, sampler_SourceTex), LENS_FLARE_UV + haloSize).rgb * weight, LENS_FLARE_THRESHOLD, LUMA_SCALE), 0);
 			#endif
 
 			#ifdef UNITY_SINGLE_PASS_STEREO
@@ -181,20 +166,34 @@
 		#endif
 
 		#ifdef MK_GLARE
-			half4 glare0 = 0;
+			half4 glare = 0;
 
-			glare0 = DownsampleHQ(PASS_TEXTURE_2D(_SourceTex, sampler_SourceTex), GLARE_UV, SOURCE_TEXEL_SIZE);
+			//glare = DownsampleHQ(PASS_TEXTURE_2D(_SourceTex, sampler_SourceTex), GLARE_UV, SOURCE_TEXEL_SIZE);
+			//glare = SampleSourceTex(PASS_SOURCE_TEXTURE_2D(_SourceTex, sampler_SourceTex), GLARE_UV);
+			glare = source;
 
 			#ifdef MK_NATURAL
-				glare0 = half4(NaturalRel(glare0.rgb, LUMA_SCALE), 1);
+				glare = half4(NaturalRel(glare.rgb, LUMA_SCALE), 1);
 			#else
-				glare0 = half4(LuminanceThreshold(glare0.rgb, GLARE_THRESHOLD, LUMA_SCALE), 1);
+				glare = half4(LuminanceThreshold(glare.rgb, GLARE_THRESHOLD, LUMA_SCALE), 1);
 			#endif
 			#ifdef COLORSPACE_GAMMA
-				glare0 = GammaToLinearSpace4(glare0);
+				glare = GammaToLinearSpace4(glare);
 			#endif
 
-			GLARE0_RENDER_TARGET = glare0;
+			half screenFade = ScreenFade(SOURCE_UV, 0.75, 0.0);
+			#ifdef MK_GLARE_1
+				GLARE0_RENDER_TARGET = glare * screenFade;
+			#endif
+			#ifdef MK_GLARE_2
+				GLARE1_RENDER_TARGET = glare * screenFade;
+			#endif
+			#ifdef MK_GLARE_3
+				GLARE2_RENDER_TARGET = glare * screenFade;
+			#endif
+			#ifdef MK_GLARE_4
+				GLARE3_RENDER_TARGET = glare * screenFade;
+			#endif
 		#endif
 
 		#ifndef COMPUTE_SHADER

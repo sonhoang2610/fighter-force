@@ -49,7 +49,7 @@ Category {
 				fixed4 color : COLOR;
 				float2 texcoord : TEXCOORD0;
 				UNITY_FOG_COORDS(1)
-				#ifdef SOFTPARTICLES_ON
+				#ifdef _SUNDISK_NONE
 				float4 projPos : TEXCOORD2;
 				#endif
 				UNITY_VERTEX_OUTPUT_STEREO
@@ -63,7 +63,7 @@ Category {
 				UNITY_SETUP_INSTANCE_ID(v);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 				o.vertex = UnityObjectToClipPos(v.vertex);
-				#ifdef SOFTPARTICLES_ON
+				#ifdef _SUNDISK_NONE
 				o.projPos = ComputeScreenPos (o.vertex);
 				COMPUTE_EYEDEPTH(o.projPos.z);
 				#endif
@@ -78,7 +78,7 @@ Category {
 			
 			fixed4 frag (v2f i) : SV_Target
 			{
-				#ifdef SOFTPARTICLES_ON
+				#ifdef _SUNDISK_NONE
 				float sceneZ = LinearEyeDepth (SAMPLE_DEPTH_TEXTURE_PROJ(_CameraDepthTexture, UNITY_PROJ_COORD(i.projPos)));
 				float partZ = i.projPos.z;
 				float fade = saturate (_InvFade * (sceneZ-partZ));

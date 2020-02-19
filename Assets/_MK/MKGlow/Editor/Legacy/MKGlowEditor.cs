@@ -3,10 +3,10 @@
 //					                                //
 // Created by Michael Kremmel                       //
 // www.michaelkremmel.de                            //
-// Copyright © 2019 All rights reserved.            //
+// Copyright © 2020 All rights reserved.            //
 //////////////////////////////////////////////////////
 
-#if UNITY_EDITOR
+#if UNITY_EDITOR && !UNITY_CLOUD_BUILD
 using UnityEngine;
 using UnityEditor;
 
@@ -50,6 +50,7 @@ namespace MK.Glow.Editor.Legacy
 
 		//Lens Flare
 		private SerializedProperty _allowLensFlare;
+		private SerializedProperty _lensFlareStyle;
 		private SerializedProperty _lensFlareGhostFade;
 		private SerializedProperty _lensFlareGhostIntensity;
 		private SerializedProperty _lensFlareThreshold;
@@ -121,6 +122,7 @@ namespace MK.Glow.Editor.Legacy
 			_lensSurfaceDiffractionIntensity = serializedObject.FindProperty("lensSurfaceDiffractionIntensity");
 
 			_allowLensFlare = serializedObject.FindProperty("allowLensFlare");
+			_lensFlareStyle = serializedObject.FindProperty("lensFlareStyle");
 			_lensFlareGhostFade = serializedObject.FindProperty("lensFlareGhostFade");
 			_lensFlareGhostIntensity = serializedObject.FindProperty("lensFlareGhostIntensity");
 			_lensFlareThreshold = serializedObject.FindProperty("lensFlareThreshold");
@@ -226,6 +228,7 @@ namespace MK.Glow.Editor.Legacy
 				{
 					using (new EditorGUI.DisabledScope(!_allowLensFlare.boolValue))
 					{
+						EditorGUILayout.PropertyField(_lensFlareStyle, Tooltips.lensFlareStyle);
 						if(_workflow.enumValueIndex == 0)
 							EditorGUILayout.PropertyField(_lensFlareThreshold, Tooltips.lensFlareThreshold);
 						EditorGUILayout.PropertyField(_lensFlareScattering, Tooltips.lensFlareScattering);
@@ -234,16 +237,22 @@ namespace MK.Glow.Editor.Legacy
 
 						EditorGUILayout.Space();
 						EditorHelper.DrawHeader(EditorHelper.EditorUIContent.ghostsTitle);
-						EditorGUILayout.PropertyField(_lensFlareGhostFade, Tooltips.lensFlareGhostFade);
-						EditorGUILayout.PropertyField(_lensFlareGhostCount, Tooltips.lensFlareGhostCount);
-						EditorGUILayout.PropertyField(_lensFlareGhostDispersal, Tooltips.lensFlareGhostDispersal);
+						if(_lensFlareStyle.enumValueIndex == 0)
+						{
+							EditorGUILayout.PropertyField(_lensFlareGhostFade, Tooltips.lensFlareGhostFade);
+							EditorGUILayout.PropertyField(_lensFlareGhostCount, Tooltips.lensFlareGhostCount);
+							EditorGUILayout.PropertyField(_lensFlareGhostDispersal, Tooltips.lensFlareGhostDispersal);
+						}
 						EditorGUILayout.PropertyField(_lensFlareGhostIntensity, Tooltips.lensFlareGhostIntensity);
 						_lensFlareGhostIntensity.floatValue = Mathf.Max(0, _lensFlareGhostIntensity.floatValue);
 
 						EditorGUILayout.Space();
 						EditorHelper.DrawHeader(EditorHelper.EditorUIContent.haloTitle);
-						EditorGUILayout.PropertyField(_lensFlareHaloFade, Tooltips.lensFlareHaloFade);
-						EditorGUILayout.PropertyField(_lensFlareHaloSize, Tooltips.lensFlareHaloSize);
+						if(_lensFlareStyle.enumValueIndex == 0)
+						{
+							EditorGUILayout.PropertyField(_lensFlareHaloFade, Tooltips.lensFlareHaloFade);
+							EditorGUILayout.PropertyField(_lensFlareHaloSize, Tooltips.lensFlareHaloSize);
+						}
 						EditorGUILayout.PropertyField(_lensFlareHaloIntensity, Tooltips.lensFlareHaloIntensity);
 						_lensFlareHaloIntensity.floatValue = Mathf.Max(0, _lensFlareHaloIntensity.floatValue);
 					}

@@ -3,7 +3,7 @@
 //					                                //
 // Created by Michael Kremmel                       //
 // www.michaelkremmel.de                            //
-// Copyright © 2019 All rights reserved.            //
+// Copyright © 2020 All rights reserved.            //
 //////////////////////////////////////////////////////
 
 #ifndef MK_GLOW_UPSAMPLE
@@ -182,7 +182,7 @@
 		#endif
 
 		#ifdef MK_LENS_FLARE
-			LENS_FLARE_RENDER_TARGET = UpsampleHQ(PASS_TEXTURE_2D(_LensFlareTex, sampler_LensFlareTex), LENS_FLARE_UV, LENS_FLARE_UPSAMPLE_SPREAD);
+			LENS_FLARE_RENDER_TARGET = UpsampleMQ(PASS_TEXTURE_2D(_LensFlareTex, sampler_LensFlareTex), LENS_FLARE_UV, LENS_FLARE_UPSAMPLE_SPREAD);
 		#endif
 		
 		//TODO: move texcoordcalculation to vertexshader

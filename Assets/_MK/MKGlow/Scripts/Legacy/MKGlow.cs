@@ -3,7 +3,7 @@
 //					                                //
 // Created by Michael Kremmel                       //
 // www.michaelkremmel.de                            //
-// Copyright © 2019 All rights reserved.            //
+// Copyright © 2020 All rights reserved.            //
 //////////////////////////////////////////////////////
 using System.Collections;
 using System.Collections.Generic;
@@ -22,7 +22,7 @@ namespace MK.Glow.Legacy
     [RequireComponent(typeof(UnityEngine.Camera))]
 	public class MKGlow : MonoBehaviour
 	{
-        #if UNITY_EDITOR
+        #if UNITY_EDITOR && !UNITY_CLOUD_BUILD
         public bool showEditorMainBehavior = true;
 		public bool showEditorBloomBehavior;
 		public bool showEditorLensSurfaceBehavior;
@@ -31,7 +31,7 @@ namespace MK.Glow.Legacy
         #endif
 
         //Main
-        public bool allowGeometryShaders = true;
+        public bool allowGeometryShaders = false;
         public bool allowComputeShaders = false;
         public RenderPriority renderPriority = RenderPriority.Balanced;
         public DebugView debugView = MK.Glow.DebugView.None;
@@ -61,13 +61,14 @@ namespace MK.Glow.Legacy
 
         //LensFlare
         public bool allowLensFlare = false;
+        public LensFlareStyle lensFlareStyle = LensFlareStyle.Average;
         [Range(0f, 25f)]
 		public float lensFlareGhostFade = 10.0f;
 		public float lensFlareGhostIntensity = 1.0f;
         [MK.Glow.MinMaxRange(0, 10)]
 		public MinMaxRange lensFlareThreshold = new MinMaxRange(1.3f, 10f);
         [Range(0f, 8f)]
-		public float lensFlareScattering = 6f;
+		public float lensFlareScattering = 5f;
 		public Texture2D lensFlareColorRamp;
         [Range(-100f, 100f)]
 		public float lensFlareChromaticAberration = 53f;
@@ -75,7 +76,7 @@ namespace MK.Glow.Legacy
 		public int lensFlareGhostCount = 3;
         [Range(-1f, 1f)]
 		public float lensFlareGhostDispersal = 0.6f;
-        [Range(0f, 10f)]
+        [Range(0f, 25f)]
 		public float lensFlareHaloFade = 2f;
 		public float lensFlareHaloIntensity = 1.0f;
         [Range(0f, 1f)]
@@ -93,8 +94,8 @@ namespace MK.Glow.Legacy
         [Range(1, 4)]
         public int glareStreaks = 4;
         public GlareStyle glareStyle = GlareStyle.DistortedCross;
-        [Range(0.0f, 2.0f)]
-        public float glareScattering = 1f;
+        [Range(0.0f, 4.0f)]
+        public float glareScattering = 2f;
         //Sample0
         [Range(0f, 10f)]
         public float glareSample0Scattering = 5f;
@@ -169,9 +170,6 @@ namespace MK.Glow.Legacy
 
 		public void OnEnable()
 		{
-//#if UNITY_IOS
-//            allowGeometryShaders = true;
-//#endif
             _effect = new Effect();
 			_effect.Enable(RenderPipeline.Legacy);
 
@@ -185,7 +183,7 @@ namespace MK.Glow.Legacy
 
         private void OnRenderImage(RenderTexture source, RenderTexture destination)
         {
-            if(workflow == Workflow.Selective && PipelineProperties.xrEnabled)
+            if(workflow == Workflow.Selective && (UnityEngine.Rendering.GraphicsSettings.renderPipelineAsset || PipelineProperties.xrEnabled))
             {
                 Graphics.Blit(source, destination);
                 return;
@@ -193,7 +191,9 @@ namespace MK.Glow.Legacy
 
             _source.renderTexture = source;
             _destination.renderTexture = destination;
-			_effect.Build(_source, _destination, this, null, renderingCamera);
+            SettingsLegacy settings = this;
+            Legacy.CameraDataLegacy cameraData = renderingCamera;
+			_effect.Build(_source, _destination, settings, null, cameraData, renderingCamera);
 
             Graphics.Blit(source, destination, _effect.renderMaterialNoGeometry, _effect.currentRenderIndex);
             _effect.AfterCompositeCleanup();

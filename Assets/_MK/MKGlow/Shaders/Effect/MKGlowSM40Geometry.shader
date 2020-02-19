@@ -3,7 +3,7 @@
 //					                                //
 // Created by Michael Kremmel                       //
 // www.michaelkremmel.de                            //
-// Copyright © 2019 All rights reserved.            //
+// Copyright © 2020 All rights reserved.            //
 //////////////////////////////////////////////////////
 Shader "Hidden/MK/Glow/MKGlowSM40Geometry"
 {
@@ -52,9 +52,9 @@ Shader "Hidden/MK/Glow/MKGlowSM40Geometry"
 
 			#pragma multi_compile __ _NORMALMAP
 			#pragma multi_compile __ _ALPHABLEND_ON
-			#pragma multi_compile __ _ALPHAPREMULTIPLY_ON DIRECTIONAL DIRECTIONAL_COOKIE POINT
-			#pragma multi_compile __ POINT_COOKIE _COLORCOLOR_ON
-			#pragma multi_compile __ SPOT
+			#pragma multi_compile __ _ALPHAPREMULTIPLY_ON BILLBOARD_FACE_CAMERA_POS LOD_FADE_CROSSFADE _SUNDISK_NONE
+			#pragma multi_compile __ OUTLINE_ON _COLORCOLOR_ON
+			#pragma multi_compile __ UNDERLAY_ON
 
 			#define _GEOMETRY_SHADER
 
@@ -80,8 +80,8 @@ Shader "Hidden/MK/Glow/MKGlowSM40Geometry"
 
 			#pragma multi_compile __ _NORMALMAP
 			#pragma multi_compile __ _ALPHABLEND_ON
-			#pragma multi_compile __ _ALPHAPREMULTIPLY_ON DIRECTIONAL DIRECTIONAL_COOKIE POINT
-			#pragma multi_compile __ POINT_COOKIE _COLORCOLOR_ON
+			#pragma multi_compile __ _ALPHAPREMULTIPLY_ON BILLBOARD_FACE_CAMERA_POS LOD_FADE_CROSSFADE _SUNDISK_NONE
+			#pragma multi_compile __ OUTLINE_ON _COLORCOLOR_ON
 
 			#define _GEOMETRY_SHADER
 
@@ -107,8 +107,8 @@ Shader "Hidden/MK/Glow/MKGlowSM40Geometry"
 
 			#pragma multi_compile __ _NORMALMAP
 			#pragma multi_compile __ _ALPHABLEND_ON
-			#pragma multi_compile __ _ALPHAPREMULTIPLY_ON DIRECTIONAL DIRECTIONAL_COOKIE POINT
-			#pragma multi_compile __ POINT_COOKIE _COLORCOLOR_ON
+			#pragma multi_compile __ _ALPHAPREMULTIPLY_ON BILLBOARD_FACE_CAMERA_POS LOD_FADE_CROSSFADE _SUNDISK_NONE
+			#pragma multi_compile __ OUTLINE_ON _COLORCOLOR_ON
 
 			#define _GEOMETRY_SHADER
 
@@ -134,9 +134,9 @@ Shader "Hidden/MK/Glow/MKGlowSM40Geometry"
 
 			#pragma multi_compile __ _ALPHATEST_ON
 			#pragma multi_compile __ _ALPHABLEND_ON
-			#pragma multi_compile __ _ALPHAPREMULTIPLY_ON DIRECTIONAL DIRECTIONAL_COOKIE POINT
-			#pragma multi_compile __ POINT_COOKIE _COLORCOLOR_ON
-			#pragma multi_compile __ SPOT
+			#pragma multi_compile __ _ALPHAPREMULTIPLY_ON BILLBOARD_FACE_CAMERA_POS LOD_FADE_CROSSFADE _SUNDISK_NONE
+			#pragma multi_compile __ OUTLINE_ON _COLORCOLOR_ON
+			#pragma multi_compile __ UNDERLAY_ON
 
 			#define _GEOMETRY_SHADER
 
@@ -163,9 +163,9 @@ Shader "Hidden/MK/Glow/MKGlowSM40Geometry"
 			#pragma multi_compile __ _EMISSION _METALLICGLOSSMAP _DETAIL_MULX2 _SPECULARHIGHLIGHTS_OFF _GLOSSYREFLECTIONS_OFF EDITOR_VISUALIZATION
 			#pragma multi_compile __ _ALPHATEST_ON
 			#pragma multi_compile __ _ALPHABLEND_ON
-			#pragma multi_compile __ _ALPHAPREMULTIPLY_ON DIRECTIONAL DIRECTIONAL_COOKIE POINT
-			#pragma multi_compile __ POINT_COOKIE _COLORCOLOR_ON
-			#pragma multi_compile __ SPOT
+			#pragma multi_compile __ _ALPHAPREMULTIPLY_ON BILLBOARD_FACE_CAMERA_POS LOD_FADE_CROSSFADE _SUNDISK_NONE
+			#pragma multi_compile __ OUTLINE_ON _COLORCOLOR_ON
+			#pragma multi_compile __ UNDERLAY_ON
 
 			#define _GEOMETRY_SHADER
 			

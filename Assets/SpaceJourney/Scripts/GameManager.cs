@@ -1366,7 +1366,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         if (purchase != 0) return;
         if (pBool)
         {
-            Advertising.ShowBannerAd(BannerAdPosition.Bottom, BannerAdSize.Banner);
+            Advertising.ShowBannerAd(BannerAdPosition.Top, BannerAdSize.SmartBanner);
         }
         else
         {

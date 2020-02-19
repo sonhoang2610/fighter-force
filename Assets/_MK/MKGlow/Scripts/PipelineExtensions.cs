@@ -3,7 +3,7 @@
 //					                                //
 // Created by Michael Kremmel                       //
 // www.michaelkremmel.de                            //
-// Copyright © 2019 All rights reserved.            //
+// Copyright © 2020 All rights reserved.            //
 //////////////////////////////////////////////////////
 using System.Collections;
 using System.Collections.Generic;
@@ -72,9 +72,11 @@ namespace MK.Glow
         /// <param name="material"></param>
         /// <param name="useGeometryShader"></param>
         /// <param name="pass"></param>
-        internal static void Draw(this CommandBuffer cmd, List<RenderTarget> destinations, Material material, bool useGeometryShader, int pass)
+        internal static void Draw(this CommandBuffer cmd, List<RenderTarget> destinations, Material material, bool useGeometryShader, int pass, Rect viewport)
         {
             cmd.SetRenderTargetContext(destinations);
+            cmd.SetViewport(viewport);
+
             if(useGeometryShader)
             {
                 cmd.DrawProcedural(Matrix4x4.identity, material, pass, MeshTopology.Points, 1);
@@ -87,9 +89,9 @@ namespace MK.Glow
         internal static void Draw(List<RenderTarget> destinations, Material material, bool useGeometryShader, int pass)
         {
             RenderTargetContext.SetRenderTargetContext(destinations);
-            material.SetPass(pass);
             if(useGeometryShader)
             {
+                 material.SetPass(pass);
                 #if UNITY_2019_1_OR_NEWER
                     Graphics.DrawProceduralNow(MeshTopology.Points, 1);
                 #else
@@ -98,6 +100,19 @@ namespace MK.Glow
             }
             else
             {
+                /*
+                GL.Clear(true, true, Color.clear);
+                GL.PushMatrix();
+                GL.LoadOrtho();
+                material.SetPass(pass);
+                GL.Begin(GL.TRIANGLE_STRIP);
+                GL.Vertex3(-1.0f, -1.0f, 0.1f);
+                GL.Vertex3(3.0f, -1.0f, 0.1f);
+                GL.Vertex3(-1.0f, 3.0f, 0.1f);
+                GL.End();
+                GL.PopMatrix();
+                */
+                material.SetPass(pass);
                 Graphics.DrawMeshNow(screenMesh, Vector3.zero, Quaternion.identity);
             }
         }
@@ -149,12 +164,12 @@ namespace MK.Glow
         /// <param name="format"></param>
         /// <param name="depthBufferBits"></param>
         /// <param name="enableRandomWrite"></param>
-        internal static void UpdateMipRenderContext(this UnityEngine.Camera camera, RenderContext[] renderContexts, RenderDimension rawDimension, int levels, RenderTextureFormat format, int depthBufferBits, bool enableRandomWrite)
+        internal static void UpdateMipRenderContext(this CameraData cameraData, RenderContext[] renderContexts, RenderDimension rawDimension, int levels, RenderTextureFormat format, int depthBufferBits, bool enableRandomWrite)
         {
             for(int i = 0; i < levels; i++)
             {
-                renderContexts[i].UpdateRenderContext(camera, format, depthBufferBits, enableRandomWrite, rawDimension);
-                rawDimension.width = Mathf.Max(SinglePassStereoDownscale(camera.stereoEnabled, rawDimension.width, 2), 1);
+                renderContexts[i].UpdateRenderContext(cameraData.stereoEnabled, format, depthBufferBits, enableRandomWrite, rawDimension);
+                rawDimension.width = Mathf.Max(SinglePassStereoDownscale(cameraData.stereoEnabled, rawDimension.width, 2), 1);
                 rawDimension.height = Mathf.Max(rawDimension.height / 2, 1);
             }
         }

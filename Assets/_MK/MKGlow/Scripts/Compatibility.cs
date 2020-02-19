@@ -3,7 +3,7 @@
 //					                                //
 // Created by Michael Kremmel                       //
 // www.michaelkremmel.de                            //
-// Copyright © 2019 All rights reserved.            //
+// Copyright © 2020 All rights reserved.            //
 //////////////////////////////////////////////////////
 using System.Collections;
 using System.Collections.Generic;
@@ -56,7 +56,7 @@ namespace MK.Glow
                     supportedOnPlattform = false;
                 break;
                 default:
-                    supportedOnPlattform = true;
+                    //unchanged
                 break;
             }
 
@@ -94,7 +94,7 @@ namespace MK.Glow
                     supportedOnPlattform = false;
                     break;
                 }
-                return SystemInfo.supportsComputeShaders && supportedOnPlattform && _defaultHDRFormatSupported;
+                return SystemInfo.supportsComputeShaders && supportedOnPlattform;
             #else
                 //On lower unity versions its impossible to get a temporary RT with randomwrites enabled, so dont allow direct compute
                 return false;

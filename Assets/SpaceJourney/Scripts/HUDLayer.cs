@@ -42,16 +42,19 @@ namespace EazyEngine.Space.UI {
         public UIElement BoxReborn { get => boxReborn; set => boxReborn = value; }
         public UIElement BoxRate { get => boxRate; set => boxRate = value; }
 
+        public System.Action _onSkipReborn;
+
         public void rebornCrystal()
         {
             Firebase.Analytics.FirebaseAnalytics.LogEvent($"Reborn_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedHard}");
             var pItem = GameManager.Instance.Database.getComonItem("Crystal");
             LevelManger.Instance.IsMatching = true;
-            if (pItem.Quantity >= 50)
+            if (pItem.Quantity >= BoxReborn.GetComponent<BoxReborn>().getPriceRebornCrystal())
             {
                 TimeKeeper.Instance.getTimer("Global").TimScale = 1;
-                pItem.Quantity -= 50;
+                pItem.Quantity -= BoxReborn.GetComponent<BoxReborn>().getPriceRebornCrystal();
                 reviePlayer(1,true);
+                BoxReborn.GetComponent<BoxReborn>().CurrentReborn++;
             }
             else
             {
@@ -79,6 +82,7 @@ namespace EazyEngine.Space.UI {
             Firebase.Analytics.FirebaseAnalytics.LogEvent($"RebornAds_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedHard}");
             GameManager.Instance.showRewardAds(BoxReborn.GetComponent<BoxReborn>().itemExchange,delegate(ResultStatusAds pBool){
                 BoxReborn.close();
+                BoxReborn.GetComponent<BoxReborn>().watchReborn();
                 if (pBool == ResultStatusAds.Success)
                 {
                     LevelManger.Instance.IsMatching = true;
@@ -117,7 +121,8 @@ namespace EazyEngine.Space.UI {
         public void checkCrystal(UIButton btn)
         {
             var pItem = GameManager.Instance.Database.getComonItem("Crystal");
-            if (pItem.Quantity < 50)
+            btn.GetComponentInChildren<UILabel>().text = BoxReborn.GetComponent<BoxReborn>().getPriceRebornCrystal().ToString();
+            if (pItem.Quantity < BoxReborn.GetComponent<BoxReborn>().getPriceRebornCrystal())
             {
               //  btn.isEnabled = false;
             }
@@ -129,6 +134,7 @@ namespace EazyEngine.Space.UI {
         public void skipReborn()
         {
             BoxReborn.close();
+            _onSkipReborn?.Invoke();
             GUIManager.Instance.boxResult.showResult(false);
         }
         public int compareBack(IBackBehavior pBack1, IBackBehavior pBack2)

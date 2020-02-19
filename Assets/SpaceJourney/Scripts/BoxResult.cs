@@ -105,6 +105,7 @@ namespace EazyEngine.Space.UI
             cacheScaleBoxReward = boxRewardRandom.transform.localScale;
             isInit = true;
         }
+        
         public void showResult(bool pWin)
         {
             GameManager.Instance.lastResultWin = pWin ? 1 : 0;
@@ -122,7 +123,9 @@ namespace EazyEngine.Space.UI
                     return;
                 }
                 TimeKeeper.Instance.getTimer("Global").TimScale = 0;
-                timeShowLose++;
+                HUDLayer.Instance._onSkipReborn = delegate() {
+                    timeShowLose++;
+                };
                 HUDLayer.Instance.BoxReborn.show();
                 GameManager.Instance.showBannerAds(true);
                 return;

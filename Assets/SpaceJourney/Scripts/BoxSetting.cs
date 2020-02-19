@@ -53,13 +53,16 @@ namespace EazyEngine.Space.UI
 
         public void Home()
         {
+            HUDLayer.Instance.showDialogTag("ui/notice", "ui/alert_leave", new ButtonInfo() { str = "ui/yes", isTag = true, action = delegate {
+                PlayerEnviroment.clear();
+                GroupManager.clearCache();
+                Time.timeScale = 1;
+                GameManager.Instance.inGame = false;
+                LevelManger.InstanceRaw = null;
+                SceneManager.Instance.loadScene("Main");
+                HUDLayer.Instance.BoxDialog.close();
+            } }, new ButtonInfo() { str = "ui/no", isTag = true, action = null });
           
-            PlayerEnviroment.clear();
-            GroupManager.clearCache();
-            Time.timeScale = 1;
-            GameManager.Instance.inGame = false;
-            LevelManger.InstanceRaw = null;
-            SceneManager.Instance.loadScene("Main");
         }
         public void turnSound(bool pBool)
         {

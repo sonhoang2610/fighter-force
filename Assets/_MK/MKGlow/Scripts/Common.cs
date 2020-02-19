@@ -3,7 +3,7 @@
 //					                                //
 // Created by Michael Kremmel                       //
 // www.michaelkremmel.de                            //
-// Copyright © 2019 All rights reserved.            //
+// Copyright © 2020 All rights reserved.            //
 //////////////////////////////////////////////////////
 namespace MK.Glow
 {
@@ -52,6 +52,19 @@ namespace MK.Glow
         Quality = 0,
         Balanced = 1,
         Performance = 2
+    }
+
+    /// <summary>
+    /// Defines the style of the Lens Flare
+    /// </summary>
+    public enum LensFlareStyle
+    {
+        Custom = 0,
+        Average = 1,
+        MultiAverage = 2,
+        Old = 3,
+        OldFocused = 4,
+        Distorted = 5
     }
 
     /// <summary>

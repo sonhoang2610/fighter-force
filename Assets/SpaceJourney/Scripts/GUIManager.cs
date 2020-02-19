@@ -19,13 +19,13 @@ namespace EazyEngine.Space
         [SerializeField]
         private BoxStatusPlane boxStatus;
         [SerializeField]
-        protected UI2DSprite dangerImage;
+        protected UISprite dangerImage;
         [SerializeField]
-        protected UI2DSprite healImage;
+        protected UISprite healImage;
         [SerializeField]
-        protected UI2DSprite hpBarImage;
+        protected UISprite hpBarImage;
         [SerializeField]
-        protected UI2DSprite EnergyBar;
+        protected UISprite EnergyBar;
         [SerializeField]
         protected ProgressBarInt BoosterBar;
         [SerializeField]

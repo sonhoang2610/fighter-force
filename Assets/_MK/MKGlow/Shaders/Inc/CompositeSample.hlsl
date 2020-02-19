@@ -3,7 +3,7 @@
 //					                                //
 // Created by Michael Kremmel                       //
 // www.michaelkremmel.de                            //
-// Copyright © 2019 All rights reserved.            //
+// Copyright © 2020 All rights reserved.            //
 //////////////////////////////////////////////////////
 #ifndef MK_GLOW_COMPOSITE_SAMPLE
 	#define MK_GLOW_COMPOSITE_SAMPLE
@@ -22,6 +22,7 @@
 	#endif
 	*/
 	half4 g = SampleTex2D(PASS_TEXTURE_2D(_BloomTex, sampler_BloomTex), UV_0);
+	//g = 0;
 	
 	#if defined(MK_LENS_SURFACE) && defined(MK_NATURAL)
 		half4 gs = g;
@@ -32,7 +33,7 @@
 	#else
 		half3 source = SAMPLE_SOURCE.rgb;
 	#endif
-
+	
 	#ifdef MK_GLOW_DEBUG
 		source = 0;
 	#endif
@@ -56,7 +57,7 @@
 				glare = SampleTex2D(PASS_TEXTURE_2D(_Glare0Tex, sampler_Glare0Tex), UV_0);
 			#endif
 			*/
-			glare = SampleTex2D(PASS_TEXTURE_2D(_Glare0Tex, sampler_Glare0Tex), UV_0);
+			glare = SampleTex2D(PASS_TEXTURE_2D(_Glare0Tex, sampler_Glare0Tex), UV_0) * GLARE0_INTENSITY;
 		#endif
 		#ifdef MK_GLARE_2
 			/*
@@ -66,7 +67,7 @@
 				glare += SampleTex2D(PASS_TEXTURE_2D(_Glare1Tex, sampler_Glare1Tex), UV_0);
 			#endif
 			*/
-			glare += SampleTex2D(PASS_TEXTURE_2D(_Glare1Tex, sampler_Glare1Tex), UV_0);
+			glare += SampleTex2D(PASS_TEXTURE_2D(_Glare1Tex, sampler_Glare1Tex), UV_0) * GLARE1_INTENSITY;
 		#endif
 		#ifdef MK_GLARE_3
 			/*
@@ -76,7 +77,7 @@
 				glare += SampleTex2D(PASS_TEXTURE_2D(_Glare2Tex, sampler_Glare2Tex), UV_0);
 			#endif
 			*/
-			glare += SampleTex2D(PASS_TEXTURE_2D(_Glare2Tex, sampler_Glare2Tex), UV_0);
+			glare += SampleTex2D(PASS_TEXTURE_2D(_Glare2Tex, sampler_Glare2Tex), UV_0) * GLARE2_INTENSITY;
 		#endif
 		#ifdef MK_GLARE_4
 			/*
@@ -86,7 +87,7 @@
 				glare += SampleTex2D(PASS_TEXTURE_2D(_Glare3Tex, sampler_Glare3Tex), UV_0);
 			#endif
 			*/
-			glare += SampleTex2D(PASS_TEXTURE_2D(_Glare3Tex, sampler_Glare3Tex), UV_0);
+			glare += SampleTex2D(PASS_TEXTURE_2D(_Glare3Tex, sampler_Glare3Tex), UV_0) * GLARE3_INTENSITY;
 		#endif
 		#ifdef MK_NATURAL
 			glare.rgb = max(0, lerp(source.rgb, glare.rgb * 0.25, GLARE_GLOBAL_INTENSITY));
@@ -119,7 +120,7 @@
 			g.rgb = lerp(g.rgb * 3, g.rgb + g.rgb * dirt + g.rgb * diffraction, 0.5) * 0.3333h;
 		#endif
 	#endif
-	
+
 	//When using gamma space at least try to get a nice looking result by adding the glow in the linear space of the source even if the base color space is gamma
 	#ifdef MK_GLOW_COMPOSITE
 		#ifdef COLORSPACE_GAMMA

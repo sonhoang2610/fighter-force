@@ -11,6 +11,7 @@ using NodeCanvas.Framework;
 using EazyEngine.Timer;
 using Spine.Unity;
 using System.Linq;
+using EazyEngine.Space.UI;
 
 namespace EazyEngine.Space
 {
@@ -440,6 +441,7 @@ namespace EazyEngine.Space
         }
         protected override void Awake()
         {
+            HUDLayer.Instance.BoxReborn.GetComponent<BoxReborn>().resetFreeTurn();
             SoundManager.Instance.PlayMusic(GameManager.Instance.ChoosedHard ==0 ? AudioGroupConstrant.MusicRegion.MusicGameEasy : (GameManager.Instance.ChoosedHard == 1 ? AudioGroupConstrant.MusicRegion.MusicGameHard : AudioGroupConstrant.MusicRegion.MusicGameSuperHard),true,SoundManager.Instance.gameObject,"",1);
             if (SceneManager.Instance.currentScene.Contains("Main"))
             {
@@ -636,6 +638,11 @@ namespace EazyEngine.Space
         public bool IsPlaying { get => isPlaying; set => isPlaying = value; }
         public bool IsMatching { get => isMatching; set {
                 isMatching = value;
+                if (!TopLayer.Instance.IsDestroyed())
+                {
+                    TopLayer.Instance.gameObject.SetActive(!IsMatching);
+                }
+                
                 if (value)
                 {
                     if (!SoundManager.Instance.states.Contains("Matching"))

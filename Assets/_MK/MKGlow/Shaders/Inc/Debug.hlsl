@@ -3,7 +3,7 @@
 //					                                //
 // Created by Michael Kremmel                       //
 // www.michaelkremmel.de                            //
-// Copyright © 2019 All rights reserved.            //
+// Copyright © 2020 All rights reserved.            //
 //////////////////////////////////////////////////////
 
 #ifndef MK_GLOW_DEBUG
@@ -15,7 +15,7 @@
 		UNIFORM_RWTEXTURE_2D(_TargetTex)
 	#endif
 	#if defined(MK_DEBUG_RAW_BLOOM)
-		UNIFORM_SAMPLER_AND_TEXTURE_2D(_SourceTex)
+		UNIFORM_SOURCE_SAMPLER_AND_TEXTURE(_SourceTex)
 		#ifndef COMPUTE_SHADER
 			uniform float2 _SourceTex_TexelSize;
 			#ifndef MK_NATURAL
@@ -24,14 +24,14 @@
 			uniform half _LumaScale;
 		#endif
 	#elif defined(MK_DEBUG_RAW_LENS_FLARE)
-		UNIFORM_SAMPLER_AND_TEXTURE_2D(_SourceTex)
+		UNIFORM_SOURCE_SAMPLER_AND_TEXTURE(_SourceTex)
 		#ifndef COMPUTE_SHADER
 			uniform float2 _SourceTex_TexelSize;
 			uniform half2 _LensFlareThreshold;
 			uniform half _LumaScale;
 		#endif
 	#elif defined(MK_DEBUG_RAW_GLARE)
-		UNIFORM_SAMPLER_AND_TEXTURE_2D(_SourceTex)
+		UNIFORM_SOURCE_SAMPLER_AND_TEXTURE(_SourceTex)
 		#ifndef COMPUTE_SHADER
 			uniform float2 _SourceTex_TexelSize;
 			uniform half2 _GlareThreshold;
@@ -72,7 +72,7 @@
 			UNIFORM_SAMPLER_AND_TEXTURE_2D(_Glare3Tex)
 		#endif
 	#elif defined(MK_DEBUG_COMPOSITE)
-		UNIFORM_SAMPLER_AND_TEXTURE_2D(_SourceTex)
+		UNIFORM_SOURCE_SAMPLER_AND_TEXTURE(_SourceTex)
 		UNIFORM_SAMPLER_AND_TEXTURE_2D(_BloomTex)
 		#ifndef COMPUTE_SHADER
 			uniform float2 _BloomTex_TexelSize;
@@ -279,9 +279,9 @@
 		{
 			UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(o);
 			#ifndef MK_NATURAL
-				RETURN_TARGET_TEX ConvertToColorSpace(half4(LuminanceThreshold(SampleTex2D(PASS_TEXTURE_2D(_SourceTex, sampler_SourceTex), UV_0).rgb, BLOOM_THRESHOLD, LUMA_SCALE), 1));
+				RETURN_TARGET_TEX ConvertToColorSpace(half4(LuminanceThreshold(SampleSourceTex(PASS_SOURCE_TEXTURE_2D(_SourceTex, sampler_SourceTex), UV_0).rgb, BLOOM_THRESHOLD, LUMA_SCALE), 1));
 			#else
-				RETURN_TARGET_TEX ConvertToColorSpace(half4(NaturalRel(SampleTex2D(PASS_TEXTURE_2D(_SourceTex, sampler_SourceTex), UV_0).rgb, LUMA_SCALE), 1));
+				RETURN_TARGET_TEX ConvertToColorSpace(half4(NaturalRel(SampleSourceTex(PASS_SOURCE_TEXTURE_2D(_SourceTex, sampler_SourceTex), UV_0).rgb, LUMA_SCALE), 1));
 			#endif
 		}
 	#elif defined(MK_DEBUG_RAW_LENS_FLARE)
@@ -292,9 +292,9 @@
 		{
 			UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(o);
 			#ifdef MK_NATURAL
-				RETURN_TARGET_TEX ConvertToColorSpace(half4(NaturalRel(SampleTex2D(PASS_TEXTURE_2D(_SourceTex, sampler_SourceTex), UV_0).rgb, LUMA_SCALE), 1));
+				RETURN_TARGET_TEX ConvertToColorSpace(half4(NaturalRel(SampleSourceTex(PASS_SOURCE_TEXTURE_2D(_SourceTex, sampler_SourceTex), UV_0).rgb, LUMA_SCALE), 1));
 			#else
-				RETURN_TARGET_TEX ConvertToColorSpace(half4(LuminanceThreshold(SampleTex2D(PASS_TEXTURE_2D(_SourceTex, sampler_SourceTex), UV_0).rgb, LENS_FLARE_THRESHOLD, LUMA_SCALE), 1));
+				RETURN_TARGET_TEX ConvertToColorSpace(half4(LuminanceThreshold(SampleSourceTex(PASS_SOURCE_TEXTURE_2D(_SourceTex, sampler_SourceTex), UV_0).rgb, LENS_FLARE_THRESHOLD, LUMA_SCALE), 1));
 			#endif
 		}
 	#elif defined(MK_DEBUG_RAW_GLARE)
@@ -305,9 +305,9 @@
 		{
 			UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(o);
 			#ifdef MK_NATURAL
-				RETURN_TARGET_TEX ConvertToColorSpace(half4(NaturalRel(SampleTex2D(PASS_TEXTURE_2D(_SourceTex, sampler_SourceTex), UV_0).rgb, LUMA_SCALE), 1));
+				RETURN_TARGET_TEX ConvertToColorSpace(half4(NaturalRel(SampleSourceTex(PASS_SOURCE_TEXTURE_2D(_SourceTex, sampler_SourceTex), UV_0).rgb, LUMA_SCALE), 1));
 			#else
-				RETURN_TARGET_TEX ConvertToColorSpace(half4(LuminanceThreshold(SampleTex2D(PASS_TEXTURE_2D(_SourceTex, sampler_SourceTex), UV_0).rgb, GLARE_THRESHOLD, LUMA_SCALE), 1));
+				RETURN_TARGET_TEX ConvertToColorSpace(half4(LuminanceThreshold(SampleSourceTex(PASS_SOURCE_TEXTURE_2D(_SourceTex, sampler_SourceTex), UV_0).rgb, GLARE_THRESHOLD, LUMA_SCALE), 1));
 			#endif
 		}
 	#elif defined(MK_DEBUG_GLARE)
