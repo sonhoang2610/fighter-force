@@ -52,8 +52,8 @@ MonoBehaviour:
   descriptionItem:
     normalString: plane/plane8_skill3
     isI2String: 1
-    value: Receive a shield that blocks one damage. When the shield breaks enter the
-      super state
+    value: Receive a shield that blocks one damage. When the shield breaks, you become
+      Super for several seconds
   categoryItem: 3
   iconShop: {fileID: 274376060814272409, guid: c336f33155863f74d9acfd73a1e6e9d4, type: 3}
   iconShopDisable: {fileID: -8461649227971003838, guid: c336f33155863f74d9acfd73a1e6e9d4,
@@ -61,13 +61,15 @@ MonoBehaviour:
   iconGame: {fileID: 274376060814272409, guid: c336f33155863f74d9acfd73a1e6e9d4, type: 3}
   iconGameDisable: {fileID: -8461649227971003838, guid: c336f33155863f74d9acfd73a1e6e9d4,
     type: 3}
-  model: {fileID: 0}
+  modelRef:
+    asset: {fileID: 0}
+    runtimeKey: 
   score: 0
   isActive: 0
   coolDownTime:
-    startUnit: 45
+    startUnit: 60
     algrothimTypeUpgrade: 0
-    stepUnit: -5
+    stepUnit: -3
     isSpecifiedUnit: 0
     unitDefines: []
   duration:
