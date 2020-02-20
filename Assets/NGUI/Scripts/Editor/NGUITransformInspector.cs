@@ -84,25 +84,21 @@ public class NGUITransformInspector : Editor
 			}
 		}
 	}
+
 	void DrawPosition ()
 	{
 		GUILayout.BeginHorizontal();
-		bool reset = GUILayout.Button( "P" , GUILayout.Width(20f));
-            EditorGUILayout.PropertyField(mPos.FindPropertyRelative("x"));
-            EditorGUILayout.PropertyField(mPos.FindPropertyRelative("y"));
-            EditorGUILayout.PropertyField(mPos.FindPropertyRelative("z"));
+		bool reset = GUILayout.Button("P", GUILayout.Width(20f));
+		EditorGUILayout.PropertyField(mPos.FindPropertyRelative("x"));
+		EditorGUILayout.PropertyField(mPos.FindPropertyRelative("y"));
+		EditorGUILayout.PropertyField(mPos.FindPropertyRelative("z"));
 		GUILayout.EndHorizontal();
 
-        //GUILayout.BeginHorizontal();
-        //reset = GUILayout.Button("W", GUILayout.Width(20f));
-        //EditorGUILayout.Vector3Field("", (target as Transform).position);
+		//GUILayout.BeginHorizontal();
+		//reset = GUILayout.Button("W", GUILayout.Width(20f));
+		//EditorGUILayout.Vector3Field("", (target as Transform).position);
 
-        if (reset)
-        {
-            Debug.Log(((Transform)target).position);
-            Debug.Log(((Transform)target).rotation.eulerAngles);
-            Debug.Log(((Transform)target).lossyScale);
-        }
+		if (reset) mPos.vector3Value = Vector3.zero;
 		//GUILayout.EndHorizontal();
 	}
 
@@ -216,7 +212,7 @@ public class NGUITransformInspector : Editor
 	{
 		GUILayout.BeginHorizontal();
 		{
-			bool reset = GUILayout.Button( "R" , GUILayout.Width(20f));
+			bool reset = GUILayout.Button("R", GUILayout.Width(20f));
 
 			Vector3 visible = (serializedObject.targetObject as Transform).localEulerAngles;
 

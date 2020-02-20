@@ -43,7 +43,6 @@ public class UIGridEditor : UIWidgetContainerEditor
 		NGUIEditorTools.DrawProperty("Smooth Tween", serializedObject, "animateSmoothly");
 		NGUIEditorTools.DrawProperty("Hide Inactive", serializedObject, "hideInactive");
 		NGUIEditorTools.DrawProperty("Constrain to Panel", serializedObject, "keepWithinPanel");
-        NGUIEditorTools.DrawProperty("Center Align", serializedObject, "isCenter");
-        serializedObject.ApplyModifiedProperties();
+		serializedObject.ApplyModifiedProperties();
 	}
 }

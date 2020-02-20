@@ -5,11 +5,11 @@
 
 using UnityEngine;
 using System.Collections;
-using EazyEngine.Space;
 
 /// <summary>
 /// Allows dragging of the specified scroll view by mouse or touch.
 /// </summary>
+
 [AddComponentMenu("NGUI/Interaction/Drag Scroll View")]
 public class UIDragScrollView : MonoBehaviour
 {
@@ -18,10 +18,9 @@ public class UIDragScrollView : MonoBehaviour
 	/// </summary>
 
 	public UIScrollView scrollView;
-    public ParallaxBackGround background;
 
-    // Legacy functionality, kept for backwards compatibility. Use 'scrollView' instead.
-    [HideInInspector][SerializeField] UIScrollView draggablePanel;
+	// Legacy functionality, kept for backwards compatibility. Use 'scrollView' instead.
+	[HideInInspector][SerializeField] UIScrollView draggablePanel;
 
 	Transform mTrans;
 	UIScrollView mScroll;
@@ -126,10 +125,6 @@ public class UIDragScrollView : MonoBehaviour
 
 	void OnDrag (Vector2 delta)
 	{
-        if (background)
-        {
-           // background.onDrag(delta);
-        }
 		if (scrollView && NGUITools.GetActive(this))
 			scrollView.Drag();
 	}

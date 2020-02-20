@@ -278,7 +278,7 @@ public class UIRoot : MonoBehaviour
 
 			if (calcActiveHeight > 0f)
 			{
-				float size = 2f / calcActiveHeight;
+				float size = Camera.main.orthographicSize*2 / calcActiveHeight;
 
 				Vector3 ls = mTrans.localScale;
 
@@ -286,7 +286,7 @@ public class UIRoot : MonoBehaviour
 					!(Mathf.Abs(ls.y - size) <= float.Epsilon) ||
 					!(Mathf.Abs(ls.z - size) <= float.Epsilon))
 				{
-                    mTrans.localScale = new Vector3(size, size, size);
+					mTrans.localScale = new Vector3(size, size, size);
 					if (updateAnchors) BroadcastMessage("UpdateAnchors", SendMessageOptions.DontRequireReceiver);
 				}
 			}

@@ -248,25 +248,24 @@ public class UICenterOnChild : MonoBehaviour
 			localOffset.z = 0f;
 
 			// Spring the panel to this calculated position
-
-			if (!Application.isPlaying )
-			{
 #if UNITY_EDITOR
-                panelTrans.localPosition = panelTrans.localPosition - localOffset;
+			if (!Application.isPlaying)
+			{
+				panelTrans.localPosition = panelTrans.localPosition - localOffset;
 
 				Vector4 co = mScrollView.panel.clipOffset;
 				co.x += localOffset.x;
 				co.y += localOffset.y;
 				mScrollView.panel.clipOffset = co;
+			}
+			else
 #endif
-            }
-            else
-
 			{
-           
-
-                SpringPanel.Begin(mScrollView.panel.cachedGameObject,
-					panelTrans.localPosition - localOffset, springStrength).onFinished = onFinished;
+				var pos = panelTrans.localPosition - localOffset;
+				pos.x = Mathf.Round(pos.x);
+				pos.y = Mathf.Round(pos.y);
+				pos.z = Mathf.Round(pos.z);
+				SpringPanel.Begin(mScrollView.panel.cachedGameObject, pos, springStrength).onFinished = onFinished;
 			}
 		}
 		else mCenteredObject = null;

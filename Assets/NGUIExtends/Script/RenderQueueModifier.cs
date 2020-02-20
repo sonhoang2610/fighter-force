@@ -99,7 +99,16 @@ public class RenderQueueModifier : MonoBehaviour
                         }
                         else
                         {
-                            r.sharedMaterial.renderQueue = m_target.drawCall.renderQueue;
+                            if(r.GetType() == typeof(SpriteRenderer))
+                            {
+                                r.sharedMaterial.renderQueue = 3000;
+                                r.material.renderQueue = m_target.drawCall.renderQueue;
+                            }
+                            else
+                            {
+                                r.sharedMaterial.renderQueue = m_target.drawCall.renderQueue;
+                            }
+                           
                         }
                     }
                     else
@@ -162,6 +171,7 @@ public class RenderQueueModifier : MonoBehaviour
                                 if (!isIncludeChild && r.gameObject != gameObject) continue;
                                 if(r.GetType() == typeof(SpriteRenderer))
                                 {
+                                    if (r.sharedMaterial && r.sharedMaterial.name == "Sprites-Default") r.sharedMaterial.renderQueue = 3000;
                                     if (r.material == null) continue;
                                     r.material.renderQueue = _lastQueue;
                                     continue;

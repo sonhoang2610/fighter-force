@@ -39,7 +39,7 @@ namespace EazyEngine.Space
         public BoxResult boxResult;
         public AudioGroupSelector sfxStartNomal = AudioGroupConstrant.StartBoss;
 
-        public Camera CamGUI { get => camGUI; set => camGUI = value; }
+        public Camera CamGUI { get => Camera.main; set => camGUI = value; }
         public bool isPlaying
         {
             get

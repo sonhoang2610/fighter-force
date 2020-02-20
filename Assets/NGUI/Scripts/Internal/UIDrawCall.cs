@@ -266,7 +266,7 @@ public class UIDrawCall : MonoBehaviour
 		{
 			mTexture = value;
 			if (mBlock == null) mBlock = new MaterialPropertyBlock();
-			mBlock.SetTexture("_MainTex", value ?? Texture2D.whiteTexture);
+			mBlock.SetTexture("_MainTex", value != null ? value : Texture2D.whiteTexture);
 		}
 	}
 
@@ -384,27 +384,24 @@ public class UIDrawCall : MonoBehaviour
 		const string textureClip = " (TextureClip)";
 		shaderName = shaderName.Replace(textureClip, "");
 
-        if (panel != null && panel.clipping == Clipping.TextureMask)
-        {
-            mTextureClip = true;
-            shader = Shader.Find("Hidden/" + shaderName + textureClip);
-        }
-        else if (mClipCount != 0)
-        {
-            shader = Shader.Find("Hidden/" + shaderName + " " + mClipCount);
-            if (shader == null) shader = Shader.Find(shaderName + " " + mClipCount);
+		if (panel != null && panel.clipping == Clipping.TextureMask)
+		{
+			mTextureClip = true;
+			shader = Shader.Find("Hidden/" + shaderName + textureClip);
+		}
+		else if (mClipCount != 0)
+		{
+			shader = Shader.Find("Hidden/" + shaderName + " " + mClipCount);
+			if (shader == null) shader = Shader.Find(shaderName + " " + mClipCount);
 
-            // Legacy functionality
-            if (shader == null && mClipCount == 1)
-            {
-                mLegacyShader = true;
-                shader = Shader.Find(shaderName + soft);
-            }
-        }
-        else
-        {
-            shader = Shader.Find(shaderName);
-        }
+			// Legacy functionality
+			if (shader == null && mClipCount == 1)
+			{
+				mLegacyShader = true;
+				shader = Shader.Find(shaderName + soft);
+			}
+		}
+		else shader = Shader.Find(shaderName);
 
 		// Always fallback to the default shader
 		if (shader == null) shader = Shader.Find("Unlit/Transparent Colored");
@@ -720,7 +717,7 @@ public class UIDrawCall : MonoBehaviour
 		UpdateMaterials();
 
 		if (mBlock != null) mRenderer.SetPropertyBlock(mBlock);
-		if (onRender != null) onRender(mDynamicMat ?? mMaterial);
+		if (onRender != null) onRender(mDynamicMat != null ? mDynamicMat : mMaterial);
 		if (mDynamicMat == null || mClipCount == 0) return;
 
 		if (mTextureClip)
