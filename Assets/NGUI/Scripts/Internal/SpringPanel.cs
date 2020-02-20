@@ -129,6 +129,7 @@ public class SpringPanel : MonoBehaviour
 
 		if (sp != null && sp.enabled)
 		{
+            sp.target = Vector3.zero;
 			if (sp.onFinished != null) sp.onFinished();
 			sp.enabled = false;
 		}

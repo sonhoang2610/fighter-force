@@ -224,10 +224,16 @@ namespace EazyEngine.Space
             EzEventManager.AddListener<DamageTakenEvent>(this);
             EzEventManager.AddListener<PickEvent>(this);
             EzEventManager.AddListener<MessageGamePlayEvent>(this);
+            TopLayer.Instance.gameObject.SetActive(!IsMatching);
         }
 
         private void OnDisable()
         {
+            if (!TopLayer.Instance.gameObject.activeSelf)
+            {
+                TopLayer.Instance.gameObject.SetActive(true);
+            }
+        
             EzEventManager.RemoveListener<DamageTakenEvent>(this);
             EzEventManager.RemoveListener<PickEvent>(this);
             EzEventManager.RemoveListener<MessageGamePlayEvent>(this);
@@ -634,6 +640,8 @@ namespace EazyEngine.Space
                 return TimeSpan.FromSeconds(currentTime);
             }
         }
+
+        
 
         public bool IsPlaying { get => isPlaying; set => isPlaying = value; }
         public bool IsMatching { get => isMatching; set {

@@ -129,83 +129,92 @@ public class SoundManager : PersistentSingleton<SoundManager>
         int pTotalWeight = 0;
         for (int i = 0; i < pInfo.clips.Length; ++i)
         {
-            var pClipInfo = pInfo.clips[i];
-            pTotalWeight += pClipInfo.weight;
+            var pClipInfo1 = pInfo.clips[i];
+            pTotalWeight += pClipInfo1.weight;
 
         }
         int prandom = Random.Range(0, pTotalWeight);
-        pTotalWeight = 0;
-        for (int i = 0; i < pInfo.clips.Length; ++i)
+        MusicElementInfos pClipInfo = null;
+        if (preloadCache.ContainsKey(pInfo.groupName))
         {
-            pTotalWeight += pInfo.clips[i].weight;
-            var pClipInfo = pInfo.clips[i];
-            if (prandom < pTotalWeight)
+            pClipInfo = pInfo.clips[preloadCache[pInfo.groupName]];
+            preloadCache.Remove(pInfo.groupName);
+        }
+        pTotalWeight = 0;
+        if (pClipInfo == null)
+        {
+            for (int i = 0; i < pInfo.clips.Length; ++i)
             {
-                for (int j = 0; j < pClipInfo.elements.Length; ++j)
+                pTotalWeight += pInfo.clips[i].weight;
+                if (prandom < pTotalWeight)
                 {
-                    var pElementInfo = pClipInfo.elements[j];
-                    System.Action pAction = delegate
+                    pClipInfo = pInfo.clips[i];
+                    break;
+                }
+            }
+        }
+        for (int j = 0; j < pClipInfo.elements.Length; ++j)
+        {
+            var pElementInfo = pClipInfo.elements[j];
+            System.Action pAction = delegate
+            {
+                var sources = PlayBackgroundMusic(pElementInfo.Clip, singleton, pFactor * pElementInfo.volume, pSmoothTime);
+                if (pOwner && sources != null)
+                {
+                    var pExistCaller = musicCallers.Find(x => x.owner == pOwner);
+                    SoundInfoFromCaller pSoundInfo = null;
+                    if (pExistCaller == null)
                     {
-                        var sources = PlayBackgroundMusic(pElementInfo.Clip ,singleton, pFactor * pElementInfo.volume,pSmoothTime);
-                        if (pOwner&& sources != null)
+                        musicCallers.Add(pExistCaller = new SoundCallerInfo()
                         {
-                            var pExistCaller = musicCallers.Find(x => x.owner == pOwner);
-                            SoundInfoFromCaller pSoundInfo = null;
-                            if (pExistCaller == null)
-                            {
-                                musicCallers.Add(pExistCaller = new SoundCallerInfo()
-                                {
-                                    owner = pOwner
-                                });
+                            owner = pOwner
+                        });
 
 
-                            }
-                            if ((pSoundInfo = pExistCaller.dictAudios.Find(x => (x.groupName == pInfo.groupName && x.conditionstate == pInfo.groupName))) == null)
-                            {
-                                pSoundInfo = new SoundInfoFromCaller()
-                                {
-                                    audios = new List<AudioSource>(),
-                                    groupName = pInfo.groupName,
-                                    conditionstate = conditionstate
-                                };
-                                pExistCaller.dictAudios.Add(pSoundInfo);
-                            }
-                            pSoundInfo.audios.Add(sources);
-                        }
-                    };
-                    if(pElementInfo.Clip == null)
+                    }
+                    if ((pSoundInfo = pExistCaller.dictAudios.Find(x => (x.groupName == pInfo.groupName && x.conditionstate == pInfo.groupName))) == null)
                     {
-                        var pAsync = pElementInfo.clipRef.loadAssetAsync<AudioClip>();
-                        pAsync.completed += delegate (AsyncOperation a)
+                        pSoundInfo = new SoundInfoFromCaller()
                         {
-                            pElementInfo.Clip = (AudioClip)(((ResourceRequest)a).asset);
-                            if (pElementInfo.delay == 0)
-                            {
-                                pAction();
-                            }
-                            else
-                            {
-                                StartCoroutine(delayAction(pElementInfo.delay, pAction));
-                            }
+                            audios = new List<AudioSource>(),
+                            groupName = pInfo.groupName,
+                            conditionstate = conditionstate
                         };
+                        pExistCaller.dictAudios.Add(pSoundInfo);
+                    }
+                    pSoundInfo.audios.Add(sources);
+                }
+            };
+            if (pElementInfo.Clip == null)
+            {
+                var pAsync = pElementInfo.clipRef.loadAssetAsync<AudioClip>();
+                pAsync.completed += delegate (AsyncOperation a)
+                {
+                    pElementInfo.Clip = (AudioClip)(((ResourceRequest)a).asset);
+                    if (pElementInfo.delay == 0)
+                    {
+                        pAction();
                     }
                     else
                     {
-                        if (pElementInfo.delay == 0)
-                        {
-                            pAction();
-                        }
-                        else
-                        {
-                            StartCoroutine(delayAction(pElementInfo.delay, pAction));
-                        }
+                        StartCoroutine(delayAction(pElementInfo.delay, pAction));
                     }
-                  
-
-
-                }
-                break;
+                };
             }
+            else
+            {
+                if (pElementInfo.delay == 0)
+                {
+                    pAction();
+                }
+                else
+                {
+                    StartCoroutine(delayAction(pElementInfo.delay, pAction));
+                }
+            }
+
+
+
         }
     }
     public void StopMusicGroupName(string pGroupName, GameObject pOwner,float pTimeSmooth = 0)
@@ -281,6 +290,61 @@ public class SoundManager : PersistentSingleton<SoundManager>
             }
         }
     }
+
+    Dictionary<string, int> preloadCache = new Dictionary<string, int>();
+    public void Preload(string pGroupName)
+    {
+        var pDatabase = AudioDatabase.Instance;
+        foreach (var pGroup in pDatabase.musics)
+        {
+            if (pGroup.groupName == pGroupName)
+            {
+                int pTotalWeight = 0;
+                for (int i = 0; i < pGroup.clips.Length; ++i)
+                {
+                    var pClipInfo = pGroup.clips[i];
+                    pTotalWeight += pClipInfo.weight;
+
+                }
+                int prandom = Random.Range(0, pTotalWeight);
+                pTotalWeight = 0;
+                for (int i = 0; i < pGroup.clips.Length; ++i)
+                {
+                    pTotalWeight += pGroup.clips[i].weight;
+                    var pClipInfo = pGroup.clips[i];
+                    if (prandom < pTotalWeight)
+                    {
+                        if (preloadCache.ContainsKey(pGroupName))
+                        {
+                            preloadCache[pGroupName] = prandom;
+                        }
+                        else
+                        {
+                            preloadCache.Add(pGroupName, prandom);
+                        }
+                     
+                       foreach(var pElement in pClipInfo.elements)
+                        {
+                            if (!pElement.Clip)
+                            {
+                                var pAsync = pElement.clipRef.loadAssetAsync<AudioClip>();
+                                pAsync.completed += (AsyncOperation a) => {
+                                    pElement.Clip = (AudioClip)((ResourceRequest)a).asset;
+                                    pElement.Clip.LoadAudioData();
+                                };
+                            }
+                            else
+                            if (pElement.Clip.loadState != AudioDataLoadState.Loaded)
+                            {
+                                pElement.Clip.LoadAudioData();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     public void PlaySound(string pGroupName, Vector3 location, GameObject pOwner = null, string conditionstate = "")
     {
         PlaySound(pGroupName, pOwner, conditionstate);
@@ -329,85 +393,88 @@ public class SoundManager : PersistentSingleton<SoundManager>
         int pTotalWeight = 0;
         for (int i = 0; i < pInfo.clips.Length; ++i)
         {
-            var pClipInfo = pInfo.clips[i];
-            pTotalWeight += pClipInfo.weight;
+            var pClipInfo1 = pInfo.clips[i];
+            pTotalWeight += pClipInfo1.weight;
 
         }
+
         int prandom = Random.Range(0, pTotalWeight);
+        AudioElementInfos pClipInfo = null;
+
         pTotalWeight = 0;
         for (int i = 0; i < pInfo.clips.Length; ++i)
         {
             pTotalWeight += pInfo.clips[i].weight;
-            var pClipInfo = pInfo.clips[i];
             if (prandom < pTotalWeight)
             {
-                for (int j = 0; j < pClipInfo.elements.Length; ++j)
+                pClipInfo = pInfo.clips[i];
+                break;
+            }
+        }
+        for (int j = 0; j < pClipInfo.elements.Length; ++j)
+        {
+            var pElementInfo = pClipInfo.elements[j];
+
+            System.Action pAction = delegate
+            {
+
+                var sources = PlaySound(pElementInfo.Clip, Vector3.zero, pElementInfo.isLoop, pFactor * pElementInfo.volume);
+                if (pOwner && sources && sources.loop)
                 {
-                    var pElementInfo = pClipInfo.elements[j];
-             
-                    System.Action pAction = delegate
+                    var pExistCaller = callers.Find(x => x.owner == pOwner);
+                    SoundInfoFromCaller pSoundInfo = null;
+                    if (pExistCaller == null)
                     {
-
-                        var sources = PlaySound(pElementInfo.Clip, Vector3.zero, pElementInfo.isLoop, pFactor * pElementInfo.volume);
-                        if (pOwner && sources && sources.loop)
+                        callers.Add(pExistCaller = new SoundCallerInfo()
                         {
-                            var pExistCaller = callers.Find(x => x.owner == pOwner);
-                            SoundInfoFromCaller pSoundInfo = null;
-                            if (pExistCaller == null)
-                            {
-                                callers.Add(pExistCaller = new SoundCallerInfo()
-                                {
-                                    owner = pOwner
-                                });
+                            owner = pOwner
+                        });
 
 
-                            }
-                            if ((pSoundInfo = pExistCaller.dictAudios.Find(x => (x.groupName == pInfo.groupName && x.conditionstate == pInfo.groupName))) == null)
-                            {
-                                pSoundInfo = new SoundInfoFromCaller()
-                                {
-                                    audios = new List<AudioSource>(),
-                                    groupName = pInfo.groupName,
-                                    conditionstate = conditionstate
-                                };
-                                pExistCaller.dictAudios.Add(pSoundInfo);
-                            }
-                            pSoundInfo.audios.Add(sources);
-                        }
-                    };
-                    if (pElementInfo.Clip == null)
+                    }
+                    if ((pSoundInfo = pExistCaller.dictAudios.Find(x => (x.groupName == pInfo.groupName && x.conditionstate == pInfo.groupName))) == null)
                     {
-                        var pAsync = pElementInfo.clipRef.loadAssetAsync<AudioClip>();
-                        pAsync.completed += delegate(AsyncOperation a)
+                        pSoundInfo = new SoundInfoFromCaller()
                         {
-                            pElementInfo.Clip = (AudioClip)((ResourceRequest)a).asset;
-                            if (pElementInfo.delay == 0)
-                            {
-                                pAction();
-                            }
-                            else
-                            {
-                                StartCoroutine(delayAction(pElementInfo.delay, pAction));
-                            }
+                            audios = new List<AudioSource>(),
+                            groupName = pInfo.groupName,
+                            conditionstate = conditionstate
                         };
+                        pExistCaller.dictAudios.Add(pSoundInfo);
+                    }
+                    pSoundInfo.audios.Add(sources);
+                }
+            };
+            if (pElementInfo.Clip == null)
+            {
+                var pAsync = pElementInfo.clipRef.loadAssetAsync<AudioClip>();
+                pAsync.completed += delegate (AsyncOperation a)
+                {
+                    pElementInfo.Clip = (AudioClip)((ResourceRequest)a).asset;
+                    if (pElementInfo.delay == 0)
+                    {
+                        pAction();
                     }
                     else
                     {
-                        if (pElementInfo.delay == 0)
-                        {
-                            pAction();
-                        }
-                        else
-                        {
-                            StartCoroutine(delayAction(pElementInfo.delay, pAction));
-                        }
+                        StartCoroutine(delayAction(pElementInfo.delay, pAction));
                     }
-                 
-
-
-                }
-                break;
+                };
             }
+            else
+            {
+                if (pElementInfo.delay == 0)
+                {
+                    pAction();
+                }
+                else
+                {
+                    StartCoroutine(delayAction(pElementInfo.delay, pAction));
+                }
+            }
+
+
+
         }
     }
     protected override void Awake()

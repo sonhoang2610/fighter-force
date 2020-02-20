@@ -35,7 +35,8 @@ namespace EazyEngine.Audio
         StopPlaylist,
         ChangeVolumeSoundGroup,
         ChangeVolumePLaylist,
-        StopAllPlaylist
+        StopAllPlaylist,
+        PreloadMusicGroup
     }
     public enum EventAudiBehaviorType
     {
@@ -142,7 +143,7 @@ namespace EazyEngine.Audio
         }
         private bool visibleGroupname()
         {
-            return actionType == AudioActionType.PlaySoundGroup || actionType == AudioActionType.Playlist || actionType == AudioActionType.StopPlaylist || actionType == AudioActionType.StopSoundGroup;
+            return actionType == AudioActionType.PlaySoundGroup || actionType == AudioActionType.Playlist || actionType == AudioActionType.StopPlaylist || actionType == AudioActionType.StopSoundGroup || actionType == AudioActionType.PreloadMusicGroup;
         }
         private bool visibleMusic()
         {
@@ -268,6 +269,9 @@ namespace EazyEngine.Audio
                             break;
                         case AudioActionType.StopAllPlaylist:
                             SoundManager.Instance.StopAllMusic(pAction.smoothTime);
+                            break;
+                        case AudioActionType.PreloadMusicGroup:
+                            SoundManager.Instance.Preload(pAction.groupName);
                             break;
                     }
                 }
