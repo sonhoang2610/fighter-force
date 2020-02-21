@@ -216,7 +216,15 @@ namespace EazyEngine.Space.UI
             stage.text = GameManager.Instance.isFree ? "0" : GameManager.Instance.ChoosedLevel.ToString();
             string[] pStrs = new string[3] { "ui/normal", "ui/hard", "ui/super_hard" };
             level.text = I2.Loc.LocalizationManager.GetTranslation(pStrs[GameManager.Instance.ChoosedHard]);
-            coinTaken.text = StringUtils.addDotMoney(LevelManger.Instance._infoLevel.goldTaken);
+            var pdrop =
+                      GameDatabase.Instance.dropMonyeconfig[GameManager.Instance.ChoosedLevel - 1][
+                          GameManager.Instance.ChoosedHard];
+            int pStarNotEngough =
+                pdrop.requireStar - GameManager.Instance.Database.getComonItem("Star").Quantity;
+            float percent = 1 - (pStarNotEngough <= 0
+                                ? 0
+                                : (pStarNotEngough * 0.2f > 0.6f ? 0.6f : pStarNotEngough * 0.2f));
+            coinTaken.text = StringUtils.addDotMoney((int)(LevelManger.Instance._infoLevel.goldTaken* percent));
             currentCoin = LevelManger.Instance._infoLevel.goldTaken;
             boxMission.DataSource = LevelManger.Instance._infoLevel.missions.ToObservableList();
             time.text = LevelManger.Instance.CurrentTime.ToString(@"mm\:ss");
@@ -264,14 +272,6 @@ namespace EazyEngine.Space.UI
                 if (!GameManager.Instance.isFree)
                 {
                     Firebase.Analytics.FirebaseAnalytics.LogEvent($"Win_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedHard}");
-                    var pdrop =
-                        GameDatabase.Instance.dropMonyeconfig[GameManager.Instance.ChoosedLevel - 1][
-                            GameManager.Instance.ChoosedHard];
-                    int pStarNotEngough =
-                        pdrop.requireStar - GameManager.Instance.Database.getComonItem("Star").Quantity;
-                    float percent = 1 - (pStarNotEngough <= 0
-                                        ? 0
-                                        : (pStarNotEngough * 0.2f > 0.6f ? 0.6f : pStarNotEngough * 0.2f));
                     // update coin
                     GameManager.Instance.Database.getComonItem("Coin").Quantity +=
                         (int)(LevelManger.Instance._infoLevel.goldTaken * percent);
@@ -345,9 +345,6 @@ namespace EazyEngine.Space.UI
             {
                 Firebase.Analytics.FirebaseAnalytics.LogEvent($"Lose_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedHard}");
                 //lose game
-                var pdrop = GameDatabase.Instance.dropMonyeconfig[GameManager.Instance.ChoosedLevel - 1][GameManager.Instance.ChoosedHard];
-                int pStarNotEngough = pdrop.requireStar - GameManager.Instance.Database.getComonItem("Star").Quantity;
-                float percent = 1 - (pStarNotEngough <= 0 ? 0 : (pStarNotEngough * 0.2f > 0.6f ? 0.6f : pStarNotEngough * 0.2f));
                 //update money
                 GameManager.Instance.Database.getComonItem("Coin").Quantity += (int)(LevelManger.Instance._infoLevel.goldTaken * percent);
                 GameManager.Instance.SaveGame();
@@ -511,6 +508,14 @@ namespace EazyEngine.Space.UI
             }
             if (pNodes.Count == 0)
             {
+                var pdrop =
+                    GameDatabase.Instance.dropMonyeconfig[GameManager.Instance.ChoosedLevel - 1][
+                        GameManager.Instance.ChoosedHard];
+                int pStarNotEngough =
+                    pdrop.requireStar - GameManager.Instance.Database.getComonItem("Star").Quantity;
+                float percent = 1 - (pStarNotEngough <= 0
+                                    ? 0
+                                    : (pStarNotEngough * 0.2f > 0.6f ? 0.6f : pStarNotEngough * 0.2f));
                 boxMission.DataSource = LevelManger.Instance._infoLevel.missions.ToObservableList();
                 boxMission.reloadData();
                 for (int i = 0; i < boxMission.items.Count; ++i)
@@ -526,13 +531,13 @@ namespace EazyEngine.Space.UI
                 pSeq1.Append(DOTween.To(getScore, setScore, LevelManger.Instance._infoLevel.score, 0.5f).From(0));
                 pSeq1.Play();
                 Sequence pSeq2 = DOTween.Sequence();
-                int pGold = 0;
+                float pGold = 0;
                 pSeq2.AppendInterval(1.6f);
                 pSeq2.Append(DOTween.To(() => pGold, x =>
                 {
                     pGold = x;
-                    coinTaken.text = x.ToString();
-                }, LevelManger.Instance._infoLevel.goldTaken, 0.5f).From(0));
+                    coinTaken.text = StringUtils.addDotMoney((int) x);
+                }, LevelManger.Instance._infoLevel.goldTaken*percent, 0.5f).From(0));
                 pSeq2.Play();
 
             }

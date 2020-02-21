@@ -397,6 +397,14 @@ namespace EazyEngine.Space
                 damage = (int)((float)MaxiumHealth * 0.2f);
             }
             CurrentHealth -= damage;
+            if(healDestiny != 0)
+            {
+                healDestiny -= damage;
+                if(healDestiny < 0)
+                {
+                    healDestiny = 0;
+                }
+            }
             if (damage > 0)
             {
                 if (currentDurationResetDamaged <= 0)
