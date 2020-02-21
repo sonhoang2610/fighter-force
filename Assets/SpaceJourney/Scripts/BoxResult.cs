@@ -216,14 +216,18 @@ namespace EazyEngine.Space.UI
             stage.text = GameManager.Instance.isFree ? "0" : GameManager.Instance.ChoosedLevel.ToString();
             string[] pStrs = new string[3] { "ui/normal", "ui/hard", "ui/super_hard" };
             level.text = I2.Loc.LocalizationManager.GetTranslation(pStrs[GameManager.Instance.ChoosedHard]);
-            var pdrop =
-                      GameDatabase.Instance.dropMonyeconfig[GameManager.Instance.ChoosedLevel - 1][
-                          GameManager.Instance.ChoosedHard];
-            int pStarNotEngough =
-                pdrop.requireStar - GameManager.Instance.Database.getComonItem("Star").Quantity;
-            float percent = 1 - (pStarNotEngough <= 0
-                                ? 0
-                                : (pStarNotEngough * 0.2f > 0.6f ? 0.6f : pStarNotEngough * 0.2f));
+            float percent = 1;
+            if (GameManager.Instance.ChoosedLevel >= 1)
+            {
+                var pdrop =
+                    GameDatabase.Instance.dropMonyeconfig[GameManager.Instance.ChoosedLevel - 1][
+                        GameManager.Instance.ChoosedHard];
+                int pStarNotEngough =
+                    pdrop.requireStar - GameManager.Instance.Database.getComonItem("Star").Quantity;
+                percent = 1 - (pStarNotEngough <= 0
+                                   ? 0
+                                   : (pStarNotEngough * 0.2f > 0.6f ? 0.6f : pStarNotEngough * 0.2f));
+            }
             coinTaken.text = StringUtils.addDotMoney((int)(LevelManger.Instance._infoLevel.goldTaken* percent));
             currentCoin = LevelManger.Instance._infoLevel.goldTaken;
             boxMission.DataSource = LevelManger.Instance._infoLevel.missions.ToObservableList();
@@ -508,14 +512,18 @@ namespace EazyEngine.Space.UI
             }
             if (pNodes.Count == 0)
             {
-                var pdrop =
-                    GameDatabase.Instance.dropMonyeconfig[GameManager.Instance.ChoosedLevel - 1][
-                        GameManager.Instance.ChoosedHard];
-                int pStarNotEngough =
-                    pdrop.requireStar - GameManager.Instance.Database.getComonItem("Star").Quantity;
-                float percent = 1 - (pStarNotEngough <= 0
-                                    ? 0
-                                    : (pStarNotEngough * 0.2f > 0.6f ? 0.6f : pStarNotEngough * 0.2f));
+                float percent = 1;
+                if (GameManager.Instance.ChoosedLevel >= 1)
+                {
+                    var pdrop =
+                        GameDatabase.Instance.dropMonyeconfig[GameManager.Instance.ChoosedLevel - 1][
+                            GameManager.Instance.ChoosedHard];
+                    int pStarNotEngough =
+                        pdrop.requireStar - GameManager.Instance.Database.getComonItem("Star").Quantity;
+                     percent = 1 - (pStarNotEngough <= 0
+                                        ? 0
+                                        : (pStarNotEngough * 0.2f > 0.6f ? 0.6f : pStarNotEngough * 0.2f));
+                }
                 boxMission.DataSource = LevelManger.Instance._infoLevel.missions.ToObservableList();
                 boxMission.reloadData();
                 for (int i = 0; i < boxMission.items.Count; ++i)
