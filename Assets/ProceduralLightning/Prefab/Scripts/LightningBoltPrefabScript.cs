@@ -265,10 +265,7 @@ namespace DigitalRuby.ThunderAndLightning
             base.Start();
             CalculateNextLightningTimestamp(0.0f);
             lifeTimeRemaining = (LifeTime <= 0.0f ? float.MaxValue : LifeTime);
-            for(int i = 0; i < CountPreload; ++i)
-            {
-                PreloadLightningBoltsNow();
-            }
+        
             
         }
 
@@ -307,6 +304,15 @@ namespace DigitalRuby.ThunderAndLightning
             {
                 AutomaticModeSeconds = Mathf.Max(0.0f, AutomaticModeSeconds - LightningBoltScript.DeltaTime);
                 ManualMode = (AutomaticModeSeconds == 0.0f);
+            }
+        }
+
+        protected override void Awake()
+        {
+            base.Awake();
+            for (int i = 0; i < CountPreload; ++i)
+            {
+                PreloadLightningBoltsNow();
             }
         }
 
