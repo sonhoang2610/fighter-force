@@ -92,6 +92,11 @@ namespace EazyEngine.Space
                     pLightning.Source = start;
                     pLightning.Camera = Camera.main;
                     pLightning.Trigger();
+                    for(int g = 0; g < CountTarget*2; ++g)
+                    {
+                        pLightning.PreloadLightningBoltsNow();
+                    }
+                   
                 }    
                 if(i >= CountTarget)
                 {

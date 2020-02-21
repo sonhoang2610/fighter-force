@@ -239,6 +239,30 @@ namespace DigitalRuby.ThunderAndLightning
             }
         }
 
+
+        public void PreloadLightningBolts(ICollection<LightningBoltParameters> parameters)
+        {
+
+#if UNITY_EDITOR
+
+            if (Camera == null)
+            {
+
+                UnityEngine.Debug.LogError("Camera not assigned to lightning script. Either set the camera or tag your camera as main camera.");
+            }
+
+#endif
+
+            if (parameters != null && parameters.Count != 0 && Camera != null)
+            {
+                UpdateTexture();
+                LightningBolt bolt = GetOrCreateLightningBolt();
+                LightningBoltDependencies dependencies = CreateLightningBoltDependencies(parameters);
+                bolt.SetupLightningBolt(dependencies);
+                
+            }
+        }
+
         #endregion Public methods
 
         #region Protected methods

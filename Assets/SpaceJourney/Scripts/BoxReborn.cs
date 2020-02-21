@@ -46,6 +46,7 @@ namespace EazyEngine.Space.UI
         {
             CurrentReborn = 0;
             freeReborn = 3;
+            btnWatch.isEnabled = freeReborn > 0;
             if (labelFree)
             {
                 labelFree.TermSuffix = freeReborn.ToString() + "/3";

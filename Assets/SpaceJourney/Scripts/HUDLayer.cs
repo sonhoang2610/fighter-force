@@ -53,6 +53,7 @@ namespace EazyEngine.Space.UI {
             {
                 TimeKeeper.Instance.getTimer("Global").TimScale = 1;
                 pItem.Quantity -= BoxReborn.GetComponent<BoxReborn>().getPriceRebornCrystal();
+                GameManager.Instance.showBannerAds(false);
                 reviePlayer(1,true);
                 BoxReborn.GetComponent<BoxReborn>().CurrentReborn++;
             }
@@ -87,6 +88,7 @@ namespace EazyEngine.Space.UI {
                 {
                     LevelManger.Instance.IsMatching = true;
                     TimeKeeper.Instance.getTimer("Global").TimScale = 1;
+                    GameManager.Instance.showBannerAds(false);
                     reviePlayer(1,false);
                 }
                 else if(pBool == ResultStatusAds.Failed)

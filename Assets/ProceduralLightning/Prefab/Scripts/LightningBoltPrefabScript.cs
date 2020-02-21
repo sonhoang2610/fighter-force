@@ -130,6 +130,8 @@ namespace DigitalRuby.ThunderAndLightning
         [Range(0.0f, 120.0f)]
         public float AutomaticModeSeconds;
 
+        public int CountPreload; 
+
         [Header("Lightning custom transform handler")]
         [Tooltip("Custom handler to modify the transform of each lightning bolt, useful if it will be alive longer than a few frames and needs to scale and rotate based " +
             "on the position of other objects.")]
@@ -142,6 +144,8 @@ namespace DigitalRuby.ThunderAndLightning
 
         private float nextLightningTimestamp;
         private float lifeTimeRemaining;
+
+    
 
         private void CalculateNextLightningTimestamp(float offset)
         {
@@ -156,7 +160,7 @@ namespace DigitalRuby.ThunderAndLightning
                 CustomTransformHandler.Invoke(state);
             }
         }
-
+        
         public void CallLightning()
         {
             CallLightning(null, null);
@@ -206,6 +210,17 @@ namespace DigitalRuby.ThunderAndLightning
             CreateLightningBoltsNow();
         }
 
+        public void PreloadLightningBoltsNow()
+        {
+            LightningBoltParameters p = CreateParameters();
+            batchParameters.Add(p);
+            int tmp = LightningBolt.MaximumLightsPerBatch;
+            LightningBolt.MaximumLightsPerBatch = MaximumLightsPerBatch;
+            PreloadLightningBolts(batchParameters);
+            LightningBolt.MaximumLightsPerBatch = tmp;
+            batchParameters.Clear();
+        }
+
         protected void CreateLightningBoltsNow()
         {
             int tmp = LightningBolt.MaximumLightsPerBatch;
@@ -250,6 +265,11 @@ namespace DigitalRuby.ThunderAndLightning
             base.Start();
             CalculateNextLightningTimestamp(0.0f);
             lifeTimeRemaining = (LifeTime <= 0.0f ? float.MaxValue : LifeTime);
+            for(int i = 0; i < CountPreload; ++i)
+            {
+                PreloadLightningBoltsNow();
+            }
+            
         }
 
         protected override void Update()
