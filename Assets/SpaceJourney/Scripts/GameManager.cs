@@ -1145,7 +1145,9 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                         TopLayer.Instance.LoadingAds.gameObject.SetActive(false);
                         rewardAds[timeoutAds[i].placeMent.Name](ResultStatusAds.TimeOut);
                         rewardAds.Remove(timeoutAds[i].placeMent.Name);
+                  
                     }
+                    timeoutAds.RemoveAt(i);
                 }
             }
         }
