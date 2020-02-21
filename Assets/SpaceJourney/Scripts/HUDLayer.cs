@@ -83,17 +83,22 @@ namespace EazyEngine.Space.UI {
             Firebase.Analytics.FirebaseAnalytics.LogEvent($"RebornAds_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedHard}");
             GameManager.Instance.showRewardAds(BoxReborn.GetComponent<BoxReborn>().itemExchange,delegate(ResultStatusAds pBool){
                 BoxReborn.close();
-                BoxReborn.GetComponent<BoxReborn>().watchReborn();
+          
                 if (pBool == ResultStatusAds.Success)
                 {
                     LevelManger.Instance.IsMatching = true;
                     TimeKeeper.Instance.getTimer("Global").TimScale = 1;
                     GameManager.Instance.showBannerAds(false);
                     reviePlayer(1,false);
+                    BoxReborn.GetComponent<BoxReborn>().watchReborn();
                 }
                 else if(pBool == ResultStatusAds.Failed)
                 {
                     skipReborn();
+                }
+                else
+                {
+                    BoxReborn.show();
                 }
        
 	        });
