@@ -183,16 +183,33 @@ namespace EazyEngine.Space.UI
                     {
                         claimed = true;
                     }
-                     var pData = DataSource[!claimed ? GameManager.Instance.dailyGiftModule.currentDay + 1 : GameManager.Instance.dailyGiftModule.currentDay ];
-                    var pReward = GameManager.Instance.Database.getComonItem(pData.mainData.item.ItemID);
-                    SoundManager.Instance.PlaySound(sfxClaim, Vector3.zero);
-                    pReward.Quantity += pData.mainData.quantity;
+                    var pData = DataSource[!claimed ? GameManager.Instance.dailyGiftModule.currentDay + 1 : GameManager.Instance.dailyGiftModule.currentDay];
                     pData.status = 1;
-                    TopLayer.Instance.boxReward.show();
-                    if (typeof(IExtractItem).IsAssignableFrom(pData.mainData.item.GetType()))
+                    if (pData.isExtractWhenClaim)
                     {
-                        ((IExtractItem)pData.mainData.item).disableExtracItem();
+                        for (int i = 0; i < pData.mainData.Quantity; ++i)
+                        {
+                            var pItems = ((ItemPackage)pData.mainData.item).ExtractHere(true);
+                            for (int j = 0; j < pItems.Length; ++j)
+                            {
+                                var pStorage = GameManager.Instance.Database.getComonItem(pItems[j].item);
+                                pStorage.Quantity += pItems[j].Quantity;
+                            }
+                        }
+
                     }
+                    else
+                    {
+                        var pReward = GameManager.Instance.Database.getComonItem(pData.mainData.item.ItemID);
+                        pReward.Quantity += pData.mainData.quantity;
+                        if (typeof(IExtractItem).IsAssignableFrom(pData.mainData.item.GetType()))
+                        {
+                            ((IExtractItem)pData.mainData.item).disableExtracItem();
+                        }
+
+                    }
+                    TopLayer.Instance.boxReward.show();
+                    
                     EzEventManager.TriggerEvent(new RewardEvent() { item = new BaseItemGameInstanced() { item = pData.mainData.item, quantity = pData.mainData.quantity  } });
                     GameManager.Instance.dailyGiftModule.lastDateAds = Time.DayOfYear;
                     if (!claimed)
