@@ -137,7 +137,7 @@ namespace EazyEngine.Space.UI
                         for(int j = 0; j < pItems.Length; ++j)
                         {
                             var pStorage = GameManager.Instance.Database.getComonItem(pItems[j].item);
-                            pStorage.Quantity += pData.mainData.quantity;
+                            pStorage.Quantity += pItems[j].Quantity;
                         }                     
                     }
 
