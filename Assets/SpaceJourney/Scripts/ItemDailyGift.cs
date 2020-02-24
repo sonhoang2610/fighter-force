@@ -13,6 +13,7 @@ namespace EazyEngine.Space
         public bool isNext;
         public BaseItemGameInstanced mainData;
         public int day;
+        public bool isExtractWhenClaim = false;
     }
     public class ItemDailyGift : BaseItem<ItemDailyGiftInfo>
     {
