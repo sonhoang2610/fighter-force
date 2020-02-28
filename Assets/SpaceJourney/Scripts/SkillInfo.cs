@@ -50,7 +50,6 @@ namespace EazyEngine.Space
                 return duration.getUnit(CurrentLevel);
             }
         }
-
         public override float AnimationTime
         {
             get
@@ -58,8 +57,6 @@ namespace EazyEngine.Space
                 return animationTime.getUnit(CurrentLevel);
             }
         }
-
-
         public override string Desc {
             get {
                 var pStr = base.Desc;
@@ -86,8 +83,7 @@ namespace EazyEngine.Space
           
                 return pStr;
             }
-        }
-      
+        }     
         public int CurrentLevel { get => currentLevel;
             set {
                 currentLevel = value;

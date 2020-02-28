@@ -18,12 +18,12 @@ namespace EazyEngine.Space
                 {
                     if (value[i]._info.Info.isActive)
                     {
-                        if (value[i]._targetOwner.GetComponent<Character>()._info.CurrentLevel >= value[i]._info.requireLevelUnlock || GameManager.Instance.isFree)
+                        if (value[i]._info.CurrentLevelSkill > 0 || GameManager.Instance.isFree)
                             pData.Add(value[i]);
                     }
                     else
                     {
-                        if (value[i]._targetOwner.GetComponent<Character>()._info.CurrentLevel >= value[i]._info.requireLevelUnlock || GameManager.Instance.isFree)
+                        if (value[i]._info.CurrentLevelSkill > 0 || GameManager.Instance.isFree)
                         {
                             GameObject pOriginal = value[i]._targetOwner.transform.Find("DefaultDeactiveSkill").gameObject;
                             GameObject pControler = Instantiate(pOriginal, pOriginal.transform.parent);

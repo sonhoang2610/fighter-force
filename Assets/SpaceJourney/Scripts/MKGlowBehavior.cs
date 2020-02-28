@@ -6,19 +6,23 @@ using UnityEngine;
 
 public class MKGlowBehavior : MonoBehaviour
 {
-    protected int callBloom = 0;
+    public int countMarkDirty = 1;
+    protected int currentBloom = 0;
     private void OnEnable()
     {
-        callBloom++;
-        SceneManager.Instance.markDirtyBloomMK();
+        currentBloom+= countMarkDirty;
+        for (int i = 0; i < currentBloom; ++i)
+        {
+            SceneManager.Instance.markDirtyBloomMK();
+        }
     }
 
     private void OnDisable()
     {
-        for (int i = 0; i < callBloom; ++i)
+        for (int i = 0; i < currentBloom; ++i)
         {
             SceneManager.Instance?.removeDirtyBloomMK();
         }
-        callBloom = 0;
+        currentBloom = 0;
     }
 }

@@ -62,7 +62,7 @@ namespace EazyEngine.Space.UI
             desChoosedSkill.text = DataSource[index].info.Info.Desc;
             layerAbleUpgradeSkill.gameObject.SetActive(true);
 	        labelRequireLevel.gameObject.SetActive(false);
-            if (DataSource[index].info.CurrentLevelPlaneOwner <= 0 || DataSource[index].info.CurrentLevelSkill <= 0)
+            if (DataSource[index].info.CurrentLevelPlaneOwner <= 0 || DataSource[index].info.CurrentLevelPlaneOwner < owner.info.skills[index].requireLevelUnlock)
             {
                 layerAbleUpgradeSkill.gameObject.SetActive(false);
                 if(DataSource[index].info.CurrentLevelPlaneOwner < owner.info.skills[index].requireLevelUnlock)

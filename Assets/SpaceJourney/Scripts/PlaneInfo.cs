@@ -143,7 +143,7 @@ namespace EazyEngine.Space {
 
                 info.skills[i].CurrentLevelSkill = upgradeSkill.ContainsKey(info.skills[i].info.ItemID)
                     ? upgradeSkill[info.skills[i].info.ItemID]
-                    : (info.skills[i].isEnabled ? 1 : 0);
+                    : (info.skills[i].isEnabled ? 0 : 0);
             }
 
             for (int i = 0; i < info.currentAbility.Count; ++i)
@@ -170,7 +170,7 @@ namespace EazyEngine.Space {
                 info.setLevel(CurrentLevel);
                 for (int i = 0; i < info.skills.Count; ++i)
                 {
-                    info.skills[i].CurrentLevelSkill = upgradeSkill.ContainsKey(info.skills[i].info.ItemID) ? upgradeSkill[info.skills[i].info.ItemID] : (info.skills[i].isEnabled ? 1:0) ;
+                    info.skills[i].CurrentLevelSkill = upgradeSkill.ContainsKey(info.skills[i].info.ItemID) ? upgradeSkill[info.skills[i].info.ItemID] : (info.skills[i].isEnabled ? 0:0) ;
                 }
                 return info;
             }
@@ -199,7 +199,7 @@ namespace EazyEngine.Space {
                         {
                             if (info.skills[i].requireLevelUnlock <= value)
                             {
-                                upgradeSkill[info.skills[i].Info.ItemID] = 1;
+                                upgradeSkill[info.skills[i].Info.ItemID] = 0;
                             }
                         }
                     }
@@ -207,7 +207,7 @@ namespace EazyEngine.Space {
                     {
                         if (info.skills[i].requireLevelUnlock <= value)
                         {
-                            upgradeSkill.Add(info.skills[i].Info.ItemID, 1);
+                            upgradeSkill.Add(info.skills[i].Info.ItemID, 0);
                         }
                     }
                 }

@@ -101,7 +101,7 @@ namespace EazyEngine.Space.UI
                     {
                         pDatas.Add(new SkillInfoInstanced()
                         {
-                            currentLevel = value.UpgradeSkill[value.Info.skills[i].Info.ItemID] == 0 ? (value.Info.skills[i].isEnabled ? 1 : 0) : value.UpgradeSkill[value.Info.skills[i].Info.ItemID],
+                            currentLevel = value.UpgradeSkill[value.Info.skills[i].Info.ItemID] == 0 ? (value.Info.skills[i].isEnabled ? 0 : 0) : value.UpgradeSkill[value.Info.skills[i].Info.ItemID],
                             info = value.Info.skills[i],
                         });
                     }
@@ -109,11 +109,11 @@ namespace EazyEngine.Space.UI
                     {
                         SkillInfoInstanced pSkill = new SkillInfoInstanced()
                         {
-                            currentLevel = value.Info.skills[i].isEnabled ? 1 : 0,
+                            currentLevel = value.Info.skills[i].isEnabled ? 0 : 0,
                             info = value.Info.skills[i],
                         };
                         pDatas.Add(pSkill);
-                        value.UpgradeSkill.Add(value.Info.skills[i].Info.ItemID, value.Info.skills[i].isEnabled ? 1 : 0);
+                        value.UpgradeSkill.Add(value.Info.skills[i].Info.ItemID, value.Info.skills[i].isEnabled ? 0 : 0);
                     }
                 }
                 if (ischange)
