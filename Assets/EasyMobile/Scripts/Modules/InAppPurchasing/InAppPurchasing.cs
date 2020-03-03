@@ -239,7 +239,7 @@ namespace EasyMobile
                     sBuilder.Configure<IAmazonConfiguration>().WriteSandboxJSON(sBuilder.products);
                 }
             }
-
+        
             // Kick off the remainder of the set-up with an asynchrounous call, passing the configuration 
             // and this class' instance. Expect a response either in OnInitialized or OnInitializeFailed.
             UnityPurchasing.Initialize(sStoreListener, sBuilder);

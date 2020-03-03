@@ -33,12 +33,7 @@ public static class LoadAssets
         //T[] pObjectss = Resources.FindObjectsOfTypeAll<T>();
         //if(pObjectss.Length ==0 && !string.IsNullOrEmpty(pPathDefault))
         //{
-        if (SceneManager.Instance.isLocal || !Application.isPlaying)
-        {
-            T[] pObjectss = Resources.LoadAll<T>(pPathDefault);
-            return pObjectss;
-        }
-        else
+        if (!SceneManager.Instance.isLocal && Application.isPlaying)
         {
             var pListBundle = AssetBundle.GetAllLoadedAssetBundles();
             List<T> pAll = new List<T>();
@@ -50,17 +45,18 @@ public static class LoadAssets
                     pAll.AddRange(pObject);
                 }
             }
-            return pAll.ToArray();
+            if (pAll.Count > 0)
+            {
+                return pAll.ToArray();
+            }
         }
+        T[] pObjectss = Resources.LoadAll<T>(pPathDefault);
+        return pObjectss;
 
     }
     public static AsyncOperation loadAssetAsync<T>(string pName, string path = "") where T : UnityEngine.Object
     {
-        if (SceneManager.Instance.isLocal)
-        {
-            return Resources.LoadAsync<T>(path + pName);
-        }
-        else
+        if (!SceneManager.Instance.isLocal)
         {
             var pListBundle = AssetBundle.GetAllLoadedAssetBundles();
             foreach (var pBundle in pListBundle)
@@ -75,7 +71,7 @@ public static class LoadAssets
                 }
             }
         }
-        return null;
+        return Resources.LoadAsync<T>(path + pName);
     }
     public static bool tryGetRuntimeKey(this GameObject pAssetObject, out string pKey)
     {
@@ -108,21 +104,26 @@ public static class LoadAssets
                 cacheAssets.Remove(pName);
             }
         }
-        if (!Application.isPlaying || SceneManager.Instance.isLocal)
+        if (!SceneManager.Instance.isLocal && Application.isPlaying)
         {
-            T pObjectss = Resources.Load<T>(path + pName);
-            return pObjectss;
-        }
-        var pListBundle = AssetBundle.GetAllLoadedAssetBundles();
-        foreach (var pBundle in pListBundle)
-        {
-            var pObject = pBundle.LoadAsset<T>(pName);
-            if (pObject)
+            var pListBundle = AssetBundle.GetAllLoadedAssetBundles();
+            foreach (var pBundle in pListBundle)
             {
-                return pObject;
+                var pObject = pBundle.LoadAsset<T>(pName);
+                if (pObject)
+                {
+                    return pObject;
+                }
+            }
+            var pObjectFind = AssetBundle.FindObjectOfType<T>();
+            if (pObjectFind)
+            {
+                return pObjectFind;
             }
         }
-        return AssetBundle.FindObjectOfType<T>();
+        T pObjectss = Resources.Load<T>(path + pName);
+        return pObjectss;
+
     }
     public static T loadAssetPath<T>(string pName) where T : UnityEngine.Object
     {
@@ -494,6 +495,14 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             var pSke5 = gameObject.AddComponent<SkeletonRenderSeparator>();
         }
         LoadGame();
+        if (Database.idNotifySchedule.Count > 0)
+        {
+            foreach(var pNoti in Database.idNotifySchedule)
+            {
+                Notifications.CancelPendingLocalNotification(pNoti);
+            }
+            Database.idNotifySchedule.Clear();
+        }
         if (_databaseInstanced.spPlanes.Count > 0 && _databaseInstanced.planes.Count > 0)
         {
             SaveGameCache();
@@ -1145,7 +1154,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                         TopLayer.Instance.LoadingAds.gameObject.SetActive(false);
                         rewardAds[timeoutAds[i].placeMent.Name](ResultStatusAds.TimeOut);
                         rewardAds.Remove(timeoutAds[i].placeMent.Name);
-                  
+
                     }
                     timeoutAds.RemoveAt(i);
                 }
@@ -1273,7 +1282,6 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     // Unsubscribe when the game object is disabled
     void OnDisable()
     {
-
         //  
         InAppPurchasing.PurchaseCompleted -= PurchaseCompletedHandler;
         InAppPurchasing.PurchaseFailed -= PurchaseFailedHandler;
@@ -1283,9 +1291,46 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         InAppPurchasing.InitializeFailed -= initFailed;
         //  Notifications.PushTokenReceived-=TokenRecieved;
         EzEventManager.RemoveListener<GameDatabaseInventoryEvent>(this);
+
+
     }
-
-
+    float TimeScaleCache =1;
+    private void OnApplicationFocus(bool focus)
+    {
+        if (!focus)
+        {
+            AudioListener.pause = true;
+            TimeScaleCache = Time.timeScale;
+            Time.timeScale = 0;
+            Application.targetFrameRate = 10;
+            GameManager.Instance.Database.lastInGameTime = System.DateTime.Now;
+            var pContainer = DatabaseNotifyReward.Instance.container;
+            List<ItemNotifyReward> pNotifies = new List<ItemNotifyReward>();
+            pNotifies.AddRange(pContainer);
+            pNotifies.Sort((x1, x2) => x2.TimeAFK.CompareTo(x1.TimeAFK));
+            for (int i = 0; i < pNotifies.Count; ++i)
+            {
+                    NotificationContent content = PrepareNotificationContent(pNotifies[i]);
+                    TimeSpan delay = TimeSpan.FromSeconds(pNotifies[i].TimeAFK);
+                    GameManager.Instance.Database.idNotifySchedule.Add( Notifications.ScheduleLocalNotification(delay, content));
+            }
+            SaveGame();
+        }
+        else
+        {
+            if (Database.idNotifySchedule.Count > 0)
+            {
+                foreach (var pNoti in Database.idNotifySchedule)
+                {
+                    Notifications.CancelPendingLocalNotification(pNoti);
+                }
+                Database.idNotifySchedule.Clear();
+            }
+            Application.targetFrameRate = 60;
+            Time.timeScale = TimeScaleCache;
+            AudioListener.pause = false;
+        }
+    }
     void onRewardedAdComplete(RewardedAdNetwork pNetWork, AdPlacement placement)
     {
         GameManager.Instance.Database.collectionDailyInfo.watchADS++;
@@ -1305,7 +1350,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             rewardAds.Remove(placement.Name);
         }
     }
-    
+
     // Event handlers
     void OnUserLoginSucceeded()
     {
@@ -1349,13 +1394,41 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     {
         InAppPurchasing.Purchase(pID);
     }
-    private void OnApplicationPause(bool pause)
+    NotificationContent PrepareNotificationContent(ItemNotifyReward pItem)
     {
-        if (pause)
-        {
-            SaveGame();
-        }
+        NotificationContent content = new NotificationContent();
+
+        // Provide the notification title.
+        content.title = pItem.displayNameItem.Value;
+
+        //// You can optionally provide the notification subtitle, which is visible on iOS only.
+        //content.subtitle = pItem.descriptionItem.Value;
+
+        // Provide the notification message.
+        content.body = pItem.descriptionItem.Value;
+
+        // You can optionally attach custom user information to the notification
+        // in form of a key-value dictionary.
+        content.userInfo = new Dictionary<string, object>();
+        content.userInfo.Add("string", "OK");
+        content.userInfo.Add("number", 3);
+        content.userInfo.Add("bool", true);
+
+        // You can optionally assign this notification to a category using the category ID.
+        // If you don't specify any category, the default one will be used.
+        // Note that it's recommended to use the category ID constants from the EM_NotificationsConstants class
+        // if it has been generated before. In this example, UserCategory_notification_category_test is the
+        // generated constant of the category ID "notification.category.test".
+        content.categoryId = EM_NotificationsConstants.UserCategory_notification_category_callplayerback;
+        // If you want to use default small icon and large icon (on Android),
+        // don't set the smallIcon and largeIcon fields of the content.
+        // If you want to use custom icons instead, simply specify their names here (without file extensions).
+         // content.smallIcon = "YOUR_CUSTOM_SMALL_ICON";
+        //content.largeIcon = "YOUR_CUSTOM_LARGE_ICON";
+
+        return content;
     }
+
     private void Start()
     {
 
@@ -1450,6 +1523,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         int purchase = PlayerPrefs.GetInt("Purchase", 0);
         if (purchase == 0)
         {
+            Debug.Log("show Inter gamemanager");
             Advertising.ShowInterstitialAd();
         }
 

@@ -35,7 +35,6 @@ namespace EazyEngine.Space
         public int levelLaser = 0;
         public float maxLength = 30;
         public LaserLineElement[] lineElement;
-        public int damagePerSec =100;
         public bool Infinite = false;
         public System.Action<int,bool> onShootingLevel;
         public AudioGroupSelector sfxStart = AudioGroupConstrant.LaserStart, sfxLaser = AudioGroupConstrant.LaserMain1;

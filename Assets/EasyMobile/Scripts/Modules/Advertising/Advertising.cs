@@ -1076,7 +1076,7 @@ namespace EasyMobile
                 Debug.Log("Could not show interstitial ad: ads were disabled by RemoveAds().");
                 return;
             }
-                
+            Debug.Log("show Inter "+ placement.Name);
             client.ShowInterstitialAd(placement);
         }
 

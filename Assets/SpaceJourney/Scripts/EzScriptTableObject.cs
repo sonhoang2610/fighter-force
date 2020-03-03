@@ -30,6 +30,17 @@ namespace EazyEngine.Tools
         //    return false;
         //}
     }
+    public class EzScriptTableObjectSingleton<T> : EzScriptTableObject where T : EzScriptTableObjectSingleton<T>
+    {
+        protected static T _instance;
+        public static T Instance
+        {
+            get
+            {
+                return _instance ? _instance : _instance = LoadAssets.loadAsset<T>(typeof(T).ToString(), "Variants/Database/");
+            }
+        }
+    }
     [System.Serializable]
     public class EzScriptTableObject : SerializedScriptableObject
     {

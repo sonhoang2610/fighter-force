@@ -307,9 +307,15 @@ namespace EazyEngine.Space
         [HideInInspector]
         public System.DateTime lastOnline;
         [HideInInspector]
+        public System.DateTime lastInGameTime;
+        [HideInInspector]
+        public List<string> idNotifySchedule = new List<string>();
+        [HideInInspector]
         public System.DateTime lastGoldWheel;
         [HideInInspector]
         public System.DateTime firstOnline;
+        [HideInInspector]
+        public bool firstTimeGame = true;
         [HideInInspector]
         public int currentWheelToday = 0;
         [HideInInspector]

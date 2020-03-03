@@ -24,6 +24,7 @@ namespace EazyEngine.Space
         public string nameModule;
         public string nameDisplay; 
         public float sizeFile;
+        public bool disableDownload = false;
 
         private float percent;
         public float Percent { get => percent; set => percent = value; }

@@ -41,7 +41,7 @@ namespace EasyMobile.Internal.Notifications
 
             // Initialize native Android client, which may send some launch notification data during the process.
             AndroidNotificationNative._InitNativeClient(categoryGroupJson, categoriesJson, name, backgroundNotificationMethod, foregroundNotificationMethod);
-
+            Debug.Log("android notification initSuccess");
             mIsInitialized = true;
         }
 
@@ -64,6 +64,7 @@ namespace EasyMobile.Internal.Notifications
 
         public void ScheduleLocalNotification(string id, TimeSpan delay, NotificationContent content, NotificationRepeat repeat)
         {
+            Debug.Log("android notification schedule" + delay.ToString() + "id" + id);
             if (!mIsInitialized)
             {
                 Debug.Log("Please initialize first.");
