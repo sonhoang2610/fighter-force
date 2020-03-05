@@ -242,7 +242,11 @@ namespace DigitalRuby.ThunderAndLightning
 
         public void PreloadLightningBolts(ICollection<LightningBoltParameters> parameters)
         {
+            if (Camera == null)
+            {
 
+                Camera = Camera.main;
+            }
 #if UNITY_EDITOR
 
             if (Camera == null)

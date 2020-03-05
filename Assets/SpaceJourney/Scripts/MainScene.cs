@@ -27,41 +27,12 @@ namespace EazyEngine.Space.UI
         protected PlaneInfoConfig selectedPlane;
 
         protected List<string> stateGames = new List<string>();
-
        
         protected override void Awake()
         {
             base.Awake();
-            if (GameManager.Instance.Database.firstTimeGame)
-            {
-                GameManager.Instance.Database.firstTimeGame = false;
-                GameManager.Instance.Database.lastInGameTime = System.DateTime.Now;
-            }
-            ExtraPackageDatabase.Instance.initIAPProduct();
-            var pContainer = DatabaseNotifyReward.Instance.container;
-            List<ItemNotifyReward> pNotifies = new List<ItemNotifyReward>();
-            pNotifies.AddRange(pContainer);
-            pNotifies.Sort((x1, x2) => x2.TimeAFK.CompareTo(x1.TimeAFK));
-            for(int i = 0; i < pNotifies.Count; ++i)
-            {
-              var pAFKTime =  (System.DateTime.Now - GameManager.Instance.Database.lastInGameTime).TotalSeconds;
-                    if(pAFKTime >= pNotifies[i].TimeAFK)
-                    {
-                        GameManager.Instance.Database.lastInGameTime = System.DateTime.Now;
-                        var pItems = pNotifies[i].ExtractHere(true);
-                        for (int j = 0; j < pItems.Length; ++j)
-                        {
-                            var pStorage = GameManager.Instance.Database.getComonItem(pItems[j].item);
-                            pStorage.Quantity += pItems[j].Quantity;
-                        }
-                        TopLayer.Instance.boxReward.show();
+           
 
-                        EzEventManager.TriggerEvent(new RewardEvent() { item = new BaseItemGameInstanced() { item = pNotifies[i], quantity = 1 } });
-                        GameManager.Instance.SaveGame();
-                        break;
-                    }
-                
-            }
             downResolution();
             if (layerPrepare)
             {

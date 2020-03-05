@@ -9,7 +9,7 @@ namespace EazyEngine.Space.UI
         {
             base.OnEnable();
             var pInfo = MissionContainer.Instance.Info;
-            DataSource = pInfo.mainMission.missions.ToObservableList();
+            DataSource = pInfo.mainMission.Missions.ToObservableList();
             GetComponentInChildren<UIScrollView>().ResetPosition();
         }
         // Start is called before the first frame update

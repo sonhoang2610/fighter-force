@@ -18,9 +18,12 @@ namespace EazyEngine.Space
         public Dictionary<string, List<LayerExtraPackage>> registerLayer = new Dictionary<string, List<LayerExtraPackage>>();
         [System.NonSerialized]
         public List<LayerExtraPackage> waitLayer = new List<LayerExtraPackage>();
+        [System.NonSerialized]
+        public bool isInit = false;
         public void initIAPProduct()
         {
-            for(int i = 0; i < combos.Length; ++i)
+            isInit = true;
+            for (int i = 0; i < combos.Length; ++i)
             {
                 if((System.DateTime.Now - TimeExtension.UnixTimeStampToDateTime(combos[i].startTime)).TotalSeconds < combos[i].timeExp)
                 {
@@ -32,6 +35,7 @@ namespace EazyEngine.Space
         public void loadInfoFromCombo(ComboPackage pCombo)
         {
             registerLayer.Add(pCombo.itemID, new List<LayerExtraPackage>());
+     
             var hashset = new HashSet<ProductDefinition>();
             hashset.Add(new ProductDefinition(pCombo.ItemID.ToLower(), ProductType.NonConsumable));
             InAppPurchasing.StoreController.FetchAdditionalProducts(hashset, () =>

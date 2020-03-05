@@ -314,8 +314,8 @@ namespace EazyEngine.Space
         public System.DateTime lastGoldWheel;
         [HideInInspector]
         public System.DateTime firstOnline;
-        [HideInInspector]
-        public bool firstTimeGame = true;
+        //[HideInInspector]
+        public int firstTimeGame = 0;
         [HideInInspector]
         public int currentWheelToday = 0;
         [HideInInspector]
@@ -469,6 +469,15 @@ namespace EazyEngine.Space
                 selectedSupportPlane2 = value;
             }
         }
+
+        public List<string> IdNotifySchedule { get {
+                if(idNotifySchedule == null)
+                {
+                    idNotifySchedule = new List<string>();
+                }
+                return idNotifySchedule;
+                    } set => idNotifySchedule = value; }
+
         public PlaneInfoConfig getPlane(string pID)
         {
             for(int i = 0; i < planes.Count; ++i)

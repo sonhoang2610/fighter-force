@@ -20,7 +20,7 @@ namespace EazyEngine.Space.UI
             bool showNoti = false;
             if (moduleDaily)
             {
-                var pAllMissionDaily = GameManager.Instance.Database.missionContainerInfo.dailyMission.missionProcessing.missions;
+                var pAllMissionDaily = GameManager.Instance.Database.missionContainerInfo.dailyMission.missionProcessing.Missions;
                 foreach (var pMission in pAllMissionDaily)
                 {
                     if (pMission.process >= 1 && !pMission.Claimed)
@@ -32,7 +32,7 @@ namespace EazyEngine.Space.UI
             }
             if (moduleAchievement)
             {
-                var pAllMissionMain = GameManager.Instance.Database.missionContainerInfo.mainMission.missions;
+                var pAllMissionMain = GameManager.Instance.Database.missionContainerInfo.mainMission.Missions;
                 foreach (var pMission in pAllMissionMain)
                 {
                     if (pMission.process >= 1 && !pMission.Claimed)

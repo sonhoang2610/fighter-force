@@ -24,8 +24,16 @@ namespace EazyEngine.Space
         public int weight;
         [OdinSerialize,System.NonSerialized]
         public Dictionary<string, object> VariableDict = new Dictionary<string, object>();
-        [ListDrawerSettings(AddCopiesLastElement =true)]
+        [ListDrawerSettings(AddCopiesLastElement = true)]
         public MissionItemInstanced[] missions;
+
+        public MissionItemInstanced[] Missions { get {
+                if(missions == null)
+                {
+                    missions = new MissionItemInstanced[0];
+                }
+                return missions;
+            } set => missions = value; }
     }
 
     public struct MissionEvent
@@ -144,7 +152,7 @@ namespace EazyEngine.Space
             Info.dailyMission.missionProcessing = currentMissionModule;
             currentMissionModule = Info.mainMission;
             defaultMissionModule = database.achievements;
-            if (currentMissionModule == null || currentMissionModule.missions == null)
+            if (currentMissionModule == null || currentMissionModule.Missions == null)
             {
                 currentMissionModule = defaultMissionModule.CloneData();
             }
@@ -163,20 +171,20 @@ namespace EazyEngine.Space
         {
             bool dirty = false;
        
-            for (int i = 0; i < defaultMissionModule.missions.Length; ++i)
+            for (int i = 0; i < defaultMissionModule.Missions.Length; ++i)
             {
-                var pDefaultMission = defaultMissionModule.missions[i];
-                var pMission = System.Array.Find(currentMissionModule.missions, x => x.mission.ItemID == defaultMissionModule.missions[i].mission.ItemID);
+                var pDefaultMission = defaultMissionModule.Missions[i];
+                var pMission = System.Array.Find(currentMissionModule.Missions, x => x.mission.ItemID == defaultMissionModule.Missions[i].mission.ItemID);
                 if (pMission == null)
                 {
-                    System.Array.Resize(ref currentMissionModule.missions, currentMissionModule.missions.Length + 1);
+                    System.Array.Resize(ref currentMissionModule.missions, currentMissionModule.Missions.Length + 1);
                     pMission = new MissionItemInstanced()
                     {
                         mission = pDefaultMission.mission,
                         Process = 0,
                         rewards = pDefaultMission.rewards
                     };
-                    currentMissionModule.missions[currentMissionModule.missions.Length - 1] = pMission;
+                    currentMissionModule.Missions[currentMissionModule.Missions.Length - 1] = pMission;
                     dirty = true;
                 }
                 else
@@ -187,20 +195,20 @@ namespace EazyEngine.Space
                 pMission.limitLevel = pDefaultMission.limitLevel;
                 pMission.VariableDict = pDefaultMission.VariableDict;
             }
-            List<MissionItemInstanced> pTempMission = new List<MissionItemInstanced>(currentMissionModule.missions);
+            List<MissionItemInstanced> pTempMission = new List<MissionItemInstanced>(currentMissionModule.Missions);
             for (int i = pTempMission.Count - 1; i >= 0; --i)
             {
-                var pMission = System.Array.Find(defaultMissionModule.missions, x => x.mission.itemID == pTempMission[i].mission.ItemID);
+                var pMission = System.Array.Find(defaultMissionModule.Missions, x => x.mission.itemID == pTempMission[i].mission.ItemID);
                 if (pMission == null)
                 {
                     pTempMission.RemoveAt(i);
                     dirty = true;
                 }
             }
-            currentMissionModule.missions = pTempMission.ToArray();
-            for (int i = currentMissionModule.missions.Length - 1; i >= 0; --i)
+            currentMissionModule.Missions = pTempMission.ToArray();
+            for (int i = currentMissionModule.Missions.Length - 1; i >= 0; --i)
             {
-                excuteMission(currentMissionModule.missions[i], currentMissionModule.IDMission);
+                excuteMission(currentMissionModule.Missions[i], currentMissionModule.IDMission);
             }
             return dirty;
         }

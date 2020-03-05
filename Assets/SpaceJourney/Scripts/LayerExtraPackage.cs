@@ -7,8 +7,6 @@ namespace EazyEngine.Space
 {
     public class LayerExtraPackage : MonoBehaviour
     {
-
-
         public string layerID;
 
         private void OnEnable()

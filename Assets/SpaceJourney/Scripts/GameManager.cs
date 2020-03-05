@@ -495,13 +495,43 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             var pSke5 = gameObject.AddComponent<SkeletonRenderSeparator>();
         }
         LoadGame();
-        if (Database.idNotifySchedule.Count > 0)
+        if (GameManager.Instance.Database.firstTimeGame == 0)
         {
-            foreach(var pNoti in Database.idNotifySchedule)
+            GameManager.Instance.Database.lastInGameTime = System.DateTime.Now;
+        }
+        GameManager.Instance.Database.firstTimeGame++;
+        ExtraPackageDatabase.Instance.initIAPProduct();
+        var pContainer = DatabaseNotifyReward.Instance.container;
+        List<ItemNotifyReward> pNotifies = new List<ItemNotifyReward>();
+        pNotifies.AddRange(pContainer);
+        pNotifies.Sort((x1, x2) => x2.TimeAFK.CompareTo(x1.TimeAFK));
+        for (int i = 0; i < pNotifies.Count; ++i)
+        {
+            var pAFKTime = (System.DateTime.Now - GameManager.Instance.Database.lastInGameTime).TotalSeconds;
+            if (pAFKTime >= pNotifies[i].TimeAFK)
+            {
+                GameManager.Instance.Database.lastInGameTime = System.DateTime.Now;
+                var pItems = pNotifies[i].ExtractHere(true);
+                for (int j = 0; j < pItems.Length; ++j)
+                {
+                    var pStorage = GameManager.Instance.Database.getComonItem(pItems[j].item);
+                    pStorage.Quantity += pItems[j].Quantity;
+                }
+                TopLayer.Instance.boxReward.show();
+
+                EzEventManager.TriggerEvent(new RewardEvent() { item = new BaseItemGameInstanced() { item = pNotifies[i], quantity = 1 } });
+                GameManager.Instance.SaveGame();
+                break;
+            }
+
+        }
+        if (Database.IdNotifySchedule.Count > 0)
+        {
+            foreach(var pNoti in Database.IdNotifySchedule)
             {
                 Notifications.CancelPendingLocalNotification(pNoti);
             }
-            Database.idNotifySchedule.Clear();
+            Database.IdNotifySchedule.Clear();
         }
         if (_databaseInstanced.spPlanes.Count > 0 && _databaseInstanced.planes.Count > 0)
         {
@@ -536,8 +566,22 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         }
     }
     bool first = true;
+    float checkAds = 3;
     private void LateUpdate()
     {
+        if(checkAds > 0)
+        {
+            checkAds -= Time.deltaTime;
+            if(checkAds <= 0)
+            {
+                if (!Advertising.IsInterstitialAdReady())
+                {
+                    Advertising.LoadInterstitialAd();
+                    checkAds = 3;
+                }
+            }       
+        }
+   
         if (first)
         {
             initGame();
@@ -1312,19 +1356,19 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             {
                     NotificationContent content = PrepareNotificationContent(pNotifies[i]);
                     TimeSpan delay = TimeSpan.FromSeconds(pNotifies[i].TimeAFK);
-                    GameManager.Instance.Database.idNotifySchedule.Add( Notifications.ScheduleLocalNotification(delay, content));
+                    GameManager.Instance.Database.IdNotifySchedule.Add( Notifications.ScheduleLocalNotification(delay, content));
             }
             SaveGame();
         }
         else
         {
-            if (Database.idNotifySchedule.Count > 0)
+            if (Database.IdNotifySchedule.Count > 0)
             {
-                foreach (var pNoti in Database.idNotifySchedule)
+                foreach (var pNoti in Database.IdNotifySchedule)
                 {
                     Notifications.CancelPendingLocalNotification(pNoti);
                 }
-                Database.idNotifySchedule.Clear();
+                Database.IdNotifySchedule.Clear();
             }
             Application.targetFrameRate = 60;
             Time.timeScale = TimeScaleCache;

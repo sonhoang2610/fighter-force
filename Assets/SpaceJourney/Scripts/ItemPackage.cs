@@ -43,13 +43,18 @@ namespace EazyEngine.Space
         public Vector2 quantity = new Vector2(1, 1);
         public float percent;
     }
+    public enum ExtraType
+    {
+        Random,
+        Queue,
+    }
     public class ItemPackage : BaseItemGame, IExtractItem
     {
 
         public bool alwayExtras = false;
         public ItemRateDropInfo[] items;
         public Vector2 randomQuantity = new Vector2(1, 1);
-
+        public ExtraType extraType;
         public bool alwayExtra()
         {
             return alwayExtras;
@@ -121,49 +126,83 @@ namespace EazyEngine.Space
                 return cacheExtra;
             }
             List<BaseItemGameInstanced> pItemResult = new List<BaseItemGameInstanced>();
-            int pCount = Random.Range((int)randomQuantity.x, (int)randomQuantity.y+1);
-            do
+            int pCount = Random.Range((int)randomQuantity.x, (int)randomQuantity.y == 0 ? ((int)randomQuantity.y + 1) : (int)randomQuantity.y);
+            if (extraType == ExtraType.Random)
             {
-                List<ItemRateDropInfo> pItems = new List<ItemRateDropInfo>();
-                pItems.AddRange(items);
-                int pRandom = Random.Range(0, 100);
-                int pCurrent = 0;
-                int indexBreak = 0;
-                while (true)
+                do
                 {
-                    if (pCurrent >= 100 || pItems.Count == 0)
+                    List<ItemRateDropInfo> pItems = new List<ItemRateDropInfo>();
+                    pItems.AddRange(items);
+                    int pRandom = Random.Range(0, 100);
+                    int pCurrent = 0;
+                    int indexBreak = 0;
+                    while (true)
                     {
-                        break;
-                    }
-	                int index = Random.Range(0, pItems.Count);
-	                if(index >= pItems.Count){
-	                	continue;
-	                }
-                    pCurrent += (int)pItems[index].percent;
-                    if (pRandom <= pCurrent)
-                    {
-                        if (!typeof(IExtractItem).IsAssignableFrom(pItems[index].item.GetType()) || !((IExtractItem)pItems[index].item).alwayExtra())
+                        if (pCurrent >= 100 || pItems.Count == 0)
                         {
-                            pItemResult.Add(new BaseItemGameInstanced() { item = pItems[index].item, quantity = Random.Range((int)pItems[index].quantity.x, (int)pItems[index].quantity.y + 1) });
+                            break;
+                        }
+                        int index = Random.Range(0, pItems.Count);
+                        if (index >= pItems.Count)
+                        {
+                            continue;
+                        }
+                        pCurrent += (int)pItems[index].percent;
+                        if (pRandom <= pCurrent)
+                        {
+                            if (!typeof(IExtractItem).IsAssignableFrom(pItems[index].item.GetType()) || !((IExtractItem)pItems[index].item).alwayExtra())
+                            {
+                                pItemResult.Add(new BaseItemGameInstanced() { item = pItems[index].item, quantity = Random.Range((int)pItems[index].quantity.x, (int)pItems[index].quantity.y + 1) });
+                            }
+                            else
+                            {
+                                pItemResult.AddRange(((IExtractItem)pItems[index].item).ExtractHere());
+                            }
+                            break;
                         }
                         else
                         {
-                            pItemResult.AddRange(((IExtractItem)pItems[index].item).ExtractHere());
+                            pItems.RemoveAt(index);
                         }
-                        break;
+                        indexBreak++;
+                        if (indexBreak > 1000000)
+                        {
+                            break;
+                        }
                     }
-                    else
+                    pCount--;
+                } while (pCount > 0);
+            }
+            else
+            {
+                int indexQueue = 0;
+                for(int i = 0; i < pCount; ++i)
+                {
+                    int percent = Random.Range(0, 100);
+                    if(percent < items[indexQueue].percent)
                     {
-                        pItems.RemoveAt(index);
-                    }
-                    indexBreak++;
-                    if (indexBreak > 1000000)
-                    {
-                        break;
+                        var pQuantity = Random.Range((int)items[indexQueue].quantity.x, (int)items[indexQueue].quantity.y);
+                        if (!typeof(IExtractItem).IsAssignableFrom(items[indexQueue].item.GetType()) || !((IExtractItem)items[indexQueue].item).alwayExtra())
+                        {
+                            pItemResult.Add(new BaseItemGameInstanced()
+                            {
+                                item = items[indexQueue].item,
+                                quantity = pQuantity
+                            });
+                        }
+                        else
+                        {
+                            pItemResult.AddRange(((IExtractItem)items[indexQueue].item).ExtractHere());
+                        }
+                 
+                        indexQueue++;
+                        if(indexQueue >= items.Length)
+                        {
+                            indexQueue = 0;
+                        }
                     }
                 }
-                pCount--;
-            } while (pCount > 0);
+            }
             cacheExtra = pItemResult.ToArray();
            return pItemResult.ToArray();
         }

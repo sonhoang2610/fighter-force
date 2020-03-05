@@ -37,7 +37,7 @@ namespace EazyEngine.Tools
         {
             get
             {
-                return _instance ? _instance : _instance = LoadAssets.loadAsset<T>(typeof(T).ToString(), "Variants/Database/");
+                return _instance ? _instance : _instance = LoadAssets.loadAsset<T>(typeof(T).Name.ToString(), "Variants/Database/");
             }
         }
     }

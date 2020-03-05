@@ -264,13 +264,13 @@ namespace EazyEngine.Space.UI
                     int pStepGame = PlayerPrefs.GetInt("firstGame", 0);
                     if (pStepGame >= 3 && pStepGame < 5)
                     {
-                        EzEventManager.TriggerEvent(new GuideEvent("FirstUpgrade" + (pStepGame - 2).ToString()));
+                        //EzEventManager.TriggerEvent(new GuideEvent("FirstUpgrade" + (pStepGame - 2).ToString()));
                         pStepGame++;
                         PlayerPrefs.SetInt("firstGame", pStepGame);
                     }
                      else if (pStepGame == 5)
                     {
-                        EzEventManager.TriggerEvent(new GuideEvent("FirstUpgradeSuccess"));
+                       // EzEventManager.TriggerEvent(new GuideEvent("FirstUpgradeSuccess"));
                         pStepGame++;
                         PlayerPrefs.SetInt("firstGame", pStepGame);
                     }
@@ -448,7 +448,7 @@ namespace EazyEngine.Space.UI
                 if (pStepGame == 2)
                 {
                     PlayerPrefs.SetInt("firstGame", 3);
-                    EzEventManager.TriggerEvent(new GuideEvent("FirstUpgrade"));
+                  //  EzEventManager.TriggerEvent(new GuideEvent("FirstUpgrade"));
                 }
             }));
 
