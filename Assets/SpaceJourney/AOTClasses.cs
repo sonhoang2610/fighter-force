@@ -29,11 +29,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_BinderConnection_EazyEngine_Space_DamageExtra : FlowCanvas.BinderConnection<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_BinderConnection_EazyEngine_Space_DamageExtraVariant : FlowCanvas.BinderConnection<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_BinderConnection_EazyEngine_Space_DamageGivenEvent : FlowCanvas.BinderConnection<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_BinderConnection_EazyEngine_Space_EventResultShowPackage : FlowCanvas.BinderConnection<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_BinderConnection_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.BinderConnection<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_BinderConnection_EazyEngine_Space_PackageInfo : FlowCanvas.BinderConnection<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_BinderConnection_EazyEngine_Space_PickEvent : FlowCanvas.BinderConnection<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_BinderConnection_EazyEngine_Space_StatusPackage : FlowCanvas.BinderConnection<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_BinderConnection_EazyEngine_Space_TriggerWeaponState : FlowCanvas.BinderConnection<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_BinderConnection_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.BinderConnection<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_BinderConnection_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.BinderConnection<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_BinderConnection_System_DateTime : FlowCanvas.BinderConnection<System.DateTime>{}
+		class FlowCanvas_BinderConnection_System_Double : FlowCanvas.BinderConnection<System.Double>{}
+		class FlowCanvas_BinderConnection_System_TimeSpan : FlowCanvas.BinderConnection<System.TimeSpan>{}
 		class FlowCanvas_BinderConnection_UnityEngine_LayerMask : FlowCanvas.BinderConnection<UnityEngine.LayerMask>{}
 		class FlowCanvas_BinderConnection_UnityEngine_Animations_ConstraintSource : FlowCanvas.BinderConnection<UnityEngine.Animations.ConstraintSource>{}
 
@@ -61,11 +67,17 @@ namespace ParadoxNotion.Internal{
 			FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtra> _FlowCanvas_ValueHandler_EazyEngine_Space_DamageExtra = default(FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtra>);
 			FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtraVariant> _FlowCanvas_ValueHandler_EazyEngine_Space_DamageExtraVariant = default(FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtraVariant>);
 			FlowCanvas.ValueHandler<EazyEngine.Space.DamageGivenEvent> _FlowCanvas_ValueHandler_EazyEngine_Space_DamageGivenEvent = default(FlowCanvas.ValueHandler<EazyEngine.Space.DamageGivenEvent>);
+			FlowCanvas.ValueHandler<EazyEngine.Space.EventResultShowPackage> _FlowCanvas_ValueHandler_EazyEngine_Space_EventResultShowPackage = default(FlowCanvas.ValueHandler<EazyEngine.Space.EventResultShowPackage>);
 			FlowCanvas.ValueHandler<EazyEngine.Space.GameDatabaseInventoryEvent> _FlowCanvas_ValueHandler_EazyEngine_Space_GameDatabaseInventoryEvent = default(FlowCanvas.ValueHandler<EazyEngine.Space.GameDatabaseInventoryEvent>);
+			FlowCanvas.ValueHandler<EazyEngine.Space.PackageInfo> _FlowCanvas_ValueHandler_EazyEngine_Space_PackageInfo = default(FlowCanvas.ValueHandler<EazyEngine.Space.PackageInfo>);
 			FlowCanvas.ValueHandler<EazyEngine.Space.PickEvent> _FlowCanvas_ValueHandler_EazyEngine_Space_PickEvent = default(FlowCanvas.ValueHandler<EazyEngine.Space.PickEvent>);
+			FlowCanvas.ValueHandler<EazyEngine.Space.StatusPackage> _FlowCanvas_ValueHandler_EazyEngine_Space_StatusPackage = default(FlowCanvas.ValueHandler<EazyEngine.Space.StatusPackage>);
 			FlowCanvas.ValueHandler<EazyEngine.Space.TriggerWeaponState> _FlowCanvas_ValueHandler_EazyEngine_Space_TriggerWeaponState = default(FlowCanvas.ValueHandler<EazyEngine.Space.TriggerWeaponState>);
 			FlowCanvas.ValueHandler<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride> _FlowCanvas_ValueHandler_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride = default(FlowCanvas.ValueHandler<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>);
 			FlowCanvas.ValueHandler<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride> _FlowCanvas_ValueHandler_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride = default(FlowCanvas.ValueHandler<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>);
+			FlowCanvas.ValueHandler<System.DateTime> _FlowCanvas_ValueHandler_System_DateTime = default(FlowCanvas.ValueHandler<System.DateTime>);
+			FlowCanvas.ValueHandler<System.Double> _FlowCanvas_ValueHandler_System_Double = default(FlowCanvas.ValueHandler<System.Double>);
+			FlowCanvas.ValueHandler<System.TimeSpan> _FlowCanvas_ValueHandler_System_TimeSpan = default(FlowCanvas.ValueHandler<System.TimeSpan>);
 			FlowCanvas.ValueHandler<UnityEngine.LayerMask> _FlowCanvas_ValueHandler_UnityEngine_LayerMask = default(FlowCanvas.ValueHandler<UnityEngine.LayerMask>);
 			FlowCanvas.ValueHandler<UnityEngine.Animations.ConstraintSource> _FlowCanvas_ValueHandler_UnityEngine_Animations_ConstraintSource = default(FlowCanvas.ValueHandler<UnityEngine.Animations.ConstraintSource>);
 		}
@@ -93,11 +105,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_ValueInput_EazyEngine_Space_DamageExtra : FlowCanvas.ValueInput<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_ValueInput_EazyEngine_Space_DamageExtraVariant : FlowCanvas.ValueInput<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_ValueInput_EazyEngine_Space_DamageGivenEvent : FlowCanvas.ValueInput<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_ValueInput_EazyEngine_Space_EventResultShowPackage : FlowCanvas.ValueInput<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_ValueInput_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.ValueInput<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_ValueInput_EazyEngine_Space_PackageInfo : FlowCanvas.ValueInput<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_ValueInput_EazyEngine_Space_PickEvent : FlowCanvas.ValueInput<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_ValueInput_EazyEngine_Space_StatusPackage : FlowCanvas.ValueInput<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_ValueInput_EazyEngine_Space_TriggerWeaponState : FlowCanvas.ValueInput<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_ValueInput_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.ValueInput<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_ValueInput_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.ValueInput<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_ValueInput_System_DateTime : FlowCanvas.ValueInput<System.DateTime>{}
+		class FlowCanvas_ValueInput_System_Double : FlowCanvas.ValueInput<System.Double>{}
+		class FlowCanvas_ValueInput_System_TimeSpan : FlowCanvas.ValueInput<System.TimeSpan>{}
 		class FlowCanvas_ValueInput_UnityEngine_LayerMask : FlowCanvas.ValueInput<UnityEngine.LayerMask>{}
 		class FlowCanvas_ValueInput_UnityEngine_Animations_ConstraintSource : FlowCanvas.ValueInput<UnityEngine.Animations.ConstraintSource>{}
 
@@ -124,11 +142,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_ValueOutput_EazyEngine_Space_DamageExtra : FlowCanvas.ValueOutput<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_ValueOutput_EazyEngine_Space_DamageExtraVariant : FlowCanvas.ValueOutput<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_ValueOutput_EazyEngine_Space_DamageGivenEvent : FlowCanvas.ValueOutput<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_ValueOutput_EazyEngine_Space_EventResultShowPackage : FlowCanvas.ValueOutput<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_ValueOutput_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.ValueOutput<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_ValueOutput_EazyEngine_Space_PackageInfo : FlowCanvas.ValueOutput<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_ValueOutput_EazyEngine_Space_PickEvent : FlowCanvas.ValueOutput<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_ValueOutput_EazyEngine_Space_StatusPackage : FlowCanvas.ValueOutput<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_ValueOutput_EazyEngine_Space_TriggerWeaponState : FlowCanvas.ValueOutput<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_ValueOutput_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.ValueOutput<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_ValueOutput_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.ValueOutput<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_ValueOutput_System_DateTime : FlowCanvas.ValueOutput<System.DateTime>{}
+		class FlowCanvas_ValueOutput_System_Double : FlowCanvas.ValueOutput<System.Double>{}
+		class FlowCanvas_ValueOutput_System_TimeSpan : FlowCanvas.ValueOutput<System.TimeSpan>{}
 		class FlowCanvas_ValueOutput_UnityEngine_LayerMask : FlowCanvas.ValueOutput<UnityEngine.LayerMask>{}
 		class FlowCanvas_ValueOutput_UnityEngine_Animations_ConstraintSource : FlowCanvas.ValueOutput<UnityEngine.Animations.ConstraintSource>{}
 
@@ -155,11 +179,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_AddDictionaryItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.AddDictionaryItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_AddDictionaryItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.AddDictionaryItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_AddDictionaryItem_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.AddDictionaryItem<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_AddDictionaryItem_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.AddDictionaryItem<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_AddDictionaryItem_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.AddDictionaryItem<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_AddDictionaryItem_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.AddDictionaryItem<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_AddDictionaryItem_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.AddDictionaryItem<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_AddDictionaryItem_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.AddDictionaryItem<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_AddDictionaryItem_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.AddDictionaryItem<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_AddDictionaryItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.AddDictionaryItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_AddDictionaryItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.AddDictionaryItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_AddDictionaryItem_System_DateTime : FlowCanvas.Nodes.AddDictionaryItem<System.DateTime>{}
+		class FlowCanvas_Nodes_AddDictionaryItem_System_Double : FlowCanvas.Nodes.AddDictionaryItem<System.Double>{}
+		class FlowCanvas_Nodes_AddDictionaryItem_System_TimeSpan : FlowCanvas.Nodes.AddDictionaryItem<System.TimeSpan>{}
 		class FlowCanvas_Nodes_AddDictionaryItem_UnityEngine_LayerMask : FlowCanvas.Nodes.AddDictionaryItem<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_AddDictionaryItem_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.AddDictionaryItem<UnityEngine.Animations.ConstraintSource>{}
 
@@ -186,11 +216,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_AddListItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.AddListItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_AddListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.AddListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_AddListItem_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.AddListItem<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_AddListItem_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.AddListItem<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_AddListItem_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.AddListItem<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_AddListItem_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.AddListItem<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_AddListItem_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.AddListItem<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_AddListItem_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.AddListItem<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_AddListItem_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.AddListItem<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_AddListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.AddListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_AddListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.AddListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_AddListItem_System_DateTime : FlowCanvas.Nodes.AddListItem<System.DateTime>{}
+		class FlowCanvas_Nodes_AddListItem_System_Double : FlowCanvas.Nodes.AddListItem<System.Double>{}
+		class FlowCanvas_Nodes_AddListItem_System_TimeSpan : FlowCanvas.Nodes.AddListItem<System.TimeSpan>{}
 		class FlowCanvas_Nodes_AddListItem_UnityEngine_LayerMask : FlowCanvas.Nodes.AddListItem<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_AddListItem_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.AddListItem<UnityEngine.Animations.ConstraintSource>{}
 
@@ -217,11 +253,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_Buffer_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.Buffer<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_Buffer_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.Buffer<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_Buffer_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.Buffer<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_Buffer_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.Buffer<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_Buffer_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.Buffer<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_Buffer_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.Buffer<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_Buffer_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.Buffer<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_Buffer_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.Buffer<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_Buffer_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.Buffer<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_Buffer_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.Buffer<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_Buffer_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.Buffer<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_Buffer_System_DateTime : FlowCanvas.Nodes.Buffer<System.DateTime>{}
+		class FlowCanvas_Nodes_Buffer_System_Double : FlowCanvas.Nodes.Buffer<System.Double>{}
+		class FlowCanvas_Nodes_Buffer_System_TimeSpan : FlowCanvas.Nodes.Buffer<System.TimeSpan>{}
 		class FlowCanvas_Nodes_Buffer_UnityEngine_LayerMask : FlowCanvas.Nodes.Buffer<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_Buffer_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.Buffer<UnityEngine.Animations.ConstraintSource>{}
 
@@ -248,11 +290,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_Cache_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.Cache<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_Cache_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.Cache<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_Cache_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.Cache<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_Cache_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.Cache<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_Cache_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.Cache<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_Cache_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.Cache<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_Cache_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.Cache<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_Cache_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.Cache<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_Cache_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.Cache<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_Cache_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.Cache<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_Cache_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.Cache<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_Cache_System_DateTime : FlowCanvas.Nodes.Cache<System.DateTime>{}
+		class FlowCanvas_Nodes_Cache_System_Double : FlowCanvas.Nodes.Cache<System.Double>{}
+		class FlowCanvas_Nodes_Cache_System_TimeSpan : FlowCanvas.Nodes.Cache<System.TimeSpan>{}
 		class FlowCanvas_Nodes_Cache_UnityEngine_LayerMask : FlowCanvas.Nodes.Cache<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_Cache_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.Cache<UnityEngine.Animations.ConstraintSource>{}
 
@@ -279,13 +327,93 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_Cast_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.Cast<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_Cast_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.Cast<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_Cast_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.Cast<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_Cast_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.Cast<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_Cast_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.Cast<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_Cast_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.Cast<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_Cast_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.Cast<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_Cast_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.Cast<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_Cast_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.Cast<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_Cast_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.Cast<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_Cast_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.Cast<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_Cast_System_DateTime : FlowCanvas.Nodes.Cast<System.DateTime>{}
+		class FlowCanvas_Nodes_Cast_System_Double : FlowCanvas.Nodes.Cast<System.Double>{}
+		class FlowCanvas_Nodes_Cast_System_TimeSpan : FlowCanvas.Nodes.Cast<System.TimeSpan>{}
 		class FlowCanvas_Nodes_Cast_UnityEngine_LayerMask : FlowCanvas.Nodes.Cast<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_Cast_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.Cast<UnityEngine.Animations.ConstraintSource>{}
+
+		class FlowCanvas_Nodes_CastTo_System_Boolean : FlowCanvas.Nodes.CastTo<System.Boolean>{}
+		class FlowCanvas_Nodes_CastTo_System_Single : FlowCanvas.Nodes.CastTo<System.Single>{}
+		class FlowCanvas_Nodes_CastTo_System_Int32 : FlowCanvas.Nodes.CastTo<System.Int32>{}
+		class FlowCanvas_Nodes_CastTo_UnityEngine_Vector2 : FlowCanvas.Nodes.CastTo<UnityEngine.Vector2>{}
+		class FlowCanvas_Nodes_CastTo_UnityEngine_Vector3 : FlowCanvas.Nodes.CastTo<UnityEngine.Vector3>{}
+		class FlowCanvas_Nodes_CastTo_UnityEngine_Vector4 : FlowCanvas.Nodes.CastTo<UnityEngine.Vector4>{}
+		class FlowCanvas_Nodes_CastTo_UnityEngine_Quaternion : FlowCanvas.Nodes.CastTo<UnityEngine.Quaternion>{}
+		class FlowCanvas_Nodes_CastTo_UnityEngine_Keyframe : FlowCanvas.Nodes.CastTo<UnityEngine.Keyframe>{}
+		class FlowCanvas_Nodes_CastTo_UnityEngine_Bounds : FlowCanvas.Nodes.CastTo<UnityEngine.Bounds>{}
+		class FlowCanvas_Nodes_CastTo_UnityEngine_Color : FlowCanvas.Nodes.CastTo<UnityEngine.Color>{}
+		class FlowCanvas_Nodes_CastTo_UnityEngine_Rect : FlowCanvas.Nodes.CastTo<UnityEngine.Rect>{}
+		class FlowCanvas_Nodes_CastTo_UnityEngine_ContactPoint : FlowCanvas.Nodes.CastTo<UnityEngine.ContactPoint>{}
+		class FlowCanvas_Nodes_CastTo_UnityEngine_ContactPoint2D : FlowCanvas.Nodes.CastTo<UnityEngine.ContactPoint2D>{}
+		class FlowCanvas_Nodes_CastTo_UnityEngine_Collision : FlowCanvas.Nodes.CastTo<UnityEngine.Collision>{}
+		class FlowCanvas_Nodes_CastTo_UnityEngine_Collision2D : FlowCanvas.Nodes.CastTo<UnityEngine.Collision2D>{}
+		class FlowCanvas_Nodes_CastTo_UnityEngine_RaycastHit : FlowCanvas.Nodes.CastTo<UnityEngine.RaycastHit>{}
+		class FlowCanvas_Nodes_CastTo_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.CastTo<UnityEngine.RaycastHit2D>{}
+		class FlowCanvas_Nodes_CastTo_UnityEngine_Ray : FlowCanvas.Nodes.CastTo<UnityEngine.Ray>{}
+		class FlowCanvas_Nodes_CastTo_UnityEngine_Space : FlowCanvas.Nodes.CastTo<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_CastTo_EventTimer : FlowCanvas.Nodes.CastTo<EventTimer>{}
+		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.CastTo<EazyEngine.Space.DamageExtra>{}
+		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.CastTo<EazyEngine.Space.DamageExtraVariant>{}
+		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.CastTo<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.CastTo<EazyEngine.Space.EventResultShowPackage>{}
+		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.CastTo<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.CastTo<EazyEngine.Space.PackageInfo>{}
+		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.CastTo<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.CastTo<EazyEngine.Space.StatusPackage>{}
+		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.CastTo<EazyEngine.Space.TriggerWeaponState>{}
+		class FlowCanvas_Nodes_CastTo_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.CastTo<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
+		class FlowCanvas_Nodes_CastTo_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.CastTo<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_CastTo_System_DateTime : FlowCanvas.Nodes.CastTo<System.DateTime>{}
+		class FlowCanvas_Nodes_CastTo_System_Double : FlowCanvas.Nodes.CastTo<System.Double>{}
+		class FlowCanvas_Nodes_CastTo_System_TimeSpan : FlowCanvas.Nodes.CastTo<System.TimeSpan>{}
+		class FlowCanvas_Nodes_CastTo_UnityEngine_LayerMask : FlowCanvas.Nodes.CastTo<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_CastTo_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.CastTo<UnityEngine.Animations.ConstraintSource>{}
+
+		class FlowCanvas_Nodes_CodeEvent_System_Boolean : FlowCanvas.Nodes.CodeEvent<System.Boolean>{}
+		class FlowCanvas_Nodes_CodeEvent_System_Single : FlowCanvas.Nodes.CodeEvent<System.Single>{}
+		class FlowCanvas_Nodes_CodeEvent_System_Int32 : FlowCanvas.Nodes.CodeEvent<System.Int32>{}
+		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Vector2 : FlowCanvas.Nodes.CodeEvent<UnityEngine.Vector2>{}
+		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Vector3 : FlowCanvas.Nodes.CodeEvent<UnityEngine.Vector3>{}
+		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Vector4 : FlowCanvas.Nodes.CodeEvent<UnityEngine.Vector4>{}
+		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Quaternion : FlowCanvas.Nodes.CodeEvent<UnityEngine.Quaternion>{}
+		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Keyframe : FlowCanvas.Nodes.CodeEvent<UnityEngine.Keyframe>{}
+		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Bounds : FlowCanvas.Nodes.CodeEvent<UnityEngine.Bounds>{}
+		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Color : FlowCanvas.Nodes.CodeEvent<UnityEngine.Color>{}
+		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Rect : FlowCanvas.Nodes.CodeEvent<UnityEngine.Rect>{}
+		class FlowCanvas_Nodes_CodeEvent_UnityEngine_ContactPoint : FlowCanvas.Nodes.CodeEvent<UnityEngine.ContactPoint>{}
+		class FlowCanvas_Nodes_CodeEvent_UnityEngine_ContactPoint2D : FlowCanvas.Nodes.CodeEvent<UnityEngine.ContactPoint2D>{}
+		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Collision : FlowCanvas.Nodes.CodeEvent<UnityEngine.Collision>{}
+		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Collision2D : FlowCanvas.Nodes.CodeEvent<UnityEngine.Collision2D>{}
+		class FlowCanvas_Nodes_CodeEvent_UnityEngine_RaycastHit : FlowCanvas.Nodes.CodeEvent<UnityEngine.RaycastHit>{}
+		class FlowCanvas_Nodes_CodeEvent_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.CodeEvent<UnityEngine.RaycastHit2D>{}
+		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Ray : FlowCanvas.Nodes.CodeEvent<UnityEngine.Ray>{}
+		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Space : FlowCanvas.Nodes.CodeEvent<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_CodeEvent_EventTimer : FlowCanvas.Nodes.CodeEvent<EventTimer>{}
+		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.DamageExtra>{}
+		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.DamageExtraVariant>{}
+		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.EventResultShowPackage>{}
+		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.PackageInfo>{}
+		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.StatusPackage>{}
+		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.TriggerWeaponState>{}
+		class FlowCanvas_Nodes_CodeEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.CodeEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
+		class FlowCanvas_Nodes_CodeEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.CodeEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_CodeEvent_System_DateTime : FlowCanvas.Nodes.CodeEvent<System.DateTime>{}
+		class FlowCanvas_Nodes_CodeEvent_System_Double : FlowCanvas.Nodes.CodeEvent<System.Double>{}
+		class FlowCanvas_Nodes_CodeEvent_System_TimeSpan : FlowCanvas.Nodes.CodeEvent<System.TimeSpan>{}
+		class FlowCanvas_Nodes_CodeEvent_UnityEngine_LayerMask : FlowCanvas.Nodes.CodeEvent<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.CodeEvent<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_CreateCollection_System_Boolean : FlowCanvas.Nodes.CreateCollection<System.Boolean>{}
 		class FlowCanvas_Nodes_CreateCollection_System_Single : FlowCanvas.Nodes.CreateCollection<System.Single>{}
@@ -310,11 +438,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_CreateCollection_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.CreateCollection<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_CreateCollection_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.CreateCollection<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_CreateCollection_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.CreateCollection<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_CreateCollection_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.CreateCollection<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_CreateCollection_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.CreateCollection<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_CreateCollection_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.CreateCollection<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_CreateCollection_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.CreateCollection<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_CreateCollection_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.CreateCollection<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_CreateCollection_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.CreateCollection<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_CreateCollection_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.CreateCollection<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_CreateCollection_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.CreateCollection<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_CreateCollection_System_DateTime : FlowCanvas.Nodes.CreateCollection<System.DateTime>{}
+		class FlowCanvas_Nodes_CreateCollection_System_Double : FlowCanvas.Nodes.CreateCollection<System.Double>{}
+		class FlowCanvas_Nodes_CreateCollection_System_TimeSpan : FlowCanvas.Nodes.CreateCollection<System.TimeSpan>{}
 		class FlowCanvas_Nodes_CreateCollection_UnityEngine_LayerMask : FlowCanvas.Nodes.CreateCollection<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_CreateCollection_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.CreateCollection<UnityEngine.Animations.ConstraintSource>{}
 
@@ -341,11 +475,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_CreateDictionary_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.CreateDictionary<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_CreateDictionary_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.CreateDictionary<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_CreateDictionary_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.CreateDictionary<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_CreateDictionary_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.CreateDictionary<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_CreateDictionary_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.CreateDictionary<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_CreateDictionary_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.CreateDictionary<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_CreateDictionary_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.CreateDictionary<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_CreateDictionary_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.CreateDictionary<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_CreateDictionary_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.CreateDictionary<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_CreateDictionary_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.CreateDictionary<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_CreateDictionary_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.CreateDictionary<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_CreateDictionary_System_DateTime : FlowCanvas.Nodes.CreateDictionary<System.DateTime>{}
+		class FlowCanvas_Nodes_CreateDictionary_System_Double : FlowCanvas.Nodes.CreateDictionary<System.Double>{}
+		class FlowCanvas_Nodes_CreateDictionary_System_TimeSpan : FlowCanvas.Nodes.CreateDictionary<System.TimeSpan>{}
 		class FlowCanvas_Nodes_CreateDictionary_UnityEngine_LayerMask : FlowCanvas.Nodes.CreateDictionary<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_CreateDictionary_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.CreateDictionary<UnityEngine.Animations.ConstraintSource>{}
 
@@ -372,11 +512,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_CustomEvent_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.CustomEvent<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_CustomEvent_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.CustomEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_CustomEvent_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.CustomEvent<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_CustomEvent_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.CustomEvent<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_CustomEvent_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.CustomEvent<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_CustomEvent_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.CustomEvent<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_CustomEvent_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.CustomEvent<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_CustomEvent_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.CustomEvent<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_CustomEvent_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.CustomEvent<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_CustomEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.CustomEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_CustomEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.CustomEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_CustomEvent_System_DateTime : FlowCanvas.Nodes.CustomEvent<System.DateTime>{}
+		class FlowCanvas_Nodes_CustomEvent_System_Double : FlowCanvas.Nodes.CustomEvent<System.Double>{}
+		class FlowCanvas_Nodes_CustomEvent_System_TimeSpan : FlowCanvas.Nodes.CustomEvent<System.TimeSpan>{}
 		class FlowCanvas_Nodes_CustomEvent_UnityEngine_LayerMask : FlowCanvas.Nodes.CustomEvent<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_CustomEvent_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.CustomEvent<UnityEngine.Animations.ConstraintSource>{}
 
@@ -403,11 +549,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_DictionaryContainsKey_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.DictionaryContainsKey<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_DictionaryContainsKey_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.DictionaryContainsKey<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_DictionaryContainsKey_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.DictionaryContainsKey<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_DictionaryContainsKey_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.DictionaryContainsKey<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_DictionaryContainsKey_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.DictionaryContainsKey<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_DictionaryContainsKey_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.DictionaryContainsKey<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_DictionaryContainsKey_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.DictionaryContainsKey<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_DictionaryContainsKey_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.DictionaryContainsKey<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_DictionaryContainsKey_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.DictionaryContainsKey<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_DictionaryContainsKey_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.DictionaryContainsKey<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_DictionaryContainsKey_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.DictionaryContainsKey<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_DictionaryContainsKey_System_DateTime : FlowCanvas.Nodes.DictionaryContainsKey<System.DateTime>{}
+		class FlowCanvas_Nodes_DictionaryContainsKey_System_Double : FlowCanvas.Nodes.DictionaryContainsKey<System.Double>{}
+		class FlowCanvas_Nodes_DictionaryContainsKey_System_TimeSpan : FlowCanvas.Nodes.DictionaryContainsKey<System.TimeSpan>{}
 		class FlowCanvas_Nodes_DictionaryContainsKey_UnityEngine_LayerMask : FlowCanvas.Nodes.DictionaryContainsKey<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_DictionaryContainsKey_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.DictionaryContainsKey<UnityEngine.Animations.ConstraintSource>{}
 
@@ -434,11 +586,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_ForEach_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.ForEach<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_ForEach_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.ForEach<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_ForEach_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.ForEach<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_ForEach_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.ForEach<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_ForEach_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.ForEach<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_ForEach_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.ForEach<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_ForEach_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.ForEach<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_ForEach_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.ForEach<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_ForEach_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.ForEach<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_ForEach_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.ForEach<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_ForEach_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.ForEach<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_ForEach_System_DateTime : FlowCanvas.Nodes.ForEach<System.DateTime>{}
+		class FlowCanvas_Nodes_ForEach_System_Double : FlowCanvas.Nodes.ForEach<System.Double>{}
+		class FlowCanvas_Nodes_ForEach_System_TimeSpan : FlowCanvas.Nodes.ForEach<System.TimeSpan>{}
 		class FlowCanvas_Nodes_ForEach_UnityEngine_LayerMask : FlowCanvas.Nodes.ForEach<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_ForEach_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.ForEach<UnityEngine.Animations.ConstraintSource>{}
 
@@ -465,11 +623,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetDictionaryItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.GetDictionaryItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_GetDictionaryItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.GetDictionaryItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_GetDictionaryItem_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.GetDictionaryItem<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_GetDictionaryItem_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.GetDictionaryItem<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_GetDictionaryItem_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.GetDictionaryItem<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_GetDictionaryItem_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.GetDictionaryItem<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_GetDictionaryItem_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.GetDictionaryItem<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_GetDictionaryItem_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.GetDictionaryItem<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_GetDictionaryItem_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.GetDictionaryItem<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_GetDictionaryItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.GetDictionaryItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_GetDictionaryItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.GetDictionaryItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_GetDictionaryItem_System_DateTime : FlowCanvas.Nodes.GetDictionaryItem<System.DateTime>{}
+		class FlowCanvas_Nodes_GetDictionaryItem_System_Double : FlowCanvas.Nodes.GetDictionaryItem<System.Double>{}
+		class FlowCanvas_Nodes_GetDictionaryItem_System_TimeSpan : FlowCanvas.Nodes.GetDictionaryItem<System.TimeSpan>{}
 		class FlowCanvas_Nodes_GetDictionaryItem_UnityEngine_LayerMask : FlowCanvas.Nodes.GetDictionaryItem<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_GetDictionaryItem_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.GetDictionaryItem<UnityEngine.Animations.ConstraintSource>{}
 
@@ -496,11 +660,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetFirstListItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.GetFirstListItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_GetFirstListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.GetFirstListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_GetFirstListItem_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.GetFirstListItem<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_GetFirstListItem_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.GetFirstListItem<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_GetFirstListItem_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.GetFirstListItem<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_GetFirstListItem_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.GetFirstListItem<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_GetFirstListItem_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.GetFirstListItem<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_GetFirstListItem_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.GetFirstListItem<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_GetFirstListItem_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.GetFirstListItem<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_GetFirstListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.GetFirstListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_GetFirstListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.GetFirstListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_GetFirstListItem_System_DateTime : FlowCanvas.Nodes.GetFirstListItem<System.DateTime>{}
+		class FlowCanvas_Nodes_GetFirstListItem_System_Double : FlowCanvas.Nodes.GetFirstListItem<System.Double>{}
+		class FlowCanvas_Nodes_GetFirstListItem_System_TimeSpan : FlowCanvas.Nodes.GetFirstListItem<System.TimeSpan>{}
 		class FlowCanvas_Nodes_GetFirstListItem_UnityEngine_LayerMask : FlowCanvas.Nodes.GetFirstListItem<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_GetFirstListItem_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.GetFirstListItem<UnityEngine.Animations.ConstraintSource>{}
 
@@ -527,11 +697,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetLastListItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.GetLastListItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_GetLastListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.GetLastListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_GetLastListItem_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.GetLastListItem<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_GetLastListItem_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.GetLastListItem<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_GetLastListItem_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.GetLastListItem<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_GetLastListItem_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.GetLastListItem<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_GetLastListItem_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.GetLastListItem<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_GetLastListItem_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.GetLastListItem<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_GetLastListItem_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.GetLastListItem<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_GetLastListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.GetLastListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_GetLastListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.GetLastListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_GetLastListItem_System_DateTime : FlowCanvas.Nodes.GetLastListItem<System.DateTime>{}
+		class FlowCanvas_Nodes_GetLastListItem_System_Double : FlowCanvas.Nodes.GetLastListItem<System.Double>{}
+		class FlowCanvas_Nodes_GetLastListItem_System_TimeSpan : FlowCanvas.Nodes.GetLastListItem<System.TimeSpan>{}
 		class FlowCanvas_Nodes_GetLastListItem_UnityEngine_LayerMask : FlowCanvas.Nodes.GetLastListItem<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_GetLastListItem_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.GetLastListItem<UnityEngine.Animations.ConstraintSource>{}
 
@@ -558,11 +734,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetListItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.GetListItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_GetListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.GetListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_GetListItem_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.GetListItem<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_GetListItem_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.GetListItem<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_GetListItem_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.GetListItem<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_GetListItem_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.GetListItem<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_GetListItem_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.GetListItem<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_GetListItem_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.GetListItem<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_GetListItem_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.GetListItem<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_GetListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.GetListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_GetListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.GetListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_GetListItem_System_DateTime : FlowCanvas.Nodes.GetListItem<System.DateTime>{}
+		class FlowCanvas_Nodes_GetListItem_System_Double : FlowCanvas.Nodes.GetListItem<System.Double>{}
+		class FlowCanvas_Nodes_GetListItem_System_TimeSpan : FlowCanvas.Nodes.GetListItem<System.TimeSpan>{}
 		class FlowCanvas_Nodes_GetListItem_UnityEngine_LayerMask : FlowCanvas.Nodes.GetListItem<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_GetListItem_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.GetListItem<UnityEngine.Animations.ConstraintSource>{}
 
@@ -589,11 +771,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetOtherVariable_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.GetOtherVariable<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_GetOtherVariable_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.GetOtherVariable<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_GetOtherVariable_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.GetOtherVariable<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_GetOtherVariable_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.GetOtherVariable<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_GetOtherVariable_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.GetOtherVariable<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_GetOtherVariable_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.GetOtherVariable<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_GetOtherVariable_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.GetOtherVariable<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_GetOtherVariable_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.GetOtherVariable<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_GetOtherVariable_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.GetOtherVariable<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_GetOtherVariable_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.GetOtherVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_GetOtherVariable_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.GetOtherVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_GetOtherVariable_System_DateTime : FlowCanvas.Nodes.GetOtherVariable<System.DateTime>{}
+		class FlowCanvas_Nodes_GetOtherVariable_System_Double : FlowCanvas.Nodes.GetOtherVariable<System.Double>{}
+		class FlowCanvas_Nodes_GetOtherVariable_System_TimeSpan : FlowCanvas.Nodes.GetOtherVariable<System.TimeSpan>{}
 		class FlowCanvas_Nodes_GetOtherVariable_UnityEngine_LayerMask : FlowCanvas.Nodes.GetOtherVariable<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_GetOtherVariable_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.GetOtherVariable<UnityEngine.Animations.ConstraintSource>{}
 
@@ -620,11 +808,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetRandomListItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.GetRandomListItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_GetRandomListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.GetRandomListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_GetRandomListItem_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.GetRandomListItem<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_GetRandomListItem_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.GetRandomListItem<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_GetRandomListItem_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.GetRandomListItem<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_GetRandomListItem_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.GetRandomListItem<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_GetRandomListItem_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.GetRandomListItem<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_GetRandomListItem_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.GetRandomListItem<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_GetRandomListItem_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.GetRandomListItem<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_GetRandomListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.GetRandomListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_GetRandomListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.GetRandomListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_GetRandomListItem_System_DateTime : FlowCanvas.Nodes.GetRandomListItem<System.DateTime>{}
+		class FlowCanvas_Nodes_GetRandomListItem_System_Double : FlowCanvas.Nodes.GetRandomListItem<System.Double>{}
+		class FlowCanvas_Nodes_GetRandomListItem_System_TimeSpan : FlowCanvas.Nodes.GetRandomListItem<System.TimeSpan>{}
 		class FlowCanvas_Nodes_GetRandomListItem_UnityEngine_LayerMask : FlowCanvas.Nodes.GetRandomListItem<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_GetRandomListItem_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.GetRandomListItem<UnityEngine.Animations.ConstraintSource>{}
 
@@ -651,11 +845,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetVariable_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.GetVariable<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_GetVariable_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.GetVariable<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_GetVariable_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.GetVariable<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_GetVariable_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.GetVariable<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_GetVariable_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.GetVariable<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_GetVariable_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.GetVariable<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_GetVariable_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.GetVariable<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_GetVariable_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.GetVariable<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_GetVariable_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.GetVariable<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_GetVariable_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.GetVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_GetVariable_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.GetVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_GetVariable_System_DateTime : FlowCanvas.Nodes.GetVariable<System.DateTime>{}
+		class FlowCanvas_Nodes_GetVariable_System_Double : FlowCanvas.Nodes.GetVariable<System.Double>{}
+		class FlowCanvas_Nodes_GetVariable_System_TimeSpan : FlowCanvas.Nodes.GetVariable<System.TimeSpan>{}
 		class FlowCanvas_Nodes_GetVariable_UnityEngine_LayerMask : FlowCanvas.Nodes.GetVariable<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_GetVariable_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.GetVariable<UnityEngine.Animations.ConstraintSource>{}
 
@@ -682,11 +882,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_Identity_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.Identity<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_Identity_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.Identity<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_Identity_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.Identity<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_Identity_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.Identity<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_Identity_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.Identity<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_Identity_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.Identity<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_Identity_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.Identity<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_Identity_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.Identity<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_Identity_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.Identity<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_Identity_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.Identity<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_Identity_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.Identity<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_Identity_System_DateTime : FlowCanvas.Nodes.Identity<System.DateTime>{}
+		class FlowCanvas_Nodes_Identity_System_Double : FlowCanvas.Nodes.Identity<System.Double>{}
+		class FlowCanvas_Nodes_Identity_System_TimeSpan : FlowCanvas.Nodes.Identity<System.TimeSpan>{}
 		class FlowCanvas_Nodes_Identity_UnityEngine_LayerMask : FlowCanvas.Nodes.Identity<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_Identity_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.Identity<UnityEngine.Animations.ConstraintSource>{}
 
@@ -713,13 +919,56 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_InsertListItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.InsertListItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_InsertListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.InsertListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_InsertListItem_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.InsertListItem<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_InsertListItem_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.InsertListItem<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_InsertListItem_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.InsertListItem<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_InsertListItem_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.InsertListItem<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_InsertListItem_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.InsertListItem<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_InsertListItem_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.InsertListItem<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_InsertListItem_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.InsertListItem<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_InsertListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.InsertListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_InsertListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.InsertListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_InsertListItem_System_DateTime : FlowCanvas.Nodes.InsertListItem<System.DateTime>{}
+		class FlowCanvas_Nodes_InsertListItem_System_Double : FlowCanvas.Nodes.InsertListItem<System.Double>{}
+		class FlowCanvas_Nodes_InsertListItem_System_TimeSpan : FlowCanvas.Nodes.InsertListItem<System.TimeSpan>{}
 		class FlowCanvas_Nodes_InsertListItem_UnityEngine_LayerMask : FlowCanvas.Nodes.InsertListItem<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_InsertListItem_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.InsertListItem<UnityEngine.Animations.ConstraintSource>{}
+
+		class FlowCanvas_Nodes_PickValue_System_Boolean : FlowCanvas.Nodes.PickValue<System.Boolean>{}
+		class FlowCanvas_Nodes_PickValue_System_Single : FlowCanvas.Nodes.PickValue<System.Single>{}
+		class FlowCanvas_Nodes_PickValue_System_Int32 : FlowCanvas.Nodes.PickValue<System.Int32>{}
+		class FlowCanvas_Nodes_PickValue_UnityEngine_Vector2 : FlowCanvas.Nodes.PickValue<UnityEngine.Vector2>{}
+		class FlowCanvas_Nodes_PickValue_UnityEngine_Vector3 : FlowCanvas.Nodes.PickValue<UnityEngine.Vector3>{}
+		class FlowCanvas_Nodes_PickValue_UnityEngine_Vector4 : FlowCanvas.Nodes.PickValue<UnityEngine.Vector4>{}
+		class FlowCanvas_Nodes_PickValue_UnityEngine_Quaternion : FlowCanvas.Nodes.PickValue<UnityEngine.Quaternion>{}
+		class FlowCanvas_Nodes_PickValue_UnityEngine_Keyframe : FlowCanvas.Nodes.PickValue<UnityEngine.Keyframe>{}
+		class FlowCanvas_Nodes_PickValue_UnityEngine_Bounds : FlowCanvas.Nodes.PickValue<UnityEngine.Bounds>{}
+		class FlowCanvas_Nodes_PickValue_UnityEngine_Color : FlowCanvas.Nodes.PickValue<UnityEngine.Color>{}
+		class FlowCanvas_Nodes_PickValue_UnityEngine_Rect : FlowCanvas.Nodes.PickValue<UnityEngine.Rect>{}
+		class FlowCanvas_Nodes_PickValue_UnityEngine_ContactPoint : FlowCanvas.Nodes.PickValue<UnityEngine.ContactPoint>{}
+		class FlowCanvas_Nodes_PickValue_UnityEngine_ContactPoint2D : FlowCanvas.Nodes.PickValue<UnityEngine.ContactPoint2D>{}
+		class FlowCanvas_Nodes_PickValue_UnityEngine_Collision : FlowCanvas.Nodes.PickValue<UnityEngine.Collision>{}
+		class FlowCanvas_Nodes_PickValue_UnityEngine_Collision2D : FlowCanvas.Nodes.PickValue<UnityEngine.Collision2D>{}
+		class FlowCanvas_Nodes_PickValue_UnityEngine_RaycastHit : FlowCanvas.Nodes.PickValue<UnityEngine.RaycastHit>{}
+		class FlowCanvas_Nodes_PickValue_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.PickValue<UnityEngine.RaycastHit2D>{}
+		class FlowCanvas_Nodes_PickValue_UnityEngine_Ray : FlowCanvas.Nodes.PickValue<UnityEngine.Ray>{}
+		class FlowCanvas_Nodes_PickValue_UnityEngine_Space : FlowCanvas.Nodes.PickValue<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_PickValue_EventTimer : FlowCanvas.Nodes.PickValue<EventTimer>{}
+		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.PickValue<EazyEngine.Space.DamageExtra>{}
+		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.PickValue<EazyEngine.Space.DamageExtraVariant>{}
+		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.PickValue<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.PickValue<EazyEngine.Space.EventResultShowPackage>{}
+		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.PickValue<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.PickValue<EazyEngine.Space.PackageInfo>{}
+		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.PickValue<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.PickValue<EazyEngine.Space.StatusPackage>{}
+		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.PickValue<EazyEngine.Space.TriggerWeaponState>{}
+		class FlowCanvas_Nodes_PickValue_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.PickValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
+		class FlowCanvas_Nodes_PickValue_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.PickValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_PickValue_System_DateTime : FlowCanvas.Nodes.PickValue<System.DateTime>{}
+		class FlowCanvas_Nodes_PickValue_System_Double : FlowCanvas.Nodes.PickValue<System.Double>{}
+		class FlowCanvas_Nodes_PickValue_System_TimeSpan : FlowCanvas.Nodes.PickValue<System.TimeSpan>{}
+		class FlowCanvas_Nodes_PickValue_UnityEngine_LayerMask : FlowCanvas.Nodes.PickValue<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_PickValue_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.PickValue<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_ReadFlowParameter_System_Boolean : FlowCanvas.Nodes.ReadFlowParameter<System.Boolean>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_System_Single : FlowCanvas.Nodes.ReadFlowParameter<System.Single>{}
@@ -744,11 +993,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_ReadFlowParameter_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.ReadFlowParameter<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.ReadFlowParameter<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.ReadFlowParameter<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_ReadFlowParameter_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.ReadFlowParameter<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.ReadFlowParameter<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_ReadFlowParameter_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.ReadFlowParameter<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.ReadFlowParameter<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_ReadFlowParameter_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.ReadFlowParameter<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.ReadFlowParameter<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.ReadFlowParameter<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.ReadFlowParameter<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_ReadFlowParameter_System_DateTime : FlowCanvas.Nodes.ReadFlowParameter<System.DateTime>{}
+		class FlowCanvas_Nodes_ReadFlowParameter_System_Double : FlowCanvas.Nodes.ReadFlowParameter<System.Double>{}
+		class FlowCanvas_Nodes_ReadFlowParameter_System_TimeSpan : FlowCanvas.Nodes.ReadFlowParameter<System.TimeSpan>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_UnityEngine_LayerMask : FlowCanvas.Nodes.ReadFlowParameter<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.ReadFlowParameter<UnityEngine.Animations.ConstraintSource>{}
 
@@ -775,11 +1030,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_System_DateTime : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<System.DateTime>{}
+		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_System_Double : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<System.Double>{}
+		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_System_TimeSpan : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<System.TimeSpan>{}
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_UnityEngine_LayerMask : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<UnityEngine.Animations.ConstraintSource>{}
 
@@ -806,11 +1067,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_RelayValueInput_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.RelayValueInput<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_RelayValueInput_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.RelayValueInput<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_RelayValueInput_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.RelayValueInput<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_RelayValueInput_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.RelayValueInput<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_RelayValueInput_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.RelayValueInput<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_RelayValueInput_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.RelayValueInput<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_RelayValueInput_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.RelayValueInput<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_RelayValueInput_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.RelayValueInput<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_RelayValueInput_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.RelayValueInput<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_RelayValueInput_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.RelayValueInput<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_RelayValueInput_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.RelayValueInput<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_RelayValueInput_System_DateTime : FlowCanvas.Nodes.RelayValueInput<System.DateTime>{}
+		class FlowCanvas_Nodes_RelayValueInput_System_Double : FlowCanvas.Nodes.RelayValueInput<System.Double>{}
+		class FlowCanvas_Nodes_RelayValueInput_System_TimeSpan : FlowCanvas.Nodes.RelayValueInput<System.TimeSpan>{}
 		class FlowCanvas_Nodes_RelayValueInput_UnityEngine_LayerMask : FlowCanvas.Nodes.RelayValueInput<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_RelayValueInput_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.RelayValueInput<UnityEngine.Animations.ConstraintSource>{}
 
@@ -837,11 +1104,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_RelayValueOutput_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.RelayValueOutput<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_RelayValueOutput_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.RelayValueOutput<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_RelayValueOutput_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.RelayValueOutput<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_RelayValueOutput_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.RelayValueOutput<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_RelayValueOutput_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.RelayValueOutput<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_RelayValueOutput_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.RelayValueOutput<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_RelayValueOutput_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.RelayValueOutput<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_RelayValueOutput_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.RelayValueOutput<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_RelayValueOutput_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.RelayValueOutput<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_RelayValueOutput_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.RelayValueOutput<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_RelayValueOutput_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.RelayValueOutput<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_RelayValueOutput_System_DateTime : FlowCanvas.Nodes.RelayValueOutput<System.DateTime>{}
+		class FlowCanvas_Nodes_RelayValueOutput_System_Double : FlowCanvas.Nodes.RelayValueOutput<System.Double>{}
+		class FlowCanvas_Nodes_RelayValueOutput_System_TimeSpan : FlowCanvas.Nodes.RelayValueOutput<System.TimeSpan>{}
 		class FlowCanvas_Nodes_RelayValueOutput_UnityEngine_LayerMask : FlowCanvas.Nodes.RelayValueOutput<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_RelayValueOutput_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.RelayValueOutput<UnityEngine.Animations.ConstraintSource>{}
 
@@ -868,11 +1141,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_RemoveDictionaryKey_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.RemoveDictionaryKey<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_RemoveDictionaryKey_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.RemoveDictionaryKey<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_RemoveDictionaryKey_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.RemoveDictionaryKey<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_RemoveDictionaryKey_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.RemoveDictionaryKey<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_RemoveDictionaryKey_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.RemoveDictionaryKey<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_RemoveDictionaryKey_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.RemoveDictionaryKey<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_RemoveDictionaryKey_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.RemoveDictionaryKey<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_RemoveDictionaryKey_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.RemoveDictionaryKey<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_RemoveDictionaryKey_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.RemoveDictionaryKey<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_RemoveDictionaryKey_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.RemoveDictionaryKey<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_RemoveDictionaryKey_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.RemoveDictionaryKey<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_RemoveDictionaryKey_System_DateTime : FlowCanvas.Nodes.RemoveDictionaryKey<System.DateTime>{}
+		class FlowCanvas_Nodes_RemoveDictionaryKey_System_Double : FlowCanvas.Nodes.RemoveDictionaryKey<System.Double>{}
+		class FlowCanvas_Nodes_RemoveDictionaryKey_System_TimeSpan : FlowCanvas.Nodes.RemoveDictionaryKey<System.TimeSpan>{}
 		class FlowCanvas_Nodes_RemoveDictionaryKey_UnityEngine_LayerMask : FlowCanvas.Nodes.RemoveDictionaryKey<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_RemoveDictionaryKey_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.RemoveDictionaryKey<UnityEngine.Animations.ConstraintSource>{}
 
@@ -899,11 +1178,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_RemoveListItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.RemoveListItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_RemoveListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.RemoveListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_RemoveListItem_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.RemoveListItem<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_RemoveListItem_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.RemoveListItem<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_RemoveListItem_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.RemoveListItem<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_RemoveListItem_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.RemoveListItem<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_RemoveListItem_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.RemoveListItem<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_RemoveListItem_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.RemoveListItem<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_RemoveListItem_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.RemoveListItem<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_RemoveListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.RemoveListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_RemoveListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.RemoveListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_RemoveListItem_System_DateTime : FlowCanvas.Nodes.RemoveListItem<System.DateTime>{}
+		class FlowCanvas_Nodes_RemoveListItem_System_Double : FlowCanvas.Nodes.RemoveListItem<System.Double>{}
+		class FlowCanvas_Nodes_RemoveListItem_System_TimeSpan : FlowCanvas.Nodes.RemoveListItem<System.TimeSpan>{}
 		class FlowCanvas_Nodes_RemoveListItem_UnityEngine_LayerMask : FlowCanvas.Nodes.RemoveListItem<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_RemoveListItem_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.RemoveListItem<UnityEngine.Animations.ConstraintSource>{}
 
@@ -930,11 +1215,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_RemoveListItemAt_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.RemoveListItemAt<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_RemoveListItemAt_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.RemoveListItemAt<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_RemoveListItemAt_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.RemoveListItemAt<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_RemoveListItemAt_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.RemoveListItemAt<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_RemoveListItemAt_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.RemoveListItemAt<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_RemoveListItemAt_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.RemoveListItemAt<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_RemoveListItemAt_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.RemoveListItemAt<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_RemoveListItemAt_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.RemoveListItemAt<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_RemoveListItemAt_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.RemoveListItemAt<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_RemoveListItemAt_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.RemoveListItemAt<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_RemoveListItemAt_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.RemoveListItemAt<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_RemoveListItemAt_System_DateTime : FlowCanvas.Nodes.RemoveListItemAt<System.DateTime>{}
+		class FlowCanvas_Nodes_RemoveListItemAt_System_Double : FlowCanvas.Nodes.RemoveListItemAt<System.Double>{}
+		class FlowCanvas_Nodes_RemoveListItemAt_System_TimeSpan : FlowCanvas.Nodes.RemoveListItemAt<System.TimeSpan>{}
 		class FlowCanvas_Nodes_RemoveListItemAt_UnityEngine_LayerMask : FlowCanvas.Nodes.RemoveListItemAt<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_RemoveListItemAt_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.RemoveListItemAt<UnityEngine.Animations.ConstraintSource>{}
 
@@ -961,11 +1252,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SelectOnBool_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SelectOnBool<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SelectOnBool_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SelectOnBool<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SelectOnBool_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.SelectOnBool<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_SelectOnBool_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.SelectOnBool<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_SelectOnBool_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.SelectOnBool<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_SelectOnBool_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.SelectOnBool<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_SelectOnBool_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.SelectOnBool<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_SelectOnBool_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.SelectOnBool<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_SelectOnBool_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.SelectOnBool<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_SelectOnBool_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.SelectOnBool<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_SelectOnBool_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.SelectOnBool<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_SelectOnBool_System_DateTime : FlowCanvas.Nodes.SelectOnBool<System.DateTime>{}
+		class FlowCanvas_Nodes_SelectOnBool_System_Double : FlowCanvas.Nodes.SelectOnBool<System.Double>{}
+		class FlowCanvas_Nodes_SelectOnBool_System_TimeSpan : FlowCanvas.Nodes.SelectOnBool<System.TimeSpan>{}
 		class FlowCanvas_Nodes_SelectOnBool_UnityEngine_LayerMask : FlowCanvas.Nodes.SelectOnBool<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_SelectOnBool_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.SelectOnBool<UnityEngine.Animations.ConstraintSource>{}
 
@@ -992,11 +1289,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SelectOnEnum_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SelectOnEnum<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SelectOnEnum_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SelectOnEnum<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SelectOnEnum_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.SelectOnEnum<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_SelectOnEnum_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.SelectOnEnum<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_SelectOnEnum_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.SelectOnEnum<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_SelectOnEnum_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.SelectOnEnum<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_SelectOnEnum_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.SelectOnEnum<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_SelectOnEnum_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.SelectOnEnum<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_SelectOnEnum_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.SelectOnEnum<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_SelectOnEnum_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.SelectOnEnum<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_SelectOnEnum_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.SelectOnEnum<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_SelectOnEnum_System_DateTime : FlowCanvas.Nodes.SelectOnEnum<System.DateTime>{}
+		class FlowCanvas_Nodes_SelectOnEnum_System_Double : FlowCanvas.Nodes.SelectOnEnum<System.Double>{}
+		class FlowCanvas_Nodes_SelectOnEnum_System_TimeSpan : FlowCanvas.Nodes.SelectOnEnum<System.TimeSpan>{}
 		class FlowCanvas_Nodes_SelectOnEnum_UnityEngine_LayerMask : FlowCanvas.Nodes.SelectOnEnum<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_SelectOnEnum_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.SelectOnEnum<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1023,11 +1326,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SelectOnInt_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SelectOnInt<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SelectOnInt_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SelectOnInt<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SelectOnInt_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.SelectOnInt<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_SelectOnInt_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.SelectOnInt<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_SelectOnInt_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.SelectOnInt<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_SelectOnInt_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.SelectOnInt<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_SelectOnInt_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.SelectOnInt<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_SelectOnInt_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.SelectOnInt<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_SelectOnInt_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.SelectOnInt<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_SelectOnInt_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.SelectOnInt<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_SelectOnInt_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.SelectOnInt<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_SelectOnInt_System_DateTime : FlowCanvas.Nodes.SelectOnInt<System.DateTime>{}
+		class FlowCanvas_Nodes_SelectOnInt_System_Double : FlowCanvas.Nodes.SelectOnInt<System.Double>{}
+		class FlowCanvas_Nodes_SelectOnInt_System_TimeSpan : FlowCanvas.Nodes.SelectOnInt<System.TimeSpan>{}
 		class FlowCanvas_Nodes_SelectOnInt_UnityEngine_LayerMask : FlowCanvas.Nodes.SelectOnInt<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_SelectOnInt_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.SelectOnInt<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1054,11 +1363,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SelectOnString_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SelectOnString<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SelectOnString_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SelectOnString<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SelectOnString_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.SelectOnString<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_SelectOnString_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.SelectOnString<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_SelectOnString_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.SelectOnString<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_SelectOnString_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.SelectOnString<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_SelectOnString_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.SelectOnString<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_SelectOnString_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.SelectOnString<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_SelectOnString_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.SelectOnString<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_SelectOnString_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.SelectOnString<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_SelectOnString_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.SelectOnString<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_SelectOnString_System_DateTime : FlowCanvas.Nodes.SelectOnString<System.DateTime>{}
+		class FlowCanvas_Nodes_SelectOnString_System_Double : FlowCanvas.Nodes.SelectOnString<System.Double>{}
+		class FlowCanvas_Nodes_SelectOnString_System_TimeSpan : FlowCanvas.Nodes.SelectOnString<System.TimeSpan>{}
 		class FlowCanvas_Nodes_SelectOnString_UnityEngine_LayerMask : FlowCanvas.Nodes.SelectOnString<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_SelectOnString_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.SelectOnString<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1085,11 +1400,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SelectOnTag_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SelectOnTag<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SelectOnTag_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SelectOnTag<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SelectOnTag_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.SelectOnTag<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_SelectOnTag_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.SelectOnTag<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_SelectOnTag_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.SelectOnTag<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_SelectOnTag_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.SelectOnTag<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_SelectOnTag_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.SelectOnTag<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_SelectOnTag_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.SelectOnTag<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_SelectOnTag_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.SelectOnTag<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_SelectOnTag_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.SelectOnTag<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_SelectOnTag_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.SelectOnTag<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_SelectOnTag_System_DateTime : FlowCanvas.Nodes.SelectOnTag<System.DateTime>{}
+		class FlowCanvas_Nodes_SelectOnTag_System_Double : FlowCanvas.Nodes.SelectOnTag<System.Double>{}
+		class FlowCanvas_Nodes_SelectOnTag_System_TimeSpan : FlowCanvas.Nodes.SelectOnTag<System.TimeSpan>{}
 		class FlowCanvas_Nodes_SelectOnTag_UnityEngine_LayerMask : FlowCanvas.Nodes.SelectOnTag<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_SelectOnTag_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.SelectOnTag<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1116,11 +1437,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SendEvent_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SendEvent<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SendEvent_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SendEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SendEvent_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.SendEvent<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_SendEvent_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.SendEvent<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_SendEvent_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.SendEvent<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_SendEvent_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.SendEvent<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_SendEvent_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.SendEvent<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_SendEvent_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.SendEvent<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_SendEvent_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.SendEvent<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_SendEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.SendEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_SendEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.SendEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_SendEvent_System_DateTime : FlowCanvas.Nodes.SendEvent<System.DateTime>{}
+		class FlowCanvas_Nodes_SendEvent_System_Double : FlowCanvas.Nodes.SendEvent<System.Double>{}
+		class FlowCanvas_Nodes_SendEvent_System_TimeSpan : FlowCanvas.Nodes.SendEvent<System.TimeSpan>{}
 		class FlowCanvas_Nodes_SendEvent_UnityEngine_LayerMask : FlowCanvas.Nodes.SendEvent<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_SendEvent_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.SendEvent<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1147,11 +1474,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SendGlobalEvent_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SendGlobalEvent<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SendGlobalEvent_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SendGlobalEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SendGlobalEvent_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.SendGlobalEvent<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_SendGlobalEvent_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.SendGlobalEvent<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_SendGlobalEvent_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.SendGlobalEvent<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_SendGlobalEvent_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.SendGlobalEvent<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_SendGlobalEvent_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.SendGlobalEvent<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_SendGlobalEvent_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.SendGlobalEvent<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_SendGlobalEvent_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.SendGlobalEvent<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_SendGlobalEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.SendGlobalEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_SendGlobalEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.SendGlobalEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_SendGlobalEvent_System_DateTime : FlowCanvas.Nodes.SendGlobalEvent<System.DateTime>{}
+		class FlowCanvas_Nodes_SendGlobalEvent_System_Double : FlowCanvas.Nodes.SendGlobalEvent<System.Double>{}
+		class FlowCanvas_Nodes_SendGlobalEvent_System_TimeSpan : FlowCanvas.Nodes.SendGlobalEvent<System.TimeSpan>{}
 		class FlowCanvas_Nodes_SendGlobalEvent_UnityEngine_LayerMask : FlowCanvas.Nodes.SendGlobalEvent<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_SendGlobalEvent_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.SendGlobalEvent<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1178,11 +1511,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SetListItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SetListItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SetListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SetListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SetListItem_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.SetListItem<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_SetListItem_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.SetListItem<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_SetListItem_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.SetListItem<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_SetListItem_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.SetListItem<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_SetListItem_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.SetListItem<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_SetListItem_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.SetListItem<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_SetListItem_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.SetListItem<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_SetListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.SetListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_SetListItem_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.SetListItem<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_SetListItem_System_DateTime : FlowCanvas.Nodes.SetListItem<System.DateTime>{}
+		class FlowCanvas_Nodes_SetListItem_System_Double : FlowCanvas.Nodes.SetListItem<System.Double>{}
+		class FlowCanvas_Nodes_SetListItem_System_TimeSpan : FlowCanvas.Nodes.SetListItem<System.TimeSpan>{}
 		class FlowCanvas_Nodes_SetListItem_UnityEngine_LayerMask : FlowCanvas.Nodes.SetListItem<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_SetListItem_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.SetListItem<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1209,11 +1548,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SetOtherVariable_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SetOtherVariable<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SetOtherVariable_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SetOtherVariable<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SetOtherVariable_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.SetOtherVariable<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_SetOtherVariable_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.SetOtherVariable<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_SetOtherVariable_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.SetOtherVariable<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_SetOtherVariable_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.SetOtherVariable<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_SetOtherVariable_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.SetOtherVariable<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_SetOtherVariable_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.SetOtherVariable<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_SetOtherVariable_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.SetOtherVariable<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_SetOtherVariable_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.SetOtherVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_SetOtherVariable_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.SetOtherVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_SetOtherVariable_System_DateTime : FlowCanvas.Nodes.SetOtherVariable<System.DateTime>{}
+		class FlowCanvas_Nodes_SetOtherVariable_System_Double : FlowCanvas.Nodes.SetOtherVariable<System.Double>{}
+		class FlowCanvas_Nodes_SetOtherVariable_System_TimeSpan : FlowCanvas.Nodes.SetOtherVariable<System.TimeSpan>{}
 		class FlowCanvas_Nodes_SetOtherVariable_UnityEngine_LayerMask : FlowCanvas.Nodes.SetOtherVariable<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_SetOtherVariable_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.SetOtherVariable<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1240,11 +1585,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SetVariable_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SetVariable<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SetVariable_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SetVariable<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SetVariable_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.SetVariable<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_SetVariable_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.SetVariable<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_SetVariable_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.SetVariable<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_SetVariable_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.SetVariable<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_SetVariable_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.SetVariable<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_SetVariable_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.SetVariable<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_SetVariable_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.SetVariable<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_SetVariable_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.SetVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_SetVariable_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.SetVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_SetVariable_System_DateTime : FlowCanvas.Nodes.SetVariable<System.DateTime>{}
+		class FlowCanvas_Nodes_SetVariable_System_Double : FlowCanvas.Nodes.SetVariable<System.Double>{}
+		class FlowCanvas_Nodes_SetVariable_System_TimeSpan : FlowCanvas.Nodes.SetVariable<System.TimeSpan>{}
 		class FlowCanvas_Nodes_SetVariable_UnityEngine_LayerMask : FlowCanvas.Nodes.SetVariable<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_SetVariable_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.SetVariable<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1271,13 +1622,167 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_ShuffleList_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.ShuffleList<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_ShuffleList_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.ShuffleList<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_ShuffleList_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.ShuffleList<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_ShuffleList_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.ShuffleList<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_ShuffleList_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.ShuffleList<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_ShuffleList_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.ShuffleList<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_ShuffleList_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.ShuffleList<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_ShuffleList_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.ShuffleList<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_ShuffleList_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.ShuffleList<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_ShuffleList_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.ShuffleList<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_ShuffleList_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.ShuffleList<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_ShuffleList_System_DateTime : FlowCanvas.Nodes.ShuffleList<System.DateTime>{}
+		class FlowCanvas_Nodes_ShuffleList_System_Double : FlowCanvas.Nodes.ShuffleList<System.Double>{}
+		class FlowCanvas_Nodes_ShuffleList_System_TimeSpan : FlowCanvas.Nodes.ShuffleList<System.TimeSpan>{}
 		class FlowCanvas_Nodes_ShuffleList_UnityEngine_LayerMask : FlowCanvas.Nodes.ShuffleList<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_ShuffleList_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.ShuffleList<UnityEngine.Animations.ConstraintSource>{}
+
+		class FlowCanvas_Nodes_StaticCodeEvent_System_Boolean : FlowCanvas.Nodes.StaticCodeEvent<System.Boolean>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_System_Single : FlowCanvas.Nodes.StaticCodeEvent<System.Single>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_System_Int32 : FlowCanvas.Nodes.StaticCodeEvent<System.Int32>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Vector2 : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Vector2>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Vector3 : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Vector3>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Vector4 : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Vector4>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Quaternion : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Quaternion>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Keyframe : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Keyframe>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Bounds : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Bounds>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Color : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Color>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Rect : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Rect>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_ContactPoint : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.ContactPoint>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_ContactPoint2D : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.ContactPoint2D>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Collision : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Collision>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Collision2D : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Collision2D>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_RaycastHit : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.RaycastHit>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.RaycastHit2D>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Ray : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Ray>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Space : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_EventTimer : FlowCanvas.Nodes.StaticCodeEvent<EventTimer>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.DamageExtra>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.DamageExtraVariant>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.EventResultShowPackage>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.PackageInfo>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.StatusPackage>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.TriggerWeaponState>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.StaticCodeEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.StaticCodeEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_System_DateTime : FlowCanvas.Nodes.StaticCodeEvent<System.DateTime>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_System_Double : FlowCanvas.Nodes.StaticCodeEvent<System.Double>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_System_TimeSpan : FlowCanvas.Nodes.StaticCodeEvent<System.TimeSpan>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_LayerMask : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Animations.ConstraintSource>{}
+
+		class FlowCanvas_Nodes_SwitchValue_System_Boolean : FlowCanvas.Nodes.SwitchValue<System.Boolean>{}
+		class FlowCanvas_Nodes_SwitchValue_System_Single : FlowCanvas.Nodes.SwitchValue<System.Single>{}
+		class FlowCanvas_Nodes_SwitchValue_System_Int32 : FlowCanvas.Nodes.SwitchValue<System.Int32>{}
+		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Vector2 : FlowCanvas.Nodes.SwitchValue<UnityEngine.Vector2>{}
+		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Vector3 : FlowCanvas.Nodes.SwitchValue<UnityEngine.Vector3>{}
+		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Vector4 : FlowCanvas.Nodes.SwitchValue<UnityEngine.Vector4>{}
+		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Quaternion : FlowCanvas.Nodes.SwitchValue<UnityEngine.Quaternion>{}
+		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Keyframe : FlowCanvas.Nodes.SwitchValue<UnityEngine.Keyframe>{}
+		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Bounds : FlowCanvas.Nodes.SwitchValue<UnityEngine.Bounds>{}
+		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Color : FlowCanvas.Nodes.SwitchValue<UnityEngine.Color>{}
+		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Rect : FlowCanvas.Nodes.SwitchValue<UnityEngine.Rect>{}
+		class FlowCanvas_Nodes_SwitchValue_UnityEngine_ContactPoint : FlowCanvas.Nodes.SwitchValue<UnityEngine.ContactPoint>{}
+		class FlowCanvas_Nodes_SwitchValue_UnityEngine_ContactPoint2D : FlowCanvas.Nodes.SwitchValue<UnityEngine.ContactPoint2D>{}
+		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Collision : FlowCanvas.Nodes.SwitchValue<UnityEngine.Collision>{}
+		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Collision2D : FlowCanvas.Nodes.SwitchValue<UnityEngine.Collision2D>{}
+		class FlowCanvas_Nodes_SwitchValue_UnityEngine_RaycastHit : FlowCanvas.Nodes.SwitchValue<UnityEngine.RaycastHit>{}
+		class FlowCanvas_Nodes_SwitchValue_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.SwitchValue<UnityEngine.RaycastHit2D>{}
+		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Ray : FlowCanvas.Nodes.SwitchValue<UnityEngine.Ray>{}
+		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Space : FlowCanvas.Nodes.SwitchValue<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_SwitchValue_EventTimer : FlowCanvas.Nodes.SwitchValue<EventTimer>{}
+		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.DamageExtra>{}
+		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.DamageExtraVariant>{}
+		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.EventResultShowPackage>{}
+		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.PackageInfo>{}
+		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.StatusPackage>{}
+		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.TriggerWeaponState>{}
+		class FlowCanvas_Nodes_SwitchValue_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.SwitchValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
+		class FlowCanvas_Nodes_SwitchValue_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.SwitchValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_SwitchValue_System_DateTime : FlowCanvas.Nodes.SwitchValue<System.DateTime>{}
+		class FlowCanvas_Nodes_SwitchValue_System_Double : FlowCanvas.Nodes.SwitchValue<System.Double>{}
+		class FlowCanvas_Nodes_SwitchValue_System_TimeSpan : FlowCanvas.Nodes.SwitchValue<System.TimeSpan>{}
+		class FlowCanvas_Nodes_SwitchValue_UnityEngine_LayerMask : FlowCanvas.Nodes.SwitchValue<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.SwitchValue<UnityEngine.Animations.ConstraintSource>{}
+
+		class FlowCanvas_Nodes_ToArray_System_Boolean : FlowCanvas.Nodes.ToArray<System.Boolean>{}
+		class FlowCanvas_Nodes_ToArray_System_Single : FlowCanvas.Nodes.ToArray<System.Single>{}
+		class FlowCanvas_Nodes_ToArray_System_Int32 : FlowCanvas.Nodes.ToArray<System.Int32>{}
+		class FlowCanvas_Nodes_ToArray_UnityEngine_Vector2 : FlowCanvas.Nodes.ToArray<UnityEngine.Vector2>{}
+		class FlowCanvas_Nodes_ToArray_UnityEngine_Vector3 : FlowCanvas.Nodes.ToArray<UnityEngine.Vector3>{}
+		class FlowCanvas_Nodes_ToArray_UnityEngine_Vector4 : FlowCanvas.Nodes.ToArray<UnityEngine.Vector4>{}
+		class FlowCanvas_Nodes_ToArray_UnityEngine_Quaternion : FlowCanvas.Nodes.ToArray<UnityEngine.Quaternion>{}
+		class FlowCanvas_Nodes_ToArray_UnityEngine_Keyframe : FlowCanvas.Nodes.ToArray<UnityEngine.Keyframe>{}
+		class FlowCanvas_Nodes_ToArray_UnityEngine_Bounds : FlowCanvas.Nodes.ToArray<UnityEngine.Bounds>{}
+		class FlowCanvas_Nodes_ToArray_UnityEngine_Color : FlowCanvas.Nodes.ToArray<UnityEngine.Color>{}
+		class FlowCanvas_Nodes_ToArray_UnityEngine_Rect : FlowCanvas.Nodes.ToArray<UnityEngine.Rect>{}
+		class FlowCanvas_Nodes_ToArray_UnityEngine_ContactPoint : FlowCanvas.Nodes.ToArray<UnityEngine.ContactPoint>{}
+		class FlowCanvas_Nodes_ToArray_UnityEngine_ContactPoint2D : FlowCanvas.Nodes.ToArray<UnityEngine.ContactPoint2D>{}
+		class FlowCanvas_Nodes_ToArray_UnityEngine_Collision : FlowCanvas.Nodes.ToArray<UnityEngine.Collision>{}
+		class FlowCanvas_Nodes_ToArray_UnityEngine_Collision2D : FlowCanvas.Nodes.ToArray<UnityEngine.Collision2D>{}
+		class FlowCanvas_Nodes_ToArray_UnityEngine_RaycastHit : FlowCanvas.Nodes.ToArray<UnityEngine.RaycastHit>{}
+		class FlowCanvas_Nodes_ToArray_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.ToArray<UnityEngine.RaycastHit2D>{}
+		class FlowCanvas_Nodes_ToArray_UnityEngine_Ray : FlowCanvas.Nodes.ToArray<UnityEngine.Ray>{}
+		class FlowCanvas_Nodes_ToArray_UnityEngine_Space : FlowCanvas.Nodes.ToArray<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_ToArray_EventTimer : FlowCanvas.Nodes.ToArray<EventTimer>{}
+		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.ToArray<EazyEngine.Space.DamageExtra>{}
+		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.ToArray<EazyEngine.Space.DamageExtraVariant>{}
+		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.ToArray<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.ToArray<EazyEngine.Space.EventResultShowPackage>{}
+		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.ToArray<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.ToArray<EazyEngine.Space.PackageInfo>{}
+		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.ToArray<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.ToArray<EazyEngine.Space.StatusPackage>{}
+		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.ToArray<EazyEngine.Space.TriggerWeaponState>{}
+		class FlowCanvas_Nodes_ToArray_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.ToArray<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
+		class FlowCanvas_Nodes_ToArray_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.ToArray<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_ToArray_System_DateTime : FlowCanvas.Nodes.ToArray<System.DateTime>{}
+		class FlowCanvas_Nodes_ToArray_System_Double : FlowCanvas.Nodes.ToArray<System.Double>{}
+		class FlowCanvas_Nodes_ToArray_System_TimeSpan : FlowCanvas.Nodes.ToArray<System.TimeSpan>{}
+		class FlowCanvas_Nodes_ToArray_UnityEngine_LayerMask : FlowCanvas.Nodes.ToArray<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_ToArray_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.ToArray<UnityEngine.Animations.ConstraintSource>{}
+
+		class FlowCanvas_Nodes_ToList_System_Boolean : FlowCanvas.Nodes.ToList<System.Boolean>{}
+		class FlowCanvas_Nodes_ToList_System_Single : FlowCanvas.Nodes.ToList<System.Single>{}
+		class FlowCanvas_Nodes_ToList_System_Int32 : FlowCanvas.Nodes.ToList<System.Int32>{}
+		class FlowCanvas_Nodes_ToList_UnityEngine_Vector2 : FlowCanvas.Nodes.ToList<UnityEngine.Vector2>{}
+		class FlowCanvas_Nodes_ToList_UnityEngine_Vector3 : FlowCanvas.Nodes.ToList<UnityEngine.Vector3>{}
+		class FlowCanvas_Nodes_ToList_UnityEngine_Vector4 : FlowCanvas.Nodes.ToList<UnityEngine.Vector4>{}
+		class FlowCanvas_Nodes_ToList_UnityEngine_Quaternion : FlowCanvas.Nodes.ToList<UnityEngine.Quaternion>{}
+		class FlowCanvas_Nodes_ToList_UnityEngine_Keyframe : FlowCanvas.Nodes.ToList<UnityEngine.Keyframe>{}
+		class FlowCanvas_Nodes_ToList_UnityEngine_Bounds : FlowCanvas.Nodes.ToList<UnityEngine.Bounds>{}
+		class FlowCanvas_Nodes_ToList_UnityEngine_Color : FlowCanvas.Nodes.ToList<UnityEngine.Color>{}
+		class FlowCanvas_Nodes_ToList_UnityEngine_Rect : FlowCanvas.Nodes.ToList<UnityEngine.Rect>{}
+		class FlowCanvas_Nodes_ToList_UnityEngine_ContactPoint : FlowCanvas.Nodes.ToList<UnityEngine.ContactPoint>{}
+		class FlowCanvas_Nodes_ToList_UnityEngine_ContactPoint2D : FlowCanvas.Nodes.ToList<UnityEngine.ContactPoint2D>{}
+		class FlowCanvas_Nodes_ToList_UnityEngine_Collision : FlowCanvas.Nodes.ToList<UnityEngine.Collision>{}
+		class FlowCanvas_Nodes_ToList_UnityEngine_Collision2D : FlowCanvas.Nodes.ToList<UnityEngine.Collision2D>{}
+		class FlowCanvas_Nodes_ToList_UnityEngine_RaycastHit : FlowCanvas.Nodes.ToList<UnityEngine.RaycastHit>{}
+		class FlowCanvas_Nodes_ToList_UnityEngine_RaycastHit2D : FlowCanvas.Nodes.ToList<UnityEngine.RaycastHit2D>{}
+		class FlowCanvas_Nodes_ToList_UnityEngine_Ray : FlowCanvas.Nodes.ToList<UnityEngine.Ray>{}
+		class FlowCanvas_Nodes_ToList_UnityEngine_Space : FlowCanvas.Nodes.ToList<UnityEngine.Space>{}
+		class FlowCanvas_Nodes_ToList_EventTimer : FlowCanvas.Nodes.ToList<EventTimer>{}
+		class FlowCanvas_Nodes_ToList_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.ToList<EazyEngine.Space.DamageExtra>{}
+		class FlowCanvas_Nodes_ToList_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.ToList<EazyEngine.Space.DamageExtraVariant>{}
+		class FlowCanvas_Nodes_ToList_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.ToList<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_ToList_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.ToList<EazyEngine.Space.EventResultShowPackage>{}
+		class FlowCanvas_Nodes_ToList_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.ToList<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_ToList_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.ToList<EazyEngine.Space.PackageInfo>{}
+		class FlowCanvas_Nodes_ToList_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.ToList<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_ToList_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.ToList<EazyEngine.Space.StatusPackage>{}
+		class FlowCanvas_Nodes_ToList_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.ToList<EazyEngine.Space.TriggerWeaponState>{}
+		class FlowCanvas_Nodes_ToList_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.ToList<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
+		class FlowCanvas_Nodes_ToList_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.ToList<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_ToList_System_DateTime : FlowCanvas.Nodes.ToList<System.DateTime>{}
+		class FlowCanvas_Nodes_ToList_System_Double : FlowCanvas.Nodes.ToList<System.Double>{}
+		class FlowCanvas_Nodes_ToList_System_TimeSpan : FlowCanvas.Nodes.ToList<System.TimeSpan>{}
+		class FlowCanvas_Nodes_ToList_UnityEngine_LayerMask : FlowCanvas.Nodes.ToList<UnityEngine.LayerMask>{}
+		class FlowCanvas_Nodes_ToList_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.ToList<UnityEngine.Animations.ConstraintSource>{}
 
 		class FlowCanvas_Nodes_TryGetValue_System_Boolean : FlowCanvas.Nodes.TryGetValue<System.Boolean>{}
 		class FlowCanvas_Nodes_TryGetValue_System_Single : FlowCanvas.Nodes.TryGetValue<System.Single>{}
@@ -1302,11 +1807,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_TryGetValue_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.TryGetValue<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_TryGetValue_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.TryGetValue<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_TryGetValue_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.TryGetValue<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_TryGetValue_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.TryGetValue<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_TryGetValue_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.TryGetValue<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_TryGetValue_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.TryGetValue<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_TryGetValue_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.TryGetValue<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_TryGetValue_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.TryGetValue<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_TryGetValue_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.TryGetValue<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_TryGetValue_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.TryGetValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_TryGetValue_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.TryGetValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_TryGetValue_System_DateTime : FlowCanvas.Nodes.TryGetValue<System.DateTime>{}
+		class FlowCanvas_Nodes_TryGetValue_System_Double : FlowCanvas.Nodes.TryGetValue<System.Double>{}
+		class FlowCanvas_Nodes_TryGetValue_System_TimeSpan : FlowCanvas.Nodes.TryGetValue<System.TimeSpan>{}
 		class FlowCanvas_Nodes_TryGetValue_UnityEngine_LayerMask : FlowCanvas.Nodes.TryGetValue<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_TryGetValue_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.TryGetValue<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1333,11 +1844,17 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_WriteFlowParameter_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.WriteFlowParameter<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_WriteFlowParameter_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.WriteFlowParameter<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_WriteFlowParameter_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.WriteFlowParameter<EazyEngine.Space.DamageGivenEvent>{}
+		class FlowCanvas_Nodes_WriteFlowParameter_EazyEngine_Space_EventResultShowPackage : FlowCanvas.Nodes.WriteFlowParameter<EazyEngine.Space.EventResultShowPackage>{}
 		class FlowCanvas_Nodes_WriteFlowParameter_EazyEngine_Space_GameDatabaseInventoryEvent : FlowCanvas.Nodes.WriteFlowParameter<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class FlowCanvas_Nodes_WriteFlowParameter_EazyEngine_Space_PackageInfo : FlowCanvas.Nodes.WriteFlowParameter<EazyEngine.Space.PackageInfo>{}
 		class FlowCanvas_Nodes_WriteFlowParameter_EazyEngine_Space_PickEvent : FlowCanvas.Nodes.WriteFlowParameter<EazyEngine.Space.PickEvent>{}
+		class FlowCanvas_Nodes_WriteFlowParameter_EazyEngine_Space_StatusPackage : FlowCanvas.Nodes.WriteFlowParameter<EazyEngine.Space.StatusPackage>{}
 		class FlowCanvas_Nodes_WriteFlowParameter_EazyEngine_Space_TriggerWeaponState : FlowCanvas.Nodes.WriteFlowParameter<EazyEngine.Space.TriggerWeaponState>{}
 		class FlowCanvas_Nodes_WriteFlowParameter_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : FlowCanvas.Nodes.WriteFlowParameter<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class FlowCanvas_Nodes_WriteFlowParameter_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : FlowCanvas.Nodes.WriteFlowParameter<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class FlowCanvas_Nodes_WriteFlowParameter_System_DateTime : FlowCanvas.Nodes.WriteFlowParameter<System.DateTime>{}
+		class FlowCanvas_Nodes_WriteFlowParameter_System_Double : FlowCanvas.Nodes.WriteFlowParameter<System.Double>{}
+		class FlowCanvas_Nodes_WriteFlowParameter_System_TimeSpan : FlowCanvas.Nodes.WriteFlowParameter<System.TimeSpan>{}
 		class FlowCanvas_Nodes_WriteFlowParameter_UnityEngine_LayerMask : FlowCanvas.Nodes.WriteFlowParameter<UnityEngine.LayerMask>{}
 		class FlowCanvas_Nodes_WriteFlowParameter_UnityEngine_Animations_ConstraintSource : FlowCanvas.Nodes.WriteFlowParameter<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1364,11 +1881,17 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Framework_BBParameter_EazyEngine_Space_DamageExtra : NodeCanvas.Framework.BBParameter<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Framework_BBParameter_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Framework.BBParameter<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Framework_BBParameter_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Framework.BBParameter<EazyEngine.Space.DamageGivenEvent>{}
+		class NodeCanvas_Framework_BBParameter_EazyEngine_Space_EventResultShowPackage : NodeCanvas.Framework.BBParameter<EazyEngine.Space.EventResultShowPackage>{}
 		class NodeCanvas_Framework_BBParameter_EazyEngine_Space_GameDatabaseInventoryEvent : NodeCanvas.Framework.BBParameter<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class NodeCanvas_Framework_BBParameter_EazyEngine_Space_PackageInfo : NodeCanvas.Framework.BBParameter<EazyEngine.Space.PackageInfo>{}
 		class NodeCanvas_Framework_BBParameter_EazyEngine_Space_PickEvent : NodeCanvas.Framework.BBParameter<EazyEngine.Space.PickEvent>{}
+		class NodeCanvas_Framework_BBParameter_EazyEngine_Space_StatusPackage : NodeCanvas.Framework.BBParameter<EazyEngine.Space.StatusPackage>{}
 		class NodeCanvas_Framework_BBParameter_EazyEngine_Space_TriggerWeaponState : NodeCanvas.Framework.BBParameter<EazyEngine.Space.TriggerWeaponState>{}
 		class NodeCanvas_Framework_BBParameter_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Framework.BBParameter<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Framework_BBParameter_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Framework.BBParameter<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class NodeCanvas_Framework_BBParameter_System_DateTime : NodeCanvas.Framework.BBParameter<System.DateTime>{}
+		class NodeCanvas_Framework_BBParameter_System_Double : NodeCanvas.Framework.BBParameter<System.Double>{}
+		class NodeCanvas_Framework_BBParameter_System_TimeSpan : NodeCanvas.Framework.BBParameter<System.TimeSpan>{}
 		class NodeCanvas_Framework_BBParameter_UnityEngine_LayerMask : NodeCanvas.Framework.BBParameter<UnityEngine.LayerMask>{}
 		class NodeCanvas_Framework_BBParameter_UnityEngine_Animations_ConstraintSource : NodeCanvas.Framework.BBParameter<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1395,11 +1918,17 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Framework_Variable_EazyEngine_Space_DamageExtra : NodeCanvas.Framework.Variable<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Framework_Variable_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Framework.Variable<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Framework_Variable_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Framework.Variable<EazyEngine.Space.DamageGivenEvent>{}
+		class NodeCanvas_Framework_Variable_EazyEngine_Space_EventResultShowPackage : NodeCanvas.Framework.Variable<EazyEngine.Space.EventResultShowPackage>{}
 		class NodeCanvas_Framework_Variable_EazyEngine_Space_GameDatabaseInventoryEvent : NodeCanvas.Framework.Variable<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class NodeCanvas_Framework_Variable_EazyEngine_Space_PackageInfo : NodeCanvas.Framework.Variable<EazyEngine.Space.PackageInfo>{}
 		class NodeCanvas_Framework_Variable_EazyEngine_Space_PickEvent : NodeCanvas.Framework.Variable<EazyEngine.Space.PickEvent>{}
+		class NodeCanvas_Framework_Variable_EazyEngine_Space_StatusPackage : NodeCanvas.Framework.Variable<EazyEngine.Space.StatusPackage>{}
 		class NodeCanvas_Framework_Variable_EazyEngine_Space_TriggerWeaponState : NodeCanvas.Framework.Variable<EazyEngine.Space.TriggerWeaponState>{}
 		class NodeCanvas_Framework_Variable_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Framework.Variable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Framework_Variable_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Framework.Variable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class NodeCanvas_Framework_Variable_System_DateTime : NodeCanvas.Framework.Variable<System.DateTime>{}
+		class NodeCanvas_Framework_Variable_System_Double : NodeCanvas.Framework.Variable<System.Double>{}
+		class NodeCanvas_Framework_Variable_System_TimeSpan : NodeCanvas.Framework.Variable<System.TimeSpan>{}
 		class NodeCanvas_Framework_Variable_UnityEngine_LayerMask : NodeCanvas.Framework.Variable<UnityEngine.LayerMask>{}
 		class NodeCanvas_Framework_Variable_UnityEngine_Animations_ConstraintSource : NodeCanvas.Framework.Variable<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1426,11 +1955,17 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Framework_Internal_ReflectedAction_EazyEngine_Space_DamageExtra : NodeCanvas.Framework.Internal.ReflectedAction<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Framework_Internal_ReflectedAction_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Framework.Internal.ReflectedAction<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Framework_Internal_ReflectedAction_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Framework.Internal.ReflectedAction<EazyEngine.Space.DamageGivenEvent>{}
+		class NodeCanvas_Framework_Internal_ReflectedAction_EazyEngine_Space_EventResultShowPackage : NodeCanvas.Framework.Internal.ReflectedAction<EazyEngine.Space.EventResultShowPackage>{}
 		class NodeCanvas_Framework_Internal_ReflectedAction_EazyEngine_Space_GameDatabaseInventoryEvent : NodeCanvas.Framework.Internal.ReflectedAction<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class NodeCanvas_Framework_Internal_ReflectedAction_EazyEngine_Space_PackageInfo : NodeCanvas.Framework.Internal.ReflectedAction<EazyEngine.Space.PackageInfo>{}
 		class NodeCanvas_Framework_Internal_ReflectedAction_EazyEngine_Space_PickEvent : NodeCanvas.Framework.Internal.ReflectedAction<EazyEngine.Space.PickEvent>{}
+		class NodeCanvas_Framework_Internal_ReflectedAction_EazyEngine_Space_StatusPackage : NodeCanvas.Framework.Internal.ReflectedAction<EazyEngine.Space.StatusPackage>{}
 		class NodeCanvas_Framework_Internal_ReflectedAction_EazyEngine_Space_TriggerWeaponState : NodeCanvas.Framework.Internal.ReflectedAction<EazyEngine.Space.TriggerWeaponState>{}
 		class NodeCanvas_Framework_Internal_ReflectedAction_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Framework.Internal.ReflectedAction<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Framework_Internal_ReflectedAction_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Framework.Internal.ReflectedAction<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class NodeCanvas_Framework_Internal_ReflectedAction_System_DateTime : NodeCanvas.Framework.Internal.ReflectedAction<System.DateTime>{}
+		class NodeCanvas_Framework_Internal_ReflectedAction_System_Double : NodeCanvas.Framework.Internal.ReflectedAction<System.Double>{}
+		class NodeCanvas_Framework_Internal_ReflectedAction_System_TimeSpan : NodeCanvas.Framework.Internal.ReflectedAction<System.TimeSpan>{}
 		class NodeCanvas_Framework_Internal_ReflectedAction_UnityEngine_LayerMask : NodeCanvas.Framework.Internal.ReflectedAction<UnityEngine.LayerMask>{}
 		class NodeCanvas_Framework_Internal_ReflectedAction_UnityEngine_Animations_ConstraintSource : NodeCanvas.Framework.Internal.ReflectedAction<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1457,11 +1992,17 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Framework_Internal_ReflectedFunction_EazyEngine_Space_DamageExtra : NodeCanvas.Framework.Internal.ReflectedFunction<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Framework_Internal_ReflectedFunction_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Framework.Internal.ReflectedFunction<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Framework_Internal_ReflectedFunction_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Framework.Internal.ReflectedFunction<EazyEngine.Space.DamageGivenEvent>{}
+		class NodeCanvas_Framework_Internal_ReflectedFunction_EazyEngine_Space_EventResultShowPackage : NodeCanvas.Framework.Internal.ReflectedFunction<EazyEngine.Space.EventResultShowPackage>{}
 		class NodeCanvas_Framework_Internal_ReflectedFunction_EazyEngine_Space_GameDatabaseInventoryEvent : NodeCanvas.Framework.Internal.ReflectedFunction<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class NodeCanvas_Framework_Internal_ReflectedFunction_EazyEngine_Space_PackageInfo : NodeCanvas.Framework.Internal.ReflectedFunction<EazyEngine.Space.PackageInfo>{}
 		class NodeCanvas_Framework_Internal_ReflectedFunction_EazyEngine_Space_PickEvent : NodeCanvas.Framework.Internal.ReflectedFunction<EazyEngine.Space.PickEvent>{}
+		class NodeCanvas_Framework_Internal_ReflectedFunction_EazyEngine_Space_StatusPackage : NodeCanvas.Framework.Internal.ReflectedFunction<EazyEngine.Space.StatusPackage>{}
 		class NodeCanvas_Framework_Internal_ReflectedFunction_EazyEngine_Space_TriggerWeaponState : NodeCanvas.Framework.Internal.ReflectedFunction<EazyEngine.Space.TriggerWeaponState>{}
 		class NodeCanvas_Framework_Internal_ReflectedFunction_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Framework.Internal.ReflectedFunction<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Framework_Internal_ReflectedFunction_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Framework.Internal.ReflectedFunction<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class NodeCanvas_Framework_Internal_ReflectedFunction_System_DateTime : NodeCanvas.Framework.Internal.ReflectedFunction<System.DateTime>{}
+		class NodeCanvas_Framework_Internal_ReflectedFunction_System_Double : NodeCanvas.Framework.Internal.ReflectedFunction<System.Double>{}
+		class NodeCanvas_Framework_Internal_ReflectedFunction_System_TimeSpan : NodeCanvas.Framework.Internal.ReflectedFunction<System.TimeSpan>{}
 		class NodeCanvas_Framework_Internal_ReflectedFunction_UnityEngine_LayerMask : NodeCanvas.Framework.Internal.ReflectedFunction<UnityEngine.LayerMask>{}
 		class NodeCanvas_Framework_Internal_ReflectedFunction_UnityEngine_Animations_ConstraintSource : NodeCanvas.Framework.Internal.ReflectedFunction<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1488,11 +2029,17 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.AddElementToDictionary<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.AddElementToDictionary<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Actions.AddElementToDictionary<EazyEngine.Space.DamageGivenEvent>{}
+		class NodeCanvas_Tasks_Actions_AddElementToDictionary_EazyEngine_Space_EventResultShowPackage : NodeCanvas.Tasks.Actions.AddElementToDictionary<EazyEngine.Space.EventResultShowPackage>{}
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_EazyEngine_Space_GameDatabaseInventoryEvent : NodeCanvas.Tasks.Actions.AddElementToDictionary<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class NodeCanvas_Tasks_Actions_AddElementToDictionary_EazyEngine_Space_PackageInfo : NodeCanvas.Tasks.Actions.AddElementToDictionary<EazyEngine.Space.PackageInfo>{}
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Actions.AddElementToDictionary<EazyEngine.Space.PickEvent>{}
+		class NodeCanvas_Tasks_Actions_AddElementToDictionary_EazyEngine_Space_StatusPackage : NodeCanvas.Tasks.Actions.AddElementToDictionary<EazyEngine.Space.StatusPackage>{}
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_EazyEngine_Space_TriggerWeaponState : NodeCanvas.Tasks.Actions.AddElementToDictionary<EazyEngine.Space.TriggerWeaponState>{}
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Actions.AddElementToDictionary<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Actions.AddElementToDictionary<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class NodeCanvas_Tasks_Actions_AddElementToDictionary_System_DateTime : NodeCanvas.Tasks.Actions.AddElementToDictionary<System.DateTime>{}
+		class NodeCanvas_Tasks_Actions_AddElementToDictionary_System_Double : NodeCanvas.Tasks.Actions.AddElementToDictionary<System.Double>{}
+		class NodeCanvas_Tasks_Actions_AddElementToDictionary_System_TimeSpan : NodeCanvas.Tasks.Actions.AddElementToDictionary<System.TimeSpan>{}
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_UnityEngine_LayerMask : NodeCanvas.Tasks.Actions.AddElementToDictionary<UnityEngine.LayerMask>{}
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Actions.AddElementToDictionary<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1519,11 +2066,17 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_AddElementToList_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.AddElementToList<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_AddElementToList_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.AddElementToList<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_AddElementToList_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Actions.AddElementToList<EazyEngine.Space.DamageGivenEvent>{}
+		class NodeCanvas_Tasks_Actions_AddElementToList_EazyEngine_Space_EventResultShowPackage : NodeCanvas.Tasks.Actions.AddElementToList<EazyEngine.Space.EventResultShowPackage>{}
 		class NodeCanvas_Tasks_Actions_AddElementToList_EazyEngine_Space_GameDatabaseInventoryEvent : NodeCanvas.Tasks.Actions.AddElementToList<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class NodeCanvas_Tasks_Actions_AddElementToList_EazyEngine_Space_PackageInfo : NodeCanvas.Tasks.Actions.AddElementToList<EazyEngine.Space.PackageInfo>{}
 		class NodeCanvas_Tasks_Actions_AddElementToList_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Actions.AddElementToList<EazyEngine.Space.PickEvent>{}
+		class NodeCanvas_Tasks_Actions_AddElementToList_EazyEngine_Space_StatusPackage : NodeCanvas.Tasks.Actions.AddElementToList<EazyEngine.Space.StatusPackage>{}
 		class NodeCanvas_Tasks_Actions_AddElementToList_EazyEngine_Space_TriggerWeaponState : NodeCanvas.Tasks.Actions.AddElementToList<EazyEngine.Space.TriggerWeaponState>{}
 		class NodeCanvas_Tasks_Actions_AddElementToList_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Actions.AddElementToList<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_AddElementToList_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Actions.AddElementToList<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class NodeCanvas_Tasks_Actions_AddElementToList_System_DateTime : NodeCanvas.Tasks.Actions.AddElementToList<System.DateTime>{}
+		class NodeCanvas_Tasks_Actions_AddElementToList_System_Double : NodeCanvas.Tasks.Actions.AddElementToList<System.Double>{}
+		class NodeCanvas_Tasks_Actions_AddElementToList_System_TimeSpan : NodeCanvas.Tasks.Actions.AddElementToList<System.TimeSpan>{}
 		class NodeCanvas_Tasks_Actions_AddElementToList_UnityEngine_LayerMask : NodeCanvas.Tasks.Actions.AddElementToList<UnityEngine.LayerMask>{}
 		class NodeCanvas_Tasks_Actions_AddElementToList_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Actions.AddElementToList<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1550,11 +2103,17 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.GetDictionaryElement<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.GetDictionaryElement<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Actions.GetDictionaryElement<EazyEngine.Space.DamageGivenEvent>{}
+		class NodeCanvas_Tasks_Actions_GetDictionaryElement_EazyEngine_Space_EventResultShowPackage : NodeCanvas.Tasks.Actions.GetDictionaryElement<EazyEngine.Space.EventResultShowPackage>{}
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_EazyEngine_Space_GameDatabaseInventoryEvent : NodeCanvas.Tasks.Actions.GetDictionaryElement<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class NodeCanvas_Tasks_Actions_GetDictionaryElement_EazyEngine_Space_PackageInfo : NodeCanvas.Tasks.Actions.GetDictionaryElement<EazyEngine.Space.PackageInfo>{}
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Actions.GetDictionaryElement<EazyEngine.Space.PickEvent>{}
+		class NodeCanvas_Tasks_Actions_GetDictionaryElement_EazyEngine_Space_StatusPackage : NodeCanvas.Tasks.Actions.GetDictionaryElement<EazyEngine.Space.StatusPackage>{}
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_EazyEngine_Space_TriggerWeaponState : NodeCanvas.Tasks.Actions.GetDictionaryElement<EazyEngine.Space.TriggerWeaponState>{}
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Actions.GetDictionaryElement<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Actions.GetDictionaryElement<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class NodeCanvas_Tasks_Actions_GetDictionaryElement_System_DateTime : NodeCanvas.Tasks.Actions.GetDictionaryElement<System.DateTime>{}
+		class NodeCanvas_Tasks_Actions_GetDictionaryElement_System_Double : NodeCanvas.Tasks.Actions.GetDictionaryElement<System.Double>{}
+		class NodeCanvas_Tasks_Actions_GetDictionaryElement_System_TimeSpan : NodeCanvas.Tasks.Actions.GetDictionaryElement<System.TimeSpan>{}
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_UnityEngine_LayerMask : NodeCanvas.Tasks.Actions.GetDictionaryElement<UnityEngine.LayerMask>{}
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Actions.GetDictionaryElement<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1581,11 +2140,17 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.GetIndexOfElement<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.GetIndexOfElement<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Actions.GetIndexOfElement<EazyEngine.Space.DamageGivenEvent>{}
+		class NodeCanvas_Tasks_Actions_GetIndexOfElement_EazyEngine_Space_EventResultShowPackage : NodeCanvas.Tasks.Actions.GetIndexOfElement<EazyEngine.Space.EventResultShowPackage>{}
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_EazyEngine_Space_GameDatabaseInventoryEvent : NodeCanvas.Tasks.Actions.GetIndexOfElement<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class NodeCanvas_Tasks_Actions_GetIndexOfElement_EazyEngine_Space_PackageInfo : NodeCanvas.Tasks.Actions.GetIndexOfElement<EazyEngine.Space.PackageInfo>{}
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Actions.GetIndexOfElement<EazyEngine.Space.PickEvent>{}
+		class NodeCanvas_Tasks_Actions_GetIndexOfElement_EazyEngine_Space_StatusPackage : NodeCanvas.Tasks.Actions.GetIndexOfElement<EazyEngine.Space.StatusPackage>{}
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_EazyEngine_Space_TriggerWeaponState : NodeCanvas.Tasks.Actions.GetIndexOfElement<EazyEngine.Space.TriggerWeaponState>{}
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Actions.GetIndexOfElement<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Actions.GetIndexOfElement<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class NodeCanvas_Tasks_Actions_GetIndexOfElement_System_DateTime : NodeCanvas.Tasks.Actions.GetIndexOfElement<System.DateTime>{}
+		class NodeCanvas_Tasks_Actions_GetIndexOfElement_System_Double : NodeCanvas.Tasks.Actions.GetIndexOfElement<System.Double>{}
+		class NodeCanvas_Tasks_Actions_GetIndexOfElement_System_TimeSpan : NodeCanvas.Tasks.Actions.GetIndexOfElement<System.TimeSpan>{}
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_UnityEngine_LayerMask : NodeCanvas.Tasks.Actions.GetIndexOfElement<UnityEngine.LayerMask>{}
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Actions.GetIndexOfElement<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1612,11 +2177,17 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_InsertElementToList_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.InsertElementToList<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_InsertElementToList_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.InsertElementToList<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_InsertElementToList_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Actions.InsertElementToList<EazyEngine.Space.DamageGivenEvent>{}
+		class NodeCanvas_Tasks_Actions_InsertElementToList_EazyEngine_Space_EventResultShowPackage : NodeCanvas.Tasks.Actions.InsertElementToList<EazyEngine.Space.EventResultShowPackage>{}
 		class NodeCanvas_Tasks_Actions_InsertElementToList_EazyEngine_Space_GameDatabaseInventoryEvent : NodeCanvas.Tasks.Actions.InsertElementToList<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class NodeCanvas_Tasks_Actions_InsertElementToList_EazyEngine_Space_PackageInfo : NodeCanvas.Tasks.Actions.InsertElementToList<EazyEngine.Space.PackageInfo>{}
 		class NodeCanvas_Tasks_Actions_InsertElementToList_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Actions.InsertElementToList<EazyEngine.Space.PickEvent>{}
+		class NodeCanvas_Tasks_Actions_InsertElementToList_EazyEngine_Space_StatusPackage : NodeCanvas.Tasks.Actions.InsertElementToList<EazyEngine.Space.StatusPackage>{}
 		class NodeCanvas_Tasks_Actions_InsertElementToList_EazyEngine_Space_TriggerWeaponState : NodeCanvas.Tasks.Actions.InsertElementToList<EazyEngine.Space.TriggerWeaponState>{}
 		class NodeCanvas_Tasks_Actions_InsertElementToList_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Actions.InsertElementToList<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_InsertElementToList_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Actions.InsertElementToList<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class NodeCanvas_Tasks_Actions_InsertElementToList_System_DateTime : NodeCanvas.Tasks.Actions.InsertElementToList<System.DateTime>{}
+		class NodeCanvas_Tasks_Actions_InsertElementToList_System_Double : NodeCanvas.Tasks.Actions.InsertElementToList<System.Double>{}
+		class NodeCanvas_Tasks_Actions_InsertElementToList_System_TimeSpan : NodeCanvas.Tasks.Actions.InsertElementToList<System.TimeSpan>{}
 		class NodeCanvas_Tasks_Actions_InsertElementToList_UnityEngine_LayerMask : NodeCanvas.Tasks.Actions.InsertElementToList<UnityEngine.LayerMask>{}
 		class NodeCanvas_Tasks_Actions_InsertElementToList_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Actions.InsertElementToList<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1643,11 +2214,17 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_PickListElement_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.PickListElement<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_PickListElement_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.PickListElement<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_PickListElement_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Actions.PickListElement<EazyEngine.Space.DamageGivenEvent>{}
+		class NodeCanvas_Tasks_Actions_PickListElement_EazyEngine_Space_EventResultShowPackage : NodeCanvas.Tasks.Actions.PickListElement<EazyEngine.Space.EventResultShowPackage>{}
 		class NodeCanvas_Tasks_Actions_PickListElement_EazyEngine_Space_GameDatabaseInventoryEvent : NodeCanvas.Tasks.Actions.PickListElement<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class NodeCanvas_Tasks_Actions_PickListElement_EazyEngine_Space_PackageInfo : NodeCanvas.Tasks.Actions.PickListElement<EazyEngine.Space.PackageInfo>{}
 		class NodeCanvas_Tasks_Actions_PickListElement_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Actions.PickListElement<EazyEngine.Space.PickEvent>{}
+		class NodeCanvas_Tasks_Actions_PickListElement_EazyEngine_Space_StatusPackage : NodeCanvas.Tasks.Actions.PickListElement<EazyEngine.Space.StatusPackage>{}
 		class NodeCanvas_Tasks_Actions_PickListElement_EazyEngine_Space_TriggerWeaponState : NodeCanvas.Tasks.Actions.PickListElement<EazyEngine.Space.TriggerWeaponState>{}
 		class NodeCanvas_Tasks_Actions_PickListElement_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Actions.PickListElement<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_PickListElement_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Actions.PickListElement<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class NodeCanvas_Tasks_Actions_PickListElement_System_DateTime : NodeCanvas.Tasks.Actions.PickListElement<System.DateTime>{}
+		class NodeCanvas_Tasks_Actions_PickListElement_System_Double : NodeCanvas.Tasks.Actions.PickListElement<System.Double>{}
+		class NodeCanvas_Tasks_Actions_PickListElement_System_TimeSpan : NodeCanvas.Tasks.Actions.PickListElement<System.TimeSpan>{}
 		class NodeCanvas_Tasks_Actions_PickListElement_UnityEngine_LayerMask : NodeCanvas.Tasks.Actions.PickListElement<UnityEngine.LayerMask>{}
 		class NodeCanvas_Tasks_Actions_PickListElement_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Actions.PickListElement<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1674,11 +2251,17 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.PickRandomListElement<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.PickRandomListElement<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Actions.PickRandomListElement<EazyEngine.Space.DamageGivenEvent>{}
+		class NodeCanvas_Tasks_Actions_PickRandomListElement_EazyEngine_Space_EventResultShowPackage : NodeCanvas.Tasks.Actions.PickRandomListElement<EazyEngine.Space.EventResultShowPackage>{}
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_EazyEngine_Space_GameDatabaseInventoryEvent : NodeCanvas.Tasks.Actions.PickRandomListElement<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class NodeCanvas_Tasks_Actions_PickRandomListElement_EazyEngine_Space_PackageInfo : NodeCanvas.Tasks.Actions.PickRandomListElement<EazyEngine.Space.PackageInfo>{}
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Actions.PickRandomListElement<EazyEngine.Space.PickEvent>{}
+		class NodeCanvas_Tasks_Actions_PickRandomListElement_EazyEngine_Space_StatusPackage : NodeCanvas.Tasks.Actions.PickRandomListElement<EazyEngine.Space.StatusPackage>{}
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_EazyEngine_Space_TriggerWeaponState : NodeCanvas.Tasks.Actions.PickRandomListElement<EazyEngine.Space.TriggerWeaponState>{}
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Actions.PickRandomListElement<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Actions.PickRandomListElement<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class NodeCanvas_Tasks_Actions_PickRandomListElement_System_DateTime : NodeCanvas.Tasks.Actions.PickRandomListElement<System.DateTime>{}
+		class NodeCanvas_Tasks_Actions_PickRandomListElement_System_Double : NodeCanvas.Tasks.Actions.PickRandomListElement<System.Double>{}
+		class NodeCanvas_Tasks_Actions_PickRandomListElement_System_TimeSpan : NodeCanvas.Tasks.Actions.PickRandomListElement<System.TimeSpan>{}
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_UnityEngine_LayerMask : NodeCanvas.Tasks.Actions.PickRandomListElement<UnityEngine.LayerMask>{}
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Actions.PickRandomListElement<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1705,11 +2288,17 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.RemoveElementFromList<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.RemoveElementFromList<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Actions.RemoveElementFromList<EazyEngine.Space.DamageGivenEvent>{}
+		class NodeCanvas_Tasks_Actions_RemoveElementFromList_EazyEngine_Space_EventResultShowPackage : NodeCanvas.Tasks.Actions.RemoveElementFromList<EazyEngine.Space.EventResultShowPackage>{}
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_EazyEngine_Space_GameDatabaseInventoryEvent : NodeCanvas.Tasks.Actions.RemoveElementFromList<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class NodeCanvas_Tasks_Actions_RemoveElementFromList_EazyEngine_Space_PackageInfo : NodeCanvas.Tasks.Actions.RemoveElementFromList<EazyEngine.Space.PackageInfo>{}
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Actions.RemoveElementFromList<EazyEngine.Space.PickEvent>{}
+		class NodeCanvas_Tasks_Actions_RemoveElementFromList_EazyEngine_Space_StatusPackage : NodeCanvas.Tasks.Actions.RemoveElementFromList<EazyEngine.Space.StatusPackage>{}
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_EazyEngine_Space_TriggerWeaponState : NodeCanvas.Tasks.Actions.RemoveElementFromList<EazyEngine.Space.TriggerWeaponState>{}
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Actions.RemoveElementFromList<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Actions.RemoveElementFromList<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class NodeCanvas_Tasks_Actions_RemoveElementFromList_System_DateTime : NodeCanvas.Tasks.Actions.RemoveElementFromList<System.DateTime>{}
+		class NodeCanvas_Tasks_Actions_RemoveElementFromList_System_Double : NodeCanvas.Tasks.Actions.RemoveElementFromList<System.Double>{}
+		class NodeCanvas_Tasks_Actions_RemoveElementFromList_System_TimeSpan : NodeCanvas.Tasks.Actions.RemoveElementFromList<System.TimeSpan>{}
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_UnityEngine_LayerMask : NodeCanvas.Tasks.Actions.RemoveElementFromList<UnityEngine.LayerMask>{}
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Actions.RemoveElementFromList<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1736,11 +2325,17 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_SendEvent_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.SendEvent<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_SendEvent_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.SendEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_SendEvent_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Actions.SendEvent<EazyEngine.Space.DamageGivenEvent>{}
+		class NodeCanvas_Tasks_Actions_SendEvent_EazyEngine_Space_EventResultShowPackage : NodeCanvas.Tasks.Actions.SendEvent<EazyEngine.Space.EventResultShowPackage>{}
 		class NodeCanvas_Tasks_Actions_SendEvent_EazyEngine_Space_GameDatabaseInventoryEvent : NodeCanvas.Tasks.Actions.SendEvent<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class NodeCanvas_Tasks_Actions_SendEvent_EazyEngine_Space_PackageInfo : NodeCanvas.Tasks.Actions.SendEvent<EazyEngine.Space.PackageInfo>{}
 		class NodeCanvas_Tasks_Actions_SendEvent_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Actions.SendEvent<EazyEngine.Space.PickEvent>{}
+		class NodeCanvas_Tasks_Actions_SendEvent_EazyEngine_Space_StatusPackage : NodeCanvas.Tasks.Actions.SendEvent<EazyEngine.Space.StatusPackage>{}
 		class NodeCanvas_Tasks_Actions_SendEvent_EazyEngine_Space_TriggerWeaponState : NodeCanvas.Tasks.Actions.SendEvent<EazyEngine.Space.TriggerWeaponState>{}
 		class NodeCanvas_Tasks_Actions_SendEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Actions.SendEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_SendEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Actions.SendEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class NodeCanvas_Tasks_Actions_SendEvent_System_DateTime : NodeCanvas.Tasks.Actions.SendEvent<System.DateTime>{}
+		class NodeCanvas_Tasks_Actions_SendEvent_System_Double : NodeCanvas.Tasks.Actions.SendEvent<System.Double>{}
+		class NodeCanvas_Tasks_Actions_SendEvent_System_TimeSpan : NodeCanvas.Tasks.Actions.SendEvent<System.TimeSpan>{}
 		class NodeCanvas_Tasks_Actions_SendEvent_UnityEngine_LayerMask : NodeCanvas.Tasks.Actions.SendEvent<UnityEngine.LayerMask>{}
 		class NodeCanvas_Tasks_Actions_SendEvent_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Actions.SendEvent<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1767,11 +2362,17 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.SendEventToObjects<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.SendEventToObjects<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Actions.SendEventToObjects<EazyEngine.Space.DamageGivenEvent>{}
+		class NodeCanvas_Tasks_Actions_SendEventToObjects_EazyEngine_Space_EventResultShowPackage : NodeCanvas.Tasks.Actions.SendEventToObjects<EazyEngine.Space.EventResultShowPackage>{}
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_EazyEngine_Space_GameDatabaseInventoryEvent : NodeCanvas.Tasks.Actions.SendEventToObjects<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class NodeCanvas_Tasks_Actions_SendEventToObjects_EazyEngine_Space_PackageInfo : NodeCanvas.Tasks.Actions.SendEventToObjects<EazyEngine.Space.PackageInfo>{}
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Actions.SendEventToObjects<EazyEngine.Space.PickEvent>{}
+		class NodeCanvas_Tasks_Actions_SendEventToObjects_EazyEngine_Space_StatusPackage : NodeCanvas.Tasks.Actions.SendEventToObjects<EazyEngine.Space.StatusPackage>{}
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_EazyEngine_Space_TriggerWeaponState : NodeCanvas.Tasks.Actions.SendEventToObjects<EazyEngine.Space.TriggerWeaponState>{}
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Actions.SendEventToObjects<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Actions.SendEventToObjects<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class NodeCanvas_Tasks_Actions_SendEventToObjects_System_DateTime : NodeCanvas.Tasks.Actions.SendEventToObjects<System.DateTime>{}
+		class NodeCanvas_Tasks_Actions_SendEventToObjects_System_Double : NodeCanvas.Tasks.Actions.SendEventToObjects<System.Double>{}
+		class NodeCanvas_Tasks_Actions_SendEventToObjects_System_TimeSpan : NodeCanvas.Tasks.Actions.SendEventToObjects<System.TimeSpan>{}
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_UnityEngine_LayerMask : NodeCanvas.Tasks.Actions.SendEventToObjects<UnityEngine.LayerMask>{}
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Actions.SendEventToObjects<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1798,11 +2399,17 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_SendMessage_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.SendMessage<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_SendMessage_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.SendMessage<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_SendMessage_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Actions.SendMessage<EazyEngine.Space.DamageGivenEvent>{}
+		class NodeCanvas_Tasks_Actions_SendMessage_EazyEngine_Space_EventResultShowPackage : NodeCanvas.Tasks.Actions.SendMessage<EazyEngine.Space.EventResultShowPackage>{}
 		class NodeCanvas_Tasks_Actions_SendMessage_EazyEngine_Space_GameDatabaseInventoryEvent : NodeCanvas.Tasks.Actions.SendMessage<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class NodeCanvas_Tasks_Actions_SendMessage_EazyEngine_Space_PackageInfo : NodeCanvas.Tasks.Actions.SendMessage<EazyEngine.Space.PackageInfo>{}
 		class NodeCanvas_Tasks_Actions_SendMessage_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Actions.SendMessage<EazyEngine.Space.PickEvent>{}
+		class NodeCanvas_Tasks_Actions_SendMessage_EazyEngine_Space_StatusPackage : NodeCanvas.Tasks.Actions.SendMessage<EazyEngine.Space.StatusPackage>{}
 		class NodeCanvas_Tasks_Actions_SendMessage_EazyEngine_Space_TriggerWeaponState : NodeCanvas.Tasks.Actions.SendMessage<EazyEngine.Space.TriggerWeaponState>{}
 		class NodeCanvas_Tasks_Actions_SendMessage_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Actions.SendMessage<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_SendMessage_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Actions.SendMessage<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class NodeCanvas_Tasks_Actions_SendMessage_System_DateTime : NodeCanvas.Tasks.Actions.SendMessage<System.DateTime>{}
+		class NodeCanvas_Tasks_Actions_SendMessage_System_Double : NodeCanvas.Tasks.Actions.SendMessage<System.Double>{}
+		class NodeCanvas_Tasks_Actions_SendMessage_System_TimeSpan : NodeCanvas.Tasks.Actions.SendMessage<System.TimeSpan>{}
 		class NodeCanvas_Tasks_Actions_SendMessage_UnityEngine_LayerMask : NodeCanvas.Tasks.Actions.SendMessage<UnityEngine.LayerMask>{}
 		class NodeCanvas_Tasks_Actions_SendMessage_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Actions.SendMessage<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1829,11 +2436,17 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_SetListElement_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.SetListElement<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_SetListElement_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.SetListElement<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_SetListElement_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Actions.SetListElement<EazyEngine.Space.DamageGivenEvent>{}
+		class NodeCanvas_Tasks_Actions_SetListElement_EazyEngine_Space_EventResultShowPackage : NodeCanvas.Tasks.Actions.SetListElement<EazyEngine.Space.EventResultShowPackage>{}
 		class NodeCanvas_Tasks_Actions_SetListElement_EazyEngine_Space_GameDatabaseInventoryEvent : NodeCanvas.Tasks.Actions.SetListElement<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class NodeCanvas_Tasks_Actions_SetListElement_EazyEngine_Space_PackageInfo : NodeCanvas.Tasks.Actions.SetListElement<EazyEngine.Space.PackageInfo>{}
 		class NodeCanvas_Tasks_Actions_SetListElement_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Actions.SetListElement<EazyEngine.Space.PickEvent>{}
+		class NodeCanvas_Tasks_Actions_SetListElement_EazyEngine_Space_StatusPackage : NodeCanvas.Tasks.Actions.SetListElement<EazyEngine.Space.StatusPackage>{}
 		class NodeCanvas_Tasks_Actions_SetListElement_EazyEngine_Space_TriggerWeaponState : NodeCanvas.Tasks.Actions.SetListElement<EazyEngine.Space.TriggerWeaponState>{}
 		class NodeCanvas_Tasks_Actions_SetListElement_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Actions.SetListElement<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_SetListElement_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Actions.SetListElement<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class NodeCanvas_Tasks_Actions_SetListElement_System_DateTime : NodeCanvas.Tasks.Actions.SetListElement<System.DateTime>{}
+		class NodeCanvas_Tasks_Actions_SetListElement_System_Double : NodeCanvas.Tasks.Actions.SetListElement<System.Double>{}
+		class NodeCanvas_Tasks_Actions_SetListElement_System_TimeSpan : NodeCanvas.Tasks.Actions.SetListElement<System.TimeSpan>{}
 		class NodeCanvas_Tasks_Actions_SetListElement_UnityEngine_LayerMask : NodeCanvas.Tasks.Actions.SetListElement<UnityEngine.LayerMask>{}
 		class NodeCanvas_Tasks_Actions_SetListElement_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Actions.SetListElement<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1860,11 +2473,17 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_SetVariable_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.SetVariable<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_SetVariable_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.SetVariable<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_SetVariable_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Actions.SetVariable<EazyEngine.Space.DamageGivenEvent>{}
+		class NodeCanvas_Tasks_Actions_SetVariable_EazyEngine_Space_EventResultShowPackage : NodeCanvas.Tasks.Actions.SetVariable<EazyEngine.Space.EventResultShowPackage>{}
 		class NodeCanvas_Tasks_Actions_SetVariable_EazyEngine_Space_GameDatabaseInventoryEvent : NodeCanvas.Tasks.Actions.SetVariable<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class NodeCanvas_Tasks_Actions_SetVariable_EazyEngine_Space_PackageInfo : NodeCanvas.Tasks.Actions.SetVariable<EazyEngine.Space.PackageInfo>{}
 		class NodeCanvas_Tasks_Actions_SetVariable_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Actions.SetVariable<EazyEngine.Space.PickEvent>{}
+		class NodeCanvas_Tasks_Actions_SetVariable_EazyEngine_Space_StatusPackage : NodeCanvas.Tasks.Actions.SetVariable<EazyEngine.Space.StatusPackage>{}
 		class NodeCanvas_Tasks_Actions_SetVariable_EazyEngine_Space_TriggerWeaponState : NodeCanvas.Tasks.Actions.SetVariable<EazyEngine.Space.TriggerWeaponState>{}
 		class NodeCanvas_Tasks_Actions_SetVariable_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Actions.SetVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Actions_SetVariable_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Actions.SetVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class NodeCanvas_Tasks_Actions_SetVariable_System_DateTime : NodeCanvas.Tasks.Actions.SetVariable<System.DateTime>{}
+		class NodeCanvas_Tasks_Actions_SetVariable_System_Double : NodeCanvas.Tasks.Actions.SetVariable<System.Double>{}
+		class NodeCanvas_Tasks_Actions_SetVariable_System_TimeSpan : NodeCanvas.Tasks.Actions.SetVariable<System.TimeSpan>{}
 		class NodeCanvas_Tasks_Actions_SetVariable_UnityEngine_LayerMask : NodeCanvas.Tasks.Actions.SetVariable<UnityEngine.LayerMask>{}
 		class NodeCanvas_Tasks_Actions_SetVariable_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Actions.SetVariable<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1891,11 +2510,17 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<EazyEngine.Space.DamageGivenEvent>{}
+		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_EazyEngine_Space_EventResultShowPackage : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<EazyEngine.Space.EventResultShowPackage>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_EazyEngine_Space_GameDatabaseInventoryEvent : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_EazyEngine_Space_PackageInfo : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<EazyEngine.Space.PackageInfo>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<EazyEngine.Space.PickEvent>{}
+		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_EazyEngine_Space_StatusPackage : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<EazyEngine.Space.StatusPackage>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_EazyEngine_Space_TriggerWeaponState : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<EazyEngine.Space.TriggerWeaponState>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_System_DateTime : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<System.DateTime>{}
+		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_System_Double : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<System.Double>{}
+		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_System_TimeSpan : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<System.TimeSpan>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_UnityEngine_LayerMask : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<UnityEngine.LayerMask>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1922,11 +2547,17 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<EazyEngine.Space.DamageGivenEvent>{}
+		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_EazyEngine_Space_EventResultShowPackage : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<EazyEngine.Space.EventResultShowPackage>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_EazyEngine_Space_GameDatabaseInventoryEvent : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_EazyEngine_Space_PackageInfo : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<EazyEngine.Space.PackageInfo>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<EazyEngine.Space.PickEvent>{}
+		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_EazyEngine_Space_StatusPackage : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<EazyEngine.Space.StatusPackage>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_EazyEngine_Space_TriggerWeaponState : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<EazyEngine.Space.TriggerWeaponState>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_System_DateTime : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<System.DateTime>{}
+		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_System_Double : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<System.Double>{}
+		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_System_TimeSpan : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<System.TimeSpan>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_UnityEngine_LayerMask : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<UnityEngine.LayerMask>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1953,11 +2584,17 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckEvent_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.CheckEvent<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_CheckEvent_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckEvent_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Conditions.CheckEvent<EazyEngine.Space.DamageGivenEvent>{}
+		class NodeCanvas_Tasks_Conditions_CheckEvent_EazyEngine_Space_EventResultShowPackage : NodeCanvas.Tasks.Conditions.CheckEvent<EazyEngine.Space.EventResultShowPackage>{}
 		class NodeCanvas_Tasks_Conditions_CheckEvent_EazyEngine_Space_GameDatabaseInventoryEvent : NodeCanvas.Tasks.Conditions.CheckEvent<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class NodeCanvas_Tasks_Conditions_CheckEvent_EazyEngine_Space_PackageInfo : NodeCanvas.Tasks.Conditions.CheckEvent<EazyEngine.Space.PackageInfo>{}
 		class NodeCanvas_Tasks_Conditions_CheckEvent_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Conditions.CheckEvent<EazyEngine.Space.PickEvent>{}
+		class NodeCanvas_Tasks_Conditions_CheckEvent_EazyEngine_Space_StatusPackage : NodeCanvas.Tasks.Conditions.CheckEvent<EazyEngine.Space.StatusPackage>{}
 		class NodeCanvas_Tasks_Conditions_CheckEvent_EazyEngine_Space_TriggerWeaponState : NodeCanvas.Tasks.Conditions.CheckEvent<EazyEngine.Space.TriggerWeaponState>{}
 		class NodeCanvas_Tasks_Conditions_CheckEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Conditions.CheckEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_CheckEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Conditions.CheckEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class NodeCanvas_Tasks_Conditions_CheckEvent_System_DateTime : NodeCanvas.Tasks.Conditions.CheckEvent<System.DateTime>{}
+		class NodeCanvas_Tasks_Conditions_CheckEvent_System_Double : NodeCanvas.Tasks.Conditions.CheckEvent<System.Double>{}
+		class NodeCanvas_Tasks_Conditions_CheckEvent_System_TimeSpan : NodeCanvas.Tasks.Conditions.CheckEvent<System.TimeSpan>{}
 		class NodeCanvas_Tasks_Conditions_CheckEvent_UnityEngine_LayerMask : NodeCanvas.Tasks.Conditions.CheckEvent<UnityEngine.LayerMask>{}
 		class NodeCanvas_Tasks_Conditions_CheckEvent_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Conditions.CheckEvent<UnityEngine.Animations.ConstraintSource>{}
 
@@ -1984,11 +2621,17 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.CheckEventValue<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckEventValue<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Conditions.CheckEventValue<EazyEngine.Space.DamageGivenEvent>{}
+		class NodeCanvas_Tasks_Conditions_CheckEventValue_EazyEngine_Space_EventResultShowPackage : NodeCanvas.Tasks.Conditions.CheckEventValue<EazyEngine.Space.EventResultShowPackage>{}
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_EazyEngine_Space_GameDatabaseInventoryEvent : NodeCanvas.Tasks.Conditions.CheckEventValue<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class NodeCanvas_Tasks_Conditions_CheckEventValue_EazyEngine_Space_PackageInfo : NodeCanvas.Tasks.Conditions.CheckEventValue<EazyEngine.Space.PackageInfo>{}
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Conditions.CheckEventValue<EazyEngine.Space.PickEvent>{}
+		class NodeCanvas_Tasks_Conditions_CheckEventValue_EazyEngine_Space_StatusPackage : NodeCanvas.Tasks.Conditions.CheckEventValue<EazyEngine.Space.StatusPackage>{}
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_EazyEngine_Space_TriggerWeaponState : NodeCanvas.Tasks.Conditions.CheckEventValue<EazyEngine.Space.TriggerWeaponState>{}
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Conditions.CheckEventValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Conditions.CheckEventValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class NodeCanvas_Tasks_Conditions_CheckEventValue_System_DateTime : NodeCanvas.Tasks.Conditions.CheckEventValue<System.DateTime>{}
+		class NodeCanvas_Tasks_Conditions_CheckEventValue_System_Double : NodeCanvas.Tasks.Conditions.CheckEventValue<System.Double>{}
+		class NodeCanvas_Tasks_Conditions_CheckEventValue_System_TimeSpan : NodeCanvas.Tasks.Conditions.CheckEventValue<System.TimeSpan>{}
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_UnityEngine_LayerMask : NodeCanvas.Tasks.Conditions.CheckEventValue<UnityEngine.LayerMask>{}
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Conditions.CheckEventValue<UnityEngine.Animations.ConstraintSource>{}
 
@@ -2015,11 +2658,17 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<EazyEngine.Space.DamageGivenEvent>{}
+		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_EazyEngine_Space_EventResultShowPackage : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<EazyEngine.Space.EventResultShowPackage>{}
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_EazyEngine_Space_GameDatabaseInventoryEvent : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_EazyEngine_Space_PackageInfo : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<EazyEngine.Space.PackageInfo>{}
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<EazyEngine.Space.PickEvent>{}
+		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_EazyEngine_Space_StatusPackage : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<EazyEngine.Space.StatusPackage>{}
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_EazyEngine_Space_TriggerWeaponState : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<EazyEngine.Space.TriggerWeaponState>{}
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_System_DateTime : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<System.DateTime>{}
+		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_System_Double : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<System.Double>{}
+		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_System_TimeSpan : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<System.TimeSpan>{}
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_UnityEngine_LayerMask : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<UnityEngine.LayerMask>{}
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<UnityEngine.Animations.ConstraintSource>{}
 
@@ -2046,11 +2695,17 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.CheckUnityEvent<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckUnityEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Conditions.CheckUnityEvent<EazyEngine.Space.DamageGivenEvent>{}
+		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_EazyEngine_Space_EventResultShowPackage : NodeCanvas.Tasks.Conditions.CheckUnityEvent<EazyEngine.Space.EventResultShowPackage>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_EazyEngine_Space_GameDatabaseInventoryEvent : NodeCanvas.Tasks.Conditions.CheckUnityEvent<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_EazyEngine_Space_PackageInfo : NodeCanvas.Tasks.Conditions.CheckUnityEvent<EazyEngine.Space.PackageInfo>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Conditions.CheckUnityEvent<EazyEngine.Space.PickEvent>{}
+		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_EazyEngine_Space_StatusPackage : NodeCanvas.Tasks.Conditions.CheckUnityEvent<EazyEngine.Space.StatusPackage>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_EazyEngine_Space_TriggerWeaponState : NodeCanvas.Tasks.Conditions.CheckUnityEvent<EazyEngine.Space.TriggerWeaponState>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Conditions.CheckUnityEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Conditions.CheckUnityEvent<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_System_DateTime : NodeCanvas.Tasks.Conditions.CheckUnityEvent<System.DateTime>{}
+		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_System_Double : NodeCanvas.Tasks.Conditions.CheckUnityEvent<System.Double>{}
+		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_System_TimeSpan : NodeCanvas.Tasks.Conditions.CheckUnityEvent<System.TimeSpan>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_UnityEngine_LayerMask : NodeCanvas.Tasks.Conditions.CheckUnityEvent<UnityEngine.LayerMask>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Conditions.CheckUnityEvent<UnityEngine.Animations.ConstraintSource>{}
 
@@ -2077,11 +2732,17 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<EazyEngine.Space.DamageGivenEvent>{}
+		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_EazyEngine_Space_EventResultShowPackage : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<EazyEngine.Space.EventResultShowPackage>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_EazyEngine_Space_GameDatabaseInventoryEvent : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_EazyEngine_Space_PackageInfo : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<EazyEngine.Space.PackageInfo>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<EazyEngine.Space.PickEvent>{}
+		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_EazyEngine_Space_StatusPackage : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<EazyEngine.Space.StatusPackage>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_EazyEngine_Space_TriggerWeaponState : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<EazyEngine.Space.TriggerWeaponState>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_System_DateTime : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<System.DateTime>{}
+		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_System_Double : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<System.Double>{}
+		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_System_TimeSpan : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<System.TimeSpan>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_UnityEngine_LayerMask : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<UnityEngine.LayerMask>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<UnityEngine.Animations.ConstraintSource>{}
 
@@ -2108,11 +2769,17 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckVariable_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.CheckVariable<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_CheckVariable_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckVariable<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckVariable_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Conditions.CheckVariable<EazyEngine.Space.DamageGivenEvent>{}
+		class NodeCanvas_Tasks_Conditions_CheckVariable_EazyEngine_Space_EventResultShowPackage : NodeCanvas.Tasks.Conditions.CheckVariable<EazyEngine.Space.EventResultShowPackage>{}
 		class NodeCanvas_Tasks_Conditions_CheckVariable_EazyEngine_Space_GameDatabaseInventoryEvent : NodeCanvas.Tasks.Conditions.CheckVariable<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class NodeCanvas_Tasks_Conditions_CheckVariable_EazyEngine_Space_PackageInfo : NodeCanvas.Tasks.Conditions.CheckVariable<EazyEngine.Space.PackageInfo>{}
 		class NodeCanvas_Tasks_Conditions_CheckVariable_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Conditions.CheckVariable<EazyEngine.Space.PickEvent>{}
+		class NodeCanvas_Tasks_Conditions_CheckVariable_EazyEngine_Space_StatusPackage : NodeCanvas.Tasks.Conditions.CheckVariable<EazyEngine.Space.StatusPackage>{}
 		class NodeCanvas_Tasks_Conditions_CheckVariable_EazyEngine_Space_TriggerWeaponState : NodeCanvas.Tasks.Conditions.CheckVariable<EazyEngine.Space.TriggerWeaponState>{}
 		class NodeCanvas_Tasks_Conditions_CheckVariable_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Conditions.CheckVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_CheckVariable_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Conditions.CheckVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class NodeCanvas_Tasks_Conditions_CheckVariable_System_DateTime : NodeCanvas.Tasks.Conditions.CheckVariable<System.DateTime>{}
+		class NodeCanvas_Tasks_Conditions_CheckVariable_System_Double : NodeCanvas.Tasks.Conditions.CheckVariable<System.Double>{}
+		class NodeCanvas_Tasks_Conditions_CheckVariable_System_TimeSpan : NodeCanvas.Tasks.Conditions.CheckVariable<System.TimeSpan>{}
 		class NodeCanvas_Tasks_Conditions_CheckVariable_UnityEngine_LayerMask : NodeCanvas.Tasks.Conditions.CheckVariable<UnityEngine.LayerMask>{}
 		class NodeCanvas_Tasks_Conditions_CheckVariable_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Conditions.CheckVariable<UnityEngine.Animations.ConstraintSource>{}
 
@@ -2139,11 +2806,17 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.ListContainsElement<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.ListContainsElement<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Conditions.ListContainsElement<EazyEngine.Space.DamageGivenEvent>{}
+		class NodeCanvas_Tasks_Conditions_ListContainsElement_EazyEngine_Space_EventResultShowPackage : NodeCanvas.Tasks.Conditions.ListContainsElement<EazyEngine.Space.EventResultShowPackage>{}
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_EazyEngine_Space_GameDatabaseInventoryEvent : NodeCanvas.Tasks.Conditions.ListContainsElement<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class NodeCanvas_Tasks_Conditions_ListContainsElement_EazyEngine_Space_PackageInfo : NodeCanvas.Tasks.Conditions.ListContainsElement<EazyEngine.Space.PackageInfo>{}
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Conditions.ListContainsElement<EazyEngine.Space.PickEvent>{}
+		class NodeCanvas_Tasks_Conditions_ListContainsElement_EazyEngine_Space_StatusPackage : NodeCanvas.Tasks.Conditions.ListContainsElement<EazyEngine.Space.StatusPackage>{}
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_EazyEngine_Space_TriggerWeaponState : NodeCanvas.Tasks.Conditions.ListContainsElement<EazyEngine.Space.TriggerWeaponState>{}
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Conditions.ListContainsElement<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Conditions.ListContainsElement<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class NodeCanvas_Tasks_Conditions_ListContainsElement_System_DateTime : NodeCanvas.Tasks.Conditions.ListContainsElement<System.DateTime>{}
+		class NodeCanvas_Tasks_Conditions_ListContainsElement_System_Double : NodeCanvas.Tasks.Conditions.ListContainsElement<System.Double>{}
+		class NodeCanvas_Tasks_Conditions_ListContainsElement_System_TimeSpan : NodeCanvas.Tasks.Conditions.ListContainsElement<System.TimeSpan>{}
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_UnityEngine_LayerMask : NodeCanvas.Tasks.Conditions.ListContainsElement<UnityEngine.LayerMask>{}
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Conditions.ListContainsElement<UnityEngine.Animations.ConstraintSource>{}
 
@@ -2170,11 +2843,17 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_TryGetValue_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.TryGetValue<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_TryGetValue_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.TryGetValue<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_TryGetValue_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Conditions.TryGetValue<EazyEngine.Space.DamageGivenEvent>{}
+		class NodeCanvas_Tasks_Conditions_TryGetValue_EazyEngine_Space_EventResultShowPackage : NodeCanvas.Tasks.Conditions.TryGetValue<EazyEngine.Space.EventResultShowPackage>{}
 		class NodeCanvas_Tasks_Conditions_TryGetValue_EazyEngine_Space_GameDatabaseInventoryEvent : NodeCanvas.Tasks.Conditions.TryGetValue<EazyEngine.Space.GameDatabaseInventoryEvent>{}
+		class NodeCanvas_Tasks_Conditions_TryGetValue_EazyEngine_Space_PackageInfo : NodeCanvas.Tasks.Conditions.TryGetValue<EazyEngine.Space.PackageInfo>{}
 		class NodeCanvas_Tasks_Conditions_TryGetValue_EazyEngine_Space_PickEvent : NodeCanvas.Tasks.Conditions.TryGetValue<EazyEngine.Space.PickEvent>{}
+		class NodeCanvas_Tasks_Conditions_TryGetValue_EazyEngine_Space_StatusPackage : NodeCanvas.Tasks.Conditions.TryGetValue<EazyEngine.Space.StatusPackage>{}
 		class NodeCanvas_Tasks_Conditions_TryGetValue_EazyEngine_Space_TriggerWeaponState : NodeCanvas.Tasks.Conditions.TryGetValue<EazyEngine.Space.TriggerWeaponState>{}
 		class NodeCanvas_Tasks_Conditions_TryGetValue_Spine_Unity_Modules_SkeletonRendererCustomMaterials_AtlasMaterialOverride : NodeCanvas.Tasks.Conditions.TryGetValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>{}
 		class NodeCanvas_Tasks_Conditions_TryGetValue_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride : NodeCanvas.Tasks.Conditions.TryGetValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>{}
+		class NodeCanvas_Tasks_Conditions_TryGetValue_System_DateTime : NodeCanvas.Tasks.Conditions.TryGetValue<System.DateTime>{}
+		class NodeCanvas_Tasks_Conditions_TryGetValue_System_Double : NodeCanvas.Tasks.Conditions.TryGetValue<System.Double>{}
+		class NodeCanvas_Tasks_Conditions_TryGetValue_System_TimeSpan : NodeCanvas.Tasks.Conditions.TryGetValue<System.TimeSpan>{}
 		class NodeCanvas_Tasks_Conditions_TryGetValue_UnityEngine_LayerMask : NodeCanvas.Tasks.Conditions.TryGetValue<UnityEngine.LayerMask>{}
 		class NodeCanvas_Tasks_Conditions_TryGetValue_UnityEngine_Animations_ConstraintSource : NodeCanvas.Tasks.Conditions.TryGetValue<UnityEngine.Animations.ConstraintSource>{}
 
@@ -2204,11 +2883,17 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_Flow.ReadParameter<EazyEngine.Space.DamageExtra>( (System.String)o );
 			_FlowCanvas_Flow.ReadParameter<EazyEngine.Space.DamageExtraVariant>( (System.String)o );
 			_FlowCanvas_Flow.ReadParameter<EazyEngine.Space.DamageGivenEvent>( (System.String)o );
+			_FlowCanvas_Flow.ReadParameter<EazyEngine.Space.EventResultShowPackage>( (System.String)o );
 			_FlowCanvas_Flow.ReadParameter<EazyEngine.Space.GameDatabaseInventoryEvent>( (System.String)o );
+			_FlowCanvas_Flow.ReadParameter<EazyEngine.Space.PackageInfo>( (System.String)o );
 			_FlowCanvas_Flow.ReadParameter<EazyEngine.Space.PickEvent>( (System.String)o );
+			_FlowCanvas_Flow.ReadParameter<EazyEngine.Space.StatusPackage>( (System.String)o );
 			_FlowCanvas_Flow.ReadParameter<EazyEngine.Space.TriggerWeaponState>( (System.String)o );
 			_FlowCanvas_Flow.ReadParameter<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (System.String)o );
 			_FlowCanvas_Flow.ReadParameter<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (System.String)o );
+			_FlowCanvas_Flow.ReadParameter<System.DateTime>( (System.String)o );
+			_FlowCanvas_Flow.ReadParameter<System.Double>( (System.String)o );
+			_FlowCanvas_Flow.ReadParameter<System.TimeSpan>( (System.String)o );
 			_FlowCanvas_Flow.ReadParameter<UnityEngine.LayerMask>( (System.String)o );
 			_FlowCanvas_Flow.ReadParameter<UnityEngine.Animations.ConstraintSource>( (System.String)o );
 		}
@@ -2238,11 +2923,17 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_Flow.WriteParameter<EazyEngine.Space.DamageExtra>( (System.String)o, (EazyEngine.Space.DamageExtra)o );
 			_FlowCanvas_Flow.WriteParameter<EazyEngine.Space.DamageExtraVariant>( (System.String)o, (EazyEngine.Space.DamageExtraVariant)o );
 			_FlowCanvas_Flow.WriteParameter<EazyEngine.Space.DamageGivenEvent>( (System.String)o, (EazyEngine.Space.DamageGivenEvent)o );
+			_FlowCanvas_Flow.WriteParameter<EazyEngine.Space.EventResultShowPackage>( (System.String)o, (EazyEngine.Space.EventResultShowPackage)o );
 			_FlowCanvas_Flow.WriteParameter<EazyEngine.Space.GameDatabaseInventoryEvent>( (System.String)o, (EazyEngine.Space.GameDatabaseInventoryEvent)o );
+			_FlowCanvas_Flow.WriteParameter<EazyEngine.Space.PackageInfo>( (System.String)o, (EazyEngine.Space.PackageInfo)o );
 			_FlowCanvas_Flow.WriteParameter<EazyEngine.Space.PickEvent>( (System.String)o, (EazyEngine.Space.PickEvent)o );
+			_FlowCanvas_Flow.WriteParameter<EazyEngine.Space.StatusPackage>( (System.String)o, (EazyEngine.Space.StatusPackage)o );
 			_FlowCanvas_Flow.WriteParameter<EazyEngine.Space.TriggerWeaponState>( (System.String)o, (EazyEngine.Space.TriggerWeaponState)o );
 			_FlowCanvas_Flow.WriteParameter<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (System.String)o, (Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride)o );
 			_FlowCanvas_Flow.WriteParameter<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (System.String)o, (Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride)o );
+			_FlowCanvas_Flow.WriteParameter<System.DateTime>( (System.String)o, (System.DateTime)o );
+			_FlowCanvas_Flow.WriteParameter<System.Double>( (System.String)o, (System.Double)o );
+			_FlowCanvas_Flow.WriteParameter<System.TimeSpan>( (System.String)o, (System.TimeSpan)o );
 			_FlowCanvas_Flow.WriteParameter<UnityEngine.LayerMask>( (System.String)o, (UnityEngine.LayerMask)o );
 			_FlowCanvas_Flow.WriteParameter<UnityEngine.Animations.ConstraintSource>( (System.String)o, (UnityEngine.Animations.ConstraintSource)o );
 		}
@@ -2272,11 +2963,17 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_FlowNode.AddValueInput<EazyEngine.Space.DamageExtra>( (System.String)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueInput<EazyEngine.Space.DamageExtraVariant>( (System.String)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueInput<EazyEngine.Space.DamageGivenEvent>( (System.String)o, (System.String)o );
+			_FlowCanvas_FlowNode.AddValueInput<EazyEngine.Space.EventResultShowPackage>( (System.String)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueInput<EazyEngine.Space.GameDatabaseInventoryEvent>( (System.String)o, (System.String)o );
+			_FlowCanvas_FlowNode.AddValueInput<EazyEngine.Space.PackageInfo>( (System.String)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueInput<EazyEngine.Space.PickEvent>( (System.String)o, (System.String)o );
+			_FlowCanvas_FlowNode.AddValueInput<EazyEngine.Space.StatusPackage>( (System.String)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueInput<EazyEngine.Space.TriggerWeaponState>( (System.String)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueInput<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (System.String)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueInput<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (System.String)o, (System.String)o );
+			_FlowCanvas_FlowNode.AddValueInput<System.DateTime>( (System.String)o, (System.String)o );
+			_FlowCanvas_FlowNode.AddValueInput<System.Double>( (System.String)o, (System.String)o );
+			_FlowCanvas_FlowNode.AddValueInput<System.TimeSpan>( (System.String)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueInput<UnityEngine.LayerMask>( (System.String)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueInput<UnityEngine.Animations.ConstraintSource>( (System.String)o, (System.String)o );
 		}
@@ -2306,11 +3003,17 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.DamageExtra>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtra>)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.DamageExtraVariant>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtraVariant>)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.DamageGivenEvent>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageGivenEvent>)o );
+			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.EventResultShowPackage>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.EventResultShowPackage>)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.GameDatabaseInventoryEvent>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.GameDatabaseInventoryEvent>)o );
+			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.PackageInfo>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.PackageInfo>)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.PickEvent>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.PickEvent>)o );
+			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.StatusPackage>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.StatusPackage>)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.TriggerWeaponState>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.TriggerWeaponState>)o );
 			_FlowCanvas_FlowNode.AddValueOutput<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>)o );
 			_FlowCanvas_FlowNode.AddValueOutput<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>)o );
+			_FlowCanvas_FlowNode.AddValueOutput<System.DateTime>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<System.DateTime>)o );
+			_FlowCanvas_FlowNode.AddValueOutput<System.Double>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<System.Double>)o );
+			_FlowCanvas_FlowNode.AddValueOutput<System.TimeSpan>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<System.TimeSpan>)o );
 			_FlowCanvas_FlowNode.AddValueOutput<UnityEngine.LayerMask>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<UnityEngine.LayerMask>)o );
 			_FlowCanvas_FlowNode.AddValueOutput<UnityEngine.Animations.ConstraintSource>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<UnityEngine.Animations.ConstraintSource>)o );
 		}
@@ -2340,11 +3043,17 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.DamageExtra>( (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtra>)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.DamageExtraVariant>( (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtraVariant>)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.DamageGivenEvent>( (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageGivenEvent>)o, (System.String)o );
+			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.EventResultShowPackage>( (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.EventResultShowPackage>)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.GameDatabaseInventoryEvent>( (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.GameDatabaseInventoryEvent>)o, (System.String)o );
+			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.PackageInfo>( (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.PackageInfo>)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.PickEvent>( (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.PickEvent>)o, (System.String)o );
+			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.StatusPackage>( (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.StatusPackage>)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.TriggerWeaponState>( (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.TriggerWeaponState>)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueOutput<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (System.String)o, (FlowCanvas.ValueHandler<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueOutput<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (System.String)o, (FlowCanvas.ValueHandler<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>)o, (System.String)o );
+			_FlowCanvas_FlowNode.AddValueOutput<System.DateTime>( (System.String)o, (FlowCanvas.ValueHandler<System.DateTime>)o, (System.String)o );
+			_FlowCanvas_FlowNode.AddValueOutput<System.Double>( (System.String)o, (FlowCanvas.ValueHandler<System.Double>)o, (System.String)o );
+			_FlowCanvas_FlowNode.AddValueOutput<System.TimeSpan>( (System.String)o, (FlowCanvas.ValueHandler<System.TimeSpan>)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueOutput<UnityEngine.LayerMask>( (System.String)o, (FlowCanvas.ValueHandler<UnityEngine.LayerMask>)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueOutput<UnityEngine.Animations.ConstraintSource>( (System.String)o, (FlowCanvas.ValueHandler<UnityEngine.Animations.ConstraintSource>)o, (System.String)o );
 		}
@@ -2373,11 +3082,17 @@ namespace ParadoxNotion.Internal{
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<EazyEngine.Space.DamageExtra>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<EazyEngine.Space.DamageExtraVariant>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<EazyEngine.Space.DamageGivenEvent>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
+			FlowCanvas.TypeConverter.GetConverterFuncFromTo<EazyEngine.Space.EventResultShowPackage>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<EazyEngine.Space.GameDatabaseInventoryEvent>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
+			FlowCanvas.TypeConverter.GetConverterFuncFromTo<EazyEngine.Space.PackageInfo>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<EazyEngine.Space.PickEvent>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
+			FlowCanvas.TypeConverter.GetConverterFuncFromTo<EazyEngine.Space.StatusPackage>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<EazyEngine.Space.TriggerWeaponState>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
+			FlowCanvas.TypeConverter.GetConverterFuncFromTo<System.DateTime>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
+			FlowCanvas.TypeConverter.GetConverterFuncFromTo<System.Double>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
+			FlowCanvas.TypeConverter.GetConverterFuncFromTo<System.TimeSpan>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<UnityEngine.LayerMask>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<UnityEngine.Animations.ConstraintSource>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
 		}
@@ -2406,11 +3121,17 @@ namespace ParadoxNotion.Internal{
 			FlowCanvas.TypeConverter.QuickConvert<EazyEngine.Space.DamageExtra>( (System.Object)o );
 			FlowCanvas.TypeConverter.QuickConvert<EazyEngine.Space.DamageExtraVariant>( (System.Object)o );
 			FlowCanvas.TypeConverter.QuickConvert<EazyEngine.Space.DamageGivenEvent>( (System.Object)o );
+			FlowCanvas.TypeConverter.QuickConvert<EazyEngine.Space.EventResultShowPackage>( (System.Object)o );
 			FlowCanvas.TypeConverter.QuickConvert<EazyEngine.Space.GameDatabaseInventoryEvent>( (System.Object)o );
+			FlowCanvas.TypeConverter.QuickConvert<EazyEngine.Space.PackageInfo>( (System.Object)o );
 			FlowCanvas.TypeConverter.QuickConvert<EazyEngine.Space.PickEvent>( (System.Object)o );
+			FlowCanvas.TypeConverter.QuickConvert<EazyEngine.Space.StatusPackage>( (System.Object)o );
 			FlowCanvas.TypeConverter.QuickConvert<EazyEngine.Space.TriggerWeaponState>( (System.Object)o );
 			FlowCanvas.TypeConverter.QuickConvert<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (System.Object)o );
 			FlowCanvas.TypeConverter.QuickConvert<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (System.Object)o );
+			FlowCanvas.TypeConverter.QuickConvert<System.DateTime>( (System.Object)o );
+			FlowCanvas.TypeConverter.QuickConvert<System.Double>( (System.Object)o );
+			FlowCanvas.TypeConverter.QuickConvert<System.TimeSpan>( (System.Object)o );
 			FlowCanvas.TypeConverter.QuickConvert<UnityEngine.LayerMask>( (System.Object)o );
 			FlowCanvas.TypeConverter.QuickConvert<UnityEngine.Animations.ConstraintSource>( (System.Object)o );
 		}
@@ -2439,11 +3160,17 @@ namespace ParadoxNotion.Internal{
 			FlowCanvas.ValueInput.CreateInstance<EazyEngine.Space.DamageExtra>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
 			FlowCanvas.ValueInput.CreateInstance<EazyEngine.Space.DamageExtraVariant>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
 			FlowCanvas.ValueInput.CreateInstance<EazyEngine.Space.DamageGivenEvent>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
+			FlowCanvas.ValueInput.CreateInstance<EazyEngine.Space.EventResultShowPackage>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
 			FlowCanvas.ValueInput.CreateInstance<EazyEngine.Space.GameDatabaseInventoryEvent>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
+			FlowCanvas.ValueInput.CreateInstance<EazyEngine.Space.PackageInfo>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
 			FlowCanvas.ValueInput.CreateInstance<EazyEngine.Space.PickEvent>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
+			FlowCanvas.ValueInput.CreateInstance<EazyEngine.Space.StatusPackage>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
 			FlowCanvas.ValueInput.CreateInstance<EazyEngine.Space.TriggerWeaponState>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
 			FlowCanvas.ValueInput.CreateInstance<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
 			FlowCanvas.ValueInput.CreateInstance<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
+			FlowCanvas.ValueInput.CreateInstance<System.DateTime>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
+			FlowCanvas.ValueInput.CreateInstance<System.Double>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
+			FlowCanvas.ValueInput.CreateInstance<System.TimeSpan>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
 			FlowCanvas.ValueInput.CreateInstance<UnityEngine.LayerMask>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
 			FlowCanvas.ValueInput.CreateInstance<UnityEngine.Animations.ConstraintSource>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
 		}
@@ -2472,11 +3199,17 @@ namespace ParadoxNotion.Internal{
 			FlowCanvas.ValueOutput.CreateInstance<EazyEngine.Space.DamageExtra>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtra>)o );
 			FlowCanvas.ValueOutput.CreateInstance<EazyEngine.Space.DamageExtraVariant>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtraVariant>)o );
 			FlowCanvas.ValueOutput.CreateInstance<EazyEngine.Space.DamageGivenEvent>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageGivenEvent>)o );
+			FlowCanvas.ValueOutput.CreateInstance<EazyEngine.Space.EventResultShowPackage>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.EventResultShowPackage>)o );
 			FlowCanvas.ValueOutput.CreateInstance<EazyEngine.Space.GameDatabaseInventoryEvent>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.GameDatabaseInventoryEvent>)o );
+			FlowCanvas.ValueOutput.CreateInstance<EazyEngine.Space.PackageInfo>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.PackageInfo>)o );
 			FlowCanvas.ValueOutput.CreateInstance<EazyEngine.Space.PickEvent>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.PickEvent>)o );
+			FlowCanvas.ValueOutput.CreateInstance<EazyEngine.Space.StatusPackage>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.StatusPackage>)o );
 			FlowCanvas.ValueOutput.CreateInstance<EazyEngine.Space.TriggerWeaponState>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.TriggerWeaponState>)o );
 			FlowCanvas.ValueOutput.CreateInstance<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>)o );
 			FlowCanvas.ValueOutput.CreateInstance<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>)o );
+			FlowCanvas.ValueOutput.CreateInstance<System.DateTime>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<System.DateTime>)o );
+			FlowCanvas.ValueOutput.CreateInstance<System.Double>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<System.Double>)o );
+			FlowCanvas.ValueOutput.CreateInstance<System.TimeSpan>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<System.TimeSpan>)o );
 			FlowCanvas.ValueOutput.CreateInstance<UnityEngine.LayerMask>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<UnityEngine.LayerMask>)o );
 			FlowCanvas.ValueOutput.CreateInstance<UnityEngine.Animations.ConstraintSource>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<UnityEngine.Animations.ConstraintSource>)o );
 		}
@@ -2506,11 +3239,17 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<EazyEngine.Space.DamageExtra>( (EazyEngine.Space.DamageExtra)o );
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<EazyEngine.Space.DamageExtraVariant>( (EazyEngine.Space.DamageExtraVariant)o );
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<EazyEngine.Space.DamageGivenEvent>( (EazyEngine.Space.DamageGivenEvent)o );
+			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<EazyEngine.Space.EventResultShowPackage>( (EazyEngine.Space.EventResultShowPackage)o );
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<EazyEngine.Space.GameDatabaseInventoryEvent>( (EazyEngine.Space.GameDatabaseInventoryEvent)o );
+			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<EazyEngine.Space.PackageInfo>( (EazyEngine.Space.PackageInfo)o );
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<EazyEngine.Space.PickEvent>( (EazyEngine.Space.PickEvent)o );
+			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<EazyEngine.Space.StatusPackage>( (EazyEngine.Space.StatusPackage)o );
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<EazyEngine.Space.TriggerWeaponState>( (EazyEngine.Space.TriggerWeaponState)o );
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride)o );
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride)o );
+			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<System.DateTime>( (System.DateTime)o );
+			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<System.Double>( (System.Double)o );
+			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<System.TimeSpan>( (System.TimeSpan)o );
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<UnityEngine.LayerMask>( (UnityEngine.LayerMask)o );
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<UnityEngine.Animations.ConstraintSource>( (UnityEngine.Animations.ConstraintSource)o );
 		}
@@ -2540,11 +3279,17 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<EazyEngine.Space.DamageExtra>( (EazyEngine.Space.DamageExtra)o );
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<EazyEngine.Space.DamageExtraVariant>( (EazyEngine.Space.DamageExtraVariant)o );
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<EazyEngine.Space.DamageGivenEvent>( (EazyEngine.Space.DamageGivenEvent)o );
+			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<EazyEngine.Space.EventResultShowPackage>( (EazyEngine.Space.EventResultShowPackage)o );
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<EazyEngine.Space.GameDatabaseInventoryEvent>( (EazyEngine.Space.GameDatabaseInventoryEvent)o );
+			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<EazyEngine.Space.PackageInfo>( (EazyEngine.Space.PackageInfo)o );
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<EazyEngine.Space.PickEvent>( (EazyEngine.Space.PickEvent)o );
+			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<EazyEngine.Space.StatusPackage>( (EazyEngine.Space.StatusPackage)o );
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<EazyEngine.Space.TriggerWeaponState>( (EazyEngine.Space.TriggerWeaponState)o );
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride)o );
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride)o );
+			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<System.DateTime>( (System.DateTime)o );
+			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<System.Double>( (System.Double)o );
+			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<System.TimeSpan>( (System.TimeSpan)o );
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<UnityEngine.LayerMask>( (UnityEngine.LayerMask)o );
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<UnityEngine.Animations.ConstraintSource>( (UnityEngine.Animations.ConstraintSource)o );
 		}
@@ -2574,11 +3319,17 @@ namespace ParadoxNotion.Internal{
 			_NodeCanvas_Framework_Blackboard.GetVariable<EazyEngine.Space.DamageExtra>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetVariable<EazyEngine.Space.DamageExtraVariant>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetVariable<EazyEngine.Space.DamageGivenEvent>( (System.String)o );
+			_NodeCanvas_Framework_Blackboard.GetVariable<EazyEngine.Space.EventResultShowPackage>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetVariable<EazyEngine.Space.GameDatabaseInventoryEvent>( (System.String)o );
+			_NodeCanvas_Framework_Blackboard.GetVariable<EazyEngine.Space.PackageInfo>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetVariable<EazyEngine.Space.PickEvent>( (System.String)o );
+			_NodeCanvas_Framework_Blackboard.GetVariable<EazyEngine.Space.StatusPackage>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetVariable<EazyEngine.Space.TriggerWeaponState>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (System.String)o );
+			_NodeCanvas_Framework_Blackboard.GetVariable<System.DateTime>( (System.String)o );
+			_NodeCanvas_Framework_Blackboard.GetVariable<System.Double>( (System.String)o );
+			_NodeCanvas_Framework_Blackboard.GetVariable<System.TimeSpan>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetVariable<UnityEngine.LayerMask>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetVariable<UnityEngine.Animations.ConstraintSource>( (System.String)o );
 		}
@@ -2608,11 +3359,17 @@ namespace ParadoxNotion.Internal{
 			_NodeCanvas_Framework_Blackboard.GetValue<EazyEngine.Space.DamageExtra>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetValue<EazyEngine.Space.DamageExtraVariant>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetValue<EazyEngine.Space.DamageGivenEvent>( (System.String)o );
+			_NodeCanvas_Framework_Blackboard.GetValue<EazyEngine.Space.EventResultShowPackage>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetValue<EazyEngine.Space.GameDatabaseInventoryEvent>( (System.String)o );
+			_NodeCanvas_Framework_Blackboard.GetValue<EazyEngine.Space.PackageInfo>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetValue<EazyEngine.Space.PickEvent>( (System.String)o );
+			_NodeCanvas_Framework_Blackboard.GetValue<EazyEngine.Space.StatusPackage>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetValue<EazyEngine.Space.TriggerWeaponState>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (System.String)o );
+			_NodeCanvas_Framework_Blackboard.GetValue<System.DateTime>( (System.String)o );
+			_NodeCanvas_Framework_Blackboard.GetValue<System.Double>( (System.String)o );
+			_NodeCanvas_Framework_Blackboard.GetValue<System.TimeSpan>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetValue<UnityEngine.LayerMask>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetValue<UnityEngine.Animations.ConstraintSource>( (System.String)o );
 		}
@@ -2642,11 +3399,17 @@ namespace ParadoxNotion.Internal{
 			_NodeCanvas_Framework_IBlackboard.GetVariable<EazyEngine.Space.DamageExtra>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetVariable<EazyEngine.Space.DamageExtraVariant>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetVariable<EazyEngine.Space.DamageGivenEvent>( (System.String)o );
+			_NodeCanvas_Framework_IBlackboard.GetVariable<EazyEngine.Space.EventResultShowPackage>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetVariable<EazyEngine.Space.GameDatabaseInventoryEvent>( (System.String)o );
+			_NodeCanvas_Framework_IBlackboard.GetVariable<EazyEngine.Space.PackageInfo>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetVariable<EazyEngine.Space.PickEvent>( (System.String)o );
+			_NodeCanvas_Framework_IBlackboard.GetVariable<EazyEngine.Space.StatusPackage>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetVariable<EazyEngine.Space.TriggerWeaponState>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetVariable<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (System.String)o );
+			_NodeCanvas_Framework_IBlackboard.GetVariable<System.DateTime>( (System.String)o );
+			_NodeCanvas_Framework_IBlackboard.GetVariable<System.Double>( (System.String)o );
+			_NodeCanvas_Framework_IBlackboard.GetVariable<System.TimeSpan>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetVariable<UnityEngine.LayerMask>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetVariable<UnityEngine.Animations.ConstraintSource>( (System.String)o );
 		}
@@ -2676,11 +3439,17 @@ namespace ParadoxNotion.Internal{
 			_NodeCanvas_Framework_IBlackboard.GetValue<EazyEngine.Space.DamageExtra>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetValue<EazyEngine.Space.DamageExtraVariant>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetValue<EazyEngine.Space.DamageGivenEvent>( (System.String)o );
+			_NodeCanvas_Framework_IBlackboard.GetValue<EazyEngine.Space.EventResultShowPackage>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetValue<EazyEngine.Space.GameDatabaseInventoryEvent>( (System.String)o );
+			_NodeCanvas_Framework_IBlackboard.GetValue<EazyEngine.Space.PackageInfo>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetValue<EazyEngine.Space.PickEvent>( (System.String)o );
+			_NodeCanvas_Framework_IBlackboard.GetValue<EazyEngine.Space.StatusPackage>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetValue<EazyEngine.Space.TriggerWeaponState>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.AtlasMaterialOverride>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetValue<Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride>( (System.String)o );
+			_NodeCanvas_Framework_IBlackboard.GetValue<System.DateTime>( (System.String)o );
+			_NodeCanvas_Framework_IBlackboard.GetValue<System.Double>( (System.String)o );
+			_NodeCanvas_Framework_IBlackboard.GetValue<System.TimeSpan>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetValue<UnityEngine.LayerMask>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetValue<UnityEngine.Animations.ConstraintSource>( (System.String)o );
 		}
@@ -2871,6 +3640,14 @@ namespace ParadoxNotion.Internal{
 			System.Collections.Generic.IDictionary<System.String, EazyEngine.Space.DamageGivenEvent> IDict_EazyEngine_Space_DamageGivenEvent;
 			System.Collections.Generic.Dictionary<System.String, EazyEngine.Space.DamageGivenEvent> Dict_EazyEngine_Space_DamageGivenEvent;
 			///------
+			System.Action<EazyEngine.Space.EventResultShowPackage> System_Action_EazyEngine_Space_EventResultShowPackage;
+			System.Func<EazyEngine.Space.EventResultShowPackage> System_Func_EazyEngine_Space_EventResultShowPackage;
+			UnityEngine.Events.UnityAction<EazyEngine.Space.EventResultShowPackage> UnityEngine_Events_UnityAction_EazyEngine_Space_EventResultShowPackage;
+			System.Collections.Generic.IList<EazyEngine.Space.EventResultShowPackage> System_Collections_Generic_IList_EazyEngine_Space_EventResultShowPackage;
+			System.Collections.Generic.List<EazyEngine.Space.EventResultShowPackage> System_Collections_Generic_List_EazyEngine_Space_EventResultShowPackage;
+			System.Collections.Generic.IDictionary<System.String, EazyEngine.Space.EventResultShowPackage> IDict_EazyEngine_Space_EventResultShowPackage;
+			System.Collections.Generic.Dictionary<System.String, EazyEngine.Space.EventResultShowPackage> Dict_EazyEngine_Space_EventResultShowPackage;
+			///------
 			System.Action<EazyEngine.Space.GameDatabaseInventoryEvent> System_Action_EazyEngine_Space_GameDatabaseInventoryEvent;
 			System.Func<EazyEngine.Space.GameDatabaseInventoryEvent> System_Func_EazyEngine_Space_GameDatabaseInventoryEvent;
 			UnityEngine.Events.UnityAction<EazyEngine.Space.GameDatabaseInventoryEvent> UnityEngine_Events_UnityAction_EazyEngine_Space_GameDatabaseInventoryEvent;
@@ -2879,6 +3656,14 @@ namespace ParadoxNotion.Internal{
 			System.Collections.Generic.IDictionary<System.String, EazyEngine.Space.GameDatabaseInventoryEvent> IDict_EazyEngine_Space_GameDatabaseInventoryEvent;
 			System.Collections.Generic.Dictionary<System.String, EazyEngine.Space.GameDatabaseInventoryEvent> Dict_EazyEngine_Space_GameDatabaseInventoryEvent;
 			///------
+			System.Action<EazyEngine.Space.PackageInfo> System_Action_EazyEngine_Space_PackageInfo;
+			System.Func<EazyEngine.Space.PackageInfo> System_Func_EazyEngine_Space_PackageInfo;
+			UnityEngine.Events.UnityAction<EazyEngine.Space.PackageInfo> UnityEngine_Events_UnityAction_EazyEngine_Space_PackageInfo;
+			System.Collections.Generic.IList<EazyEngine.Space.PackageInfo> System_Collections_Generic_IList_EazyEngine_Space_PackageInfo;
+			System.Collections.Generic.List<EazyEngine.Space.PackageInfo> System_Collections_Generic_List_EazyEngine_Space_PackageInfo;
+			System.Collections.Generic.IDictionary<System.String, EazyEngine.Space.PackageInfo> IDict_EazyEngine_Space_PackageInfo;
+			System.Collections.Generic.Dictionary<System.String, EazyEngine.Space.PackageInfo> Dict_EazyEngine_Space_PackageInfo;
+			///------
 			System.Action<EazyEngine.Space.PickEvent> System_Action_EazyEngine_Space_PickEvent;
 			System.Func<EazyEngine.Space.PickEvent> System_Func_EazyEngine_Space_PickEvent;
 			UnityEngine.Events.UnityAction<EazyEngine.Space.PickEvent> UnityEngine_Events_UnityAction_EazyEngine_Space_PickEvent;
@@ -2886,6 +3671,14 @@ namespace ParadoxNotion.Internal{
 			System.Collections.Generic.List<EazyEngine.Space.PickEvent> System_Collections_Generic_List_EazyEngine_Space_PickEvent;
 			System.Collections.Generic.IDictionary<System.String, EazyEngine.Space.PickEvent> IDict_EazyEngine_Space_PickEvent;
 			System.Collections.Generic.Dictionary<System.String, EazyEngine.Space.PickEvent> Dict_EazyEngine_Space_PickEvent;
+			///------
+			System.Action<EazyEngine.Space.StatusPackage> System_Action_EazyEngine_Space_StatusPackage;
+			System.Func<EazyEngine.Space.StatusPackage> System_Func_EazyEngine_Space_StatusPackage;
+			UnityEngine.Events.UnityAction<EazyEngine.Space.StatusPackage> UnityEngine_Events_UnityAction_EazyEngine_Space_StatusPackage;
+			System.Collections.Generic.IList<EazyEngine.Space.StatusPackage> System_Collections_Generic_IList_EazyEngine_Space_StatusPackage;
+			System.Collections.Generic.List<EazyEngine.Space.StatusPackage> System_Collections_Generic_List_EazyEngine_Space_StatusPackage;
+			System.Collections.Generic.IDictionary<System.String, EazyEngine.Space.StatusPackage> IDict_EazyEngine_Space_StatusPackage;
+			System.Collections.Generic.Dictionary<System.String, EazyEngine.Space.StatusPackage> Dict_EazyEngine_Space_StatusPackage;
 			///------
 			System.Action<EazyEngine.Space.TriggerWeaponState> System_Action_EazyEngine_Space_TriggerWeaponState;
 			System.Func<EazyEngine.Space.TriggerWeaponState> System_Func_EazyEngine_Space_TriggerWeaponState;
@@ -2911,6 +3704,30 @@ namespace ParadoxNotion.Internal{
 			System.Collections.Generic.IDictionary<System.String, Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride> IDict_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride;
 			System.Collections.Generic.Dictionary<System.String, Spine.Unity.Modules.SkeletonRendererCustomMaterials.SlotMaterialOverride> Dict_Spine_Unity_Modules_SkeletonRendererCustomMaterials_SlotMaterialOverride;
 			///------
+			System.Action<System.DateTime> System_Action_System_DateTime;
+			System.Func<System.DateTime> System_Func_System_DateTime;
+			UnityEngine.Events.UnityAction<System.DateTime> UnityEngine_Events_UnityAction_System_DateTime;
+			System.Collections.Generic.IList<System.DateTime> System_Collections_Generic_IList_System_DateTime;
+			System.Collections.Generic.List<System.DateTime> System_Collections_Generic_List_System_DateTime;
+			System.Collections.Generic.IDictionary<System.String, System.DateTime> IDict_System_DateTime;
+			System.Collections.Generic.Dictionary<System.String, System.DateTime> Dict_System_DateTime;
+			///------
+			System.Action<System.Double> System_Action_System_Double;
+			System.Func<System.Double> System_Func_System_Double;
+			UnityEngine.Events.UnityAction<System.Double> UnityEngine_Events_UnityAction_System_Double;
+			System.Collections.Generic.IList<System.Double> System_Collections_Generic_IList_System_Double;
+			System.Collections.Generic.List<System.Double> System_Collections_Generic_List_System_Double;
+			System.Collections.Generic.IDictionary<System.String, System.Double> IDict_System_Double;
+			System.Collections.Generic.Dictionary<System.String, System.Double> Dict_System_Double;
+			///------
+			System.Action<System.TimeSpan> System_Action_System_TimeSpan;
+			System.Func<System.TimeSpan> System_Func_System_TimeSpan;
+			UnityEngine.Events.UnityAction<System.TimeSpan> UnityEngine_Events_UnityAction_System_TimeSpan;
+			System.Collections.Generic.IList<System.TimeSpan> System_Collections_Generic_IList_System_TimeSpan;
+			System.Collections.Generic.List<System.TimeSpan> System_Collections_Generic_List_System_TimeSpan;
+			System.Collections.Generic.IDictionary<System.String, System.TimeSpan> IDict_System_TimeSpan;
+			System.Collections.Generic.Dictionary<System.String, System.TimeSpan> Dict_System_TimeSpan;
+			///------
 			System.Action<UnityEngine.LayerMask> System_Action_UnityEngine_LayerMask;
 			System.Func<UnityEngine.LayerMask> System_Func_UnityEngine_LayerMask;
 			UnityEngine.Events.UnityAction<UnityEngine.LayerMask> UnityEngine_Events_UnityAction_UnityEngine_LayerMask;
@@ -2931,5 +3748,5 @@ namespace ParadoxNotion.Internal{
 	}
 }
 
-//2251 Types | 450 Methods spoofed
+//2953 Types | 540 Methods spoofed
 #pragma warning restore 0219, 0168, 0612

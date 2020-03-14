@@ -47,12 +47,13 @@ namespace EazyEngine.Space
             }
             sortPos();
         }
-        private void OnEnable()
+        private void Awake()
         {
             ExtraPackageDatabase.Instance.RegisterThisLayer(this);
         }
-        private void OnDisable()
+        private void OnDestroy()
         {
+            if (ExtraPackageDatabase.Instance.IsDestroyed()) return;
             ExtraPackageDatabase.Instance.UnRegisterThisLayer(this);
         }
     }

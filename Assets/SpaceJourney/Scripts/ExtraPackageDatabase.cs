@@ -80,18 +80,22 @@ namespace EazyEngine.Space
         }
         public void removePackage(ItemPackage pPackage)
         {
-            var pItem = shop.getInfoItem(pPackage.ItemID);
-            if (pItem != null)
+            if (((ComboPackage)pPackage).isInApp)
             {
-                pItem.isVisible = false;
-                var pShop = FindObjectOfType<LayerShop>();
-                if (pShop && pShop.gameObject.activeSelf)
+                var pItem = shop.getInfoItem(pPackage.ItemID);
+                if (pItem != null)
                 {
-                    pShop.gameObject.SetActive(false);
-                    pShop.gameObject.SetActive(true);
+                    pItem.isVisible = false;
+                    var pShop = FindObjectOfType<LayerShop>();
+                    if (pShop && pShop.gameObject.activeSelf)
+                    {
+                        pShop.gameObject.SetActive(false);
+                        pShop.gameObject.SetActive(true);
+                    }
                 }
+
             }
-      
+
             if (registerLayer.ContainsKey(pPackage.itemID))
             {
                 foreach (var pLayer in registerLayer[pPackage.itemID])
@@ -114,6 +118,7 @@ namespace EazyEngine.Space
             {
                 if (GameManager.Instance.Database.PackageInfo.ContainsKey(combos[i].ItemID))
                 {
+
                     var pPackInfo = GameManager.Instance.Database.PackageInfo[combos[i].ItemID];
                     if (pPackInfo.status == StatusPackage.START || pPackInfo.status == StatusPackage.WAIT_CLAIM)
                     {
@@ -126,12 +131,11 @@ namespace EazyEngine.Space
                     var pObject = Instantiate<GameObject>(combos[i].conditionAnchorObject);
                     pObject.GetComponent<IBlackboard>().SetValue("result", new EventResultShowPackage()
                     {
-
                         result = delegate (bool pResult)
                         {
                             if (pResult)
                             {
-                                Destroy(pObject);
+                               // 
                                 loadInfoFromCombo(pCombo);
                                 GameManager.Instance.Database.PackageInfo.Add(pCombo.ItemID, new PackageInfo()
                                 {
@@ -139,7 +143,7 @@ namespace EazyEngine.Space
                                     timeStart = TimeExtension.ToUnixTime(System.DateTime.Now)
                                 });
                             }
-
+                            Destroy(pObject);
                         }
                     });
 
@@ -221,6 +225,14 @@ namespace EazyEngine.Space
                             pLayer.listBtn.Add(pObject);
                             var pBox = LayerModelBoxExtraPackage.Instance.transform.Find(pCombo.ItemID) ? LayerModelBoxExtraPackage.Instance.transform.Find(pCombo.ItemID).gameObject : null;
                             if(!pBox)pBox = LayerModelBoxExtraPackage.Instance.gameObject.AddChild(pCombo.banner);
+                           var pPrices = pBox.transform.GetComponentsInChildren<UILabel>(true);
+                            foreach(var pPrice in pPrices)
+                            {
+                               if( pPrice.name == "price")
+                                {
+                                    pPrice.text = pCombo.price + "$";
+                                }
+                            }
                             pBox.name = pCombo.ItemID;
                             pBox.GetComponent<Blackboard>().SetValue("info", pCombo);
                             pObject.GetComponentInChildren<UIButton>().onClick.Add(new EventDelegate(delegate ()
@@ -245,6 +257,11 @@ namespace EazyEngine.Space
         public void UnRegisterThisLayer(LayerExtraPackage pLayer)
         {
             waitLayer.Remove(pLayer);
+            for(int i = 0; i < registerLayer.Values.Count; ++i)
+            {
+                var pList = registerLayer.Values.ElementAt(i);
+                pList.Remove(pLayer);
+            }
             assignBtnLayer();
         }
 

@@ -541,7 +541,6 @@ namespace EazyEngine.Space.UI
                 upgrade();
             }
             int pFirstBox = PlayerPrefs.GetInt("FirstBoxReward", 0);
-          
             int pFirstGame = PlayerPrefs.GetInt("firstGame", 0);
             int pFirstOpenGoogle = PlayerPrefs.GetInt("FirstOpenGoogle", 0);
             if (pFirstGame != 0 && (SceneManager.Instance.previousScene.Contains("Home") || pFirstOpenGoogle == 0))

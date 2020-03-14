@@ -282,6 +282,12 @@ namespace FlowCanvas
             }
 
             if ( sourcePort is FlowOutput && targetPort is FlowInput ) {
+
+                if(sourcePort== null)
+                {
+                    Debug.LogError("nameobject" + graph.agent.gameObject.name);
+                }
+         
                 ( sourcePort as FlowOutput ).BindTo((FlowInput)targetPort);
 
 #if UNITY_EDITOR && DO_EDITOR_BINDING
