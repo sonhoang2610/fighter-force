@@ -26,6 +26,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_BinderConnection_UnityEngine_Ray : FlowCanvas.BinderConnection<UnityEngine.Ray>{}
 		class FlowCanvas_BinderConnection_UnityEngine_Space : FlowCanvas.BinderConnection<UnityEngine.Space>{}
 		class FlowCanvas_BinderConnection_EventTimer : FlowCanvas.BinderConnection<EventTimer>{}
+		class FlowCanvas_BinderConnection_EazyEngine_Space_CoundDownEvent : FlowCanvas.BinderConnection<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_BinderConnection_EazyEngine_Space_DamageExtra : FlowCanvas.BinderConnection<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_BinderConnection_EazyEngine_Space_DamageExtraVariant : FlowCanvas.BinderConnection<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_BinderConnection_EazyEngine_Space_DamageGivenEvent : FlowCanvas.BinderConnection<EazyEngine.Space.DamageGivenEvent>{}
@@ -64,6 +65,7 @@ namespace ParadoxNotion.Internal{
 			FlowCanvas.ValueHandler<UnityEngine.Ray> _FlowCanvas_ValueHandler_UnityEngine_Ray = default(FlowCanvas.ValueHandler<UnityEngine.Ray>);
 			FlowCanvas.ValueHandler<UnityEngine.Space> _FlowCanvas_ValueHandler_UnityEngine_Space = default(FlowCanvas.ValueHandler<UnityEngine.Space>);
 			FlowCanvas.ValueHandler<EventTimer> _FlowCanvas_ValueHandler_EventTimer = default(FlowCanvas.ValueHandler<EventTimer>);
+			FlowCanvas.ValueHandler<EazyEngine.Space.CoundDownEvent> _FlowCanvas_ValueHandler_EazyEngine_Space_CoundDownEvent = default(FlowCanvas.ValueHandler<EazyEngine.Space.CoundDownEvent>);
 			FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtra> _FlowCanvas_ValueHandler_EazyEngine_Space_DamageExtra = default(FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtra>);
 			FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtraVariant> _FlowCanvas_ValueHandler_EazyEngine_Space_DamageExtraVariant = default(FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtraVariant>);
 			FlowCanvas.ValueHandler<EazyEngine.Space.DamageGivenEvent> _FlowCanvas_ValueHandler_EazyEngine_Space_DamageGivenEvent = default(FlowCanvas.ValueHandler<EazyEngine.Space.DamageGivenEvent>);
@@ -102,6 +104,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_ValueInput_UnityEngine_Ray : FlowCanvas.ValueInput<UnityEngine.Ray>{}
 		class FlowCanvas_ValueInput_UnityEngine_Space : FlowCanvas.ValueInput<UnityEngine.Space>{}
 		class FlowCanvas_ValueInput_EventTimer : FlowCanvas.ValueInput<EventTimer>{}
+		class FlowCanvas_ValueInput_EazyEngine_Space_CoundDownEvent : FlowCanvas.ValueInput<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_ValueInput_EazyEngine_Space_DamageExtra : FlowCanvas.ValueInput<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_ValueInput_EazyEngine_Space_DamageExtraVariant : FlowCanvas.ValueInput<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_ValueInput_EazyEngine_Space_DamageGivenEvent : FlowCanvas.ValueInput<EazyEngine.Space.DamageGivenEvent>{}
@@ -139,6 +142,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_ValueOutput_UnityEngine_Ray : FlowCanvas.ValueOutput<UnityEngine.Ray>{}
 		class FlowCanvas_ValueOutput_UnityEngine_Space : FlowCanvas.ValueOutput<UnityEngine.Space>{}
 		class FlowCanvas_ValueOutput_EventTimer : FlowCanvas.ValueOutput<EventTimer>{}
+		class FlowCanvas_ValueOutput_EazyEngine_Space_CoundDownEvent : FlowCanvas.ValueOutput<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_ValueOutput_EazyEngine_Space_DamageExtra : FlowCanvas.ValueOutput<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_ValueOutput_EazyEngine_Space_DamageExtraVariant : FlowCanvas.ValueOutput<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_ValueOutput_EazyEngine_Space_DamageGivenEvent : FlowCanvas.ValueOutput<EazyEngine.Space.DamageGivenEvent>{}
@@ -176,6 +180,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_AddDictionaryItem_UnityEngine_Ray : FlowCanvas.Nodes.AddDictionaryItem<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_AddDictionaryItem_UnityEngine_Space : FlowCanvas.Nodes.AddDictionaryItem<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_AddDictionaryItem_EventTimer : FlowCanvas.Nodes.AddDictionaryItem<EventTimer>{}
+		class FlowCanvas_Nodes_AddDictionaryItem_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.AddDictionaryItem<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_AddDictionaryItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.AddDictionaryItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_AddDictionaryItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.AddDictionaryItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_AddDictionaryItem_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.AddDictionaryItem<EazyEngine.Space.DamageGivenEvent>{}
@@ -213,6 +218,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_AddListItem_UnityEngine_Ray : FlowCanvas.Nodes.AddListItem<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_AddListItem_UnityEngine_Space : FlowCanvas.Nodes.AddListItem<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_AddListItem_EventTimer : FlowCanvas.Nodes.AddListItem<EventTimer>{}
+		class FlowCanvas_Nodes_AddListItem_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.AddListItem<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_AddListItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.AddListItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_AddListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.AddListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_AddListItem_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.AddListItem<EazyEngine.Space.DamageGivenEvent>{}
@@ -250,6 +256,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_Buffer_UnityEngine_Ray : FlowCanvas.Nodes.Buffer<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_Buffer_UnityEngine_Space : FlowCanvas.Nodes.Buffer<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_Buffer_EventTimer : FlowCanvas.Nodes.Buffer<EventTimer>{}
+		class FlowCanvas_Nodes_Buffer_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.Buffer<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_Buffer_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.Buffer<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_Buffer_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.Buffer<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_Buffer_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.Buffer<EazyEngine.Space.DamageGivenEvent>{}
@@ -287,6 +294,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_Cache_UnityEngine_Ray : FlowCanvas.Nodes.Cache<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_Cache_UnityEngine_Space : FlowCanvas.Nodes.Cache<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_Cache_EventTimer : FlowCanvas.Nodes.Cache<EventTimer>{}
+		class FlowCanvas_Nodes_Cache_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.Cache<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_Cache_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.Cache<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_Cache_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.Cache<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_Cache_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.Cache<EazyEngine.Space.DamageGivenEvent>{}
@@ -324,6 +332,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_Cast_UnityEngine_Ray : FlowCanvas.Nodes.Cast<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_Cast_UnityEngine_Space : FlowCanvas.Nodes.Cast<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_Cast_EventTimer : FlowCanvas.Nodes.Cast<EventTimer>{}
+		class FlowCanvas_Nodes_Cast_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.Cast<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_Cast_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.Cast<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_Cast_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.Cast<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_Cast_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.Cast<EazyEngine.Space.DamageGivenEvent>{}
@@ -361,6 +370,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_CastTo_UnityEngine_Ray : FlowCanvas.Nodes.CastTo<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_CastTo_UnityEngine_Space : FlowCanvas.Nodes.CastTo<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_CastTo_EventTimer : FlowCanvas.Nodes.CastTo<EventTimer>{}
+		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.CastTo<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.CastTo<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.CastTo<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_CastTo_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.CastTo<EazyEngine.Space.DamageGivenEvent>{}
@@ -398,6 +408,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Ray : FlowCanvas.Nodes.CodeEvent<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_CodeEvent_UnityEngine_Space : FlowCanvas.Nodes.CodeEvent<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_CodeEvent_EventTimer : FlowCanvas.Nodes.CodeEvent<EventTimer>{}
+		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_CodeEvent_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.CodeEvent<EazyEngine.Space.DamageGivenEvent>{}
@@ -435,6 +446,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_CreateCollection_UnityEngine_Ray : FlowCanvas.Nodes.CreateCollection<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_CreateCollection_UnityEngine_Space : FlowCanvas.Nodes.CreateCollection<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_CreateCollection_EventTimer : FlowCanvas.Nodes.CreateCollection<EventTimer>{}
+		class FlowCanvas_Nodes_CreateCollection_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.CreateCollection<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_CreateCollection_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.CreateCollection<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_CreateCollection_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.CreateCollection<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_CreateCollection_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.CreateCollection<EazyEngine.Space.DamageGivenEvent>{}
@@ -472,6 +484,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_CreateDictionary_UnityEngine_Ray : FlowCanvas.Nodes.CreateDictionary<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_CreateDictionary_UnityEngine_Space : FlowCanvas.Nodes.CreateDictionary<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_CreateDictionary_EventTimer : FlowCanvas.Nodes.CreateDictionary<EventTimer>{}
+		class FlowCanvas_Nodes_CreateDictionary_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.CreateDictionary<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_CreateDictionary_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.CreateDictionary<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_CreateDictionary_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.CreateDictionary<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_CreateDictionary_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.CreateDictionary<EazyEngine.Space.DamageGivenEvent>{}
@@ -509,6 +522,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_CustomEvent_UnityEngine_Ray : FlowCanvas.Nodes.CustomEvent<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_CustomEvent_UnityEngine_Space : FlowCanvas.Nodes.CustomEvent<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_CustomEvent_EventTimer : FlowCanvas.Nodes.CustomEvent<EventTimer>{}
+		class FlowCanvas_Nodes_CustomEvent_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.CustomEvent<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_CustomEvent_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.CustomEvent<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_CustomEvent_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.CustomEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_CustomEvent_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.CustomEvent<EazyEngine.Space.DamageGivenEvent>{}
@@ -546,6 +560,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_DictionaryContainsKey_UnityEngine_Ray : FlowCanvas.Nodes.DictionaryContainsKey<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_DictionaryContainsKey_UnityEngine_Space : FlowCanvas.Nodes.DictionaryContainsKey<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_DictionaryContainsKey_EventTimer : FlowCanvas.Nodes.DictionaryContainsKey<EventTimer>{}
+		class FlowCanvas_Nodes_DictionaryContainsKey_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.DictionaryContainsKey<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_DictionaryContainsKey_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.DictionaryContainsKey<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_DictionaryContainsKey_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.DictionaryContainsKey<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_DictionaryContainsKey_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.DictionaryContainsKey<EazyEngine.Space.DamageGivenEvent>{}
@@ -583,6 +598,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_ForEach_UnityEngine_Ray : FlowCanvas.Nodes.ForEach<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_ForEach_UnityEngine_Space : FlowCanvas.Nodes.ForEach<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_ForEach_EventTimer : FlowCanvas.Nodes.ForEach<EventTimer>{}
+		class FlowCanvas_Nodes_ForEach_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.ForEach<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_ForEach_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.ForEach<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_ForEach_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.ForEach<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_ForEach_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.ForEach<EazyEngine.Space.DamageGivenEvent>{}
@@ -620,6 +636,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetDictionaryItem_UnityEngine_Ray : FlowCanvas.Nodes.GetDictionaryItem<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_GetDictionaryItem_UnityEngine_Space : FlowCanvas.Nodes.GetDictionaryItem<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_GetDictionaryItem_EventTimer : FlowCanvas.Nodes.GetDictionaryItem<EventTimer>{}
+		class FlowCanvas_Nodes_GetDictionaryItem_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.GetDictionaryItem<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_GetDictionaryItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.GetDictionaryItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_GetDictionaryItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.GetDictionaryItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_GetDictionaryItem_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.GetDictionaryItem<EazyEngine.Space.DamageGivenEvent>{}
@@ -657,6 +674,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetFirstListItem_UnityEngine_Ray : FlowCanvas.Nodes.GetFirstListItem<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_GetFirstListItem_UnityEngine_Space : FlowCanvas.Nodes.GetFirstListItem<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_GetFirstListItem_EventTimer : FlowCanvas.Nodes.GetFirstListItem<EventTimer>{}
+		class FlowCanvas_Nodes_GetFirstListItem_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.GetFirstListItem<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_GetFirstListItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.GetFirstListItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_GetFirstListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.GetFirstListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_GetFirstListItem_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.GetFirstListItem<EazyEngine.Space.DamageGivenEvent>{}
@@ -694,6 +712,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetLastListItem_UnityEngine_Ray : FlowCanvas.Nodes.GetLastListItem<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_GetLastListItem_UnityEngine_Space : FlowCanvas.Nodes.GetLastListItem<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_GetLastListItem_EventTimer : FlowCanvas.Nodes.GetLastListItem<EventTimer>{}
+		class FlowCanvas_Nodes_GetLastListItem_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.GetLastListItem<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_GetLastListItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.GetLastListItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_GetLastListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.GetLastListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_GetLastListItem_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.GetLastListItem<EazyEngine.Space.DamageGivenEvent>{}
@@ -731,6 +750,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetListItem_UnityEngine_Ray : FlowCanvas.Nodes.GetListItem<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_GetListItem_UnityEngine_Space : FlowCanvas.Nodes.GetListItem<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_GetListItem_EventTimer : FlowCanvas.Nodes.GetListItem<EventTimer>{}
+		class FlowCanvas_Nodes_GetListItem_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.GetListItem<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_GetListItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.GetListItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_GetListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.GetListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_GetListItem_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.GetListItem<EazyEngine.Space.DamageGivenEvent>{}
@@ -768,6 +788,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetOtherVariable_UnityEngine_Ray : FlowCanvas.Nodes.GetOtherVariable<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_GetOtherVariable_UnityEngine_Space : FlowCanvas.Nodes.GetOtherVariable<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_GetOtherVariable_EventTimer : FlowCanvas.Nodes.GetOtherVariable<EventTimer>{}
+		class FlowCanvas_Nodes_GetOtherVariable_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.GetOtherVariable<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_GetOtherVariable_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.GetOtherVariable<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_GetOtherVariable_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.GetOtherVariable<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_GetOtherVariable_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.GetOtherVariable<EazyEngine.Space.DamageGivenEvent>{}
@@ -805,6 +826,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetRandomListItem_UnityEngine_Ray : FlowCanvas.Nodes.GetRandomListItem<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_GetRandomListItem_UnityEngine_Space : FlowCanvas.Nodes.GetRandomListItem<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_GetRandomListItem_EventTimer : FlowCanvas.Nodes.GetRandomListItem<EventTimer>{}
+		class FlowCanvas_Nodes_GetRandomListItem_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.GetRandomListItem<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_GetRandomListItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.GetRandomListItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_GetRandomListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.GetRandomListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_GetRandomListItem_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.GetRandomListItem<EazyEngine.Space.DamageGivenEvent>{}
@@ -842,6 +864,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_GetVariable_UnityEngine_Ray : FlowCanvas.Nodes.GetVariable<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_GetVariable_UnityEngine_Space : FlowCanvas.Nodes.GetVariable<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_GetVariable_EventTimer : FlowCanvas.Nodes.GetVariable<EventTimer>{}
+		class FlowCanvas_Nodes_GetVariable_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.GetVariable<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_GetVariable_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.GetVariable<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_GetVariable_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.GetVariable<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_GetVariable_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.GetVariable<EazyEngine.Space.DamageGivenEvent>{}
@@ -879,6 +902,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_Identity_UnityEngine_Ray : FlowCanvas.Nodes.Identity<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_Identity_UnityEngine_Space : FlowCanvas.Nodes.Identity<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_Identity_EventTimer : FlowCanvas.Nodes.Identity<EventTimer>{}
+		class FlowCanvas_Nodes_Identity_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.Identity<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_Identity_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.Identity<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_Identity_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.Identity<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_Identity_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.Identity<EazyEngine.Space.DamageGivenEvent>{}
@@ -916,6 +940,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_InsertListItem_UnityEngine_Ray : FlowCanvas.Nodes.InsertListItem<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_InsertListItem_UnityEngine_Space : FlowCanvas.Nodes.InsertListItem<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_InsertListItem_EventTimer : FlowCanvas.Nodes.InsertListItem<EventTimer>{}
+		class FlowCanvas_Nodes_InsertListItem_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.InsertListItem<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_InsertListItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.InsertListItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_InsertListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.InsertListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_InsertListItem_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.InsertListItem<EazyEngine.Space.DamageGivenEvent>{}
@@ -953,6 +978,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_PickValue_UnityEngine_Ray : FlowCanvas.Nodes.PickValue<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_PickValue_UnityEngine_Space : FlowCanvas.Nodes.PickValue<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_PickValue_EventTimer : FlowCanvas.Nodes.PickValue<EventTimer>{}
+		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.PickValue<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.PickValue<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.PickValue<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_PickValue_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.PickValue<EazyEngine.Space.DamageGivenEvent>{}
@@ -990,6 +1016,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_ReadFlowParameter_UnityEngine_Ray : FlowCanvas.Nodes.ReadFlowParameter<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_UnityEngine_Space : FlowCanvas.Nodes.ReadFlowParameter<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_EventTimer : FlowCanvas.Nodes.ReadFlowParameter<EventTimer>{}
+		class FlowCanvas_Nodes_ReadFlowParameter_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.ReadFlowParameter<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.ReadFlowParameter<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.ReadFlowParameter<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_ReadFlowParameter_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.ReadFlowParameter<EazyEngine.Space.DamageGivenEvent>{}
@@ -1027,6 +1054,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_UnityEngine_Ray : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_UnityEngine_Space : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_EventTimer : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<EventTimer>{}
+		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_ReflectedExtractorNodeWrapper_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.ReflectedExtractorNodeWrapper<EazyEngine.Space.DamageGivenEvent>{}
@@ -1064,6 +1092,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_RelayValueInput_UnityEngine_Ray : FlowCanvas.Nodes.RelayValueInput<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_RelayValueInput_UnityEngine_Space : FlowCanvas.Nodes.RelayValueInput<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_RelayValueInput_EventTimer : FlowCanvas.Nodes.RelayValueInput<EventTimer>{}
+		class FlowCanvas_Nodes_RelayValueInput_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.RelayValueInput<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_RelayValueInput_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.RelayValueInput<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_RelayValueInput_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.RelayValueInput<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_RelayValueInput_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.RelayValueInput<EazyEngine.Space.DamageGivenEvent>{}
@@ -1101,6 +1130,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_RelayValueOutput_UnityEngine_Ray : FlowCanvas.Nodes.RelayValueOutput<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_RelayValueOutput_UnityEngine_Space : FlowCanvas.Nodes.RelayValueOutput<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_RelayValueOutput_EventTimer : FlowCanvas.Nodes.RelayValueOutput<EventTimer>{}
+		class FlowCanvas_Nodes_RelayValueOutput_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.RelayValueOutput<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_RelayValueOutput_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.RelayValueOutput<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_RelayValueOutput_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.RelayValueOutput<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_RelayValueOutput_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.RelayValueOutput<EazyEngine.Space.DamageGivenEvent>{}
@@ -1138,6 +1168,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_RemoveDictionaryKey_UnityEngine_Ray : FlowCanvas.Nodes.RemoveDictionaryKey<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_RemoveDictionaryKey_UnityEngine_Space : FlowCanvas.Nodes.RemoveDictionaryKey<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_RemoveDictionaryKey_EventTimer : FlowCanvas.Nodes.RemoveDictionaryKey<EventTimer>{}
+		class FlowCanvas_Nodes_RemoveDictionaryKey_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.RemoveDictionaryKey<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_RemoveDictionaryKey_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.RemoveDictionaryKey<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_RemoveDictionaryKey_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.RemoveDictionaryKey<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_RemoveDictionaryKey_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.RemoveDictionaryKey<EazyEngine.Space.DamageGivenEvent>{}
@@ -1175,6 +1206,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_RemoveListItem_UnityEngine_Ray : FlowCanvas.Nodes.RemoveListItem<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_RemoveListItem_UnityEngine_Space : FlowCanvas.Nodes.RemoveListItem<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_RemoveListItem_EventTimer : FlowCanvas.Nodes.RemoveListItem<EventTimer>{}
+		class FlowCanvas_Nodes_RemoveListItem_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.RemoveListItem<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_RemoveListItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.RemoveListItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_RemoveListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.RemoveListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_RemoveListItem_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.RemoveListItem<EazyEngine.Space.DamageGivenEvent>{}
@@ -1212,6 +1244,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_RemoveListItemAt_UnityEngine_Ray : FlowCanvas.Nodes.RemoveListItemAt<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_RemoveListItemAt_UnityEngine_Space : FlowCanvas.Nodes.RemoveListItemAt<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_RemoveListItemAt_EventTimer : FlowCanvas.Nodes.RemoveListItemAt<EventTimer>{}
+		class FlowCanvas_Nodes_RemoveListItemAt_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.RemoveListItemAt<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_RemoveListItemAt_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.RemoveListItemAt<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_RemoveListItemAt_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.RemoveListItemAt<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_RemoveListItemAt_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.RemoveListItemAt<EazyEngine.Space.DamageGivenEvent>{}
@@ -1249,6 +1282,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SelectOnBool_UnityEngine_Ray : FlowCanvas.Nodes.SelectOnBool<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_SelectOnBool_UnityEngine_Space : FlowCanvas.Nodes.SelectOnBool<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_SelectOnBool_EventTimer : FlowCanvas.Nodes.SelectOnBool<EventTimer>{}
+		class FlowCanvas_Nodes_SelectOnBool_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.SelectOnBool<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_SelectOnBool_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SelectOnBool<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SelectOnBool_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SelectOnBool<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SelectOnBool_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.SelectOnBool<EazyEngine.Space.DamageGivenEvent>{}
@@ -1286,6 +1320,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SelectOnEnum_UnityEngine_Ray : FlowCanvas.Nodes.SelectOnEnum<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_SelectOnEnum_UnityEngine_Space : FlowCanvas.Nodes.SelectOnEnum<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_SelectOnEnum_EventTimer : FlowCanvas.Nodes.SelectOnEnum<EventTimer>{}
+		class FlowCanvas_Nodes_SelectOnEnum_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.SelectOnEnum<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_SelectOnEnum_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SelectOnEnum<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SelectOnEnum_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SelectOnEnum<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SelectOnEnum_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.SelectOnEnum<EazyEngine.Space.DamageGivenEvent>{}
@@ -1323,6 +1358,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SelectOnInt_UnityEngine_Ray : FlowCanvas.Nodes.SelectOnInt<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_SelectOnInt_UnityEngine_Space : FlowCanvas.Nodes.SelectOnInt<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_SelectOnInt_EventTimer : FlowCanvas.Nodes.SelectOnInt<EventTimer>{}
+		class FlowCanvas_Nodes_SelectOnInt_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.SelectOnInt<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_SelectOnInt_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SelectOnInt<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SelectOnInt_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SelectOnInt<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SelectOnInt_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.SelectOnInt<EazyEngine.Space.DamageGivenEvent>{}
@@ -1360,6 +1396,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SelectOnString_UnityEngine_Ray : FlowCanvas.Nodes.SelectOnString<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_SelectOnString_UnityEngine_Space : FlowCanvas.Nodes.SelectOnString<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_SelectOnString_EventTimer : FlowCanvas.Nodes.SelectOnString<EventTimer>{}
+		class FlowCanvas_Nodes_SelectOnString_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.SelectOnString<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_SelectOnString_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SelectOnString<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SelectOnString_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SelectOnString<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SelectOnString_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.SelectOnString<EazyEngine.Space.DamageGivenEvent>{}
@@ -1397,6 +1434,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SelectOnTag_UnityEngine_Ray : FlowCanvas.Nodes.SelectOnTag<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_SelectOnTag_UnityEngine_Space : FlowCanvas.Nodes.SelectOnTag<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_SelectOnTag_EventTimer : FlowCanvas.Nodes.SelectOnTag<EventTimer>{}
+		class FlowCanvas_Nodes_SelectOnTag_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.SelectOnTag<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_SelectOnTag_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SelectOnTag<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SelectOnTag_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SelectOnTag<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SelectOnTag_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.SelectOnTag<EazyEngine.Space.DamageGivenEvent>{}
@@ -1434,6 +1472,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SendEvent_UnityEngine_Ray : FlowCanvas.Nodes.SendEvent<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_SendEvent_UnityEngine_Space : FlowCanvas.Nodes.SendEvent<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_SendEvent_EventTimer : FlowCanvas.Nodes.SendEvent<EventTimer>{}
+		class FlowCanvas_Nodes_SendEvent_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.SendEvent<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_SendEvent_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SendEvent<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SendEvent_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SendEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SendEvent_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.SendEvent<EazyEngine.Space.DamageGivenEvent>{}
@@ -1471,6 +1510,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SendGlobalEvent_UnityEngine_Ray : FlowCanvas.Nodes.SendGlobalEvent<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_SendGlobalEvent_UnityEngine_Space : FlowCanvas.Nodes.SendGlobalEvent<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_SendGlobalEvent_EventTimer : FlowCanvas.Nodes.SendGlobalEvent<EventTimer>{}
+		class FlowCanvas_Nodes_SendGlobalEvent_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.SendGlobalEvent<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_SendGlobalEvent_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SendGlobalEvent<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SendGlobalEvent_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SendGlobalEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SendGlobalEvent_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.SendGlobalEvent<EazyEngine.Space.DamageGivenEvent>{}
@@ -1508,6 +1548,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SetListItem_UnityEngine_Ray : FlowCanvas.Nodes.SetListItem<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_SetListItem_UnityEngine_Space : FlowCanvas.Nodes.SetListItem<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_SetListItem_EventTimer : FlowCanvas.Nodes.SetListItem<EventTimer>{}
+		class FlowCanvas_Nodes_SetListItem_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.SetListItem<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_SetListItem_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SetListItem<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SetListItem_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SetListItem<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SetListItem_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.SetListItem<EazyEngine.Space.DamageGivenEvent>{}
@@ -1545,6 +1586,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SetOtherVariable_UnityEngine_Ray : FlowCanvas.Nodes.SetOtherVariable<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_SetOtherVariable_UnityEngine_Space : FlowCanvas.Nodes.SetOtherVariable<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_SetOtherVariable_EventTimer : FlowCanvas.Nodes.SetOtherVariable<EventTimer>{}
+		class FlowCanvas_Nodes_SetOtherVariable_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.SetOtherVariable<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_SetOtherVariable_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SetOtherVariable<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SetOtherVariable_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SetOtherVariable<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SetOtherVariable_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.SetOtherVariable<EazyEngine.Space.DamageGivenEvent>{}
@@ -1582,6 +1624,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SetVariable_UnityEngine_Ray : FlowCanvas.Nodes.SetVariable<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_SetVariable_UnityEngine_Space : FlowCanvas.Nodes.SetVariable<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_SetVariable_EventTimer : FlowCanvas.Nodes.SetVariable<EventTimer>{}
+		class FlowCanvas_Nodes_SetVariable_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.SetVariable<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_SetVariable_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SetVariable<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SetVariable_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SetVariable<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SetVariable_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.SetVariable<EazyEngine.Space.DamageGivenEvent>{}
@@ -1619,6 +1662,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_ShuffleList_UnityEngine_Ray : FlowCanvas.Nodes.ShuffleList<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_ShuffleList_UnityEngine_Space : FlowCanvas.Nodes.ShuffleList<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_ShuffleList_EventTimer : FlowCanvas.Nodes.ShuffleList<EventTimer>{}
+		class FlowCanvas_Nodes_ShuffleList_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.ShuffleList<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_ShuffleList_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.ShuffleList<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_ShuffleList_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.ShuffleList<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_ShuffleList_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.ShuffleList<EazyEngine.Space.DamageGivenEvent>{}
@@ -1656,6 +1700,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Ray : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_StaticCodeEvent_UnityEngine_Space : FlowCanvas.Nodes.StaticCodeEvent<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_StaticCodeEvent_EventTimer : FlowCanvas.Nodes.StaticCodeEvent<EventTimer>{}
+		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_StaticCodeEvent_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.StaticCodeEvent<EazyEngine.Space.DamageGivenEvent>{}
@@ -1693,6 +1738,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Ray : FlowCanvas.Nodes.SwitchValue<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_SwitchValue_UnityEngine_Space : FlowCanvas.Nodes.SwitchValue<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_SwitchValue_EventTimer : FlowCanvas.Nodes.SwitchValue<EventTimer>{}
+		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_SwitchValue_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.SwitchValue<EazyEngine.Space.DamageGivenEvent>{}
@@ -1730,6 +1776,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_ToArray_UnityEngine_Ray : FlowCanvas.Nodes.ToArray<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_ToArray_UnityEngine_Space : FlowCanvas.Nodes.ToArray<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_ToArray_EventTimer : FlowCanvas.Nodes.ToArray<EventTimer>{}
+		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.ToArray<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.ToArray<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.ToArray<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_ToArray_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.ToArray<EazyEngine.Space.DamageGivenEvent>{}
@@ -1767,6 +1814,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_ToList_UnityEngine_Ray : FlowCanvas.Nodes.ToList<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_ToList_UnityEngine_Space : FlowCanvas.Nodes.ToList<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_ToList_EventTimer : FlowCanvas.Nodes.ToList<EventTimer>{}
+		class FlowCanvas_Nodes_ToList_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.ToList<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_ToList_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.ToList<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_ToList_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.ToList<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_ToList_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.ToList<EazyEngine.Space.DamageGivenEvent>{}
@@ -1804,6 +1852,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_TryGetValue_UnityEngine_Ray : FlowCanvas.Nodes.TryGetValue<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_TryGetValue_UnityEngine_Space : FlowCanvas.Nodes.TryGetValue<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_TryGetValue_EventTimer : FlowCanvas.Nodes.TryGetValue<EventTimer>{}
+		class FlowCanvas_Nodes_TryGetValue_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.TryGetValue<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_TryGetValue_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.TryGetValue<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_TryGetValue_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.TryGetValue<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_TryGetValue_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.TryGetValue<EazyEngine.Space.DamageGivenEvent>{}
@@ -1841,6 +1890,7 @@ namespace ParadoxNotion.Internal{
 		class FlowCanvas_Nodes_WriteFlowParameter_UnityEngine_Ray : FlowCanvas.Nodes.WriteFlowParameter<UnityEngine.Ray>{}
 		class FlowCanvas_Nodes_WriteFlowParameter_UnityEngine_Space : FlowCanvas.Nodes.WriteFlowParameter<UnityEngine.Space>{}
 		class FlowCanvas_Nodes_WriteFlowParameter_EventTimer : FlowCanvas.Nodes.WriteFlowParameter<EventTimer>{}
+		class FlowCanvas_Nodes_WriteFlowParameter_EazyEngine_Space_CoundDownEvent : FlowCanvas.Nodes.WriteFlowParameter<EazyEngine.Space.CoundDownEvent>{}
 		class FlowCanvas_Nodes_WriteFlowParameter_EazyEngine_Space_DamageExtra : FlowCanvas.Nodes.WriteFlowParameter<EazyEngine.Space.DamageExtra>{}
 		class FlowCanvas_Nodes_WriteFlowParameter_EazyEngine_Space_DamageExtraVariant : FlowCanvas.Nodes.WriteFlowParameter<EazyEngine.Space.DamageExtraVariant>{}
 		class FlowCanvas_Nodes_WriteFlowParameter_EazyEngine_Space_DamageGivenEvent : FlowCanvas.Nodes.WriteFlowParameter<EazyEngine.Space.DamageGivenEvent>{}
@@ -1878,6 +1928,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Framework_BBParameter_UnityEngine_Ray : NodeCanvas.Framework.BBParameter<UnityEngine.Ray>{}
 		class NodeCanvas_Framework_BBParameter_UnityEngine_Space : NodeCanvas.Framework.BBParameter<UnityEngine.Space>{}
 		class NodeCanvas_Framework_BBParameter_EventTimer : NodeCanvas.Framework.BBParameter<EventTimer>{}
+		class NodeCanvas_Framework_BBParameter_EazyEngine_Space_CoundDownEvent : NodeCanvas.Framework.BBParameter<EazyEngine.Space.CoundDownEvent>{}
 		class NodeCanvas_Framework_BBParameter_EazyEngine_Space_DamageExtra : NodeCanvas.Framework.BBParameter<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Framework_BBParameter_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Framework.BBParameter<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Framework_BBParameter_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Framework.BBParameter<EazyEngine.Space.DamageGivenEvent>{}
@@ -1915,6 +1966,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Framework_Variable_UnityEngine_Ray : NodeCanvas.Framework.Variable<UnityEngine.Ray>{}
 		class NodeCanvas_Framework_Variable_UnityEngine_Space : NodeCanvas.Framework.Variable<UnityEngine.Space>{}
 		class NodeCanvas_Framework_Variable_EventTimer : NodeCanvas.Framework.Variable<EventTimer>{}
+		class NodeCanvas_Framework_Variable_EazyEngine_Space_CoundDownEvent : NodeCanvas.Framework.Variable<EazyEngine.Space.CoundDownEvent>{}
 		class NodeCanvas_Framework_Variable_EazyEngine_Space_DamageExtra : NodeCanvas.Framework.Variable<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Framework_Variable_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Framework.Variable<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Framework_Variable_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Framework.Variable<EazyEngine.Space.DamageGivenEvent>{}
@@ -1952,6 +2004,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Framework_Internal_ReflectedAction_UnityEngine_Ray : NodeCanvas.Framework.Internal.ReflectedAction<UnityEngine.Ray>{}
 		class NodeCanvas_Framework_Internal_ReflectedAction_UnityEngine_Space : NodeCanvas.Framework.Internal.ReflectedAction<UnityEngine.Space>{}
 		class NodeCanvas_Framework_Internal_ReflectedAction_EventTimer : NodeCanvas.Framework.Internal.ReflectedAction<EventTimer>{}
+		class NodeCanvas_Framework_Internal_ReflectedAction_EazyEngine_Space_CoundDownEvent : NodeCanvas.Framework.Internal.ReflectedAction<EazyEngine.Space.CoundDownEvent>{}
 		class NodeCanvas_Framework_Internal_ReflectedAction_EazyEngine_Space_DamageExtra : NodeCanvas.Framework.Internal.ReflectedAction<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Framework_Internal_ReflectedAction_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Framework.Internal.ReflectedAction<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Framework_Internal_ReflectedAction_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Framework.Internal.ReflectedAction<EazyEngine.Space.DamageGivenEvent>{}
@@ -1989,6 +2042,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Framework_Internal_ReflectedFunction_UnityEngine_Ray : NodeCanvas.Framework.Internal.ReflectedFunction<UnityEngine.Ray>{}
 		class NodeCanvas_Framework_Internal_ReflectedFunction_UnityEngine_Space : NodeCanvas.Framework.Internal.ReflectedFunction<UnityEngine.Space>{}
 		class NodeCanvas_Framework_Internal_ReflectedFunction_EventTimer : NodeCanvas.Framework.Internal.ReflectedFunction<EventTimer>{}
+		class NodeCanvas_Framework_Internal_ReflectedFunction_EazyEngine_Space_CoundDownEvent : NodeCanvas.Framework.Internal.ReflectedFunction<EazyEngine.Space.CoundDownEvent>{}
 		class NodeCanvas_Framework_Internal_ReflectedFunction_EazyEngine_Space_DamageExtra : NodeCanvas.Framework.Internal.ReflectedFunction<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Framework_Internal_ReflectedFunction_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Framework.Internal.ReflectedFunction<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Framework_Internal_ReflectedFunction_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Framework.Internal.ReflectedFunction<EazyEngine.Space.DamageGivenEvent>{}
@@ -2026,6 +2080,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_UnityEngine_Ray : NodeCanvas.Tasks.Actions.AddElementToDictionary<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_UnityEngine_Space : NodeCanvas.Tasks.Actions.AddElementToDictionary<UnityEngine.Space>{}
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_EventTimer : NodeCanvas.Tasks.Actions.AddElementToDictionary<EventTimer>{}
+		class NodeCanvas_Tasks_Actions_AddElementToDictionary_EazyEngine_Space_CoundDownEvent : NodeCanvas.Tasks.Actions.AddElementToDictionary<EazyEngine.Space.CoundDownEvent>{}
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.AddElementToDictionary<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.AddElementToDictionary<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_AddElementToDictionary_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Actions.AddElementToDictionary<EazyEngine.Space.DamageGivenEvent>{}
@@ -2063,6 +2118,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_AddElementToList_UnityEngine_Ray : NodeCanvas.Tasks.Actions.AddElementToList<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Actions_AddElementToList_UnityEngine_Space : NodeCanvas.Tasks.Actions.AddElementToList<UnityEngine.Space>{}
 		class NodeCanvas_Tasks_Actions_AddElementToList_EventTimer : NodeCanvas.Tasks.Actions.AddElementToList<EventTimer>{}
+		class NodeCanvas_Tasks_Actions_AddElementToList_EazyEngine_Space_CoundDownEvent : NodeCanvas.Tasks.Actions.AddElementToList<EazyEngine.Space.CoundDownEvent>{}
 		class NodeCanvas_Tasks_Actions_AddElementToList_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.AddElementToList<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_AddElementToList_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.AddElementToList<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_AddElementToList_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Actions.AddElementToList<EazyEngine.Space.DamageGivenEvent>{}
@@ -2100,6 +2156,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_UnityEngine_Ray : NodeCanvas.Tasks.Actions.GetDictionaryElement<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_UnityEngine_Space : NodeCanvas.Tasks.Actions.GetDictionaryElement<UnityEngine.Space>{}
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_EventTimer : NodeCanvas.Tasks.Actions.GetDictionaryElement<EventTimer>{}
+		class NodeCanvas_Tasks_Actions_GetDictionaryElement_EazyEngine_Space_CoundDownEvent : NodeCanvas.Tasks.Actions.GetDictionaryElement<EazyEngine.Space.CoundDownEvent>{}
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.GetDictionaryElement<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.GetDictionaryElement<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_GetDictionaryElement_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Actions.GetDictionaryElement<EazyEngine.Space.DamageGivenEvent>{}
@@ -2137,6 +2194,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_UnityEngine_Ray : NodeCanvas.Tasks.Actions.GetIndexOfElement<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_UnityEngine_Space : NodeCanvas.Tasks.Actions.GetIndexOfElement<UnityEngine.Space>{}
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_EventTimer : NodeCanvas.Tasks.Actions.GetIndexOfElement<EventTimer>{}
+		class NodeCanvas_Tasks_Actions_GetIndexOfElement_EazyEngine_Space_CoundDownEvent : NodeCanvas.Tasks.Actions.GetIndexOfElement<EazyEngine.Space.CoundDownEvent>{}
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.GetIndexOfElement<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.GetIndexOfElement<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_GetIndexOfElement_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Actions.GetIndexOfElement<EazyEngine.Space.DamageGivenEvent>{}
@@ -2174,6 +2232,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_InsertElementToList_UnityEngine_Ray : NodeCanvas.Tasks.Actions.InsertElementToList<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Actions_InsertElementToList_UnityEngine_Space : NodeCanvas.Tasks.Actions.InsertElementToList<UnityEngine.Space>{}
 		class NodeCanvas_Tasks_Actions_InsertElementToList_EventTimer : NodeCanvas.Tasks.Actions.InsertElementToList<EventTimer>{}
+		class NodeCanvas_Tasks_Actions_InsertElementToList_EazyEngine_Space_CoundDownEvent : NodeCanvas.Tasks.Actions.InsertElementToList<EazyEngine.Space.CoundDownEvent>{}
 		class NodeCanvas_Tasks_Actions_InsertElementToList_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.InsertElementToList<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_InsertElementToList_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.InsertElementToList<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_InsertElementToList_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Actions.InsertElementToList<EazyEngine.Space.DamageGivenEvent>{}
@@ -2211,6 +2270,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_PickListElement_UnityEngine_Ray : NodeCanvas.Tasks.Actions.PickListElement<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Actions_PickListElement_UnityEngine_Space : NodeCanvas.Tasks.Actions.PickListElement<UnityEngine.Space>{}
 		class NodeCanvas_Tasks_Actions_PickListElement_EventTimer : NodeCanvas.Tasks.Actions.PickListElement<EventTimer>{}
+		class NodeCanvas_Tasks_Actions_PickListElement_EazyEngine_Space_CoundDownEvent : NodeCanvas.Tasks.Actions.PickListElement<EazyEngine.Space.CoundDownEvent>{}
 		class NodeCanvas_Tasks_Actions_PickListElement_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.PickListElement<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_PickListElement_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.PickListElement<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_PickListElement_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Actions.PickListElement<EazyEngine.Space.DamageGivenEvent>{}
@@ -2248,6 +2308,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_UnityEngine_Ray : NodeCanvas.Tasks.Actions.PickRandomListElement<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_UnityEngine_Space : NodeCanvas.Tasks.Actions.PickRandomListElement<UnityEngine.Space>{}
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_EventTimer : NodeCanvas.Tasks.Actions.PickRandomListElement<EventTimer>{}
+		class NodeCanvas_Tasks_Actions_PickRandomListElement_EazyEngine_Space_CoundDownEvent : NodeCanvas.Tasks.Actions.PickRandomListElement<EazyEngine.Space.CoundDownEvent>{}
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.PickRandomListElement<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.PickRandomListElement<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_PickRandomListElement_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Actions.PickRandomListElement<EazyEngine.Space.DamageGivenEvent>{}
@@ -2285,6 +2346,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_UnityEngine_Ray : NodeCanvas.Tasks.Actions.RemoveElementFromList<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_UnityEngine_Space : NodeCanvas.Tasks.Actions.RemoveElementFromList<UnityEngine.Space>{}
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_EventTimer : NodeCanvas.Tasks.Actions.RemoveElementFromList<EventTimer>{}
+		class NodeCanvas_Tasks_Actions_RemoveElementFromList_EazyEngine_Space_CoundDownEvent : NodeCanvas.Tasks.Actions.RemoveElementFromList<EazyEngine.Space.CoundDownEvent>{}
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.RemoveElementFromList<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.RemoveElementFromList<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_RemoveElementFromList_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Actions.RemoveElementFromList<EazyEngine.Space.DamageGivenEvent>{}
@@ -2322,6 +2384,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_SendEvent_UnityEngine_Ray : NodeCanvas.Tasks.Actions.SendEvent<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Actions_SendEvent_UnityEngine_Space : NodeCanvas.Tasks.Actions.SendEvent<UnityEngine.Space>{}
 		class NodeCanvas_Tasks_Actions_SendEvent_EventTimer : NodeCanvas.Tasks.Actions.SendEvent<EventTimer>{}
+		class NodeCanvas_Tasks_Actions_SendEvent_EazyEngine_Space_CoundDownEvent : NodeCanvas.Tasks.Actions.SendEvent<EazyEngine.Space.CoundDownEvent>{}
 		class NodeCanvas_Tasks_Actions_SendEvent_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.SendEvent<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_SendEvent_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.SendEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_SendEvent_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Actions.SendEvent<EazyEngine.Space.DamageGivenEvent>{}
@@ -2359,6 +2422,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_UnityEngine_Ray : NodeCanvas.Tasks.Actions.SendEventToObjects<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_UnityEngine_Space : NodeCanvas.Tasks.Actions.SendEventToObjects<UnityEngine.Space>{}
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_EventTimer : NodeCanvas.Tasks.Actions.SendEventToObjects<EventTimer>{}
+		class NodeCanvas_Tasks_Actions_SendEventToObjects_EazyEngine_Space_CoundDownEvent : NodeCanvas.Tasks.Actions.SendEventToObjects<EazyEngine.Space.CoundDownEvent>{}
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.SendEventToObjects<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.SendEventToObjects<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_SendEventToObjects_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Actions.SendEventToObjects<EazyEngine.Space.DamageGivenEvent>{}
@@ -2396,6 +2460,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_SendMessage_UnityEngine_Ray : NodeCanvas.Tasks.Actions.SendMessage<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Actions_SendMessage_UnityEngine_Space : NodeCanvas.Tasks.Actions.SendMessage<UnityEngine.Space>{}
 		class NodeCanvas_Tasks_Actions_SendMessage_EventTimer : NodeCanvas.Tasks.Actions.SendMessage<EventTimer>{}
+		class NodeCanvas_Tasks_Actions_SendMessage_EazyEngine_Space_CoundDownEvent : NodeCanvas.Tasks.Actions.SendMessage<EazyEngine.Space.CoundDownEvent>{}
 		class NodeCanvas_Tasks_Actions_SendMessage_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.SendMessage<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_SendMessage_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.SendMessage<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_SendMessage_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Actions.SendMessage<EazyEngine.Space.DamageGivenEvent>{}
@@ -2433,6 +2498,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_SetListElement_UnityEngine_Ray : NodeCanvas.Tasks.Actions.SetListElement<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Actions_SetListElement_UnityEngine_Space : NodeCanvas.Tasks.Actions.SetListElement<UnityEngine.Space>{}
 		class NodeCanvas_Tasks_Actions_SetListElement_EventTimer : NodeCanvas.Tasks.Actions.SetListElement<EventTimer>{}
+		class NodeCanvas_Tasks_Actions_SetListElement_EazyEngine_Space_CoundDownEvent : NodeCanvas.Tasks.Actions.SetListElement<EazyEngine.Space.CoundDownEvent>{}
 		class NodeCanvas_Tasks_Actions_SetListElement_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.SetListElement<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_SetListElement_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.SetListElement<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_SetListElement_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Actions.SetListElement<EazyEngine.Space.DamageGivenEvent>{}
@@ -2470,6 +2536,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Actions_SetVariable_UnityEngine_Ray : NodeCanvas.Tasks.Actions.SetVariable<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Actions_SetVariable_UnityEngine_Space : NodeCanvas.Tasks.Actions.SetVariable<UnityEngine.Space>{}
 		class NodeCanvas_Tasks_Actions_SetVariable_EventTimer : NodeCanvas.Tasks.Actions.SetVariable<EventTimer>{}
+		class NodeCanvas_Tasks_Actions_SetVariable_EazyEngine_Space_CoundDownEvent : NodeCanvas.Tasks.Actions.SetVariable<EazyEngine.Space.CoundDownEvent>{}
 		class NodeCanvas_Tasks_Actions_SetVariable_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Actions.SetVariable<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Actions_SetVariable_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Actions.SetVariable<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Actions_SetVariable_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Actions.SetVariable<EazyEngine.Space.DamageGivenEvent>{}
@@ -2507,6 +2574,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_UnityEngine_Ray : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_UnityEngine_Space : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<UnityEngine.Space>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_EventTimer : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<EventTimer>{}
+		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_EazyEngine_Space_CoundDownEvent : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<EazyEngine.Space.CoundDownEvent>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEvent_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Conditions.CheckCSharpEvent<EazyEngine.Space.DamageGivenEvent>{}
@@ -2544,6 +2612,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_UnityEngine_Ray : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_UnityEngine_Space : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<UnityEngine.Space>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_EventTimer : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<EventTimer>{}
+		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_EazyEngine_Space_CoundDownEvent : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<EazyEngine.Space.CoundDownEvent>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckCSharpEventValue_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Conditions.CheckCSharpEventValue<EazyEngine.Space.DamageGivenEvent>{}
@@ -2581,6 +2650,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckEvent_UnityEngine_Ray : NodeCanvas.Tasks.Conditions.CheckEvent<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Conditions_CheckEvent_UnityEngine_Space : NodeCanvas.Tasks.Conditions.CheckEvent<UnityEngine.Space>{}
 		class NodeCanvas_Tasks_Conditions_CheckEvent_EventTimer : NodeCanvas.Tasks.Conditions.CheckEvent<EventTimer>{}
+		class NodeCanvas_Tasks_Conditions_CheckEvent_EazyEngine_Space_CoundDownEvent : NodeCanvas.Tasks.Conditions.CheckEvent<EazyEngine.Space.CoundDownEvent>{}
 		class NodeCanvas_Tasks_Conditions_CheckEvent_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.CheckEvent<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_CheckEvent_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckEvent_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Conditions.CheckEvent<EazyEngine.Space.DamageGivenEvent>{}
@@ -2618,6 +2688,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_UnityEngine_Ray : NodeCanvas.Tasks.Conditions.CheckEventValue<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_UnityEngine_Space : NodeCanvas.Tasks.Conditions.CheckEventValue<UnityEngine.Space>{}
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_EventTimer : NodeCanvas.Tasks.Conditions.CheckEventValue<EventTimer>{}
+		class NodeCanvas_Tasks_Conditions_CheckEventValue_EazyEngine_Space_CoundDownEvent : NodeCanvas.Tasks.Conditions.CheckEventValue<EazyEngine.Space.CoundDownEvent>{}
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.CheckEventValue<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckEventValue<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckEventValue_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Conditions.CheckEventValue<EazyEngine.Space.DamageGivenEvent>{}
@@ -2655,6 +2726,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_UnityEngine_Ray : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_UnityEngine_Space : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<UnityEngine.Space>{}
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_EventTimer : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<EventTimer>{}
+		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_EazyEngine_Space_CoundDownEvent : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<EazyEngine.Space.CoundDownEvent>{}
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckStaticCSharpEvent_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Conditions.CheckStaticCSharpEvent<EazyEngine.Space.DamageGivenEvent>{}
@@ -2692,6 +2764,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_UnityEngine_Ray : NodeCanvas.Tasks.Conditions.CheckUnityEvent<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_UnityEngine_Space : NodeCanvas.Tasks.Conditions.CheckUnityEvent<UnityEngine.Space>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_EventTimer : NodeCanvas.Tasks.Conditions.CheckUnityEvent<EventTimer>{}
+		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_EazyEngine_Space_CoundDownEvent : NodeCanvas.Tasks.Conditions.CheckUnityEvent<EazyEngine.Space.CoundDownEvent>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.CheckUnityEvent<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckUnityEvent<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEvent_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Conditions.CheckUnityEvent<EazyEngine.Space.DamageGivenEvent>{}
@@ -2729,6 +2802,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_UnityEngine_Ray : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_UnityEngine_Space : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<UnityEngine.Space>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_EventTimer : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<EventTimer>{}
+		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_EazyEngine_Space_CoundDownEvent : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<EazyEngine.Space.CoundDownEvent>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckUnityEventValue_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Conditions.CheckUnityEventValue<EazyEngine.Space.DamageGivenEvent>{}
@@ -2766,6 +2840,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_CheckVariable_UnityEngine_Ray : NodeCanvas.Tasks.Conditions.CheckVariable<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Conditions_CheckVariable_UnityEngine_Space : NodeCanvas.Tasks.Conditions.CheckVariable<UnityEngine.Space>{}
 		class NodeCanvas_Tasks_Conditions_CheckVariable_EventTimer : NodeCanvas.Tasks.Conditions.CheckVariable<EventTimer>{}
+		class NodeCanvas_Tasks_Conditions_CheckVariable_EazyEngine_Space_CoundDownEvent : NodeCanvas.Tasks.Conditions.CheckVariable<EazyEngine.Space.CoundDownEvent>{}
 		class NodeCanvas_Tasks_Conditions_CheckVariable_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.CheckVariable<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_CheckVariable_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.CheckVariable<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_CheckVariable_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Conditions.CheckVariable<EazyEngine.Space.DamageGivenEvent>{}
@@ -2803,6 +2878,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_UnityEngine_Ray : NodeCanvas.Tasks.Conditions.ListContainsElement<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_UnityEngine_Space : NodeCanvas.Tasks.Conditions.ListContainsElement<UnityEngine.Space>{}
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_EventTimer : NodeCanvas.Tasks.Conditions.ListContainsElement<EventTimer>{}
+		class NodeCanvas_Tasks_Conditions_ListContainsElement_EazyEngine_Space_CoundDownEvent : NodeCanvas.Tasks.Conditions.ListContainsElement<EazyEngine.Space.CoundDownEvent>{}
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.ListContainsElement<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.ListContainsElement<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_ListContainsElement_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Conditions.ListContainsElement<EazyEngine.Space.DamageGivenEvent>{}
@@ -2840,6 +2916,7 @@ namespace ParadoxNotion.Internal{
 		class NodeCanvas_Tasks_Conditions_TryGetValue_UnityEngine_Ray : NodeCanvas.Tasks.Conditions.TryGetValue<UnityEngine.Ray>{}
 		class NodeCanvas_Tasks_Conditions_TryGetValue_UnityEngine_Space : NodeCanvas.Tasks.Conditions.TryGetValue<UnityEngine.Space>{}
 		class NodeCanvas_Tasks_Conditions_TryGetValue_EventTimer : NodeCanvas.Tasks.Conditions.TryGetValue<EventTimer>{}
+		class NodeCanvas_Tasks_Conditions_TryGetValue_EazyEngine_Space_CoundDownEvent : NodeCanvas.Tasks.Conditions.TryGetValue<EazyEngine.Space.CoundDownEvent>{}
 		class NodeCanvas_Tasks_Conditions_TryGetValue_EazyEngine_Space_DamageExtra : NodeCanvas.Tasks.Conditions.TryGetValue<EazyEngine.Space.DamageExtra>{}
 		class NodeCanvas_Tasks_Conditions_TryGetValue_EazyEngine_Space_DamageExtraVariant : NodeCanvas.Tasks.Conditions.TryGetValue<EazyEngine.Space.DamageExtraVariant>{}
 		class NodeCanvas_Tasks_Conditions_TryGetValue_EazyEngine_Space_DamageGivenEvent : NodeCanvas.Tasks.Conditions.TryGetValue<EazyEngine.Space.DamageGivenEvent>{}
@@ -2880,6 +2957,7 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_Flow.ReadParameter<UnityEngine.Ray>( (System.String)o );
 			_FlowCanvas_Flow.ReadParameter<UnityEngine.Space>( (System.String)o );
 			_FlowCanvas_Flow.ReadParameter<EventTimer>( (System.String)o );
+			_FlowCanvas_Flow.ReadParameter<EazyEngine.Space.CoundDownEvent>( (System.String)o );
 			_FlowCanvas_Flow.ReadParameter<EazyEngine.Space.DamageExtra>( (System.String)o );
 			_FlowCanvas_Flow.ReadParameter<EazyEngine.Space.DamageExtraVariant>( (System.String)o );
 			_FlowCanvas_Flow.ReadParameter<EazyEngine.Space.DamageGivenEvent>( (System.String)o );
@@ -2920,6 +2998,7 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_Flow.WriteParameter<UnityEngine.Ray>( (System.String)o, (UnityEngine.Ray)o );
 			_FlowCanvas_Flow.WriteParameter<UnityEngine.Space>( (System.String)o, (UnityEngine.Space)o );
 			_FlowCanvas_Flow.WriteParameter<EventTimer>( (System.String)o, (EventTimer)o );
+			_FlowCanvas_Flow.WriteParameter<EazyEngine.Space.CoundDownEvent>( (System.String)o, (EazyEngine.Space.CoundDownEvent)o );
 			_FlowCanvas_Flow.WriteParameter<EazyEngine.Space.DamageExtra>( (System.String)o, (EazyEngine.Space.DamageExtra)o );
 			_FlowCanvas_Flow.WriteParameter<EazyEngine.Space.DamageExtraVariant>( (System.String)o, (EazyEngine.Space.DamageExtraVariant)o );
 			_FlowCanvas_Flow.WriteParameter<EazyEngine.Space.DamageGivenEvent>( (System.String)o, (EazyEngine.Space.DamageGivenEvent)o );
@@ -2960,6 +3039,7 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_FlowNode.AddValueInput<UnityEngine.Ray>( (System.String)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueInput<UnityEngine.Space>( (System.String)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueInput<EventTimer>( (System.String)o, (System.String)o );
+			_FlowCanvas_FlowNode.AddValueInput<EazyEngine.Space.CoundDownEvent>( (System.String)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueInput<EazyEngine.Space.DamageExtra>( (System.String)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueInput<EazyEngine.Space.DamageExtraVariant>( (System.String)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueInput<EazyEngine.Space.DamageGivenEvent>( (System.String)o, (System.String)o );
@@ -3000,6 +3080,7 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_FlowNode.AddValueOutput<UnityEngine.Ray>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<UnityEngine.Ray>)o );
 			_FlowCanvas_FlowNode.AddValueOutput<UnityEngine.Space>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<UnityEngine.Space>)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EventTimer>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EventTimer>)o );
+			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.CoundDownEvent>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.CoundDownEvent>)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.DamageExtra>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtra>)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.DamageExtraVariant>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtraVariant>)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.DamageGivenEvent>( (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageGivenEvent>)o );
@@ -3040,6 +3121,7 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_FlowNode.AddValueOutput<UnityEngine.Ray>( (System.String)o, (FlowCanvas.ValueHandler<UnityEngine.Ray>)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueOutput<UnityEngine.Space>( (System.String)o, (FlowCanvas.ValueHandler<UnityEngine.Space>)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EventTimer>( (System.String)o, (FlowCanvas.ValueHandler<EventTimer>)o, (System.String)o );
+			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.CoundDownEvent>( (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.CoundDownEvent>)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.DamageExtra>( (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtra>)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.DamageExtraVariant>( (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtraVariant>)o, (System.String)o );
 			_FlowCanvas_FlowNode.AddValueOutput<EazyEngine.Space.DamageGivenEvent>( (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageGivenEvent>)o, (System.String)o );
@@ -3079,6 +3161,7 @@ namespace ParadoxNotion.Internal{
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<UnityEngine.Ray>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<UnityEngine.Space>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<EventTimer>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
+			FlowCanvas.TypeConverter.GetConverterFuncFromTo<EazyEngine.Space.CoundDownEvent>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<EazyEngine.Space.DamageExtra>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<EazyEngine.Space.DamageExtraVariant>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
 			FlowCanvas.TypeConverter.GetConverterFuncFromTo<EazyEngine.Space.DamageGivenEvent>( (System.Type)o, (System.Type)o, (FlowCanvas.ValueHandler<System.Object>)o );
@@ -3118,6 +3201,7 @@ namespace ParadoxNotion.Internal{
 			FlowCanvas.TypeConverter.QuickConvert<UnityEngine.Ray>( (System.Object)o );
 			FlowCanvas.TypeConverter.QuickConvert<UnityEngine.Space>( (System.Object)o );
 			FlowCanvas.TypeConverter.QuickConvert<EventTimer>( (System.Object)o );
+			FlowCanvas.TypeConverter.QuickConvert<EazyEngine.Space.CoundDownEvent>( (System.Object)o );
 			FlowCanvas.TypeConverter.QuickConvert<EazyEngine.Space.DamageExtra>( (System.Object)o );
 			FlowCanvas.TypeConverter.QuickConvert<EazyEngine.Space.DamageExtraVariant>( (System.Object)o );
 			FlowCanvas.TypeConverter.QuickConvert<EazyEngine.Space.DamageGivenEvent>( (System.Object)o );
@@ -3157,6 +3241,7 @@ namespace ParadoxNotion.Internal{
 			FlowCanvas.ValueInput.CreateInstance<UnityEngine.Ray>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
 			FlowCanvas.ValueInput.CreateInstance<UnityEngine.Space>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
 			FlowCanvas.ValueInput.CreateInstance<EventTimer>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
+			FlowCanvas.ValueInput.CreateInstance<EazyEngine.Space.CoundDownEvent>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
 			FlowCanvas.ValueInput.CreateInstance<EazyEngine.Space.DamageExtra>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
 			FlowCanvas.ValueInput.CreateInstance<EazyEngine.Space.DamageExtraVariant>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
 			FlowCanvas.ValueInput.CreateInstance<EazyEngine.Space.DamageGivenEvent>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o );
@@ -3196,6 +3281,7 @@ namespace ParadoxNotion.Internal{
 			FlowCanvas.ValueOutput.CreateInstance<UnityEngine.Ray>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<UnityEngine.Ray>)o );
 			FlowCanvas.ValueOutput.CreateInstance<UnityEngine.Space>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<UnityEngine.Space>)o );
 			FlowCanvas.ValueOutput.CreateInstance<EventTimer>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EventTimer>)o );
+			FlowCanvas.ValueOutput.CreateInstance<EazyEngine.Space.CoundDownEvent>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.CoundDownEvent>)o );
 			FlowCanvas.ValueOutput.CreateInstance<EazyEngine.Space.DamageExtra>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtra>)o );
 			FlowCanvas.ValueOutput.CreateInstance<EazyEngine.Space.DamageExtraVariant>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageExtraVariant>)o );
 			FlowCanvas.ValueOutput.CreateInstance<EazyEngine.Space.DamageGivenEvent>( (FlowCanvas.FlowNode)o, (System.String)o, (System.String)o, (FlowCanvas.ValueHandler<EazyEngine.Space.DamageGivenEvent>)o );
@@ -3236,6 +3322,7 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<UnityEngine.Ray>( (UnityEngine.Ray)o );
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<UnityEngine.Space>( (UnityEngine.Space)o );
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<EventTimer>( (EventTimer)o );
+			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<EazyEngine.Space.CoundDownEvent>( (EazyEngine.Space.CoundDownEvent)o );
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<EazyEngine.Space.DamageExtra>( (EazyEngine.Space.DamageExtra)o );
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<EazyEngine.Space.DamageExtraVariant>( (EazyEngine.Space.DamageExtraVariant)o );
 			_FlowCanvas_Nodes_ReflectedDelegateEvent.Callback1<EazyEngine.Space.DamageGivenEvent>( (EazyEngine.Space.DamageGivenEvent)o );
@@ -3276,6 +3363,7 @@ namespace ParadoxNotion.Internal{
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<UnityEngine.Ray>( (UnityEngine.Ray)o );
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<UnityEngine.Space>( (UnityEngine.Space)o );
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<EventTimer>( (EventTimer)o );
+			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<EazyEngine.Space.CoundDownEvent>( (EazyEngine.Space.CoundDownEvent)o );
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<EazyEngine.Space.DamageExtra>( (EazyEngine.Space.DamageExtra)o );
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<EazyEngine.Space.DamageExtraVariant>( (EazyEngine.Space.DamageExtraVariant)o );
 			_FlowCanvas_Nodes_ReflectedUnityEvent.CallbackMethod1<EazyEngine.Space.DamageGivenEvent>( (EazyEngine.Space.DamageGivenEvent)o );
@@ -3316,6 +3404,7 @@ namespace ParadoxNotion.Internal{
 			_NodeCanvas_Framework_Blackboard.GetVariable<UnityEngine.Ray>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetVariable<UnityEngine.Space>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetVariable<EventTimer>( (System.String)o );
+			_NodeCanvas_Framework_Blackboard.GetVariable<EazyEngine.Space.CoundDownEvent>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetVariable<EazyEngine.Space.DamageExtra>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetVariable<EazyEngine.Space.DamageExtraVariant>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetVariable<EazyEngine.Space.DamageGivenEvent>( (System.String)o );
@@ -3356,6 +3445,7 @@ namespace ParadoxNotion.Internal{
 			_NodeCanvas_Framework_Blackboard.GetValue<UnityEngine.Ray>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetValue<UnityEngine.Space>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetValue<EventTimer>( (System.String)o );
+			_NodeCanvas_Framework_Blackboard.GetValue<EazyEngine.Space.CoundDownEvent>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetValue<EazyEngine.Space.DamageExtra>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetValue<EazyEngine.Space.DamageExtraVariant>( (System.String)o );
 			_NodeCanvas_Framework_Blackboard.GetValue<EazyEngine.Space.DamageGivenEvent>( (System.String)o );
@@ -3396,6 +3486,7 @@ namespace ParadoxNotion.Internal{
 			_NodeCanvas_Framework_IBlackboard.GetVariable<UnityEngine.Ray>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetVariable<UnityEngine.Space>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetVariable<EventTimer>( (System.String)o );
+			_NodeCanvas_Framework_IBlackboard.GetVariable<EazyEngine.Space.CoundDownEvent>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetVariable<EazyEngine.Space.DamageExtra>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetVariable<EazyEngine.Space.DamageExtraVariant>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetVariable<EazyEngine.Space.DamageGivenEvent>( (System.String)o );
@@ -3436,6 +3527,7 @@ namespace ParadoxNotion.Internal{
 			_NodeCanvas_Framework_IBlackboard.GetValue<UnityEngine.Ray>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetValue<UnityEngine.Space>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetValue<EventTimer>( (System.String)o );
+			_NodeCanvas_Framework_IBlackboard.GetValue<EazyEngine.Space.CoundDownEvent>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetValue<EazyEngine.Space.DamageExtra>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetValue<EazyEngine.Space.DamageExtraVariant>( (System.String)o );
 			_NodeCanvas_Framework_IBlackboard.GetValue<EazyEngine.Space.DamageGivenEvent>( (System.String)o );
@@ -3616,6 +3708,14 @@ namespace ParadoxNotion.Internal{
 			System.Collections.Generic.IDictionary<System.String, EventTimer> IDict_EventTimer;
 			System.Collections.Generic.Dictionary<System.String, EventTimer> Dict_EventTimer;
 			///------
+			System.Action<EazyEngine.Space.CoundDownEvent> System_Action_EazyEngine_Space_CoundDownEvent;
+			System.Func<EazyEngine.Space.CoundDownEvent> System_Func_EazyEngine_Space_CoundDownEvent;
+			UnityEngine.Events.UnityAction<EazyEngine.Space.CoundDownEvent> UnityEngine_Events_UnityAction_EazyEngine_Space_CoundDownEvent;
+			System.Collections.Generic.IList<EazyEngine.Space.CoundDownEvent> System_Collections_Generic_IList_EazyEngine_Space_CoundDownEvent;
+			System.Collections.Generic.List<EazyEngine.Space.CoundDownEvent> System_Collections_Generic_List_EazyEngine_Space_CoundDownEvent;
+			System.Collections.Generic.IDictionary<System.String, EazyEngine.Space.CoundDownEvent> IDict_EazyEngine_Space_CoundDownEvent;
+			System.Collections.Generic.Dictionary<System.String, EazyEngine.Space.CoundDownEvent> Dict_EazyEngine_Space_CoundDownEvent;
+			///------
 			System.Action<EazyEngine.Space.DamageExtra> System_Action_EazyEngine_Space_DamageExtra;
 			System.Func<EazyEngine.Space.DamageExtra> System_Func_EazyEngine_Space_DamageExtra;
 			UnityEngine.Events.UnityAction<EazyEngine.Space.DamageExtra> UnityEngine_Events_UnityAction_EazyEngine_Space_DamageExtra;
@@ -3748,5 +3848,5 @@ namespace ParadoxNotion.Internal{
 	}
 }
 
-//2953 Types | 540 Methods spoofed
+//3035 Types | 555 Methods spoofed
 #pragma warning restore 0219, 0168, 0612

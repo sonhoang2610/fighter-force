@@ -1180,6 +1180,15 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         yield return new WaitForSeconds(pDelay);
         action();
     }
+
+    public static string convertTime(int pTime)
+    {
+        if(pTime > 86400 || pTime<=0)
+        {
+            return "";
+        }
+       return  System.TimeSpan.FromSeconds(pTime).ToString(@"hh\:mm\:ss");
+    }
     private void Update()
     {
         if (first) return;

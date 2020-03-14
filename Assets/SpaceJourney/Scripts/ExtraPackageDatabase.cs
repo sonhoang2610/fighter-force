@@ -9,10 +9,16 @@ using NodeCanvas.Framework;
 using Sirenix.OdinInspector;
 using EazyEngine.Space.UI;
 using System.Linq;
+using ParadoxNotion;
 
 namespace EazyEngine.Space
 {
-
+    [System.Serializable]
+    public struct CoundDownEvent
+    {
+        public string id;
+        public int time;
+    }
     public struct EventResultShowPackage
     {
         public Action<bool> result;
@@ -235,6 +241,7 @@ namespace EazyEngine.Space
                             }
                             pBox.name = pCombo.ItemID;
                             pBox.GetComponent<Blackboard>().SetValue("info", pCombo);
+                            pObject.GetComponent<Blackboard>().SetValue("info", pCombo);
                             pObject.GetComponentInChildren<UIButton>().onClick.Add(new EventDelegate(delegate ()
                             {
                                 pBox.GetComponent<FlowCanvas.FlowScriptController>().SendEvent("Show");
@@ -264,7 +271,8 @@ namespace EazyEngine.Space
             }
             assignBtnLayer();
         }
-
+        [System.NonSerialized]
+        GraphOwner graph;
         public void Update()
         {
             bool dirty = false;
@@ -277,6 +285,15 @@ namespace EazyEngine.Space
                     {
                         var pDatTime = TimeExtension.UnixTimeStampToDateTime(pInfo.timeStart);
                         var pTiming = (System.DateTime.Now - pDatTime).TotalSeconds;
+                        if (!graph)
+                        {
+                            graph = GameManager.Instance.GetComponent<GraphOwner>();
+                        }
+                        Graph.SendGlobalEvent(new EventData<CoundDownEvent>("CountDown", new CoundDownEvent()
+                        {
+                            id = packageRegister[i].ItemID,
+                            time = (int)packageRegister[i].timeExp- (int)pTiming
+                        }),null);
                         if (pTiming >= packageRegister[i].timeExp)
                         {
                             pInfo.timeEnd = TimeExtension.ToUnixTime(System.DateTime.Now);
