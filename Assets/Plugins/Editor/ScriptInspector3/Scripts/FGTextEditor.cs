@@ -1,6 +1,6 @@
 ﻿/* SCRIPT INSPECTOR 3
- * version 3.0.25, March 2019
- * Copyright © 2012-2019, Flipbook Games
+ * version 3.0.26, February 2020
+ * Copyright © 2012-2020, Flipbook Games
  * 
  * Unity's legendary editor for C#, UnityScript, Boo, Shaders, and text,
  * now transformed into an advanced C# IDE!!!
@@ -27,11 +27,18 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Reflection;
 using Themes;
-
+#if UNITY_2019_2_OR_NEWER
+using UnityEngine.UIElements;
+#endif
 
 [Serializable, StructLayout(LayoutKind.Sequential)]
 public class FGTextEditor
 {
+#if UNITY_EDITOR_WIN
+	[DllImport("user32.dll")]
+	public static extern IntPtr PostMessage(IntPtr hWnd, uint wMsg, IntPtr wParam, IntPtr lParam);
+#endif
+
     internal static List<string> availableThemes = new List<string>() { "Darcula", "Xcode" }; // Load Defaults
 	internal static List<Theme> themes = new List<Theme>() { Darcula._colourTheme, Xcode._colourTheme }; // Load Defaults
 	private static Theme currentThemeCode = themes[0];
@@ -71,6 +78,8 @@ public class FGTextEditor
 	
 	[NonSerialized]
 	private bool isTextAsset = true;
+	[NonSerialized]
+	private bool isShader = false;
 
 	public class Styles
 	{
@@ -510,7 +519,8 @@ public class FGTextEditor
 		if (selectionStartPosition != null && selectionStartPosition.line == -1)
 			selectionStartPosition = null;
 
-		isTextAsset = !(targetFile is MonoScript) && !(targetFile is Shader);
+		isShader = targetFile is Shader;
+		isTextAsset = !(targetFile is MonoScript) && !isShader;
 		var targetAsTextBuffer = targetFile as FGTextBuffer;
 		if (targetAsTextBuffer != null)
 		{
@@ -648,15 +658,25 @@ public class FGTextEditor
 				{
 					FGTextBufferManager.AddPendingAssetImport(textBuffer.guid);
 
-					if (SISettings.compileOnSave && !SISettings.autoReloadAssemblies)
-					{
-						//Debug.Log("... Will compile in background");
-						holdingAssemblies = 1;
-						compilers.Clear();
-						EditorApplication.update += HoldReloadingAssemblies;
-					}
 					if (SISettings.compileOnSave)
+					{
+						if (!SISettings.autoReloadAssemblies)
+						{
+							//Debug.Log("... Will compile in background");
+							holdingAssemblies = 1;
+							compilers.Clear();
+							EditorApplication.update += HoldReloadingAssemblies;
+						}
+						else
+						{
+#if UNITY_2019_2_OR_NEWER
+							UnlockReloadAssemblies();
+#endif
+						}
 						FGTextBufferManager.ImportPendingAssets();
+						if (OwnerWindow)
+							OwnerWindow.Focus();
+					}
 				}
 			}
 			else
@@ -670,6 +690,65 @@ public class FGTextEditor
 		}
 	}
 	
+	static private void UnlockReloadAssemblies()
+	{
+		EditorApplication.UnlockReloadAssemblies();
+		
+#if UNITY_EDITOR_WIN && UNITY_2019_2_OR_NEWER
+		// HACK: Workaround for Unity Editor not unlocking reloading assemblies after dragging a floating tab
+		EditorApplication.update += UnlockReloadAssembliesOnUpdate;
+#endif
+	}
+
+#if UNITY_EDITOR_WIN && UNITY_2019_2_OR_NEWER
+	static MethodInfo canReloadAssembliesMethod;
+	static double delayUnlocking;
+	static void UnlockReloadAssembliesOnUpdate()
+	{
+		if (EditorApplication.isPlaying)
+		{
+			var scriptCompilationDuringPlay = EditorPrefs.GetInt("ScriptCompilationDuringPlay", 0);
+			if (scriptCompilationDuringPlay == 1)
+			{
+				EditorApplication.update -= UnlockReloadAssembliesOnUpdate;
+				return;
+			}
+		}
+		EditorApplication.UnlockReloadAssemblies();
+		
+		if (canReloadAssembliesMethod == null)
+		{
+			canReloadAssembliesMethod = typeof(EditorApplication).GetMethod("CanReloadAssemblies", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
+		}
+		if (canReloadAssembliesMethod == null)
+		{
+			//Debug.Log("canReloadAssembliesMethod is null");
+			EditorApplication.update -= UnlockReloadAssembliesOnUpdate;
+		}
+		else if ((bool)canReloadAssembliesMethod.Invoke(null, null))
+		{
+			//Debug.Log("canReloadAssembliesMethod returned true");
+			EditorApplication.update -= UnlockReloadAssembliesOnUpdate;
+			return;
+		}
+		
+		if (delayUnlocking > EditorApplication.timeSinceStartup)
+			return;
+		delayUnlocking = EditorApplication.timeSinceStartup + 1.0f;
+		//Debug.Log("Unlocking hack...");
+#if UNITY_2019_2
+		const uint WM_KEYDOWN = 0x0100;
+		IntPtr hWnd = System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle;
+		PostMessage(hWnd, WM_KEYDOWN, (IntPtr)0x1B, IntPtr.Zero);
+		GenericMenu menu = new GenericMenu();
+		menu.AddSeparator("");
+		menu.DropDown(new Rect());
+#else
+		System.Diagnostics.Process.Start("CMD.exe", "/C exit");
+#endif
+	}
+#endif //UNITY_2019_2_OR_NEWER
+
 	//[MenuItem("Tools/Script Inspector/Reload Assemblies %r", true)]
 	//static bool ValidateReloadAssemblies()
 	//{
@@ -682,11 +761,18 @@ public class FGTextEditor
 #else
 	[MenuItem("Window/Script Inspector 3/Save All and Reload Assemblies _%r", false, 510)]
 #endif
-	static void MenuReloadAssemblies()
+	static public void MenuReloadAssemblies()
 	{
 		FGTextBufferManager.SaveAllModified(false);
+		
 		if (!EditorApplication.isCompiling && !FGTextBufferManager.IsReloadingAssemblies)
+		{
+			//Debug.Log("early out");
+#if UNITY_2019_2_OR_NEWER
+			UnlockReloadAssemblies();
+#endif
 			return;
+		}
 		
 		//if (!SISettings.compileOnSave)
 		//	FGTextBufferManager.ImportPendingAssets();
@@ -697,7 +783,7 @@ public class FGTextEditor
 			holdingAssemblies = 0;
 			EditorApplication.update -= HoldReloadingAssemblies;
 			EditorApplication.update += ReloadAssemblies;
-			EditorApplication.UnlockReloadAssemblies();
+			UnlockReloadAssemblies();
 		}
 		else if (!FGTextBufferManager.IsReloadingAssemblies)
 		{
@@ -709,12 +795,26 @@ public class FGTextEditor
 				compilers.Clear();
 				EditorApplication.update += HoldReloadingAssemblies;
 			}
+			else
+			{
+#if UNITY_2019_2_OR_NEWER
+				UnlockReloadAssemblies();
+#endif
+			}
 			if (SISettings.compileOnSave)
+			{
+				var focusedWindow = EditorWindow.focusedWindow;
 				FGTextBufferManager.ImportPendingAssets();
+				if (focusedWindow)
+					focusedWindow.Focus();
+			}
 		}
 		else
 		{
 			//Debug.Log("Ignoring...");
+#if UNITY_2019_2_OR_NEWER
+			UnlockReloadAssemblies();
+#endif
 		}
 	}
 	
@@ -788,6 +888,9 @@ public class FGTextEditor
 		for (var i = 0; i < 10; ++i)
 			EditorApplication.UnlockReloadAssemblies();
 
+#if UNITY_2019_2_OR_NEWER
+		UnlockReloadAssemblies();
+#else
 		if (!progressBarShown ||
 			EditorApplication.isCompiling && !EditorApplication.isUpdating)
 		{
@@ -804,15 +907,15 @@ public class FGTextEditor
 			}
 		}
 		
-		EditorApplication.update -= ReloadAssemblies;
-		
 		progressBarShown = false;
 		EditorUtility.ClearProgressBar();
 		
 		if (restoreFocusToWnd)
 			restoreFocusToWnd.Focus();
 		restoreFocusToWnd = null;
-		
+#endif
+
+		EditorApplication.update -= ReloadAssemblies;
 		RepaintAllInstances();
 	}
 	
@@ -825,9 +928,6 @@ public class FGTextEditor
 	{
 		EditorApplication.update -= CheckFocusDelayed;
 
-		if (EditorWindow.focusedWindow == OwnerWindow)
-			return;
-
 		if (EditorWindow.focusedWindow == autocompleteWindow)
 			return;
 		
@@ -838,6 +938,9 @@ public class FGTextEditor
 			OwnerWindow.Focus();
 			return;
 		}
+
+		if (EditorWindow.focusedWindow == OwnerWindow)
+			return;
 
 		Input.imeCompositionMode = IMECompositionMode.Auto;
 		
@@ -1575,6 +1678,80 @@ public class FGTextEditor
 	public EditorWindow OwnerWindow { get { return parentWindow ?? currentInspector; } }
 	
 	private bool helpButtonClicked = false;
+	
+	private void ShowWrenchMenu(Rect rc)
+	{
+		GenericMenu codeViewPopupMenu = new GenericMenu();
+		
+#if !UNITY_3_5 && !UNITY_4_0 && !UNITY_4_1
+		codeViewPopupMenu.AddItem(new GUIContent("Always open in Script Inspector"), SISettings.handleOpenAssets, ToggleHandleOpenAsset);
+		codeViewPopupMenu.AddItem(new GUIContent("Always open in External IDE"), SISettings.dontOpenAssets, ToggleDontOpenAsset);
+		if (SISettings.handleOpenAssets || SISettings.dontOpenAssets)
+		{
+			codeViewPopupMenu.AddDisabledItem(new GUIContent("Open on Double-Click/Scripts"));
+			codeViewPopupMenu.AddDisabledItem(new GUIContent("Open on Double-Click/Shaders"));
+			codeViewPopupMenu.AddDisabledItem(new GUIContent("Open on Double-Click/Text Assets"));
+		}
+		else
+#endif
+		{
+			codeViewPopupMenu.AddItem(new GUIContent("Open on Double-Click/Scripts"), SISettings.handleOpeningScripts, ToggleHandleOpenScriptsFromProject);
+			codeViewPopupMenu.AddItem(new GUIContent("Open on Double-Click/Shaders"), SISettings.handleOpeningShaders, ToggleHandleOpenShadersFromProject);
+			codeViewPopupMenu.AddItem(new GUIContent("Open on Double-Click/Text Assets"), SISettings.handleOpeningText, ToggleHandleOpenTextsFromProject);
+		}
+		
+		codeViewPopupMenu.AddSeparator(string.Empty);
+		
+		bool isInspector = parentWindow == null;
+		if (textBuffer.isText)
+		{
+			codeViewPopupMenu.AddItem(new GUIContent("View Options/Word Wrap (Text)"),
+				isInspector ? SISettings.wordWrapTextInspector : SISettings.wordWrapText, ToggleWordWrapText);
+			codeViewPopupMenu.AddItem(new GUIContent("View Options/Highlight Current Line"), SISettings.highlightCurrentLine, ToggleHighlightCurrentLine);
+			codeViewPopupMenu.AddItem(new GUIContent("View Options/Frame Current Line"), SISettings.frameCurrentLine, ToggleFrameCurrentLine);
+			codeViewPopupMenu.AddItem(new GUIContent("View Options/Line Numbers (Text)"),
+				isInspector ? SISettings.showLineNumbersTextInspector : SISettings.showLineNumbersText, ToggleLineNumbersText);
+			codeViewPopupMenu.AddItem(new GUIContent("View Options/Track Changes (Text)"),
+				isInspector ? SISettings.trackChangesTextInspector : SISettings.trackChangesText, ToggleTrackChangesText);
+		}
+		else
+		{
+			codeViewPopupMenu.AddItem(new GUIContent("View Options/Word Wrap (Code)"),
+				isInspector ? SISettings.wordWrapCodeInspector : SISettings.wordWrapCode, ToggleWordWrapCode);
+			codeViewPopupMenu.AddItem(new GUIContent("View Options/Highlight Current Line"), SISettings.highlightCurrentLine, ToggleHighlightCurrentLine);
+			codeViewPopupMenu.AddItem(new GUIContent("View Options/Frame Current Line"), SISettings.frameCurrentLine, ToggleFrameCurrentLine);
+			codeViewPopupMenu.AddItem(new GUIContent("View Options/Line Numbers (Code)"),
+				isInspector ? SISettings.showLineNumbersCodeInspector : SISettings.showLineNumbersCode, ToggleLineNumbersCode);
+			codeViewPopupMenu.AddItem(new GUIContent("View Options/Track Changes (Code)"),
+				isInspector ? SISettings.trackChangesCodeInspector : SISettings.trackChangesCode, ToggleTrackChangesCode);
+		}
+
+		//codeViewPopupMenu.AddSeparator(string.Empty);
+		for (int i = 0; i < availableFonts.Length; ++i)
+			codeViewPopupMenu.AddItem(new GUIContent("Font/" + Path.GetFileNameWithoutExtension(availableFonts[i])), currentFont == availableFonts[i], x => SelectFont((int)x), i);
+		codeViewPopupMenu.AddSeparator("Font//");
+		codeViewPopupMenu.AddItem(new GUIContent("Font/Use Font Hinting"), SISettings.fontHinting, ToggleFontHinting);
+		
+        string[] sortedThemes = availableThemes.ToArray();
+		Array.Sort<string>(sortedThemes, StringComparer.OrdinalIgnoreCase);
+		for (int i = 0; i < sortedThemes.Length; ++i)
+		{
+			int themeIndex = availableThemes.IndexOf(sortedThemes[i]);
+			if (textBuffer.isText)
+				codeViewPopupMenu.AddItem(new GUIContent("Color Scheme (Text)/" + sortedThemes[i]), currentThemeText == themes[themeIndex], x => SelectTheme((int)x, true), themeIndex);
+			else
+				codeViewPopupMenu.AddItem(new GUIContent("Color Scheme (Code)/" + sortedThemes[i]), currentThemeCode == themes[themeIndex], x => SelectTheme((int)x, false), themeIndex);
+		}
+		
+		codeViewPopupMenu.AddSeparator(string.Empty);
+		codeViewPopupMenu.AddItem(new GUIContent("Preferences..."), false, SISettings.OpenSIPreferences);
+		
+		codeViewPopupMenu.AddSeparator(string.Empty);
+		codeViewPopupMenu.AddItem(new GUIContent("About..."), false, About);
+
+		codeViewPopupMenu.DropDown(rc);
+		GUIUtility.ExitGUI();
+	}
 
 	public void OnWindowGUI(EditorWindow window, RectOffset margins)
 	{
@@ -1620,75 +1797,7 @@ public class FGTextEditor
 			Rect rc = new Rect(scrollViewRect.xMax - 21f, scrollViewRect.yMin - 17f, 18f, 16f);
 			if (GUI.Button(rc, GUIContent.none, EditorStyles.toolbarButton))
 			{
-				GenericMenu codeViewPopupMenu = new GenericMenu();
-				
-#if !UNITY_3_5 && !UNITY_4_0 && !UNITY_4_1
-				codeViewPopupMenu.AddItem(new GUIContent("Always open in Script Inspector"), SISettings.handleOpenAssets, ToggleHandleOpenAsset);
-				codeViewPopupMenu.AddItem(new GUIContent("Always open in External IDE"), SISettings.dontOpenAssets, ToggleDontOpenAsset);
-				if (SISettings.handleOpenAssets || SISettings.dontOpenAssets)
-				{
-					codeViewPopupMenu.AddDisabledItem(new GUIContent("Open on Double-Click/Scripts"));
-					codeViewPopupMenu.AddDisabledItem(new GUIContent("Open on Double-Click/Shaders"));
-					codeViewPopupMenu.AddDisabledItem(new GUIContent("Open on Double-Click/Text Assets"));
-				}
-				else
-#endif
-				{
-					codeViewPopupMenu.AddItem(new GUIContent("Open on Double-Click/Scripts"), SISettings.handleOpeningScripts, ToggleHandleOpenScriptsFromProject);
-					codeViewPopupMenu.AddItem(new GUIContent("Open on Double-Click/Shaders"), SISettings.handleOpeningShaders, ToggleHandleOpenShadersFromProject);
-					codeViewPopupMenu.AddItem(new GUIContent("Open on Double-Click/Text Assets"), SISettings.handleOpeningText, ToggleHandleOpenTextsFromProject);
-				}
-				
-				bool isInspector = parentWindow == null;
-				codeViewPopupMenu.AddSeparator(string.Empty);
-				if (textBuffer.isText)
-				{
-					codeViewPopupMenu.AddItem(new GUIContent("View Options/Word Wrap (Text)"),
-						isInspector ? SISettings.wordWrapTextInspector : SISettings.wordWrapText, ToggleWordWrapText);
-					codeViewPopupMenu.AddItem(new GUIContent("View Options/Highlight Current Line"), SISettings.highlightCurrentLine, ToggleHighlightCurrentLine);
-					codeViewPopupMenu.AddItem(new GUIContent("View Options/Frame Current Line"), SISettings.frameCurrentLine, ToggleFrameCurrentLine);
-					codeViewPopupMenu.AddItem(new GUIContent("View Options/Line Numbers (Text)"),
-						isInspector ? SISettings.showLineNumbersTextInspector : SISettings.showLineNumbersText, ToggleLineNumbersText);
-					codeViewPopupMenu.AddItem(new GUIContent("View Options/Track Changes (Text)"),
-						isInspector ? SISettings.trackChangesTextInspector : SISettings.trackChangesText, ToggleTrackChangesText);
-				}
-				else
-				{
-					codeViewPopupMenu.AddItem(new GUIContent("View Options/Word Wrap (Code)"),
-						isInspector ? SISettings.wordWrapCodeInspector : SISettings.wordWrapCode, ToggleWordWrapCode);
-					codeViewPopupMenu.AddItem(new GUIContent("View Options/Highlight Current Line"), SISettings.highlightCurrentLine, ToggleHighlightCurrentLine);
-					codeViewPopupMenu.AddItem(new GUIContent("View Options/Frame Current Line"), SISettings.frameCurrentLine, ToggleFrameCurrentLine);
-					codeViewPopupMenu.AddItem(new GUIContent("View Options/Line Numbers (Code)"),
-						isInspector ? SISettings.showLineNumbersCodeInspector : SISettings.showLineNumbersCode, ToggleLineNumbersCode);
-					codeViewPopupMenu.AddItem(new GUIContent("View Options/Track Changes (Code)"),
-						isInspector ? SISettings.trackChangesCodeInspector : SISettings.trackChangesCode, ToggleTrackChangesCode);
-				}
-	
-				//codeViewPopupMenu.AddSeparator(string.Empty);
-				for (int i = 0; i < availableFonts.Length; ++i)
-					codeViewPopupMenu.AddItem(new GUIContent("Font/" + Path.GetFileNameWithoutExtension(availableFonts[i])), currentFont == availableFonts[i], x => SelectFont((int)x), i);
-				codeViewPopupMenu.AddSeparator("Font//");
-				codeViewPopupMenu.AddItem(new GUIContent("Font/Use Font Hinting"), SISettings.fontHinting, ToggleFontHinting);
-				
-                string[] sortedThemes = availableThemes.ToArray();
-				Array.Sort<string>(sortedThemes, StringComparer.OrdinalIgnoreCase);
-				for (int i = 0; i < sortedThemes.Length; ++i)
-				{
-					int themeIndex = availableThemes.IndexOf(sortedThemes[i]);
-					if (textBuffer.isText)
-						codeViewPopupMenu.AddItem(new GUIContent("Color Scheme (Text)/" + sortedThemes[i]), currentThemeText == themes[themeIndex], x => SelectTheme((int)x, true), themeIndex);
-					else
-						codeViewPopupMenu.AddItem(new GUIContent("Color Scheme (Code)/" + sortedThemes[i]), currentThemeCode == themes[themeIndex], x => SelectTheme((int)x, false), themeIndex);
-				}
-				
-				codeViewPopupMenu.AddSeparator(string.Empty);
-				codeViewPopupMenu.AddItem(new GUIContent("Preferences..."), false, SISettings.OpenSIPreferences);
-				
-				codeViewPopupMenu.AddSeparator(string.Empty);
-				codeViewPopupMenu.AddItem(new GUIContent("About..."), false, About);
-	
-				codeViewPopupMenu.DropDown(rc);
-				GUIUtility.ExitGUI();
+				ShowWrenchMenu(rc);
 			}
 		}
 
@@ -1728,9 +1837,64 @@ public class FGTextEditor
 		}
 	}
 	
+	private float GetMaxHeightInInspector()
+	{
+#if !UNITY_2019_1_OR_NEWER
+		return this.currentInspector.position.height;
+#else
+		if (isShader)
+		{
+			return this.currentInspector.position.height - 118f;
+		}
+		
+		var height = this.currentInspector.position.height - (isTextAsset ? 118f : 195f);
+		var element = this.currentInspector.rootVisualElement[1];
+		if (element == null)
+			return height;
+		element = element.Query(null, "unity-inspector-main-container").First();
+		if (element == null)
+			return height;
+		
+		var inspectorRootScrollView = element.Query(null, "unity-inspector-root-scrollview").First() as ScrollView;
+		if (inspectorRootScrollView == null)
+			return height;
+		var rc1 = inspectorRootScrollView.worldBound;
+		
+		var inspectorEditorList = inspectorRootScrollView
+			.contentViewport//.Query("unity-content-viewport").First()
+			.Query(null, "unity-inspector-editors-list").First();
+		if (inspectorEditorList == null)
+			return height;
+		
+		var inspectorElement = inspectorEditorList.Children().Last()//[inspectorEditorList.childCount - 1]// (isTextAsset ? inspectorEditorList[1] : inspectorEditorList[1])
+			.Query(null, "unity-inspector-element").First();
+		if (inspectorElement == null)
+			return height;
+			
+		var topLeft = inspectorElement.ChangeCoordinatesTo(inspectorRootScrollView, Vector2.zero);
+#if UNITY_2019_3_OR_NEWER
+		height = rc1.height - topLeft.y - (isTextAsset ? 0f : 9f);
+#else
+		height = rc1.height - topLeft.y - (isTextAsset ? 0f : 5f);
+#endif
+		if (topLeft.y == 0f || height < 1f)
+			return this.currentInspector.position.height - 195f;
+
+		if (inspectorRootScrollView.verticalScroller.visible)
+		{
+			inspectorRootScrollView.showVertical = false;
+			//HACK: Force re-layout
+			height -= 1f;
+		}
+		return height;
+#endif
+	}
+
+	
 	public void OnInspectorGUI(bool isScriptInspector, RectOffset margins, EditorWindow currentInspector)
 	{
-		this.currentInspector = currentInspector;
+		if (currentInspector)
+			this.currentInspector = currentInspector;
 		
 		if (Event.current.type == EventType.KeyDown || Event.current.type == EventType.KeyUp)
 		{
@@ -1738,12 +1902,19 @@ public class FGTextEditor
 				return;
 		}
 		
+#if !UNITY_2019_1_OR_NEWER
 		if (!isScriptInspector)
 		{
 			OnWindowGUI(currentInspector, margins);
 			return;
 		}
+#endif
+		if (!this.currentInspector)
+		{
+			return;
+		}
 		
+#if !UNITY_2019_1_OR_NEWER
 		// Disabling the functionality of the default inspector's header help button
 		// (located just below the cancel search button) by zeroing hotControl on
 		// mouse down, which effectivly deactivates the button so it doesn't fire up
@@ -1761,29 +1932,42 @@ public class FGTextEditor
 			//	Repaint();
 			}
 		}
+#endif
+
+		var height = GetMaxHeightInInspector();
 
 		if (Event.current.type != EventType.Layout)
 		{
-			scrollViewRect = GUILayoutUtility.GetRect(1f, Screen.width, 1f, Screen.height);
+			scrollViewRect = GUILayoutUtility.GetRect(1f, this.currentInspector.position.width, 1f, height);
+			
 			scrollViewRect.xMin = 0f;
 			scrollViewRect.xMax += 4f;
+#if UNITY_2019_1_OR_NEWER
+			scrollViewRect.yMin += 14f;
+			scrollViewRect.yMax += 5f;
+#else
 			scrollViewRect.yMin -= 30f;
 			scrollViewRect.yMax += 13f;
+#endif
 		}
 		else
 		{
+#if UNITY_2019_1_OR_NEWER
+			GUILayoutUtility.GetRect(1f, this.currentInspector.position.width, 1f, height);
+#else
 			GUILayoutUtility.GetRect(1f, Screen.width, 1f, Screen.height);
+#endif
 		}
 
 		bool enabled = GUI.enabled;
-		//GUI.enabled = true;
+		GUI.enabled = CanEdit();
 
 		Color oldColor = GUI.color;
 		if (!GUI.enabled && Event.current.type == EventType.Repaint)
 		{
 			GUI.color = new Color(0.85f, 0.85f, 0.85f);
-			if (textBuffer != null)
-				textBuffer.LoadFaster();
+			//if (textBuffer != null)
+			//	textBuffer.LoadFaster();
 		}
 		
 		try
@@ -1897,6 +2081,39 @@ public class FGTextEditor
 					}
 #endif
 				}
+
+#if UNITY_EDITOR_OSX
+				if (Event.current.type == EventType.Repaint)
+				{
+					if (tokenTooltip != null)
+					{
+						Vector2 offset = new Vector2(tokenTooltip.position.x, tokenTooltip.position.y);
+						if (offset.x != 0f || offset.y != 0f)
+						{
+							offset = GUIUtility.ScreenToGUIPoint(offset);
+							tokenTooltip.OnExternalGUI(offset);
+						}
+						else
+						{
+							tokenTooltip.Repaint();
+						}
+					}
+
+					if (argumentsHint != null)
+					{
+						Vector2 offset = new Vector2(argumentsHint.position.x, argumentsHint.position.y);
+						if (offset.x != 0f || offset.y != 0f)
+						{
+							offset = GUIUtility.ScreenToGUIPoint(offset);
+							argumentsHint.OnExternalGUI(offset);
+						}
+						else
+						{
+							argumentsHint.Repaint();
+						}
+					}
+				}
+#endif
 			}
 
 			if (Event.current.type == EventType.KeyDown)
@@ -4051,7 +4268,7 @@ public class FGTextEditor
 
 			if (trackChanges)
 			{
-				rect.xMin = marginLeft - 13f - smoothScrollPosition.x;
+				rect.xMin = marginLeft - 13f + smoothScrollPosition.x;
 				//if (enableCodefolding)
 					//rect.xMin -= charSize.x;
 				rect.width = 5f;
@@ -7844,6 +8061,20 @@ public class FGTextEditor
 					if (CanGoForward())
 						GoToRecentLocation(true);
 					break;
+					
+				case KeyCode.F3:
+					if (isActionKey && !current.alt)
+					{
+						UseSelectionForSearch();
+						if (current.shift)
+							SearchPrevious();
+						else
+							SearchNext();
+						current.Use();
+						focusCodeView = true;
+						return;
+					}
+					break;
 			}
 		}
 
@@ -9674,8 +9905,10 @@ public class FGTextEditor
 			
 			if (breadCrumbLeft == null)
 			{
+#if !UNITY_2019_3_OR_NEWER
 				breadCrumbLeft = "GUIEditor.BreadcrumbLeft";
 				breadCrumbMid = "GUIEditor.BreadcrumbMid";
+#endif
 	
 				if (breadCrumbLeft == null)
 				{
@@ -10658,10 +10891,9 @@ public class FGTextEditor
 		//	return 18f;
 		
 		Rect toolbarRect = new Rect(scrollViewRect.xMin, scrollViewRect.yMin - 18f /*- 18f*/, scrollViewRect.width, 17f);
-		var wasGuiEnabled = GUI.enabled;
+		//var wasGuiEnabled = GUI.enabled;
 		GUI.enabled = true;
 		GUI.Label(toolbarRect, GUIContent.none, EditorStyles.toolbar);
-		GUI.enabled = wasGuiEnabled;
 
 		bool isOSX = Application.platform == RuntimePlatform.OSXEditor;
 
@@ -10945,7 +11177,11 @@ public class FGTextEditor
 		GUI.contentColor = oldColor;
 		
 		rc.xMin = rc.xMax + 8f;
+#if UNITY_2019_1_OR_NEWER
+		rc.xMax = toolbarRect.xMax - 28f;
+#else
 		rc.xMax = toolbarRect.xMax - 25f;
+#endif
 		if (Event.current.type == EventType.Repaint)
 		{
 			string infoText =
@@ -11005,10 +11241,25 @@ public class FGTextEditor
 			rc.xMin = rc.xMax - 331f;
 		DoSearchBox(rc);
 		
-		// Only redrawing the default wrench icon after being covered with our toolbar.
-		// The default icon still handles the functionality in the Inspector tab.
+		GUI.enabled = true;
 		if (wrenchIcon != null)
-			GUI.Label(new Rect(toolbarRect.xMax - 20f, toolbarRect.yMin + 2f, 15f, 14f), wrenchIcon, GUIStyle.none);
+		{
+#if UNITY_2019_1_OR_NEWER
+			rc = new Rect(toolbarRect.xMax - 24f, toolbarRect.yMin, 18f, 16f);
+			if (GUI.Button(rc, GUIContent.none, EditorStyles.toolbarButton))
+			{
+				ShowWrenchMenu(rc);
+			}
+			
+			rc = new Rect(toolbarRect.xMax - 22f, toolbarRect.yMin + 2f, 15f, 14f);
+			GUI.Label(rc, wrenchIcon, GUIStyle.none);
+#else
+			// Only redrawing the default wrench icon after being covered with our toolbar.
+			// The default icon still handles the functionality in the Inspector tab.
+			rc = new Rect(toolbarRect.xMax - 20f, toolbarRect.yMin + 2f, 15f, 14f);
+			GUI.Label(rc, wrenchIcon, GUIStyle.none);
+#endif
+		}
 
 		if (Event.current.type == EventType.ContextClick && toolbarRect.Contains(Event.current.mousePosition))
 			Event.current.Use();

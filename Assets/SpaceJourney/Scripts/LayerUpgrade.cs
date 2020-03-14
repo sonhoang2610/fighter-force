@@ -176,7 +176,7 @@ namespace EazyEngine.Space.UI
             var pExist1 = GameManager.Instance.Database.getComonItem(price[0].item);
             if (price[0].item.categoryItem ==  CategoryItem.IAP)
             {
-                var shop = LoadAssets.loadAsset<IAPSetting>("IAPSetting", "Variants/Database/");
+                var shop = LoadAssets.loadAssetScripTableObject<IAPSetting>("IAPSetting", "Variants/Database/",true);
                 IAPItem pIAPItem = shop.getInfo(price[0].item.ItemID);
                 GameManager.Instance.showInapp(pIAPItem.Id.ToLower(), delegate (bool pSuccess, IAPProduct product)
                 {

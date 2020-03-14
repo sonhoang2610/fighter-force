@@ -33,7 +33,11 @@ namespace EazyEngine.Space.UI
         {
         
         }
-
+        IEnumerator delayAction(float pSec, System.Action action)
+        {
+            yield return new WaitForSeconds(pSec);
+            action?.Invoke();
+        }
         // Update is called once per frame
         void Update()
         {
@@ -44,9 +48,13 @@ namespace EazyEngine.Space.UI
             int pFirstBox = PlayerPrefs.GetInt("FirstBoxReward", 0);
             if (pFirstBox == 2)
             {
-                EzEventManager.TriggerEvent(new GuideEvent("FirstRewardBox2", delegate
+                StartCoroutine( delayAction(0.1f, delegate
                 {
-                }, false));
+                    EzEventManager.TriggerEvent(new GuideEvent("FirstRewardBox2", delegate
+                    {
+                    }, false));
+                }));
+             
             }
 
 

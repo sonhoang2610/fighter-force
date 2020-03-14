@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using EazyEngine.Tools;
+using NodeCanvas.Framework;
 
 namespace EazyEngine.Space {
     public class TriggerSender : MonoBehaviour
@@ -14,6 +15,10 @@ namespace EazyEngine.Space {
         public void sendTriggerTargetSetBefore(string pTrigger)
         {
             EzEventManager.TriggerEvent(new MessageGamePlayEvent(pTrigger, _target));
+        }
+        public void SendGraphMess(string pTrigger)
+        {
+            _target.GetComponent<GraphOwner>().SendEvent(pTrigger);
         }
         public void setObjectTarget(GameObject pObject)
         {

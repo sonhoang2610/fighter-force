@@ -1,6 +1,6 @@
 ﻿/* SCRIPT INSPECTOR 3
- * version 3.0.25, March 2019
- * Copyright © 2012-2019, Flipbook Games
+ * version 3.0.26, February 2020
+ * Copyright © 2012-2020, Flipbook Games
  * 
  * Unity's legendary editor for C#, UnityScript, Boo, Shaders, and text,
  * now transformed into an advanced C# IDE!!!

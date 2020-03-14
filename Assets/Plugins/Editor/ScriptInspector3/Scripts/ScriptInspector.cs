@@ -1,6 +1,6 @@
 ﻿/* SCRIPT INSPECTOR 3
- * version 3.0.25, March 2019
- * Copyright © 2012-2019, Flipbook Games
+ * version 3.0.26, February 2020
+ * Copyright © 2012-2020, Flipbook Games
  * 
  * Unity's legendary editor for C#, UnityScript, Boo, Shaders, and text,
  * now transformed into an advanced C# IDE!!!
@@ -31,7 +31,7 @@ public class ScriptInspector : Editor
 
 	public static string GetVersionString()
 	{
-		return "3.0.25, March 2019";
+		return "3.0.26, February 2020";
 	}
 	
 	public void OnDisable()
@@ -72,14 +72,21 @@ public class ScriptInspector : Editor
 
 	protected virtual void DoGUI()
 	{
+		if (textEditor == null)
+			return;
 		var currentInspector = GetCurrentInspector();
 		textEditor.OnInspectorGUI(true, new RectOffset(0, -6, -4, 0), currentInspector);
 	}
 	
 	private static System.Type spotlightWindowType;
+	private static System.Type inspectorWindowType;
 	private static FieldInfo currentInspectorWindowField;
 	private static PropertyInfo currentSpotlightWindowProperty;
-	
+	private static System.Type guiViewType;
+	private static System.Reflection.PropertyInfo guiViewCurrentProperty;
+	private static System.Type hostViewType;
+	private static System.Reflection.PropertyInfo hostViewActualViewProperty;
+
 	public static bool IsFocused()
 	{
 		var windowType = EditorWindow.focusedWindow.GetType();
@@ -108,11 +115,24 @@ public class ScriptInspector : Editor
 			}
 		}
 		
-		var inspectorWindowType = typeof(EditorWindow).Assembly.GetType("UnityEditor.InspectorWindow");
+		inspectorWindowType = typeof(EditorWindow).Assembly.GetType("UnityEditor.InspectorWindow");
 		if (inspectorWindowType != null)
 		{
 			currentInspectorWindowField = inspectorWindowType.GetField("s_CurrentInspectorWindow",
 				BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
+		}
+
+		guiViewType = typeof(EditorWindow).Assembly.GetType("UnityEditor.GUIView");
+		if (guiViewType != null)
+		{
+			guiViewCurrentProperty = guiViewType.GetProperty("current");
+		}
+
+		hostViewType = typeof(EditorWindow).Assembly.GetType("UnityEditor.HostView");
+		if (hostViewType != null)
+		{
+			hostViewActualViewProperty = hostViewType.GetProperty("actualView",
+				BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 		}
 	}
 	
@@ -126,7 +146,19 @@ public class ScriptInspector : Editor
 		}
 		
 		if (currentInspectorWindowField != null)
+		{
 			return currentInspectorWindowField.GetValue(null) as EditorWindow;
+		}
+		
+		if (guiViewCurrentProperty != null)
+		{
+			object currentView = guiViewCurrentProperty.GetValue(null, null);
+			if (currentView != null && currentView.GetType().IsSubclassOf(hostViewType) && hostViewActualViewProperty != null)
+			{
+				var actualView = hostViewActualViewProperty.GetValue(currentView, null) as EditorWindow;
+				return actualView;
+			}
+		}
 		
 		return null;
 	}

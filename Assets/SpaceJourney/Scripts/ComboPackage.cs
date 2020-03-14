@@ -17,6 +17,10 @@ namespace EazyEngine.Space
         public LayerAssignBtnIcon[] layers;
         public GameObject btnIcon;
         public GameObject banner;
-        public double startTime,timeExp;
+        public GameObject conditionAnchorObject;
+        public bool isInApp;
+        public int scoreOrder;
+        public double timeExp;
+        public float price;
     }
 }

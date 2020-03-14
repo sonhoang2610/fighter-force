@@ -1,6 +1,6 @@
 ﻿/* SCRIPT INSPECTOR 3
- * version 3.0.25, March 2019
- * Copyright © 2012-2019, Flipbook Games
+ * version 3.0.26, February 2020
+ * Copyright © 2012-2020, Flipbook Games
  * 
  * Unity's legendary editor for C#, UnityScript, Boo, Shaders, and text,
  * now transformed into an advanced C# IDE!!!
@@ -39,6 +39,7 @@ public class FGPopupWindow : EditorWindow
 	private static System.Reflection.PropertyInfo windowProperty;
 	private static System.Reflection.MethodInfo moveInFrontOfMethod;
 	private static System.Reflection.MethodInfo showTooltip;
+	private static System.Reflection.MethodInfo showPopupWithMode;
 	
 	static FGPopupWindow()
 	{
@@ -48,6 +49,7 @@ public class FGPopupWindow : EditorWindow
 			System.Reflection.BindingFlags.Instance;
 
 		showTooltip = typeof(EditorWindow).GetMethod("ShowTooltip", instanceFlags);
+		showPopupWithMode = typeof(EditorWindow).GetMethod("ShowPopupWithMode", instanceFlags);
 
 		containerWindowType = typeof(EditorWindow).Assembly.GetType("UnityEditor.ContainerWindow");
 		if (containerWindowType != null)
@@ -67,10 +69,25 @@ public class FGPopupWindow : EditorWindow
 	
 	protected void ShowTooltip()
 	{
-		if (showTooltip != null)
+//#if UNITY_2018_3_OR_NEWER && !UNITY_2019_1_OR_NEWER
+//		var codeWindow = owner as FGCodeWindow;
+//		if (codeWindow)
+//			codeWindow.ignoreNextLostFocusEvent = true;
+//#endif
+
+		if (showPopupWithMode != null)
+			showPopupWithMode.Invoke(this, new object[]{1, false});
+		else if (showTooltip != null)
 			showTooltip.Invoke(this, null);
 		else
 			ShowPopup();
+
+//#if UNITY_2018_3_OR_NEWER && !UNITY_2019_1_OR_NEWER
+//		if (owner)
+//			owner.Focus();
+//		if (codeWindow)
+//			codeWindow.ignoreNextLostFocusEvent = true;
+//#endif
 	}
 	
 	protected void MoveInFrontOf(EditorWindow window)
@@ -90,7 +107,13 @@ public class FGPopupWindow : EditorWindow
 	{
 		if (allowNextPopups == 0)
 		{
-			EditorApplication.delayCall += () => { Close(); DestroyImmediate(this); };
+			EditorApplication.delayCall += () => {
+				if (!this)
+					return;
+				
+				Close();
+				//DestroyImmediate(this);
+			};
 		}
 		else
 		{

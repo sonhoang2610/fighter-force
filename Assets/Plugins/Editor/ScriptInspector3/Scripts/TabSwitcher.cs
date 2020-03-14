@@ -1,6 +1,6 @@
 ﻿/* SCRIPT INSPECTOR 3
- * version 3.0.25, March 2019
- * Copyright © 2012-2019, Flipbook Games
+ * version 3.0.26, February 2020
+ * Copyright © 2012-2020, Flipbook Games
  * 
  * Unity's legendary editor for C#, UnityScript, Boo, Shaders, and text,
  * now transformed into an advanced C# IDE!!!
@@ -32,6 +32,7 @@ public class TabSwitcher : FGPopupWindow
 	private static GUIStyle itemStyle;
 	private static GUIStyle captionStyle;
 	private new static EditorWindow owner;
+	public static EditorWindow trueFocusedWindow;
 	private static float lastWidth = 200f;
 	
 	private float itemsWidth = 0f;
@@ -40,6 +41,12 @@ public class TabSwitcher : FGPopupWindow
 	
 	public static TabSwitcher Create(bool selectNext)
 	{
+		if (trueFocusedWindow)
+		{
+			trueFocusedWindow.Focus();
+			trueFocusedWindow = null;
+		}
+
 		guids = FGCodeWindow.GetGuidHistory();
 		if (guids.Count == 0)
 			return null;

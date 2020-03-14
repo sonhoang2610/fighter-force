@@ -1,6 +1,6 @@
 ﻿/* SCRIPT INSPECTOR 3
- * version 3.0.25, March 2019
- * Copyright © 2012-2019, Flipbook Games
+ * version 3.0.26, February 2020
+ * Copyright © 2012-2020, Flipbook Games
  * 
  * Unity's legendary editor for C#, UnityScript, Boo, Shaders, and text,
  * now transformed into an advanced C# IDE!!!
@@ -522,18 +522,39 @@ public class FGCodeWindow : EditorWindow
 			openInExternalIDE = false;
 			return false;
 		}
-		
+
+		var asset = EditorUtility.InstanceIDToObject(instanceID);
+		if (asset is MonoScript)
+		{
+			var assetPath = AssetDatabase.GetAssetPath(instanceID);
+			if (assetPath.EndsWith(".dll", System.StringComparison.OrdinalIgnoreCase) ||
+				assetPath.EndsWith(".exe", System.StringComparison.OrdinalIgnoreCase))
+			{
+				return false;
+			}
+		}
+
 		if (allowInvert && EditorGUI.actionKey ? SISettings.dontOpenAssets : SISettings.handleOpenAssets)
 		{
-			var asset = EditorUtility.InstanceIDToObject(instanceID);
 			if (asset is MonoScript || asset is TextAsset || asset is Shader)
 			{
 				var assetPath = AssetDatabase.GetAssetPath(instanceID);
-				if (assetPath.EndsWith(".dll", System.StringComparison.OrdinalIgnoreCase) ||
-					assetPath.EndsWith(".exe", System.StringComparison.OrdinalIgnoreCase))
-				{
-					return false;
-				}
+				var guid = AssetDatabase.AssetPathToGUID(assetPath);
+				addRecentLocationForNextAsset = true;
+				OpenAssetInTab(guid, line);
+				return true;
+			}
+		}
+		if (!SISettings.dontOpenAssets && !SISettings.handleOpenAssets)
+		{
+			bool isScript = asset is MonoScript;
+			bool isText = !isScript && asset is TextAsset;
+			if ((isScript && SISettings.handleOpeningScripts ||
+				isText && SISettings.handleOpeningText ||
+				asset is Shader && SISettings.handleOpeningShaders) !=
+				(allowInvert && EditorGUI.actionKey))
+			{
+				var assetPath = AssetDatabase.GetAssetPath(instanceID);
 				var guid = AssetDatabase.AssetPathToGUID(assetPath);
 				addRecentLocationForNextAsset = true;
 				OpenAssetInTab(guid, line);
@@ -700,14 +721,24 @@ public class FGCodeWindow : EditorWindow
 		if (!window.TryDockNextToSimilarTab(nextTo))
 		{
 			var rc = defaultPosition;
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2019_1_OR_NEWER
+#if !UNITY_2019_2_OR_NEWER
+			rc.y += 20f;
+#endif
+			rc.height += 1f;
+			rc.width -= 1f;
+#elif UNITY_2018_3_OR_NEWER
 			rc.y += 25f;
 			rc.height -= 3f;
 #else
 			rc.y -= 5f;
 #endif
+			window.Show(true);
+			rc.yMin += 1f;
 			window.position = rc;
-			window.Show();
+			rc.yMin -= 1f;
+			window.Focus();
+			window.Repaint();
 			window.position = rc;
 		}
 
@@ -1325,7 +1356,27 @@ public class FGCodeWindow : EditorWindow
 							continue;
 						}
 						
-						if (assetPath.StartsWith("Assets/", System.StringComparison.OrdinalIgnoreCase))
+						if (obj is GameObject)
+						{
+							GameObject gameObject = obj as GameObject;
+							MonoBehaviour[] monoBehaviours = gameObject.GetComponents<MonoBehaviour>();
+							foreach (MonoBehaviour mb in monoBehaviours)
+							{
+								MonoScript monoScript = MonoScript.FromMonoBehaviour(mb);
+								if (monoScript != null)
+								{
+									assetPath = AssetDatabase.GetAssetPath(monoScript);
+									if (!string.IsNullOrEmpty(assetPath) &&
+										assetPath.StartsWith("Assets/", System.StringComparison.OrdinalIgnoreCase) &&
+										!assetPath.EndsWith(".dll", System.StringComparison.OrdinalIgnoreCase))
+									{
+										accepted.Add(monoScript);
+										ask = true;
+									}
+								}
+							}
+						}
+						else if (assetPath.StartsWith("Assets/", System.StringComparison.OrdinalIgnoreCase))
 						{
 							if (obj is MonoScript)
 								accepted.Add(obj);
@@ -1342,26 +1393,6 @@ public class FGCodeWindow : EditorWindow
 										assetPath = AssetDatabase.GetAssetPath(shaderID);
 										if (!string.IsNullOrEmpty(assetPath) && assetPath.StartsWith("Assets/", System.StringComparison.OrdinalIgnoreCase))
 											accepted.Add(material.shader);
-									}
-								}
-							}
-						}
-						else if (obj is GameObject)
-						{
-							GameObject gameObject = obj as GameObject;
-							MonoBehaviour[] monoBehaviours = gameObject.GetComponents<MonoBehaviour>();
-							foreach (MonoBehaviour mb in monoBehaviours)
-							{
-								MonoScript monoScript = MonoScript.FromMonoBehaviour(mb);
-								if (monoScript != null)
-								{
-									assetPath = AssetDatabase.GetAssetPath(monoScript);
-									if (!string.IsNullOrEmpty(assetPath) &&
-										assetPath.StartsWith("Assets/", System.StringComparison.OrdinalIgnoreCase) &&
-										!assetPath.EndsWith(".dll", System.StringComparison.OrdinalIgnoreCase))
-									{
-										accepted.Add(monoScript);
-										ask = true;
 									}
 								}
 							}
@@ -1929,7 +1960,13 @@ public class FGCodeWindow : EditorWindow
 
 		if (System.IO.File.Exists(path))
 		{
-#if !UNITY_2017_1_OR_NEWER
+#if UNITY_2019_1_OR_NEWER
+#if !UNITY_2019_2_OR_NEWER
+			rc.y += 20f;
+#endif
+			rc.height += 1f;
+			rc.width -= 1f;
+#elif !UNITY_2017_1_OR_NEWER
 			rc.y -= 5f;
 #elif UNITY_2018_3_OR_NEWER
 			rc.y += 25f;

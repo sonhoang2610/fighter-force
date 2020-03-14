@@ -1,6 +1,6 @@
 ﻿/* SCRIPT INSPECTOR 3
- * version 3.0.25, March 2019
- * Copyright © 2012-2019, Flipbook Games
+ * version 3.0.26, February 2020
+ * Copyright © 2012-2020, Flipbook Games
  * 
  * Unity's legendary editor for C#, UnityScript, Boo, Shaders, and text,
  * now transformed into an advanced C# IDE!!!
@@ -221,10 +221,6 @@ public class FGTooltip : FGPopupWindow
 		window.overloads = overloads;
 		window.currentOverload = currentOverload;
 
-		//window.style = new GUIStyle(editor.styles.style);
-		//window.style.wordWrap = true;
-	//	window.style.fixedWidth = 300f;
-	//	window.style.stretchHeight = true;
 		window.style = editor.styles.tooltipTextStyle;
 		window.style.normal.textColor = SISettings.useStandardColorInPopups ? editor.CurrentTheme.text : editor.CurrentTheme.tooltipText;
 		window.style.font = EditorStyles.standardFont;
@@ -233,21 +229,9 @@ public class FGTooltip : FGPopupWindow
 		window.boldStyle = new GUIStyle(window.style);
 		window.boldStyle.font = EditorStyles.boldFont;
 		
-		//window.backgroundStyle = new GUIStyle(editor.styles.style);
-		//if (window.backgroundStyle.normal.background)
-
 		window.position = position;
 		
-#if UNITY_2018_3_OR_NEWER
-		var codeWindow = window.owner as FGCodeWindow;
-		if (codeWindow)
-			codeWindow.ignoreNextLostFocusEvent = true;
-#endif
 		window.ShowTooltip();
-#if UNITY_2018_3_OR_NEWER
-		if (window.owner)
-			window.owner.Focus();
-#endif
 
 		return window;
 	}
@@ -292,15 +276,23 @@ public class FGTooltip : FGPopupWindow
 			textEditor.argumentsHint = null;
 			textEditor.CloseArgumentsHint();
 		}
-#if UNITY_2018_3_OR_NEWER
-		Close();
-#else
+		if (!this)
+			return;
+		
+//#if UNITY_2018_3_OR_NEWER
+//		Close();
+//#else
 		EditorApplication.delayCall += Close;
-#endif
-		DestroyImmediate(this);
+//#endif
+		//DestroyImmediate(this);
 	}
 
 	public void OnGUI()
+	{
+		OnExternalGUI(Vector2.zero);
+	}
+	
+	public void OnExternalGUI(Vector2 offset)
 	{
 		if (isTokenTooltip && Event.current.type == EventType.MouseMove ||
 			Event.current.type == EventType.ScrollWheel ||
@@ -352,18 +344,21 @@ public class FGTooltip : FGPopupWindow
 			if (SISettings.useStandardColorInPopups)
 			{
 				//GUI.Label(new Rect(0f, 0f, position.width, position.height), GUIContent.none, textEditor.styles.lineNumbersSeparator);
-				GUI.Label(new Rect(1f, 1f, position.width - 2, position.height - 2), GUIContent.none, textEditor.styles.scrollViewStyle);
+				var rc1 = new Rect(offset.x + 1f, offset.y + 1f, position.width - 2f, position.height - 2f);
+				GUI.Label(rc1, GUIContent.none, textEditor.styles.scrollViewStyle);
 			}
 			else
 			{
-				GUI.Label(new Rect(0f, 0f, position.width, position.height), GUIContent.none, textEditor.styles.tooltipFrameStyle);
-				GUI.Label(new Rect(1f, 1f, position.width - 2, position.height - 2), GUIContent.none, textEditor.styles.tooltipBgStyle);
+				var rc1 = new Rect(offset.x, offset.y, position.width, position.height);
+				GUI.Label(rc1, GUIContent.none, textEditor.styles.tooltipFrameStyle);
+				rc1 = new Rect(offset.x + 1f, offset.y + 1f, position.width - 2f, position.height - 2f);
+				GUI.Label(rc1, GUIContent.none, textEditor.styles.tooltipBgStyle);
 			}
 			
 			if (!isTokenTooltip && textLines == null)
 				textLines = text.Split(new [] {'\n'});
 			
-			var rc = new Rect(4f, 4f, position.width - 4f, position.height - 4);
+			var rc = new Rect(4f + offset.x, 4f + offset.y, position.width - 4f, position.height - 4f);
 			if (isTokenTooltip || currentParameterIndex < 0 ||
 				overloads == null || currentOverload < 0 || currentOverload >= overloads.Length ||
 				overloads[currentOverload].GetParameters().Count <= currentParameterIndex)

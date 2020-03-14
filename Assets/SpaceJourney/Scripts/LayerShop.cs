@@ -66,6 +66,11 @@ namespace EazyEngine.Space.UI
             }
             else if (pItemStorage.item.ItemID == "IAP")
             {
+                if(pItemInfo.itemSell.GetType() == typeof(ComboPackage))
+                {
+                    ExtraPackageDatabase.Instance.executePackage((ComboPackage)pItemInfo.itemSell);
+                    return;
+                }
                 GameManager.Instance.showInapp(pItemInfo.itemSell.ItemID.ToLower(), delegate (bool pSuccess, IAPProduct product)
                 {
                     if (product.Id == pItemInfo.itemSell.ItemID.ToLower())

@@ -1799,7 +1799,7 @@ public static class TimeExtension
     {
         // Unix timestamp is seconds past epoch
         System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
-        dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
+        dtDateTime = dtDateTime.AddSeconds(unixTimeStamp);
         return dtDateTime;
     }
     public static DateTime GetNetTime(ref bool success)
@@ -1827,6 +1827,10 @@ public static class TimeExtension
         {
             return System.DateTime.Now;
         }
+    }
+    public static double ToUnixTime(this DateTime input)
+    {
+        return (double)input.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
     }
 }
 public static class ColorExtension

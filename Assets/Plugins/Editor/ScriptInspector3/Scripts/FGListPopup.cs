@@ -1,6 +1,6 @@
 ﻿/* SCRIPT INSPECTOR 3
- * version 3.0.25, March 2019
- * Copyright © 2012-2019, Flipbook Games
+ * version 3.0.26, February 2020
+ * Copyright © 2012-2020, Flipbook Games
  * 
  * Unity's legendary editor for C#, UnityScript, Boo, Shaders, and text,
  * now transformed into an advanced C# IDE!!!
@@ -381,15 +381,19 @@ public class FGListPopup : FGPopupWindow
 		
 		var textColor = FGTextEditor.StylesCode.normalStyle.normal.textColor;
 		
+		var hollowTexture = new Texture2D(1, 1);
+		hollowTexture.SetPixel(0, 0, Color.clear);
+		hollowTexture.Apply();
+		
 		listItemStyle = new GUIStyle
 		{
-			fixedHeight = 0,//listItemHeight,
+			fixedHeight = 0,
 			padding = { left = 2, top = 2, bottom = 4, right = 2 },
 			border = new RectOffset(2, 2, 2, 2),
 			margin = new RectOffset(3, 3, 0, 0),
 			overflow = { left = -20 },
 
-			normal = { textColor = textColor },
+			normal = { background = hollowTexture, textColor = textColor },
 			onFocused = { background = selectedListItem },
 			onNormal = { background = inactiveListItem, textColor = textColor },
 		};
@@ -465,16 +469,7 @@ public class FGListPopup : FGPopupWindow
 		window.position = position;
 		window.TypedInPart = typedInPart;
 
-#if UNITY_2018_3_OR_NEWER
-		var codeWindow = window.owner as FGCodeWindow;
-		if (codeWindow)
-			codeWindow.ignoreNextLostFocusEvent = true;
-#endif
 		window.ShowTooltip();
-#if UNITY_2018_3_OR_NEWER
-		if (window.owner)
-			window.owner.Focus();
-#endif
 
 		return window;
 	}
@@ -644,15 +639,24 @@ public class FGListPopup : FGPopupWindow
 			if (Event.current.isMouse)
 			{
 				if (scrollStepSizeField == null)
+				{
 					scrollStepSizeField = typeof(GUI).GetField("scrollStepSize", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public);
+				}
 				if (scrollStepSizeField != null)
 				{
 					oldValue = scrollStepSizeField.GetValue(null);
 					scrollStepSizeField.SetValue(null, boxedFloat1);
 				}
 			}
-
-			scrollPosition = (int)GUI.VerticalScrollbar(rcScrollBar, scrollPosition, maxListItems, 0, filteredData.Count);
+			
+			if (scrollStepSizeField == null)
+			{
+				scrollPosition = (int)(0.1f * GUI.VerticalScrollbar(rcScrollBar, scrollPosition * 10f, maxListItems * 10f, 0, filteredData.Count * 10f));
+			}
+			else
+			{
+				scrollPosition = (int)GUI.VerticalScrollbar(rcScrollBar, scrollPosition, maxListItems, 0, filteredData.Count);
+			}
 			scrollPosition = Mathf.Clamp(scrollPosition, 0, Mathf.Max(0, filteredData.Count - maxListItems));
 
 			if (Event.current.isMouse && scrollStepSizeField != null)
@@ -771,12 +775,24 @@ public class FGListPopup : FGPopupWindow
 
 #if UNITY_2018_3_OR_NEWER
 		if (focusedWindow == this && owner != null)
-			owner.Focus();
+		{
+			textEditor.FocusCodeView();
+			//owner.Focus();
+			//EditorApplication.delayCall += () => MoveInFrontOf(owner);
+		}
 #endif
 
 		if (Event.current.type == EventType.ExecuteCommand || Event.current.type == EventType.ValidateCommand || Event.current.isKey)
 			owner.SendEvent(Event.current);
 	}
+
+#if UNITY_2019_1_OR_NEWER
+	// Called when the window loses keyboard focus.
+	protected void OnLostFocus()
+	{
+		textEditor.CloseAutocomplete();
+	}
+#endif
 
 	public SymbolDefinition OnOwnerGUI()
 	{
@@ -817,7 +833,7 @@ public class FGListPopup : FGPopupWindow
 				if (currentItem < 0)
 					currentItem = ~currentItem;
 				var completion = NameOf(filteredData[currentItem]);
-				_recentCompletions.Clear();
+				recentCompletions.Clear();
 				_recentCompletions.AddRange(savedRecentCompletions);
 				AddRecentCompletion(_recentCompletions, completion);
 				AddRecentCompletion(savedRecentCompletions, completion);

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using EazyEngine.Space;
+using EazyEngine.Tools;
 
 #if EM_UIAP
 using UnityEngine.Purchasing;
@@ -184,7 +185,8 @@ namespace EasyMobile
             sBuilder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
             int pIndex = 0;
             var products = EM_Settings.InAppPurchasing.Products;
-            foreach (var pProduct in GameDatabase.Instance.IAPSetting.items)
+            var iapsetting = LoadAssets.loadAssetScripTableObject<IAPSetting>("IAPSetting", "Variants/Database/", true);
+            foreach (var pProduct in iapsetting.items)
             {
                 pIndex++;
                 System.Array.Resize(ref products, pIndex);

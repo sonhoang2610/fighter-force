@@ -92,6 +92,20 @@ namespace EazyEngine.Space
 
        // public static string 
     }
+    public enum StatusPackage
+    {
+        START,
+        WAIT_CLAIM,
+        CLAIMED,
+        TIMEOUT
+    }
+    [System.Serializable]
+    public struct PackageInfo
+    {
+        public StatusPackage status;
+        public double timeStart,timeEnd;
+        public int version;
+    }
     [System.Serializable]
     public class CollectionInfo
     {
@@ -323,6 +337,30 @@ namespace EazyEngine.Space
         [HideInInspector]
         public CollectionDailyInfo collectionDailyInfo;
         public MissionContainerInfo missionContainerInfo;
+
+        public System.DateTime FirstOnline
+        {
+            get
+            {
+                return firstOnline.Year < 2000 ? firstOnline = System.DateTime.Now : firstOnline;
+            }
+        }
+
+        public System.DateTime LastInGameTime
+        {
+            get
+            {
+                return lastInGameTime.Year < 2000 ? lastInGameTime = System.DateTime.Now : lastInGameTime;
+            }
+        }
+
+        public Dictionary<string, PackageInfo> packageInfo = new Dictionary<string, PackageInfo>();
+        
+	    public Dictionary<string, PackageInfo> PackageInfo{
+	    	get{
+	    		return packageInfo != null ? packageInfo : packageInfo = new Dictionary<string, PackageInfo>();
+	    	}
+	    }
         public CollectionInfo getCollectionInfo(bool isDaily)
         {
             if (isDaily)
@@ -490,6 +528,16 @@ namespace EazyEngine.Space
             return null;
         }
 
+        public bool comparePlane(string pID,int pLevel)
+        {
+            var pInfo = getPlane(pID);
+            if(pInfo != null)
+            {
+                return pInfo.CurrentLevel > pLevel;
+            }
+            return false;
+        }
+
         public BaseItemGameInstanced getComonItem(string pID)
         {
             for(int i = items.Count-1; i >= 0; --i)
@@ -506,6 +554,11 @@ namespace EazyEngine.Space
             var pItem = new BaseItemGameInstanced() { item= GameDatabase.Instance.getItem(pID) ,quantity = 0};
             addItem(pItem, false);
             return pItem;
+        }
+
+        public void removeItem(string pID)
+        {
+            items.RemoveAll(x => x.item.itemID == pID);
         }
 
         public BaseItemGameInstanced getComonItem(BaseItemGame pItem)

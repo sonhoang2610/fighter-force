@@ -1,6 +1,6 @@
 ﻿/* SCRIPT INSPECTOR 3
- * version 3.0.25, March 2019
- * Copyright © 2012-2019, Flipbook Games
+ * version 3.0.26, February 2020
+ * Copyright © 2012-2020, Flipbook Games
  * 
  * Unity's legendary editor for C#, UnityScript, Boo, Shaders, and text,
  * now transformed into an advanced C# IDE!!!
@@ -19,6 +19,7 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections;
 using System.Reflection;
+using System.Collections.Generic;
 	
 public class OptionsBase
 {
@@ -131,6 +132,59 @@ public class StringOption : OptionsBase
 
 public static class SISettings
 {
+#if UNITY_2018_3_OR_NEWER
+	[SettingsProvider]
+	public static SettingsProvider CreateSISettingsGeneral()
+	{
+		var provider = new SettingsProvider("Preferences/Script Inspector/General", SettingsScope.User)
+		{
+			label = "General",
+			guiHandler = (searchContext) =>
+			{
+				GeneralSettings();
+			},
+
+			// Populate the search keywords to enable smart search filtering and label highlighting:
+			//keywords = new HashSet<string>(new[] { "Number", "Some String" })
+        };
+		return provider;
+	}
+	
+	[SettingsProvider]
+	public static SettingsProvider CreateSISettingsView()
+	{
+		var provider = new SettingsProvider("Preferences/Script Inspector/View", SettingsScope.User)
+		{
+			label = "View",
+			guiHandler = (searchContext) =>
+			{
+				ViewSettings();
+			},
+
+			// Populate the search keywords to enable smart search filtering and label highlighting:
+			//keywords = new HashSet<string>(new[] { "Number", "Some String" })
+        };
+		return provider;
+	}
+	
+	[SettingsProvider]
+	public static SettingsProvider CreateSISettingsEditor()
+	{
+		var provider = new SettingsProvider("Preferences/Script Inspector/Editor", SettingsScope.User)
+		{
+			label = "Editor",
+			guiHandler = (searchContext) =>
+			{
+				EditorSettings();
+			},
+
+			// Populate the search keywords to enable smart search filtering and label highlighting:
+			//keywords = new HashSet<string>(new[] { "Number", "Some String" })
+        };
+		return provider;
+	}
+#endif //UNITY_2018_3_OR_NEWER
+
 	public static IntOption expandTabTitles = Create("ExpandTabTitles", 0);
 	public static BoolOption navToolbarSortByName = Create("NavToolbarSortByName", true);
 	public static BoolOption navToolbarGroupByRegion = Create("NavToolbarGroupByRegion", true);
@@ -371,6 +425,7 @@ public static class SISettings
 		FGTextEditor.RepaintAllInstances();
 	}
 	
+#if !UNITY_2018_3_OR_NEWER
 	static readonly GUIContent[] modeToggles =
 	{
 		new GUIContent("General"),
@@ -384,12 +439,14 @@ public static class SISettings
 	{
 		selectedMode = EditorPrefs.GetInt("FlipbookGames.ScriptInspector.SettingsMode", 0);
 	}
+#endif
 	
 	static class Styles
 	{
 		public static GUIStyle largeButton = "LargeButton";
 	}
 	
+#if !UNITY_2018_3_OR_NEWER
 	[PreferenceItem("Script Inspector")]
 	static void SettingsGUI()
 	{
@@ -419,6 +476,7 @@ public static class SISettings
 			break;
 		}
 	}
+#endif
 	
 	static void GeneralSettings()
 	{
@@ -478,10 +536,11 @@ public static class SISettings
 		
 		GUILayout.BeginHorizontal(noLayoutOptions);
 		GUILayout.Label("Word Wrap", EditorStyles.boldLabel, noLayoutOptions);
-		GUILayout.FlexibleSpace();
+		GUILayout.Space(90f);
 		GUILayout.Label("Si3 Tabs", EditorStyles.boldLabel, dontExpandWidth);
-		GUILayout.Space(16);
+		GUILayout.Space(8f);
 		GUILayout.Label("Inspector Tab", EditorStyles.boldLabel, dontExpandWidth);
+		GUILayout.FlexibleSpace();
 		GUILayout.EndHorizontal();
 		Draw2("Scripts & Shaders", wordWrapCode, wordWrapCodeInspector);
 		Draw2("Text Assets", wordWrapText, wordWrapTextInspector);
@@ -574,9 +633,7 @@ Compile and reload assemblies with " + ctrlR + " or with a 'double-save'.",
 		GUILayout.Label("Editor Keyboard", EditorStyles.boldLabel, noLayoutOptions);
 		Draw("Show Auto-Complete on 'Esc' key", openAutoCompleteOnEscape);
 		Draw("Auto-Complete aggressively", autoCompleteAggressively);
-#if !UNITY_2018_3_OR_NEWER
 		Draw("Handle Shift+Ctrl+F globally", captureShiftCtrlF);
-#endif
 		Draw("Copy/Cut full line if no selection", copyCutFullLine);
 		Draw("Smart semicolon placement", smartSemicolonPlacement);
 		
@@ -642,7 +699,9 @@ Compile and reload assemblies with " + ctrlR + " or with a 'double-save'.",
 	{
 		GUILayout.BeginHorizontal(noLayoutOptions);
 		Draw(label, option1);
+		GUILayout.Space(32f);
 		Draw(null, option2);
+		GUILayout.FlexibleSpace();
 		GUILayout.EndHorizontal();
 	}
 	

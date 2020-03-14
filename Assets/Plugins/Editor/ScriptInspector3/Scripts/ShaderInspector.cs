@@ -1,6 +1,6 @@
 ﻿/* SCRIPT INSPECTOR 3
- * version 3.0.25, March 2019
- * Copyright © 2012-2019, Flipbook Games
+ * version 3.0.26, February 2020
+ * Copyright © 2012-2020, Flipbook Games
  * 
  * Unity's legendary editor for C#, UnityScript, Boo, Shaders, and text,
  * now transformed into an advanced C# IDE!!!
@@ -105,7 +105,7 @@ public class ShaderInspector : ScriptInspector
 		EditorGUIUtility.fieldWidth = 0f;
 		EditorGUIUtility.labelWidth = EditorGUIUtility.currentViewWidth;
 #endif
-		foldout = EditorGUI.Foldout(position, foldout, GUIContent.none, true, inspectorTitlebar);
+		foldout = EditorGUI.Foldout(position, foldout, GUIContent.none, true, EditorStyles.foldout);
 		
 		position = inspectorTitlebar.padding.Remove(position);
 		if (Event.current.type == EventType.Repaint)

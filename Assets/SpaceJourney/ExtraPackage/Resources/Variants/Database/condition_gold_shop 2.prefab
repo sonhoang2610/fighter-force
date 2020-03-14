@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6999560058854267605
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6999560058854267606}
+  - component: {fileID: 6999560058854267607}
+  - component: {fileID: 6999560058854267604}
+  m_Layer: 0
+  m_Name: condition_gold_shop 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6999560058854267606
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6999560058854267605}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -27.186117, y: -0.39479616, z: -15.3828125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6999560058854267607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6999560058854267605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b5c3ebb24c97464da319951cafe5a47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boundGraphSerialization: '{"version":2.96,"type":"FlowCanvas.FlowScript","translation":{"x":295.0,"y":123.0},"nodes":[{"_position":{"x":410.0,"y":339.0},"$type":"FlowCanvas.Nodes.EnableEvent","$id":"2"},{"_inputPortValues":{},"_position":{"x":1070.0,"y":225.0},"$type":"FlowCanvas.Nodes.SwitchBool","$id":"3"},{"_method":{"_baseInfo":"System.Action`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]|Invoke|System.Void","_paramsInfo":"System.Boolean"},"_callable":true,"_inputPortValues":{},"_position":{"x":1451.0,"y":308.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"5"},{"_inputPortValues":{},"_color":{"r":0.7490196,"g":0.4980392,"b":1.0,"a":1.0},"_position":{"x":1962.0,"y":93.0},"$type":"FlowCanvas.Nodes.SwitchBool","$id":"8"},{"_method":{"_baseInfo":"System.Action`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]|Invoke|System.Void","_paramsInfo":"System.Boolean"},"_callable":true,"_inputPortValues":{"obj":{"$content":true,"$type":"System.Boolean"}},"_position":{"x":2220.0,"y":134.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"10"},{"_method":{"_baseInfo":"System.Action`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]|Invoke|System.Void","_paramsInfo":"System.Boolean"},"_callable":true,"_inputPortValues":{},"_position":{"x":2215.0,"y":345.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"13"},{"value":{"_name":"result","_targetVariableID":"14e53ff3-f1f5-4640-bf0a-e761940990dc"},"_position":{"x":392.0,"y":557.0},"$type":"FlowCanvas.Nodes.GetVariable`1[[EazyEngine.Space.EventResultShowPackage,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"16"},{"_selectedInstanceMembers":["result"],"_inputPortValues":{},"_position":{"x":682.0,"y":505.0},"$type":"FlowCanvas.Nodes.ReflectedExtractorNodeWrapper`1[[EazyEngine.Space.EventResultShowPackage,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"18"},{"_method":{"_baseInfo":"EazyEngine.Tools.PersistentSingleton`1[[GameManager,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]|get_Instance|GameManager","_paramsInfo":""},"_position":{"x":-538.0,"y":79.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"21"},{"_selectedInstanceMembers":["Database"],"_inputPortValues":{},"_position":{"x":-24.0,"y":76.0},"$type":"FlowCanvas.Nodes.ReflectedExtractorNodeWrapper`1[[GameManager,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"23"},{"_method":{"_baseInfo":"EazyEngine.Space.GameDataBaseInstance|comparePlane|System.Boolean","_paramsInfo":"System.String|System.Int32"},"_inputPortValues":{"pID":{"$content":"MainPlane6","$type":"System.String"}},"_position":{"x":465.0,"y":63.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"26"},{"_method":{"_baseInfo":"EazyEngine.Tools.PersistentSingleton`1[[GameManager,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]|get_Instance|GameManager","_paramsInfo":""},"_position":{"x":943.0,"y":-87.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"29"},{"_method":{"_baseInfo":"GameManager|get_CurrentLevelUnlock|System.Int32","_paramsInfo":""},"_inputPortValues":{},"_position":{"x":1443.0,"y":-13.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"31"},{"_simplexNode":{},"_inputPortValues":{"b":{"$content":21,"$type":"System.Int32"}},"_position":{"x":1724.0,"y":40.0},"$type":"FlowCanvas.Nodes.SimplexNodeWrapper`1[[FlowCanvas.Nodes.IntegerGreaterEqualThan,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"34"}],"connections":[{"_sourcePortName":"Out","_targetPortName":"In","_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"False","_targetPortName":"
+    ","_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"5"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"True","_targetPortName":"In","_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"8"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"True","_targetPortName":"
+    ","_sourceNode":{"$ref":"8"},"_targetNode":{"$ref":"10"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"False","_targetPortName":"
+    ","_sourceNode":{"$ref":"8"},"_targetNode":{"$ref":"13"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"Value","_targetPortName":"Instance","_sourceNode":{"$ref":"16"},"_targetNode":{"$ref":"18"},"$type":"FlowCanvas.BinderConnection`1[[EazyEngine.Space.EventResultShowPackage,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"result","_targetPortName":"Action
+    (Boolean)","_sourceNode":{"$ref":"18"},"_targetNode":{"$ref":"5"},"$type":"FlowCanvas.BinderConnection`1[[System.Action`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]],
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"result","_targetPortName":"Action
+    (Boolean)","_sourceNode":{"$ref":"18"},"_targetNode":{"$ref":"10"},"$type":"FlowCanvas.BinderConnection`1[[System.Action`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]],
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"result","_targetPortName":"Action
+    (Boolean)","_sourceNode":{"$ref":"18"},"_targetNode":{"$ref":"13"},"$type":"FlowCanvas.BinderConnection`1[[System.Action`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]],
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"Value","_targetPortName":"Instance","_sourceNode":{"$ref":"21"},"_targetNode":{"$ref":"23"},"$type":"FlowCanvas.BinderConnection`1[[GameManager,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"Database","_targetPortName":"GameDataBaseInstance","_sourceNode":{"$ref":"23"},"_targetNode":{"$ref":"26"},"$type":"FlowCanvas.BinderConnection`1[[EazyEngine.Space.GameDataBaseInstance,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"Value","_targetPortName":"Condition","_sourceNode":{"$ref":"26"},"_targetNode":{"$ref":"3"},"$type":"FlowCanvas.BinderConnection`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"Value","_targetPortName":"GameManager","_sourceNode":{"$ref":"29"},"_targetNode":{"$ref":"31"},"$type":"FlowCanvas.BinderConnection`1[[GameManager,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"Value","_targetPortName":"a","_sourceNode":{"$ref":"31"},"_targetNode":{"$ref":"34"},"$type":"FlowCanvas.BinderConnection`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"Value","_targetPortName":"Condition","_sourceNode":{"$ref":"34"},"_targetNode":{"$ref":"8"},"$type":"FlowCanvas.BinderConnection`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}],"localBlackboard":{"_name":"Local
+    Blackboard","_variables":{}}}'
+  boundGraphObjectReferences: []
+  enableAction: 0
+  disableAction: 0
+  _graph: {fileID: 0}
+  _blackboard: {fileID: 6999560058854267604}
+--- !u!114 &6999560058854267604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6999560058854267605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _serializedBlackboard: '{"_variables":{"result":{"_name":"result","_id":"14e53ff3-f1f5-4640-bf0a-e761940990dc","$type":"NodeCanvas.Framework.Variable`1[[EazyEngine.Space.EventResultShowPackage,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
+  _objectReferences: []

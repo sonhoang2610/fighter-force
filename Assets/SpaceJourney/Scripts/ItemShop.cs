@@ -45,7 +45,7 @@ namespace EazyEngine.Space.UI
                 }
                 if(payment.item.ItemID == "IAP")
                 {
-                    price.text = LoadAssets.loadAsset<IAPSetting>("IAPSetting", "Variants/Database/").getInfo(value.itemSell.ItemID).Price;
+                    price.text = LoadAssets.loadAssetScripTableObject<IAPSetting>("IAPSetting", "Variants/Database/",true).getInfo(value.itemSell.ItemID).Price;
                 }
                 if (itemExchangeIcon)
                 {
@@ -346,6 +346,18 @@ namespace EazyEngine.Space.UI
         private void LateUpdate()
         {
             delayInit -= Time.deltaTime;
+            if(delayInit <= 0)
+            {
+                if ( loadBySelf)
+                {
+                    if(Data != null)
+                    {
+                        Data = Data;
+                    }
+                   
+                }
+            }
+        
         }
         private void OnEnable()
         {

@@ -30,9 +30,6 @@ public static class LoadAssets
     public static Dictionary<string, object> cacheAssets = new Dictionary<string, object>();
     public static T[] loadAssets<T>(string pPathDefault = "") where T : UnityEngine.Object
     {
-        //T[] pObjectss = Resources.FindObjectsOfTypeAll<T>();
-        //if(pObjectss.Length ==0 && !string.IsNullOrEmpty(pPathDefault))
-        //{
         if (!SceneManager.Instance.isLocal && Application.isPlaying)
         {
             var pListBundle = AssetBundle.GetAllLoadedAssetBundles();
@@ -88,6 +85,7 @@ public static class LoadAssets
     {
         return Resources.LoadAsync<T>(AddressableDatabase.Instance.loadPath(pObjectRef.runtimeKey));
     }
+
     public static T loadAsset<T>(string pName, string path = "") where T : UnityEngine.Object
     {
         if (cacheAssets.ContainsKey(pName))
@@ -112,16 +110,76 @@ public static class LoadAssets
                 var pObject = pBundle.LoadAsset<T>(pName);
                 if (pObject)
                 {
+                    cacheAssets.Add(pName, pObject);
                     return pObject;
                 }
             }
             var pObjectFind = AssetBundle.FindObjectOfType<T>();
             if (pObjectFind)
             {
+                cacheAssets.Add(pName, pObjectFind);
                 return pObjectFind;
             }
         }
+
         T pObjectss = Resources.Load<T>(path + pName);
+        cacheAssets.Add(pName, pObjectss);
+        return pObjectss;
+
+    }
+    public static T loadAssetScripTableObject<T>(string pName, string path = "", bool isClone = false) where T : UnityEngine.ScriptableObject
+    {
+        if (cacheAssets.ContainsKey(pName))
+        {
+            if (cacheAssets[pName] != null)
+            {
+                if (cacheAssets[pName].GetType() == typeof(T))
+                {
+                    return (T)cacheAssets[pName];
+                }
+            }
+            else
+            {
+                cacheAssets.Remove(pName);
+            }
+        }
+        if (!SceneManager.Instance.isLocal && Application.isPlaying)
+        {
+            var pListBundle = AssetBundle.GetAllLoadedAssetBundles();
+            foreach (var pBundle in pListBundle)
+            {
+                var pObject = pBundle.LoadAsset<T>(pName);
+                if (pObject)
+                {
+                    if (isClone)
+                    {
+                        pObject = ScriptableObject.Instantiate<T>(pObject);
+
+                    }
+                    cacheAssets.Add(pName, pObject);
+                    return pObject;
+                }
+            }
+            var pObjectFind = AssetBundle.FindObjectOfType<T>();
+            if (pObjectFind)
+            {
+                if (isClone)
+                {
+                    pObjectFind = ScriptableObject.Instantiate<T>(pObjectFind);
+
+                }
+                cacheAssets.Add(pName, pObjectFind);
+                return pObjectFind;
+            }
+        }
+
+        T pObjectss = Resources.Load<T>(path + pName);
+        if (isClone)
+        {
+            pObjectss = ScriptableObject.Instantiate<T>(pObjectss);
+
+        }
+        cacheAssets.Add(pName, pObjectss);
         return pObjectss;
 
     }
@@ -166,12 +224,22 @@ public static class LoadAssets
 
     public static ShopDatabase LoadShop(string target)
     {
+        if (cacheAssets.ContainsKey(target))
+        {
+            return (ShopDatabase)cacheAssets[target];
+        }
         var pShops = LoadAssets.loadAssets<ShopDatabase>("Variants/Database/Shop");
+
         foreach (var pShop in pShops)
         {
-            if (pShop.nameShop == target)
+            if (!cacheAssets.ContainsKey(pShop.nameShop))
             {
-                return pShop;
+                var pShopClone = ScriptableObject.Instantiate<ShopDatabase>(pShop);
+                cacheAssets.Add(pShop.nameShop, pShopClone);
+                if (pShopClone.nameShop == target)
+                {
+                    return pShopClone;
+                }
             }
         }
         return null;
@@ -450,6 +518,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     public string freeSpPlaneChoose = "";
 
     public List<GameObject> pendingObjects = new List<GameObject>();
+    
     protected int countPending;
     protected override void Awake()
     {
@@ -482,8 +551,24 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     //    StartCoroutine(delayAction(0.2f, spawnPool));
 
     //}
+
+    IEnumerator checkTimePackage()
+    {
+        yield return new WaitForSeconds(1);
+        if(ExtraPackageDatabase.Instance != null)
+        {
+            ExtraPackageDatabase.Instance.Update();
+        }
+        yield return checkTimePackage();
+        //for(int i =  0; i < ExtraPackageDatabase.Instance.packageRegister.Count; ++i)
+        //{
+
+        //}
+        //System.DateTime.Now - GameManager.Instance.Database.PackageInfo[]
+    }
     public void initGame()
     {
+        StartCoroutine(checkTimePackage());
         if (PlayerPrefs.GetInt("firstGame", 0) == 5)
         {
             var pSke = gameObject.AddComponent<SkeletonMecanim>();
@@ -495,44 +580,15 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             var pSke5 = gameObject.AddComponent<SkeletonRenderSeparator>();
         }
         LoadGame();
-        if (GameManager.Instance.Database.firstTimeGame == 0)
-        {
-            GameManager.Instance.Database.lastInGameTime = System.DateTime.Now;
-        }
-        GameManager.Instance.Database.firstTimeGame++;
         ExtraPackageDatabase.Instance.initIAPProduct();
-        var pContainer = DatabaseNotifyReward.Instance.container;
-        List<ItemNotifyReward> pNotifies = new List<ItemNotifyReward>();
-        pNotifies.AddRange(pContainer);
-        pNotifies.Sort((x1, x2) => x2.TimeAFK.CompareTo(x1.TimeAFK));
-        for (int i = 0; i < pNotifies.Count; ++i)
+        StartCoroutine(delayAction(1, delegate ()
         {
-            var pAFKTime = (System.DateTime.Now - GameManager.Instance.Database.lastInGameTime).TotalSeconds;
-            if (pAFKTime >= pNotifies[i].TimeAFK)
+            if (!InAppPurchasing.IsInitialized())
             {
-                GameManager.Instance.Database.lastInGameTime = System.DateTime.Now;
-                var pItems = pNotifies[i].ExtractHere(true);
-                for (int j = 0; j < pItems.Length; ++j)
-                {
-                    var pStorage = GameManager.Instance.Database.getComonItem(pItems[j].item);
-                    pStorage.Quantity += pItems[j].Quantity;
-                }
-                TopLayer.Instance.boxReward.show();
-
-                EzEventManager.TriggerEvent(new RewardEvent() { item = new BaseItemGameInstanced() { item = pNotifies[i], quantity = 1 } });
-                GameManager.Instance.SaveGame();
-                break;
+                InAppPurchasing.InitializePurchasing();
             }
+        }));
 
-        }
-        if (Database.IdNotifySchedule.Count > 0)
-        {
-            foreach(var pNoti in Database.IdNotifySchedule)
-            {
-                Notifications.CancelPendingLocalNotification(pNoti);
-            }
-            Database.IdNotifySchedule.Clear();
-        }
         if (_databaseInstanced.spPlanes.Count > 0 && _databaseInstanced.planes.Count > 0)
         {
             SaveGameCache();
@@ -556,10 +612,6 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             Database.dailyGiftModules.Add(dailyGiftModule);
             Database.clearDailyModules(currentModuleDailyGift.moduleClearID);
         }
-        if (!InAppPurchasing.IsInitialized())
-        {
-            InAppPurchasing.InitializePurchasing();
-        }
         for (int i = 0; i < GameManager.Instance.Database.timers.Count; ++i)
         {
             addTimer(GameManager.Instance.Database.timers[i]);
@@ -569,19 +621,20 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     float checkAds = 3;
     private void LateUpdate()
     {
-        if(checkAds > 0)
+        if (!Advertising.IsInterstitialAdReady() && checkAds <= 0)
+        {
+            Advertising.LoadInterstitialAd();
+            checkAds = 3;
+        }
+        else if (Advertising.IsInterstitialAdReady())
+        {
+            checkAds = 0;
+        }
+        if (checkAds > 0)
         {
             checkAds -= Time.deltaTime;
-            if(checkAds <= 0)
-            {
-                if (!Advertising.IsInterstitialAdReady())
-                {
-                    Advertising.LoadInterstitialAd();
-                    checkAds = 3;
-                }
-            }       
         }
-   
+
         if (first)
         {
             initGame();
@@ -599,7 +652,6 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         }
     }
     public GameDataBaseInstance _databaseDefault;
-    [Sirenix.OdinInspector.ReadOnly]
     public GameDataBaseInstance _databaseInstanced;
     public GameDataBaseInstance Database
     {
@@ -1269,7 +1321,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     }
     public void initIAPSuccess()
     {
-        var pIAPSetting = LoadAssets.loadAsset<IAPSetting>("IAPSetting", "Variants/Database/");
+        var pIAPSetting = LoadAssets.loadAssetScripTableObject<IAPSetting>("IAPSetting", "Variants/Database/", true);
         var products = pIAPSetting.items;
         foreach (var product in products)
         {
@@ -1338,7 +1390,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
 
 
     }
-    float TimeScaleCache =1;
+    float TimeScaleCache = 1;
     private void OnApplicationFocus(bool focus)
     {
         if (!focus)
@@ -1354,9 +1406,9 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             pNotifies.Sort((x1, x2) => x2.TimeAFK.CompareTo(x1.TimeAFK));
             for (int i = 0; i < pNotifies.Count; ++i)
             {
-                    NotificationContent content = PrepareNotificationContent(pNotifies[i]);
-                    TimeSpan delay = TimeSpan.FromSeconds(pNotifies[i].TimeAFK);
-                    GameManager.Instance.Database.IdNotifySchedule.Add( Notifications.ScheduleLocalNotification(delay, content));
+                NotificationContent content = PrepareNotificationContent(pNotifies[i]);
+                TimeSpan delay = TimeSpan.FromSeconds(pNotifies[i].TimeAFK);
+                GameManager.Instance.Database.IdNotifySchedule.Add(Notifications.ScheduleLocalNotification(delay, content));
             }
             SaveGame();
         }
@@ -1467,7 +1519,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         // If you want to use default small icon and large icon (on Android),
         // don't set the smallIcon and largeIcon fields of the content.
         // If you want to use custom icons instead, simply specify their names here (without file extensions).
-         // content.smallIcon = "YOUR_CUSTOM_SMALL_ICON";
+        // content.smallIcon = "YOUR_CUSTOM_SMALL_ICON";
         //content.largeIcon = "YOUR_CUSTOM_LARGE_ICON";
 
         return content;
@@ -1575,6 +1627,25 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
 
     public void OnEzEvent(GameDatabaseInventoryEvent eventType)
     {
+        if (eventType.item.item.GetType() == typeof(UnlockItem))
+        {
+            GameManager.Instance.Database.removeItem(eventType.item.item.ItemID);
+            var pPlane = GameManager.Instance.Database.getPlane(((UnlockItem)eventType.item.item).planeUnlock.ItemID);
+            if (pPlane == null || pPlane.currentLevel == 0)
+            {
+                pPlane.CurrentLevel++;
+            }
+            else
+            {
+                BaseItemGameInstanced[] pItems = ((UnlockItem)eventType.item.item).itemEqual;
+                foreach (var pItemAdd in pItems)
+                {
+                    var pCheckStorage = GameManager.Instance.Database.getComonItem(pItemAdd.item);
+                    pCheckStorage.Quantity += pItemAdd.Quantity;
+                }
+
+            }
+        }
         if (eventType.item.item.limitModule != null && eventType.item.item.limitModule.isRestoreAble)
         {
             bool dirty = false;

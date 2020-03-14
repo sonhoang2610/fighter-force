@@ -1,6 +1,6 @@
 ﻿/* SCRIPT INSPECTOR 3
- * version 3.0.25, March 2019
- * Copyright © 2012-2019, Flipbook Games
+ * version 3.0.26, February 2020
+ * Copyright © 2012-2020, Flipbook Games
  * 
  * Unity's legendary editor for C#, UnityScript, Boo, Shaders, and text,
  * now transformed into an advanced C# IDE!!!
@@ -40,6 +40,7 @@ public class FGConsole : EditorWindow
 	private static FieldInfo consoleLVHeightField;
 	private static FieldInfo consoleActiveTextField;
 	private static MethodInfo consoleOnGUIMethod;
+	private static MethodInfo consoleAddItemsToMenuMethod;
 	private static System.Type listViewStateType;
 	private static FieldInfo listViewStateRowField;
 	private static FieldInfo editorWindowPosField;
@@ -65,6 +66,19 @@ public class FGConsole : EditorWindow
 	
 	public void AddItemsToMenu(GenericMenu menu)
 	{
+		if (consoleAddItemsToMenuMethod != null)
+		{
+			var console = consoleWindowField.GetValue(null) as EditorWindow;
+			if (console)
+			{
+				try
+				{
+					consoleAddItemsToMenuMethod.Invoke(console, new [] {menu});
+					return;
+				}
+				catch { }
+			}
+		}
 		if (Application.platform == RuntimePlatform.OSXEditor)
 			menu.AddItem(new GUIContent("Open Player Log"), false, new GenericMenu.MenuFunction( UnityEditorInternal.InternalEditorUtility.OpenPlayerConsole));
 		menu.AddItem(new GUIContent("Open Editor Log"), false, new GenericMenu.MenuFunction(UnityEditorInternal.InternalEditorUtility.OpenEditorConsole));
@@ -80,7 +94,8 @@ public class FGConsole : EditorWindow
 			consoleLVHeightField = consoleWindowType.GetField("ms_LVHeight", instanceMemberFlags);
 			consoleActiveTextField = consoleWindowType.GetField("m_ActiveText", instanceMemberFlags);
 			consoleOnGUIMethod = consoleWindowType.GetMethod("OnGUI", instanceMemberFlags);
-			
+			consoleAddItemsToMenuMethod = consoleWindowType.GetMethod("AddItemsToMenu", instanceMemberFlags);
+
 			if (consoleConstantsType != null)
 			{
 				errorStyleField = consoleConstantsType.GetField("ErrorStyle", staticMemberFlags);
@@ -250,7 +265,9 @@ Click the button below to open the Console window...", MessageType.Info);
 			}
 			try { consoleOnGUIMethod.Invoke(console, null); } catch { }
 			
-#if UNITY_2017_1_OR_NEWER
+#if UNITY_2019_3_OR_NEWER
+			var rc = new Rect(413f, -1f, 160f, 18f);
+#elif UNITY_2017_1_OR_NEWER
 			var rc = new Rect(355f, -1f, 144f, 18f);
 #else
 			var rc = new Rect(254f, -1f, 144f, 18f);
@@ -269,6 +286,7 @@ Click the button below to open the Console window...", MessageType.Info);
 				menu.DropDown(rc);
 			}
 
+#if !UNITY_2019_3_OR_NEWER
 			if (font == null && SISettings.monospacedFontConsole)
 			{
 				font = FGTextEditor.LoadEditorResource<Font>("Smooth Fonts/DejaVu Sans Mono.ttf");
@@ -288,6 +306,7 @@ Click the button below to open the Console window...", MessageType.Info);
 
 				SetConsoleFont(SISettings.monospacedFontConsole ? font : null);
 			}
+#endif
 		}
 		finally
 		{

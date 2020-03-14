@@ -1,6 +1,6 @@
 ﻿/* SCRIPT INSPECTOR 3
- * version 3.0.25, March 2019
- * Copyright © 2012-2019, Flipbook Games
+ * version 3.0.26, February 2020
+ * Copyright © 2012-2020, Flipbook Games
  * 
  * Unity's legendary editor for C#, UnityScript, Boo, Shaders, and text,
  * now transformed into an advanced C# IDE!!!
@@ -13,12 +13,7 @@
  */
 
 
-#if UNITY_5_3_OR_NEWER
-namespace ScriptInspector
-{
-#else
 using ScriptInspector;
-#endif
 
 using UnityEngine;
 using UnityEditor;
@@ -213,7 +208,7 @@ public class FGTextBufferManager : ScriptableObject
 			return;
 
 		if (state == PlayModeStateChange.ExitingEditMode)
-			SaveAllModified(false);
+			FGTextEditor.MenuReloadAssemblies();
 	}
 #else
 	private static void OnPlaymodeStateChanged()
@@ -515,15 +510,23 @@ public class FGTextBufferManager : ScriptableObject
 	
 	public static void ImportPendingAssets()
 	{
-		foreach (var guid in pendingAssetImports)
-			AssetDatabase.ImportAsset(AssetDatabase.GUIDToAssetPath(guid));
-		pendingAssetImports.Clear();
+		AssetDatabase.StartAssetEditing();
+		try
+		{
+			foreach (var guid in pendingAssetImports)
+				AssetDatabase.ImportAsset(AssetDatabase.GUIDToAssetPath(guid));
+		}
+		finally
+		{
+			AssetDatabase.StopAssetEditing();
+			pendingAssetImports.Clear();
+		}
 	}
 
-	public static void SaveAllModified(bool onQuit)
+	public static bool SaveAllModified(bool onQuit)
 	{
 		if (_instance == null)
-			return;
+			return false;
 		
 		//bool locked = false;
 		try
@@ -549,7 +552,10 @@ public class FGTextBufferManager : ScriptableObject
 					{
 						if (!onQuit)
 						{
+							var focusedWindow = EditorWindow.focusedWindow;
 							AssetDatabase.ImportAsset(path, ImportAssetOptions.Default);
+							if (focusedWindow)
+								focusedWindow.Focus();
 							//var asset = AssetDatabase.LoadAssetAtPath(path, typeof(MonoScript));
 							//if (asset != null)
 							//	EditorUtility.SetDirty(asset);
@@ -558,6 +564,9 @@ public class FGTextBufferManager : ScriptableObject
 					}
 				}
 			}
+			
+			if (pendingAssetImports.Count == 0)
+				return false;
 			
 			if (!onQuit)
 				ImportPendingAssets();
@@ -570,6 +579,7 @@ public class FGTextBufferManager : ScriptableObject
 		//		EditorApplication.UnlockReloadAssemblies();
 		//	}
 		//}
+		return true;
 	}
 
 	private static FGTextBufferManager _instance = null;
@@ -844,7 +854,3 @@ public class FGTextBufferManager : ScriptableObject
 		}
 	}
 }
-
-#if UNITY_5_3_OR_NEWER
-}
-#endif

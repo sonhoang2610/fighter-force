@@ -49,7 +49,7 @@ public class UIElementManager : Singleton<UIElementManager>
             pAction = true;
             var pSprites = pElement.gameObject.GetComponentsInChildren<SpriteRenderer>();
             var pSkes = pElement.gameObject.GetComponentsInChildren<SkeletonMecanim>();
-
+            var pSkes1 = pElement.gameObject.GetComponentsInChildren<SkeletonAnimation>();
             void PUpdateExtension(float pFloat)
             {
                 foreach (var pSprite in pSprites)
@@ -60,6 +60,10 @@ public class UIElementManager : Singleton<UIElementManager>
                 }
 
                 foreach (var pSke in pSkes)
+                {
+                    pSke.Skeleton.A = pFloat;
+                }
+                foreach (var pSke in pSkes1)
                 {
                     pSke.Skeleton.A = pFloat;
                 }

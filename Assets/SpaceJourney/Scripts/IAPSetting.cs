@@ -31,18 +31,18 @@ namespace EazyEngine.Tools
     public class IAPItem
     {
         public bool isCustom;
-       [HideInInspector]
-       [SerializeField]
-        private string name;
+         [HideInInspector]
+         [SerializeField]
+        public string name;
         [HideInInspector]
         [SerializeField]
-        private string id;
+        public string id;
         [HideInInspector]
         [SerializeField]
-        private string price;
+        public string price;
         [HideInInspector]
         [SerializeField]
-        private string des;
+        public string des;
         [HideIf("isCustom")]
         [HideLabel]
         public IAPBaseItem item;
