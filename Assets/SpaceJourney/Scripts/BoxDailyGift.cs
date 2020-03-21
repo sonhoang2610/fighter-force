@@ -28,7 +28,7 @@ namespace EazyEngine.Space.UI
         public int lastDate;
         public int lastDateAds;
     }
-    public class BoxDailyGift : BaseBox<ItemDailyGift, ItemDailyGiftInfo>
+    public class BoxDailyGift : BaseBoxSingleton<BoxDailyGift,ItemDailyGift, ItemDailyGiftInfo>
     {
         public UIButton btn1, btn2;
         public BaseItemGame watchItem;

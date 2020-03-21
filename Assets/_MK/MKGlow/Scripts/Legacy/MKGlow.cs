@@ -5,6 +5,7 @@
 // www.michaelkremmel.de                            //
 // Copyright © 2020 All rights reserved.            //
 //////////////////////////////////////////////////////
+using EazyEngine.Space;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -174,13 +175,29 @@ namespace MK.Glow.Legacy
 			_effect.Enable(RenderPipeline.Legacy);
 
             enabled = Compatibility.IsSupported;
+        
 		}
 
 		public void OnDisable()
 		{
 			_effect.Disable();
-		}
+        
+        }
 
+        private void OnDestroy()
+        {
+            if (!SceneManager.InstanceRaw.IsDestroyed() && Application.isPlaying)
+            {
+                SceneManager.InstanceRaw.removeMK(this);
+            }
+        }
+        private void Start()
+        {
+            if (SceneManager.InstanceRaw)
+            {
+                SceneManager.InstanceRaw.addMK(this);
+            }
+        }
         private void OnRenderImage(RenderTexture source, RenderTexture destination)
         {
             if(workflow == Workflow.Selective && (UnityEngine.Rendering.GraphicsSettings.renderPipelineAsset || PipelineProperties.xrEnabled))

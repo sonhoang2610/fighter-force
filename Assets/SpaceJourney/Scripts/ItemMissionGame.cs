@@ -92,10 +92,27 @@ namespace EazyEngine.Space.UI
            EzEventManager.AddListener(this);
         }
 
-        
 
+        protected static int timeInter = 0;
         public void claim()
         {
+            if (PlayerPrefs.GetInt("InterMission" , 0) != System.DateTime.Now.DayOfYear)
+            {
+                if (timeInter < 2)
+                {
+                    int pRandom = Random.Range(0, 2);
+                    if (pRandom == 0)
+                    {
+                        GameManager.Instance.showInterstitialAds();
+                        timeInter++;
+                        if (timeInter == 2)
+                        {
+                            PlayerPrefs.SetInt("InterMission", System.DateTime.Now.DayOfYear);
+                        }
+                    }
+                }
+            }
+      
             var pRewards = Data.rewards;
             foreach(var pReward in pRewards)
             {

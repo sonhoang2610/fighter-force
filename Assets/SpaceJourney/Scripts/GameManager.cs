@@ -518,13 +518,18 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     public string freeSpPlaneChoose = "";
 
     public List<GameObject> pendingObjects = new List<GameObject>();
-    
+
     protected int countPending;
     protected override void Awake()
     {
         base.Awake();
         databaseGame = GameDatabase.Instance;
         Application.targetFrameRate = (int)frameTarget;
+        if (_databaseInstanced == null)
+        {
+            LoadGame();
+            LoadAllLevel();
+        }
         //     StartCoroutine(delayAction(0.2f, spawnPool));
         // Database = Instantiate(Database);
     }
@@ -555,7 +560,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     IEnumerator checkTimePackage()
     {
         yield return new WaitForSeconds(1);
-        if(ExtraPackageDatabase.Instance != null)
+        if (ExtraPackageDatabase.Instance != null)
         {
             ExtraPackageDatabase.Instance.Update();
         }
@@ -579,8 +584,14 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             var pSke4 = gameObject.AddComponent<BoneFollower>();
             var pSke5 = gameObject.AddComponent<SkeletonRenderSeparator>();
         }
-        LoadGame();
-        ExtraPackageDatabase.Instance.initIAPProduct();
+        if (_databaseInstanced == null)
+        {
+            LoadGame();
+            LoadAllLevel();
+        }
+
+        StartCoroutine(ExtraPackageDatabase.Instance.initIAPProduct());
+
         StartCoroutine(delayAction(1, delegate ()
         {
             if (!InAppPurchasing.IsInitialized())
@@ -589,11 +600,11 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             }
         }));
 
-        if (_databaseInstanced.spPlanes.Count > 0 && _databaseInstanced.planes.Count > 0)
+        if (_databaseInstanced != null && _databaseInstanced.spPlanes.Count > 0 && _databaseInstanced.planes.Count > 0)
         {
             SaveGameCache();
         }
-        LoadAllLevel();
+
         reCalCulateStar();
         var currentModuleGiftOnline = GameDatabase.Instance.databaseGiftOnline;
         giftOnlineModule = Database.getModuleGiftOnline(currentModuleGiftOnline.idModule);
@@ -652,7 +663,8 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         }
     }
     public GameDataBaseInstance _databaseDefault;
-    public GameDataBaseInstance _databaseInstanced;
+    [System.NonSerialized]
+    public GameDataBaseInstance _databaseInstanced = null;
     public GameDataBaseInstance Database
     {
         get
@@ -939,6 +951,24 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                 {
                     file.Close();
                 }
+                if (_databaseInstanced == null || _databaseInstanced.spPlanes.Count == 0)
+                {
+                    LoadGameCache();
+                    string destinationClone = Application.persistentDataPath + "/GameInfo.dat";
+                    if (File.Exists(destinationClone))
+                    {
+                        File.Delete(destinationClone);
+                    }
+
+
+                    if (_databaseInstanced == null || _databaseInstanced.spPlanes.Count == 0)
+                    {
+                        _databaseInstanced = _databaseDefault.CloneData();
+                        _databaseInstanced.ExtraInfo();
+                    }
+                    SaveGame();
+                }
+         
 #if UNITY_EDITOR
                 if (!Application.isPlaying)
                 {
@@ -1183,11 +1213,11 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
 
     public static string convertTime(int pTime)
     {
-        if(pTime > 86400 || pTime<=0)
+        if (pTime > 86400 || pTime <= 0)
         {
             return "";
         }
-       return  System.TimeSpan.FromSeconds(pTime).ToString(@"hh\:mm\:ss");
+        return System.TimeSpan.FromSeconds(pTime).ToString(@"hh\:mm\:ss");
     }
     private void Update()
     {
@@ -1357,10 +1387,19 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         GameServices.UserLoginFailed += OnUserLoginFailed;
         Advertising.RewardedAdCompleted += onRewardedAdComplete;
         Advertising.RewardedAdSkipped += onRewardedAdSkiped;
+        Notifications.LocalNotificationOpened += OnLocalNotificationOpened;
+        Notifications.RemoteNotificationOpened += OnRemoteNotificationOpened;
         //   Notifications.PushTokenReceived += TokenRecieved;
         EzEventManager.AddListener<GameDatabaseInventoryEvent>(this);
     }
-
+    void OnLocalNotificationOpened(EasyMobile.LocalNotification delivered)
+    {
+        Firebase.Analytics.FirebaseAnalytics.LogEvent("LocalNTF");
+    }
+    void OnRemoteNotificationOpened(EasyMobile.RemoteNotification delivered)
+    {
+        Firebase.Analytics.FirebaseAnalytics.LogEvent("RemoteNTF");
+    }
     public void TokenRecieved(string pToken)
     {
         Debug.Log(pToken + "token notification");
@@ -1394,6 +1433,8 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         GameServices.UserLoginFailed -= OnUserLoginFailed;
         InAppPurchasing.InitializeSucceeded -= initIAPSuccess;
         InAppPurchasing.InitializeFailed -= initFailed;
+        Notifications.LocalNotificationOpened -= OnLocalNotificationOpened;
+        Notifications.RemoteNotificationOpened -= OnRemoteNotificationOpened;
         //  Notifications.PushTokenReceived-=TokenRecieved;
         EzEventManager.RemoveListener<GameDatabaseInventoryEvent>(this);
 
@@ -1419,7 +1460,11 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                 TimeSpan delay = TimeSpan.FromSeconds(pNotifies[i].TimeAFK);
                 GameManager.Instance.Database.IdNotifySchedule.Add(Notifications.ScheduleLocalNotification(delay, content));
             }
-            SaveGame();
+            if(_databaseInstanced != null && _databaseInstanced.spPlanes.Count > 0)
+            {
+                SaveGame();
+            }
+          
         }
         else
         {

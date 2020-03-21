@@ -63,7 +63,15 @@ namespace EazyEngine.Space
             }
             else
             {
-                claim(pPack);
+                if(GameManager.Instance.Database.PackageInfo[pPack.ItemID].status == StatusPackage.WAIT_CLAIM)
+                {
+                    claim(pPack);
+                }
+                else
+                {
+                    ShopManager.Instance.showBoxShop("Crystal");
+                }
+              
             }
         }
         public void claim(ItemPackage pPackage)
@@ -117,7 +125,7 @@ namespace EazyEngine.Space
             packageRegister.Remove((ComboPackage)pPackage);
             assignBtnLayer();
         }
-        public void initIAPProduct()
+        public IEnumerator initIAPProduct()
         {
             isInit = true;
             for (int i = 0; i < combos.Length; ++i)
@@ -157,6 +165,7 @@ namespace EazyEngine.Space
 
             }
             assignBtnLayer();
+            yield return null;
         }
         public void completeCombo(string pID)
         {

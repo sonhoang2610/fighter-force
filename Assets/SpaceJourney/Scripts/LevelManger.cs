@@ -229,7 +229,8 @@ namespace EazyEngine.Space
 
         private void OnDisable()
         {
-            if (!TopLayer.Instance.gameObject.activeSelf)
+            if (TopLayer.Instance.IsDestroyed()) return;
+            if ( !TopLayer.Instance.gameObject.activeSelf)
             {
                 TopLayer.Instance.gameObject.SetActive(true);
             }

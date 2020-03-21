@@ -164,8 +164,11 @@ namespace EazyEngine.Space
                     }
                 }
                 Sequence pSeq = DOTween.Sequence();
-                pSeq.AppendInterval(0.25f);
-                pSeq.Append(DOTween.To(() => fadeLayout.alpha, a => fadeLayout.alpha = a, 0, 1));
+                if (currentScene.Contains("Zone"))
+                {
+                    pSeq.AppendInterval(0.25f);
+                    pSeq.Append(DOTween.To(() => fadeLayout.alpha, a => fadeLayout.alpha = a, 0, 1));
+                }
                 pSeq.AppendCallback(delegate
                 {
                     camera.GetComponent<CropCamera>().clearRender();
@@ -197,6 +200,11 @@ namespace EazyEngine.Space
 #endif
                     }
                 });
+                 if (currentScene.Contains("Main"))
+                {
+                    pSeq.AppendInterval(0.25f);
+                    pSeq.Append(DOTween.To(() => fadeLayout.alpha, a => fadeLayout.alpha = a, 0, 1));
+                }
                 pSeq.Play();
             }
             else if (corountineFirstPool == null)
@@ -252,13 +260,29 @@ namespace EazyEngine.Space
             }
         }
         protected int dirtySlowFps = 0;
-        protected MKGlow _mk;
+        [System.NonSerialized]
+        public List<MKGlow> _mk = new List<MKGlow>();
         public MKGlow mk
         {
             get
             {
-                return (_mk == null || _mk.IsDestroyed()) ? _mk = FindObjectOfType<MKGlow>() : _mk;
+                return (_mk.Count == 0  || _mk[_mk.Count - 1].IsDestroyed() ) ? null : _mk[_mk.Count - 1];
             }
+        }
+
+        public void addMK(MKGlow pMK)
+        {
+            foreach( var ppMK in _mk)
+            {
+                ppMK.enabled = false;
+            }
+            _mk.Add(pMK);
+            updateMK();
+        }
+        public void removeMK(MKGlow pMK)
+        {
+            _mk.Remove(pMK);
+            updateMK();
         }
         public void markDirtySlowFps()
         {
@@ -279,6 +303,12 @@ namespace EazyEngine.Space
             }
         }
         protected int dirtyBloomMK = 0;
+        public void updateMK()
+        {
+            if (mk == null) return;
+            mk.enabled = dirtyBloomMK > 0 && MK.Glow.Compatibility.IsSupported;
+            mk.GetComponent<Camera>().allowHDR = dirtyBloomMK > 0 && MK.Glow.Compatibility.IsSupported;
+        }
         public void markDirtyBloomMK()
         {
             dirtyBloomMK++;
@@ -332,7 +362,7 @@ namespace EazyEngine.Space
 #if UNITY_EDITOR
             Debug.unityLogger.logEnabled = true;
 #else
-            Debug.unityLogger.logEnabled = true;
+            Debug.unityLogger.logEnabled = false;
 #endif
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
         }

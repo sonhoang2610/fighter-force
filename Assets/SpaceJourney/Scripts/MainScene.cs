@@ -346,6 +346,7 @@ namespace EazyEngine.Space.UI
         }
         public void showBoxRankServer()
         {
+            Debug.Log("leader board");
             if (GameServices.IsInitialized())
             {
                 GameServices.ShowLeaderboardUI();
@@ -475,25 +476,16 @@ namespace EazyEngine.Space.UI
             EzEventManager.TriggerEvent(new UIMessEvent("ChangeTabSp"));
         }
 
-      
-        // Start is called before the first frame update
-        void Start()
+        public IEnumerator setUpNotify()
         {
-            if (GameManager.Instance.Database.firstTimeGame == 0)
-            {
-                GameManager.Instance.Database.lastInGameTime = System.DateTime.Now;
-            }
-            GameManager.Instance.Database.firstTimeGame++;
-      
-        
-      
+       
             var pContainer = DatabaseNotifyReward.Instance.container;
             List<ItemNotifyReward> pNotifies = new List<ItemNotifyReward>();
             pNotifies.AddRange(pContainer);
             pNotifies.Sort((x1, x2) => x2.TimeAFK.CompareTo(x1.TimeAFK));
             for (int i = 0; i < pNotifies.Count; ++i)
             {
-                var pAFKTime = (System.DateTime.Now - GameManager.Instance.Database.lastInGameTime).TotalSeconds;
+                var pAFKTime = (System.DateTime.Now - GameManager.Instance.Database.LastInGameTime).TotalSeconds;
                 if (pAFKTime >= pNotifies[i].TimeAFK)
                 {
                     GameManager.Instance.Database.lastInGameTime = System.DateTime.Now;
@@ -519,6 +511,20 @@ namespace EazyEngine.Space.UI
                 }
                 GameManager.Instance.Database.IdNotifySchedule.Clear();
             }
+            yield return null; 
+        }
+        // Start is called before the first frame update
+        void Start()
+        {
+            if (GameManager.Instance.Database.firstTimeGame == 0)
+            {
+                GameManager.Instance.Database.lastInGameTime = System.DateTime.Now;
+            }
+            GameManager.Instance.Database.firstTimeGame++;
+
+
+            StartCoroutine(setUpNotify());
+   
             Time.timeScale = 1;
             GroupManager.clearCache();
             if (GameServices.LocalUser != null)
