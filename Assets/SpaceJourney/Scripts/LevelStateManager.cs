@@ -126,6 +126,7 @@ public class FormationInfo
 {
    //[Tooltip("Chọn được nhiều loại quái. (Xuất hiện theo trình tự hay ngẫu nhiên dựa vào typeSpwan)")]
     public GameObject[] prefabEnemies;
+    public string[] pathEnemies;
     [LabelWidth(100)]
    //[Tooltip("Số lượng quái xuất hiện")]
     public int quantity = 1;
@@ -576,6 +577,37 @@ public class LevelStateManager : Singleton<LevelStateManager>, EzEventListener<B
             scaleState.scaleSpecifedEnemies[i].prefabEnemy = prefabs[i];
         }
         EditorUtility.SetDirty(this);
+    }
+
+    [Button("BackUp")]
+    public void BackUp()
+    {
+        for(int i = 0; i < states.Length; ++i)
+        {
+            for(int j = 0; j < states[i].formatInfo.prefabEnemies.Length; ++j)
+            {
+                if (!states[i].formatInfo.prefabEnemies[j])
+                {
+                    Debug.LogError(states[i].nameState + "_Something Wrong");
+                }
+                else
+                {
+                   if( states[i].formatInfo.pathEnemies == null || states[i].formatInfo.pathEnemies.Length != states[i].formatInfo.prefabEnemies.Length)
+                    {
+                        states[i].formatInfo.pathEnemies = new string[states[i].formatInfo.prefabEnemies.Length];
+                    }
+                    states[i].formatInfo.pathEnemies[j] = AssetDatabase.GetAssetPath(states[i].formatInfo.prefabEnemies[j]);
+                    states[i].formatInfo.pathEnemies[j] = RemoveString(RemoveString(states[i].formatInfo.pathEnemies[j],"Assets/SpaceJourney/Resources/"),".prefab");
+                }
+            }
+        }
+        EditorUtility.SetDirty(this);
+    }
+
+    public string RemoveString(string pOriginal,string pStringRemove)
+    {
+        var pIndex = pOriginal.IndexOf(pStringRemove);
+        return pOriginal.Remove(pIndex, pStringRemove.Length);
     }
 #endif
 

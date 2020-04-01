@@ -338,6 +338,8 @@ namespace EazyEngine.Space
         public CollectionDailyInfo collectionDailyInfo;
         public MissionContainerInfo missionContainerInfo;
 
+    
+
         public System.DateTime FirstOnline
         {
             get
@@ -376,7 +378,17 @@ namespace EazyEngine.Space
         public List<BaseItemGameInstanced> items = new List<BaseItemGameInstanced>();
         public List<GiftOnlineModule> giftOnlineModules = new List<GiftOnlineModule>();
         public List<DailyGiftModule> dailyGiftModules = new List<DailyGiftModule>();
-
+        public void logData()
+        {
+            Debug.Log("Log Data Planes:" + planes.Count);
+            Debug.Log("Log Data SPPlanes:" + spPlanes.Count);
+            Debug.Log("Log Data missionContainerInfo.main:" + missionContainerInfo.mainMission.missions.Length);
+            Debug.Log("Log Data missionContainerInfo.daily:" + missionContainerInfo.dailyMission.missionProcessing.missions.Length);
+            Debug.Log("Log Data notify:" + idNotifySchedule.Count);
+            Debug.Log("Log Data GiftOnlineModule:" + giftOnlineModules.Count);
+            Debug.Log("Log Data DailyGiftModule:" + dailyGiftModules.Count);
+            Debug.Log("Log Data items:" + items.Count);
+        }
         public GiftOnlineModule getModuleGiftOnline(string pId)
         {
             if(giftOnlineModules == null) { giftOnlineModules = new List<GiftOnlineModule>(); }

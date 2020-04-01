@@ -397,7 +397,7 @@ namespace EasyMobile
         protected override void InternalInit()
         {
 #if EM_FBAN
-
+            Debug.Log("audience init 1");
             mIsInitialized = true;
             mAdSettings = EM_Settings.Advertising.AudienceNetwork;
 
@@ -407,6 +407,7 @@ namespace EasyMobile
 
             if (mAdSettings.EnableTestMode)
             {
+                Debug.Log("audience init 2");
                 SetupTestMode(mAdSettings);
             }
 

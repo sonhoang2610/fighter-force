@@ -6,11 +6,12 @@ using EasyMobile;
 using System;
 using UnityEngine.Networking;
 using ParadoxNotion.Services;
+using Firebase.Analytics;
 
 namespace EazyEngine.Space.UI
 {
 
-    public class MainScene : Singleton<MainScene>, IBackBehavior
+    public class MainScene : Singleton<MainScene>, IBackBehavior,EzEventListener<UIMessEvent>
     {
 
         public BoxInfoPlane boxInfo;
@@ -47,23 +48,27 @@ namespace EazyEngine.Space.UI
                     StoreReview.RequestRating();
                 }
             }
-            bool isConnected = false;
-            var pDateTime = TimeExtension.GetNetTime(ref isConnected);
-            TopLayer.Instance.block.gameObject.SetActive(true);
-            if (isConnected && GameManager.Instance.dailyGiftModule.lastDate != pDateTime.DayOfYear && GameManager.Instance.dailyGiftModule.currentDay < GameDatabase.Instance.databaseDailyGift.item.Count)
+            StartCoroutine(delayAction(0.01f, delegate
             {
-                int pStepGame = PlayerPrefs.GetInt("firstGame", 0);
-                int pFirstBox = PlayerPrefs.GetInt("FirstBoxReward", 0);
-                if (pStepGame < 2) return;
-                if (pFirstBox == 1) return;
-                TopLayer.Instance.block.gameObject.SetActive(true);
-                MidLayer.Instance.boxDailyGift.FirstTime = true;
-                MidLayer.Instance.boxDailyGift.Time = pDateTime;
-                MidLayer.Instance.boxDailyGift.IsGetTime = true;
-                MidLayer.Instance.boxDailyGift.GetComponent<UIElement>().show();
-            }
+                bool isConnected = false;
+                var pDateTime = TimeExtension.GetNetTime(ref isConnected);
+                if (isConnected && GameManager.Instance.dailyGiftModule.lastDate != pDateTime.DayOfYear && GameManager.Instance.dailyGiftModule.currentDay < GameDatabase.Instance.databaseDailyGift.item.Count)
+                {
+                    int pStepGame = PlayerPrefs.GetInt("firstGame", 0);
+                    int pFirstBox = PlayerPrefs.GetInt("FirstBoxReward", 0);
+                    if (pStepGame < 2) return;
+                    if (pFirstBox == 1) return;
+             
+                    MidLayer.Instance.boxDailyGift.FirstTime = true;
+                    MidLayer.Instance.boxDailyGift.Time = pDateTime;
+                    MidLayer.Instance.boxDailyGift.IsGetTime = true;
+                    MidLayer.Instance.boxDailyGift.GetComponent<UIElement>().show();
+                }
+            }));
+         
 
         }
+
 
 
 
@@ -72,7 +77,7 @@ namespace EazyEngine.Space.UI
         {
             GameServices.UserLoginSucceeded += OnUserLoginSucceeded;
             GameServices.UserLoginFailed += OnUserLoginFailed;
-         
+            EzEventManager.AddListener(this);
         }
 
         // Unsubscribe
@@ -80,6 +85,7 @@ namespace EazyEngine.Space.UI
         {
             GameServices.UserLoginSucceeded -= OnUserLoginSucceeded;
             GameServices.UserLoginFailed -= OnUserLoginFailed;
+            EzEventManager.RemoveListener(this);
         }
 
         //public void checkUpgradeFirstSuccess()
@@ -249,6 +255,13 @@ namespace EazyEngine.Space.UI
             selectedBoxPlane.Add(pPlane);
             pPlane.selected(true);
             pPlane.updatePage();
+        }
+        [ContextMenu("pha game")]
+        public void phagame()
+        {
+            GameObject pObject = new GameObject();
+             var pMAnager =  pObject.AddComponent<GameManager>();
+            pMAnager.SaveGame();
         }
 
         public void removeSelectedPlane(BoxBasePlane pPlane)
@@ -444,6 +457,7 @@ namespace EazyEngine.Space.UI
         {
             stateGames.Add("ChooseMap");
             EzEventManager.TriggerEvent(new UIMessEvent("ChooseMap"));
+            FirebaseAnalytics.LogEvent("FightButton");
         }
         public void preparePlay()
         {
@@ -478,7 +492,7 @@ namespace EazyEngine.Space.UI
 
         public IEnumerator setUpNotify()
         {
-       
+
             var pContainer = DatabaseNotifyReward.Instance.container;
             List<ItemNotifyReward> pNotifies = new List<ItemNotifyReward>();
             pNotifies.AddRange(pContainer);
@@ -513,9 +527,11 @@ namespace EazyEngine.Space.UI
             }
             yield return null; 
         }
+
         // Start is called before the first frame update
         void Start()
         {
+      
             if (GameManager.Instance.Database.firstTimeGame == 0)
             {
                 GameManager.Instance.Database.lastInGameTime = System.DateTime.Now;
@@ -590,6 +606,7 @@ namespace EazyEngine.Space.UI
                 },false));
             }
             TopLayer.Instance.block.gameObject.SetActive(false);
+            GameManager.Instance.Database.logData();
         }
 
 
@@ -655,6 +672,15 @@ namespace EazyEngine.Space.UI
         public int getLevel()
         {
             return 0;
+        }
+
+        public void OnEzEvent(UIMessEvent eventType)
+        {
+            if(eventType.Event == "GameServiceLogOut")
+            {
+                nameUser.text = "UNKNOWN";
+                idUser.text = "";
+            }
         }
     }
 }

@@ -1820,6 +1820,7 @@ public static class TimeExtension
                     CultureInfo.InvariantCulture.DateTimeFormat,
                     DateTimeStyles.AssumeUniversal);
                 }
+                response.Dispose();
                 return System.DateTime.Now;
             }
         }

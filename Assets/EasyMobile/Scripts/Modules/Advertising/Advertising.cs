@@ -1210,13 +1210,15 @@ namespace EasyMobile
         /// <param name="network">Network.</param>
         private static AdClientImpl SetupAdClient(AdNetwork network)
         {
+            Debug.Log("set up audience1");
             AdClientImpl client = GetAdClient(network);
-
+            Debug.Log("set up audience2");
             if (client != null && client.Network != AdNetwork.None)
             {
+                Debug.Log("set up audience3");
                 // Subscribe client's events.
                 SubscribeAdClientEvents(client);
-
+                Debug.Log("set up audience4");
                 // Initialize ad client.
                 if (!client.IsInitialized)
                     client.Init();

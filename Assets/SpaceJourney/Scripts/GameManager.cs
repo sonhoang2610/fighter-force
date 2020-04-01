@@ -255,6 +255,8 @@ public static class SerializeGameDataBase
             formatter = new BinaryFormatter();
             SurrogateSelector ss = new SurrogateSelector();
 
+
+
             AbilitySerialize ability = new AbilitySerialize();
             ss.AddSurrogate(typeof(AbilityInfo),
                             new StreamingContext(StreamingContextStates.All),
@@ -1196,7 +1198,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         TopLayer.Instance.block.gameObject.SetActive(true);
         Physics2D.autoSimulation = false;
         Time.timeScale = 1;
-
+        FirebaseAnalytics.LogEvent("LoadLevelStart");
         StartCoroutine(delayAction(0.75f, delegate
         {
             MidLayer.Instance.boxPrepare.close();
@@ -1270,10 +1272,17 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         }
         for (int i = timeoutAds.Count - 1; i >= 0; --i)
         {
-            if (Advertising.IsRewardedAdReady(timeoutAds[i].placeMent))
+            if (timeoutAds[i].placeMent != null && Advertising.IsRewardedAdReady(timeoutAds[i].placeMent))
             {
                 TopLayer.Instance.LoadingAds.gameObject.SetActive(false);
                 Advertising.ShowRewardedAd(timeoutAds[i].placeMent);
+                timeoutAds.RemoveAt(i);
+                continue;
+            }
+            else if (timeoutAds[i].placeMent == null && Advertising.IsRewardedAdReady()) 
+            {
+                TopLayer.Instance.LoadingAds.gameObject.SetActive(false);
+                Advertising.ShowRewardedAd();
                 timeoutAds.RemoveAt(i);
                 continue;
             }
@@ -1284,12 +1293,21 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                 timeoutAds[i] = ptime;
                 if (timeoutAds[i].currentTime <= 0)
                 {
-                    if (rewardAds.ContainsKey(timeoutAds[i].placeMent.Name))
+                    if (timeoutAds[i].placeMent!= null && rewardAds.ContainsKey(timeoutAds[i].placeMent.Name))
                     {
                         TopLayer.Instance.LoadingAds.gameObject.SetActive(false);
                         rewardAds[timeoutAds[i].placeMent.Name](ResultStatusAds.TimeOut);
                         rewardAds.Remove(timeoutAds[i].placeMent.Name);
 
+                    }else if(timeoutAds[i].placeMent == null)
+                    {
+                        if (rewardAds.ContainsKey("DefaultADS"))
+                        {
+                            TopLayer.Instance.LoadingAds.gameObject.SetActive(false);
+                            rewardAds["DefaultADS"](ResultStatusAds.TimeOut);
+                            rewardAds.Remove("DefaultADS");
+                        }
+                       
                     }
                     timeoutAds.RemoveAt(i);
                 }
@@ -1483,6 +1501,18 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     }
     void onRewardedAdComplete(RewardedAdNetwork pNetWork, AdPlacement placement)
     {
+        if(placement == AdPlacement.Default)
+        {
+            GameManager.Instance.Database.collectionDailyInfo.watchADS++;
+            GameManager.Instance.Database.collectionInfo.watchADS++;
+            EzEventManager.TriggerEvent(new MessageGamePlayEvent("MissionDirty"));
+            if (rewardAds.ContainsKey("DefaultADS"))
+            {
+                rewardAds["DefaultADS"](ResultStatusAds.Success);
+                rewardAds.Remove("DefaultADS");
+            }
+            return;
+        }
         GameManager.Instance.Database.collectionDailyInfo.watchADS++;
         GameManager.Instance.Database.collectionInfo.watchADS++;
         EzEventManager.TriggerEvent(new MessageGamePlayEvent("MissionDirty"));
@@ -1494,7 +1524,16 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     }
     void onRewardedAdSkiped(RewardedAdNetwork pNetWork, AdPlacement placement)
     {
-        if (rewardAds.ContainsKey(placement.Name))
+        if (placement == AdPlacement.Default)
+        {
+            if (rewardAds.ContainsKey("DefaultADS"))
+            {
+                rewardAds["DefaultADS"](ResultStatusAds.Failed);
+                rewardAds.Remove("DefaultADS");
+            }
+            return;
+        }
+            if (rewardAds.ContainsKey(placement.Name))
         {
             rewardAds[placement.Name](ResultStatusAds.Failed);
             rewardAds.Remove(placement.Name);
@@ -1601,6 +1640,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     public Dictionary<string, System.Action<ResultStatusAds>> rewardAds = new Dictionary<string, System.Action<ResultStatusAds>>();
     public struct CountdownAds
     {
+        public bool isDefault;
         public AdPlacement placeMent;
         public float currentTime;
     }
@@ -1626,36 +1666,59 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     }
     public void showRewardAds(string pID, System.Action<ResultStatusAds> onResult)
     {
-#if UNITY_EDITOR
-        onResult(ResultStatusAds.Success);
-        return;
-#endif
+//#if UNITY_EDITOR
+//        onResult(ResultStatusAds.Success);
+//        return;
+//#endif
         StartCoroutine(checkInternetConnection(delegate (bool pResult)
         {
             if (pResult)
             {
-                var placement = AdPlacement.PlacementWithName(pID);
-                if (!rewardAds.ContainsKey(pID))
+    
+                if (Advertising.IsRewardedAdReady())
                 {
-                    rewardAds.Add(pID, onResult);
-                }
-                else
-                {
-                    rewardAds[pID] += onResult;
-                }
-                if (Advertising.IsRewardedAdReady(placement))
-                {
-                    Advertising.ShowRewardedAd(placement);
+                    Advertising.ShowRewardedAd();
                 }
                 else
                 {
                     TopLayer.Instance.LoadingAds.gameObject.SetActive(true);
-                    Advertising.LoadRewardedAd(placement);
-                    if (indexOfads(placement) < 0)
+                    Advertising.LoadRewardedAd();
+                    if (!timeoutAds.Exists(x => x.isDefault))
                     {
-                        timeoutAds.Add(new CountdownAds() { placeMent = placement, currentTime = 10 });
+                        timeoutAds.Add(new CountdownAds() {placeMent= null, isDefault = true, currentTime = 10 });
                     }
+                   
                 }
+                if (!rewardAds.ContainsKey("DefaultADS"))
+                {
+                    rewardAds.Add("DefaultADS", onResult);
+                }
+                else
+                {
+                    rewardAds["DefaultADS"] += onResult;
+                }
+                //var placement = AdPlacement.PlacementWithName(pID);
+                //if (!rewardAds.ContainsKey(pID))
+                //{
+                //    rewardAds.Add(pID, onResult);
+                //}
+                //else
+                //{
+                //    rewardAds[pID] += onResult;
+                //}
+                //if (Advertising.IsRewardedAdReady(placement))
+                //{
+                //    Advertising.ShowRewardedAd(placement);
+                //}
+                //else
+                //{
+                //    TopLayer.Instance.LoadingAds.gameObject.SetActive(true);
+                //    Advertising.LoadRewardedAd(placement);
+                //    if (indexOfads(placement) < 0)
+                //    {
+                //        timeoutAds.Add(new CountdownAds() { placeMent = placement, currentTime = 10 });
+                //    }
+                //}
             }
             else
             {

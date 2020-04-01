@@ -68,13 +68,17 @@ namespace EazyEngine.Space
             return isManual || Application.isPlaying;
         }
    
-        public GameObject randomInFlagEnemy(GameObject[] pEnemyType, TypeSpawn typeSpawn,bool isFirst)
+        public GameObject randomInFlagEnemy(string[] path,GameObject[] pEnemyType, TypeSpawn typeSpawn,bool isFirst)
         {
             if (isFirst && typeSpawn == TypeSpawn.RandomForAll)
             {
                 indexQueue = UnityEngine.Random.Range(0, pEnemyType.Length);
             }
             var myEnum = pEnemyType[typeSpawn == TypeSpawn.Random ? UnityEngine.Random.Range(0, pEnemyType.Length) : indexQueue];
+            if( myEnum == null && path != null  && path.Length == pEnemyType.Length)
+            {
+                myEnum = Resources.Load<GameObject>(path[typeSpawn == TypeSpawn.Random ? UnityEngine.Random.Range(0, pEnemyType.Length) : indexQueue]);
+            }
             if (typeSpawn == TypeSpawn.Queue)
             {
                 indexQueue++;
@@ -249,7 +253,7 @@ namespace EazyEngine.Space
 
                 for (var i = 0; i < pQuantity; ++i)
                 {
-                    var _typeSpawn = randomInFlagEnemy(pState.formatInfo.prefabEnemies, pTypeGetEnemy,i== 0);
+                    var _typeSpawn = randomInFlagEnemy(pState.formatInfo.pathEnemies,pState.formatInfo.prefabEnemies, pTypeGetEnemy,i== 0);
 
                     var pObjectEnemy = EnemyEnviroment.Instance.getEnemyFromPool(_typeSpawn);
                     pObjectEnemy.transform.position = new Vector3(999, 999, 0);

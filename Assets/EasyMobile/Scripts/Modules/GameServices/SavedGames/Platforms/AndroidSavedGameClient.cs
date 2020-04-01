@@ -22,7 +22,14 @@ namespace EasyMobile.Internal.GameServices
 #if EM_GPGS
             Util.NullArgumentTest(name);
             Util.NullArgumentTest(callback);
-
+            if (PlayGamesPlatform.Instance == null)
+            {
+                Debug.Log("null 1");
+            }
+            if(PlayGamesPlatform.Instance.SavedGame == null)
+            {
+                Debug.Log("null 2");
+            }
             PlayGamesPlatform.Instance.SavedGame.OpenWithAutomaticConflictResolution(
                 name, 
                 AsDataSource(EM_Settings.GameServices.GPGSDataSource),

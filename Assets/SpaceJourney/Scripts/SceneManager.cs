@@ -149,6 +149,50 @@ namespace EazyEngine.Space
         }
 
         protected Coroutine corountineFirstPool = null;
+        private void AuthCallback(ILoginResult result)
+        {
+            if (FB.IsLoggedIn)
+            {
+                // AccessToken class will have session details
+                var aToken = Facebook.Unity.AccessToken.CurrentAccessToken;
+                // Print current access token's User ID
+                Debug.Log(aToken.UserId);
+                // Print current access token's granted permissions
+                foreach (string perm in aToken.Permissions)
+                {
+                    Debug.Log(perm);
+                }
+            }
+            else
+            {
+                Debug.Log("User cancelled login");
+            }
+        }
+        private void InitCallback()
+        {
+            if (FB.IsInitialized)
+            {
+                // Signal an app activation App Event
+                FB.ActivateApp();
+                // Continue with Facebook SDK
+                // ...
+                if (!FB.IsLoggedIn)
+                {
+                    var perms = new List<string>() { "public_profile", "email" };
+                    FB.LogInWithReadPermissions(perms, AuthCallback);
+                }
+       
+            }
+            else
+            {
+                Debug.Log("Failed to Initialize the Facebook SDK");
+            }
+        }
+
+        private void OnHideUnity(bool isGameShown)
+        {
+
+        }
         public void complete()
         {
 
@@ -186,6 +230,12 @@ namespace EazyEngine.Space
 #if !UNITY_STANDALONE 
                         if (!RuntimeManager.IsInitialized())
                         {
+                            if (PlayerPrefs.GetInt("firstGameFireBase", 0) == 1)
+                            {
+                                PlayerPrefs.SetInt("firstGameFireBase", 2);
+                                FirebaseAnalytics.LogEvent("InitFirstGameDone");
+                            }
+                            FirebaseAnalytics.LogEvent("InitGameDone");
                             RuntimeManager.Init();
                         }
                         bool isInitialized = InAppPurchasing.IsInitialized();
@@ -193,11 +243,31 @@ namespace EazyEngine.Space
                         {
                             InAppPurchasing.InitializePurchasing();
                         }
-                        if (!FB.IsInitialized)
-                        {
-                            FB.Init();
-                        }
+                        FB.Init();
+                        //if (!FB.IsInitialized)
+                        //{
+                        //    // Initialize the Facebook SDK
+                        //    FB.Init(InitCallback, OnHideUnity);
+                        //}
+                        //else
+                        //{
+                        //    // Already initialized, signal an app activation App Event
+                        //    FB.ActivateApp();
+                        //    if (!FB.IsLoggedIn)
+                        //    {
+                        //        var perms = new List<string>() { "public_profile", "email" };
+                        //        FB.LogInWithReadPermissions(perms, AuthCallback);
+                        //    }
+                        //}
+                        //if (!AudienceNetwork.AudienceNetworkAds.IsInitialized())
+                        //{
+                        //    AudienceNetwork.AudienceNetworkAds.Initialize();
+                        //}
 #endif
+                    }
+                    else
+                    {
+                        FirebaseAnalytics.LogEvent("LoadLevelComplete");
                     }
                 });
                  if (currentScene.Contains("Main"))
@@ -346,7 +416,12 @@ namespace EazyEngine.Space
             FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
             {
                 FirebaseAnalytics.SetAnalyticsCollectionEnabled(true);
-
+                if(PlayerPrefs.GetInt("firstGameFireBase", 0) == 0)
+                {
+                    PlayerPrefs.SetInt("firstGameFireBase", 1);
+                    FirebaseAnalytics.LogEvent("InitFirstGame");
+                }
+                FirebaseAnalytics.LogEvent("InitGame");
             });
 #endif
             Application.targetFrameRate = 60;
@@ -362,7 +437,7 @@ namespace EazyEngine.Space
 #if UNITY_EDITOR
             Debug.unityLogger.logEnabled = true;
 #else
-            Debug.unityLogger.logEnabled = false;
+            Debug.unityLogger.logEnabled = true;
 #endif
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
         }

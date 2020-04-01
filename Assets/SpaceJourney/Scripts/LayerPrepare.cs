@@ -92,6 +92,7 @@ namespace EazyEngine.Space.UI
                     pLevelInfo.isLocked = false;
                 }
             }
+            pLevelInfo.isLocked = false;
             int pRequireStar = 0;
             for(int i = 0; i < GameDatabase.Instance.LevelConfigScene.Length; ++i)
             {

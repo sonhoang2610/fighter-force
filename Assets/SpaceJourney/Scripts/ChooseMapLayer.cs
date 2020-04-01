@@ -41,6 +41,7 @@ namespace EazyEngine.Space.UI
                         {
                             pLevel.isLocked = false;
                         }
+                        pLevel.isLocked = false;
                     }
                 }
                 for (int i = 0; i < blockStars.Count; ++i)
