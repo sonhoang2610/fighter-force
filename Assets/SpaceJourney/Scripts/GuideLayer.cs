@@ -121,6 +121,20 @@ namespace EazyEngine.Space.UI
 
         private void ExcuteState(GuideInfo pInfo,System.Action pExcute,bool pOverride)
         {
+            if (LayerModelBoxExtraPackage.InstanceRaw)
+            {
+                if (pInfo.blockState)
+                {
+                    for (int i = 0; i < LayerModelBoxExtraPackage.Instance.transform.childCount; ++i)
+                    {
+                        var pModel = LayerModelBoxExtraPackage.Instance.transform.GetChild(i).Find("model");
+                        if (pModel && pModel.gameObject.activeSelf)
+                        {
+                            pModel.gameObject.SetActive(false);
+                        }
+                    }
+                }
+            }
             blackBG.gameObject.SetActive(pInfo.blockState);
             box.transform.localPosition = pInfo.boxPos;
             UIElementManager.Instance.cachePos[box] = pInfo.boxPos;

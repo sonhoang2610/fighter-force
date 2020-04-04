@@ -243,7 +243,7 @@ namespace EazyEngine.Space
                         {
                             InAppPurchasing.InitializePurchasing();
                         }
-                        FB.Init();
+               
                         //if (!FB.IsInitialized)
                         //{
                         //    // Initialize the Facebook SDK
@@ -274,6 +274,7 @@ namespace EazyEngine.Space
                 {
                     pSeq.AppendInterval(0.25f);
                     pSeq.Append(DOTween.To(() => fadeLayout.alpha, a => fadeLayout.alpha = a, 0, 1));
+                    pSeq.AppendCallback(delegate { Debug.Log("end load main"); });
                 }
                 pSeq.Play();
             }
@@ -408,6 +409,7 @@ namespace EazyEngine.Space
         protected override void Awake()
         {
             base.Awake();
+            FB.Init();
             MK.Glow.Resources.LoadResourcesAsset();
 #if UNITY_IOS
             System.Environment.SetEnvironmentVariable("MONO_REFLECTION_SERIALIZER", "yes");
@@ -437,7 +439,7 @@ namespace EazyEngine.Space
 #if UNITY_EDITOR
             Debug.unityLogger.logEnabled = true;
 #else
-            Debug.unityLogger.logEnabled = true;
+            Debug.unityLogger.logEnabled = false;
 #endif
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
         }

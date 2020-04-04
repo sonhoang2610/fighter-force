@@ -545,11 +545,10 @@ namespace EasyMobile
 
             if (mRewardedAd == null)
                 mRewardedAd = CreateNewRewardedAd();
-
             mRewardedAd.LoadAd(CreateAdMobAdRequest(), id);
 #endif
         }
-
+                
         protected override bool InternalIsRewardedAdReady(AdPlacement placement)
         {
 #if EM_ADMOB
@@ -978,6 +977,8 @@ namespace EasyMobile
 
             if (OnRewardedAdFailedToLoad != null)
                 OnRewardedAdFailedToLoad.Invoke(sender, args);
+            if (OnAdFailedToLoad != null)
+                OnAdFailedToLoad.Invoke(args.Message);
         }
 
         private void HandleAdMobRewardBasedVideoOpening(object sender, EventArgs args)

@@ -13,6 +13,10 @@ using EazyEngine.Tools;
 using Spine.Unity;
 using System.Net;
 using EasyMobile;
+using LitJson;
+using UnityEngine.Networking;
+using System.Text;
+using System.Collections;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -1806,6 +1810,7 @@ public static class TimeExtension
     {
         success = false;
         var myHttpWebRequest = (HttpWebRequest)WebRequest.Create("http://www.microsoft.com");
+        myHttpWebRequest.Timeout = 2000;
         try
         {
             using (HttpWebResponse response = (HttpWebResponse)myHttpWebRequest.GetResponse())
@@ -1829,6 +1834,39 @@ public static class TimeExtension
             return System.DateTime.Now;
         }
     }
+    public static IEnumerator GetNetTime(System.Action<string,string> pResult)
+    {
+
+        string url = "gamecenter.m2w.vn:8888/game-center";
+        JsonWriter write = new JsonWriter();
+        write.WriteObjectStart();
+        write.WritePropertyName("msg_type");
+        write.Write("get_current_time");
+        write.WriteObjectEnd();
+        var pBody = write.ToString();
+        Debug.Log(pBody);
+        UnityWebRequest www = new UnityWebRequest();
+        Debug.Log(url);
+        www.url = url;
+        www.method = UnityWebRequest.kHttpVerbPOST;
+        www.downloadHandler = new DownloadHandlerBuffer();
+        www.uploadHandler = new UploadHandlerRaw(string.IsNullOrEmpty(pBody) ? null : Encoding.UTF8.GetBytes(pBody));
+        www.timeout = 5;
+        www.SetRequestHeader("Content-Type", "applicatopn/json");
+        yield return www.SendWebRequest();
+
+        if (www.error == null)
+        {
+
+            string myContent = www.downloadHandler.text;
+            pResult.Invoke(myContent, "");
+        }
+        else
+        {
+            pResult.Invoke("",www.error);
+        }
+    }
+
     public static double ToUnixTime(this DateTime input)
     {
         return (double)input.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;

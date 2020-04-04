@@ -10,7 +10,7 @@ namespace EazyEngine.Space.UI
 
         public UILabel content;
         public UILabel title;
-        public UIButton btn1, btn2;
+        public UIButton btn1, btn2,btnClose;
         public UnityAction onButton1, onButton2;
 
         public string Title
@@ -55,6 +55,11 @@ namespace EazyEngine.Space.UI
         {
             btn1.gameObject.SetActive(!pBool);
             btn2.gameObject.SetActive(!pBool);
+            return this;
+        }
+        public BoxDialog enableButtonClose(bool pBool)
+        {
+            btnClose.gameObject.SetActive(pBool);
             return this;
         }
 

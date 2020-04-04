@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 
 namespace EazyEngine.Space.UI
 {
+    using LitJson;
     using System;
 #if UNITY_EDITOR
     using UnityEditor;
@@ -42,6 +43,7 @@ namespace EazyEngine.Space.UI
         public DateTime Time { get => time; set => time = value; }
         public bool IsGetTime { get => isGetTime; set => isGetTime = value; }
 
+        int timeCountCheck = 0;
         private void OnEnable()
         {
             if (databse == null)
@@ -51,6 +53,7 @@ namespace EazyEngine.Space.UI
             if (!FirstTime)
             {
                 TopLayer.Instance.LoadingAds.gameObject.SetActive(true);
+                timeCountCheck = 0;
                 StartCoroutine(checkModule());
             }
             else
@@ -71,17 +74,31 @@ namespace EazyEngine.Space.UI
             {
                 if (pResult)
                 {
-                    Time = TimeExtension.GetNetTime(ref isGetTime);
+                  //  Time = TimeExtension.GetNetTime(ref isGetTime);
+                    StartCoroutine(TimeExtension.GetNetTime((time, error) => {
+                        if (string.IsNullOrEmpty(error))
+                        {
+                            IsGetTime = true;
+                            var pJson = JsonMapper.ToObject(time);
+                            Time = TimeExtension.UnixTimeStampToDateTime(double.Parse(pJson["time"].ToString())).ToLocalTime();
+                        }
+                        else
+                        {
+                            IsGetTime = false;
+                        }
+                    }));
                 }
                 
             });
-            if (!IsGetTime)
+            if (!IsGetTime && timeCountCheck <= 10)
             {
                 yield return new  WaitForSeconds(1);
+                timeCountCheck++;
                 yield return checkModule();
             }
             else
             {
+                timeCountCheck = 0;
                 reload();
                 TopLayer.Instance.LoadingAds.gameObject.SetActive(false);
             }

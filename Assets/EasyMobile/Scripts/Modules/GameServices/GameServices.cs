@@ -655,7 +655,7 @@ namespace EasyMobile
             {
                 return;
             }
-
+         
 #if UNITY_ANDROID && EM_GPGS
             PlayGamesPlatform.Instance.SignOut();
 #elif UNITY_ANDROID && !EM_GPGS

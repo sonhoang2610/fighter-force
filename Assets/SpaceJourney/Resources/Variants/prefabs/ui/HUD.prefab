@@ -1,287 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &4087295815656684191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 911932385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fdca5042b1d12a4890ec1bd4f04290d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tweenTarget: {fileID: 1733112209074489838}
-  hover: {r: 0.88235295, g: 0.78431374, b: 0.5882353, a: 1}
-  pressed: {r: 0.7176471, g: 0.6392157, b: 0.48235294, a: 1}
-  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  duration: 0.2
-  dragHighlight: 0
-  hoverSprite: 
-  pressedSprite: 
-  disabledSprite: 
-  onEnableButton:
-    m_PersistentCalls:
-      m_Calls: []
-  onDisableButton:
-    m_PersistentCalls:
-      m_Calls: []
-  hoverSprite2D: {fileID: 0}
-  pressedSprite2D: {fileID: 0}
-  disabledSprite2D: {fileID: 0}
-  pixelSnap: 0
-  onClick: []
---- !u!114 &4226070402174688812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 968356465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cda214cdb8eb15b4cad6cc1065929273, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listenTriggerUI: 0
-  listeners: []
-  cateGory: FadeMoveFromLeft
-  onEnableEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 911932385}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  onDisableEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 911932385}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onStartEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onInitEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onEnableLateUpdateEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onCompleteTweenShow:
-    m_PersistentCalls:
-      m_Calls: []
-  relative: 0
---- !u!114 &2033887772161360085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 566194393205320515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b5c3ebb24c97464da319951cafe5a47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boundGraphSerialization: '{"version":2.96,"type":"FlowCanvas.FlowScript","translation":{"x":-490.0,"y":-281.0},"nodes":[{"_position":{"x":669.0,"y":468.0},"$type":"FlowCanvas.Nodes.EnableEvent","$id":"2"},{"_inputPortValues":{},"_position":{"x":864.0,"y":489.0},"$type":"FlowCanvas.Nodes.SwitchBool","$id":"3"},{"_method":{"_baseInfo":"ColorCache|setColorIndex|System.Void","_paramsInfo":"System.Int32"},"_callable":true,"_inputPortValues":{"ColorCache":{"$content":1,"$type":"ColorCache"}},"_position":{"x":1138.0,"y":840.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"5"},{"_method":{"_baseInfo":"ColorCache|setColorIndex|System.Void","_paramsInfo":"System.Int32"},"_callable":true,"_inputPortValues":{"ColorCache":{"$content":1,"$type":"ColorCache"},"index":{"$content":1,"$type":"System.Int32"}},"_position":{"x":1133.0,"y":650.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"8"},{"_field":{"_baseInfo":"UIButton|onDisableButton"},"_inputPortValues":{},"_position":{"x":769.0,"y":677.0},"$type":"FlowCanvas.Nodes.UnityEventAutoCallbackEvent","$id":"11"},{"_field":{"_baseInfo":"UIButton|onEnableButton"},"_inputPortValues":{},"_position":{"x":767.0,"y":839.0},"$type":"FlowCanvas.Nodes.UnityEventAutoCallbackEvent","$id":"14"},{"_selectedInstanceMembers":["isEnabled"],"_inputPortValues":{},"_position":{"x":626.0,"y":562.0},"$type":"FlowCanvas.Nodes.ReflectedExtractorNodeWrapper`1[[UIButton,
-    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"17"}],"connections":[{"_sourcePortName":"Out","_targetPortName":"In","_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"True","_targetPortName":"
-    ","_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"5"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"False","_targetPortName":"
-    ","_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"8"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"Event","_targetPortName":"
-    ","_sourceNode":{"$ref":"11"},"_targetNode":{"$ref":"8"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"Event","_targetPortName":"
-    ","_sourceNode":{"$ref":"14"},"_targetNode":{"$ref":"5"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"isEnabled","_targetPortName":"Condition","_sourceNode":{"$ref":"17"},"_targetNode":{"$ref":"3"},"$type":"FlowCanvas.BinderConnection`1[[System.Boolean,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}],"localBlackboard":{"_name":"Local
-    Blackboard","_variables":{}}}'
-  boundGraphObjectReferences:
-  - {fileID: 0}
-  - {fileID: 8031461856123895762}
-  enableAction: 0
-  disableAction: 0
-  _graph: {fileID: 0}
-  _blackboard: {fileID: 3277353587412253037}
---- !u!114 &3277353587412253037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 566194393205320515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _serializedBlackboard: '{"_variables":{}}'
-  _objectReferences: []
---- !u!114 &8393442344744831923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1251336588964887579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 918879157b014a44188a819a7fa53dc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  replaceNew: 1
-  containerGuide:
-  - triggerToExcute: FirstGame
-    title:
-      normalString: text/well_come
-      isI2String: 1
-      value: Welcome to Fighter Force
-    content:
-      normalString: text/guide_fight_first
-      isI2String: 1
-      value: Press FIGHT button to play your first game
-    IDButonFocus: FightButton
-    offset: {x: 0, y: 0, z: 0}
-    boxPos: {x: 0, y: -74, z: 0}
-    blockState: 1
-  - triggerToExcute: SecondGameWin
-    title:
-      normalString: text/congratulation
-      isI2String: 1
-      value: Congratulations!
-    content:
-      normalString: text/win_first
-      isI2String: 1
-      value: You seem to be a very talented gamer. You can also try to upgrade your
-        ship so you can play more easily.
-    IDButonFocus: UpgradeButton
-    offset: {x: 0, y: 0, z: 0}
-    boxPos: {x: 0, y: -74, z: 0}
-    blockState: 1
-  - triggerToExcute: SecondGameLose
-    title:
-      normalString: text/unfortunately
-      isI2String: 1
-      value: Unfortunately
-    content:
-      normalString: text/lose_first
-      isI2String: 1
-      value: When you lose the game. You can try to upgrade for more power. This will
-        help you complete the level more easily.
-    IDButonFocus: UpgradeButton
-    offset: {x: 0, y: 0, z: 0}
-    boxPos: {x: 0, y: -74, z: 0}
-    blockState: 1
-  - triggerToExcute: FirstUpgrade
-    title:
-      normalString: ui/first_upgrade
-      isI2String: 1
-      value: First Upgrade
-    content:
-      normalString: ui/let_do_upgrade
-      isI2String: 1
-      value: Let do the upgrade to level 3
-    IDButonFocus: UpgradeButon1
-    offset: {x: 0.091, y: 0, z: 0}
-    boxPos: {x: 0, y: -74, z: 0}
-    blockState: 1
-  - triggerToExcute: FirstUpgradeSuccess
-    title:
-      normalString: text/congratulation
-      isI2String: 1
-      value: Congratulations!
-    content:
-      normalString: text/upgrade_guide_success_content
-      isI2String: 1
-      value: Congratulation you finish the beginer tutorial back to game and fight
-        again
-    IDButonFocus: Back
-    offset: {x: 0, y: 0, z: 0}
-    boxPos: {x: 0, y: -74, z: 0}
-    blockState: 1
-  - triggerToExcute: FirstUpgrade1
-    title:
-      normalString: UPGRADE
-      isI2String: 1
-      value: Upgrade
-    content:
-      normalString: ui/let_do_upgrade
-      isI2String: 1
-      value: Let do the upgrade to level 3
-    IDButonFocus: UpgradeButon1
-    offset: {x: 0.091, y: 0, z: 0}
-    boxPos: {x: 0, y: -74, z: 0}
-    blockState: 1
-  - triggerToExcute: FirstUpgrade2
-    title:
-      normalString: UPGRADE
-      isI2String: 1
-      value: Upgrade
-    content:
-      normalString: ui/let_do_upgrade
-      isI2String: 1
-      value: Let do the upgrade to level 3
-    IDButonFocus: UpgradeButon1
-    offset: {x: 0.091, y: 0, z: 0}
-    boxPos: {x: 0, y: -74, z: 0}
-    blockState: 1
-  - triggerToExcute: FirstRewardBox
-    title:
-      normalString: text/congratulation
-      isI2String: 1
-      value: Congratulations!
-    content:
-      normalString: text/FirstRewardBoxContent
-      isI2String: 1
-      value: Congratulation! you recieved the first box elite!
-    IDButonFocus: item_reward
-    offset: {x: 0, y: 0, z: 0}
-    boxPos: {x: 0, y: -274, z: 0}
-    blockState: 1
-  - triggerToExcute: FirstRewardBox1
-    title:
-      normalString: text/FirstRewardBoxTitle1
-      isI2String: 1
-      value: First Open Elite Box
-    content:
-      normalString: text/FirstRewardBoxContent1
-      isI2String: 1
-      value: Let start to open the first box elite
-    IDButonFocus: Btn_Gift
-    offset: {x: 0, y: 0, z: 0}
-    boxPos: {x: 0, y: -74, z: 0}
-    blockState: 1
-  - triggerToExcute: FirstRewardBox2
-    title:
-      normalString: text/FirstRewardBoxTitle1
-      isI2String: 1
-      value: First Open Elite Box
-    content:
-      normalString: text/FirstRewardBoxContent1
-      isI2String: 1
-      value: Let start to open the first box elite
-    IDButonFocus: BtnOpenFreeBoxElite
-    offset: {x: 0, y: 0, z: 0}
-    boxPos: {x: 0, y: 150, z: 0}
-    blockState: 1
-  blackBG: {fileID: 6999310194765018785}
-  hole: {fileID: 3497224069940447239}
-  title: {fileID: 3911914675690496481}
-  content: {fileID: 3911914676005830832}
-  box: {fileID: 4226070402174688812}
-  handGuide: {fileID: 1799820944}
 --- !u!1 &1733112209074489838
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,46 +71,6 @@ MonoBehaviour:
   keepAspectRatio: 0
   aspectRatio: 1
   dirtyChange: 0
---- !u!114 &1628495555284594797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2054254335604749712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _serializedBlackboard: '{"_variables":{}}'
-  _objectReferences: []
---- !u!114 &7093088833996556046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2054254335604749712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b5c3ebb24c97464da319951cafe5a47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boundGraphSerialization: '{"version":2.96,"type":"FlowCanvas.FlowScript","translation":{"x":-591.0,"y":-330.0},"zoomFactor":0.9010414,"nodes":[{"_field":{"_baseInfo":"UIButton|onDisableButton"},"_inputPortValues":{},"_position":{"x":882.0,"y":663.0},"$type":"FlowCanvas.Nodes.UnityEventAutoCallbackEvent","$id":"2"},{"_method":{"_baseInfo":"ColorCache|setColorIndex|System.Void","_paramsInfo":"System.Int32"},"_callable":true,"_inputPortValues":{"ColorCache":{"$content":1,"$type":"ColorCache"}},"_position":{"x":1245.0,"y":636.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"5"},{"_method":{"_baseInfo":"EazyFrameCache|setFrameIndexUnPixelPerfect|System.Void","_paramsInfo":"System.Int32"},"_callable":true,"_inputPortValues":{"EazyFrameCache":{"$content":2,"$type":"EazyFrameCache"}},"_position":{"x":1524.0,"y":649.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"8"},{"_field":{"_baseInfo":"UIButton|onEnableButton"},"_inputPortValues":{},"_position":{"x":880.0,"y":825.0},"$type":"FlowCanvas.Nodes.UnityEventAutoCallbackEvent","$id":"11"},{"_method":{"_baseInfo":"ColorCache|setColorIndex|System.Void","_paramsInfo":"System.Int32"},"_callable":true,"_inputPortValues":{"ColorCache":{"$content":1,"$type":"ColorCache"},"index":{"$content":1,"$type":"System.Int32"}},"_position":{"x":1251.0,"y":826.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"14"},{"_method":{"_baseInfo":"EazyFrameCache|setFrameIndexUnPixelPerfect|System.Void","_paramsInfo":"System.Int32"},"_callable":true,"_inputPortValues":{"EazyFrameCache":{"$content":2,"$type":"EazyFrameCache"},"index":{"$content":1,"$type":"System.Int32"}},"_position":{"x":1541.0,"y":837.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"17"}],"connections":[{"_sourcePortName":"Event","_targetPortName":"
-    ","_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"5"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"
-    ","_targetPortName":" ","_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"8"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"Event","_targetPortName":"
-    ","_sourceNode":{"$ref":"11"},"_targetNode":{"$ref":"14"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"
-    ","_targetPortName":" ","_sourceNode":{"$ref":"14"},"_targetNode":{"$ref":"17"},"$type":"FlowCanvas.BinderConnection"}],"localBlackboard":{"_name":"Local
-    Blackboard","_variables":{}}}'
-  boundGraphObjectReferences:
-  - {fileID: 0}
-  - {fileID: 5498796997607086028}
-  - {fileID: 6674895529192852941}
-  enableAction: 0
-  disableAction: 0
-  _graph: {fileID: 0}
-  _blackboard: {fileID: 1628495555284594797}
 --- !u!1 &2542871445078242455
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,14 +367,14 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 0, g: 0, b: 0, a: 0.78431374}
   mPivot: 4
-  mWidth: 747
+  mWidth: 864
   mHeight: 1536
   mDepth: 0
   mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 0.48632812
+  aspectRatio: 0.5625
   dirtyChange: 0
   mType: 0
   mFillDirection: 4
@@ -728,7 +406,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 747, y: 1536, z: 0}
+  m_Size: {x: 864, y: 1536, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2542871445952184762
 GameObject:
@@ -822,6 +500,44 @@ MonoBehaviour:
   mFixedAspect: 0
   mPixelSize: 1
   nextSprite: {fileID: 0}
+--- !u!114 &8847225477565659690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8859432641089807402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: ui/no
+  mTermSecondary: 
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 0}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_NGUI_Label
 --- !u!1 &3497224069940447239
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,13 +708,13 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3002
+  startingRenderQueue: 3014
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 300, w: 200}
   mClipSoftness: {x: 4, y: 4}
-  mDepth: 5
+  mDepth: 6
   mSortingOrder: 0
   mSortingLayerName: 
   mClipOffset: {x: 0, y: 0}
@@ -1119,6 +835,399 @@ MonoBehaviour:
   title: {fileID: 2542871445078242474}
   btn1: {fileID: 2100652309303884631}
   btn2: {fileID: 2100652308851660092}
+  btnClose: {fileID: 3927140188316062398}
+--- !u!114 &4226070402174688812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968356465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cda214cdb8eb15b4cad6cc1065929273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenTriggerUI: 0
+  listeners: []
+  cateGory: FadeMoveFromLeft
+  onEnableEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 911932385}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onDisableEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 911932385}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onInitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onEnableLateUpdateEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onCompleteTweenShow:
+    m_PersistentCalls:
+      m_Calls: []
+  relative: 0
+--- !u!114 &8393442344744831923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251336588964887579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 918879157b014a44188a819a7fa53dc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  replaceNew: 1
+  containerGuide:
+  - triggerToExcute: FirstGame
+    title:
+      normalString: text/well_come
+      isI2String: 1
+      value: Welcome to Fighter Force
+    content:
+      normalString: text/guide_fight_first
+      isI2String: 1
+      value: Press FIGHT button to play your first game
+    IDButonFocus: FightButton
+    offset: {x: 0, y: 0, z: 0}
+    boxPos: {x: 0, y: -74, z: 0}
+    blockState: 1
+  - triggerToExcute: SecondGameWin
+    title:
+      normalString: text/congratulation
+      isI2String: 1
+      value: Congratulations!
+    content:
+      normalString: text/win_first
+      isI2String: 1
+      value: You seem to be a very talented gamer. You can also try to upgrade your
+        ship so you can play more easily.
+    IDButonFocus: UpgradeButton
+    offset: {x: 0, y: 0, z: 0}
+    boxPos: {x: 0, y: -74, z: 0}
+    blockState: 1
+  - triggerToExcute: SecondGameLose
+    title:
+      normalString: text/unfortunately
+      isI2String: 1
+      value: Unfortunately
+    content:
+      normalString: text/lose_first
+      isI2String: 1
+      value: When you lose the game. You can try to upgrade for more power. This will
+        help you complete the level more easily.
+    IDButonFocus: UpgradeButton
+    offset: {x: 0, y: 0, z: 0}
+    boxPos: {x: 0, y: -74, z: 0}
+    blockState: 1
+  - triggerToExcute: FirstUpgrade
+    title:
+      normalString: ui/first_upgrade
+      isI2String: 1
+      value: First Upgrade
+    content:
+      normalString: ui/let_do_upgrade
+      isI2String: 1
+      value: Let do the upgrade to level 3
+    IDButonFocus: UpgradeButon1
+    offset: {x: 0.091, y: 0, z: 0}
+    boxPos: {x: 0, y: -74, z: 0}
+    blockState: 1
+  - triggerToExcute: FirstUpgradeSuccess
+    title:
+      normalString: text/congratulation
+      isI2String: 1
+      value: Congratulations!
+    content:
+      normalString: text/upgrade_guide_success_content
+      isI2String: 1
+      value: Congratulation you finish the beginer tutorial back to game and fight
+        again
+    IDButonFocus: Back
+    offset: {x: 0, y: 0, z: 0}
+    boxPos: {x: 0, y: -74, z: 0}
+    blockState: 1
+  - triggerToExcute: FirstUpgrade1
+    title:
+      normalString: UPGRADE
+      isI2String: 1
+      value: Upgrade
+    content:
+      normalString: ui/let_do_upgrade
+      isI2String: 1
+      value: Let do the upgrade to level 3
+    IDButonFocus: UpgradeButon1
+    offset: {x: 0.091, y: 0, z: 0}
+    boxPos: {x: 0, y: -74, z: 0}
+    blockState: 1
+  - triggerToExcute: FirstUpgrade2
+    title:
+      normalString: UPGRADE
+      isI2String: 1
+      value: Upgrade
+    content:
+      normalString: ui/let_do_upgrade
+      isI2String: 1
+      value: Let do the upgrade to level 3
+    IDButonFocus: UpgradeButon1
+    offset: {x: 0.091, y: 0, z: 0}
+    boxPos: {x: 0, y: -74, z: 0}
+    blockState: 1
+  - triggerToExcute: FirstRewardBox
+    title:
+      normalString: text/congratulation
+      isI2String: 1
+      value: Congratulations!
+    content:
+      normalString: text/FirstRewardBoxContent
+      isI2String: 1
+      value: Congratulation! you recieved the first box elite!
+    IDButonFocus: item_reward
+    offset: {x: 0, y: 0, z: 0}
+    boxPos: {x: 0, y: -274, z: 0}
+    blockState: 1
+  - triggerToExcute: FirstRewardBox1
+    title:
+      normalString: text/FirstRewardBoxTitle1
+      isI2String: 1
+      value: First Open Elite Box
+    content:
+      normalString: text/FirstRewardBoxContent1
+      isI2String: 1
+      value: Let start to open the first box elite
+    IDButonFocus: Btn_Gift
+    offset: {x: 0, y: 0, z: 0}
+    boxPos: {x: 0, y: -74, z: 0}
+    blockState: 1
+  - triggerToExcute: FirstRewardBox2
+    title:
+      normalString: text/FirstRewardBoxTitle1
+      isI2String: 1
+      value: First Open Elite Box
+    content:
+      normalString: text/FirstRewardBoxContent1
+      isI2String: 1
+      value: Let start to open the first box elite
+    IDButonFocus: BtnOpenFreeBoxElite
+    offset: {x: 0, y: 0, z: 0}
+    boxPos: {x: 0, y: 150, z: 0}
+    blockState: 1
+  blackBG: {fileID: 6999310194765018785}
+  hole: {fileID: 3497224069940447239}
+  title: {fileID: 3911914675690496481}
+  content: {fileID: 3911914676005830832}
+  box: {fileID: 4226070402174688812}
+  handGuide: {fileID: 1799820944}
+--- !u!114 &4087295815656684191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911932385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdca5042b1d12a4890ec1bd4f04290d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTarget: {fileID: 1733112209074489838}
+  hover: {r: 0.88235295, g: 0.78431374, b: 0.5882353, a: 1}
+  pressed: {r: 0.7176471, g: 0.6392157, b: 0.48235294, a: 1}
+  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  duration: 0.2
+  dragHighlight: 0
+  hoverSprite: 
+  pressedSprite: 
+  disabledSprite: 
+  onEnableButton:
+    m_PersistentCalls:
+      m_Calls: []
+  onDisableButton:
+    m_PersistentCalls:
+      m_Calls: []
+  hoverSprite2D: {fileID: 0}
+  pressedSprite2D: {fileID: 0}
+  disabledSprite2D: {fileID: 0}
+  pixelSnap: 0
+  onClick: []
+--- !u!114 &4057514116651927000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7037627233161487288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTerm: ui/watch
+  mTermSecondary: 
+  PrimaryTermModifier: 0
+  SecondaryTermModifier: 0
+  TermPrefix: 
+  TermSuffix: 
+  LocalizeOnAwake: 1
+  IgnoreRTL: 0
+  MaxCharactersInRTL: 0
+  IgnoreNumbersInRTL: 1
+  CorrectAlignmentForRTL: 1
+  AddSpacesToJoinedLanguages: 0
+  AllowLocalizedParameters: 1
+  TranslatedObjects: []
+  LocalizeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AlwaysForceLocalize: 0
+  LocalizeCallBack:
+    Target: {fileID: 0}
+    MethodName: 
+  mGUI_ShowReferences: 0
+  mGUI_ShowTems: 1
+  mGUI_ShowCallback: 0
+  mLocalizeTarget: {fileID: 0}
+  mLocalizeTargetName: I2.Loc.LocalizeTarget_NGUI_Label
+--- !u!114 &8031461856123895762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7037627233161487288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15e02d4da8b709042b3e3ec4d60607c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colors:
+  - {r: 0.4901961, g: 0.10196079, b: 0.09019608, a: 1}
+  - {r: 0.25490198, g: 0.25490198, b: 0.25490198, a: 1}
+  isOutlineLabel: 0
+--- !u!114 &2033887772161360085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566194393205320515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b5c3ebb24c97464da319951cafe5a47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boundGraphSerialization: '{"version":2.96,"type":"FlowCanvas.FlowScript","translation":{"x":-490.0,"y":-281.0},"nodes":[{"_position":{"x":669.0,"y":468.0},"$type":"FlowCanvas.Nodes.EnableEvent","$id":"2"},{"_inputPortValues":{},"_position":{"x":864.0,"y":489.0},"$type":"FlowCanvas.Nodes.SwitchBool","$id":"3"},{"_method":{"_baseInfo":"ColorCache|setColorIndex|System.Void","_paramsInfo":"System.Int32"},"_callable":true,"_inputPortValues":{"ColorCache":{"$content":1,"$type":"ColorCache"}},"_position":{"x":1138.0,"y":840.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"5"},{"_method":{"_baseInfo":"ColorCache|setColorIndex|System.Void","_paramsInfo":"System.Int32"},"_callable":true,"_inputPortValues":{"ColorCache":{"$content":1,"$type":"ColorCache"},"index":{"$content":1,"$type":"System.Int32"}},"_position":{"x":1133.0,"y":650.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"8"},{"_field":{"_baseInfo":"UIButton|onDisableButton"},"_inputPortValues":{},"_position":{"x":769.0,"y":677.0},"$type":"FlowCanvas.Nodes.UnityEventAutoCallbackEvent","$id":"11"},{"_field":{"_baseInfo":"UIButton|onEnableButton"},"_inputPortValues":{},"_position":{"x":767.0,"y":839.0},"$type":"FlowCanvas.Nodes.UnityEventAutoCallbackEvent","$id":"14"},{"_selectedInstanceMembers":["isEnabled"],"_inputPortValues":{},"_position":{"x":626.0,"y":562.0},"$type":"FlowCanvas.Nodes.ReflectedExtractorNodeWrapper`1[[UIButton,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"17"}],"connections":[{"_sourcePortName":"Out","_targetPortName":"In","_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"True","_targetPortName":"
+    ","_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"5"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"False","_targetPortName":"
+    ","_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"8"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"Event","_targetPortName":"
+    ","_sourceNode":{"$ref":"11"},"_targetNode":{"$ref":"8"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"Event","_targetPortName":"
+    ","_sourceNode":{"$ref":"14"},"_targetNode":{"$ref":"5"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"isEnabled","_targetPortName":"Condition","_sourceNode":{"$ref":"17"},"_targetNode":{"$ref":"3"},"$type":"FlowCanvas.BinderConnection`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}],"localBlackboard":{"_name":"Local
+    Blackboard","_variables":{}}}'
+  boundGraphObjectReferences:
+  - {fileID: 0}
+  - {fileID: 8031461856123895762}
+  enableAction: 0
+  disableAction: 0
+  _graph: {fileID: 0}
+  _blackboard: {fileID: 3277353587412253037}
+--- !u!114 &3277353587412253037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566194393205320515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _serializedBlackboard: '{"_variables":{}}'
+  _objectReferences: []
+--- !u!114 &1628495555284594797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054254335604749712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _serializedBlackboard: '{"_variables":{}}'
+  _objectReferences: []
+--- !u!114 &7093088833996556046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054254335604749712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b5c3ebb24c97464da319951cafe5a47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boundGraphSerialization: '{"version":2.96,"type":"FlowCanvas.FlowScript","translation":{"x":-591.0,"y":-330.0},"zoomFactor":0.9010414,"nodes":[{"_field":{"_baseInfo":"UIButton|onDisableButton"},"_inputPortValues":{},"_position":{"x":882.0,"y":663.0},"$type":"FlowCanvas.Nodes.UnityEventAutoCallbackEvent","$id":"2"},{"_method":{"_baseInfo":"ColorCache|setColorIndex|System.Void","_paramsInfo":"System.Int32"},"_callable":true,"_inputPortValues":{"ColorCache":{"$content":1,"$type":"ColorCache"}},"_position":{"x":1245.0,"y":636.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"5"},{"_method":{"_baseInfo":"EazyFrameCache|setFrameIndexUnPixelPerfect|System.Void","_paramsInfo":"System.Int32"},"_callable":true,"_inputPortValues":{"EazyFrameCache":{"$content":2,"$type":"EazyFrameCache"}},"_position":{"x":1524.0,"y":649.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"8"},{"_field":{"_baseInfo":"UIButton|onEnableButton"},"_inputPortValues":{},"_position":{"x":880.0,"y":825.0},"$type":"FlowCanvas.Nodes.UnityEventAutoCallbackEvent","$id":"11"},{"_method":{"_baseInfo":"ColorCache|setColorIndex|System.Void","_paramsInfo":"System.Int32"},"_callable":true,"_inputPortValues":{"ColorCache":{"$content":1,"$type":"ColorCache"},"index":{"$content":1,"$type":"System.Int32"}},"_position":{"x":1251.0,"y":826.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"14"},{"_method":{"_baseInfo":"EazyFrameCache|setFrameIndexUnPixelPerfect|System.Void","_paramsInfo":"System.Int32"},"_callable":true,"_inputPortValues":{"EazyFrameCache":{"$content":2,"$type":"EazyFrameCache"},"index":{"$content":1,"$type":"System.Int32"}},"_position":{"x":1541.0,"y":837.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"17"}],"connections":[{"_sourcePortName":"Event","_targetPortName":"
+    ","_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"5"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"
+    ","_targetPortName":" ","_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"8"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"Event","_targetPortName":"
+    ","_sourceNode":{"$ref":"11"},"_targetNode":{"$ref":"14"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"
+    ","_targetPortName":" ","_sourceNode":{"$ref":"14"},"_targetNode":{"$ref":"17"},"$type":"FlowCanvas.BinderConnection"}],"localBlackboard":{"_name":"Local
+    Blackboard","_variables":{}}}'
+  boundGraphObjectReferences:
+  - {fileID: 0}
+  - {fileID: 5498796997607086028}
+  - {fileID: 6674895529192852941}
+  enableAction: 0
+  disableAction: 0
+  _graph: {fileID: 0}
+  _blackboard: {fileID: 1628495555284594797}
+--- !u!114 &5498796997607086028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8859432641412234603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15e02d4da8b709042b3e3ec4d60607c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colors:
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 0.05882353, g: 0.2627451, b: 0.5019608, a: 1}
+  isOutlineLabel: 0
 --- !u!114 &4040770898672685611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1854,60 +1963,6 @@ Transform:
   m_Father: {fileID: 3609560214836640735}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4057514116651927000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7037627233161487288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mTerm: ui/watch
-  mTermSecondary: 
-  PrimaryTermModifier: 0
-  SecondaryTermModifier: 0
-  TermPrefix: 
-  TermSuffix: 
-  LocalizeOnAwake: 1
-  IgnoreRTL: 0
-  MaxCharactersInRTL: 0
-  IgnoreNumbersInRTL: 1
-  CorrectAlignmentForRTL: 1
-  AddSpacesToJoinedLanguages: 0
-  AllowLocalizedParameters: 1
-  TranslatedObjects: []
-  LocalizeEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  AlwaysForceLocalize: 0
-  LocalizeCallBack:
-    Target: {fileID: 0}
-    MethodName: 
-  mGUI_ShowReferences: 0
-  mGUI_ShowTems: 1
-  mGUI_ShowCallback: 0
-  mLocalizeTarget: {fileID: 0}
-  mLocalizeTargetName: I2.Loc.LocalizeTarget_NGUI_Label
---- !u!114 &8031461856123895762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7037627233161487288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15e02d4da8b709042b3e3ec4d60607c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colors:
-  - {r: 0.4901961, g: 0.10196079, b: 0.09019608, a: 1}
-  - {r: 0.25490198, g: 0.25490198, b: 0.25490198, a: 1}
-  isOutlineLabel: 0
 --- !u!1 &7266591879314883595
 GameObject:
   m_ObjectHideFlags: 0
@@ -2208,7 +2263,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 5.470588
+  aspectRatio: 5.6875
   dirtyChange: 0
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 0}
@@ -2241,98 +2296,6 @@ MonoBehaviour:
   mMaxLineHeight: 0
   mLineWidth: 0
   mMultiline: 1
---- !u!114 &8847225477565659690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8859432641089807402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mTerm: ui/no
-  mTermSecondary: 
-  PrimaryTermModifier: 0
-  SecondaryTermModifier: 0
-  TermPrefix: 
-  TermSuffix: 
-  LocalizeOnAwake: 1
-  IgnoreRTL: 0
-  MaxCharactersInRTL: 0
-  IgnoreNumbersInRTL: 1
-  CorrectAlignmentForRTL: 1
-  AddSpacesToJoinedLanguages: 0
-  AllowLocalizedParameters: 1
-  TranslatedObjects: []
-  LocalizeEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  AlwaysForceLocalize: 0
-  LocalizeCallBack:
-    Target: {fileID: 0}
-    MethodName: 
-  mGUI_ShowReferences: 0
-  mGUI_ShowTems: 1
-  mGUI_ShowCallback: 0
-  mLocalizeTarget: {fileID: 0}
-  mLocalizeTargetName: I2.Loc.LocalizeTarget_NGUI_Label
---- !u!114 &5498796997607086028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8859432641412234603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15e02d4da8b709042b3e3ec4d60607c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colors:
-  - {r: 1, g: 1, b: 1, a: 1}
-  - {r: 0.05882353, g: 0.2627451, b: 0.5019608, a: 1}
-  isOutlineLabel: 0
---- !u!114 &8847225475769717839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8859432641543588417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mTerm: ui/yes
-  mTermSecondary: 
-  PrimaryTermModifier: 0
-  SecondaryTermModifier: 0
-  TermPrefix: 
-  TermSuffix: 
-  LocalizeOnAwake: 1
-  IgnoreRTL: 0
-  MaxCharactersInRTL: 0
-  IgnoreNumbersInRTL: 1
-  CorrectAlignmentForRTL: 1
-  AddSpacesToJoinedLanguages: 0
-  AllowLocalizedParameters: 1
-  TranslatedObjects: []
-  LocalizeEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  AlwaysForceLocalize: 0
-  LocalizeCallBack:
-    Target: {fileID: 0}
-    MethodName: 
-  mGUI_ShowReferences: 0
-  mGUI_ShowTems: 1
-  mGUI_ShowCallback: 0
-  mLocalizeTarget: {fileID: 0}
-  mLocalizeTargetName: I2.Loc.LocalizeTarget_NGUI_Label
 --- !u!1001 &2542871444165606406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2379,6 +2342,11 @@ PrefabInstance:
         type: 3}
       propertyPath: mColor.b
       value: 0.1014151
+      objectReference: {fileID: 0}
+    - target: {fileID: 1465009443686343120, guid: 59335d092617b884a9f8d88ce9e2de4b,
+        type: 3}
+      propertyPath: dirtyChange
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4595982193048420028, guid: 59335d092617b884a9f8d88ce9e2de4b,
         type: 3}
@@ -2503,12 +2471,6 @@ MonoBehaviour:
 --- !u!4 &5993267018314322474 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8099236306691370540, guid: 59335d092617b884a9f8d88ce9e2de4b,
-    type: 3}
-  m_PrefabInstance: {fileID: 2542871444165606406}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8859432641543588417 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6465232924857693767, guid: 59335d092617b884a9f8d88ce9e2de4b,
     type: 3}
   m_PrefabInstance: {fileID: 2542871444165606406}
   m_PrefabAsset: {fileID: 0}
@@ -2672,9 +2634,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59335d092617b884a9f8d88ce9e2de4b, type: 3}
---- !u!1 &8859432641089807402 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6465232924857693767, guid: 59335d092617b884a9f8d88ce9e2de4b,
+--- !u!4 &5993267016787360833 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8099236306691370540, guid: 59335d092617b884a9f8d88ce9e2de4b,
     type: 3}
   m_PrefabInstance: {fileID: 2542871445993017965}
   m_PrefabAsset: {fileID: 0}
@@ -2690,9 +2652,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fdca5042b1d12a4890ec1bd4f04290d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &5993267016787360833 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8099236306691370540, guid: 59335d092617b884a9f8d88ce9e2de4b,
+--- !u!1 &8859432641089807402 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6465232924857693767, guid: 59335d092617b884a9f8d88ce9e2de4b,
     type: 3}
   m_PrefabInstance: {fileID: 2542871445993017965}
   m_PrefabAsset: {fileID: 0}
@@ -2755,7 +2717,7 @@ PrefabInstance:
     - target: {fileID: 2815957395544547536, guid: de8a1b992a8f63345bf362888432c403,
         type: 3}
       propertyPath: startingRenderQueue
-      value: 3002
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 2815957395544547537, guid: de8a1b992a8f63345bf362888432c403,
         type: 3}
@@ -2950,6 +2912,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de8a1b992a8f63345bf362888432c403, type: 3}
+--- !u!114 &3911914676005830832 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1767201913, guid: de8a1b992a8f63345bf362888432c403,
+    type: 3}
+  m_PrefabInstance: {fileID: 3911914674272230601}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &911932384 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3911914674982528809, guid: de8a1b992a8f63345bf362888432c403,
@@ -2968,6 +2942,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &968356464 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3911914675185757881, guid: de8a1b992a8f63345bf362888432c403,
+    type: 3}
+  m_PrefabInstance: {fileID: 3911914674272230601}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1251336588964887579 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2815957395544547538, guid: de8a1b992a8f63345bf362888432c403,
@@ -2986,24 +2966,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3911914674272230601}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &968356464 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3911914675185757881, guid: de8a1b992a8f63345bf362888432c403,
-    type: 3}
-  m_PrefabInstance: {fileID: 3911914674272230601}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3911914676005830832 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1767201913, guid: de8a1b992a8f63345bf362888432c403,
-    type: 3}
-  m_PrefabInstance: {fileID: 3911914674272230601}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &911932385 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3911914674982528808, guid: de8a1b992a8f63345bf362888432c403,
@@ -3749,6 +3711,18 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 4815503636912961773, guid: 0e9851e33ccfd0a47b7153b8543aba9d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0e9851e33ccfd0a47b7153b8543aba9d, type: 3}
+--- !u!114 &3971851927132138236 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1084639573213704564, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+    type: 3}
+  m_PrefabInstance: {fileID: 4040770899032578952}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8859432641412234603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8859432641412234603 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4819050290927036131, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
@@ -3773,39 +3747,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4040770899032578952}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2542871445707965085 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1970795024920271125, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
-    type: 3}
-  m_PrefabInstance: {fileID: 4040770899032578952}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2054254335604749712 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2635061900954856984, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
     type: 3}
   m_PrefabInstance: {fileID: 4040770899032578952}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3971851927132138236 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1084639573213704564, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+--- !u!1 &3609560215242722550 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 721711037950089086, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
     type: 3}
   m_PrefabInstance: {fileID: 4040770899032578952}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8859432641412234603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &3609560215242722549 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 721711037950089085, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
     type: 3}
   m_PrefabInstance: {fileID: 4040770899032578952}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3609560215242722550 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 721711037950089086, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+--- !u!4 &2542871445707965085 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1970795024920271125, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
     type: 3}
   m_PrefabInstance: {fileID: 4040770899032578952}
   m_PrefabAsset: {fileID: 0}
@@ -4079,9 +4041,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e9851e33ccfd0a47b7153b8543aba9d, type: 3}
---- !u!4 &2542871445448332101 stripped
+--- !u!4 &3609560214445628717 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 1970795024920271125, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+  m_CorrespondingSourceObject: {fileID: 721711037950089085, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
     type: 3}
   m_PrefabInstance: {fileID: 4040770899812829776}
   m_PrefabAsset: {fileID: 0}
@@ -4097,9 +4059,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cda214cdb8eb15b4cad6cc1065929273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &3609560214445628717 stripped
+--- !u!4 &2542871445448332101 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 721711037950089085, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
+  m_CorrespondingSourceObject: {fileID: 1970795024920271125, guid: 0e9851e33ccfd0a47b7153b8543aba9d,
     type: 3}
   m_PrefabInstance: {fileID: 4040770899812829776}
   m_PrefabAsset: {fileID: 0}
@@ -4130,6 +4092,11 @@ PrefabInstance:
         type: 3}
       propertyPath: aspectRatio
       value: 0.8918919
+      objectReference: {fileID: 0}
+    - target: {fileID: 189336630545998856, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+        type: 3}
+      propertyPath: dirtyChange
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2539561911282382920, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
         type: 3}
@@ -4236,8 +4203,25 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 18
       objectReference: {fileID: 0}
+    - target: {fileID: 7052101177647315372, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaa6c9b254bbcfa4aac049b71319e1ad, type: 3}
+--- !u!114 &3927140188316062398 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6952205297065852993, guid: aaa6c9b254bbcfa4aac049b71319e1ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 6267656993013388031}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdca5042b1d12a4890ec1bd4f04290d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8686134772493499331 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3346290375905700156, guid: aaa6c9b254bbcfa4aac049b71319e1ad,

@@ -69,6 +69,8 @@ namespace EasyMobile
         /// </summary>
         public static event Action<RewardedAdNetwork, AdPlacement> RewardedAdCompleted;
 
+
+        public static event Action<string> LoadRewardAdsFailed;
         /// <summary>
         /// Occurs when ads have been removed.
         /// </summary>
@@ -284,6 +286,7 @@ namespace EasyMobile
                             break;
                     }
                 }
+                sDefaultRewardedAdClient.OnAdFailedToLoad = LoadRewardAdsFailed;
                 return sDefaultRewardedAdClient;
             }
         }

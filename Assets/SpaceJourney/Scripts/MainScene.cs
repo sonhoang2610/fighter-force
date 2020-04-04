@@ -7,6 +7,7 @@ using System;
 using UnityEngine.Networking;
 using ParadoxNotion.Services;
 using Firebase.Analytics;
+using LitJson;
 
 namespace EazyEngine.Space.UI
 {
@@ -48,25 +49,25 @@ namespace EazyEngine.Space.UI
                     StoreReview.RequestRating();
                 }
             }
-            StartCoroutine(delayAction(0.01f, delegate
-            {
-                bool isConnected = false;
-                var pDateTime = TimeExtension.GetNetTime(ref isConnected);
-                if (isConnected && GameManager.Instance.dailyGiftModule.lastDate != pDateTime.DayOfYear && GameManager.Instance.dailyGiftModule.currentDay < GameDatabase.Instance.databaseDailyGift.item.Count)
+            StartCoroutine(TimeExtension.GetNetTime((time, error) => {
+                if (string.IsNullOrEmpty(error))
                 {
-                    int pStepGame = PlayerPrefs.GetInt("firstGame", 0);
-                    int pFirstBox = PlayerPrefs.GetInt("FirstBoxReward", 0);
-                    if (pStepGame < 2) return;
-                    if (pFirstBox == 1) return;
-             
-                    MidLayer.Instance.boxDailyGift.FirstTime = true;
-                    MidLayer.Instance.boxDailyGift.Time = pDateTime;
-                    MidLayer.Instance.boxDailyGift.IsGetTime = true;
-                    MidLayer.Instance.boxDailyGift.GetComponent<UIElement>().show();
+                    var pJson = JsonMapper.ToObject(time);
+                    DateTime pDateTime = TimeExtension.UnixTimeStampToDateTime(double.Parse(pJson["time"].ToString())).ToLocalTime();
+                    if (GameManager.Instance.dailyGiftModule.lastDate != pDateTime.DayOfYear && GameManager.Instance.dailyGiftModule.currentDay < GameDatabase.Instance.databaseDailyGift.item.Count)
+                    {
+                        int pStepGame = PlayerPrefs.GetInt("firstGame", 0);
+                        int pFirstBox = PlayerPrefs.GetInt("FirstBoxReward", 0);
+                        if (pStepGame < 2) return;
+                        if (pFirstBox == 1) return;
+
+                        MidLayer.Instance.boxDailyGift.FirstTime = true;
+                        MidLayer.Instance.boxDailyGift.Time = pDateTime;
+                        MidLayer.Instance.boxDailyGift.IsGetTime = true;
+                        MidLayer.Instance.boxDailyGift.GetComponent<UIElement>().show();
+                    }
                 }
             }));
-         
-
         }
 
 
@@ -492,7 +493,7 @@ namespace EazyEngine.Space.UI
 
         public IEnumerator setUpNotify()
         {
-
+            Debug.Log("before notify");
             var pContainer = DatabaseNotifyReward.Instance.container;
             List<ItemNotifyReward> pNotifies = new List<ItemNotifyReward>();
             pNotifies.AddRange(pContainer);
@@ -513,6 +514,7 @@ namespace EazyEngine.Space.UI
 
                     EzEventManager.TriggerEvent(new RewardEvent() { item = new BaseItemGameInstanced() { item = pNotifies[i], quantity = 1 } });
                     GameManager.Instance.SaveGame();
+                    Debug.Log("break notify");
                     break;
                 }
 
@@ -525,13 +527,14 @@ namespace EazyEngine.Space.UI
                 }
                 GameManager.Instance.Database.IdNotifySchedule.Clear();
             }
+            Debug.Log("end notify");
             yield return null; 
         }
 
         // Start is called before the first frame update
         void Start()
         {
-      
+            Debug.Log("before start");
             if (GameManager.Instance.Database.firstTimeGame == 0)
             {
                 GameManager.Instance.Database.lastInGameTime = System.DateTime.Now;
@@ -613,8 +616,11 @@ namespace EazyEngine.Space.UI
 
         IEnumerator delayAction(float pDelay, System.Action action)
         {
+            Debug.Log("start delay");
             yield return new WaitForSeconds(pDelay);
+            Debug.Log("start delay 1");
             action();
+            Debug.Log("start delay 2");
         }
 
         public void loginGameService()

@@ -36,6 +36,10 @@ namespace EazyEngine.Space.UI
             EzEventManager.TriggerEvent(new UIMessEvent("GameServiceLogOut"));
             gameObject.SetActive(false);
             gameObject.SetActive(true);
+            if (btnLogOut)
+            {
+                btnLogOut.gameObject.SetActive(false);
+            }
         }
         void FetchSavedGames()
         {
@@ -44,7 +48,7 @@ namespace EazyEngine.Space.UI
                 {
                     if (string.IsNullOrEmpty(error))
                     {
-                        statussave.text = "Load data successfully...";
+                        statussave.text = "You have 1 data saved on cloud.";
                         Debug.Log("Fetched saved games successfully! Got " + games.Length + " saved games.");
                         if(games.Length > 0)
                         {
@@ -56,7 +60,7 @@ namespace EazyEngine.Space.UI
                     }
                     else
                     {
-                        statussave.gameObject.SetActive(false);
+                        statussave.text = "No data saved on cloud.";
                         btnLoad.isEnabled = false;
                         Debug.Log("Fetching saved games failed with error " + error);
                     }
@@ -121,7 +125,20 @@ namespace EazyEngine.Space.UI
         }
         public void LoadGame()
         {
-            ReadSavedGame(mySavedGame);
+            HUDLayer.Instance.showDialog("Notice", "Load game will lost currently data. Are you sure want to load saved data?",new ButtonInfo() { 
+            action = delegate () {
+                ReadSavedGame(mySavedGame);
+            }
+            ,str = "YES"
+            }, new ButtonInfo()
+            {
+                action = delegate () {
+                    HUDLayer.Instance.BoxDialog.close();
+                }
+            ,
+                str = "NO"
+            });
+         
         }
         // Open saved game callback
         void OpenSavedGameCallback(SavedGame savedGame, string error)
@@ -323,10 +340,12 @@ namespace EazyEngine.Space.UI
         }
         void OnUserLoginSucceeded()
         {
+#if UNITY_ANDROID
             if (btnLogOut && GameServices.IsInitialized() && GameServices.LocalUser != null && !string.IsNullOrEmpty(GameServices.LocalUser.userName))
             {
                 btnLogOut.gameObject.SetActive(true);
             }
+#endif
             if (mySavedGame == null || !mySavedGame.IsOpen)
             {
                 if (statussave)
@@ -358,6 +377,7 @@ namespace EazyEngine.Space.UI
                 btnLoad.isEnabled = false;
                 statussave.text = "Login GameService before use Save Game to Cloud";
                 GameManager.Instance.showBannerAds(true);
+
                 if (GameServices.IsInitialized() && GameServices.LocalUser != null && !string.IsNullOrEmpty(GameServices.LocalUser.userName))
                 {
                     OpenSavedGame();
@@ -367,10 +387,12 @@ namespace EazyEngine.Space.UI
             {
                 btnLogOut.gameObject.SetActive(false);
             }
+#if UNITY_ANDROID
             if (btnLogOut && GameServices.IsInitialized() && GameServices.LocalUser != null && !string.IsNullOrEmpty(GameServices.LocalUser.userName))
             {
                 btnLogOut.gameObject.SetActive(true);
             }
+#endif
         }
         private void OnDisable()
         {

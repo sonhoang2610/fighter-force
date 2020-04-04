@@ -177,29 +177,30 @@ namespace EazyEngine.Space.UI {
             }
         }
 
-        public void showDialog(string pTitle, string pContent, ButtonInfo pAction1 = null, ButtonInfo pAction2 = null, bool showButton = true)
+        public void showDialog(string pTitle, string pContent, ButtonInfo pAction1 = null, ButtonInfo pAction2 = null, bool showButton = true,bool showCLose = true)
         {
             ((BoxDialog)BoxDialog).Title = pTitle;
             ((BoxDialog)BoxDialog).Content = pContent;
             ((BoxDialog)BoxDialog).setButton1Info(pAction1);
             ((BoxDialog)BoxDialog).setButton2Info(pAction2);
             ((BoxDialog)BoxDialog).disableButton(!showButton);
+            ((BoxDialog)BoxDialog).enableButtonClose(showCLose);
             BoxDialog.show();
         }
 
-        public void showDialogTag(string pTagTitle, string pTagContent, ButtonInfo pAction1 = null, ButtonInfo pAction2 = null)
+        public void showDialogTag(string pTagTitle, string pTagContent, ButtonInfo pAction1 = null, ButtonInfo pAction2 = null, bool showCLose = true)
         {
-            showDialog(I2.Loc.LocalizationManager.GetTranslation(pTagTitle), I2.Loc.LocalizationManager.GetTranslation(pTagContent), pAction1.convertTag(), pAction2.convertTag());
+            showDialog(I2.Loc.LocalizationManager.GetTranslation(pTagTitle), I2.Loc.LocalizationManager.GetTranslation(pTagContent), pAction1.convertTag(), pAction2.convertTag(),showCLose);
         }
 
      
-        public void showDialogNotEnoughMoney(string pItemNameNotEnough, UnityAction pAction1 = null, UnityAction pAction2 = null)
+        public void showDialogNotEnoughMoney(string pItemNameNotEnough, UnityAction pAction1 = null, UnityAction pAction2 = null, bool showCLose = true)
         {
-            showDialog(I2.Loc.LocalizationManager.GetTranslation("ui/notice"),string.Format( I2.Loc.LocalizationManager.GetTranslation("text/not_enough_money"), pItemNameNotEnough),  new ButtonInfo() {str = "ui/yes",isTag = true,action = pAction1 }, new ButtonInfo() { str = "ui/no", isTag = true, action = pAction2 }, true);
+            showDialog(I2.Loc.LocalizationManager.GetTranslation("ui/notice"),string.Format( I2.Loc.LocalizationManager.GetTranslation("text/not_enough_money"), pItemNameNotEnough),  new ButtonInfo() {str = "ui/yes",isTag = true,action = pAction1 }, new ButtonInfo() { str = "ui/no", isTag = true, action = pAction2 }, true,showCLose);
         }
-        public void showDialogNotEnoughCantBuy(string pItemNameNotEnough, UnityAction pAction1 = null, UnityAction pAction2 = null)
+        public void showDialogNotEnoughCantBuy(string pItemNameNotEnough, UnityAction pAction1 = null, UnityAction pAction2 = null, bool showCLose = true)
         {
-            showDialog(I2.Loc.LocalizationManager.GetTranslation("ui/notice"), string.Format(I2.Loc.LocalizationManager.GetTranslation("text/not_enough_cant_buy"), pItemNameNotEnough), new ButtonInfo() { str = "ui/yes", isTag = true, action = pAction1 }, new ButtonInfo() { str = "ui/no", isTag = true, action = pAction2 }, false);
+            showDialog(I2.Loc.LocalizationManager.GetTranslation("ui/notice"), string.Format(I2.Loc.LocalizationManager.GetTranslation("text/not_enough_cant_buy"), pItemNameNotEnough), new ButtonInfo() { str = "ui/yes", isTag = true, action = pAction1 }, new ButtonInfo() { str = "ui/no", isTag = true, action = pAction2 }, false,showCLose);
         }
         // Start is called before the first frame update
         void Start()

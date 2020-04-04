@@ -10,6 +10,8 @@ namespace EasyMobile
     {
         #region IAdClient Implementation
 
+        public  Action<string> OnAdFailedToLoad;
+
         protected bool mIsInitialized = false;
 
         /// <summary>

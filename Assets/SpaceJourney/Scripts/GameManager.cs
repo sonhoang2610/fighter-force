@@ -970,7 +970,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                     }
                     SaveGame();
                 }
-         
+
 #if UNITY_EDITOR
                 if (!Application.isPlaying)
                 {
@@ -1279,7 +1279,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                 timeoutAds.RemoveAt(i);
                 continue;
             }
-            else if (timeoutAds[i].placeMent == null && Advertising.IsRewardedAdReady()) 
+            else if (timeoutAds[i].placeMent == null && Advertising.IsRewardedAdReady())
             {
                 TopLayer.Instance.LoadingAds.gameObject.SetActive(false);
                 Advertising.ShowRewardedAd();
@@ -1293,21 +1293,46 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                 timeoutAds[i] = ptime;
                 if (timeoutAds[i].currentTime <= 0)
                 {
-                    if (timeoutAds[i].placeMent!= null && rewardAds.ContainsKey(timeoutAds[i].placeMent.Name))
+                    if (timeoutAds[i].placeMent != null && rewardAds.ContainsKey(timeoutAds[i].placeMent.Name))
                     {
                         TopLayer.Instance.LoadingAds.gameObject.SetActive(false);
                         rewardAds[timeoutAds[i].placeMent.Name](ResultStatusAds.TimeOut);
                         rewardAds.Remove(timeoutAds[i].placeMent.Name);
 
-                    }else if(timeoutAds[i].placeMent == null)
+                    }
+                    else if (timeoutAds[i].placeMent == null)
                     {
-                        if (rewardAds.ContainsKey("DefaultADS"))
+                        HUDLayer.Instance.showDialog("ERROR", "Load ADS failed", new ButtonInfo()
                         {
-                            TopLayer.Instance.LoadingAds.gameObject.SetActive(false);
-                            rewardAds["DefaultADS"](ResultStatusAds.TimeOut);
-                            rewardAds.Remove("DefaultADS");
-                        }
-                       
+                            str = "Retry",
+                            isTag = false,
+                            action = delegate
+                            {
+                                HUDLayer.Instance.BoxDialog.close();
+                                TopLayer.Instance.LoadingAds.gameObject.SetActive(true);
+                                Advertising.LoadRewardedAd();
+                                if (!timeoutAds.Exists(x => x.isDefault))
+                                {
+                                    timeoutAds.Add(new CountdownAds() { placeMent = null, isDefault = true, currentTime = 10 });
+                                }
+                            }
+                        }, new ButtonInfo()
+                        {
+                            str = "ui/no",
+                            isTag = true,
+                            action = delegate
+                            {
+                                HUDLayer.Instance.BoxDialog.close();
+                                TopLayer.Instance.LoadingAds.gameObject.SetActive(false);
+                                if (rewardAds.ContainsKey("DefaultADS"))
+                                {
+                                    TopLayer.Instance.LoadingAds.gameObject.SetActive(false);
+                                    rewardAds["DefaultADS"](ResultStatusAds.TimeOut);
+                                    rewardAds.Remove("DefaultADS");
+                                }
+                            }
+                        },true, false);
+
                     }
                     timeoutAds.RemoveAt(i);
                 }
@@ -1394,9 +1419,57 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             }
         }
     }
+
+    public void loadAdsFailed(string pError)
+    {
+       if( timeoutAds.Exists(x => x.isDefault))
+        {
+            var pCount = timeoutAds.Find(x => x.isDefault);
+            if(pCount.currentTime >= 2)
+            {
+                StartCoroutine(delayAction(1, delegate
+                {
+                    Advertising.LoadRewardedAd();
+                }));
+                return;
+            }
+        }
+        timeoutAds.RemoveAll(x => x.isDefault);
+        HUDLayer.Instance.showDialog("ERROR","Load ADS failed: " + pError, new ButtonInfo()
+        {
+            str = "Retry",
+            isTag = false,
+            action = delegate
+            {
+                HUDLayer.Instance.BoxDialog.close();
+                TopLayer.Instance.LoadingAds.gameObject.SetActive(true);
+                Advertising.LoadRewardedAd();
+                if (!timeoutAds.Exists(x => x.isDefault))
+                {
+                    timeoutAds.Add(new CountdownAds() { placeMent = null, isDefault = true, currentTime = 10 });
+                }
+            }
+        }, new ButtonInfo()
+        {
+            str = "ui/no",
+            isTag = true,
+            action = delegate
+            {
+                HUDLayer.Instance.BoxDialog.close();
+                TopLayer.Instance.LoadingAds.gameObject.SetActive(false);
+                if (rewardAds.ContainsKey("DefaultADS"))
+                {
+                    TopLayer.Instance.LoadingAds.gameObject.SetActive(false);
+                    rewardAds["DefaultADS"](ResultStatusAds.TimeOut);
+                    rewardAds.Remove("DefaultADS");
+                }
+            }
+        },true,false);
+ 
+    }
     void OnEnable()
     {
-
+        Advertising.LoadRewardAdsFailed += loadAdsFailed;
         InAppPurchasing.PurchaseCompleted += PurchaseCompletedHandler;
         InAppPurchasing.PurchaseFailed += PurchaseFailedHandler;
         InAppPurchasing.InitializeSucceeded += initIAPSuccess;
@@ -1445,6 +1518,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     void OnDisable()
     {
         //  
+        Advertising.LoadRewardAdsFailed -= loadAdsFailed;
         InAppPurchasing.PurchaseCompleted -= PurchaseCompletedHandler;
         InAppPurchasing.PurchaseFailed -= PurchaseFailedHandler;
         GameServices.UserLoginSucceeded -= OnUserLoginSucceeded;
@@ -1459,13 +1533,15 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
 
     }
     float TimeScaleCache = 1;
+    bool isFocus = true;
     private void OnApplicationFocus(bool focus)
     {
+        if (focus == isFocus) return;
         if (!focus)
         {
             AudioListener.pause = true;
             TimeScaleCache = Time.timeScale;
-            Time.timeScale = 0;
+            // Time.timeScale = 1;
             Application.targetFrameRate = 10;
             GameManager.Instance.Database.lastInGameTime = System.DateTime.Now;
             var pContainer = DatabaseNotifyReward.Instance.container;
@@ -1478,11 +1554,11 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                 TimeSpan delay = TimeSpan.FromSeconds(pNotifies[i].TimeAFK);
                 GameManager.Instance.Database.IdNotifySchedule.Add(Notifications.ScheduleLocalNotification(delay, content));
             }
-            if(_databaseInstanced != null && _databaseInstanced.spPlanes.Count > 0)
+            if (_databaseInstanced != null && _databaseInstanced.spPlanes.Count > 0)
             {
                 SaveGame();
             }
-          
+
         }
         else
         {
@@ -1495,13 +1571,14 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                 Database.IdNotifySchedule.Clear();
             }
             Application.targetFrameRate = 60;
-            Time.timeScale = TimeScaleCache;
+            //Time.timeScale = TimeScaleCache;
             AudioListener.pause = false;
         }
+        isFocus = focus;
     }
     void onRewardedAdComplete(RewardedAdNetwork pNetWork, AdPlacement placement)
     {
-        if(placement == AdPlacement.Default)
+        if (placement == AdPlacement.Default)
         {
             GameManager.Instance.Database.collectionDailyInfo.watchADS++;
             GameManager.Instance.Database.collectionInfo.watchADS++;
@@ -1533,7 +1610,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             }
             return;
         }
-            if (rewardAds.ContainsKey(placement.Name))
+        if (rewardAds.ContainsKey(placement.Name))
         {
             rewardAds[placement.Name](ResultStatusAds.Failed);
             rewardAds.Remove(placement.Name);
@@ -1543,11 +1620,13 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     // Event handlers
     void OnUserLoginSucceeded()
     {
+        OnApplicationFocus(true);
         EzEventManager.TriggerEvent(new UIMessEvent("GameServiceInitialized"));
     }
 
     void OnUserLoginFailed()
     {
+        OnApplicationFocus(true);
         Debug.Log("User login failed.");
     }
     // Successful purchase handler
@@ -1666,15 +1745,14 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     }
     public void showRewardAds(string pID, System.Action<ResultStatusAds> onResult)
     {
-//#if UNITY_EDITOR
-//        onResult(ResultStatusAds.Success);
-//        return;
-//#endif
+        //#if UNITY_EDITOR
+        //        onResult(ResultStatusAds.Success);
+        //        return;
+        //#endif
         StartCoroutine(checkInternetConnection(delegate (bool pResult)
         {
             if (pResult)
             {
-    
                 if (Advertising.IsRewardedAdReady())
                 {
                     Advertising.ShowRewardedAd();
@@ -1685,9 +1763,9 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                     Advertising.LoadRewardedAd();
                     if (!timeoutAds.Exists(x => x.isDefault))
                     {
-                        timeoutAds.Add(new CountdownAds() {placeMent= null, isDefault = true, currentTime = 10 });
+                        timeoutAds.Add(new CountdownAds() { placeMent = null, isDefault = true, currentTime = 10 });
                     }
-                   
+
                 }
                 if (!rewardAds.ContainsKey("DefaultADS"))
                 {
