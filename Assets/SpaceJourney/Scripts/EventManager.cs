@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
 using System.Collections.Generic;
+using EazyEngine.Space;
 
 namespace EazyEngine.Tools
 {
@@ -146,6 +147,17 @@ namespace EazyEngine.Tools
         /// </suEzary>
         /// <param name="newEvent">The event to trigger.</param>
         /// <typeparam name="EzEvent">The 1st type parameter.</typeparam>
+        /// 
+        public static void TriggerAssetLoaded(TriggerLoadAsset pEvent)
+        {
+          var pJob =  AssetLoaderManager.Instance.getJob(pEvent.name);
+            if (pJob.CurrentPercent >= 1) return;
+            if(pJob != null)
+            {
+                pJob.CurrentPercent = pEvent.percent;
+            }
+            TriggerEvent(pEvent);
+        }
         public static void TriggerEvent<EzEvent>(EzEvent newEvent) where EzEvent : struct
         {
             List<EzEventListenerBase> list;

@@ -12,7 +12,7 @@ using LitJson;
 namespace EazyEngine.Space.UI
 {
 
-    public class MainScene : Singleton<MainScene>, IBackBehavior,EzEventListener<UIMessEvent>
+    public class MainScene : Singleton<MainScene>, IBackBehavior,EzEventListener<UIMessEvent>,EzEventListener<TriggerLoadAsset>
     {
 
         public BoxInfoPlane boxInfo;
@@ -23,8 +23,9 @@ namespace EazyEngine.Space.UI
         public GameObject boxRank;
         public GameObject boxLevel;
         public UILabel nameUser, idUser;
+        public GameObject layerMain, layerChooseMap;
         protected List<BoxBasePlane> selectedBoxPlane = new List<BoxBasePlane>();
-     
+        
         public LayerPrepare layerPrepare;
         protected PlaneInfoConfig selectedPlane;
 
@@ -49,27 +50,38 @@ namespace EazyEngine.Space.UI
                     StoreReview.RequestRating();
                 }
             }
-            StartCoroutine(TimeExtension.GetNetTime((time, error) => {
-                if (string.IsNullOrEmpty(error))
-                {
-                    var pJson = JsonMapper.ToObject(time);
-                    DateTime pDateTime = TimeExtension.UnixTimeStampToDateTime(double.Parse(pJson["time"].ToString())).ToLocalTime();
-                    if (GameManager.Instance.dailyGiftModule.lastDate != pDateTime.DayOfYear && GameManager.Instance.dailyGiftModule.currentDay < GameDatabase.Instance.databaseDailyGift.item.Count)
-                    {
-                        int pStepGame = PlayerPrefs.GetInt("firstGame", 0);
-                        int pFirstBox = PlayerPrefs.GetInt("FirstBoxReward", 0);
-                        if (pStepGame < 2) return;
-                        if (pFirstBox == 1) return;
+            //StartCoroutine(TimeExtension.GetNetTime((time, error) => {
+            //    if (string.IsNullOrEmpty(error))
+            //    {
+            //        var pJson = JsonMapper.ToObject(time);
+            //        DateTime pDateTime = TimeExtension.UnixTimeStampToDateTime(double.Parse(pJson["time"].ToString())).ToLocalTime();
+            //        if (GameManager.Instance.dailyGiftModule.lastDate != pDateTime.DayOfYear && GameManager.Instance.dailyGiftModule.currentDay < GameDatabase.Instance.databaseDailyGift.item.Count)
+            //        {
+            //            int pStepGame = PlayerPrefs.GetInt("firstGame", 0);
+            //            int pFirstBox = PlayerPrefs.GetInt("FirstBoxReward", 0);
+            //            if (pStepGame < 2) return;
+            //            if (pFirstBox == 1) return;
 
-                        MidLayer.Instance.boxDailyGift.FirstTime = true;
-                        MidLayer.Instance.boxDailyGift.Time = pDateTime;
-                        MidLayer.Instance.boxDailyGift.IsGetTime = true;
-                        MidLayer.Instance.boxDailyGift.GetComponent<UIElement>().show();
-                    }
-                }
-            }));
+            //            MidLayer.Instance.boxDailyGift.FirstTime = true;
+            //            MidLayer.Instance.boxDailyGift.Time = pDateTime;
+            //            MidLayer.Instance.boxDailyGift.IsGetTime = true;
+            //            MidLayer.Instance.boxDailyGift.GetComponent<UIElement>().show();
+            //        }
+            //    }
+            //}));
+            StartCoroutine(moduleUpdate());
         }
-
+        public IEnumerator moduleUpdate()
+        {
+            if (AssetLoaderManager.Instance.getPercentJob("Main") >= 1)
+            {
+                yield return null;
+            }
+            layerChooseMap.gameObject.SetActive(true);
+            yield return new WaitForEndOfFrame();
+            layerMain.gameObject.SetActive(true);
+           
+        }
 
 
 
@@ -78,7 +90,8 @@ namespace EazyEngine.Space.UI
         {
             GameServices.UserLoginSucceeded += OnUserLoginSucceeded;
             GameServices.UserLoginFailed += OnUserLoginFailed;
-            EzEventManager.AddListener(this);
+            EzEventManager.AddListener<UIMessEvent>(this);
+            EzEventManager.AddListener<TriggerLoadAsset>(this);
         }
 
         // Unsubscribe
@@ -86,7 +99,8 @@ namespace EazyEngine.Space.UI
         {
             GameServices.UserLoginSucceeded -= OnUserLoginSucceeded;
             GameServices.UserLoginFailed -= OnUserLoginFailed;
-            EzEventManager.RemoveListener(this);
+            EzEventManager.RemoveListener<UIMessEvent>(this);
+            EzEventManager.RemoveListener<TriggerLoadAsset>(this);
         }
 
         //public void checkUpgradeFirstSuccess()
@@ -370,14 +384,17 @@ namespace EazyEngine.Space.UI
         public void showBoxShop()
         {
         
-            Firebase.Analytics.FirebaseAnalytics.LogEvent("PressShop");
+            EazyAnalyticTool.LogEvent("PressShop");
             MidLayer.Instance.boxShop.show();
         }
         public void setDataMainPlane(PlaneInfoConfig pInfo)
         {
             if (pInfo.GetType() == typeof(SupportPlaneInfoConfig)) return;
             selectedPlane = pInfo;
-            boxInfo.Data = pInfo;
+            if (boxInfo)
+            {
+                boxInfo.Data = pInfo;
+            }
             btnFreePlay.gameObject.SetActive(!(pInfo.CurrentLevel > 0));
             boxRank.gameObject.SetActive((pInfo.CurrentLevel > 0));
             boxRank.GetComponentInChildren<EazyFrameCache>().setFrameIndex(pInfo.info.RankPlane);
@@ -432,7 +449,15 @@ namespace EazyEngine.Space.UI
             GameManager.Instance.LoadLevel(GameManager.Instance.ChoosedLevel);
 
         }
-
+        private void OnDestroy()
+        {
+            string[] pJobDestroy = new string[] { "Main/Upgrade", "Main/ChooseMap", "Main/MainScene" };
+            for(int i = 0; i < pJobDestroy.Length; ++i)
+            {
+                AssetLoaderManager.Instance.destroyJob.Add(pJobDestroy[i]);
+            }
+            AssetLoaderManager.Instance.clearJob();
+        }
         public void freePlay(UIButton btnDisable)
         {
             GameManager.Instance.isGuide = false;
@@ -458,7 +483,7 @@ namespace EazyEngine.Space.UI
         {
             stateGames.Add("ChooseMap");
             EzEventManager.TriggerEvent(new UIMessEvent("ChooseMap"));
-            FirebaseAnalytics.LogEvent("FightButton");
+            EazyAnalyticTool.LogEvent("FightButton");
         }
         public void preparePlay()
         {
@@ -561,52 +586,58 @@ namespace EazyEngine.Space.UI
             //    choosedMap();
             //    StartCoroutine(delayAction(0.25f, preparePlay));
             //}
-            /*else*/ if (GameManager.Instance.scehduleUI == ScheduleUIMain.UPGRADE)
+            /*else*/ 
+            var pJobMain = AssetLoaderManager.Instance.getPercentJob("Main");
+            if (pJobMain >= 1)
             {
-                upgrade();
-            }
-            int pFirstBox = PlayerPrefs.GetInt("FirstBoxReward", 0);
-            int pFirstGame = PlayerPrefs.GetInt("firstGame", 0);
-            int pFirstOpenGoogle = PlayerPrefs.GetInt("FirstOpenGoogle", 0);
-            if (pFirstGame != 0 && (SceneManager.Instance.previousScene.Contains("Home") || pFirstOpenGoogle == 0))
-            {
-#if !UNITY_STANDALONE
-                GameServices.ManagedInit();
-#endif
-                PlayerPrefs.SetInt("FirstOpenGoogle", 1);
-            }
-            if (pFirstGame == 0)
-            {
-                SceneManager.Instance.markDirtyBloomMK();
-                GameManager.Instance.Database.firstOnline = System.DateTime.Now;
-                GameManager.Instance.SaveGame();
-                EzEventManager.TriggerEvent(new GuideEvent("FirstGame", delegate
+                if (GameManager.Instance.scehduleUI == ScheduleUIMain.UPGRADE)
                 {
-                    SceneManager.Instance.removeDirtyBloomMK();
-                    PlayerPrefs.SetInt("firstGame", 9999);
-                    MainScene.Instance.freePlayGuide();
-                }));
+                    upgrade();
+                }
+                checkGuide = true;
+                int pFirstBox = PlayerPrefs.GetInt("FirstBoxReward", 0);
+                int pFirstGame = PlayerPrefs.GetInt("firstGame", 0);
+                int pFirstOpenGoogle = PlayerPrefs.GetInt("FirstOpenGoogle", 0);
+                if (pFirstGame != 0 && (SceneManager.Instance.previousScene.Contains("Home") || pFirstOpenGoogle == 0))
+                {
+#if !UNITY_STANDALONE
+                    GameServices.ManagedInit();
+#endif
+                    PlayerPrefs.SetInt("FirstOpenGoogle", 1);
+                }
+                if (pFirstGame == 0)
+                {
+                    SceneManager.Instance.markDirtyBloomMK();
+                    GameManager.Instance.Database.firstOnline = System.DateTime.Now;
+                    GameManager.Instance.SaveGame();
+                    EzEventManager.TriggerEvent(new GuideEvent("FirstGame", delegate
+                    {
+                        SceneManager.Instance.removeDirtyBloomMK();
+                        PlayerPrefs.SetInt("firstGame", 9999);
+                        MainScene.Instance.freePlayGuide();
+                    }));
 
-            }
-            else if (pFirstGame == 1)
-            {
-                EzEventManager.TriggerEvent(new GuideEvent("SecondGame" + ((GameManager.Instance.lastResultWin == 1) ? "Win" : "Lose"),
-                    delegate
+                }
+                else if (pFirstGame == 1)
+                {
+                    EzEventManager.TriggerEvent(new GuideEvent("SecondGame" + ((GameManager.Instance.lastResultWin == 1) ? "Win" : "Lose"),
+                        delegate
+                        {
+
+                            PlayerPrefs.SetInt("firstGame", 2);
+                            MainScene.Instance.upgrade();
+
+                        }, true));
+
+                }
+                else if (pFirstBox == 1)
+                {
+                    EzEventManager.TriggerEvent(new GuideEvent("FirstRewardBox1", delegate
                     {
 
-                        PlayerPrefs.SetInt("firstGame", 2);
-                        MainScene.Instance.upgrade();
-
-                    }, true));
-
-            }
-            else if (pFirstBox == 1)
-            {
-                EzEventManager.TriggerEvent(new GuideEvent("FirstRewardBox1", delegate
-                {
-             
-                    PlayerPrefs.SetInt("FirstBoxReward", 2);
-                },false));
+                        PlayerPrefs.SetInt("FirstBoxReward", 2);
+                    }, false));
+                }
             }
             TopLayer.Instance.block.gameObject.SetActive(false);
             GameManager.Instance.Database.logData();
@@ -616,11 +647,8 @@ namespace EazyEngine.Space.UI
 
         IEnumerator delayAction(float pDelay, System.Action action)
         {
-            Debug.Log("start delay");
             yield return new WaitForSeconds(pDelay);
-            Debug.Log("start delay 1");
             action();
-            Debug.Log("start delay 2");
         }
 
         public void loginGameService()
@@ -686,6 +714,68 @@ namespace EazyEngine.Space.UI
             {
                 nameUser.text = "UNKNOWN";
                 idUser.text = "";
+            }
+        }
+        bool checkGuide = false;
+        public void OnEzEvent(TriggerLoadAsset eventType)
+        {
+            if(eventType.name == "Main/ChooseMap/Init")
+            {
+                if(AssetLoaderManager.Instance.getJob("Main/ChooseMap").CurrentPercent >= 1)
+                {
+                    layerChooseMap.gameObject.SetActive(false);
+                }
+            }
+            var pJobMain = AssetLoaderManager.Instance.getPercentJob("Main");
+            if (pJobMain >= 1 && !checkGuide)
+            {
+                if (GameManager.Instance.scehduleUI == ScheduleUIMain.UPGRADE)
+                {
+                    upgrade();
+                }
+                int pFirstBox = PlayerPrefs.GetInt("FirstBoxReward", 0);
+                int pFirstGame = PlayerPrefs.GetInt("firstGame", 0);
+                int pFirstOpenGoogle = PlayerPrefs.GetInt("FirstOpenGoogle", 0);
+                if (pFirstGame != 0 && (SceneManager.Instance.previousScene.Contains("Home") || pFirstOpenGoogle == 0))
+                {
+#if !UNITY_STANDALONE
+                    GameServices.ManagedInit();
+#endif
+                    PlayerPrefs.SetInt("FirstOpenGoogle", 1);
+                }
+                if (pFirstGame == 0)
+                {
+                    SceneManager.Instance.markDirtyBloomMK();
+                    GameManager.Instance.Database.firstOnline = System.DateTime.Now;
+                    GameManager.Instance.SaveGame();
+                    EzEventManager.TriggerEvent(new GuideEvent("FirstGame", delegate
+                    {
+                        SceneManager.Instance.removeDirtyBloomMK();
+                        PlayerPrefs.SetInt("firstGame", 9999);
+                        MainScene.Instance.freePlayGuide();
+                    }));
+
+                }
+                else if (pFirstGame == 1)
+                {
+                    EzEventManager.TriggerEvent(new GuideEvent("SecondGame" + ((GameManager.Instance.lastResultWin == 1) ? "Win" : "Lose"),
+                        delegate
+                        {
+
+                            PlayerPrefs.SetInt("firstGame", 2);
+                            MainScene.Instance.upgrade();
+
+                        }, true));
+
+                }
+                else if (pFirstBox == 1)
+                {
+                    EzEventManager.TriggerEvent(new GuideEvent("FirstRewardBox1", delegate
+                    {
+
+                        PlayerPrefs.SetInt("FirstBoxReward", 2);
+                    }, false));
+                }
             }
         }
     }

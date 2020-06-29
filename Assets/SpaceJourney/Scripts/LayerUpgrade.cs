@@ -9,7 +9,7 @@ using EazyEngine.Audio;
 
 namespace EazyEngine.Space.UI
 {
-    public class LayerUpgrade : Singleton<LayerUpgrade>,EzEventListener<UIMessEvent>
+    public class LayerUpgrade : Singleton<LayerUpgrade>,EzEventListener<UIMessEvent>,EzEventListener<TriggerLoadAsset>
     {
         public string targetShop;
 	    public string targetShopUpgradeSkill; 
@@ -23,7 +23,7 @@ namespace EazyEngine.Space.UI
         public AudioGroupSelector sfxUpgradePlane = AudioGroupConstrant.UpgradePlane,sfxUpgradeSkill = AudioGroupConstrant.UpgradeSkill;
         protected PlaneInfoConfig selectedPlane;
         protected SkillInfoInstanced choosedSkill;
-        
+        protected bool initDone = false,initSpDone = false;
         public void setDataMainPlane(PlaneInfoConfig pInfo)
         {
             selectedPlane = pInfo;
@@ -56,7 +56,6 @@ namespace EazyEngine.Space.UI
                 }
             }
         }
-
         public void selectMainPlane()
         {
             var pInfo = selectedPlane;
@@ -71,7 +70,6 @@ namespace EazyEngine.Space.UI
             }
             btnSelect.isEnabled = false;
         }
-
         public void chooseSkill(object pSkill)
         {
             choosedSkill = (SkillInfoInstanced) pSkill;
@@ -86,14 +84,16 @@ namespace EazyEngine.Space.UI
             {
                 SoundManager.Instance.PlaySound(sfxUpgradeSkill, Vector3.zero);
                 pExist.Quantity -= price.quantity;
+                int pLevel = 1;
                 if (selectedPlane.UpgradeSkill.ContainsKey(choosedSkill.info.Info.ItemID))
                 {
-                    selectedPlane.UpgradeSkill[choosedSkill.info.Info.ItemID]++;
+                    pLevel = selectedPlane.UpgradeSkill[choosedSkill.info.Info.ItemID]++;
                 }
                 else
                 {
                     selectedPlane.UpgradeSkill.Add(choosedSkill.info.Info.ItemID, 1);
                 }
+                EazyAnalyticTool.LogEvent("UpgradeSkill", "Name", choosedSkill.info.Info.ItemID, "Level", pLevel.ToString(), "Type", "Gold");
             }
             else
             {
@@ -147,14 +147,16 @@ namespace EazyEngine.Space.UI
                 }
                 SoundManager.Instance.PlaySound(sfxUpgradeSkill, Vector3.zero);
                 pExist.Quantity -= price.quantity;
+                int pLevel = 1;
                 if (selectedPlane.UpgradeSkill.ContainsKey(choosedSkill.info.Info.ItemID))
                 {
-                    selectedPlane.UpgradeSkill[choosedSkill.info.Info.ItemID]++;
+                    pLevel = selectedPlane.UpgradeSkill[choosedSkill.info.Info.ItemID]++;
                 }
                 else
                 {
                     selectedPlane.UpgradeSkill.Add(choosedSkill.info.Info.ItemID, 1);
                 }
+                EazyAnalyticTool.LogEvent("UpgradeSkill", "Name", choosedSkill.info.Info.ItemID, "Level", pLevel.ToString(), "Type", "Crystal");
             }
             else
             {
@@ -167,10 +169,9 @@ namespace EazyEngine.Space.UI
             GameManager.Instance.SaveGame();
             boxInfo.Data = boxInfo.Data;
         }
-
         public void upgradePlane()
         {
- 
+    
             var pShopPlane = LoadAssets.LoadShop(targetShop);
             var price = pShopPlane.getInfoItem(selectedPlane.info.ItemID).getPriceFirstItems(selectedPlane.CurrentLevel+1);
             var pExist1 = GameManager.Instance.Database.getComonItem(price[0].item);
@@ -213,6 +214,7 @@ namespace EazyEngine.Space.UI
                             }
                             SoundManager.Instance.PlaySound(sfxUpgradePlane, Vector3.zero);
                             selectedPlane.CurrentLevel++;
+                            EazyAnalyticTool.LogEvent("UpgradePlane", "Name", selectedPlane.Info.ItemID, "Level", selectedPlane.CurrentLevel.ToString(), "Type","Gold");
                             selectedPlane.ExtraInfo();
                             effectUpgrade.gameObject.SetActive(true);
                             effectUpgrade.GetComponent<ParticleSystem>().Play();
@@ -287,6 +289,7 @@ namespace EazyEngine.Space.UI
                 
                 SoundManager.Instance.PlaySound(sfxUpgradePlane, Vector3.zero);
                 selectedPlane.CurrentLevel++;
+                EazyAnalyticTool.LogEvent("UpgradePlane","Name",selectedPlane.Info.ItemID, "Level", selectedPlane.CurrentLevel.ToString(), "Type", "Normal");
                 selectedPlane.ExtraInfo();
                 effectUpgrade.gameObject.SetActive(true);
                 SoundManager.Instance.PlaySound(sfxUpgradePlane, Vector3.zero);
@@ -332,16 +335,16 @@ namespace EazyEngine.Space.UI
             
   
         }
-
         private void OnEnable()
         {
-            EzEventManager.AddListener(this);
+            EzEventManager.AddListener<UIMessEvent>(this);
+            EzEventManager.AddListener<TriggerLoadAsset>(this);
         }
         private void OnDisable()
         {
-            EzEventManager.RemoveListener(this);
+            EzEventManager.RemoveListener< UIMessEvent>(this);
+            EzEventManager.RemoveListener<TriggerLoadAsset>(this);
         }
-
         public void upgradePlane1()
         {
 
@@ -392,6 +395,7 @@ namespace EazyEngine.Space.UI
                 }
                 SoundManager.Instance.PlaySound(sfxUpgradePlane, Vector3.zero);
                 selectedPlane.CurrentLevel++;
+                EazyAnalyticTool.LogEvent("UpgradePlane", "Name", selectedPlane.Info.ItemID, "Level", selectedPlane.CurrentLevel.ToString(), "Type", "Crystal");
                 selectedPlane.ExtraInfo();
                 effectUpgrade.gameObject.SetActive(true);
                 effectUpgrade.GetComponent<ParticleSystem>().Play();
@@ -434,7 +438,6 @@ namespace EazyEngine.Space.UI
                 }
             
         }
-
         private IEnumerator delayAction(float pDelay, System.Action pAction)
         {
             yield return new WaitForSeconds(pDelay);
@@ -453,17 +456,34 @@ namespace EazyEngine.Space.UI
             }));
 
         }
-        // Start is called before the first frame update
-        void Start()
+        protected override void Awake()
         {
-       
+            base.Awake();
+            StartCoroutine(moduleUpdate());
         }
-
-        // Update is called once per frame
-        void Update()
+        public IEnumerator moduleUpdate()
         {
-
+          
+            while (!initDone)
+            {
+                yield return new WaitForEndOfFrame();
+            }
+            var pTab = GetComponent<EazyGroupTabNGUI>();
+            pTab.changeTab(1);
+            while (!initSpDone)
+            {
+                yield return new WaitForEndOfFrame();
+            }
+            yield return new WaitForEndOfFrame();
+            pTab.changeTab(0);
+ 
+            //var pTab = GetComponent<EazyGroupTabNGUI>();
+            //pTab.changeTab(0);
+            //yield return new WaitForEndOfFrame();
+            //pTab.changeTab(1);
+            //SceneManager.Instance.addloading(-1); 
         }
+        
 
         public void OnEzEvent(UIMessEvent eventType)
         {
@@ -472,5 +492,24 @@ namespace EazyEngine.Space.UI
                 GetComponent<EazyGroupTabNGUI>().changeTab(1);
             }
         }
+
+        public void OnEzEvent(TriggerLoadAsset eventType)
+        {
+           if(eventType.name == "Main/Upgrade/Init" && eventType.percent >= 1)
+            {
+                initDone = true;
+            }
+            if (AssetLoaderManager.Instance.getPercentJob("Main/Upgrade/SpPlane") >= 1)
+            {
+                initSpDone = true;
+            }
+            if (AssetLoaderManager.Instance.getPercentJob("Main/Upgrade/MainPlane") >= 1)
+            {
+                transform.GetChild(0).gameObject.SetActive(false);
+            }
+
+        }
+
+    
     }
 }

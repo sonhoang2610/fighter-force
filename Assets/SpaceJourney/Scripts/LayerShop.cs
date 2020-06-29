@@ -12,28 +12,28 @@ namespace EazyEngine.Space.UI
         public string cateGoryItemLoad;
         public string targetShop;
         public BoxPackageInfo boxInfo;
-        protected bool isInit = false;
+        protected bool firstEnable = true;
 
 
         private void OnEnable()
         {
-            if (!isInit) return;
+            if (firstEnable) { firstEnable = false; return; }
             var pShop = LoadAssets.LoadShop(targetShop);
             if (pShop)
             {
                 DataSource = pShop.getAllItemCateGoryID(cateGoryItemLoad).ToObservableList();
             }
         }
-        // Start is called before the first frame update
-        void Start()
+        public override void Awake()
         {
+            base.Awake();
             var pShop = LoadAssets.LoadShop(targetShop);
             if (pShop)
             {
                 DataSource = pShop.getAllItemCateGoryID(cateGoryItemLoad).ToObservableList();
             }
-            isInit = true;
         }
+  
         public void claim(ShopItemInfo pItemInfo)
         {
             TopLayer.Instance.boxReward.show();
@@ -62,6 +62,7 @@ namespace EazyEngine.Space.UI
             if (pItemStorage.Quantity >= pItemInfo.getPrice(0)[0][0].quantity)
             {
                 pItemStorage.Quantity -= pItemInfo.getPrice(0)[0][0].quantity;
+                EazyAnalyticTool.LogEvent("BuyItemShop", "Name", pItemInfo.itemSell.ItemID);
                 claim(pItemInfo);
             }
             else if (pItemStorage.item.ItemID == "IAP")
@@ -77,6 +78,7 @@ namespace EazyEngine.Space.UI
                     {
                         if (pSuccess)
                         {
+                            EazyAnalyticTool.LogEvent("BuyItemShop", "Name", pItemInfo.itemSell.ItemID);
                             claim(pItemInfo);
                         }
                         else

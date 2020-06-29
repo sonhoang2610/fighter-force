@@ -20,6 +20,10 @@ namespace EazyEngine.Space.UI
                     pInfoIntanceds.Add(GameManager.Instance.Database.spPlanes[i]);
                 }
             }
+            onLoadingAsync.RemoveAllListeners();
+            onLoadingAsync.AddListener(delegate (float perent) {
+                EzEventManager.TriggerAssetLoaded(new TriggerLoadAsset() { name = "Main/MainScene/SpPlane", percent = perent });
+            });
             DataSource = pInfoIntanceds.ToObservableList();
         }
         protected override void Start()
@@ -41,8 +45,9 @@ namespace EazyEngine.Space.UI
             MainScene.Instance.addSelectedBoxPlane(this);
         }
 
-        private void OnEnable()
+        protected override void OnEnable()
         {
+            base.OnEnable();
             if (DataSource != null && DataSource.Count > 0)
             {
                 refreshData();
@@ -98,6 +103,8 @@ namespace EazyEngine.Space.UI
         }
         public override void updatePage()
         {
+            if (AssetLoaderManager.Instance.getJob("Main/MainScene/SpPlane").CurrentPercent < 1) return;
+            if (Item.Count <= 0) return;
             base.updatePage();
             GameManager.Instance.Database.SelectedSupportPlane1 = DataSource[currentPage].Info.ItemID;
             GameManager.Instance.freeSpPlaneChoose = DataSource[currentPage].Info.ItemID;

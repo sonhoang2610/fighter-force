@@ -89,6 +89,30 @@ namespace EazyEngine.Space.UI
                         stars[i].setFrameIndexUnPixelPerfect(0);
                     }
                 }
+                boxAbility.onLoadingAsync.RemoveAllListeners();
+                var pJobMain = AssetLoaderManager.Instance.getJob("Main");
+                if (pJobMain.CurrentPercent < 1)
+                {
+                    boxAbility.gameObject.SetActive(true);
+                    boxAbility.onLoadingAsync.AddListener(delegate (float percent)
+                    {
+                        if (Data.GetType() == typeof(SupportPlaneInfoConfig))
+                        {
+                            EzEventManager.TriggerAssetLoaded(new TriggerLoadAsset() { name = "Main/Upgrade/SpPlane/Ability", percent = percent });
+                        }
+                        else
+                        {
+                            EzEventManager.TriggerAssetLoaded(new TriggerLoadAsset() { name = "Main/Upgrade/MainPlane/Ability", percent = percent });
+                        }
+
+                    });
+                    boxAbility.onCompleteAsync.AddListener(delegate ()
+                    {
+                        boxAbility.gameObject.SetActive(false);
+                    });
+                }
+             
+            
                 boxAbility.DataSource = value.Info.currentAbility.ToObservableList();
                 des.text = value.Info.Desc;
  
@@ -125,8 +149,20 @@ namespace EazyEngine.Space.UI
                     boxSkill.IndexChoosed = indexSkillChoosed;
                 }
                 boxSkill.setOwner(value);
-
-
+                boxSkill.onCompleteAsync.RemoveAllListeners();
+                //var pMainJob = AssetLoaderManager.Instance.getPercentJob("Main");
+                //UnityEngine.Events.UnityAction pAction = 
+                boxSkill.onLoadingAsync.AddListener(delegate (float percent)
+                {
+                    if (Data.GetType() == typeof(SupportPlaneInfoConfig))
+                    {
+                        EzEventManager.TriggerAssetLoaded(new TriggerLoadAsset() { name = "Main/Upgrade/SpPlane/Skill", percent = percent });
+                    }
+                    else
+                    {
+                        EzEventManager.TriggerAssetLoaded(new TriggerLoadAsset() { name = "Main/Upgrade/MainPlane/Skill", percent = percent });
+                    }
+                });
                 boxSkill.DataSource = pDatas.ToObservableList();
 	            if(attachMentSorting){
 		            attachMentSorting.SendMessage("Reposition",SendMessageOptions.DontRequireReceiver);

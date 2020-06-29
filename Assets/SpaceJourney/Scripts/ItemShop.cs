@@ -173,7 +173,7 @@ namespace EazyEngine.Space.UI
             {
                 if (shop != null && item != null)
                 {
-                  
+                    EazyAnalyticTool.LogEvent("BuyPackage", "Name", item.itemSell.ItemID);
                     var pItem = GameManager.Instance.Database.getComonItem(item.getPrice(0)[0][0].item.ItemID);
                     if (pItem.Quantity >= item.getPrice(0)[0][0].quantity)
                     {
@@ -243,7 +243,7 @@ namespace EazyEngine.Space.UI
                                 var pItemExchange = pPrice[i][0].item;
                                 if (pItemExchange.categoryItem == CategoryItem.WATCH)
                                 {
-                                    GameManager.Instance.showRewardAds(pItemExchange.ItemID, callBackResultWatch);
+                                    GameManager.Instance.showRewardAds(pItemExchange.ItemID, callBackResultWatch,PositionADS.Shop);
                                 }
                             }
                         }

@@ -194,7 +194,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3002
+  startingRenderQueue: 3000
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -2123,6 +2123,7 @@ GameObject:
   - component: {fileID: 1588093830}
   - component: {fileID: 1588093827}
   - component: {fileID: 1588093831}
+  - component: {fileID: 1588093832}
   m_Layer: 18
   m_Name: UI Root
   m_TagString: Untagged
@@ -2185,7 +2186,7 @@ MonoBehaviour:
   anchorOffset: 0
   softBorderPadding: 1
   renderQueue: 0
-  startingRenderQueue: 3005
+  startingRenderQueue: 3002
   mClipTexture: {fileID: 0}
   mAlpha: 1
   mClipping: 0
@@ -2341,6 +2342,104 @@ MonoBehaviour:
       singleton: 1
       owner: {fileID: 0}
       smoothTime: 0
+--- !u!114 &1588093832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588093822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1de1124a40cf8464f999a7911b63e080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  replaceNew: 1
+  subAssets:
+  - name: Main
+    percent: 1
+    subAssets:
+    - name: Shop
+      percent: 0.1
+      subAssets:
+      - name: Energy
+        percent: 0.1
+        subAssets: []
+      - name: Pack
+        percent: 0.4
+        subAssets: []
+      - name: Coin
+        percent: 0.25
+        subAssets: []
+      - name: Crystal
+        percent: 0.25
+        subAssets: []
+    - name: Upgrade
+      percent: 0.4
+      subAssets:
+      - name: MainPlane
+        percent: 0.4
+        subAssets:
+        - name: Skill
+          percent: 0.2
+          subAssets: []
+        - name: Ability
+          percent: 0.3
+          subAssets: []
+        - name: Model
+          percent: 0.3
+          subAssets: []
+      - name: SpPlane
+        percent: 0.4
+        subAssets:
+        - name: Skill
+          percent: 0.2
+          subAssets: []
+        - name: Ability
+          percent: 0.3
+          subAssets: []
+        - name: Model
+          percent: 0.3
+          subAssets: []
+      - name: Init
+        percent: 0.2
+        subAssets: []
+    - name: ChooseMap
+      percent: 0.2
+      subAssets:
+      - name: Init
+        percent: 1
+        subAssets: []
+    - name: MainScene
+      percent: 0.2
+      subAssets:
+      - name: Init
+        percent: 0.2
+        subAssets: []
+      - name: MainPlane
+        percent: 0.5
+        subAssets: []
+      - name: SpPlane
+        percent: 0.3
+        subAssets: []
+    - name: InitBox
+      percent: 0.1
+      subAssets:
+      - name: GiftOnline
+        percent: 0.3
+        subAssets: []
+      - name: BoxLucky
+        percent: 0.3
+        subAssets: []
+      - name: BoxMission
+        percent: 0.4
+        subAssets:
+        - name: Daily
+          percent: 0.5
+          subAssets: []
+        - name: Achieve
+          percent: 0.5
+          subAssets: []
 --- !u!1 &1591975438
 GameObject:
   m_ObjectHideFlags: 0
@@ -2443,6 +2542,72 @@ MonoBehaviour:
   mMaxLineHeight: 0
   mLineWidth: 0
   mMultiline: 1
+--- !u!1 &1621403685
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1621403688}
+  - component: {fileID: 1621403687}
+  - component: {fileID: 1621403686}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1621403686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621403685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &1621403687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621403685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &1621403688
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621403685}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1671469193
 GameObject:
   m_ObjectHideFlags: 0
@@ -2875,6 +3040,7 @@ GameObject:
   - component: {fileID: 1961242471}
   - component: {fileID: 1961242474}
   - component: {fileID: 1961242473}
+  - component: {fileID: 1961242472}
   m_Layer: 10
   m_Name: Camera
   m_TagString: Untagged
@@ -2896,6 +3062,86 @@ Transform:
   m_Father: {fileID: 117516255}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1961242472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961242470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9441d5450817c342a45e4b8dd66de6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showEditorMainBehavior: 1
+  showEditorBloomBehavior: 0
+  showEditorLensSurfaceBehavior: 1
+  showEditorLensFlareBehavior: 1
+  showEditorGlareBehavior: 0
+  allowGeometryShaders: 0
+  allowComputeShaders: 0
+  renderPriority: 1
+  debugView: 0
+  quality: 2
+  workflow: 0
+  selectiveRenderLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  anamorphicRatio: 0
+  lumaScale: 0.5
+  blooming: 0
+  bloomThreshold:
+    minValue: 1.25
+    maxValue: 10
+  bloomScattering: 7
+  bloomIntensity: 1
+  allowLensSurface: 0
+  lensSurfaceDirtTexture: {fileID: 0}
+  lensSurfaceDirtIntensity: 2.5
+  lensSurfaceDiffractionTexture: {fileID: 0}
+  lensSurfaceDiffractionIntensity: 2
+  allowLensFlare: 0
+  lensFlareStyle: 1
+  lensFlareGhostFade: 10
+  lensFlareGhostIntensity: 1
+  lensFlareThreshold:
+    minValue: 1.3
+    maxValue: 10
+  lensFlareScattering: 5
+  lensFlareColorRamp: {fileID: 0}
+  lensFlareChromaticAberration: 53
+  lensFlareGhostCount: 3
+  lensFlareGhostDispersal: 0.6
+  lensFlareHaloFade: 2
+  lensFlareHaloIntensity: 1
+  lensFlareHaloSize: 0.4
+  allowGlare: 0
+  glareBlend: 0.33
+  glareIntensity: 1
+  glareAngle: 0
+  glareThreshold:
+    minValue: 1.25
+    maxValue: 10
+  glareStreaks: 4
+  glareStyle: 4
+  glareScattering: 2
+  glareSample0Scattering: 5
+  glareSample0Angle: 0
+  glareSample0Intensity: 1
+  glareSample0Offset: 0
+  glareSample1Scattering: 5
+  glareSample1Angle: 45
+  glareSample1Intensity: 1
+  glareSample1Offset: 0
+  glareSample2Scattering: 5
+  glareSample2Angle: 90
+  glareSample2Intensity: 1
+  glareSample2Offset: 0
+  glareSample3Scattering: 5
+  glareSample3Angle: 135
+  glareSample3Intensity: 1
+  glareSample3Offset: 0
 --- !u!114 &1961242473
 MonoBehaviour:
   m_ObjectHideFlags: 0

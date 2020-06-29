@@ -5,7 +5,6 @@ using EazyEngine.Tools;
 using EazyEngine.Space;
 using Sirenix.OdinInspector;
 using System.Linq;
-using EazyEngine.Space;
 
 
 public class EnemyEnviroment : PoolManagerGeneric<EnemyEnviroment>
@@ -23,8 +22,7 @@ public class EnemyEnviroment : PoolManagerGeneric<EnemyEnviroment>
         int[] scoreBoss = new int[] { 10000, 18000, 30000 };
         if (LevelManger.InstanceRaw && LevelManger.Instance.IsMatching)
         {
-            Debug.Log($"NotEnough_{ pOriginal.name }_Level_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedLevel}_State_{LevelStateManager.currentState}");
-            Firebase.Analytics.FirebaseAnalytics.LogEvent($"NotEnough_{ pOriginal.name }_Level_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedLevel}_State_{LevelStateManager.currentState}");
+            EazyAnalyticTool.LogEvent("NotEnough","Enemy", pOriginal.name, "Level", GameManager.Instance.ChoosedLevel.ToString(), "Mode", GameManager.Instance.ChoosedHard.ToString(),"State", string.IsNullOrEmpty(LevelStateManager.currentState) ? "" : LevelStateManager.currentState.ToString());
         }
         string pKey = "";
         foreach (var pEnemy in pAsset.smallEnemiesObs)
@@ -38,6 +36,7 @@ public class EnemyEnviroment : PoolManagerGeneric<EnemyEnviroment>
                     pInfo.score = scoreSmall[GameManager.Instance.ChoosedHard];
                     pChar.setDataConfig(pInfo);
                     pChar.EnemyType = EazyEngine.Space.EnemyType.SMALL;
+                    pChar.CurrentLevelState = LevelStateManager.currentState;
                     return;
                 }
             }
@@ -60,6 +59,7 @@ public class EnemyEnviroment : PoolManagerGeneric<EnemyEnviroment>
                     pInfo.score = scoremedium[GameManager.Instance.ChoosedHard];
                     pChar.setDataConfig(pInfo);
                     pChar.EnemyType = EazyEngine.Space.EnemyType.MEDIUM;
+                    pChar.CurrentLevelState = LevelStateManager.currentState;
                     return;
                 }
             }
@@ -74,6 +74,7 @@ public class EnemyEnviroment : PoolManagerGeneric<EnemyEnviroment>
                     pInfo.score = scoreBoss[GameManager.Instance.ChoosedHard];
                     pChar.setDataConfig(pInfo);
                     pChar.EnemyType = EazyEngine.Space.EnemyType.BOSS;
+                    pChar.CurrentLevelState = LevelStateManager.currentState;
                     return;
                 }
             }
@@ -88,6 +89,7 @@ public class EnemyEnviroment : PoolManagerGeneric<EnemyEnviroment>
                     pInfo.score = scoreBoss[GameManager.Instance.ChoosedHard];
                     pChar.setDataConfig(pInfo);
                     pChar.EnemyType = EazyEngine.Space.EnemyType.MINIBOSS;
+                    pChar.CurrentLevelState = LevelStateManager.currentState;
                     return;
                 }
             }
@@ -96,12 +98,18 @@ public class EnemyEnviroment : PoolManagerGeneric<EnemyEnviroment>
         if (!pOriginal.tryGetRuntimeKey(out pKey))
         {
             Debug.Log($"NotFindData_{ pOriginal.name }_Level_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedLevel}_State_{LevelStateManager.currentState}");
-            Firebase.Analytics.FirebaseAnalytics.LogEvent($"NotFindData_{ pOriginal.name }_Level_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedLevel}_State_{LevelStateManager.currentState}");
+          //  EazyAnalyticTool.LogEvent("NotFindData","Enemy", pOriginal.name, "Level", GameManager.Instance.ChoosedLevel.ToString(), "Mode", GameManager.Instance.ChoosedHard.ToString(),"State", LevelStateManager.currentState  LevelStateManager.currentState.ToString());
         }
 
     }
     public GameObject getEnemyFromPool(GameObject pObject)
     {
+        var pEnemy = getObjectFromPool(pObject);
+        var pChar = pEnemy.GetComponent<Character>();
+        if (pChar)
+        {
+            pChar.CurrentLevelState = LevelStateManager.currentState;
+        }
         return getObjectFromPool(pObject);
     }
     [Button("Resolved Preload")]

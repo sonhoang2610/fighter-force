@@ -233,9 +233,9 @@ namespace EazyEngine.Space
                             if (PlayerPrefs.GetInt("firstGameFireBase", 0) == 1)
                             {
                                 PlayerPrefs.SetInt("firstGameFireBase", 2);
-                                FirebaseAnalytics.LogEvent("InitFirstGameDone");
+                                EazyAnalyticTool.LogEvent("InitFirstGameDone");
                             }
-                            FirebaseAnalytics.LogEvent("InitGameDone");
+                            EazyAnalyticTool.LogEvent("InitGameDone");
                             RuntimeManager.Init();
                         }
                         bool isInitialized = InAppPurchasing.IsInitialized();
@@ -267,7 +267,7 @@ namespace EazyEngine.Space
                     }
                     else
                     {
-                        FirebaseAnalytics.LogEvent("LoadLevelComplete");
+                        EazyAnalyticTool.LogEvent("LoadLevelComplete");
                     }
                 });
                  if (currentScene.Contains("Main"))
@@ -409,21 +409,26 @@ namespace EazyEngine.Space
         protected override void Awake()
         {
             base.Awake();
+            PlayerPrefs.SetString("ItemUsed", "");
+            EazyAnalyticTool.Init(delegate {
+            });
+            
             FB.Init();
             MK.Glow.Resources.LoadResourcesAsset();
 #if UNITY_IOS
             System.Environment.SetEnvironmentVariable("MONO_REFLECTION_SERIALIZER", "yes");
 #endif
 #if !UNITY_STANDALONE 
+            Application.backgroundLoadingPriority = ThreadPriority.Low;
             FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
             {
                 FirebaseAnalytics.SetAnalyticsCollectionEnabled(true);
                 if(PlayerPrefs.GetInt("firstGameFireBase", 0) == 0)
                 {
                     PlayerPrefs.SetInt("firstGameFireBase", 1);
-                    FirebaseAnalytics.LogEvent("InitFirstGame");
+                    EazyAnalyticTool.LogEvent("InitFirstGame");
                 }
-                FirebaseAnalytics.LogEvent("InitGame");
+                EazyAnalyticTool.LogEvent("InitGame");
             });
 #endif
             Application.targetFrameRate = 60;
@@ -677,7 +682,9 @@ namespace EazyEngine.Space
         }
         public bool LoadState { get => loadState; set => loadState = value; }
         public Vector2 ResolutionDefault { get => resolutionDefault; set => resolutionDefault = value; }
+        protected AssetLoaderManager ManagerAsset { get => managerAsset ? managerAsset : managerAsset = GetComponent<AssetLoaderManager>(); set => managerAsset = value; }
 
+        private AssetLoaderManager managerAsset;
         private void Update()
         {
             if (objectPlanInstiate.Count > 0)
@@ -743,8 +750,8 @@ namespace EazyEngine.Space
             }
             if (isStart)
             {
-                float pAnchor = currentScene.Contains("Zone") ? 0.4f : 0.6f;
-                float pFrom = currentScene.Contains("Zone") ? 0.2f : 0.4f;
+                float pAnchor = currentScene.Contains("Zone") ? 0.4f : 0.1f;
+                float pFrom = currentScene.Contains("Zone") ? 0.2f : 0.2f;
                 if (!async.isDone)
                 {
                     if (process)
@@ -754,16 +761,40 @@ namespace EazyEngine.Space
                 }
                 else
                 {
+                    if (currentScene.Contains("Zone")) {
+                        Sequence pSeq = DOTween.Sequence();
 
-                    Sequence pSeq = DOTween.Sequence();
+                        pSeq.Append(DOTween.To(() => process.fillAmount, x => process.fillAmount = x, pFrom + pAnchor, 0.25f));
+                        pSeq.AppendCallback(delegate
+                        {
 
-                    pSeq.Append(DOTween.To(() => process.fillAmount, x => process.fillAmount = x, pFrom + pAnchor, 0.25f));
-                    pSeq.AppendCallback(delegate
+                            isStart = false;
+                            complete();
+                        });
+                    }
+                    else
                     {
+                        var percentJob = ManagerAsset.getPercentJob("Main");
+                        var percent = ManagerAsset.getPercentJob("Main") * 0.7f;
+                        if(percentJob >= 1)
+                        {
+                            Sequence pSeq = DOTween.Sequence();
 
-                        isStart = false;
-                        complete();
-                    });
+                            pSeq.Append(DOTween.To(() => process.fillAmount, x => process.fillAmount = x, 1, 0.25f));
+                            pSeq.AppendCallback(delegate
+                            {
+
+                                isStart = false;
+                                complete();
+                            });
+                        }
+                        else
+                        {
+                            DOTween.To(() => process.fillAmount, x => process.fillAmount = x, 0.3f + percent, 0.25f);
+                        }
+                       
+                    }
+                
                 }
             }
         }

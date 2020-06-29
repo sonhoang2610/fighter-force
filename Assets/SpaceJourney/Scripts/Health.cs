@@ -15,6 +15,23 @@ namespace EazyEngine.Space
     {
 
     }
+    [System.Serializable]
+    public class InstigatorInfo
+    {
+        public string name;
+        [System.NonSerialized]
+        public GameObject gameObject;
+        public string state;
+        public int totalDamage;
+        public int damageType;
+    }
+    [System.Serializable]
+    public class DropItemInfo
+    {
+        public string nameItem;
+        public string state;
+        public string nameOwner;
+    }
     public class Health : MonoBehaviour, IRespawn, IListenerTriggerAnimator
     {
         [Sirenix.OdinInspector.ReadOnly]
@@ -40,7 +57,9 @@ namespace EazyEngine.Space
         public GameObject DamagedEffect;
         public GameObject HealingEffect;
         public GameObject HealingEffectTimer;
+        public bool recordDamage = false;
 
+        public List<InstigatorInfo> InstigatorInfos = new List<InstigatorInfo>();
         public bool subHealth = false;
         [ShowIf("subHealth")]
         public int countChildMin = 0;
@@ -396,6 +415,45 @@ namespace EazyEngine.Space
             {
                 damage = (int)((float)MaxiumHealth * 0.2f);
             }
+            if (recordDamage)
+            {
+                var pChar = instigator.GetComponent<Character>();
+                Projectile pProj = null;
+                if(pChar == null)
+                {
+                    pProj = instigator.GetComponent<Projectile>();
+                    if (pProj)
+                    {
+                        pChar = pProj.Owner;
+                    }
+                 
+                }
+                if (pChar == null)
+                {
+                    instigator.GetComponentInParent<Character>();
+                }
+                if (pChar == null)
+                {
+                    instigator.GetComponentsInChildren<Character>();
+                }
+                if (pChar)
+                {
+                    var pInstigatorInfo = InstigatorInfos.Find(x => x.gameObject == instigator && x.state == pChar.CurrentLevelState);
+                    if (pInstigatorInfo == null)
+                    {
+                        pInstigatorInfo = new InstigatorInfo();
+                        pInstigatorInfo.totalDamage = 0;
+                        InstigatorInfos.Add(pInstigatorInfo);
+                    }
+                    pInstigatorInfo.gameObject = instigator;
+                    pInstigatorInfo.name = pChar ? pChar.gameObject.name : instigator.name;
+                    pInstigatorInfo.state = pChar.CurrentLevelState;
+                    pInstigatorInfo.totalDamage += damage;
+                    pInstigatorInfo.damageType = pProj ? 1 : 0;
+                }
+                var pTimeLife = LevelManger.Instance.historyMatch.timeLifes[LevelManger.Instance.historyMatch.timeLifes.Count - 1];
+                pTimeLife.instigatorInfos = InstigatorInfos.ToArray();
+            }
             CurrentHealth -= damage;
             if(healDestiny != 0)
             {
@@ -436,6 +494,15 @@ namespace EazyEngine.Space
 
             if (CurrentHealth <= 0)
             {
+                if (recordDamage)
+                {
+                    var pTimeLife = LevelManger.Instance.historyMatch.timeLifes[LevelManger.Instance.historyMatch.timeLifes.Count - 1];
+                    pTimeLife.IsDeath = true;
+                    var pStringReason = JsonUtility.ToJson(InstigatorInfos);
+                    var pMatchID = LevelManger.Instance.startMatchInfo.matchID;
+                     EazyAnalyticTool.LogEvent("Death", "Level", GameManager.Instance.ChoosedLevel.ToString(), "Mode", GameManager.Instance.ChoosedHard.ToString(),"Reason", pStringReason,"MatchID",string.IsNullOrEmpty(pMatchID) ? "" : pMatchID);
+                    InstigatorInfos.Clear();
+                }
                 if (animDeath)
                 {
                     if (Collider2D)
@@ -512,7 +579,7 @@ namespace EazyEngine.Space
         public void Revive(bool pActiveObject)
         {
             onRevie.Invoke();
-
+            InstigatorInfos.Clear();
             revieing = true;
             healDestiny = 0;
             CurrentHealth = InitialHealth;

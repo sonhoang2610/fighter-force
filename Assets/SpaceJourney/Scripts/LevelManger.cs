@@ -12,6 +12,8 @@ using EazyEngine.Timer;
 using Spine.Unity;
 using System.Linq;
 using EazyEngine.Space.UI;
+using UnityEngine.Animations;
+using LitJson;
 
 namespace EazyEngine.Space
 {
@@ -87,6 +89,49 @@ namespace EazyEngine.Space
     {
         public List<ItemGame> itemUsed = new List<ItemGame>();
     }
+    [System.Serializable]
+    public class HistoryMatchInfo
+    {
+        public string matchID;
+        public List<HistoryDetailLifeInfo> timeLifes = new List<HistoryDetailLifeInfo>();
+        public string resultGame;
+    }
+    [System.Serializable]
+    public class DetailItemUsedInfo
+    {
+        public string itemID;
+        public int time;
+    }
+    [System.Serializable]
+    public class StartGameInfo 
+    {
+        public int level;
+        public int mode;
+        public string matchID;
+        public string selectedMainPlane;
+        public int levelMain;
+        public int[] levelSkillMain;
+        public string selectedSupport;
+        public int levelMainSp;
+        public int[] levelSkillSp;
+        public List<string> usedItem = new List<string>();
+        public bool IsFreePlay;
+    }
+    [System.Serializable]
+    public class HistoryDetailLifeInfo
+    {
+        public int timeStart = 0;
+        public int startHeath;
+        public InstigatorInfo[] instigatorInfos;
+        public List<DetailItemUsedInfo> usedItems = new List<DetailItemUsedInfo>();
+        public List<DetailItemUsedInfo> eatedItems = new List<DetailItemUsedInfo>();
+        public List<DetailItemUsedInfo> skillUsed = new List<DetailItemUsedInfo>();
+        public List<DetailItemUsedInfo> boosterChange = new List<DetailItemUsedInfo>();
+        public List<DropItemInfo> dropItem = new List<DropItemInfo>(); 
+        public string reborn = "None";
+        public bool IsDeath = false;
+        public int timeEnd = 0; 
+    }
     public class LevelManger : Singleton<LevelManger>, EzEventListener<DamageTakenEvent>,EzEventListener<PickEvent>,EzEventListener<MessageGamePlayEvent>
     {
         public GameObject startPoint;
@@ -101,6 +146,10 @@ namespace EazyEngine.Space
         [InlineEditor]
         public Camera mainPlayCamera;
         public Character[] players;
+        [System.NonSerialized]
+        public HistoryMatchInfo historyMatch;
+        [System.NonSerialized]
+        public StartGameInfo startMatchInfo;
         private List<PlaneInfoToCoppy> cachePlanePreload = new List<PlaneInfoToCoppy>();
         public List<PlaneInfoToCoppy> CachePlanePreload { get => cachePlanePreload; set => cachePlanePreload = value; }
         public Character CurrentPlayer
@@ -276,6 +325,7 @@ namespace EazyEngine.Space
         protected bool isInitDone = false;
         IEnumerator preloadAwake()
         {
+            historyMatch = new HistoryMatchInfo();
             SceneManager.Instance.addloading(1);
             GameManager.Instance.scehduleUI = ScheduleUIMain.NONE;
             GUIManager.Instance.enableEnergy(false);
@@ -325,10 +375,15 @@ namespace EazyEngine.Space
             int pStepGame = PlayerPrefs.GetInt("firstGame", 0);
             if (GameManager.Instance.isFree && GameManager.Instance.isGuide)
             {
-                Firebase.Analytics.FirebaseAnalytics.LogEvent("FreeFirst");
+                EazyAnalyticTool.LogEvent("FreeFirst");
                 GameManager.Instance.freePlaneChoose = "MainPlane5";
                 GameManager.Instance.freeSpPlaneChoose = "SpPlane4";
             }
+            var pHistory = new HistoryDetailLifeInfo()
+            {
+                timeStart = (int)CurrentTime.TotalSeconds
+            };
+            historyMatch.timeLifes.Add(pHistory);
             int pSelectedPlane = -1;
             for (int i = 0; i < GameManager.Instance.Database.planes.Count; ++i)
             {
@@ -347,42 +402,77 @@ namespace EazyEngine.Space
                     break;
                 }
             }
-            players = new Character[1];
-            var pAsync = GameManager.Instance.Database.planes[pSelectedPlane].Info.modelPlaneRef.loadAssetAsync<Character>();
-            pAsync.completed += delegate (AsyncOperation a)
+            List<int> listIndex = new List<int>();
+            for(int i = 0; i < GameManager.Instance.Database.planes.Count; ++i)
             {
-                players[0] = Instantiate<Character>((Character)((ResourceRequest)a).asset);
-            };
-            while (players[0] == null)
-            {
-                yield return new WaitForEndOfFrame();
+                listIndex.Add(i);
             }
-            players[0].GetComponent<Blackboard>().SetValue("Main", players[0].gameObject);
-            var pDataPlane = pSelectedPlane >= 0 ? GameManager.Instance.Database.planes[pSelectedPlane] : null;
-            var pAllItemMainPlane = GameDatabase.Instance.getAllItem(CategoryItem.PLANE);
-            if (pDataPlane == null || pDataPlane.CurrentLevel == 0)
+            Debug.Log(pSelectedPlane + "Plane");
+            listIndex.Sort((x1, x2) =>
             {
-                foreach (var pItemPlane in pAllItemMainPlane)
+                if(x1 != x2)
                 {
-                    if (pItemPlane.ItemID == GameManager.Instance.freePlaneChoose)
+                    if(x1 == pSelectedPlane)
                     {
-                        pDataPlane = PlaneInfoConfig.CloneDefault((PlaneInfo)pItemPlane, 20);
+                        return -1;
+                    }
+                    else if (x2 == pSelectedPlane)
+                    {
+                        return 1;
                     }
                 }
+                return x1.CompareTo(x2);
+            });
+            players = new Character[GameManager.Instance.Database.planes.Count];
+            for (int i = 0; i < 1; ++i)
+            {
+                int pIndex = i;
+                var pAsync = GameManager.Instance.Database.planes[listIndex[i]].Info.modelPlaneRef.loadAssetAsync<Character>();
+                pAsync.completed += delegate (AsyncOperation a)
+                {
+                    players[pIndex] = Instantiate<Character>((Character)((ResourceRequest)a).asset);
+                };
+                while (players[pIndex] == null)
+                {
+                    yield return new WaitForEndOfFrame();
+                }
+                players[pIndex].GetComponent<Blackboard>().SetValue("Main", players[pIndex].gameObject);
+                var pDataPlane = listIndex[i] >= 0 ? GameManager.Instance.Database.planes[listIndex[i]] : null;
+                var pAllItemMainPlane = GameDatabase.Instance.getAllItem(CategoryItem.PLANE);
+                if (pDataPlane == null || pDataPlane.CurrentLevel == 0)
+                {
+                    foreach (var pItemPlane in pAllItemMainPlane)
+                    {
+                        if (pItemPlane.ItemID == GameManager.Instance.freePlaneChoose)
+                        {
+                            pDataPlane = PlaneInfoConfig.CloneDefault((PlaneInfo)pItemPlane, 20);
+                        }
+                    }
+                }
+                
+                players[pIndex].setData(pDataPlane);
+                GUIManager.Instance.setIconPlane(pDataPlane.info.iconGame);
+                if(pIndex != 0)
+                {
+                    var pContraint = players[pIndex].gameObject.AddComponent<PositionConstraint>();
+                    pContraint.AddSource(new ConstraintSource() { sourceTransform = players[0].transform, weight = 1 });
+                    pContraint.translationOffset = Vector3.zero;
+                    pContraint.constraintActive = true;
+                    players[pIndex].transform.GetComponentInChildren<SkeletonMecanim>().Skeleton.A = 0;
+                    players[0].GetComponent<CharacterHandleWeapon>().anotherPlane.Add(players[pIndex].GetComponent<CharacterHandleWeapon>());
+                    players[pIndex].GetComponent<CharacterHandleWeapon>().disableShoot = true;
+                    players[pIndex].GetComponent<Collider2D>().enabled = false;
+                }
             }
-            //for(int i  = 0; i < pAllItemMainPlane.Length; ++i)
-            //{
-            //    cachePlanePreload.Add(new PlaneInfoToCoppy()
-            //    {
-            //        model = ((PlaneInfo)pAllItemMainPlane[i]).modelPlane.transform.Find("model").gameObject,
-            //        attachMentPos = ((PlaneInfo)pAllItemMainPlane[i]).modelPlane.transform.Find("attachment").localPosition
-            //    });
-            //}
-            players[0].setData(pDataPlane);
-            GUIManager.Instance.setIconPlane(pDataPlane.info.iconGame);
+            players[0].GetComponent<Health>().recordDamage = true;
             List<SkillInputData> skills = new List<SkillInputData>();
             skills.AddRange(convert(players[0]._info.Info.skills.ToArray(), players[0]));
-
+            startMatchInfo = new StartGameInfo();
+            startMatchInfo.levelSkillMain = new int[skills.Count];
+            for(int i = 0; i < startMatchInfo.levelSkillMain.Length; ++i)
+            {
+                startMatchInfo.levelSkillMain[i] = skills[i]._info.CurrentLevelSkill;
+            }
             int pSelectedSPPlane1 = pSelectedspPlane;
             var pDataSpPlane = pSelectedSPPlane1 >= 0 ? GameManager.Instance.Database.spPlanes[pSelectedSPPlane1] : null;
             if (pDataSpPlane == null || pDataSpPlane.CurrentLevel == 0)
@@ -412,7 +502,13 @@ namespace EazyEngine.Space
                 spPlane1.setData(pDataSpPlane);
                 spPlane1.GetComponent<FollowerMainPlayer>().OffsetSupportPlane = players[0].transform.Find("slot1").transform.localPosition;
                 players[0].addChild(spPlane1);
-                skills.AddRange(convert(spPlane1._info.Info.skills.ToArray(), spPlane1));
+                var pSkillSp = convert(spPlane1._info.Info.skills.ToArray(), spPlane1);
+                skills.AddRange(pSkillSp);
+                startMatchInfo.levelSkillSp = new int[pSkillSp.Length];
+                for (int i = 0; i < startMatchInfo.levelSkillSp.Length; ++i)
+                {
+                    startMatchInfo.levelSkillSp[i] = pSkillSp[i]._info.CurrentLevelSkill;
+                }
             }
             if (pDataSpPlane != null)
             {
@@ -445,6 +541,27 @@ namespace EazyEngine.Space
             isInitDone = true;
             GUIManager.Instance.initLevelDone();
             SceneManager.Instance.loadingDirty(StateLoadingGame.PoolFirst);
+            pHistory.startHeath = CurrentPlayer._health.CurrentHealth;
+
+            startMatchInfo.selectedMainPlane = GameManager.Instance.Database.SelectedMainPlane;
+            startMatchInfo.levelMain = GameManager.Instance.Database.getPlane(GameManager.Instance.Database.SelectedMainPlane).CurrentLevel;
+            startMatchInfo.selectedSupport = GameManager.Instance.Database.SelectedSupportPlane1;
+            startMatchInfo.levelMainSp = GameManager.Instance.Database.getSPPlane(GameManager.Instance.Database.SelectedSupportPlane1).CurrentLevel;
+            startMatchInfo.IsFreePlay = GameManager.Instance.isFree;
+            for(int i = 0; i < _infoLevel.InputConfig.itemUsed.Count; ++i)
+            {
+                startMatchInfo.usedItem.Add(_infoLevel.InputConfig.itemUsed[i].ItemID);
+            }
+            startMatchInfo.level = GameManager.Instance.ChoosedLevel;
+            startMatchInfo.mode = GameManager.Instance.ChoosedHard;
+            EazyAnalyticTool.LogEventQueue("StartGame",delegate(bool pResult,string pData) {
+                if (pResult)
+                {
+                    var pJson = JsonMapper.ToObject(pData); 
+                   startMatchInfo.matchID = pJson["match_id"].ToJson();
+                }
+            },5, "Data",JsonUtility.ToJson(startMatchInfo));
+     
         }
         protected override void Awake()
         {
@@ -456,7 +573,7 @@ namespace EazyEngine.Space
                 return;
             }
             base.Awake();
-            Firebase.Analytics.FirebaseAnalytics.LogEvent($"Start_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedHard}");
+      
             TimeKeeper.Instance.getTimer("Map").TimScale = 1 ;
             for (int i = 0; i < 24; i++)
             {
@@ -499,6 +616,11 @@ namespace EazyEngine.Space
                 {
                     _infoLevel.goldTaken +=(int)CurrentRateCoin * (int)eventType._owner.GetComponent<Character>().getFactorWithItem("Coin");
                     GUIManager.Instance.setGoldScore(_infoLevel.goldTaken);
+                }
+                var  pCurrentLife = historyMatch.timeLifes[historyMatch.timeLifes.Count - 1];
+                if (eventType._nameItem != "Coin")
+                {
+                    pCurrentLife.eatedItems.Add(new DetailItemUsedInfo() { itemID = eventType._nameItem, time = (int)CurrentTime.TotalSeconds });
                 }
             }
         }
@@ -552,7 +674,10 @@ namespace EazyEngine.Space
             if (!isInitDone) return;
             if (startTime)
             {
-                currentTime += Time.deltaTime;
+                if(!isPause && IsMatching)
+                {
+                    currentTime += Time.deltaTime;
+                }
             }
             if(currentDelayStartGame > 0)
             {

@@ -69,7 +69,8 @@ namespace EazyEngine.Space.UI
         
         public void open()
         {
-          var pItem =  GameManager.Instance.Database.getComonItem(Data.itemSell.ItemID);
+            EazyAnalyticTool.LogEvent("OpenPackage", "Name", Data.itemSell.ItemID);
+            var pItem =  GameManager.Instance.Database.getComonItem(Data.itemSell.ItemID);
             pItem.Quantity--;
             claim();
             Data = Data;

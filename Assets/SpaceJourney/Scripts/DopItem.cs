@@ -41,7 +41,14 @@ namespace EazyEngine.Space
                         continue;
                     }
                 }
-               var pObjectItem =  ItemEnviroment.Instance.getItem(itemDropOnDeath[i].gameObject);
+                var pTimeLife = LevelManger.Instance.historyMatch.timeLifes[LevelManger.Instance.historyMatch.timeLifes.Count - 1];
+                var pChar = GetComponent<Character>();
+                if(itemDropOnDeath[i].idItem != "Coin")
+                {
+                    pTimeLife.dropItem.Add(new DropItemInfo() { nameItem = itemDropOnDeath[i].idItem, state = pChar ? pChar.CurrentLevelState : "", nameOwner = gameObject.name });
+                }
+                
+                var pObjectItem =  ItemEnviroment.Instance.getItem(itemDropOnDeath[i].gameObject);
                 pObjectItem.GetComponent<CoinEffControl>().SetInfo(transform.position);
                 pObjectItem.gameObject.SetActive(true);
             }

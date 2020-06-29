@@ -80,7 +80,7 @@ namespace EazyEngine.Space.UI
                         {
                             IsGetTime = true;
                             var pJson = JsonMapper.ToObject(time);
-                            Time = TimeExtension.UnixTimeStampToDateTime(double.Parse(pJson["time"].ToString())).ToLocalTime();
+                            Time = TimeExtension.UnixTimeStampToDateTime(double.Parse(JsonMapper.ToObject(pJson["data"].ToJson())["timestamp"].ToJson())).ToLocalTime();
                         }
                         else
                         {
@@ -186,7 +186,7 @@ namespace EazyEngine.Space.UI
         }
         public void claimX2()
         {
-            GameManager.Instance.showRewardAds(watchItem.ItemID, resultClaimX2);
+            GameManager.Instance.showRewardAds(watchItem.ItemID, resultClaimX2,PositionADS.DaiLy);
         }
 
         public void resultClaimX2(ResultStatusAds pSucess)

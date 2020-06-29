@@ -29,6 +29,8 @@ namespace EazyEngine.Space
 
         public void useController()
         {
+            var pTimeLife = LevelManger.Instance.historyMatch.timeLifes[LevelManger.Instance.historyMatch.timeLifes.Count - 1];
+            pTimeLife.usedItems.Add(new DetailItemUsedInfo() { itemID = Data.item.ItemID, time = (int)LevelManger.Instance.CurrentTime.TotalSeconds });
             EzEventManager.TriggerEvent(new InputButtonTrigger(Data.item.ItemID, Data.item.categoryItem));
             var pItem = GameManager.Instance.Database.getComonItem(Data.item.ItemID);
             pItem.Quantity--;

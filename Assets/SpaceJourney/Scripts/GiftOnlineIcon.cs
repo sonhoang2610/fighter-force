@@ -7,7 +7,7 @@ namespace EazyEngine.Space.UI
 {
 
 
-    public class GiftOnlineIcon : Singleton<GiftOnlineIcon>,EzEventListener<EventTimer>
+    public class GiftOnlineIcon : Singleton<GiftOnlineIcon>,EzEventListener<EventTimer>,EzEventListener<TriggerLoadAsset>
     {
         public UILabel labelTimer;
         public GameObject boxTimer;
@@ -26,7 +26,7 @@ namespace EazyEngine.Space.UI
             }
             else
             {
-                Start();
+                StartInit();
             }
         }
         private void OnDestroy()
@@ -55,16 +55,18 @@ namespace EazyEngine.Space.UI
 
         private void OnEnable()
         {
-            EzEventManager.AddListener(this);
+            EzEventManager.AddListener< EventTimer>(this);
+            EzEventManager.AddListener<TriggerLoadAsset>(this);
         }
         private void OnDisable()
         {
-            EzEventManager.RemoveListener(this);
+            EzEventManager.RemoveListener< EventTimer>(this);
+            EzEventManager.RemoveListener<TriggerLoadAsset>(this);
         }
 
 
         // Start is called before the first frame update
-        void Start()
+        void StartInit()
         {
             var pDatabase = GameDatabase.Instance.databaseGiftOnline;
             if (GameManager.Instance.giftOnlineModule.calimedIndex < pDatabase.item.Length - 1)
@@ -109,6 +111,15 @@ namespace EazyEngine.Space.UI
         void Update()
         {
 
+        }
+
+        public void OnEzEvent(TriggerLoadAsset eventType)
+        {
+            var pJob = AssetLoaderManager.Instance.getPercentJob("Main");
+            if(pJob >= 1)
+            {
+                StartInit();
+            }
         }
     }
 }

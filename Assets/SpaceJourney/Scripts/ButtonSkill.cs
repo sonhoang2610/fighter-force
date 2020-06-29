@@ -29,13 +29,14 @@ namespace EazyEngine.Space {
         public TimeController time;
         public void press()
         {
-            Firebase.Analytics.FirebaseAnalytics.LogEvent("PressSkill");
+            EazyAnalyticTool.LogEvent("PressSkill");
             for (int i = 0;  i < Data._info.Info.VariableDict.Count; ++i)
             {
                 var pDict = Data._info.Info.VariableDict;
                 LevelManger.Instance.players[0].GetComponent<Blackboard>().AddVariable(pDict.Keys.ElementAt(i), pDict[pDict.Keys.ElementAt(i)]);
             }
-          
+            var pTimeLife = LevelManger.Instance.historyMatch.timeLifes[LevelManger.Instance.historyMatch.timeLifes.Count - 1];
+            pTimeLife.skillUsed.Add(new DetailItemUsedInfo() { itemID = Data._info.Info.displayNameItem.value, time =(int) LevelManger.Instance.CurrentTime.TotalSeconds });
             EzEventManager.TriggerEvent(new InputButtonTrigger(  Data._info.Info.ItemID,Data._info.Info.categoryItem));
             fillCoolDown.gameObject.SetActive(true);
             fillCoolDown.fillAmount = 1;

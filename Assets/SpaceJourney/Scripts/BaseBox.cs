@@ -5,13 +5,26 @@ using EazyEngine.Tools;
 using Sirenix.OdinInspector;
 using UnityEngine.Events;
 using System;
+using EazyEngine.Space;
 
+[System.Serializable]
+public class UnityEventFloat : UnityEvent<float>
+{
+
+}
 public class BaseBox<TItem, TData> : MonoBehaviour where TItem : BaseItem<TData> where TData : class
 {
     public GameObject attachMent;
     public TItem prefabItem;
     public ObservableList<TData> _infos = new ObservableList<TData>();
-   // [HideInEditorMode]
+    public bool loadAsync = false;
+    [ShowIf("loadAsync")]
+    public string idJob;
+    [ShowIf("loadAsync")]
+    public UnityEvent onCompleteAsync;
+    [ShowIf("loadAsync")]
+    public UnityEventFloat onLoadingAsync;
+    // [HideInEditorMode]
     public List<TItem> items = new List<TItem>();
     public Dictionary<TData, TItem> Item = new Dictionary<TData, TItem>();
     public List<EventDelegate> onDataAction = new List<EventDelegate>();
@@ -24,7 +37,14 @@ public class BaseBox<TItem, TData> : MonoBehaviour where TItem : BaseItem<TData>
        // SendMessage("Reposition", attachMent, SendMessageOptions.DontRequireReceiver);
      //   SendMessage("SortAlphabetically", attachMent, SendMessageOptions.DontRequireReceiver);
     }
-
+    public virtual void onCompleteFirstAsync()
+    {
+        onCompleteAsync.Invoke();
+        if (!string.IsNullOrEmpty(idJob))
+        {
+            EzEventManager.TriggerAssetLoaded(new TriggerLoadAsset() { name = idJob, percent = 1 });
+        }
+    }
     public virtual ObservableList<TData> DataSource
     {
         set
@@ -122,7 +142,7 @@ public class BaseBox<TItem, TData> : MonoBehaviour where TItem : BaseItem<TData>
             }
         }
 
-     var pItem = Instantiate<TItem>(prefabItem, attachMent.transform);
+        var pItem = Instantiate<TItem>(prefabItem, attachMent.transform);
         pItem.Dirty = true;
         pItem.Index = index;
         setDataItem(pData, pItem);
@@ -135,8 +155,80 @@ public class BaseBox<TItem, TData> : MonoBehaviour where TItem : BaseItem<TData>
     {
         return false;
     }
+    public IEnumerator onCollectionChangeAsync()
+    {
+        Item.Clear();
+        for (int i = 0; i < items.Count; ++i)
+        {
+            items[i].Dirty = !items[i].Using;
+            items[i].Using = false;
+            items[i].hide();
+        }
+        List<TData> initData = new List<TData>();
+        Dictionary<TData, int> indexBoard = new Dictionary<TData, int>();
+        for (int i = 0; i < DataSource.Count; ++i)
+        {
+            indexBoard.Add(DataSource[i], i);
+        }
+        initData.AddRange(DataSource.ToArray());
+        for (int i = initData.Count - 1; i >= 0; --i)
+        {
+            var pItem = obtainItemExistData(initData[i]);
+            if (pItem)
+            {
+
+                if (!Item.ContainsKey(initData[i]))
+                {
+                    Item.Add(initData[i], pItem);
+                }
+                else
+                {
+                    Item[initData[i]] = pItem;
+                }
+                pItem.Index = indexBoard[initData[i]];
+                setDataItem(initData[i], pItem);
+                pItem.show(!isItemEffect());
+                pItem.Using = true;
+                initData.RemoveAt(i);
+            }
+        }
+        for (int i = 0; i < initData.Count; ++i)
+        {
+            yield return new WaitForEndOfFrame();
+            var pItem = obtainItemNewData(initData[i], indexBoard[initData[i]]);
+            if (!Item.ContainsKey(initData[i]))
+            {
+                Item.Add(initData[i], pItem);
+            }
+            else
+            {
+                Item[initData[i]] = pItem;
+            }
+            pItem.show(!isItemEffect());
+            pItem.Using = true;
+            onLoadingAsync.Invoke((float)(i + 1) / (float)initData.Count);
+            if (!string.IsNullOrEmpty(idJob))
+            {
+                EzEventManager.TriggerAssetLoaded(new TriggerLoadAsset() { name = idJob, percent = (float)(i + 1) / (float)initData.Count });
+            }
+        }
+        if (attachMent)
+        {
+            resortItem();
+        }
+        onCompleteFirstAsync();
+      
+    }
     public void onCollectionChange()
     {
+        if (loadAsync && AssetLoaderManager.Instance.getPercentJob("Main") < 1)
+        {
+            if (DataSource.Count > 0)
+            {
+                StartCoroutine(onCollectionChangeAsync());
+            }
+            return;
+        }
         Item.Clear();
         for (int i = 0; i < items.Count; ++i)
         {

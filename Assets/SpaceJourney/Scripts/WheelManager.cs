@@ -184,7 +184,7 @@ namespace EazyEngine.Space.UI
                     {
                         startRoll();
                     }
-                });
+                },PositionADS.Luckywheel);
             }
         }
 

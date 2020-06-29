@@ -46,7 +46,7 @@ namespace EazyEngine.Space.UI {
 
         public void rebornCrystal()
         {
-            Firebase.Analytics.FirebaseAnalytics.LogEvent($"Reborn_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedHard}");
+            EazyAnalyticTool.LogEvent("Reborn", "Level", GameManager.Instance.ChoosedLevel.ToString(), "Mode", GameManager.Instance.ChoosedHard.ToString(), "Type", "Normal","Count",boxReborn.GetComponent<BoxReborn>().CurrentReborn.ToString(),"matchID",LevelManger.Instance.startMatchInfo.matchID);
             var pItem = GameManager.Instance.Database.getComonItem("Crystal");
             LevelManger.Instance.IsMatching = true;
             if (pItem.Quantity >= BoxReborn.GetComponent<BoxReborn>().getPriceRebornCrystal())
@@ -80,12 +80,13 @@ namespace EazyEngine.Space.UI {
         }
         public void rebornWatchAds()
         {
-            Firebase.Analytics.FirebaseAnalytics.LogEvent($"RebornAds_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedHard}");
+         
             GameManager.Instance.showRewardAds(BoxReborn.GetComponent<BoxReborn>().itemExchange,delegate(ResultStatusAds pBool){
                 BoxReborn.close();
           
                 if (pBool == ResultStatusAds.Success)
                 {
+                    EazyAnalyticTool.LogEvent("Reborn", "Level", GameManager.Instance.ChoosedLevel.ToString(), "Mode", GameManager.Instance.ChoosedHard.ToString(), "Type", "ADS");
                     LevelManger.Instance.IsMatching = true;
                     TimeKeeper.Instance.getTimer("Global").TimScale = 1;
                     GameManager.Instance.showBannerAds(false);
@@ -101,13 +102,20 @@ namespace EazyEngine.Space.UI {
                     BoxReborn.show();
                 }
        
-	        });
+	        },PositionADS.Reborn);
             //GameManager.Instance.
         }
 
        public void reviePlayer(float pHealthFactor = 1,bool booster = true)
         {
-
+            var pOldLife = LevelManger.Instance.historyMatch.timeLifes[LevelManger.Instance.historyMatch.timeLifes.Count - 1];
+            pOldLife.reborn = booster ? "Crystal" : "ADS";
+            pOldLife.timeEnd = (int)LevelManger.Instance.CurrentTime.TotalSeconds;
+            LevelManger.Instance.historyMatch.timeLifes.Add(new HistoryDetailLifeInfo()
+            {
+                timeStart = (int)LevelManger.Instance.CurrentTime.TotalSeconds,
+                startHeath = (int)(LevelManger.Instance.CurrentPlayer.GetComponent<Health>().InitialHealth * pHealthFactor)
+            });
             HUDLayer.Instance.BoxReborn.close();
 
             LevelManger.Instance.CurrentPlayer.GetComponent<Health>().Revive();

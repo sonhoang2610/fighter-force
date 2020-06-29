@@ -6,9 +6,9 @@ namespace EazyEngine.Space.UI
 {
 #if UNITY_EDITOR
     using UnityEditor;
-    public class CreatetorScriptTableObjectDTB 
+    public class CreatetorScriptTableObjectDTB
     {
-       // [MenuItem("Assets/Create/EazyEngine/Space/"]
+        // [MenuItem("Assets/Create/EazyEngine/Space/"]
         public static void CreateMyAsset<T>() where T : ScriptableObject
         {
             T asset = ScriptableObject.CreateInstance<T>();
@@ -17,7 +17,7 @@ namespace EazyEngine.Space.UI
             {
                 path = "Assets";
             }
-            AssetDatabase.CreateAsset(asset, path + "/" + typeof(T).Name+".asset");
+            AssetDatabase.CreateAsset(asset, path + "/" + typeof(T).Name + ".asset");
             AssetDatabase.SaveAssets();
 
             EditorUtility.FocusProjectWindow();
@@ -50,32 +50,37 @@ namespace EazyEngine.Space.UI
         protected int currentEffect = 0;
         private void OnEnable()
         {
-            if (databse == null) {
+            if (databse == null)
+            {
                 databse = GameDatabase.Instance.databaseGiftOnline;
             }
             reload();
-            bool isDirty = false;
-            for (int i = 0; i < databse.item.Length; ++i)
+            var pJobMain = AssetLoaderManager.Instance.getPercentJob("Main");
+            if (pJobMain > 1)
             {
-                if (databse.item[i].time < GameManager.Instance.giftOnlineModule.onlineTime && i > GameManager.Instance.giftOnlineModule.calimedIndex)
+                bool isDirty = false;
+                for (int i = 0; i < databse.item.Length; ++i)
                 {
-                    currentEffect++;
-                    items[i].claim(delegate {
-                        currentEffect--;
-                        if (currentEffect <= 0)
+                    if (databse.item[i].time < GameManager.Instance.giftOnlineModule.onlineTime && i > GameManager.Instance.giftOnlineModule.calimedIndex)
+                    {
+                        currentEffect++;
+                        items[i].claim(delegate
                         {
-                            reload();
-                        }
-                    });
-                    GameManager.Instance.giftOnlineModule.calimedIndex = i;
-                    isDirty = true;
+                            currentEffect--;
+                            if (currentEffect <= 0)
+                            {
+                                reload();
+                            }
+                        });
+                        GameManager.Instance.giftOnlineModule.calimedIndex = i;
+                        isDirty = true;
+                    }
                 }
-            }
-       
-            if (isDirty)
-            {
-                GiftOnlineIcon.Instance.claim();
-                GameManager.Instance.SaveGame();
+                if (isDirty)
+                {
+                    GiftOnlineIcon.Instance.claim();
+                    GameManager.Instance.SaveGame();
+                }
             }
 
         }
@@ -95,7 +100,7 @@ namespace EazyEngine.Space.UI
                 else if (i == GameManager.Instance.giftOnlineModule.calimedIndex + 1)
                 {
                     databse.item[i].isNext = true;
-                    databse.item[i].timeLeft =(int)( (double)GameManager.Instance.giftOnlineModule.onlineTime- databse.item[i].time);
+                    databse.item[i].timeLeft = (int)((double)GameManager.Instance.giftOnlineModule.onlineTime - databse.item[i].time);
                 }
                 else
                 {
@@ -109,7 +114,7 @@ namespace EazyEngine.Space.UI
         // Start is called before the first frame update
         void Start()
         {
-           
+
         }
 
         // Update is called once per frame
@@ -121,7 +126,8 @@ namespace EazyEngine.Space.UI
                 if (databse.item[i].time < GameManager.Instance.giftOnlineModule.onlineTime && i > GameManager.Instance.giftOnlineModule.calimedIndex)
                 {
                     currentEffect++;
-                    items[i].claim(delegate {
+                    items[i].claim(delegate
+                    {
                         currentEffect--;
                         if (currentEffect <= 0)
                         {

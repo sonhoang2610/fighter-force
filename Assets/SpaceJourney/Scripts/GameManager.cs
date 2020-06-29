@@ -24,7 +24,16 @@ using EazyEngine.Audio;
 #if UNITY_EDITOR
 using Sirenix.Utilities.Editor;
 #endif
-
+public enum PositionADS
+{
+    Reborn,
+    OpenBox,
+    OpenBoxInGame,
+    Luckywheel,
+    Shop,
+    DaiLy,
+    X2Reward
+}
 public static class LoadAssets
 {
     public static Dictionary<string, object> cacheAssets = new Dictionary<string, object>();
@@ -413,6 +422,8 @@ public enum ResultStatusAds
 public class GameManager : PersistentSingleton<GameManager>, EzEventListener<GameDatabaseInventoryEvent>
 {
     public float frameTarget = 60;
+    [System.NonSerialized]
+    public List<SubAssetInfo> loadedAssets = new List<SubAssetInfo>();
     public List<AssetSelectorRef> objectRefExcludes;
 
     public prefabBulletGroup[] groupPrefabBullet;
@@ -860,6 +871,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     }
     private void OnDestroy()
     {
+        PlayerPrefs.SetString("ItemUsed", "");
         if (fileSaveGame != null)
         {
             fileSaveGame.Close();
@@ -1059,6 +1071,13 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     public void LoadAllLevel()
     {
         container = LoadFile<LevelContainer>("level_container.dat");
+        for(int i  =0; i < container.levels.Count; ++i)
+        {
+            if(i < CurrentLevelUnlock && container.getLevelInfo(i + 1, 0).isLocked)
+            {
+                container.getLevelInfo(i + 1, 0).isLocked = false;
+            }
+        }
     }
     public void SaveLevel()
     {
@@ -1185,22 +1204,26 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         var pInfo = container.getLevelInfo(pIndex, GameManager.Instance.ChoosedHard).infos;
         pInfo.InputConfig = ConfigLevel;
         isPlaying = true;
+        string pItemUsed = "";
         for (int i = 0; i < ConfigLevel.itemUsed.Count; ++i)
         {
+            pItemUsed += ConfigLevel.itemUsed[i].itemID + ",";
             var pItem = GameManager.Instance.Database.getComonItem(ConfigLevel.itemUsed[i].itemID);
             if (!((ItemGame)pItem.item).isActive)
             {
                 pItem.Quantity--;
             }
         }
+        PlayerPrefs.SetString("ItemUsed", pItemUsed);
         SaveGame();
 
         TopLayer.Instance.block.gameObject.SetActive(true);
         Physics2D.autoSimulation = false;
         Time.timeScale = 1;
-        FirebaseAnalytics.LogEvent("LoadLevelStart");
+        EazyAnalyticTool.LogEvent("LoadLevelStart");
         StartCoroutine(delayAction(0.75f, delegate
         {
+         
             MidLayer.Instance.boxPrepare.close();
             TopLayer.Instance.inGame(true);
             SceneManager.Instance.loadScene(GameDatabase.Instance.LevelScene(pIndex));
@@ -1485,11 +1508,11 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     }
     void OnLocalNotificationOpened(EasyMobile.LocalNotification delivered)
     {
-        Firebase.Analytics.FirebaseAnalytics.LogEvent("LocalNTF");
+        EazyAnalyticTool.LogEvent("LocalNTF");
     }
     void OnRemoteNotificationOpened(EasyMobile.RemoteNotification delivered)
     {
-        Firebase.Analytics.FirebaseAnalytics.LogEvent("RemoteNTF");
+        EazyAnalyticTool.LogEvent("RemoteNTF");
     }
     public void TokenRecieved(string pToken)
     {
@@ -1539,6 +1562,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         if (focus == isFocus) return;
         if (!focus)
         {
+            EazyAnalyticTool.LogEvent("UnFocusGame");
             AudioListener.pause = true;
             TimeScaleCache = Time.timeScale;
             // Time.timeScale = 1;
@@ -1562,6 +1586,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         }
         else
         {
+            EazyAnalyticTool.LogEvent("FocusGame");
             if (Database.IdNotifySchedule.Count > 0)
             {
                 foreach (var pNoti in Database.IdNotifySchedule)
@@ -1657,6 +1682,17 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             inapps.Remove(product.Id);
         }
     }
+    [ContextMenu("hack")]
+    public void hack()
+    {
+        Database.getComonItem("Star").Quantity = 150;
+        SaveGame();
+        for(int i =0; i < 23; ++i)
+        {
+            container.getLevelInfo(i + 1, 0).isLocked = false;
+        }
+        SaveLevel();
+    }
 
     public void pruchasing(string pID)
     {
@@ -1691,9 +1727,8 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         // If you want to use default small icon and large icon (on Android),
         // don't set the smallIcon and largeIcon fields of the content.
         // If you want to use custom icons instead, simply specify their names here (without file extensions).
-        // content.smallIcon = "YOUR_CUSTOM_SMALL_ICON";
-        //content.largeIcon = "YOUR_CUSTOM_LARGE_ICON";
-
+        content.largeIcon = "ic_stat_home_gift";
+        content.smallIcon = "ic_game";
         return content;
     }
 
@@ -1743,16 +1778,22 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         action(www.error == null);
         www.Dispose();
     }
-    public void showRewardAds(string pID, System.Action<ResultStatusAds> onResult)
+    public void showRewardAds(string pID, System.Action<ResultStatusAds> onResult, PositionADS pos)
     {
         //#if UNITY_EDITOR
         //        onResult(ResultStatusAds.Success);
         //        return;
         //#endif
+        EazyAnalyticTool.LogEvent("LoadADS", "Position", pos.ToString(),"Status","Loading","matchID",LevelManger.InstanceRaw ? LevelManger.InstanceRaw.startMatchInfo.matchID : "");
         StartCoroutine(checkInternetConnection(delegate (bool pResult)
         {
             if (pResult)
             {
+                System.Action<ResultStatusAds> pResultADS = delegate (ResultStatusAds pStatus)
+                {
+                    EazyAnalyticTool.LogEvent("LoadADS", "Position", pos.ToString(), "Status", pStatus.ToString(), "matchID", LevelManger.InstanceRaw ? LevelManger.InstanceRaw.startMatchInfo.matchID : "");
+                    onResult(pStatus);
+                };
                 if (Advertising.IsRewardedAdReady())
                 {
                     Advertising.ShowRewardedAd();
@@ -1769,11 +1810,11 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                 }
                 if (!rewardAds.ContainsKey("DefaultADS"))
                 {
-                    rewardAds.Add("DefaultADS", onResult);
+                    rewardAds.Add("DefaultADS", pResultADS);
                 }
                 else
                 {
-                    rewardAds["DefaultADS"] += onResult;
+                    rewardAds["DefaultADS"] += pResultADS;
                 }
                 //var placement = AdPlacement.PlacementWithName(pID);
                 //if (!rewardAds.ContainsKey(pID))
@@ -1800,6 +1841,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             }
             else
             {
+                EazyAnalyticTool.LogEvent("LoadADSConnectionFailed", "matchID", LevelManger.InstanceRaw ? LevelManger.InstanceRaw.startMatchInfo.matchID : "");
                 onResult?.Invoke(ResultStatusAds.TimeOut);
             }
         }));

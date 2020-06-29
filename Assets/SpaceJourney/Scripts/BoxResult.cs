@@ -269,13 +269,18 @@ namespace EazyEngine.Space.UI
                     }
                 }));
             }
-
+            LevelManger.Instance.historyMatch.resultGame = pWin ? "Win" : "Lose";
+            var pTimeLife = LevelManger.Instance.historyMatch.timeLifes[LevelManger.Instance.historyMatch.timeLifes.Count - 1];
+            pTimeLife.timeEnd = (int)LevelManger.Instance.CurrentTime.TotalSeconds;
+            LevelManger.Instance.historyMatch.matchID = LevelManger.Instance.startMatchInfo.matchID;
+            var pHistoryString = JsonUtility.ToJson(LevelManger.Instance.historyMatch);
+            EazyAnalyticTool.LogEvent("EndGame","history",pHistoryString);
             if (pWin)
             {
-
+            
                 if (!GameManager.Instance.isFree)
                 {
-                    Firebase.Analytics.FirebaseAnalytics.LogEvent($"Win_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedHard}");
+                    
                     // update coin
                     GameManager.Instance.Database.getComonItem("Coin").Quantity +=
                         (int)(LevelManger.Instance._infoLevel.goldTaken * percent);
@@ -347,7 +352,7 @@ namespace EazyEngine.Space.UI
             }
             else if (!GameManager.Instance.isFree)
             {
-                Firebase.Analytics.FirebaseAnalytics.LogEvent($"Lose_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedHard}");
+              
                 //lose game
                 //update money
                 GameManager.Instance.Database.getComonItem("Coin").Quantity += (int)(LevelManger.Instance._infoLevel.goldTaken * percent);
@@ -419,7 +424,7 @@ namespace EazyEngine.Space.UI
                     DOTween.To(() => currentCoin, setGold, pTo, 0.5f);
                     GameManager.Instance.SaveGame();
                 }
-            });
+            },PositionADS.X2Reward);
         }
         public void watchRewardRandom()
         {
@@ -443,7 +448,7 @@ namespace EazyEngine.Space.UI
                 {
                     btnOpenBoxRewardRandom.gameObject.SetActive(true);
                 }
-            });
+            },PositionADS.OpenBoxInGame);
         }
 
         public void claimRewardRandom()

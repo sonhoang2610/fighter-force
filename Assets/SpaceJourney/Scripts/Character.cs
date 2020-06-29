@@ -52,7 +52,7 @@ namespace EazyEngine.Space
                 return new Health[] {  };
             }
         }
-
+        public string CurrentLevelState { get; set; }
         public EnemyType EnemyType { get => enemyType; set {
                 enemyType = value;
                 if (!_health)

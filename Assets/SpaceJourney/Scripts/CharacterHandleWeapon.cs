@@ -526,8 +526,26 @@ namespace EazyEngine.Space
             }
 
         }
+        public bool disableShoot = false;
+
+        public void EnableShoot()
+        {
+            if (disableShoot)
+            {
+                disableShoot = false;
+                ShootStart();
+            }
+        }
+        public void EnableRandomPlanes()
+        {
+            var pIndex = UnityEngine.Random.Range(0, anotherPlane.Count);
+            var pPlane = anotherPlane[pIndex];
+            pPlane.EnableShoot();
+            anotherPlane.RemoveAt(pIndex);
+        }
         public void ShootStart()
         {
+            if (disableShoot) return;
             if (_currentWeapons == null || isShooting) return;
             if (!isShooting)
             {
@@ -785,8 +803,17 @@ namespace EazyEngine.Space
                 }
             }
         }
+        [System.NonSerialized]
+        public List<CharacterHandleWeapon> anotherPlane = new List<CharacterHandleWeapon>();
         public void booster(string pID)
         {
+            //for(int i = 0; i <anotherPlane.Count; ++i)
+            //{
+            //    if (!anotherPlane[i].disableShoot)
+            //    {
+            //        anotherPlane[i].booster(pID);
+            //    }
+            //}
             blockTimeDropBooster = 1;
             if (pID.StartsWith("Booster"))
             {
@@ -857,6 +884,11 @@ namespace EazyEngine.Space
                 if (!isSupering)
                 {
                     triggerChangeWeapon("Booster" + startLevelBooster);
+                    var pTimeLife = LevelManger.Instance.historyMatch.timeLifes[LevelManger.Instance.historyMatch.timeLifes.Count - 1];
+                    if (!LevelManger.Instance.IsDestroyed())
+                    {
+                        pTimeLife.boosterChange.Add(new DetailItemUsedInfo() { itemID = "Booster" + startLevelBooster, time = (int)LevelManger.Instance.CurrentTime.TotalSeconds });
+                    }
                     EzEventManager.TriggerEvent(new MessageGamePlayEvent("Booster" + startLevelBooster, gameObject));
                 }
                 if (planSupering)

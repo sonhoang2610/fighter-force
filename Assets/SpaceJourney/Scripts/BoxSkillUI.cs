@@ -51,6 +51,30 @@ namespace EazyEngine.Space.UI
         public void setOwner(PlaneInfoConfig pInfo)
         {
             owner = pInfo;
+            var pJob = AssetLoaderManager.Instance.getPercentJob("Main");
+            if (pJob >= 1)
+            {
+                if (group)
+                {
+                    group.GroupTab.Clear();
+                    for (int i = 0; i < items.Count; ++i)
+                    {
+                        group.GroupTab.Add(items[i].GetComponent<EazyTabNGUI>());
+                    }
+                    if (gameObject.activeInHierarchy)
+                    {
+                        StartCoroutine(delayReloadTab(IndexChoosed));
+                    }
+                    else
+                    {
+                        planReload = true;
+                    }
+                }
+            }
+        }
+        public override void onCompleteFirstAsync()
+        {
+            base.onCompleteFirstAsync();
         }
         public void chooseIndex(int index)
         {
@@ -110,20 +134,24 @@ namespace EazyEngine.Space.UI
         bool planReload = false;
         public override ObservableList<SkillInfoInstanced> DataSource { get => base.DataSource; set {
                 base.DataSource = value;
-                if (group)
+                var pJob = AssetLoaderManager.Instance.getPercentJob("Main");
+                if (pJob >= 1)
                 {
-                    group.GroupTab.Clear();
-                    for (int i = 0; i < items.Count; ++i)
+                    if (group)
                     {
-                        group.GroupTab.Add(items[i].GetComponent<EazyTabNGUI>());
-                    }
-                    if (gameObject.activeInHierarchy)
-                    {
-                        StartCoroutine(delayReloadTab(IndexChoosed));
-                    }
-                    else
-                    {
-                        planReload = true;
+                        group.GroupTab.Clear();
+                        for (int i = 0; i < items.Count; ++i)
+                        {
+                            group.GroupTab.Add(items[i].GetComponent<EazyTabNGUI>());
+                        }
+                        if (gameObject.activeInHierarchy)
+                        {
+                               StartCoroutine(delayReloadTab(IndexChoosed));
+                        }
+                        else
+                        {
+                            planReload = true;
+                        }
                     }
                 }
             }
@@ -144,6 +172,7 @@ namespace EazyEngine.Space.UI
         {
             yield return new WaitForSeconds(0.1f);
             group.reloadTabs();
+            group.UnChooseAll();
             EventDelegate.Execute(group.GroupTab[pIndex].Button.onClick);
         }
 

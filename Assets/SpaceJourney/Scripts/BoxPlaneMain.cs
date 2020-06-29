@@ -8,8 +8,9 @@ using EazyEngine.Tools.Space;
 
 namespace EazyEngine.Space.UI
 {
-    public class BoxBasePlane : BaseBox<ItemPlaneMain, PlaneInfoConfig>,EzEventListener<UIMessEvent>
+    public class BoxBasePlane : BaseBox<ItemPlaneMain, PlaneInfoConfig>,EzEventListener<UIMessEvent>, EzEventListener<TriggerLoadAsset>
     {
+        public string assetsIDListen;
         public bool selectOnStart = false;
         public UIButton btnNext, btnPrevious;
         public GameObject layerButton;
@@ -18,14 +19,16 @@ namespace EazyEngine.Space.UI
         public UnityEvent onDeselected;
         protected int currentPage = 0;
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
-            EzEventManager.AddListener(this);
+            EzEventManager.AddListener<UIMessEvent>(this);
+            EzEventManager.AddListener<TriggerLoadAsset>(this);
         }
 
-        private void OnDisable()
+         protected virtual  void OnDisable()
         {
-            EzEventManager.RemoveListener(this);
+            EzEventManager.RemoveListener<UIMessEvent>(this);
+            EzEventManager.RemoveListener<TriggerLoadAsset>(this);
         }
         protected virtual void Start()
         {
@@ -129,12 +132,21 @@ namespace EazyEngine.Space.UI
                 reloadData();
             }
         }
+
+        public void OnEzEvent(TriggerLoadAsset eventType)
+        {
+            if(eventType.name == assetsIDListen && AssetLoaderManager.Instance.getJob(assetsIDListen).CurrentPercent >= 1)
+            {
+                Invoke("updatePage", 0.1f);
+            }
+        }
     }
     public class BoxPlaneMain : BoxBasePlane
     {
-        private void OnEnable()
+        protected override void OnEnable()
         {
-            if(DataSource!= null && DataSource.Count > 0)
+            base.OnEnable();
+            if (DataSource!= null && DataSource.Count > 0)
             {
                 refreshData();
                 for (int i = 0; i < DataSource.Count; ++i)
@@ -172,6 +184,10 @@ namespace EazyEngine.Space.UI
                 }
             }
             pInfoIntanceds.Sort(sortPlane);
+            onLoadingAsync.RemoveAllListeners();
+            onLoadingAsync.AddListener(delegate (float perent) {
+                EzEventManager.TriggerAssetLoaded(new TriggerLoadAsset() { name = "Main/MainScene/MainPlane", percent = perent });
+            });
             DataSource = pInfoIntanceds.ToObservableList();
         }
         // Start is called before the first frame update
@@ -223,6 +239,8 @@ namespace EazyEngine.Space.UI
         }
         public override void updatePage()
         {
+            if (AssetLoaderManager.Instance.getJob("Main/MainScene/MainPlane").CurrentPercent < 1) return;
+            if (Item.Count <= 0) return;
             base.updatePage();
             GameManager.Instance.Database.SelectedMainPlane = DataSource[currentPage].Info.ItemID;
             GameManager.Instance.freePlaneChoose = DataSource[currentPage].Info.ItemID;

@@ -28,7 +28,7 @@ namespace EazyEngine.Space.UI
                 btnPrevious.isEnabled = false;
             }
             group.changeTab(currentPage);
-      
+            
         }
 
         public void nextPage()
@@ -44,6 +44,7 @@ namespace EazyEngine.Space.UI
         }
 
         protected Dictionary<string, GameObject> cacheModel = new Dictionary<string, GameObject>();
+        protected AsyncOperation loadingModel = null;
         public override ObservableList<PlaneInfoConfig> DataSource { get => base.DataSource;
             set {
                 bool isChange = false;
@@ -59,60 +60,87 @@ namespace EazyEngine.Space.UI
                 group.GroupLayer.Clear();
       
                 base.DataSource = value;
-                if (isChange) {
-                    for (int i = 0; i < items.Count; ++i)
+                var pJobMain = AssetLoaderManager.Instance.getPercentJob("Main");
+                UnityEngine.Events.UnityAction pActionComplete = delegate ()
+                {
+                    if (isChange)
                     {
-                        group.GroupTab.Add(items[i].GetComponent<EazyTabNGUI>());
-                        GameObject pObjectNew = null;
-                        if (cacheModel.ContainsKey(items[i].Data.Info.ItemID))
+                        for (int i = 0; i < items.Count; ++i)
                         {
-                            pObjectNew = cacheModel[items[i].Data.Info.ItemID];
-                        }
-                        else
-                        {
-                            pObjectNew = new GameObject();
-                            pObjectNew.transform.parent = attachMentModel.transform;
-                            pObjectNew.transform.localScale = new Vector3(1, 1, 1);
-                            pObjectNew.transform.localPosition = Vector3.zero;
-
-                            if (!string.IsNullOrEmpty(items[i].Data.Info.modelRef.runtimeKey))
+                            group.GroupTab.Add(items[i].GetComponent<EazyTabNGUI>());
+                            GameObject pObjectNew = null;
+                            if (cacheModel.ContainsKey(items[i].Data.Info.ItemID))
                             {
-                                var pAsync = items[i].Data.Info.modelRef.loadAssetAsync<GameObject>();
-                                pAsync.completed += delegate (AsyncOperation a)
-                                {
-                                    if (a.GetType() == typeof(ResourceRequest))
-                                    {
-                                        Instantiate((GameObject)((ResourceRequest)a).asset, pObjectNew.transform);
-                                        pObjectNew.SetLayerRecursively(attachMentModel.layer);
-                                        pObjectNew.GetComponentInChildren<RenderQueueModifier>(true)?.setTarget(compareRender);
-                                    }
-                                };
+                                pObjectNew = cacheModel[items[i].Data.Info.ItemID];
                             }
                             else
                             {
-                                Instantiate(items[i].Data.Info.Model, pObjectNew.transform);
-                            }
-                            cacheModel.Add(items[i].Data.Info.ItemID, pObjectNew);
+                                pObjectNew = new GameObject();
+                                pObjectNew.transform.parent = attachMentModel.transform;
+                                pObjectNew.transform.localScale = new Vector3(1, 1, 1);
+                                pObjectNew.transform.localPosition = Vector3.zero;
 
+                                if (!string.IsNullOrEmpty(items[i].Data.Info.modelRef.runtimeKey))
+                                {
+                                    loadingModel = items[i].Data.Info.modelRef.loadAssetAsync<GameObject>();
+
+                                    loadingModel.completed += delegate (AsyncOperation a)
+                                    {
+                                        if (a.GetType() == typeof(ResourceRequest))
+                                        {
+                                            Instantiate((GameObject)((ResourceRequest)a).asset, pObjectNew.transform);
+                                            pObjectNew.SetLayerRecursively(attachMentModel.layer);
+                                            pObjectNew.GetComponentInChildren<RenderQueueModifier>(true)?.setTarget(compareRender);
+                                        }
+                                    };
+                                }
+                                else
+                                {
+                                    Instantiate(items[i].Data.Info.Model, pObjectNew.transform);
+                                }
+                                cacheModel.Add(items[i].Data.Info.ItemID, pObjectNew);
+
+                            }
+
+
+                            pObjectNew.SetLayerRecursively(attachMentModel.layer);
+                            pObjectNew.GetComponentInChildren<RenderQueueModifier>(true)?.setTarget(compareRender);
+                            group.GroupLayer.Add(pObjectNew.transform);
                         }
-             
-                
-                        pObjectNew.SetLayerRecursively(attachMentModel.layer);
-                        pObjectNew.GetComponentInChildren<RenderQueueModifier>(true)?.setTarget(compareRender);
-                        group.GroupLayer.Add(pObjectNew.transform);
                     }
-              
-              
-                }
-                group.reloadTabs();
-                for (int i = 0; i < DataSource.Count; ++i)
-                {
-                    if ((currentIndexTab == 0 && DataSource[i].Info.ItemID == GameManager.Instance.Database.SelectedMainPlane) || (currentIndexTab == 1 && DataSource[i].Info.ItemID == GameManager.Instance.Database.SelectedSupportPlane1))
+                    group.reloadTabs();
+                    for (int i = 0; i < DataSource.Count; ++i)
                     {
-                        currentPage = i;
+                        if ((currentIndexTab == 0 && DataSource[i].Info.ItemID == GameManager.Instance.Database.SelectedMainPlane) || (currentIndexTab == 1 && DataSource[i].Info.ItemID == GameManager.Instance.Database.SelectedSupportPlane1))
+                        {
+                            currentPage = i;
+                        }
                     }
+                    updatePage();
+                };
+                onCompleteAsync.RemoveAllListeners();
+                if (pJobMain < 1)
+                {
+                 
+                    onCompleteAsync.AddListener(pActionComplete);
+
+                    onLoadingAsync.RemoveAllListeners();
+                    onLoadingAsync.AddListener(delegate (float pPercent)
+                    {
+                        if (currentIndexTab == 1)
+                        {
+                            EzEventManager.TriggerAssetLoaded(new TriggerLoadAsset() { name = "Main/Upgrade/SpPlane", percent = pPercent * 0.2f });
+                        }
+                        else
+                        {
+                            EzEventManager.TriggerAssetLoaded(new TriggerLoadAsset() { name = "Main/Upgrade/MainPlane", percent = pPercent * 0.2f });
+                        }
+                    });
                 }
-                updatePage();
+                else
+                {
+                    pActionComplete();
+                }
 
             }
         }
@@ -219,16 +247,22 @@ namespace EazyEngine.Space.UI
 
 
 
-        // Start is called before the first frame update
-        void Start()
-        {
        
-        }
 
         // Update is called once per frame
         void Update()
         {
-
+            if (loadingModel != null)
+            {
+                if (currentIndexTab == 1)
+                {
+                    EzEventManager.TriggerAssetLoaded(new TriggerLoadAsset() { name = "Main/Upgrade/SpPlane/Model", percent = loadingModel.progress });
+                }
+                else
+                {
+                    EzEventManager.TriggerAssetLoaded(new TriggerLoadAsset() { name = "Main/Upgrade/MainPlane/Model", percent = loadingModel.progress });
+                }
+            }
         }
     }
 }

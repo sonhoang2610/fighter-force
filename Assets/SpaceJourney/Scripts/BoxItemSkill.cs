@@ -21,10 +21,21 @@ namespace EazyEngine.Space.UI
                var pItemExist = GameManager.Instance.Database.getComonItem(pItems[i].ItemID);
                 pItemReal.Add(new ItemOutGameInfo() {
                     item = pItemExist,
-                    isChoosed = (i < 2 && pItemExist.Quantity >0) ? true : false 
+                    //isChoosed = (i < 2 && pItemExist.Quantity >0) ? true : false 
                 });
             }
             DataSource = pItemReal.ToObservableList();
+            string pItemUsed = PlayerPrefs.GetString("ItemUsed", "");
+            string[] pItemUseds = pItemUsed.Split(',');
+            for (int i = 0; i < DataSource.Count; ++i)
+            {
+                var pItemExist = GameManager.Instance.Database.getComonItem(DataSource[i].item.item.ItemID);
+                items[i].setChoose(false);
+                if (((i < 2 && string.IsNullOrEmpty(pItemUsed)) || System.Array.Exists(pItemUseds,x=>x == DataSource[i].item.item.ItemID)) && pItemExist.Quantity > 0)
+                {
+                    items[i].choose();
+                }
+            }
           
         }
 

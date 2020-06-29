@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EazyGroupTabNGUI : MonoBehaviour {
     [SerializeField]
@@ -48,13 +49,24 @@ public class EazyGroupTabNGUI : MonoBehaviour {
     public bool isLockOnEnable = false;
     bool isFirst = true;
     public bool isReload = false;
+    public bool delayOnStart = true;
+    public bool autoInit = true;
+    public UnityEvent onAwake;
+    public UnityEvent onInitComplete;
+    private void Awake()
+    {
+        onAwake.Invoke();
+    }
     public IEnumerator delayInit()
     {
-        Debug.Log("start change tab" + gameObject.name);
         yield return new WaitForSeconds(0.01f);
-        Debug.Log("change tab" + gameObject.name);
-        changeTab(0);
-        Debug.Log("end change tab" + gameObject.name);
+        initTab();
+    }
+
+    public void initTab()
+    {
+        changeTab(currentTab);
+        onInitComplete.Invoke();
     }
     private void OnEnable()
     {
@@ -79,16 +91,30 @@ public class EazyGroupTabNGUI : MonoBehaviour {
      public virtual void  Start () {
 
         isFirst = false;
-
         reloadTabs();
+        if (!autoInit) return;
         if (isReload)
         {
-            StartCoroutine(delayInit());
+            if (delayOnStart)
+            {
+                StartCoroutine(delayInit());
+            }
+            else
+            {
+                initTab();
+            }
         }
         else
         {
             if (currentTab != 0) return;
-            StartCoroutine(delayInit());
+            if (delayOnStart)
+            {
+                StartCoroutine(delayInit());
+            }
+            else
+            {
+                initTab();
+            }
         }
     }
 
@@ -103,9 +129,25 @@ public class EazyGroupTabNGUI : MonoBehaviour {
             GroupTab[i].Index = i;
         }
     }
+    public UnityEvent onNoneChoosedEvent,onAnyChoosed;
+    bool noneChoose = false;
+    public void UnChooseAll()
+    {
+        for (int i = 0; i < GroupTab.Count; i++)
+        {
+            GroupTab[i].Pressed = false;
+        }
+        onNoneChoosedEvent.Invoke();
+        noneChoose = true;
+    }
 
     public void changeTab(int index)
     {
+        if (noneChoose)
+        {
+            noneChoose = false;
+            onAnyChoosed.Invoke();
+        }
         CurrentTab = index;
        for (int i = 0; i < GroupLayer.Count; i++)
         {

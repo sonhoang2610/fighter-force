@@ -1837,20 +1837,20 @@ public static class TimeExtension
     public static IEnumerator GetNetTime(System.Action<string,string> pResult)
     {
 
-        string url = "gamecenter.m2w.vn:8888/game-center";
-        JsonWriter write = new JsonWriter();
-        write.WriteObjectStart();
-        write.WritePropertyName("msg_type");
-        write.Write("get_current_time");
-        write.WriteObjectEnd();
-        var pBody = write.ToString();
-        Debug.Log(pBody);
+        string url = "http://34.94.28.183:1235/gettime/gettime";
+        //JsonWriter write = new JsonWriter();
+        //write.WriteObjectStart();
+        //write.WritePropertyName("msg_type");
+        //write.Write("get_current_time");
+        //write.WriteObjectEnd();
+        //var pBody = write.ToString();
+       // Debug.Log(pBody);
         UnityWebRequest www = new UnityWebRequest();
         Debug.Log(url);
         www.url = url;
         www.method = UnityWebRequest.kHttpVerbPOST;
         www.downloadHandler = new DownloadHandlerBuffer();
-        www.uploadHandler = new UploadHandlerRaw(string.IsNullOrEmpty(pBody) ? null : Encoding.UTF8.GetBytes(pBody));
+        //www.uploadHandler = new UploadHandlerRaw(string.IsNullOrEmpty(pBody) ? null : Encoding.UTF8.GetBytes(pBody));
         www.timeout = 5;
         www.SetRequestHeader("Content-Type", "applicatopn/json");
         yield return www.SendWebRequest();

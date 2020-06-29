@@ -539,6 +539,17 @@ namespace EazyEngine.Space
             }
             return null;
         }
+        public PlaneInfoConfig getSPPlane(string pID)
+        {
+            for (int i = 0; i < spPlanes.Count; ++i)
+            {
+                if (spPlanes[i].Info.ItemID == pID)
+                {
+                    return spPlanes[i];
+                }
+            }
+            return null;
+        }
 
         public bool comparePlane(string pID,int pLevel)
         {
