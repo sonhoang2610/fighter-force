@@ -90,6 +90,39 @@ MonoBehaviour:
   mFixedAspect: 0
   mPixelSize: 1
   nextSprite: {fileID: 0}
+--- !u!114 &2128323398645485472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4565103914240591144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63f746dc13246db43aca673b52fdf959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countMarkDirty: 1
+--- !u!114 &4126342748805038174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4565103914240591144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f97f813e50e6847ba7f8bf1ca6966e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDestroy: 0
+  forceDestroyAfter: 3
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onDestroy:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5287584781708068636
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,6 +353,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4565103914240591140}
   - {fileID: 7633440113398592459}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -471,7 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b5c3ebb24c97464da319951cafe5a47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundGraphSerialization: '{"version":2.96,"type":"FlowCanvas.FlowScript","translation":{"x":-235.0,"y":-32.0},"nodes":[{"_field":{"_baseInfo":"UIButton|onEnableButton"},"_inputPortValues":{},"_position":{"x":221.0,"y":271.0},"$type":"FlowCanvas.Nodes.UnityEventAutoCallbackEvent","$id":"2"},{"_method":{"_baseInfo":"NGUIEditMaterial|setEffectAmount|System.Void","_paramsInfo":"System.String|System.Single"},"_callable":true,"_inputPortValues":{"NGUIEditMaterial":{"$content":1,"$type":"NGUIEditMaterial"},"name":{"$content":"_Float0","$type":"System.String"}},"_position":{"x":558.0,"y":275.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"5"},{"_method":{"_baseInfo":"UnityEngine.GameObject|SetActive|System.Void","_paramsInfo":"System.Boolean"},"_callable":true,"_inputPortValues":{"GameObject":{"$content":2,"$type":"UnityEngine.GameObject"}},"_position":{"x":831.0,"y":282.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"8"},{"_field":{"_baseInfo":"UIButton|onDisableButton"},"_inputPortValues":{},"_position":{"x":199.0,"y":440.0},"$type":"FlowCanvas.Nodes.UnityEventAutoCallbackEvent","$id":"11"},{"_method":{"_baseInfo":"NGUIEditMaterial|setEffectAmount|System.Void","_paramsInfo":"System.String|System.Single"},"_callable":true,"_inputPortValues":{"NGUIEditMaterial":{"$content":1,"$type":"NGUIEditMaterial"},"name":{"$content":"_Float0","$type":"System.String"},"effect":{"$content":1.0,"$type":"System.Single"}},"_position":{"x":518.0,"y":454.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"14"},{"_method":{"_baseInfo":"UnityEngine.GameObject|SetActive|System.Void","_paramsInfo":"System.Boolean"},"_callable":true,"_inputPortValues":{"GameObject":{"$content":2,"$type":"UnityEngine.GameObject"},"value":{"$content":true,"$type":"System.Boolean"}},"_position":{"x":755.0,"y":508.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"17"}],"connections":[{"_sourcePortName":"Event","_targetPortName":"
+  boundGraphSerialization: '{"version":2.96,"type":"FlowCanvas.FlowScript","translation":{"x":-42.0,"y":-233.0},"nodes":[{"_field":{"_baseInfo":"UIButton|onEnableButton"},"_inputPortValues":{},"_position":{"x":221.0,"y":271.0},"$type":"FlowCanvas.Nodes.UnityEventAutoCallbackEvent","$id":"2"},{"_method":{"_baseInfo":"NGUIEditMaterial|setEffectAmount|System.Void","_paramsInfo":"System.String|System.Single"},"_callable":true,"_inputPortValues":{"NGUIEditMaterial":{"$content":1,"$type":"NGUIEditMaterial"},"name":{"$content":"_Float0","$type":"System.String"}},"_position":{"x":558.0,"y":275.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"5"},{"_method":{"_baseInfo":"UnityEngine.GameObject|SetActive|System.Void","_paramsInfo":"System.Boolean"},"_callable":true,"_inputPortValues":{"GameObject":{"$content":2,"$type":"UnityEngine.GameObject"}},"_position":{"x":831.0,"y":282.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"8"},{"_field":{"_baseInfo":"UIButton|onDisableButton"},"_inputPortValues":{},"_position":{"x":199.0,"y":440.0},"$type":"FlowCanvas.Nodes.UnityEventAutoCallbackEvent","$id":"11"},{"_method":{"_baseInfo":"NGUIEditMaterial|setEffectAmount|System.Void","_paramsInfo":"System.String|System.Single"},"_callable":true,"_inputPortValues":{"NGUIEditMaterial":{"$content":1,"$type":"NGUIEditMaterial"},"name":{"$content":"_Float0","$type":"System.String"},"effect":{"$content":1.0,"$type":"System.Single"}},"_position":{"x":518.0,"y":454.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"14"},{"_method":{"_baseInfo":"UnityEngine.GameObject|SetActive|System.Void","_paramsInfo":"System.Boolean"},"_callable":true,"_inputPortValues":{"GameObject":{"$content":2,"$type":"UnityEngine.GameObject"},"value":{"$content":true,"$type":"System.Boolean"}},"_position":{"x":755.0,"y":508.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"17"}],"connections":[{"_sourcePortName":"Event","_targetPortName":"
     ","_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"5"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"
     ","_targetPortName":" ","_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"8"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"Event","_targetPortName":"
     ","_sourceNode":{"$ref":"11"},"_targetNode":{"$ref":"14"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"
@@ -649,7 +683,7 @@ Transform:
   - {fileID: 6405444511826844951}
   - {fileID: 9208586853651011338}
   m_Father: {fileID: 7633440112685678994}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3613650868225824844
 MonoBehaviour:
@@ -832,3 +866,183 @@ MonoBehaviour:
   mGUI_ShowCallback: 0
   mLocalizeTarget: {fileID: 0}
   mLocalizeTargetName: I2.Loc.LocalizeTarget_NGUI_Label
+--- !u!1001 &8547867195477856095
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7633440112685678994}
+    m_Modifications:
+    - target: {fileID: 5330747099390823030, guid: 637b9e6133a2eb34bb615bce29ea409a,
+        type: 3}
+      propertyPath: _objectReferences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330747099390823030, guid: 637b9e6133a2eb34bb615bce29ea409a,
+        type: 3}
+      propertyPath: _serializedBlackboard
+      value: '{"_variables":{"myColor":{"_value":{"r":0.8603976,"g":0.7973318,"b":0.4189371,"a":1.0},"_name":"myColor","_id":"8c9ad08b-0b96-4211-b94c-1f3c759f57a3","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Color,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"current":{"_value":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"_name":"current","_id":"d9952136-1693-4e24-9e7d-4e686b3f9c0d","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Color,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"disable":{"_value":1,"_name":"disable","_id":"34eca1dc-8a92-4a5e-bf7d-c63c2079b6aa","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Sprite,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"enable":{"_value":1,"_name":"enable","_id":"e2bb3d98-f802-445b-bc0d-355a927ca072","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Sprite,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330747099390823030, guid: 637b9e6133a2eb34bb615bce29ea409a,
+        type: 3}
+      propertyPath: _objectReferences.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 228789586a73faa47b517594d43146db,
+        type: 3}
+    - target: {fileID: 5330747099390823031, guid: 637b9e6133a2eb34bb615bce29ea409a,
+        type: 3}
+      propertyPath: m_Name
+      value: effect
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330747099390823031, guid: 637b9e6133a2eb34bb615bce29ea409a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330747099390823031, guid: 637b9e6133a2eb34bb615bce29ea409a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330747099390823032, guid: 637b9e6133a2eb34bb615bce29ea409a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 228789586a73faa47b517594d43146db,
+        type: 3}
+    - target: {fileID: 5330747099390823032, guid: 637b9e6133a2eb34bb615bce29ea409a,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330747099390823033, guid: 637b9e6133a2eb34bb615bce29ea409a,
+        type: 3}
+      propertyPath: boundGraphSerialization
+      value: '{"version":2.96,"type":"FlowCanvas.FlowScript","translation":{"x":-991.0,"y":245.0},"nodes":[{"_position":{"x":229.0,"y":147.0},"$type":"FlowCanvas.Nodes.EnableEvent","$id":"2"},{"_method":{"_baseInfo":"UnityEngine.SpriteRenderer|set_sprite|System.Void","_paramsInfo":"UnityEngine.Sprite"},"_callable":true,"_inputPortValues":{},"_position":{"x":555.0,"y":189.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"3"},{"_simplexNode":{},"_inputPortValues":{"from":{"$content":1.0,"$type":"System.Single"},"to":{"$content":2.5,"$type":"System.Single"},"duration":{"$content":1.0,"$type":"System.Single"},"wait":{"$content":true,"$type":"System.Boolean"}},"_position":{"x":926.0,"y":101.0},"$type":"FlowCanvas.Nodes.SimplexNodeWrapper`1[[FlowCanvas.Nodes.DOTween.TweenFloat,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"6"},{"_method":{"_baseInfo":"UnityEngine.Material|SetColor|System.Void","_paramsInfo":"System.String|UnityEngine.Color"},"_callable":true,"_inputPortValues":{"name":{"$content":"_Color_dummy1","$type":"System.String"}},"_position":{"x":1563.0,"y":333.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"9"},{"_method":{"_baseInfo":"UnityEngine.Color|op_Multiply|UnityEngine.Color","_paramsInfo":"UnityEngine.Color|System.Single"},"_inputPortValues":{},"_position":{"x":1221.0,"y":225.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"12"},{"_method":{"_baseInfo":"UnityEngine.SpriteRenderer|set_sprite|System.Void","_paramsInfo":"UnityEngine.Sprite"},"_callable":true,"_inputPortValues":{},"_position":{"x":1392.0,"y":83.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"15"},{"_simplexNode":{},"_inputPortValues":{"from":{"$content":2.5,"$type":"System.Single"},"to":{"$content":1.0,"$type":"System.Single"},"duration":{"$content":1.0,"$type":"System.Single"},"wait":{"$content":true,"$type":"System.Boolean"}},"_position":{"x":1621.0,"y":104.0},"$type":"FlowCanvas.Nodes.SimplexNodeWrapper`1[[FlowCanvas.Nodes.DOTween.TweenFloat,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"18"},{"_method":{"_baseInfo":"UnityEngine.Material|SetColor|System.Void","_paramsInfo":"System.String|UnityEngine.Color"},"_callable":true,"_inputPortValues":{"name":{"$content":"_Color_dummy1","$type":"System.String"}},"_position":{"x":2131.0,"y":207.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"21"},{"_method":{"_baseInfo":"UnityEngine.Color|op_Multiply|UnityEngine.Color","_paramsInfo":"UnityEngine.Color|System.Single"},"_inputPortValues":{},"_position":{"x":1867.0,"y":245.0},"$type":"FlowCanvas.Nodes.ReflectedMethodNodeWrapper","$id":"24"},{"_color":{"r":1.0,"g":0.3607843,"b":0.3607843,"a":1.0},"_position":{"x":262.0,"y":-35.0},"$type":"FlowCanvas.Nodes.EnableEvent","$id":"27"},{"_simplexNode":{},"_inputPortValues":{"from":{"r":1.0,"g":1.0,"b":1.0,"a":1.0,"$type":"UnityEngine.Color"},"duration":{"$content":1.0,"$type":"System.Single"}},"_position":{"x":668.0,"y":-53.0},"$type":"FlowCanvas.Nodes.SimplexNodeWrapper`1[[FlowCanvas.Nodes.DOTween.TweenColor,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"28"},{"targetVariable":{"_name":"current","_targetVariableID":"d9952136-1693-4e24-9e7d-4e686b3f9c0d"},"_inputPortValues":{},"_position":{"x":959.0,"y":-25.0},"$type":"FlowCanvas.Nodes.SetVariable`1[[UnityEngine.Color,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"31"},{"_simplexNode":{},"_inputPortValues":{"to":{"r":1.0,"g":1.0,"b":1.0,"$type":"UnityEngine.Color"},"duration":{"$content":1.0,"$type":"System.Single"}},"_position":{"x":1249.0,"y":-130.0},"$type":"FlowCanvas.Nodes.SimplexNodeWrapper`1[[FlowCanvas.Nodes.DOTween.TweenColor,
+        Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"34"},{"targetVariable":{"_name":"current","_targetVariableID":"d9952136-1693-4e24-9e7d-4e686b3f9c0d"},"_inputPortValues":{},"_position":{"x":1589.0,"y":-97.0},"$type":"FlowCanvas.Nodes.SetVariable`1[[UnityEngine.Color,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"37"},{"_selectedInstanceMembers":["material"],"_inputPortValues":{},"_position":{"x":366.0,"y":570.0},"$type":"FlowCanvas.Nodes.ReflectedExtractorNodeWrapper`1[[UnityEngine.SpriteRenderer,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"40"},{"value":{"_name":"current","_targetVariableID":"d9952136-1693-4e24-9e7d-4e686b3f9c0d"},"_position":{"x":729.0,"y":532.0},"$type":"FlowCanvas.Nodes.GetVariable`1[[UnityEngine.Color,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"43"},{"value":{"_name":"myColor","_targetVariableID":"8c9ad08b-0b96-4211-b94c-1f3c759f57a3"},"_position":{"x":422.0,"y":-115.0},"$type":"FlowCanvas.Nodes.GetVariable`1[[UnityEngine.Color,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"45"},{"value":{"_name":"myColor","_targetVariableID":"8c9ad08b-0b96-4211-b94c-1f3c759f57a3"},"_position":{"x":1054.0,"y":-254.0},"$type":"FlowCanvas.Nodes.GetVariable`1[[UnityEngine.Color,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"47"},{"value":{"_name":"disable","_targetVariableID":"34eca1dc-8a92-4a5e-bf7d-c63c2079b6aa"},"_position":{"x":415.0,"y":284.0},"$type":"FlowCanvas.Nodes.GetVariable`1[[UnityEngine.Sprite,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"49"},{"value":{"_name":"enable","_targetVariableID":"e2bb3d98-f802-445b-bc0d-355a927ca072"},"_position":{"x":1200.0,"y":131.0},"$type":"FlowCanvas.Nodes.GetVariable`1[[UnityEngine.Sprite,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]","$id":"51"}],"connections":[{"_sourcePortName":"Out","_targetPortName":"
+        ","_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"
+        ","_targetPortName":"In","_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"6"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"Doing","_targetPortName":"
+        ","_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"9"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"value","_targetPortName":"b","_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"12"},"$type":"FlowCanvas.BinderConnection`1[[System.Single,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"Done","_targetPortName":"
+        ","_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"15"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"Value","_targetPortName":"value","_sourceNode":{"$ref":"12"},"_targetNode":{"$ref":"9"},"$type":"FlowCanvas.BinderConnection`1[[UnityEngine.Color,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"
+        ","_targetPortName":"In","_sourceNode":{"$ref":"15"},"_targetNode":{"$ref":"18"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"Doing","_targetPortName":"
+        ","_sourceNode":{"$ref":"18"},"_targetNode":{"$ref":"21"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"value","_targetPortName":"b","_sourceNode":{"$ref":"18"},"_targetNode":{"$ref":"24"},"$type":"FlowCanvas.BinderConnection`1[[System.Single,
+        mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"_sourcePortName":"Value","_targetPortName":"value","_sourceNode":{"$ref":"24"},"_targetNode":{"$ref":"21"},"$type":"FlowCanvas.BinderConnection`1[[UnityEngine.Color,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"Out","_targetPortName":"In","_sourceNode":{"$ref":"27"},"_targetNode":{"$ref":"28"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"Doing","_targetPortName":"In","_sourceNode":{"$ref":"28"},"_targetNode":{"$ref":"31"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"value","_targetPortName":"Value","_sourceNode":{"$ref":"28"},"_targetNode":{"$ref":"31"},"$type":"FlowCanvas.BinderConnection`1[[UnityEngine.Color,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"Done","_targetPortName":"In","_sourceNode":{"$ref":"28"},"_targetNode":{"$ref":"34"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"Doing","_targetPortName":"In","_sourceNode":{"$ref":"34"},"_targetNode":{"$ref":"37"},"$type":"FlowCanvas.BinderConnection"},{"_sourcePortName":"value","_targetPortName":"Value","_sourceNode":{"$ref":"34"},"_targetNode":{"$ref":"37"},"$type":"FlowCanvas.BinderConnection`1[[UnityEngine.Color,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"material","_targetPortName":"Material","_sourceNode":{"$ref":"40"},"_targetNode":{"$ref":"9"},"$type":"FlowCanvas.BinderConnection`1[[UnityEngine.Material,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"material","_targetPortName":"Material","_sourceNode":{"$ref":"40"},"_targetNode":{"$ref":"21"},"$type":"FlowCanvas.BinderConnection`1[[UnityEngine.Material,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"Value","_targetPortName":"a","_sourceNode":{"$ref":"43"},"_targetNode":{"$ref":"12"},"$type":"FlowCanvas.BinderConnection`1[[UnityEngine.Color,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"Value","_targetPortName":"a","_sourceNode":{"$ref":"43"},"_targetNode":{"$ref":"24"},"$type":"FlowCanvas.BinderConnection`1[[UnityEngine.Color,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"Value","_targetPortName":"to","_sourceNode":{"$ref":"45"},"_targetNode":{"$ref":"28"},"$type":"FlowCanvas.BinderConnection`1[[UnityEngine.Color,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"Value","_targetPortName":"from","_sourceNode":{"$ref":"47"},"_targetNode":{"$ref":"34"},"$type":"FlowCanvas.BinderConnection`1[[UnityEngine.Color,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"Value","_targetPortName":"value","_sourceNode":{"$ref":"49"},"_targetNode":{"$ref":"3"},"$type":"FlowCanvas.BinderConnection`1[[UnityEngine.Sprite,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},{"_sourcePortName":"Value","_targetPortName":"value","_sourceNode":{"$ref":"51"},"_targetNode":{"$ref":"15"},"$type":"FlowCanvas.BinderConnection`1[[UnityEngine.Sprite,
+        UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}],"localBlackboard":{"_name":"Local
+        Blackboard","_variables":{}}}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330747099390823035, guid: 637b9e6133a2eb34bb615bce29ea409a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330747099390823035, guid: 637b9e6133a2eb34bb615bce29ea409a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.80000305
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330747099390823035, guid: 637b9e6133a2eb34bb615bce29ea409a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330747099390823035, guid: 637b9e6133a2eb34bb615bce29ea409a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330747099390823035, guid: 637b9e6133a2eb34bb615bce29ea409a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330747099390823035, guid: 637b9e6133a2eb34bb615bce29ea409a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330747099390823035, guid: 637b9e6133a2eb34bb615bce29ea409a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330747099390823035, guid: 637b9e6133a2eb34bb615bce29ea409a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330747099390823035, guid: 637b9e6133a2eb34bb615bce29ea409a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330747099390823035, guid: 637b9e6133a2eb34bb615bce29ea409a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330747099390823035, guid: 637b9e6133a2eb34bb615bce29ea409a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330747099390823035, guid: 637b9e6133a2eb34bb615bce29ea409a,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330747099390823035, guid: 637b9e6133a2eb34bb615bce29ea409a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330747099390823035, guid: 637b9e6133a2eb34bb615bce29ea409a,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085671761414844433, guid: 637b9e6133a2eb34bb615bce29ea409a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 637b9e6133a2eb34bb615bce29ea409a, type: 3}
+--- !u!1 &4565103914240591144 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5330747099390823031, guid: 637b9e6133a2eb34bb615bce29ea409a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8547867195477856095}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4565103914240591140 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5330747099390823035, guid: 637b9e6133a2eb34bb615bce29ea409a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8547867195477856095}
+  m_PrefabAsset: {fileID: 0}

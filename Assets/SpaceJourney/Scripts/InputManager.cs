@@ -33,9 +33,28 @@ public class InputManager : Singleton<InputManager> {
     }
     protected bool cacheTouch = false;
     protected float fixedTimeDefault;
+
+    bool _blockTouch;
+    public bool BlockTouch
+    {
+        get
+        {
+            return _blockTouch;
+        }
+
+        set
+        {
+            _blockTouch = value;
+            if (value)
+            {
+                Time.timeScale = 1;
+                Time.fixedDeltaTime = fixedTimeDefault;
+            }
+        }
+    }
     private void LateUpdate()
     {
-        if (LevelManger.InstanceRaw != null && LevelManger.Instance.IsPlaying && LevelManger.Instance.IsMatching)
+        if (LevelManger.InstanceRaw != null && LevelManger.Instance.IsPlaying && LevelManger.Instance.IsMatching && !BlockTouch)
         {
             if (cacheTouch != isTouch)
             {

@@ -133,7 +133,10 @@ public class EnemyEnviroment : PoolManagerGeneric<EnemyEnviroment>
                     }
                     if (!exist)
                     {
-                        getObjectFromPoolZero(pState.states[i].formatInfo.prefabEnemies[j]);
+                        if(pState.states[i].formatInfo.prefabEnemies[j] != null)
+                        {
+                            _storage.Add(pState.states[i].formatInfo.prefabEnemies[j], new PrefabInfoMain());
+                        }
                     }
                 }
             }

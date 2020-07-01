@@ -5,12 +5,23 @@ using EazyEngine.Tools;
 using Sirenix.OdinInspector;
 using NodeCanvas.Framework;
 using System.Linq;
+using EazyEngine.Tools;
+using EazyEngine.Space.UI;
+using EazyEngine.Timer;
 
 namespace EazyEngine.Space
 {
 
-    public class SkillContainer : BaseBoxSingleton<SkillContainer,ButtonSkill, SkillInputData>
+    public class SkillContainer : BaseBoxSingleton<SkillContainer,ButtonSkill, SkillInputData>,EzEventListener<MessageGamePlayEvent>
     {
+        public override void setDataItem(SkillInputData pData, ButtonSkill pItem)
+        {
+            base.setDataItem(pData, pItem);
+            if(pData._info.Info.ItemID == "BigLaser")
+            {
+                pItem.name = "CoreBigLaser";
+            }
+        }
         public override ObservableList<SkillInputData> DataSource { get => base.DataSource;
             set {
                 List<SkillInputData> pData = new List<SkillInputData>();
@@ -60,6 +71,31 @@ namespace EazyEngine.Space
         void Update()
         {
 
+        }
+
+        private void OnEnable()
+        {
+            EzEventManager.AddListener(this);
+        }
+
+        private void OnDisable()
+        {
+            EzEventManager.RemoveListener(this);
+        }
+
+        public void OnEzEvent(MessageGamePlayEvent eventType)
+        {
+            var pItem = PlayerPrefs.GetInt(StringKeyGuide.FirstGuideSkill, 0);
+            if(eventType._message == StringKeyGuide.FirstGuideSkill && pItem == 0)
+            {
+                EzEventManager.TriggerEvent(new GuideEvent(StringKeyGuide.FirstGuideSkill, delegate {
+                    TimeKeeper.Instance.getTimer("Global").TimScale = 1;
+                    
+                },false));
+                InputManager.Instance.BlockTouch = true;
+                PlayerPrefs.SetInt(StringKeyGuide.FirstGuideSkill, 1);
+                TimeKeeper.Instance.getTimer("Global").TimScale = 0;
+            }
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EazyEngine.Tools;
 
 namespace EazyEngine.Space.UI
 {
@@ -32,11 +33,13 @@ namespace EazyEngine.Space.UI
                 GameManager.Instance.ConfigLevel = new LevelConfig();
             }
             StartCoroutine(enable());
+       
         }
 
         private IEnumerator enable()
         {
             yield return new WaitForSeconds(0.1f);
+     
             int lastChoosedIndex = 0;
             for (int i = 0; i < 3; ++i)
             {
@@ -48,11 +51,21 @@ namespace EazyEngine.Space.UI
                 }
                 else
                 {
+                    if (i > 0)
+                    {
+                        var pShow = PlayerPrefs.GetInt("ShowUnlockLevel" + GameManager.Instance.ChoosedLevel + "Mode" + i, 0);
+                        if (pShow == 0)
+                        {
+                            _chooseHardMode.GroupTab[i].transform.GetChild(0).gameObject.SetActive(true);
+                            PlayerPrefs.SetInt("ShowUnlockLevel" + GameManager.Instance.ChoosedLevel + "Mode" + i, 1);
+                        }
+                    }
                     _chooseHardMode.GroupTab[i].Button.isEnabled = true;
                     lastChoosedIndex = i;
                 }
 
             }
+        
             if (GameManager.Instance.scehduleUI != ScheduleUIMain.REPLAY)
             {
                 _chooseHardMode.changeTab(lastChoosedIndex);
@@ -60,6 +73,16 @@ namespace EazyEngine.Space.UI
             else
             {
                 _chooseHardMode.changeTab(GameManager.Instance.Database.lastPlayStage.y);
+            }
+            yield return new WaitForSeconds(0.5f);
+            if (AssetLoaderManager.Instance.getPercentJob("Main") >= 1)
+            {
+                var OpenTime = PlayerPrefs.GetInt(StringKeyGuide.OpenPrepare, 0);
+                if (OpenTime == 0)
+                {
+                    EzEventManager.TriggerEvent(new GuideEvent(StringKeyGuide.OpenPrepare));
+                }
+                PlayerPrefs.SetInt(StringKeyGuide.OpenPrepare, OpenTime + 1);
             }
         }
         public void showInfo(int pLevel,int pHard)

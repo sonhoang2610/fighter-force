@@ -471,10 +471,10 @@ namespace EazyEngine.Space.UI
         }
         public void freePlayGuide()
         {
-            GameManager.Instance.isGuide = true;
-            GameManager.Instance.isFree = true;
+            GameManager.Instance.isGuide = false;
+            GameManager.Instance.isFree = false;
             GameManager.Instance.ConfigLevel = new LevelConfig();
-            GameManager.Instance.ChoosedLevel = -1;
+            GameManager.Instance.ChoosedLevel =1;
             GameManager.Instance.LoadLevel(GameManager.Instance.ChoosedLevel);
 
         }

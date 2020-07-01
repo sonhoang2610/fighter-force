@@ -34,6 +34,15 @@ public enum PositionADS
     DaiLy,
     X2Reward
 }
+
+public static class StringKeyGuide
+{
+    public static string OpenPrepare = "FirstOpenPrepare";
+
+
+    public static string FirstGuideItem = "FirstGuideItem";
+    public static string FirstGuideSkill = "FirstGuideSkill";
+}
 public static class LoadAssets
 {
     public static Dictionary<string, object> cacheAssets = new Dictionary<string, object>();
@@ -675,7 +684,8 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             }
         }
     }
-    public GameDataBaseInstance _databaseDefault;
+    [InlineEditor]
+    public GameDataBaseInstanceObject _databaseDefault;
     [System.NonSerialized]
     public GameDataBaseInstance _databaseInstanced = null;
     public GameDataBaseInstance Database
@@ -977,7 +987,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
 
                     if (_databaseInstanced == null || _databaseInstanced.spPlanes.Count == 0)
                     {
-                        _databaseInstanced = _databaseDefault.CloneData();
+                        _databaseInstanced = _databaseDefault.DatabaseDefault.CloneData();
                         _databaseInstanced.ExtraInfo();
                     }
                     SaveGame();
@@ -993,7 +1003,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         }
         else
         {
-            _databaseInstanced = _databaseDefault.CloneData();
+            _databaseInstanced = _databaseDefault.DatabaseDefault.CloneData();
             _databaseInstanced.ExtraInfo();
             SaveGame();
         }
@@ -1058,7 +1068,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         }
         else
         {
-            _databaseInstanced = _databaseDefault.CloneData();
+            _databaseInstanced = _databaseDefault.DatabaseDefault.CloneData();
             _databaseInstanced.ExtraInfo();
             SaveGame();
         }

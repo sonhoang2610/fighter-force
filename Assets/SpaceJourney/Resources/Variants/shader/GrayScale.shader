@@ -8,20 +8,21 @@ Shader "Amplify/GrayScale"
 		_Color ("Tint", Color) = (1,1,1,1)
 		[MaterialToggle] PixelSnap ("Pixel snap", Float) = 0
 		[PerRendererData] _AlphaTex ("External Alpha", 2D) = "white" {}
-
 		_Float0("Float 0", Range( 0 , 1)) = 0
 		[HideInInspector] _texcoord( "", 2D ) = "white" {}
+
 	}
 
 	SubShader
 	{
-		Tags { "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent" "PreviewType"="Plane" "CanUseSpriteAtlas"="True" }
+		LOD 0
 
+		Tags { "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent" "PreviewType"="Plane" "CanUseSpriteAtlas"="True" }
 
 		Cull Off
 		Lighting Off
 		ZWrite Off
-		Blend SrcAlpha OneMinusSrcAlpha
+		Blend One OneMinusSrcAlpha
 		
 		
 		Pass
@@ -30,10 +31,12 @@ Shader "Amplify/GrayScale"
 			
 			#pragma vertex vert
 			#pragma fragment frag
+			#pragma target 3.0
 			#pragma multi_compile _ PIXELSNAP_ON
 			#pragma multi_compile _ ETC1_EXTERNAL_ALPHA
 			#include "UnityCG.cginc"
 			
+
 			struct appdata_t
 			{
 				float4 vertex   : POSITION;
@@ -59,6 +62,7 @@ Shader "Amplify/GrayScale"
 			uniform sampler2D _AlphaTex;
 			uniform float4 _MainTex_ST;
 			uniform float _Float0;
+
 			
 			v2f vert( appdata_t IN  )
 			{
@@ -75,6 +79,7 @@ Shader "Amplify/GrayScale"
 				#ifdef PIXELSNAP_ON
 				OUT.vertex = UnityPixelSnap (OUT.vertex);
 				#endif
+
 				return OUT;
 			}
 
@@ -95,65 +100,44 @@ Shader "Amplify/GrayScale"
 			{
 				float2 uv_MainTex = IN.texcoord.xy * _MainTex_ST.xy + _MainTex_ST.zw;
 				float4 tex2DNode2 = tex2D( _MainTex, uv_MainTex );
-				float grayscale3 = (tex2DNode2.rgb.r + tex2DNode2.rgb.g + tex2DNode2.rgb.b) / 3;
+				float grayscale3 = dot(tex2DNode2.rgb, float3(0.299,0.587,0.114));
 				float4 temp_cast_1 = (grayscale3).xxxx;
 				float4 lerpResult5 = lerp( tex2DNode2 , temp_cast_1 , _Float0);
+				float4 break10 = lerpResult5;
+				float4 appendResult11 = (float4(break10.r , break10.g , break10.b , tex2DNode2.a));
 				
-				fixed4 c = lerpResult5;
-			c.a = tex2DNode2.a;
-
+				fixed4 c = appendResult11;
+				c.rgb *= c.a;
 				return c;
 			}
 		ENDCG
 		}
 	}
-		SubShader
-			{
-			   LOD 100
-
-
-			   Tags
-			   {
-				  "Queue" = "Transparent"
-				  "IgnoreProjector" = "True"
-				  "RenderType" = "Transparent"
-			   }
-
-			   Pass
-			   {
-				  Cull Off
-				  Lighting Off
-				  ZWrite Off
-				  Fog { Mode Off }
-				  ColorMask RGB
-				  Blend SrcAlpha OneMinusSrcAlpha
-				  ColorMaterial AmbientAndDiffuse
-
-				  SetTexture[_MainTex]
-				  {
-					 Combine Texture * Primary
-				  }
-			   }
-			}
 	CustomEditor "ASEMaterialInspector"
 	
 	
 }
 /*ASEBEGIN
-Version=16900
-2017;29;1816;1004;1139;460;1;True;True
-Node;AmplifyShaderEditor.TemplateShaderPropertyNode;1;-1168.2,137.6;Float;False;0;0;_MainTex;Shader;0;5;SAMPLER2D;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.SamplerNode;2;-957.2,62.60001;Float;True;Property;_TextureSample0;Texture Sample 0;0;0;Create;True;0;0;False;0;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.RangedFloatNode;4;-656.2,265.6;Float;True;Property;_Float0;Float 0;0;0;Create;True;0;0;False;0;0;1;0;1;0;1;FLOAT;0
-Node;AmplifyShaderEditor.TFHCGrayscale;3;-595.2,-29.39999;Float;False;2;1;0;FLOAT3;0,0,0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.LerpOp;5;-263.2,-1.399994;Float;False;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;0;0,0;Float;False;True;2;Float;ASEMaterialInspector;0;10;Amplify/GrayScale;4781711002069cc4081f66607d228048;True;SubShader 0 Pass 0;0;0;SubShader 0 Pass 0;3;True;2;5;False;-1;10;False;-1;0;1;False;-1;0;False;-1;False;False;True;2;False;-1;False;False;True;2;False;-1;False;False;True;5;Queue=Transparent=Queue=0;IgnoreProjector=True;RenderType=Transparent=RenderType;PreviewType=Plane;CanUseSpriteAtlas=True;False;0;False;False;False;False;False;False;False;False;False;False;True;2;0;;0;0;Standard;0;0;1;True;False;3;0;FLOAT4;0,0,0,0;False;1;FLOAT;0;False;2;FLOAT3;0,0,0;False;0
+Version=18100
+1717;78;1534;783;1210.259;411.2189;1.3;True;True
+Node;AmplifyShaderEditor.TemplateShaderPropertyNode;1;-1246.2,85.60001;Inherit;True;0;0;_MainTex;Shader;0;5;SAMPLER2D;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.SamplerNode;2;-957.2,62.60001;Inherit;True;Property;_TextureSample0;Texture Sample 0;0;0;Create;True;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.TFHCGrayscale;3;-716.2,-44.39999;Inherit;False;1;1;0;FLOAT3;0,0,0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;4;-744.2,270.6;Float;True;Property;_Float0;Float 0;0;0;Create;True;0;0;False;0;False;0;1;0;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.LerpOp;5;-381.2,1.600006;Inherit;False;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
+Node;AmplifyShaderEditor.BreakToComponentsNode;10;-140.3728,36.57111;Inherit;False;COLOR;1;0;COLOR;0,0,0,0;False;16;FLOAT;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT;5;FLOAT;6;FLOAT;7;FLOAT;8;FLOAT;9;FLOAT;10;FLOAT;11;FLOAT;12;FLOAT;13;FLOAT;14;FLOAT;15
+Node;AmplifyShaderEditor.DynamicAppendNode;11;115.6272,86.7711;Inherit;False;FLOAT4;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT4;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;7;309,9;Float;False;True;-1;2;ASEMaterialInspector;0;6;Amplify/GrayScale;0f8ba0101102bb14ebf021ddadce9b49;True;SubShader 0 Pass 0;0;0;SubShader 0 Pass 0;2;True;3;1;False;-1;10;False;-1;0;1;False;-1;0;False;-1;False;False;True;2;False;-1;False;False;True;2;False;-1;False;False;True;5;Queue=Transparent=Queue=0;IgnoreProjector=True;RenderType=Transparent=RenderType;PreviewType=Plane;CanUseSpriteAtlas=True;False;0;False;False;False;False;False;False;False;False;False;False;True;2;0;;0;0;Standard;0;0;1;True;False;;0
 WireConnection;2;0;1;0
 WireConnection;3;0;2;0
 WireConnection;5;0;2;0
 WireConnection;5;1;3;0
 WireConnection;5;2;4;0
-WireConnection;0;0;5;0
-WireConnection;0;1;2;4
+WireConnection;10;0;5;0
+WireConnection;11;0;10;0
+WireConnection;11;1;10;1
+WireConnection;11;2;10;2
+WireConnection;11;3;2;4
+WireConnection;7;0;11;0
 ASEEND*/
-//CHKSM=ABD2B440796FCAA05FC44824B615D09689495697
+//CHKSM=E86F876910771523C576E7B3CF9D2D66693EE3B6
