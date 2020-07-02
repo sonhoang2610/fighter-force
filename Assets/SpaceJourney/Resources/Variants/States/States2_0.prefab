@@ -2215,7 +2215,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     totalDeath: 0
-  - isExpaned: 1
+  - isExpaned: 0
     nameState: State tt
     comment: State Tutorial
     nameGroup: State tt (State Tutorial)
@@ -2382,7 +2382,156 @@ MonoBehaviour:
         countShoot: {x: 1, y: 2}
         delayPerAttack: {x: 0.2, y: 0.5}
         _typeDirection: 1
-    lootItems: []
+    lootItems:
+    - baseLoot: 0
+      items:
+      - {fileID: 2725560285071857337, guid: 0971f79f08ce8854b82f023123fb1334, type: 3}
+      percent: 1
+      dropCountRange: {x: 1, y: 2}
+    - baseLoot: 1
+      items:
+      - {fileID: 6875481962810221245, guid: 09ab89a6f9bea17469559696f243a759, type: 3}
+      percent: 1
+      dropCountRange: {x: 3, y: 5}
+    - baseLoot: 1
+      items:
+      - {fileID: 6875481962810221245, guid: 09ab89a6f9bea17469559696f243a759, type: 3}
+      percent: 0.3
+      dropCountRange: {x: 2, y: 3}
+    - baseLoot: 0
+      items:
+      - {fileID: 2725560285071857337, guid: b3563a708a29ffb4d8d744ee8a043d04, type: 3}
+      - {fileID: 6875481962810221245, guid: ee8cb0f293c94f944a3e293980cf0f13, type: 3}
+      percent: 0.3
+      dropCountRange: {x: 1, y: 1}
+    _completeAction: 1
+    onCompleteState:
+      m_PersistentCalls:
+        m_Calls: []
+    totalDeath: 0
+  - isExpaned: 1
+    nameState: State 0
+    comment: small R
+    nameGroup: State 0 (small R)
+    isManual: 0
+    formatInfo:
+      prefabEnemies:
+      - {fileID: 8644569780587809145, guid: 0c635eafe2d71f04d91075f5ac65598d, type: 3}
+      pathEnemies:
+      - Variants/prefabs/enemies/Small/e1/0_enemy_small
+      quantity: 6
+      typeSpawn: 2
+      typeFomation: 0
+      startSpawnPos: {x: 6.8334475, y: 8.932648}
+      AxisX: 0
+      sizeDomain: {x: 9.21, y: 23.63}
+      distanceEmiter: {x: 4.49, y: 2.38}
+      maxCollum: 1
+      radius: 1
+      directionStart: {x: 0, y: -1}
+    groupManager: {fileID: 0}
+    moveInfos:
+    - indexStateMove: 0
+      DelayStart: 0
+      RowDelay: 0.3
+      splineRaw:
+        points:
+        - {x: 6.293066, y: 8.699294, z: 0}
+        - {x: 1.2608304, y: 9.160967, z: 0}
+        - {x: -6.7779813, y: 6.4878464, z: 0}
+        - {x: -3.0804322, y: 5.2040057, z: 0}
+        - {x: 0.6171169, y: 3.920165, z: 0}
+        - {x: 6.60156, y: 2.9510345, z: 0}
+        - {x: 3.787579, y: 0.8630314, z: 0}
+        - {x: 0.973598, y: -1.2249718, z: 0}
+        - {x: -5.2639875, y: -3.2258823, z: 0}
+        - {x: -3.79891, y: -5.4359856, z: 0}
+        - {x: -2.3338323, y: -7.6460886, z: 0}
+        - {x: 2.4096546, y: -6.8872385, z: 0}
+        - {x: 4.7663035, y: -5.5461974, z: 0}
+        - {x: 7.1229525, y: -4.2051563, z: 0}
+        - {x: 6.9505057, y: -3.6792448, z: 0}
+        - {x: 6.7573028, y: -0.8278531, z: 0}
+        - {x: 6.5641, y: 2.0235386, z: 0}
+        - {x: 7.6538286, y: 5.62743, z: 0}
+        - {x: 6.899472, y: 8.582137, z: 0}
+        modes: 000000000000000000000000000000000000000000000000000000000000000000000000
+        loop: 0
+        lineMode: 0
+        relative: 0
+        snap: 0
+        snapGrid: {x: 0, y: 0}
+        currentNode: 0
+      lookType: 0
+      durationMove: 3
+      speedBase: 1
+      curvesMoving:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 1
+          outSlope: 1
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 1
+          outSlope: 1
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      loop: 2
+      onCompleteNode: []
+      conditionComplete:
+      - condition: 0
+        destroyQuantity: 1
+        triggerString: 
+      - condition: 1
+        destroyQuantity: 1
+        triggerString: 
+      onComplete:
+        m_PersistentCalls:
+          m_Calls: []
+      onStart:
+        m_PersistentCalls:
+          m_Calls: []
+    attackInfo:
+      BaseAI: 0
+      infoAI:
+        conditionStart: 0
+        triggerStringMachine: StartMachine
+        conditionAttack: 0
+        triggerStringAttack: StartAttack
+        firstDelay: {x: 0, y: 0}
+        reloadTime: {x: 2, y: 3}
+        countShoot: {x: 1, y: 2}
+        delayPerAttack: {x: 0.2, y: 0.5}
+        _typeDirection: 1
+    lootItems:
+    - baseLoot: 0
+      items:
+      - {fileID: 2725560285071857337, guid: 0971f79f08ce8854b82f023123fb1334, type: 3}
+      percent: 1
+      dropCountRange: {x: 1, y: 1}
+    - baseLoot: 1
+      items:
+      - {fileID: 6875481962810221245, guid: 09ab89a6f9bea17469559696f243a759, type: 3}
+      percent: 0.5
+      dropCountRange: {x: 1, y: 2}
+    - baseLoot: 0
+      items:
+      - {fileID: 2725560285071857337, guid: b3563a708a29ffb4d8d744ee8a043d04, type: 3}
+      percent: 0.7
+      dropCountRange: {x: 1, y: 1}
     _completeAction: 1
     onCompleteState:
       m_PersistentCalls:
@@ -2423,7 +2572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boundGraphSerialization: '{"version":2.96,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","comments":"StateController","translation":{"x":908.0,"y":37.0},"zoomFactor":0.5892695,"nodes":[{"_position":{"x":780.0,"y":270.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"2"},{"_action":{"messCompare":"StartGame","$type":"EazyEngine.Space.WaitEventGame"},"_position":{"x":490.0,"y":365.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"3"},{"_position":{"x":727.0,"y":418.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"5"},{"_position":{"x":109.0,"y":560.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"6"},{"_action":{"nameState":"State
     tt","wait":{"_value":true},"$type":"EazyEngine.Space.RunState"},"_position":{"x":-1385.0,"y":733.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"7"},{"_action":{"nameState":"State
-    1","wait":{"_value":true},"$type":"EazyEngine.Space.RunState"},"_position":{"x":-1069.0,"y":737.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"10"},{"_action":{"nameState":"State
+    0","wait":{"_value":true},"$type":"EazyEngine.Space.RunState"},"_position":{"x":-1069.0,"y":737.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"10"},{"_action":{"nameState":"State
     10","wait":{"_value":true},"$type":"EazyEngine.Space.RunState"},"_position":{"x":-922.0,"y":728.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"13"},{"failureRemap":"Success","_position":{"x":-723.0,"y":714.0},"$type":"NodeCanvas.BehaviourTrees.Remapper","$id":"16"},{"timeout":{"_value":6.0},"timerBehavior":{},"_position":{"x":-732.0,"y":796.0},"$type":"NodeCanvas.BehaviourTrees.Timeout","$id":"17"},{"_position":{"x":-758.0,"y":905.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"20"},{"_action":{"nameState":"State
     6","wait":{"_value":true},"$type":"EazyEngine.Space.RunState"},"_position":{"x":-835.0,"y":1017.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"21"},{"_action":{"waitTime":{"_value":1.0},"timerBehavior":{},"$type":"NodeCanvas.Tasks.Actions.Wait"},"_position":{"x":-704.0,"y":1018.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"24"},{"failureRemap":"Success","_position":{"x":-411.0,"y":731.0},"$type":"NodeCanvas.BehaviourTrees.Remapper","$id":"28"},{"timeout":{"_value":4.0},"timerBehavior":{},"_position":{"x":-451.0,"y":826.0},"$type":"NodeCanvas.BehaviourTrees.Timeout","$id":"29"},{"_position":{"x":-388.0,"y":926.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"32"},{"_position":{"x":-454.0,"y":993.0},"$type":"NodeCanvas.BehaviourTrees.Parallel","$id":"33"},{"_action":{"nameState":"State
     1","wait":{"_value":true},"$type":"EazyEngine.Space.RunState"},"_position":{"x":-521.0,"y":1127.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"34"},{"_action":{"nameState":"State
