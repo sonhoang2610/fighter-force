@@ -268,6 +268,7 @@ namespace EazyEngine.Space
                     else
                     {
                         EazyAnalyticTool.LogEvent("LoadLevelComplete");
+                        EzEventManager.TriggerEvent(new MessageGamePlayEvent("LoadLevelComplete"));
                     }
                 });
                  if (currentScene.Contains("Main"))
@@ -340,7 +341,7 @@ namespace EazyEngine.Space
                 return (_mk.Count == 0  || _mk[_mk.Count - 1].IsDestroyed() ) ? null : _mk[_mk.Count - 1];
             }
         }
-
+        
         public void addMK(MKGlow pMK)
         {
             foreach( var ppMK in _mk)

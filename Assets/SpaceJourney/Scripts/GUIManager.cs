@@ -98,7 +98,6 @@ namespace EazyEngine.Space
         {
             if (LevelManger.InstanceRaw == null) return;
             TimeKeeper.Instance.getTimer("Global").TimScale = 0;
-
             LevelManger.Instance.IsMatching = false;
             boxsetting.show();
         }

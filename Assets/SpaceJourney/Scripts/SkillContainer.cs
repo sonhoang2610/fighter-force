@@ -8,18 +8,21 @@ using System.Linq;
 using EazyEngine.Tools;
 using EazyEngine.Space.UI;
 using EazyEngine.Timer;
+using DG.Tweening;
 
 namespace EazyEngine.Space
 {
 
     public class SkillContainer : BaseBoxSingleton<SkillContainer,ButtonSkill, SkillInputData>,EzEventListener<MessageGamePlayEvent>
     {
+        protected bool isGuideExist = false;
         public override void setDataItem(SkillInputData pData, ButtonSkill pItem)
         {
             base.setDataItem(pData, pItem);
             if(pData._info.Info.ItemID == "BigLaser")
             {
                 pItem.name = "CoreBigLaser";
+                isGuideExist = true;
             }
         }
         public override ObservableList<SkillInputData> DataSource { get => base.DataSource;
@@ -60,6 +63,7 @@ namespace EazyEngine.Space
                     }
                 }
                 base.DataSource = pData.ToObservableList();
+          
             } }
         // Start is called before the first frame update
         void Start()
@@ -72,9 +76,10 @@ namespace EazyEngine.Space
         {
 
         }
-
+        protected bool isGuideskill = false;
         private void OnEnable()
         {
+            isGuideskill = PlayerPrefs.GetInt(StringKeyGuide.FirstGuideSkill, 0) != 0;
             EzEventManager.AddListener(this);
         }
 
@@ -85,16 +90,13 @@ namespace EazyEngine.Space
 
         public void OnEzEvent(MessageGamePlayEvent eventType)
         {
-            var pItem = PlayerPrefs.GetInt(StringKeyGuide.FirstGuideSkill, 0);
-            if(eventType._message == StringKeyGuide.FirstGuideSkill && pItem == 0)
+           if(eventType._message == "LoadLevelComplete" )
             {
-                EzEventManager.TriggerEvent(new GuideEvent(StringKeyGuide.FirstGuideSkill, delegate {
-                    TimeKeeper.Instance.getTimer("Global").TimScale = 1;
-                    
-                },false));
-                InputManager.Instance.BlockTouch = true;
-                PlayerPrefs.SetInt(StringKeyGuide.FirstGuideSkill, 1);
-                TimeKeeper.Instance.getTimer("Global").TimScale = 0;
+                if (!isGuideskill && isGuideExist)
+                {
+                    EzEventManager.TriggerEvent(new GuideEvent(StringKeyGuide.FirstGuideSkill));
+                    PlayerPrefs.SetInt(StringKeyGuide.FirstGuideSkill, 1);
+                }
             }
         }
     }

@@ -42,6 +42,7 @@ public static class StringKeyGuide
 
     public static string FirstGuideItem = "FirstGuideItem";
     public static string FirstGuideSkill = "FirstGuideSkill";
+    public static string StartGameNow = "StartGameNow";
 }
 public static class LoadAssets
 {
@@ -595,7 +596,10 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     }
     public void initGame()
     {
-        StartCoroutine(checkTimePackage());
+        if (GameManager.Instance.CurrentLevelUnlock >= 3)
+        {
+            StartCoroutine(checkTimePackage());
+        }
         if (PlayerPrefs.GetInt("firstGame", 0) == 5)
         {
             var pSke = gameObject.AddComponent<SkeletonMecanim>();
@@ -611,8 +615,10 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             LoadGame();
             LoadAllLevel();
         }
-
-        StartCoroutine(ExtraPackageDatabase.Instance.initIAPProduct());
+        if (GameManager.Instance.CurrentLevelUnlock >= 3)
+        {
+            StartCoroutine(ExtraPackageDatabase.Instance.initIAPProduct());
+        }
 
         StartCoroutine(delayAction(1, delegate ()
         {
@@ -684,8 +690,9 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             }
         }
     }
-    [InlineEditor]
-    public GameDataBaseInstanceObject _databaseDefault;
+    //[InlineEditor]
+    //public GameDataBaseInstanceObject _databaseDefault;
+    public GameDataBaseInstance _databaseDefault1;
     [System.NonSerialized]
     public GameDataBaseInstance _databaseInstanced = null;
     public GameDataBaseInstance Database
@@ -987,7 +994,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
 
                     if (_databaseInstanced == null || _databaseInstanced.spPlanes.Count == 0)
                     {
-                        _databaseInstanced = _databaseDefault.DatabaseDefault.CloneData();
+                        _databaseInstanced = _databaseDefault1.CloneData();
                         _databaseInstanced.ExtraInfo();
                     }
                     SaveGame();
@@ -1003,7 +1010,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         }
         else
         {
-            _databaseInstanced = _databaseDefault.DatabaseDefault.CloneData();
+            _databaseInstanced = _databaseDefault1.CloneData();
             _databaseInstanced.ExtraInfo();
             SaveGame();
         }
@@ -1068,7 +1075,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         }
         else
         {
-            _databaseInstanced = _databaseDefault.DatabaseDefault.CloneData();
+            _databaseInstanced = _databaseDefault1.CloneData();
             _databaseInstanced.ExtraInfo();
             SaveGame();
         }

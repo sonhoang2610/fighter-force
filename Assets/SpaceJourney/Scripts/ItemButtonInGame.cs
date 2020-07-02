@@ -17,6 +17,12 @@ namespace EazyEngine.Space
         public UI2DSprite iconButton;
         public UILabel quantity;
 
+        protected bool isGuide;
+        private void OnEnable()
+        {
+            isGuide  = PlayerPrefs.GetInt(StringKeyGuide.FirstGuideItem, 0) == 0;
+        }
+
         public override ItemGameInstanced Data {
             get => base.Data;
             set
@@ -33,7 +39,11 @@ namespace EazyEngine.Space
             pTimeLife.usedItems.Add(new DetailItemUsedInfo() { itemID = Data.item.ItemID, time = (int)LevelManger.Instance.CurrentTime.TotalSeconds });
             EzEventManager.TriggerEvent(new InputButtonTrigger(Data.item.ItemID, Data.item.categoryItem));
             var pItem = GameManager.Instance.Database.getComonItem(Data.item.ItemID);
-            pItem.Quantity--;
+            if (!isGuide)
+            {
+                pItem.Quantity--;
+            }
+       
             Data.quantity--;
             if(Data.quantity == 0)
             {

@@ -18,6 +18,7 @@ namespace EazyEngine.Space.UI
         public UIButton btnPlay;
         public EazyGroupTabNGUI _chooseHardMode;
         public UILabel desItemSp;
+        public BoxItemSkill boxItem;
         public override MapInfoInstanced Data { get => base.Data; set {
                 base.Data = value;
                 level.text = "[FFDC00]MAP " + value.level.ToString()+":[-]" + value.nameMap;
@@ -33,7 +34,8 @@ namespace EazyEngine.Space.UI
                 GameManager.Instance.ConfigLevel = new LevelConfig();
             }
             StartCoroutine(enable());
-       
+            boxItem.gameObject.SetActive(GameManager.Instance.ChoosedLevel != 1 || PlayerPrefs.GetInt(StringKeyGuide.OpenPrepare) > 0);
+
         }
 
         private IEnumerator enable()
@@ -51,16 +53,20 @@ namespace EazyEngine.Space.UI
                 }
                 else
                 {
+                    _chooseHardMode.GroupTab[i].Button.isEnabled = true;
                     if (i > 0)
                     {
                         var pShow = PlayerPrefs.GetInt("ShowUnlockLevel" + GameManager.Instance.ChoosedLevel + "Mode" + i, 0);
                         if (pShow == 0)
                         {
                             _chooseHardMode.GroupTab[i].transform.GetChild(0).gameObject.SetActive(true);
+                            var pColor = _chooseHardMode.GroupTab[i].transform.GetChild(0).GetComponent<SpriteRenderer>().color;
+                            pColor.a = 1;
+                            _chooseHardMode.GroupTab[i].transform.GetChild(0).GetComponent<SpriteRenderer>().color = pColor;
                             PlayerPrefs.SetInt("ShowUnlockLevel" + GameManager.Instance.ChoosedLevel + "Mode" + i, 1);
                         }
                     }
-                    _chooseHardMode.GroupTab[i].Button.isEnabled = true;
+             
                     lastChoosedIndex = i;
                 }
 
@@ -75,14 +81,14 @@ namespace EazyEngine.Space.UI
                 _chooseHardMode.changeTab(GameManager.Instance.Database.lastPlayStage.y);
             }
             yield return new WaitForSeconds(0.5f);
-            if (AssetLoaderManager.Instance.getPercentJob("Main") >= 1)
+            if (AssetLoaderManager.Instance.getPercentJob("Main") >= 1 || (!LevelManger.InstanceRaw.IsDestroyed() && GameManager.Instance.CurrentLevelUnlock >= 2 && !LevelManger.Instance.IsPlaying))
             {
                 var OpenTime = PlayerPrefs.GetInt(StringKeyGuide.OpenPrepare, 0);
                 if (OpenTime == 0)
                 {
-                    EzEventManager.TriggerEvent(new GuideEvent(StringKeyGuide.OpenPrepare));
+                    EzEventManager.TriggerEvent(new GuideEvent(StringKeyGuide.OpenPrepare,delegate { EzEventManager.TriggerEvent(new GuideEvent(StringKeyGuide.StartGameNow)); PlayerPrefs.SetInt(StringKeyGuide.OpenPrepare, OpenTime + 1); },false));
                 }
-                PlayerPrefs.SetInt(StringKeyGuide.OpenPrepare, OpenTime + 1);
+            
             }
         }
         public void showInfo(int pLevel,int pHard)

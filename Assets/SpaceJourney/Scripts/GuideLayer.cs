@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using EazyEngine.Tools;
-
+using Sirenix.OdinInspector;
+using DG.Tweening;
 
 namespace EazyEngine.Space.UI
 {
@@ -10,12 +11,19 @@ namespace EazyEngine.Space.UI
     public class GuideInfo
     {
         public string triggerToExcute;
+        public bool showDialog = true;
+        [ShowIf("showDialog")]
         public I2String title;
+        [ShowIf("showDialog")]
         public I2String content;
         public string IDButonFocus;
         public Vector3 offset;
+        [ShowIf("showDialog")]
         public Vector3 boxPos = new Vector3(0, -74, 0);
         public bool blockState;
+        public bool newFeature = false;
+        [ShowIf("newFeature")]
+        public GameObject prefabIcon;
     }
 
     public struct GuideEvent
@@ -40,14 +48,20 @@ namespace EazyEngine.Space.UI
         public UILabel content;
         public UIElement box;
         public GameObject handGuide;
-        
+
+        protected int markDirty = 0;
         protected  GameObject cacheButton;
         public void focusButton(string pID,Vector3 pOffset,System.Action pExcute,bool pOverride)
         {
-            hole.gameObject.SetActive(!string.IsNullOrEmpty(pID));
-            handGuide.gameObject.SetActive(!string.IsNullOrEmpty(pID));
+      
             if (string.IsNullOrEmpty(pID)) return;
             var pObject = GameObject.Find("Core" + pID);
+            if(pObject == null)
+            {
+                return;
+            }
+            hole.gameObject.SetActive(!string.IsNullOrEmpty(pID));
+            handGuide.gameObject.SetActive(!string.IsNullOrEmpty(pID));
             var buttonBlack = transform.Find("bg").GetComponent<UIButton>();
             if (pObject != null)
             {
@@ -106,7 +120,10 @@ namespace EazyEngine.Space.UI
             }
            
         }
+        public void showNewFeature()
+        {
 
+        }
         public void OnEzEvent(GuideEvent eventType)
         {
             for (var i = 0; i < containerGuide.Length; ++i)
@@ -121,6 +138,15 @@ namespace EazyEngine.Space.UI
 
         private void ExcuteState(GuideInfo pInfo,System.Action pExcute,bool pOverride)
         {
+            if (!string.IsNullOrEmpty(pInfo.IDButonFocus))
+            {
+                var pObject = GameObject.Find("Core" + pInfo.IDButonFocus);
+                if (!pObject)
+                {
+                    return;
+                }
+            }
+      
             if (LayerModelBoxExtraPackage.InstanceRaw)
             {
                 if (pInfo.blockState)
@@ -136,24 +162,52 @@ namespace EazyEngine.Space.UI
                 }
             }
             blackBG.gameObject.SetActive(pInfo.blockState);
-            box.transform.localPosition = pInfo.boxPos;
-            UIElementManager.Instance.cachePos[box] = pInfo.boxPos;
-            box.show();
-            title.text = pInfo.title.Value;
-            content.text = pInfo.content.Value;
-            focusButton(pInfo.IDButonFocus,pInfo.offset,pExcute,pOverride);
+            if (pInfo.showDialog)
+            {
+                box.transform.localPosition = pInfo.boxPos;
+                UIElementManager.Instance.cachePos[box] = pInfo.boxPos;
+                box.show();
+                title.text = pInfo.title.Value;
+                content.text = pInfo.content.Value;
+                focusButton(pInfo.IDButonFocus, pInfo.offset, pExcute, pOverride);
+            }
+            else if (pInfo.newFeature)
+            {
+               var pIntro = Instantiate(pInfo.prefabIcon, transform);
+                pIntro.transform.localScale = Vector3.zero;
+                Sequence pSequence = DOTween.Sequence();
+                pSequence.AppendInterval(0.5f);
+                var pObjectDes = GameObject.Find("Core" + pInfo.IDButonFocus);
+               var pRootParrent = pObjectDes.GetComponent<UIWidget>().root;
+               var pDes = pRootParrent.transform.InverseTransformPoint(pObjectDes.transform.position);
+               var pFinal = transform.TransformPoint(pDes);
+                pSequence.Append( pIntro.transform.DOMove(pFinal, 0.5f));
+                pSequence.AppendCallback(passGuide);
+                Sequence pSequence1 = DOTween.Sequence();
+                pSequence1.Append(pIntro.transform.DOScale(2, 0.5f).SetEase(Ease.OutElastic));
+                pSequence1.AppendInterval(0.5f);
+                pSequence1.Append(pIntro.transform.DOScale(1, 0.5f));
+                pSequence1.AppendCallback(delegate { Destroy(pIntro); });
+            }
+            markDirty++;
+ 
         }
 
         private void passGuide()
         {
-            if (cacheButton)
+            markDirty--;
+            if (markDirty <= 0)
             {
-                NGUITools.Destroy(cacheButton);
+                markDirty = 0;
+                if (cacheButton)
+                {
+                    NGUITools.Destroy(cacheButton);
+                }
+
+                blackBG.gameObject.SetActive(false);
+                handGuide.gameObject.SetActive(false);
+                box.close();
             }
-            
-            blackBG.gameObject.SetActive(false);
-            handGuide.gameObject.SetActive(false);
-            box.close();
         }
         // Start is called before the first frame update
         void Start()

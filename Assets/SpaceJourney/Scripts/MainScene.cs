@@ -481,6 +481,11 @@ namespace EazyEngine.Space.UI
 
         public void choosedMap()
         {
+            if(GameManager.Instance.CurrentLevelUnlock < 2)
+            {
+                freePlayGuide();
+                return;
+            }
             stateGames.Add("ChooseMap");
             EzEventManager.TriggerEvent(new UIMessEvent("ChooseMap"));
             EazyAnalyticTool.LogEvent("FightButton");

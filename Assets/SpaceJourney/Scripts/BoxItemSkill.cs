@@ -37,13 +37,18 @@ namespace EazyEngine.Space.UI
             string pItemUsed = PlayerPrefs.GetString("ItemUsed", "");
             string[] pItemUseds = pItemUsed.Split(',');
             var OpenTime = PlayerPrefs.GetInt(StringKeyGuide.OpenPrepare, 0);
+
             for (int i = 0; i < DataSource.Count; ++i)
             {
                 var pItemExist = GameManager.Instance.Database.getComonItem(DataSource[i].item.item.ItemID);
                 items[i].setChoose(false);
                 if (((i < 2 && string.IsNullOrEmpty(pItemUsed)) || System.Array.Exists(pItemUseds,x=>x == DataSource[i].item.item.ItemID)) && pItemExist.Quantity > 0 && OpenTime > 0)
                 {
-                    items[i].choose();
+                    if(GameManager.Instance.ChoosedLevel != 1 || PlayerPrefs.GetInt(StringKeyGuide.OpenPrepare) > 0)
+                    {
+                        items[i].choose();
+                    }
+               
                 }
             }
           
