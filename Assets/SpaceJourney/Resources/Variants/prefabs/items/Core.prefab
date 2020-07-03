@@ -1,5 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &202855554363367638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725560285071857338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25507f07f9806fe46a6435559514402e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8843306917636240388
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7,11 +19,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6875481962810221246, guid: ee8cb0f293c94f944a3e293980cf0f13,
-        type: 3}
-      propertyPath: m_Name
-      value: booster
-      objectReference: {fileID: 0}
     - target: {fileID: 6875481962810221244, guid: ee8cb0f293c94f944a3e293980cf0f13,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -119,21 +126,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6875481962810221245, guid: ee8cb0f293c94f944a3e293980cf0f13,
         type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875481962810221245, guid: ee8cb0f293c94f944a3e293980cf0f13,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875481962810221245, guid: ee8cb0f293c94f944a3e293980cf0f13,
+        type: 3}
       propertyPath: mainBehaviorEffect
       value: 
-      objectReference: {fileID: 11400000, guid: 4084f8b7b824da64cb54030c47945c6c,
+      objectReference: {fileID: 11400000, guid: 460be39a39ccc9f428b7b971dfb40fad,
         type: 2}
     - target: {fileID: 6875481962810221245, guid: ee8cb0f293c94f944a3e293980cf0f13,
         type: 3}
       propertyPath: idItem
       value: Booster
       objectReference: {fileID: 0}
-    - target: {fileID: 6875481962810221245, guid: ee8cb0f293c94f944a3e293980cf0f13,
-        type: 3}
-      propertyPath: serializationData.Prefab
-      value: 
-      objectReference: {fileID: 6875481962810221245, guid: ee8cb0f293c94f944a3e293980cf0f13,
-        type: 3}
     - target: {fileID: 6875481962810221245, guid: ee8cb0f293c94f944a3e293980cf0f13,
         type: 3}
       propertyPath: sfx
@@ -143,12 +154,38 @@ PrefabInstance:
         type: 3}
       propertyPath: icon
       value: 
-      objectReference: {fileID: 21300000, guid: 5a220720c1bafaa40b1bd6cfdc3c1b9e,
-        type: 3}
+      objectReference: {fileID: 2725560284182714200}
     - target: {fileID: 6875481962810221245, guid: ee8cb0f293c94f944a3e293980cf0f13,
         type: 3}
       propertyPath: sfx.groupName
       value: BoosterItemGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875481962810221245, guid: ee8cb0f293c94f944a3e293980cf0f13,
+        type: 3}
+      propertyPath: render
+      value: 
+      objectReference: {fileID: 2080912637542748326}
+    - target: {fileID: 6875481962810221245, guid: ee8cb0f293c94f944a3e293980cf0f13,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 6875481962810221245, guid: ee8cb0f293c94f944a3e293980cf0f13,
+        type: 3}
+    - target: {fileID: 6875481962810221245, guid: ee8cb0f293c94f944a3e293980cf0f13,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[0]
+      value: '"path":"Variables","add_keys":{"$id":0,"$type":"System.Object[], mscorlib","$rlength":2,"$rcontent":[{"$id":1,"$type":"System.String,
+        mscorlib","id"},$iref:1]},"remove_keys":null'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875481962810221245, guid: ee8cb0f293c94f944a3e293980cf0f13,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[1]
+      value: '"path":"Variables.{\"id\"}","value":null'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875481962810221246, guid: ee8cb0f293c94f944a3e293980cf0f13,
+        type: 3}
+      propertyPath: m_Name
+      value: booster 1
       objectReference: {fileID: 0}
     - target: {fileID: 6875481963028407132, guid: ee8cb0f293c94f944a3e293980cf0f13,
         type: 3}
@@ -156,5 +193,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2943395295301424327, guid: fea95588ffc5567498bfe8d3df208757,
         type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2029189530261139230, guid: ee8cb0f293c94f944a3e293980cf0f13, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ee8cb0f293c94f944a3e293980cf0f13, type: 3}
+--- !u!1 &2725560285071857338 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6875481962810221246, guid: ee8cb0f293c94f944a3e293980cf0f13,
+    type: 3}
+  m_PrefabInstance: {fileID: 8843306917636240388}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &2725560284182714200 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6875481963028407132, guid: ee8cb0f293c94f944a3e293980cf0f13,
+    type: 3}
+  m_PrefabInstance: {fileID: 8843306917636240388}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &2080912637542748326 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7375031200482403490, guid: ee8cb0f293c94f944a3e293980cf0f13,
+    type: 3}
+  m_PrefabInstance: {fileID: 8843306917636240388}
+  m_PrefabAsset: {fileID: 0}

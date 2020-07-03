@@ -535,13 +535,41 @@ namespace EazyEngine.Space
                 disableShoot = false;
                 ShootStart();
             }
+            else
+            {
+                booster("Booster");
+            }
         }
-        public void EnableRandomPlanes()
+        public void DisableShoot()
         {
-            var pIndex = UnityEngine.Random.Range(0, anotherPlane.Count);
-            var pPlane = anotherPlane[pIndex];
+            if (disableShoot)
+            {
+          
+            }
+            else
+            {
+                disableShoot = true;
+                ShootStop();
+                booster("Booster0");
+            }
+        }
+        protected List<string> stackPlane = new List<string>();
+        public void EnablePlanes(string pID)
+        {
+            var pPlane = anotherPlane.Find(x => x.GetComponent<Character>()._info.Info.ItemID == pID);
             pPlane.EnableShoot();
-            anotherPlane.RemoveAt(pIndex);
+            //GUIManager.Instance.addStatus("Core",0,);
+            if (!stackPlane.Exists(x => x == pID))
+            {
+                if (stackPlane.Count >= 2)
+                {
+                    var pIDPlane = stackPlane[0];
+                    var planeOld = anotherPlane.Find(x => x.GetComponent<Character>()._info.Info.ItemID == pIDPlane);
+                    planeOld.DisableShoot();
+                    stackPlane.RemoveAt(0);
+                }
+                stackPlane.Add(pID);
+            }
         }
         public void ShootStart()
         {

@@ -50,9 +50,17 @@ namespace  EazyEngine.Space
         transform.position = new Vector3(pX, pY, transform.position.z);
      //   transform.Translate(pDelta, UnityEngine.Space.World);
 	}
+        private GameObject mainTarget;
 
-    private void Update()
+        public GameObject MainTarget { get => mainTarget; set => mainTarget = value; }
+
+        private void Update()
     {
+            if (MainTarget)
+            {
+                transform.position = MainTarget.transform.position;
+                return;
+            }
         if (InputManager.InstanceRaw != null && InputManager.Instance.isTouch && LevelManger.Instance.IsMatching)
         {
             Vector3 wp =InputManager.Instance.TouchPos;

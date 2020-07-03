@@ -10,9 +10,17 @@ namespace EazyEngine.Space.UI
         public string id;
         public string[] idOverride;
         public object[] parameters;
+        public string customIconParam;
+        public CustomParamIcon[] customParam;
         public Sprite icon;
         public float Duration { get; set; }
         public float CurrentDuration { get; set; }
+    }
+    [System.Serializable]
+    public struct CustomParamIcon
+    {
+        public string id;
+        public Sprite icon;
     }
     public class ItemStatusPlane : BaseItem<StatusInfo>
     {
@@ -45,6 +53,11 @@ namespace EazyEngine.Space.UI
                 }else if (param1)
                 {
                     param1.text = "";   
+                }
+                if (!string.IsNullOrEmpty(value.customIconParam) && value.customParam!= null)
+                {
+                   var pInfo = System.Array.Find(value.customParam, x => x.id == value.customIconParam);
+                    icon.sprite2D = pInfo.icon;
                 }
             }
         }

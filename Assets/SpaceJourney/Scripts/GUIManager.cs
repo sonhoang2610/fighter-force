@@ -134,11 +134,15 @@ namespace EazyEngine.Space
         }
         public void addStatusWithParams(string pID, float pDuration,params object[] pVars)
         {
-            boxStatus.addStatusWithParams(pID, pDuration, pVars);
+            boxStatus.addStatusWithParams(pID, pDuration,"", pVars);
         }
         public void addStatusWithParam(string pID, float pDuration,  object pVar)
         {
-            boxStatus.addStatusWithParams(pID, pDuration, pVar);
+            boxStatus.addStatusWithParams(pID, pDuration,"", pVar);
+        }
+        public void addStatusWithParam(string pID, float pDuration,string pCustomParamIcon, object pVar)
+        {
+            boxStatus.addStatusWithParams(pID, pDuration, pCustomParamIcon, pVar);
         }
         public void setGoldScore(int pGold)
         {

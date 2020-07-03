@@ -187,7 +187,13 @@ namespace EazyEngine.Space
                         {
                             var pRandomElement = UnityEngine.Random.Range(0, elements.Count);
                             var pRandomItem = UnityEngine.Random.Range(0, _parentState.lootItems[i].items.Length);
-                            elements[pRandomElement].GetComponent<DopItem>().itemDropOnDeath.Add(_parentState.lootItems[i].items[pRandomItem]);
+                            var pItemDrop = _parentState.lootItems[i].items[pRandomItem];
+                            var pLimitModule = System.Array.Find(LevelStateManager.Instance.limitModule, x => x.item == pItemDrop);
+                            if (pLimitModule != null && LevelStateManager.Instance.itemDroped.Count(x => x == pItemDrop) < pLimitModule.quantity)
+                            {
+                                LevelStateManager.Instance.itemDroped.Add(pItemDrop);
+                                elements[pRandomElement].GetComponent<DopItem>().itemDropOnDeath.Add(pItemDrop);
+                            }
                         }
                     }
                 }
@@ -205,7 +211,13 @@ namespace EazyEngine.Space
                             for (var g = 0; g < pCountItem; ++g)
                             {
                                 var pRandomItem = UnityEngine.Random.Range(0, _parentState.lootItems[j].items.Length);
-                                elements[i].GetComponent<DopItem>().itemDropOnDeath.Add(_parentState.lootItems[j].items[pRandomItem]);
+                                var pItemDrop = _parentState.lootItems[j].items[pRandomItem];
+                                var pLimitModule = System.Array.Find(LevelStateManager.Instance.limitModule, x => x.item == pItemDrop);
+                                if (pLimitModule != null && LevelStateManager.Instance.itemDroped.Count(x => x == pItemDrop) < pLimitModule.quantity)
+                                {
+                                    LevelStateManager.Instance.itemDroped.Add(pItemDrop);
+                                    elements[i].GetComponent<DopItem>().itemDropOnDeath.Add(pItemDrop);
+                                }
                             }
                         }
                     }

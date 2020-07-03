@@ -531,6 +531,12 @@ public class LootInfoForGroup
     [HideIf("forAll")]
     public string[] states;
 }
+[System.Serializable]
+public class LimitLootInfo
+{
+    public PickAbleItem item;
+    public int quantity;
+}
 public class LevelStateManager : Singleton<LevelStateManager>, EzEventListener<BehaviorStateEvent>
 {
     public static string currentState;
@@ -612,6 +618,9 @@ public class LevelStateManager : Singleton<LevelStateManager>, EzEventListener<B
 #endif
 
     public LootInfoForGroup[] lootInfo;
+    public LimitLootInfo[] limitModule;
+    [System.NonSerialized]
+    public List<PickAbleItem> itemDroped = new List<PickAbleItem>();
     public void changeStartValue(int indexState,Vector3 oldPos,Vector3 newPos)
     {
         for (int i =0; i < states[indexState].moveInfos.Length; ++i)

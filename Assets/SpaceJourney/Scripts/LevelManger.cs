@@ -150,8 +150,6 @@ namespace EazyEngine.Space
         public HistoryMatchInfo historyMatch;
         [System.NonSerialized]
         public StartGameInfo startMatchInfo;
-        private List<PlaneInfoToCoppy> cachePlanePreload = new List<PlaneInfoToCoppy>();
-        public List<PlaneInfoToCoppy> CachePlanePreload { get => cachePlanePreload; set => cachePlanePreload = value; }
         public Character CurrentPlayer
         {
             get
@@ -407,7 +405,6 @@ namespace EazyEngine.Space
             {
                 listIndex.Add(i);
             }
-            Debug.Log(pSelectedPlane + "Plane");
             listIndex.Sort((x1, x2) =>
             {
                 if(x1 != x2)
@@ -424,7 +421,7 @@ namespace EazyEngine.Space
                 return x1.CompareTo(x2);
             });
             players = new Character[GameManager.Instance.Database.planes.Count];
-            for (int i = 0; i < 1; ++i)
+            for (int i = 0; i < players.Length; ++i)
             {
                 int pIndex = i;
                 var pAsync = GameManager.Instance.Database.planes[listIndex[i]].Info.modelPlaneRef.loadAssetAsync<Character>();
@@ -439,19 +436,28 @@ namespace EazyEngine.Space
                 players[pIndex].GetComponent<Blackboard>().SetValue("Main", players[pIndex].gameObject);
                 var pDataPlane = listIndex[i] >= 0 ? GameManager.Instance.Database.planes[listIndex[i]] : null;
                 var pAllItemMainPlane = GameDatabase.Instance.getAllItem(CategoryItem.PLANE);
-                if (pDataPlane == null || pDataPlane.CurrentLevel == 0)
+                if(listIndex[i] > 0)
                 {
-                    foreach (var pItemPlane in pAllItemMainPlane)
-                    {
-                        if (pItemPlane.ItemID == GameManager.Instance.freePlaneChoose)
-                        {
-                            pDataPlane = PlaneInfoConfig.CloneDefault((PlaneInfo)pItemPlane, 20);
-                        }
-                    }
+                    pDataPlane = PlaneInfoConfig.CloneDefault((PlaneInfo)pDataPlane.info, GameManager.Instance.Database.planes[listIndex[i]].CurrentLevel);
                 }
-                
+      
+                //if (pDataPlane == null || pDataPlane.CurrentLevel == 0)
+                //{
+                //    foreach (var pItemPlane in pAllItemMainPlane)
+                //    {
+                //        if (pItemPlane.ItemID == GameManager.Instance.freePlaneChoose)
+                //        {
+                //            pDataPlane = PlaneInfoConfig.CloneDefault((PlaneInfo)pItemPlane, 20);
+                //        }
+                //        pDataPlane = PlaneInfoConfig.CloneDefault((PlaneInfo)pItemPlane, 20);
+                //    }
+                //}
+
                 players[pIndex].setData(pDataPlane);
-                GUIManager.Instance.setIconPlane(pDataPlane.info.iconGame);
+                if (pIndex == 0)
+                {
+                    GUIManager.Instance.setIconPlane(pDataPlane.info.iconGame);
+                }
                 if(pIndex != 0)
                 {
                     var pContraint = players[pIndex].gameObject.AddComponent<PositionConstraint>();
@@ -462,6 +468,10 @@ namespace EazyEngine.Space
                     players[0].GetComponent<CharacterHandleWeapon>().anotherPlane.Add(players[pIndex].GetComponent<CharacterHandleWeapon>());
                     players[pIndex].GetComponent<CharacterHandleWeapon>().disableShoot = true;
                     players[pIndex].GetComponent<Collider2D>().enabled = false;
+                }
+                if(pIndex > 0)
+                {
+                    players[pIndex].GetComponent<DragObjectAOT>().MainTarget = players[0].gameObject;
                 }
             }
             players[0].GetComponent<Health>().recordDamage = true;
