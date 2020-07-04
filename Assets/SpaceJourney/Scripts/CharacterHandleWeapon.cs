@@ -554,11 +554,13 @@ namespace EazyEngine.Space
             }
         }
         protected List<string> stackPlane = new List<string>();
+        public List<SpriteRenderer> icons = new List<SpriteRenderer>();
+        public GameObject circleStatus;
+        public Color circle;
         public void EnablePlanes(string pID)
         {
             var pPlane = anotherPlane.Find(x => x.GetComponent<Character>()._info.Info.ItemID == pID);
             pPlane.EnableShoot();
-            //GUIManager.Instance.addStatus("Core",0,);
             if (!stackPlane.Exists(x => x == pID))
             {
                 if (stackPlane.Count >= 2)
@@ -570,6 +572,24 @@ namespace EazyEngine.Space
                 }
                 stackPlane.Add(pID);
             }
+            circleStatus.gameObject.SetActive(stackPlane.Count > 0);
+            for(int i = 1; i < icons.Count; ++i)
+            {
+                icons[i].gameObject.SetActive(false);
+            }
+            var pPlaneIconMain = LevelManger.Instance.players[0];
+            icons[0].sprite = pPlaneIconMain._info.Info.iconGame;
+            var pMainMain = icons[0].GetComponentInChildren<ParticleSystem>().main;
+            pMainMain.startColor = circle;
+            for (int i = 0; i < stackPlane.Count; ++i)
+            {
+                var pPlaneIcon = System.Array.Find(LevelManger.Instance.players, x => x._info.Info.itemID == stackPlane[i]);
+                icons[i+1].sprite = pPlaneIcon._info.Info.iconGame;
+                var pMain = icons[i+1].GetComponentInChildren<ParticleSystem>().main;
+                pMain.startColor = circle;
+                icons[i + 1].gameObject.SetActive(true);
+            }
+            circleStatus.GetComponent<SpriteRenderer>().color = circle;
         }
         public void ShootStart()
         {

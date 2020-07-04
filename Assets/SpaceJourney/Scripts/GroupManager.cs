@@ -189,7 +189,7 @@ namespace EazyEngine.Space
                             var pRandomItem = UnityEngine.Random.Range(0, _parentState.lootItems[i].items.Length);
                             var pItemDrop = _parentState.lootItems[i].items[pRandomItem];
                             var pLimitModule = System.Array.Find(LevelStateManager.Instance.limitModule, x => x.item == pItemDrop);
-                            if (pLimitModule != null && LevelStateManager.Instance.itemDroped.Count(x => x == pItemDrop) < pLimitModule.quantity)
+                            if (pLimitModule == null || LevelStateManager.Instance.itemDroped.Count(x => x == pItemDrop) < pLimitModule.quantity)
                             {
                                 LevelStateManager.Instance.itemDroped.Add(pItemDrop);
                                 elements[pRandomElement].GetComponent<DopItem>().itemDropOnDeath.Add(pItemDrop);
@@ -213,7 +213,7 @@ namespace EazyEngine.Space
                                 var pRandomItem = UnityEngine.Random.Range(0, _parentState.lootItems[j].items.Length);
                                 var pItemDrop = _parentState.lootItems[j].items[pRandomItem];
                                 var pLimitModule = System.Array.Find(LevelStateManager.Instance.limitModule, x => x.item == pItemDrop);
-                                if (pLimitModule != null && LevelStateManager.Instance.itemDroped.Count(x => x == pItemDrop) < pLimitModule.quantity)
+                                if (pLimitModule == null || LevelStateManager.Instance.itemDroped.Count(x => x == pItemDrop) < pLimitModule.quantity)
                                 {
                                     LevelStateManager.Instance.itemDroped.Add(pItemDrop);
                                     elements[i].GetComponent<DopItem>().itemDropOnDeath.Add(pItemDrop);
