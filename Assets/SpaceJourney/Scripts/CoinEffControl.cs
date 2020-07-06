@@ -28,16 +28,36 @@ namespace EazyEngine.Space
         Vector3 vel = Vector3.one;
         void OnEnable()
         {
+            cacheVelocity = Vector2.zero;
+            cacheGravity = rBody.gravityScale;
             //if (Constants.currentLevel != 1)
             if (addForceOnEnable)
             {
                 rBody.AddForce(Random.insideUnitCircle * 15, ForceMode2D.Force);
             }
         }
-        
+        protected float cacheGravity;
+        protected Vector2 cacheVelocity;
         void Update()
         {
             if (!isEnable) return;
+            if (!LevelManger.Instance.IsMatching)
+            {
+                rBody.gravityScale = 0;
+                if(rBody.velocity != Vector2.zero)
+                {
+                    cacheVelocity = rBody.velocity;
+                    rBody.velocity = Vector2.zero;
+                }
+            }
+            else
+            {
+                rBody.gravityScale = cacheGravity;
+                if (cacheVelocity != Vector2.zero)
+                {
+                    rBody.velocity = cacheVelocity;
+                }
+            }
             if (LevelManger.InstanceRaw != null && LevelManger.Instance.isPause == false)
             {
                 if (isTarget)

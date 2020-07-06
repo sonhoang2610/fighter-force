@@ -90,6 +90,7 @@ public class CharacterInstancedConfig
     public float DamgageBasic;
     public float Defense;
     public float DamgeSelf = -1;
+    public float DurationDamage = 0.1f;
     public bool isBoss = false;
     [System.NonSerialized]
     public int score;

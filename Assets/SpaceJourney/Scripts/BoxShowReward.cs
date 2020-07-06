@@ -89,7 +89,7 @@ namespace EazyEngine.Space.UI
             }
             nameItem.text = eventType.item.item.displayNameItem.Value;
             quantity.text = eventType.item.quantity.ToString();
-            icon.sprite2D = eventType.item.item.CateGoryIcon;
+            icon.sprite2D = eventType.item.item.CateGoryIcon ? eventType.item.item.CateGoryIcon : eventType.item.item.iconShop;
             boxExtract.gameObject.SetActive(false);
             layerNormal.SetActive(false);
             if (typeof(IExtractItem).IsAssignableFrom(eventType.item.item.GetType()) && eventType.item.Quantity == 1 && ((IExtractItem)eventType.item.item).CacheExtraItemCount() > 0)

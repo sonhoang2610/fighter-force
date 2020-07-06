@@ -162,16 +162,7 @@ namespace EazyEngine.Space.UI
                 }
             }
             blackBG.gameObject.SetActive(pInfo.blockState);
-            if (pInfo.showDialog)
-            {
-                box.transform.localPosition = pInfo.boxPos;
-                UIElementManager.Instance.cachePos[box] = pInfo.boxPos;
-                box.show();
-                title.text = pInfo.title.Value;
-                content.text = pInfo.content.Value;
-                focusButton(pInfo.IDButonFocus, pInfo.offset, pExcute, pOverride);
-            }
-            else if (pInfo.newFeature)
+             if (pInfo.newFeature)
             {
                var pIntro = Instantiate(pInfo.prefabIcon, transform);
                 pIntro.transform.localScale = Vector3.zero;
@@ -188,6 +179,22 @@ namespace EazyEngine.Space.UI
                 pSequence1.AppendInterval(0.5f);
                 pSequence1.Append(pIntro.transform.DOScale(1, 0.5f));
                 pSequence1.AppendCallback(delegate { Destroy(pIntro); });
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(pInfo.title.Value) || !string.IsNullOrEmpty(pInfo.content.Value))
+                {
+                    box.transform.localPosition = pInfo.boxPos;
+                    UIElementManager.Instance.cachePos[box] = pInfo.boxPos;
+                    box.show();
+                    title.text = pInfo.title.Value;
+                    content.text = pInfo.content.Value;
+                }
+                else
+                {
+                    box.close();
+                }
+                focusButton(pInfo.IDButonFocus, pInfo.offset, pExcute, pOverride);
             }
             markDirty++;
  

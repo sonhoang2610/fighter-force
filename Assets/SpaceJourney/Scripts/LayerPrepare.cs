@@ -142,6 +142,7 @@ namespace EazyEngine.Space.UI
         public void chooseUseItem(object pObject)
         {
             if (pObject == null) return;
+
             if (GameManager.Instance.ConfigLevel == null)
             {
                 GameManager.Instance.ConfigLevel = new LevelConfig();

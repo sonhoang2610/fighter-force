@@ -160,7 +160,7 @@ namespace EazyEngine.Space
             _health.MaxiumHealth = (int)(pInfo.Health * LevelStateManager.Instance.scaleState.scaleGlobal.scaleHealth * LevelStateManager.Instance.getScaleFactor(originalPreb).scaleHealth);
             _health.Deffense =(int) (pInfo.Defense * LevelStateManager.Instance.scaleState.scaleGlobal.scaleDeffense * LevelStateManager.Instance.getScaleFactor(originalPreb).scaleDeffense);
             _health.currentHealth = (int)(pInfo.Health * LevelStateManager.Instance.scaleState.scaleGlobal.scaleHealth * LevelStateManager.Instance.getScaleFactor(originalPreb).scaleHealth);
-
+         
             if (!handleWeapon) handleWeapon = GetComponent<CharacterHandleWeapon>();
             if (handleWeapon)
             {
@@ -179,8 +179,12 @@ namespace EazyEngine.Space
             {
                 var pDamage = GetComponent<DamageOnTouch>();
                 {
-                    if(pDamage)
-                         pDamage.DamageCausedProp =(int) (pInfo.DamgeSelf * LevelStateManager.Instance.scaleState.scaleGlobal.scaleDamageSelf * LevelStateManager.Instance.getScaleFactor(originalPreb).scaleDamageSelf);
+                    if (pDamage)
+                    {
+                        pDamage.durationForNextDame = pInfo.DurationDamage;
+                        pDamage.DamageCausedProp = (int)(pInfo.DamgeSelf * LevelStateManager.Instance.scaleState.scaleGlobal.scaleDamageSelf * LevelStateManager.Instance.getScaleFactor(originalPreb).scaleDamageSelf);
+                    }
+                         
                 };
             }
         }
