@@ -8,7 +8,7 @@ public class InputManager : Singleton<InputManager> {
 
     public bool isTouch
     {
-        get { return Input.touchCount > 0 || Input.GetMouseButton(0); }
+        get { return !_blockTouch && (Input.touchCount > 0 || Input.GetMouseButton(0)); }
     }
 
     public Vector3 TouchPos
