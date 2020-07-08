@@ -431,6 +431,11 @@ public enum ResultStatusAds
 }
 public class GameManager : PersistentSingleton<GameManager>, EzEventListener<GameDatabaseInventoryEvent>
 {
+    [ContextMenu("hackk")]
+    public void hackk()
+    {
+        Database.getComonItem("BoosterCollect").Quantity = 0;
+    }
     public float frameTarget = 60;
     [System.NonSerialized]
     public List<SubAssetInfo> loadedAssets = new List<SubAssetInfo>();
@@ -596,7 +601,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     }
     public void initGame()
     {
-        if (GameManager.Instance.CurrentLevelUnlock >= 3)
+        if (GameManager.Instance.CurrentLevelUnlock >= 7)
         {
             StartCoroutine(checkTimePackage());
         }

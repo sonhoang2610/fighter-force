@@ -190,7 +190,7 @@ public class UIDragObject : MonoBehaviour
 
 	void OnDrag (Vector2 delta)
 	{
-        if (!EazyEngine.Space.LevelManger.InstanceRaw.IsDestroyed() && !InputManager.Instance.isTouch) return;
+        if(!EazyEngine.Space.LevelManger.InstanceRaw.IsDestroyed() && !InputManager.Instance.isTouch)return;
 		if (mPressed && mTouchID == UICamera.currentTouchID && enabled && NGUITools.GetActive(gameObject) && target != null)
 		{
 			UICamera.currentTouch.clickNotification = UICamera.ClickNotification.BasedOnDelta;

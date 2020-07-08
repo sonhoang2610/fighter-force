@@ -24,12 +24,13 @@ namespace EazyEngine.Space
         void Awake()
         {
             rBody = GetComponent<Rigidbody2D>();
+            cacheGravity = rBody.gravityScale;
         }
         Vector3 vel = Vector3.one;
         void OnEnable()
         {
             cacheVelocity = Vector2.zero;
-            cacheGravity = rBody.gravityScale;
+         
             //if (Constants.currentLevel != 1)
             if (addForceOnEnable)
             {

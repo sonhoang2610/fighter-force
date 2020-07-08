@@ -135,9 +135,14 @@ namespace EazyEngine.Space.UI
                 }
             }
         }
-
+        protected string lastState;
         private void ExcuteState(GuideInfo pInfo,System.Action pExcute,bool pOverride)
         {
+            if(lastState == pInfo.triggerToExcute && blackBG.gameObject.activeSelf)
+            {
+                return;
+            }
+            lastState = pInfo.triggerToExcute;
             if (!string.IsNullOrEmpty(pInfo.IDButonFocus))
             {
                 var pObject = GameObject.Find("Core" + pInfo.IDButonFocus);

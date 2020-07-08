@@ -34,7 +34,7 @@ public class InputManager : Singleton<InputManager> {
     protected bool cacheTouch = false;
     protected float fixedTimeDefault;
 
-    bool _blockTouch;
+    bool _blockTouch = false;
     public bool BlockTouch
     {
         get

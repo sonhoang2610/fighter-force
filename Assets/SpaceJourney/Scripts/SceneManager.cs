@@ -409,6 +409,16 @@ namespace EazyEngine.Space
       
         protected override void Awake()
         {
+            if(int.Parse( Application.version.Substring(0,1)) <= 4)
+            {
+                PlayerPrefs.SetInt("FirstGuideItem", 1);
+                PlayerPrefs.SetInt("FirstGuideSkill", 1);
+                PlayerPrefs.SetInt("FirstOpenPrepare", 1);
+                PlayerPrefs.SetInt("OnlineGiftFirstPress", 1);
+                PlayerPrefs.SetInt("FirstPressMission", 1);
+                PlayerPrefs.SetInt("FirstPressDailyGift", 1);
+                PlayerPrefs.SetInt("FirstPressUpgrade", 1);
+            }
             base.Awake();
             PlayerPrefs.SetString("ItemUsed", "");
             EazyAnalyticTool.Init(delegate {

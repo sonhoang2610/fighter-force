@@ -84,6 +84,11 @@ namespace EazyEngine.Space.UI
             {
                 SoundManager.Instance.PlaySound(sfxUpgradeSkill, Vector3.zero);
                 pExist.Quantity -= price.quantity;
+                //if(selectedPlane.Info.ItemID == "MainPlane1" && selectedPlane.UpgradeSkill[choosedSkill.info.Info.ItemID] == 0)
+                //{
+                //    StartCoroutine(delayAction(0.2f, delegate () { EzEventManager.TriggerEvent(new GuideEvent("FirstUpgradeSkill")); }));
+                //}
+            
                 int pLevel = 1;
                 if (selectedPlane.UpgradeSkill.ContainsKey(choosedSkill.info.Info.ItemID))
                 {
@@ -263,18 +268,23 @@ namespace EazyEngine.Space.UI
                 }
                 StartCoroutine(delayAction(0.02f, delegate
                 {
-                    int pStepGame = PlayerPrefs.GetInt("firstGame", 0);
-                    if (pStepGame >= 3 && pStepGame < 5)
+                    if (selectedPlane.Info.ItemID == "MainPlane1")
                     {
-                        //EzEventManager.TriggerEvent(new GuideEvent("FirstUpgrade" + (pStepGame - 2).ToString()));
-                        pStepGame++;
-                        PlayerPrefs.SetInt("firstGame", pStepGame);
-                    }
-                     else if (pStepGame == 5)
-                    {
-                       // EzEventManager.TriggerEvent(new GuideEvent("FirstUpgradeSuccess"));
-                        pStepGame++;
-                        PlayerPrefs.SetInt("firstGame", pStepGame);
+                        int pStepGame = PlayerPrefs.GetInt("FirstPressUpgrade", 0);
+                        if (pStepGame < 10 && selectedPlane.CurrentLevel < 3)
+                        {
+                            EzEventManager.TriggerEvent(new GuideEvent("FirstUpgrade" + (selectedPlane.CurrentLevel).ToString()));
+                            pStepGame++;
+
+                        }
+                        else
+                        {
+                            if (!selectedPlane.UpgradeSkill.ContainsKey("BigLaser") || selectedPlane.UpgradeSkill["BigLaser"] ==0)
+                            {
+                                EzEventManager.TriggerEvent(new GuideEvent("FirstUpgradeSkill"));
+                            }
+                              
+                        }
                     }
                 }));
                 if( selectedPlane.GetType() == typeof(SupportPlaneInfoConfig))
@@ -445,16 +455,28 @@ namespace EazyEngine.Space.UI
         }
         public void checkGuide()
         {
-            StartCoroutine(delayAction(0.1f, delegate
+            if (AssetLoaderManager.Instance.getPercentJob("Main") >= 1)
             {
-                int pStepGame = PlayerPrefs.GetInt("firstGame", 0);
-                if (pStepGame == 2)
+                StartCoroutine(delayAction(0.1f, delegate
                 {
-                    PlayerPrefs.SetInt("firstGame", 3);
-                  //  EzEventManager.TriggerEvent(new GuideEvent("FirstUpgrade"));
-                }
-            }));
-
+                    int pStepGame = PlayerPrefs.GetInt("FirstPressUpgrade", 0);
+                    if (pStepGame < 10 && selectedPlane.info.ItemID == "MainPlane1" && selectedPlane.CurrentLevel < 3)
+                    {
+                        PlayerPrefs.SetInt("FirstPressUpgrade", 2);
+                        EzEventManager.TriggerEvent(new GuideEvent("FirstUpgrade1"));
+                    }
+                    else
+                    {
+                        if (selectedPlane.info.ItemID == "MainPlane1")
+                        {
+                            if (!selectedPlane.UpgradeSkill.ContainsKey("BigLaser") || selectedPlane.UpgradeSkill["BigLaser"] == 0)
+                            {
+                                EzEventManager.TriggerEvent(new GuideEvent("FirstUpgradeSkill"));
+                            }
+                        }
+                    }
+                }));
+            }
         }
         protected override void Awake()
         {

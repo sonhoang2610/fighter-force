@@ -158,7 +158,10 @@ namespace EazyEngine.Space.UI
             {
                 desItemSp.gameObject.SetActive(true);
                 GameManager.Instance.ConfigLevel.itemUsed.Remove((ItemGame)pItem.item.item);
-                GameManager.Instance.ConfigLevel.itemUsed.Add((ItemGame)pItem.item.item);
+                if (GameManager.Instance.Database.getComonItem(pItem.item.item.ItemID).Quantity > 0)
+                {
+                    GameManager.Instance.ConfigLevel.itemUsed.Add((ItemGame)pItem.item.item);
+                }
             }
         }
         // Start is called before the first frame update
