@@ -726,7 +726,10 @@ public class LevelStateManager : Singleton<LevelStateManager>, EzEventListener<B
                 var pStatee = states[i].DeepClone();
                 if(lootInfo.Length > 0)
                 {
-                    pStatee.lootItems = findLootInfo(pState);
+                    List<LootInfo> pList = new List<LootInfo>();
+                    pList.AddRange(pStatee.lootItems);
+                    pList.AddRange(findLootInfo(pState));
+                    pStatee.lootItems = pList.ToArray();
                 }
                 runState(pStatee);       
                 return pStatee;
