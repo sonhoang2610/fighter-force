@@ -27,6 +27,7 @@ namespace  EazyEngine.Space
     }
     
 	public void movement(Vector2 pDelta){
+        if (!InputManager.Instance.isTouch) return;
         float pX = transform.position.x + pDelta.x;
 
         if (pX + _collider2D.bounds.extents.x > LevelManger.Instance.mainPlayCamera.Rect().xMax)
