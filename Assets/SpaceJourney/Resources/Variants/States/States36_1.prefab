@@ -7376,7 +7376,18 @@ MonoBehaviour:
       scaleDamage: 1
       scaleDamageSelf: 1
     scaleSpecifedEnemies: []
-  lootInfo: []
+  lootInfo:
+  - lootInfo:
+    - baseLoot: 0
+      items:
+      - {fileID: 2725560285071857337, guid: 7b73c78e5bd265a4c9fc55699446c544, type: 3}
+      percent: 0.2
+      dropCountRange: {x: 1, y: 1}
+    forAll: 1
+    states: []
+  limitModule:
+  - item: {fileID: 2725560285071857337, guid: 7b73c78e5bd265a4c9fc55699446c544, type: 3}
+    quantity: 3
 --- !u!114 &2517874892504784462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7648,7 +7659,7 @@ MonoBehaviour:
       info:
         isIgnore: 0
         countPreload: 30
-        countloadSequenceInGame: 25
+        countloadSequenceInGame: 20
         pooler: {fileID: 0}
         dontDestroyOnload: 1
     - key: {fileID: 2725560285071857338, guid: 0971f79f08ce8854b82f023123fb1334, type: 3}
@@ -7675,7 +7686,14 @@ MonoBehaviour:
     - key: {fileID: 2725560285071857338, guid: b3563a708a29ffb4d8d744ee8a043d04, type: 3}
       info:
         isIgnore: 0
-        countPreload: 3
+        countPreload: 0
         countloadSequenceInGame: 0
         pooler: {fileID: 0}
         dontDestroyOnload: 1
+    - key: {fileID: 2725560285071857338, guid: 7b73c78e5bd265a4c9fc55699446c544, type: 3}
+      info:
+        isIgnore: 0
+        countPreload: 2
+        countloadSequenceInGame: 1
+        pooler: {fileID: 0}
+        dontDestroyOnload: 0
