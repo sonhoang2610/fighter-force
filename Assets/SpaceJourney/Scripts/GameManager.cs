@@ -620,7 +620,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             LoadGame();
             LoadAllLevel();
         }
-        if (GameManager.Instance.CurrentLevelUnlock >= 3)
+        if (GameManager.Instance.CurrentLevelUnlock >= 7)
         {
             StartCoroutine(ExtraPackageDatabase.Instance.initIAPProduct());
         }

@@ -7,6 +7,7 @@ using EazyEngine.Tools;
 using NodeCanvas.Framework;
 using System.Linq;
 using EazyEngine.Timer;
+using UnityEngine.Events;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -26,6 +27,7 @@ namespace EazyEngine.Space {
     public class ButtonSkill : BaseItem<SkillInputData>
     {
         public UI2DSprite fillCoolDown;
+        public UnityEvent completeCoolDown;
         public TimeController time;
         public void press()
         {
@@ -42,6 +44,7 @@ namespace EazyEngine.Space {
             fillCoolDown.fillAmount = 1;
             var tween = DOTween.To(()=> fillCoolDown.fillAmount,x => fillCoolDown.fillAmount = x,0, Data._info.Info.CoolDownTime).OnComplete(() => fillCoolDown.gameObject.SetActive(false));
             tween.OnUpdate(() => tween.timeScale = time.TimScale);
+            tween.OnComplete(() => completeCoolDown.Invoke());
           //  fillCoolDown.do(0, Data._info.info.coolDownTime).OnComplete(() => fillCoolDown.gameObject.SetActive(false));
         }
 

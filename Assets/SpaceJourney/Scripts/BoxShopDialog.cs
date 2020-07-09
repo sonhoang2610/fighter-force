@@ -48,7 +48,7 @@ namespace EazyEngine.Space.UI
                 }, delegate {
                     HUDLayer.Instance.BoxDialog.close();
                     GetComponent<UIElement>().show();
-                });
+                },false);
             }
         }
     }

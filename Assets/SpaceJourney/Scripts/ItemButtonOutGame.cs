@@ -8,7 +8,7 @@ using EazyEngine.Space.UI;
 
 namespace EazyEngine.Space
 {
-    public class ItemButtonOutGame : BaseItem<ItemOutGameInfo>,EzEventListener<GameDatabaseInventoryEvent>
+    public class ItemButtonOutGame : BaseItem<ItemOutGameInfo>, EzEventListener<GameDatabaseInventoryEvent>
     {
         public UI2DSprite iconButton;
         public UILabel quantity;
@@ -31,21 +31,21 @@ namespace EazyEngine.Space
             get => base.Data;
             set
             {
-                iconButton.sprite2D = value.item.quantity > 0 ? value.item.item.iconShop : value.item.item.iconShopDisable ;
+                iconButton.sprite2D = value.item.quantity > 0 ? value.item.item.iconShop : value.item.item.iconShopDisable;
                 quantity.text = value.item.quantity > 0 ? value.item.quantity.ToString() : "+";
-               // quantity.transform.parent.gameObject.SetActive(value.item.quantity > 0);
-             //   GetComponent<UIButton>().isEnabled = value.item.quantity > 0;
+                // quantity.transform.parent.gameObject.SetActive(value.item.quantity > 0);
+                //   GetComponent<UIButton>().isEnabled = value.item.quantity > 0;
 
                 if (value.isChoosed)
                 {
                     onChoose.Invoke();
-              
+
                 }
                 else
                 {
                     onUnchoose.Invoke();
                 }
-             
+
                 base.Data = value;
                 onExecute();
             }
@@ -56,9 +56,9 @@ namespace EazyEngine.Space
             if (Data.item.Quantity > 0)
             {
                 choose();
-                onExecute();
             }
-            else{
+            else
+            {
                 BoxShopDialog.Instance.showBoxWithItem(Data.item.item);
             }
         }
@@ -76,10 +76,19 @@ namespace EazyEngine.Space
 
         public void OnEzEvent(GameDatabaseInventoryEvent eventType)
         {
-           if(eventType.item.item.ItemID == Data.item.item.ItemID)
+            if (eventType.item.item.ItemID == Data.item.item.ItemID)
             {
-                Data.isChoosed = true;
-                Data = Data;
+                if (eventType.item.changeQuantity > 0 && eventType.item.Quantity - eventType.item.changeQuantity == 0)
+                {
+                    {
+                        Data.isChoosed = true;
+                        Data = Data;
+                    }
+                }
+                else
+                {
+                    quantity.text = eventType.item.Quantity.ToString();
+                }
             }
         }
     }

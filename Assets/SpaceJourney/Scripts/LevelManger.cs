@@ -786,7 +786,7 @@ namespace EazyEngine.Space
                 {
                     TopLayer.Instance.gameObject.SetActive(!IsMatching);
                 }
-                
+
                 if (value)
                 {
                     if (!SoundManager.Instance.states.Contains("Matching"))

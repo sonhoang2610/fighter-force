@@ -36,6 +36,8 @@ namespace EazyEngine.Space
         protected GameObject containerHandle;
         [SerializeField]
         protected GameObject posLeft, posRight, control1;
+        [SerializeField]
+        protected UIButton btnPause;
         public BoxResult boxResult;
         public AudioGroupSelector sfxStartNomal = AudioGroupConstrant.StartBoss;
 
@@ -46,6 +48,11 @@ namespace EazyEngine.Space
             {
                 return LevelManger.InstanceRaw && LevelManger.InstanceRaw.IsPlaying;
             }
+        }
+        protected override void Awake()
+        {
+            base.Awake();
+            btnPause.isEnabled = false; 
         }
         public void enableEnergy(bool pBool)
         {
@@ -235,6 +242,7 @@ namespace EazyEngine.Space
             if (eventType._message == "StartGame")
             {
                 SoundManager.Instance.PlaySound(sfxStartNomal, Vector3.zero);
+                btnPause.isEnabled = true;
             }
         }
     }
