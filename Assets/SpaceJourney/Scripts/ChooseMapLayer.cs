@@ -37,7 +37,7 @@ namespace EazyEngine.Space.UI
                     {
                         blockStars.Add(new Vector2(GameDatabase.Instance.LevelConfigScene[i].level, GameDatabase.Instance.LevelConfigScene[i].requrireStarToUnlock));
                         var pLevel = GameManager.Instance.container.getLevelInfo(GameDatabase.Instance.LevelConfigScene[i].level, 0);
-                        if (pLevel.isLocked && GameManager.Instance.Database.getComonItem("Star").Quantity >= GameDatabase.Instance.LevelConfigScene[i].requrireStarToUnlock)
+                        if (pLevel.isLocked && GameManager.Instance.CurrentLevelUnlock >= pLevel.level && GameManager.Instance.Database.getComonItem("Star").Quantity >= GameDatabase.Instance.LevelConfigScene[i].requrireStarToUnlock)
                         {
                             pLevel.isLocked = false;
                         }
