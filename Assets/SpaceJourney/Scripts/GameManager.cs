@@ -1005,6 +1005,16 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                     }
                     SaveGame();
                 }
+                if (GameManager.Instance.Database != null && GameManager.Instance.Database.firstOnline.ToUnixTime() < TimeExtension.ToUnixTime(new DateTime(2020, 7, 5)))
+                {
+                    PlayerPrefs.SetInt("FirstGuideItem", 1);
+                    PlayerPrefs.SetInt("FirstGuideSkill", 1);
+                    PlayerPrefs.SetInt("FirstOpenPrepare", 1);
+                    PlayerPrefs.SetInt("OnlineGiftFirstPress", 1);
+                    PlayerPrefs.SetInt("FirstPressMission", 1);
+                    PlayerPrefs.SetInt("FirstPressDailyGift", 1);
+                    PlayerPrefs.SetInt("FirstPressUpgrade", 1);
+                }
 
 #if UNITY_EDITOR
                 if (!Application.isPlaying)
@@ -1018,6 +1028,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         {
             _databaseInstanced = _databaseDefault1.CloneData();
             _databaseInstanced.ExtraInfo();
+            _databaseInstanced.firstOnline = System.DateTime.Now;
             SaveGame();
         }
 
@@ -1078,7 +1089,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                 }
 #endif
             }
-            if (GameManager.Instance.Database.firstOnline.ToUnixTime() < TimeExtension.ToUnixTime(new DateTime(2020, 7, 5)))
+            if (GameManager.Instance.Database != null && GameManager.Instance.Database.firstOnline.ToUnixTime() < TimeExtension.ToUnixTime(new DateTime(2020, 7, 5)))
             {
                 PlayerPrefs.SetInt("FirstGuideItem", 1);
                 PlayerPrefs.SetInt("FirstGuideSkill", 1);
@@ -1093,6 +1104,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         {
             _databaseInstanced = _databaseDefault1.CloneData();
             _databaseInstanced.ExtraInfo();
+            GameManager.Instance.Database.firstOnline = System.DateTime.Now;
             SaveGame();
         }
 
