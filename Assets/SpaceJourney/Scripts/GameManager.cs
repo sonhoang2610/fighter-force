@@ -700,7 +700,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     public GameDataBaseInstance _databaseDefault1;
     [System.NonSerialized]
     public GameDataBaseInstance _databaseInstanced = null;
-    [ShowInInspector]
+
     public GameDataBaseInstance Database
     {
         get
@@ -1089,6 +1089,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                 }
 #endif
             }
+
             if (GameManager.Instance.Database != null && GameManager.Instance.Database.firstOnline.ToUnixTime() < TimeExtension.ToUnixTime(new DateTime(2020, 7, 5)))
             {
                 PlayerPrefs.SetInt("FirstGuideItem", 1);
