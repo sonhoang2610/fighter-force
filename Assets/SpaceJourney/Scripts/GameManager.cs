@@ -1078,6 +1078,16 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                 }
 #endif
             }
+            if (GameManager.Instance.Database.firstOnline.ToUnixTime() < TimeExtension.ToUnixTime(new DateTime(2020, 7, 5)))
+            {
+                PlayerPrefs.SetInt("FirstGuideItem", 1);
+                PlayerPrefs.SetInt("FirstGuideSkill", 1);
+                PlayerPrefs.SetInt("FirstOpenPrepare", 1);
+                PlayerPrefs.SetInt("OnlineGiftFirstPress", 1);
+                PlayerPrefs.SetInt("FirstPressMission", 1);
+                PlayerPrefs.SetInt("FirstPressDailyGift", 1);
+                PlayerPrefs.SetInt("FirstPressUpgrade", 1);
+            }
         }
         else
         {
@@ -1260,7 +1270,9 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     }
     public bool CheckGuide(string id)
     {
-        return PlayerPrefs.GetInt(id, 0) == 0 && System.DateTime.Now.Day >= 15 && System.DateTime.Now.Month >= 7 && System.DateTime.Now.Year >= 2020;
+        var double1 = TimeExtension.ToUnixTime(System.DateTime.Now);
+        var double2 = TimeExtension.ToUnixTime(new DateTime(2020,7,5));
+        return PlayerPrefs.GetInt(id, 0) == 0 && double1 >= double2;
     }
     public static string convertTime(int pTime)
     {
