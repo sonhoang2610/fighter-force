@@ -134,11 +134,7 @@ namespace EazyEngine.Space.UI
                 GameManager.Instance.showBannerAds(true);
                 return;
             }
-            block.gameObject.SetActive(true);
-            StartCoroutine(delayaction(1, delegate
-            {
-                block.gameObject.SetActive(false);
-            }));
+        
             if (GameManager.Instance.ChoosedLevel >= 5 && !GameManager.Instance.isFree)
             {
                 int pShow = PlayerPrefs.GetInt("ShowBoxRewardRandom", 0);
@@ -242,7 +238,11 @@ namespace EazyEngine.Space.UI
             quantityDestroy.text = $"{((float)LevelManger.Instance._infoLevel.enemyKill / (float)(LevelManger.Instance._infoLevel.enemyKill + LevelManger.Instance.BornEnemy.Count)) * 100}%";
 
             gameObject.SetActive(true);
-
+            block.gameObject.SetActive(true);
+            StartCoroutine(delayaction(1, delegate
+            {
+                block.gameObject.SetActive(false);
+            }));
             StartCoroutine(delayaction(0.5f, delegate
             {
                 bool showGuide = false;
