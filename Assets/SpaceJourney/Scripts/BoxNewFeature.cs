@@ -21,10 +21,13 @@ namespace EazyEngine.Space.UI
         {
          
             var feature =configFeature.Find(x => x.level == level);
-            if(feature != null)
+          
+            if (feature != null)
             {
+            
                 if (GameManager.Instance.CheckGuide("firstFeature" + level))
                 {
+                    icon.transform.DestroyChildren();
                     GameManager.Instance.disableGuide("firstFeature" + level);
                     GetComponent<UIElement>().show();
                     var pObject = icon.transform.AddChild(feature.iconFeature);

@@ -258,8 +258,13 @@ namespace EazyEngine.Space {
         public AssetSelectorRef modelPlaneRef;
         public int limitUpgrade = 80;
         public int RankPlane = 0;
+        [System.NonSerialized]
         public float[] speedBoosters = new float[] {
             0.2f,0.2f,0.3f,0.4f,0,5f,0.6f
+        };
+        [System.NonSerialized]
+        public float[] damageBoosters = new float[] {
+            0,-0.2f,-0.3f,-0.4f,-0.5f,-0.5f
         };
         public UnitDefineLevel power;
         [System.NonSerialized, OdinSerialize]
