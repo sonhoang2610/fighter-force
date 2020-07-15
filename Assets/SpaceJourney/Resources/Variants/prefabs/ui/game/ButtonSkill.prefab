@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 588569449639033103}
   - component: {fileID: 588569449639033137}
   - component: {fileID: 588569449639033136}
-  m_Layer: 5
+  m_Layer: 19
   m_Name: focus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4822,7 +4822,7 @@ GameObject:
   - component: {fileID: 9011145874450800328}
   - component: {fileID: 2504864118525805494}
   - component: {fileID: 6229307917124437722}
-  m_Layer: 5
+  m_Layer: 19
   m_Name: 2D Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4928,7 +4928,7 @@ GameObject:
   - component: {fileID: 8944708343209171836}
   - component: {fileID: 8147724259027009291}
   - component: {fileID: 5577741756305954646}
-  m_Layer: 5
+  m_Layer: 19
   m_Name: ButtonSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4966,18 +4966,7 @@ MonoBehaviour:
   onData: []
   onUsing:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 588569449639033102}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   fillCoolDown: {fileID: 2504864118525805494}
   completeCoolDown:
     m_PersistentCalls:
@@ -4994,6 +4983,20 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   time: {fileID: 0}
+  onPress:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 588569449639033102}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8944708343209171836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5033,7 +5036,7 @@ MonoBehaviour:
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 1
-  dirtyChange: 0
+  dirtyChange: 1
   mType: 0
   mFillDirection: 4
   mFillAmount: 1

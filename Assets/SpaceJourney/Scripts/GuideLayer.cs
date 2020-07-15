@@ -29,13 +29,14 @@ namespace EazyEngine.Space.UI
     public struct GuideEvent
     {
         public string trigger;
-        public System.Action onExcute;
+        public System.Action onExcute,onSkip;
         public bool overrideButton;
         public GuideEvent(string pTrigger, System.Action pExcute = null,bool pOverride = true)
         {
             trigger = pTrigger;
             onExcute = pExcute;
             overrideButton = pOverride;
+            onSkip = null;
         }
     }
     public class GuideLayer : Singleton<GuideLayer>, EzEventListener<GuideEvent>

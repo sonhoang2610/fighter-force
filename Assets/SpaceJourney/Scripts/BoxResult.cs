@@ -52,6 +52,8 @@ namespace EazyEngine.Space.UI
         public UIButton btnOpenBoxRewardRandom;
         private List<EazyNode> pNodes = new List<EazyNode>();
 
+        static BoxResult _instance;
+
         public void showTestWin()
         {
             gameObject.SetActive(true);
@@ -101,6 +103,7 @@ namespace EazyEngine.Space.UI
         protected bool isUnlock = false;
         private void Awake()
         {
+            Instance = this;
             cachePosBoxReward = boxRewardRandom.transform.localPosition;
             cacheScaleBoxReward = boxRewardRandom.transform.localScale;
             isInit = true;
@@ -193,10 +196,8 @@ namespace EazyEngine.Space.UI
                     pNodes.Add(pNode);
                     pNode.runGraph(onFinishNode);
                 }
-                //set data extra craft reward
                 if (extraItem != null && extraItem.Length > 0)
                 {
-
                     boxShowReward.DataSource = extraItem.ToObservableList();
                 }
                 else
@@ -237,6 +238,7 @@ namespace EazyEngine.Space.UI
             gameObject.SetActive(true);
             StartCoroutine(delayaction(0.5f, delegate
             {
+                bool showGuide = false;
                 if (extraItem != null && extraItem.Length > 0)
                 {
                     int pFirstGuideBoxReward = PlayerPrefs.GetInt("FirstBoxReward", 0);
@@ -245,9 +247,14 @@ namespace EazyEngine.Space.UI
                         if (pFirstGuideBoxReward == 0)
                         {
                             PlayerPrefs.SetInt("FirstBoxReward", 1);
+                            showGuide = true;
                             StartCoroutine(delayaction(1, delegate
                             {
-                                EzEventManager.TriggerEvent(new GuideEvent("FirstRewardBox", null));
+                                
+                                EzEventManager.TriggerEvent(new GuideEvent("FirstRewardBox", delegate
+                                {
+                                    BoxNewFeature.Instance.show(GameManager.Instance.CurrentLevelUnlock);
+                                }));
                             }));
                         }
                         else if (PlayerPrefs.GetInt("SecondBox", 0) == 0)
@@ -255,8 +262,15 @@ namespace EazyEngine.Space.UI
                             // PlayerPrefs.SetInt("FirstBoxReward",4);
                             PlayerPrefs.SetInt("SecondBox", 1);
                         }
+
                     }
+
                 }
+                if (!showGuide)
+                {
+                    BoxNewFeature.Instance.show(GameManager.Instance.CurrentLevelUnlock);
+                }
+                
             }));
 
             if (!GameManager.Instance.isFree)
@@ -375,6 +389,9 @@ namespace EazyEngine.Space.UI
             EzEventManager.TriggerEvent(new MessageGamePlayEvent("MissionDirty"));
         }
         protected float currentCoin;
+
+        public static BoxResult Instance { get => _instance; set => _instance = value; }
+
         public void setGold(float pCoin)
         {
             currentCoin = pCoin;

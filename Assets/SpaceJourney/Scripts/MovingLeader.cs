@@ -68,6 +68,7 @@ public class MovingLeader : TimeControlBehavior
             for (int j = 0; j < elements.Count; ++j)
             {
                 elements[j].SendMessage("moveAfter", pDelayStart + indexLeader * pInfo.RowDelay,SendMessageOptions.DontRequireReceiver);
+                pInfo.onStart.Invoke(elements[j].gameObject);
              }
             RootMotionController.runAction(gameObject, EazyCustomAction.Sequences.create(EazyCustomAction.DelayTime.create(pDelayStart + indexLeader * pInfo.RowDelay), BezierWalkAction.create(pInfo.splineRaw, pInfo.durationMove, !pInfo.speedBase).setNodeEvent(
                 delegate(int pNode)

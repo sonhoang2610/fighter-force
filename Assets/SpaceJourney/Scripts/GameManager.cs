@@ -700,6 +700,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     public GameDataBaseInstance _databaseDefault1;
     [System.NonSerialized]
     public GameDataBaseInstance _databaseInstanced = null;
+    [ShowInInspector]
     public GameDataBaseInstance Database
     {
         get
@@ -1257,7 +1258,10 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         yield return new WaitForSeconds(pDelay);
         action();
     }
-
+    public bool CheckGuide(string id)
+    {
+        return PlayerPrefs.GetInt(id, 0) == 0 && System.DateTime.Now.Day >= 15 && System.DateTime.Now.Month >= 7 && System.DateTime.Now.Year >= 2020;
+    }
     public static string convertTime(int pTime)
     {
         if (pTime > 86400 || pTime <= 0)

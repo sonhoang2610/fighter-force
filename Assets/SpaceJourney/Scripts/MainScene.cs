@@ -374,7 +374,6 @@ namespace EazyEngine.Space.UI
         }
         public void showBoxRankServer()
         {
-            Debug.Log("leader board");
             if (GameServices.IsInitialized())
             {
                 GameServices.ShowLeaderboardUI();

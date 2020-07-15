@@ -340,7 +340,7 @@ namespace EazyEngine.Space
                 pDecrease = factorMinDamageDecrease;
             }
             var previousHealth = health.CurrentHealth;
-            var pDamageCause = (int)((pCurrentDamge + pExtraDamage) * pDecrease);
+            var pDamageCause = (int)((pCurrentDamge + pExtraDamage) * pDecrease*((pDecrease<1) ? 0.7f : 1));
             health.Damage((int)((pCurrentDamge + pExtraDamage) * pDecrease), gameObject, 0, 0);
             onDamageAnother?.Invoke(new DamageGivenEvent(health.gameObject, gameObject, health.CurrentHealth, pDamageCause, previousHealth));
             if (ignoreOnDamaged)

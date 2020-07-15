@@ -29,6 +29,7 @@ namespace EazyEngine.Space {
         public UI2DSprite fillCoolDown;
         public UnityEvent completeCoolDown;
         public TimeController time;
+        public UnityEvent onPress;
         public void press()
         {
             EazyAnalyticTool.LogEvent("PressSkill");
@@ -42,9 +43,10 @@ namespace EazyEngine.Space {
             EzEventManager.TriggerEvent(new InputButtonTrigger(  Data._info.Info.ItemID,Data._info.Info.categoryItem));
             fillCoolDown.gameObject.SetActive(true);
             fillCoolDown.fillAmount = 1;
-            var tween = DOTween.To(()=> fillCoolDown.fillAmount,x => fillCoolDown.fillAmount = x,0, Data._info.Info.CoolDownTime).OnComplete(() => fillCoolDown.gameObject.SetActive(false));
+            var tween = DOTween.To(()=> fillCoolDown.fillAmount,x => fillCoolDown.fillAmount = x,0, Data._info.Info.CoolDownTime);
             tween.OnUpdate(() => tween.timeScale = time.TimScale);
-            tween.OnComplete(() => completeCoolDown.Invoke());
+            tween.OnComplete(() => { completeCoolDown?.Invoke(); fillCoolDown.gameObject.SetActive(false); });
+            onPress?.Invoke();
           //  fillCoolDown.do(0, Data._info.info.coolDownTime).OnComplete(() => fillCoolDown.gameObject.SetActive(false));
         }
 

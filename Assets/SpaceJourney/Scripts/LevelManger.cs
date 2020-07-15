@@ -436,11 +436,11 @@ namespace EazyEngine.Space
                 players[pIndex].GetComponent<Blackboard>().SetValue("Main", players[pIndex].gameObject);
                 var pDataPlane = listIndex[i] >= 0 ? GameManager.Instance.Database.planes[listIndex[i]] : null;
                 var pAllItemMainPlane = GameDatabase.Instance.getAllItem(CategoryItem.PLANE);
-                if(listIndex[i] > 0)
+                if (i > 0 )
                 {
-                    pDataPlane = PlaneInfoConfig.CloneDefault((PlaneInfo)pDataPlane.info, GameManager.Instance.Database.planes[listIndex[i]].CurrentLevel);
+                    pDataPlane = PlaneInfoConfig.CloneDefault((PlaneInfo)pDataPlane.info, GameManager.Instance.Database.planes[pSelectedPlane].CurrentLevel);
                 }
-      
+
                 //if (pDataPlane == null || pDataPlane.CurrentLevel == 0)
                 //{
                 //    foreach (var pItemPlane in pAllItemMainPlane)

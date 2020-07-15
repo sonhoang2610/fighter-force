@@ -605,9 +605,9 @@ namespace EazyEngine.Space
         public int quantity = 1;
         [System.NonSerialized]
         public bool isRequire = false;
+    
 
 
-        
         protected bool isFree = true;
         [System.NonSerialized]
         public int changeQuantity;

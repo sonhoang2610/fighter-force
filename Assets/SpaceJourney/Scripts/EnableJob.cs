@@ -7,7 +7,10 @@ public class EnableJob : MonoBehaviour
 {
 
     public string idJob;
+    public int countItemPreloadPerFrame = 3;
     public GameObject[] objectEnable;
+
+    protected int currentPreload = 0;
     private void Awake()
     {
         StartCoroutine(enableJob());
@@ -15,9 +18,15 @@ public class EnableJob : MonoBehaviour
 
     public IEnumerator enableJob()
     {
-        for(int i = 0; i < objectEnable.Length; ++i)
+        currentPreload = 0;
+        for (int i = 0; i < objectEnable.Length; ++i)
         {
-            yield return new WaitForEndOfFrame();
+            if (currentPreload >= countItemPreloadPerFrame)
+            {
+                yield return new WaitForEndOfFrame();
+                currentPreload = 0;
+            }
+            currentPreload++;
             objectEnable[i].gameObject.SetActive(true);
             if(i < objectEnable.Length - 1)
             {

@@ -762,7 +762,7 @@ namespace EazyEngine.Space
             if (isStart)
             {
                 float pAnchor = currentScene.Contains("Zone") ? 0.4f : 0.1f;
-                float pFrom = currentScene.Contains("Zone") ? 0.2f : 0.2f;
+                float pFrom = currentScene.Contains("Zone") ? 0.2f : 0.4f;
                 if (!async.isDone)
                 {
                     if (process)
@@ -786,7 +786,7 @@ namespace EazyEngine.Space
                     else
                     {
                         var percentJob = ManagerAsset.getPercentJob("Main");
-                        var percent = ManagerAsset.getPercentJob("Main") * 0.7f;
+                        var percent = ManagerAsset.getPercentJob("Main") * 0.5f;
                         if(percentJob >= 1)
                         {
                             Sequence pSeq = DOTween.Sequence();
@@ -801,7 +801,7 @@ namespace EazyEngine.Space
                         }
                         else
                         {
-                            DOTween.To(() => process.fillAmount, x => process.fillAmount = x, 0.3f + percent, 0.25f);
+                            DOTween.To(() => process.fillAmount, x => process.fillAmount = x, 0.5f + percent, 0.25f);
                         }
                        
                     }

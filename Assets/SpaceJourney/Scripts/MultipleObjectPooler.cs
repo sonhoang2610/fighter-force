@@ -64,6 +64,11 @@ namespace EazyEngine.Tools
         protected string _lastPooledObjectName;
         protected int _currentIndex = 0;
 
+        public void enableIndexPool(int index)
+        {
+            Pool[index].Enabled = true;
+        }
+
         /// <summary>
         /// Determines the name of the object pool.
         /// </summary>

@@ -28,6 +28,9 @@ public class BaseBox<TItem, TData> : MonoBehaviour where TItem : BaseItem<TData>
     public List<TItem> items = new List<TItem>();
     public Dictionary<TData, TItem> Item = new Dictionary<TData, TItem>();
     public List<EventDelegate> onDataAction = new List<EventDelegate>();
+    public int countItemPreloadPerFrame = 3;
+
+    protected int currentPreload = 0;
     private Comparison<TData> comparison;
 
     public virtual void resortItem()
@@ -171,6 +174,7 @@ public class BaseBox<TItem, TData> : MonoBehaviour where TItem : BaseItem<TData>
             indexBoard.Add(DataSource[i], i);
         }
         initData.AddRange(DataSource.ToArray());
+        currentPreload = 0;
         for (int i = initData.Count - 1; i >= 0; --i)
         {
             var pItem = obtainItemExistData(initData[i]);
@@ -194,7 +198,12 @@ public class BaseBox<TItem, TData> : MonoBehaviour where TItem : BaseItem<TData>
         }
         for (int i = 0; i < initData.Count; ++i)
         {
-            yield return new WaitForEndOfFrame();
+            if (currentPreload >= countItemPreloadPerFrame)
+            {
+                yield return new WaitForEndOfFrame();
+                currentPreload = 0;
+            }
+            currentPreload++;
             var pItem = obtainItemNewData(initData[i], indexBoard[initData[i]]);
             if (!Item.ContainsKey(initData[i]))
             {

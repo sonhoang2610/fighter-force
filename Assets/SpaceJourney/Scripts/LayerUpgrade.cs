@@ -224,7 +224,7 @@ namespace EazyEngine.Space.UI
                             effectUpgrade.gameObject.SetActive(true);
                             effectUpgrade.GetComponent<ParticleSystem>().Play();
                             GameManager.Instance.SaveGame();
-                            boxInfo.Data = boxInfo.Data;
+                            boxInfo.Data = boxInfo.Data; boxInfo.levelPlane.transform.GetChild(0).gameObject.SetActive(false); boxInfo.levelPlane.transform.GetChild(0).gameObject.SetActive(true);
                             return;
                         }
                     }
@@ -307,6 +307,8 @@ namespace EazyEngine.Space.UI
                 GameManager.Instance.SaveGame();
                 boxplanes.reloadData();
                 boxInfo.Data = boxInfo.Data;
+                boxInfo.levelPlane.transform.GetChild(0).gameObject.SetActive(false);
+                boxInfo.levelPlane.transform.GetChild(0).gameObject.SetActive(true);
                 return;
             }
            
@@ -412,6 +414,8 @@ namespace EazyEngine.Space.UI
                 GameManager.Instance.SaveGame();
                 boxplanes.reloadData();
                 boxInfo.Data = boxInfo.Data;
+                boxInfo.levelPlane.transform.GetChild(0).gameObject.SetActive(false);
+                boxInfo.levelPlane.transform.GetChild(0).gameObject.SetActive(true);
                 return;
             }
             notenough:

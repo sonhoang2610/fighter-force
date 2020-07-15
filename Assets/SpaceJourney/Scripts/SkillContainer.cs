@@ -47,7 +47,8 @@ namespace EazyEngine.Space
                             pBlackBoard.SetValue("Info", value[i]._info.Info);
                             pBlackBoard.SetValue("Duration", value[i]._info.Info.Duration);
                             pBlackBoard.SetValue("Cooldown", value[i]._info.Info.CoolDownTime);
-                            for(int j = 0; j < value[i]._info.skillBlackBoard.Count; ++j)
+                            pBlackBoard.SetValue("CurrentLevel", value[i]._info.CurrentLevelSkill);
+                            for (int j = 0; j < value[i]._info.skillBlackBoard.Count; ++j)
                             {
                                 var pKey = value[i]._info.skillBlackBoard.Keys.ElementAt(j);
                                 pBlackBoard.AddVariable(value[i]._info.skillBlackBoard.Keys.ElementAt(j), value[i]._info.skillBlackBoard[pKey]);
