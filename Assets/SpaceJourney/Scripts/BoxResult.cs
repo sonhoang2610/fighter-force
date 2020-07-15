@@ -50,6 +50,7 @@ namespace EazyEngine.Space.UI
         public ItemPackage[] itemBoxRewardRandom;
         public Animator boxRewardRandom;
         public UIButton btnOpenBoxRewardRandom;
+        public GameObject block;
         private List<EazyNode> pNodes = new List<EazyNode>();
 
         static BoxResult _instance;
@@ -133,6 +134,11 @@ namespace EazyEngine.Space.UI
                 GameManager.Instance.showBannerAds(true);
                 return;
             }
+            block.gameObject.SetActive(true);
+            StartCoroutine(delayaction(1, delegate
+            {
+                block.gameObject.SetActive(false);
+            }));
             if (GameManager.Instance.ChoosedLevel >= 5 && !GameManager.Instance.isFree)
             {
                 int pShow = PlayerPrefs.GetInt("ShowBoxRewardRandom", 0);
@@ -236,6 +242,7 @@ namespace EazyEngine.Space.UI
             quantityDestroy.text = $"{((float)LevelManger.Instance._infoLevel.enemyKill / (float)(LevelManger.Instance._infoLevel.enemyKill + LevelManger.Instance.BornEnemy.Count)) * 100}%";
 
             gameObject.SetActive(true);
+
             StartCoroutine(delayaction(0.5f, delegate
             {
                 bool showGuide = false;

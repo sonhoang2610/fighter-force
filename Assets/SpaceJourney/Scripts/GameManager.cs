@@ -1274,6 +1274,10 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         var double2 = TimeExtension.ToUnixTime(new DateTime(2020,7,5));
         return PlayerPrefs.GetInt(id, 0) == 0 && double1 >= double2;
     }
+    public void disableGuide(string id)
+    {
+        PlayerPrefs.SetInt(id, 1);
+    }
     public static string convertTime(int pTime)
     {
         if (pTime > 86400 || pTime <= 0)

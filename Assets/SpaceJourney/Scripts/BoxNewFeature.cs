@@ -25,6 +25,7 @@ namespace EazyEngine.Space.UI
             {
                 if (GameManager.Instance.CheckGuide("firstFeature" + level))
                 {
+                    GameManager.Instance.disableGuide("firstFeature" + level);
                     GetComponent<UIElement>().show();
                     var pObject = icon.transform.AddChild(feature.iconFeature);
                     pObject.GetComponent<RenderQueueModifier>()?.setTarget(icon);
