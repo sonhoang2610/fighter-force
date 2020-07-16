@@ -35,7 +35,7 @@ namespace EazyEngine.Tools
                 if (_instance == null)
                 {
                     _instance = FindObjectOfType<T>();
-                    if (_instance == null)
+                    if (_instance == null && Application.isPlaying)
                     {
                         GameObject obj = new GameObject();
                         _instance = obj.AddComponent<T>();
