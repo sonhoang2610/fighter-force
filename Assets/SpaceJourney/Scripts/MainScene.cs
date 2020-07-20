@@ -505,6 +505,7 @@ namespace EazyEngine.Space.UI
 
         public void upgrade()
         {
+            if (stateGames.Count > 0 && stateGames[stateGames.Count - 1] == "Upgrade") return;
             stateGames.Add("Upgrade");
             EzEventManager.TriggerEvent(new UIMessEvent("Upgrade"));
         }
