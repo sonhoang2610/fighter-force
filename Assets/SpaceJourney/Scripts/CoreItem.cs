@@ -15,7 +15,7 @@ namespace EazyEngine.Space
             {
                 itemPickAble = GetComponent<PickAbleItem>();
             }
-            if (itemPickAble.icon)
+            if (itemPickAble.icon && !LevelManger.InstanceRaw.IsDestroyed())
             {
                 //itemPickAble.icon = LevelManger.Instance.players
                 var indexRandom = Random.Range(1, LevelManger.Instance.players.Length);
