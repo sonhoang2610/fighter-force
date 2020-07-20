@@ -885,13 +885,13 @@ namespace EazyEngine.Space
                         {
                             planSupering = true;
                             currentDurationSuper = 0;
-                            setFactorDamageWeapon(factorDamage+ _char._info.Info.damageBoosters[pLevelBooster - 1]);
+                            setFactorDamageWeapon(factorDamage + (pLevelBooster == 0 ? 0 : _char._info.Info.damageBoosters[pLevelBooster - 1]));
                             setFactorSpeedWeapon( (factorSpeed + (pLevelBooster == 0 ? 0 : (_char._info.Info.speedBoosters[pLevelBooster-1]))));
                      
                         }
                         else
                         {
-                            setFactorDamageWeapon(factorDamage + _char._info.Info.damageBoosters[pLevelBooster - 1]);
+                            setFactorDamageWeapon(factorDamage + (pLevelBooster == 0 ? 0 : _char._info.Info.damageBoosters[pLevelBooster - 1]));
                             setFactorSpeedWeapon( (factorSpeed + (pLevelBooster == 0 ? 0 : (_char._info.Info.speedBoosters[pLevelBooster - 1]))));
                             CacheLevelBooster = pLevelBooster;
 
@@ -927,7 +927,7 @@ namespace EazyEngine.Space
                         startLevelBooster = 5;
                     }
                     CacheLevelBooster = startLevelBooster;
-                    setFactorDamageWeapon(factorDamage + _char._info.Info.damageBoosters[startLevelBooster - 1]);
+                    setFactorDamageWeapon(factorDamage + (startLevelBooster == 0 ? 0 : _char._info.Info.damageBoosters[startLevelBooster - 1]));
                     setFactorSpeedWeapon( (factorSpeed + (startLevelBooster == 0 ? 0 : (_char._info.Info.speedBoosters[startLevelBooster - 1]))));
                 }
 
