@@ -36,7 +36,7 @@ namespace EazyEngine.Space {
             for (int i = 0;  i < Data._info.Info.VariableDict.Count; ++i)
             {
                 var pDict = Data._info.Info.VariableDict;
-                LevelManger.Instance.players[0].GetComponent<Blackboard>().AddVariable(pDict.Keys.ElementAt(i), pDict[pDict.Keys.ElementAt(i)]);
+                LevelManger.Instance.Players[0].GetComponent<Blackboard>().AddVariable(pDict.Keys.ElementAt(i), pDict[pDict.Keys.ElementAt(i)]);
             }
             var pTimeLife = LevelManger.Instance.historyMatch.timeLifes[LevelManger.Instance.historyMatch.timeLifes.Count - 1];
             pTimeLife.skillUsed.Add(new DetailItemUsedInfo() { itemID = Data._info.Info.displayNameItem.value, time =(int) LevelManger.Instance.CurrentTime.TotalSeconds });

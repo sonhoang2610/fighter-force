@@ -145,7 +145,7 @@ namespace EazyEngine.Space
         public int currentPlayerIndex = 0;
         [InlineEditor]
         public Camera mainPlayCamera;
-        public Character[] players;
+        public CollectionPlayer collectionPlayer;
         [System.NonSerialized]
         public HistoryMatchInfo historyMatch;
         [System.NonSerialized]
@@ -154,7 +154,7 @@ namespace EazyEngine.Space
         {
             get
             {
-                return (players != null && currentPlayerIndex < players.Length) ? players[currentPlayerIndex] : null;
+                return (Players != null && currentPlayerIndex < Players.Length) ? Players[currentPlayerIndex] : null;
             }
         }
         [HideInEditorMode]
@@ -420,20 +420,20 @@ namespace EazyEngine.Space
                 }
                 return x1.CompareTo(x2);
             });
-            players = new Character[GameManager.Instance.Database.planes.Count];
-            for (int i = 0; i < players.Length; ++i)
+            Players = new Character[GameManager.Instance.Database.planes.Count];
+            for (int i = 0; i < Players.Length; ++i)
             {
                 int pIndex = i;
                 var pAsync = GameManager.Instance.Database.planes[listIndex[i]].Info.modelPlaneRef.loadAssetAsync<Character>();
                 pAsync.completed += delegate (AsyncOperation a)
                 {
-                    players[pIndex] = Instantiate<Character>((Character)((ResourceRequest)a).asset);
+                    Players[pIndex] = Instantiate<Character>((Character)((ResourceRequest)a).asset);
                 };
-                while (players[pIndex] == null)
+                while (Players[pIndex] == null)
                 {
                     yield return new WaitForEndOfFrame();
                 }
-                players[pIndex].GetComponent<Blackboard>().SetValue("Main", players[pIndex].gameObject);
+                Players[pIndex].GetComponent<Blackboard>().SetValue("Main", Players[pIndex].gameObject);
                 var pDataPlane = listIndex[i] >= 0 ? GameManager.Instance.Database.planes[listIndex[i]] : null;
                 var pAllItemMainPlane = GameDatabase.Instance.getAllItem(CategoryItem.PLANE);
                 if (i > 0 )
@@ -453,30 +453,30 @@ namespace EazyEngine.Space
                 //    }
                 //}
 
-                players[pIndex].setData(pDataPlane);
+                Players[pIndex].setData(pDataPlane);
                 if (pIndex == 0)
                 {
                     GUIManager.Instance.setIconPlane(pDataPlane.info.iconGame);
                 }
                 if(pIndex != 0)
                 {
-                    var pContraint = players[pIndex].gameObject.AddComponent<PositionConstraint>();
-                    pContraint.AddSource(new ConstraintSource() { sourceTransform = players[0].transform, weight = 1 });
+                    var pContraint = Players[pIndex].gameObject.AddComponent<PositionConstraint>();
+                    pContraint.AddSource(new ConstraintSource() { sourceTransform = Players[0].transform, weight = 1 });
                     pContraint.translationOffset = Vector3.zero;
                     pContraint.constraintActive = true;
-                    players[pIndex].transform.GetComponentInChildren<SkeletonMecanim>().Skeleton.A = 0;
-                    players[0].GetComponent<CharacterHandleWeapon>().anotherPlane.Add(players[pIndex].GetComponent<CharacterHandleWeapon>());
-                    players[pIndex].GetComponent<CharacterHandleWeapon>().disableShoot = true;
-                    players[pIndex].GetComponent<Collider2D>().enabled = false;
+                    Players[pIndex].transform.GetComponentInChildren<SkeletonMecanim>().Skeleton.A = 0;
+                    Players[0].GetComponent<CharacterHandleWeapon>().anotherPlane.Add(Players[pIndex].GetComponent<CharacterHandleWeapon>());
+                    Players[pIndex].GetComponent<CharacterHandleWeapon>().disableShoot = true;
+                    Players[pIndex].GetComponent<Collider2D>().enabled = false;
                 }
                 if(pIndex > 0)
                 {
-                    players[pIndex].GetComponent<DragObjectAOT>().MainTarget = players[0].gameObject;
+                    Players[pIndex].GetComponent<DragObjectAOT>().MainTarget = Players[0].gameObject;
                 }
             }
-            players[0].GetComponent<Health>().recordDamage = true;
+            Players[0].GetComponent<Health>().recordDamage = true;
             List<SkillInputData> skills = new List<SkillInputData>();
-            skills.AddRange(convert(players[0]._info.Info.skills.ToArray(), players[0]));
+            skills.AddRange(convert(Players[0]._info.Info.skills.ToArray(), Players[0]));
             startMatchInfo = new StartGameInfo();
             startMatchInfo.levelSkillMain = new int[skills.Count];
             for(int i = 0; i < startMatchInfo.levelSkillMain.Length; ++i)
@@ -510,8 +510,8 @@ namespace EazyEngine.Space
 
                 var spPlane1 = Instantiate(pDataSpPlane.Info.modelPlane);
                 spPlane1.setData(pDataSpPlane);
-                spPlane1.GetComponent<FollowerMainPlayer>().OffsetSupportPlane = players[0].transform.Find("slot1").transform.localPosition;
-                players[0].addChild(spPlane1);
+                spPlane1.GetComponent<FollowerMainPlayer>().OffsetSupportPlane = Players[0].transform.Find("slot1").transform.localPosition;
+                Players[0].addChild(spPlane1);
                 var pSkillSp = convert(spPlane1._info.Info.skills.ToArray(), spPlane1);
                 skills.AddRange(pSkillSp);
                 startMatchInfo.levelSkillSp = new int[pSkillSp.Length];
@@ -524,22 +524,22 @@ namespace EazyEngine.Space
             {
                 var spPlane2 = Instantiate(pDataSpPlane.Info.modelPlane);
                 spPlane2.setData(pDataSpPlane);
-                spPlane2.GetComponent<FollowerMainPlayer>().OffsetSupportPlane = players[0].transform.Find("slot2").transform.localPosition;
+                spPlane2.GetComponent<FollowerMainPlayer>().OffsetSupportPlane = Players[0].transform.Find("slot2").transform.localPosition;
                 spPlane2.GetComponent<CharacterHandleWeapon>().DatabaseWeapon[0].weapons[0].AttachmentWeapon.transform.localScale = new Vector3(-1, 1, 1);
-                players[0].addChild(spPlane2);
+                Players[0].addChild(spPlane2);
                 skills.AddRange(convert(spPlane2._info.Info.skills.ToArray(), spPlane2));
             }
             SkillContainer.Instance.DataSource = skills.ToObservableList();
-            NodeCanvas.Framework.GlobalBlackboard.Find("Global").SetValue("Main", players[0]);
-            GetComponent<IBlackboard>().SetValue("Main", players[0]);
+            NodeCanvas.Framework.GlobalBlackboard.Find("Global").SetValue("Main", Players[0]);
+            GetComponent<IBlackboard>().SetValue("Main", Players[0]);
 
-            players[0].transform.position = startPoint.transform.position;
+            Players[0].transform.position = startPoint.transform.position;
             Sequence pSeq = DOTween.Sequence();
             pSeq.AppendInterval(0.5f);
-            pSeq.Append(players[0].transform.DOMove(endPoint.transform.position, 1).SetEase(Ease.OutExpo));
+            pSeq.Append(Players[0].transform.DOMove(endPoint.transform.position, 1).SetEase(Ease.OutExpo));
             pSeq.AppendCallback(delegate {
 
-                players[0].machine.SetTrigger("Start");
+                Players[0].machine.SetTrigger("Start");
             });
             pSeq.Play();
             if (GameManager.Instance.isFree)
@@ -800,6 +800,7 @@ namespace EazyEngine.Space
                 }
             }
         }
-  
+
+        public Character[] Players { get => collectionPlayer.players; set => collectionPlayer.players = value; }
     }
 }

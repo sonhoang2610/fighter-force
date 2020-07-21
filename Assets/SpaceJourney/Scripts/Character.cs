@@ -145,10 +145,10 @@ namespace EazyEngine.Space
                     handleWeapon.setFactorSpeedWeapon(((float)pSpeed.CurrentUnit) / 100.0f);
                 }
             }
-            if(_info.Info.ItemID.StartsWith("MainPlane") && _info.Info.ItemID != LevelManger.Instance.players[0]._info.Info.ItemID)
+            if(_info.Info.ItemID.StartsWith("MainPlane") && _info.Info.ItemID != LevelManger.Instance.Players[0]._info.Info.ItemID)
             {
                 float pRate = 0.2f + ((_info.Info.RankPlane - 1) * 0.1f);
-                handleWeapon.FixDamage =(int)( LevelManger.Instance.players[0].handleWeapon.FixDamage * pRate);
+                handleWeapon.FixDamage =(int)( LevelManger.Instance.Players[0].handleWeapon.FixDamage * pRate);
             }
             else
             {

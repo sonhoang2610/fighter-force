@@ -22,21 +22,21 @@ namespace EazyEngine.Space
             {
                 if (itemDropOnDeath[i].idItem == "Booster")
                 {
-                    if (LevelManger.Instance.players[0].handleWeapon.CacheLevelBooster >= 5)
+                    if (LevelManger.Instance.Players[0].handleWeapon.CacheLevelBooster >= 5)
                     {
                         continue;
                     }
                 }
                 if (itemDropOnDeath[i].idItem == "Booster6")
                 {
-                    if (LevelManger.Instance.players[0].handleWeapon.IsSuper)
+                    if (LevelManger.Instance.Players[0].handleWeapon.IsSuper)
                     {
                         continue;
                     }
                 }
                 if (itemDropOnDeath[i].idItem == "Shield")
                 {
-                    if (LevelManger.Instance.players[0]._health.invulnerable)
+                    if (LevelManger.Instance.Players[0]._health.invulnerable)
                     {
                         continue;
                     }

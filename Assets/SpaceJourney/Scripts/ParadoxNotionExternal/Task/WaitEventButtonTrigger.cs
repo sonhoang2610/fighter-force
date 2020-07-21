@@ -46,7 +46,7 @@ namespace EazyEngine.Space
 
         public void OnEzEvent(InputButtonTrigger eventType)
         {
-            var player = LevelManger.Instance.players[eventType.indexTarget];
+            var player = LevelManger.Instance.Players[eventType.indexTarget];
             if (player.gameObject == ownerAgent.gameObject)
             {
                 infoItem.value = (ItemGame)GameDatabase.Instance.getItem(eventType.trigger, (CategoryItem)eventType.cateGory);

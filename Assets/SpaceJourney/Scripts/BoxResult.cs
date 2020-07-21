@@ -583,7 +583,7 @@ namespace EazyEngine.Space.UI
         private void OnDisable()
         {
             GroupManager.clearCache();
-            PlayerEnviroment.clear();
+            PlayerEnviroment.clear();   
             TimeKeeper.Instance.getTimer("Global").TimScale = 1;
             GameManager.Instance.showBannerAds(false);
         }

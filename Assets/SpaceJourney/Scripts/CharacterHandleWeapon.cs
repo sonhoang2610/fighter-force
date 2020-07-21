@@ -577,13 +577,13 @@ namespace EazyEngine.Space
             {
                 icons[i].gameObject.SetActive(false);
             }
-            var pPlaneIconMain = LevelManger.Instance.players[0];
+            var pPlaneIconMain = LevelManger.Instance.Players[0];
             icons[0].sprite = pPlaneIconMain._info.Info.iconGame;
             var pMainMain = icons[0].GetComponentInChildren<ParticleSystem>().main;
             pMainMain.startColor = circle;
             for (int i = 0; i < stackPlane.Count; ++i)
             {
-                var pPlaneIcon = System.Array.Find(LevelManger.Instance.players, x => x._info.Info.itemID == stackPlane[i]);
+                var pPlaneIcon = System.Array.Find(LevelManger.Instance.Players, x => x._info.Info.itemID == stackPlane[i]);
                 icons[i+1].sprite = pPlaneIcon._info.Info.iconGame;
                 var pMain = icons[i+1].GetComponentInChildren<ParticleSystem>().main;
                 pMain.startColor = circle;
