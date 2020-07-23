@@ -76,11 +76,20 @@ MonoBehaviour:
   storageBullet: 0
   isRandomTimeRestore: 1
   timeToRestore: 1
-  randomTimeRestore: {x: 1, y: 1.5}
+  randomTimeRestore: {x: 2, y: 3}
   quantityRestoreEachTime: 18
   limitRestore: 36
   conditonRestore: 1
   _weapon: {fileID: 0}
+  onEmptyStorage:
+    m_PersistentCalls:
+      m_Calls: []
+  onStartRestore:
+    m_PersistentCalls:
+      m_Calls: []
+  onNotEnough:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1765708752188481040
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,10 +307,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1072918119399550, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}
-      propertyPath: m_Name
-      value: 2BaseWeaponMultiple Variant 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2055980546, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}
       propertyPath: attachMentPosStartNew.Array.size
       value: 1
@@ -364,7 +369,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2055980546, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}
       propertyPath: timeReloadFirst
-      value: 1
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 2055980546, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}
       propertyPath: typeBehaviour
@@ -426,16 +431,9 @@ PrefabInstance:
       propertyPath: randomTo
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114506514760959066, guid: 2874c1af8f7d48e4da308bafe7aea49a,
-        type: 3}
-      propertyPath: GameObjectToPool
-      value: 
-      objectReference: {fileID: 8269517097850452423, guid: 93fa3e57612f92d409e01b8caefa1392,
-        type: 3}
-    - target: {fileID: 114506514760959066, guid: 2874c1af8f7d48e4da308bafe7aea49a,
-        type: 3}
-      propertyPath: PoolSize
-      value: 8
+    - target: {fileID: 1072918119399550, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}
+      propertyPath: m_Name
+      value: 2BaseWeaponMultiple Variant 1
       objectReference: {fileID: 0}
     - target: {fileID: 4180916872256662, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -480,6 +478,17 @@ PrefabInstance:
     - target: {fileID: 4180916872256662, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114506514760959066, guid: 2874c1af8f7d48e4da308bafe7aea49a,
+        type: 3}
+      propertyPath: GameObjectToPool
+      value: 
+      objectReference: {fileID: 8269517097850452423, guid: 93fa3e57612f92d409e01b8caefa1392,
+        type: 3}
+    - target: {fileID: 114506514760959066, guid: 2874c1af8f7d48e4da308bafe7aea49a,
+        type: 3}
+      propertyPath: PoolSize
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}

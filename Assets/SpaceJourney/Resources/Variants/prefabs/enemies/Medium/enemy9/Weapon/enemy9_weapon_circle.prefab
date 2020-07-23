@@ -255,7 +255,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameObjectToPool: {fileID: 8269517097850452423, guid: 445022de16c60284598244c7a0f86719,
     type: 3}
+  backUpPath: 
   PoolSize: 12
+  RemainPoolSize: 0
   PoolCanExpand: 1
   dontDestroyOnload: 0
 --- !u!1 &6156716815064269067
@@ -457,10 +459,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1072918119399550, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}
-      propertyPath: m_Name
-      value: enemy9_weapon_circle
-      objectReference: {fileID: 0}
     - target: {fileID: 2055980546, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}
       propertyPath: attachMentPosStartNew.Array.size
       value: 1
@@ -499,7 +497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2055980546, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}
       propertyPath: reloadRamdom.x
-      value: 1.8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2055980546, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}
       propertyPath: reloadRamdom.y
@@ -557,12 +555,10 @@ PrefabInstance:
       propertyPath: typeFire
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114506514760959066, guid: 2874c1af8f7d48e4da308bafe7aea49a,
-        type: 3}
-      propertyPath: GameObjectToPool
-      value: 
-      objectReference: {fileID: 8269517097850452423, guid: 9e9eecfddbc7d404c8a0f70c8ea6f5c5,
-        type: 3}
+    - target: {fileID: 1072918119399550, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}
+      propertyPath: m_Name
+      value: enemy9_weapon_circle
+      objectReference: {fileID: 0}
     - target: {fileID: 4180916872256662, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -607,6 +603,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114506514760959066, guid: 2874c1af8f7d48e4da308bafe7aea49a,
+        type: 3}
+      propertyPath: GameObjectToPool
+      value: 
+      objectReference: {fileID: 8269517097850452423, guid: 9e9eecfddbc7d404c8a0f70c8ea6f5c5,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114506514760959066, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2874c1af8f7d48e4da308bafe7aea49a, type: 3}
