@@ -33,12 +33,14 @@ namespace EazyEngine.Space
         public UnityEngine.Events.UnityEvent onStartRestore;
         public UnityEngine.Events.UnityEvent onNotEnough;
         public float TimeToRestore { get { return RestoreTimeReal; } set => timeToRestore = value; }
-
+        [ShowInInspector]
+        [HideInEditorMode]
         public int TotalRestore { get => totalRestore; set => totalRestore = value; }
         public int QuantityRestoreEachTime { get => quantityRestoreEachTime; set => quantityRestoreEachTime = value; }
         public int InitStorage { get => initStorage; set => initStorage = value; }
         public int CountBullet { set { InitStorage = value;QuantityRestoreEachTime = value; } }
-
+        [ShowInInspector]
+        [HideInEditorMode]
         public float CurrentRestoreTime { get => currentRestoreTime; set => currentRestoreTime = value; }
 
         bool idle = true;

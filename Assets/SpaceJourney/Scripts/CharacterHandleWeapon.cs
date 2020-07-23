@@ -89,6 +89,8 @@ namespace EazyEngine.Space
         public WeaponGroupIntance[] DatabaseWeapon;
 
         protected float blockTimeDropBooster = 0;
+        [ShowInInspector]
+        [HideInEditorMode]
         protected bool isShooting = false;
         protected List<Weapon> countShooting = new List<Weapon>();
         [EazyEngine.Tools.ReadOnly]
@@ -434,6 +436,7 @@ namespace EazyEngine.Space
             if (pWeapon.parrentGroup == null) return;
             if (!_currentWeapons.Contains(pWeapon)) return;
             if (!countShooting.Contains(pWeapon)) return;
+            indexGroup = _storageWeapons.FindIndex(x => System.Array.Find(x, y => y == pWeapon));
             if (countShooting.Count > 0)
             {
                 if (pWeapon.parrentGroup.removeOnStop)

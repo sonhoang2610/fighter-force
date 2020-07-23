@@ -280,7 +280,7 @@ namespace EazyEngine.Space.UI
                 
             }));
 
-            if (!GameManager.Instance.isFree)
+            if (!GameManager.Instance.isFree  && (GameManager.Instance.ChoosedLevel > 3 || GameManager.Instance.ChoosedHard != 0))
             {
                 adsCourountine = StartCoroutine(delayaction(1.5f, delegate
                 {

@@ -51,6 +51,7 @@ namespace EazyEngine.Space.UI {
             LevelManger.Instance.IsMatching = true;
             if (pItem.Quantity >= BoxReborn.GetComponent<BoxReborn>().getPriceRebornCrystal())
             {
+                LevelManger.Instance.IsMatching = true;
                 TimeKeeper.Instance.getTimer("Global").TimScale = 1;
                 pItem.Quantity -= BoxReborn.GetComponent<BoxReborn>().getPriceRebornCrystal();
                 GameManager.Instance.showBannerAds(false);
