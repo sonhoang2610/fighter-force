@@ -51,7 +51,7 @@ namespace EazyEngine.Space.UI
         public GameObject handGuide;
 
         protected int markDirty = 0;
-        protected  GameObject cacheButton;
+        protected  Dictionary<string,GameObject> cacheButton = new Dictionary<string, GameObject>();
         public void focusButton(string pID,Vector3 pOffset,System.Action pExcute,bool pOverride)
         {
       
@@ -86,7 +86,7 @@ namespace EazyEngine.Space.UI
                     pNewObject.transform.parent = transform;
                     pNewObject.transform.localScale = new Vector3(1,1,1);
                     pNewObject.transform.position = hole.transform.position;
-                    cacheButton = pNewObject;
+                    cacheButton.Add(pID,  pNewObject);
                     var pCollider1 = pNewObject.AddComponent<BoxCollider>(pCollider);
                     pCollider1.center = pNewObject.transform.TransformPoint(  hole.transform.position);
                     var pWidget = pNewObject.AddComponent<UIWidget>();
@@ -106,7 +106,9 @@ namespace EazyEngine.Space.UI
 
                         pButtonNew.onClick.Add(new EventDelegate(delegate { pExcute();} ));
                     }
-                    pButtonNew.onClick.Add(new EventDelegate(passGuide));
+                    var pass = new EventDelegate(this,nameof(passGuide));
+                    pass.parameters[0].value = pID;
+                    pButtonNew.onClick.Add(pass);
                 }
                 else
                 {
@@ -115,7 +117,9 @@ namespace EazyEngine.Space.UI
                     {
                         buttonBlack.onClick.Add(new EventDelegate(delegate { pExcute(); }));
                     }
-                    buttonBlack.onClick.Add(new EventDelegate(passGuide));
+                    var pass = new EventDelegate(this,nameof(passGuide));
+                    pass.parameters[0].value = pID;
+                    buttonBlack.onClick.Add(pass);
            
                 }
             }
@@ -179,7 +183,7 @@ namespace EazyEngine.Space.UI
                var pDes = pRootParrent.transform.InverseTransformPoint(pObjectDes.transform.position);
                var pFinal = transform.TransformPoint(pDes);
                 pSequence.Append( pIntro.transform.DOMove(pFinal, 0.5f));
-                pSequence.AppendCallback(passGuide);
+                pSequence.AppendCallback(delegate { passGuide(""); });
                 Sequence pSequence1 = DOTween.Sequence();
                 pSequence1.Append(pIntro.transform.DOScale(2, 0.5f).SetEase(Ease.OutElastic));
                 pSequence1.AppendInterval(0.5f);
@@ -206,17 +210,18 @@ namespace EazyEngine.Space.UI
  
         }
 
-        private void passGuide()
+        private void passGuide(string id)
         {
             markDirty--;
+            if (cacheButton.ContainsKey(id))
+            {
+                var objectDestroy = cacheButton[id];
+                cacheButton.Remove(id);
+                NGUITools.Destroy(objectDestroy);
+            }
             if (markDirty <= 0)
             {
                 markDirty = 0;
-                if (cacheButton)
-                {
-                    NGUITools.Destroy(cacheButton);
-                }
-
                 blackBG.gameObject.SetActive(false);
                 handGuide.gameObject.SetActive(false);
                 box.close();

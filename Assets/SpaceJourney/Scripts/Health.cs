@@ -322,11 +322,16 @@ namespace EazyEngine.Space
         {
             fillModel.flash(0.1f);
         }
+        protected Character parentChar;
         protected virtual void Initialization()
         {
             Collider2D = GetComponent<Collider2D>();
             currentDeffense = deffense;
             CharacterMain = GetComponent<Character>();
+            if (!CharacterMain)
+            {
+                parentChar = GetComponentInParent<Character>();
+            }
             if (_character && _character.modelObject)
             {
                 if (!fillModel)
@@ -412,6 +417,10 @@ namespace EazyEngine.Space
                 indexDamaged++;
             }
             if (_character && (_character.EnemyType == EnemyType.MINIBOSS || _character.EnemyType == EnemyType.BOSS) && damage > (float)MaxiumHealth * 0.2f)
+            {
+                damage = (int)((float)MaxiumHealth * 0.2f);
+            }
+            if (!_character && parentChar && (parentChar.EnemyType == EnemyType.MINIBOSS || parentChar.EnemyType == EnemyType.BOSS) && damage > (float)MaxiumHealth * 0.2f)
             {
                 damage = (int)((float)MaxiumHealth * 0.2f);
             }
