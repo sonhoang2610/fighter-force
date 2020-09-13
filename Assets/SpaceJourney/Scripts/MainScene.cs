@@ -606,7 +606,7 @@ namespace EazyEngine.Space.UI
                 if (pFirstGame != 0 && (SceneManager.Instance.previousScene.Contains("Home") || pFirstOpenGoogle == 0))
                 {
 #if !UNITY_STANDALONE
-                    GameServices.ManagedInit();
+                  //  GameServices.ManagedInit();
 #endif
                     PlayerPrefs.SetInt("FirstOpenGoogle", 1);
                 }
@@ -661,7 +661,7 @@ namespace EazyEngine.Space.UI
             if (!GameServices.IsInitialized())
             {
 #if UNITY_ANDROID
-                GameServices.Init();    // start a new initialization process
+             //  GameServices .Init();    // start a new initialization process
 #elif UNITY_IOS
                 GameServices.Init();
 #endif
@@ -744,7 +744,7 @@ namespace EazyEngine.Space.UI
                 if (pFirstGame != 0 && (SceneManager.Instance.previousScene.Contains("Home") || pFirstOpenGoogle == 0))
                 {
 #if !UNITY_STANDALONE
-                    GameServices.ManagedInit();
+                   // GameServices.ManagedInit();
 #endif
                     PlayerPrefs.SetInt("FirstOpenGoogle", 1);
                 }

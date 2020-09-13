@@ -220,7 +220,10 @@ namespace EazyEngine.Space.UI {
         // Update is called once per frame
         void Update()
         {
-
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                onBack();
+            }
         }
 
         public void rating()

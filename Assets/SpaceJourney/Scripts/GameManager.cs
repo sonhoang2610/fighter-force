@@ -1485,16 +1485,16 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         var products = pIAPSetting.items;
         foreach (var product in products)
         {
-            ProductMetadata data = InAppPurchasing.GetProductLocalizedData(product.Id.ToLower());
-            {
+            //ProductMetadata data = InAppPurchasing.GetProductLocalizedData(product.Id.ToLower());
+            //{
 
-                if (data != null)
-                {
+            //    if (data != null)
+            //    {
 
-                    product.Price = data.localizedPriceString;
-                    product.isLoadLocalize = true;
-                }
-            }
+            //        product.Price = data.localizedPriceString;
+            //        product.isLoadLocalize = true;
+            //    }
+            //}
         }
     }
 
