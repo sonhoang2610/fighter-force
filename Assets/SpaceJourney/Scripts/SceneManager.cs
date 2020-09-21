@@ -12,7 +12,7 @@ using Firebase;
 using Firebase.Analytics;
 using System.Threading.Tasks;
 using MK.Glow.Legacy;
-using Facebook.Unity;
+//using Facebook.Unity;
 
 namespace EazyEngine.Space
 {
@@ -149,45 +149,45 @@ namespace EazyEngine.Space
         }
 
         protected Coroutine corountineFirstPool = null;
-        private void AuthCallback(ILoginResult result)
-        {
-            if (FB.IsLoggedIn)
-            {
-                // AccessToken class will have session details
-                var aToken = Facebook.Unity.AccessToken.CurrentAccessToken;
-                // Print current access token's User ID
-                Debug.Log(aToken.UserId);
-                // Print current access token's granted permissions
-                foreach (string perm in aToken.Permissions)
-                {
-                    Debug.Log(perm);
-                }
-            }
-            else
-            {
-                Debug.Log("User cancelled login");
-            }
-        }
-        private void InitCallback()
-        {
-            if (FB.IsInitialized)
-            {
-                // Signal an app activation App Event
-                FB.ActivateApp();
-                // Continue with Facebook SDK
-                // ...
-                if (!FB.IsLoggedIn)
-                {
-                    var perms = new List<string>() { "public_profile", "email" };
-                    FB.LogInWithReadPermissions(perms, AuthCallback);
-                }
+        //private void AuthCallback(ILoginResult result)
+        //{
+        //    if (FB.IsLoggedIn)
+        //    {
+        //        // AccessToken class will have session details
+        //        var aToken = Facebook.Unity.AccessToken.CurrentAccessToken;
+        //        // Print current access token's User ID
+        //        Debug.Log(aToken.UserId);
+        //        // Print current access token's granted permissions
+        //        foreach (string perm in aToken.Permissions)
+        //        {
+        //            Debug.Log(perm);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        Debug.Log("User cancelled login");
+        //    }
+        //}
+        //private void InitCallback()
+        //{
+        //    if (FB.IsInitialized)
+        //    {
+        //        // Signal an app activation App Event
+        //        FB.ActivateApp();
+        //        // Continue with Facebook SDK
+        //        // ...
+        //        if (!FB.IsLoggedIn)
+        //        {
+        //            var perms = new List<string>() { "public_profile", "email" };
+        //            FB.LogInWithReadPermissions(perms, AuthCallback);
+        //        }
        
-            }
-            else
-            {
-                Debug.Log("Failed to Initialize the Facebook SDK");
-            }
-        }
+        //    }
+        //    else
+        //    {
+        //        Debug.Log("Failed to Initialize the Facebook SDK");
+        //    }
+        //}
 
         private void OnHideUnity(bool isGameShown)
         {
@@ -415,7 +415,7 @@ namespace EazyEngine.Space
             EazyAnalyticTool.Init(delegate {
             });
             
-            FB.Init();
+      //      FB.Init();
             MK.Glow.Resources.LoadResourcesAsset();
 #if UNITY_IOS
             System.Environment.SetEnvironmentVariable("MONO_REFLECTION_SERIALIZER", "yes");
