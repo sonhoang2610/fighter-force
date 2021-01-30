@@ -8,6 +8,7 @@ public class RepositionParent : MonoBehaviour
     public UIWidget[] contents;
 
     public Vector3 cachePos;
+    public bool freezeY;
     private void Awake()
     {
       
@@ -18,6 +19,8 @@ public class RepositionParent : MonoBehaviour
         
     }
     protected float minX = 0, maxX = 0;
+    protected float cacheWidth;
+    protected bool dirty = false;
     [ContextMenu("Test")]
     public void calculatorMoreContent()
     {
@@ -41,6 +44,12 @@ public class RepositionParent : MonoBehaviour
             }
 
         }
+        if(cacheWidth != maxX - minX)
+        {
+            dirty = true;
+            cacheWidth = maxX - minX;
+        }
+        
     }
     // Update is called once per frame
     void Update()
@@ -48,13 +57,17 @@ public class RepositionParent : MonoBehaviour
         if (Application.isPlaying)
         {
             calculatorMoreContent();
-            float pMid = (maxX + minX) / 2;
-            var pDelta = transform.TransformVector(new Vector3(pMid, 0, 0));
-            transform.position = cachePos - pDelta ;
+            if (dirty)
+            {
+                float pMid = (maxX + minX) / 2;
+                var pDelta = transform.TransformVector(new Vector3(pMid, 0, 0));
+                transform.position = transform.parent.TransformPoint(cachePos) - pDelta;
+                dirty = false;
+            }
         }
         else
         {
-            cachePos = transform.position;
+            cachePos = transform.localPosition;
         }
     }
 }

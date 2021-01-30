@@ -65,9 +65,17 @@ namespace EazyEngine.Space.UI
                     attamentModel.transform.DestroyChildren();
                     if (compareRenderQueue)
                     {
-                        var pObjectNew = Instantiate(value.itemSell.model, attamentModel.transform);
-                        var pRender = pObjectNew.GetComponentInChildren<RenderQueueModifier>();
-                        pRender.setTarget(compareRenderQueue);
+                        if (!string.IsNullOrEmpty(value.itemSell.modelRef.runtimeKey))
+                        {
+                            var pAsync = value.itemSell.modelRef.loadAssetAsync<GameObject>();
+                            pAsync.completed += delegate (AsyncOperation a)
+                            {
+                                value.itemSell.Model = (GameObject)((ResourceRequest)a).asset;
+                                var pObjectNew = Instantiate(value.itemSell.Model, attamentModel.transform);
+                                var pRender = pObjectNew.GetComponentInChildren<RenderQueueModifier>();
+                                pRender.setTarget(compareRenderQueue);
+                            };
+                        }
                     }
                 }
                 if (payment.item)
@@ -245,9 +253,9 @@ namespace EazyEngine.Space.UI
             }
         }
 
-        public void callBackResultWatch(bool pSuccess)
+        public void callBackResultWatch(ResultStatusAds pSuccess)
         {
-            if (pSuccess)
+            if (pSuccess == ResultStatusAds.Success)
             {
                 free();
             }

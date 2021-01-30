@@ -73,6 +73,16 @@ namespace I2.Loc
         }
 
 
+        [MenuItem("Tools/I2 Localization/Create Temp")]
+        public static void CreateTemp()
+        {
+            LanguageSourceData source = LocalizationManager.Sources[0];
+            for (int i = 0; i < 1000; ++i)
+                source.AddTerm("Term " + i, eTermType.Text, false);
+            source.UpdateDictionary(true);
+        }
+
+
 
 
         public static void EnablePlugins( bool bForce = false )

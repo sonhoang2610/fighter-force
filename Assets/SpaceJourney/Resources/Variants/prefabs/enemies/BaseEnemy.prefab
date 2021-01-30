@@ -63,8 +63,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 7243cc9c9fc86d34d9046f9ae944834b, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
@@ -95,6 +93,7 @@ GameObject:
   - component: {fileID: 3203288667016583975}
   - component: {fileID: 3180648508337681341}
   - component: {fileID: 5568179969087847100}
+  - component: {fileID: 66942997639685603}
   m_Layer: 8
   m_Name: BaseEnemy
   m_TagString: Untagged
@@ -139,6 +138,7 @@ MonoBehaviour:
   _info:
     info: {fileID: 0}
     currentLevel: 0
+  enemyType: 0
   originalPreb: {fileID: 0}
 --- !u!50 &50180947506617248
 Rigidbody2D:
@@ -177,12 +177,18 @@ MonoBehaviour:
   invulnerable: 0
   InvulnerableIfOutSide: 1
   invuOnStart: 0
+  timeInvuAfterRevie: 0
+  disableParrentOnDeath: 0
+  disableOnDeath: 1
+  activeOnRevie: 1
   deffense: 0
   MaxiumHealth: 100
   InitialHealth: 100
   containerHealthBar: {fileID: 6801142509365525947}
   HealthBar: {fileID: 1673108984}
   DamageSfx: {fileID: 0}
+  DeathSfx: {fileID: 0}
+  preloadDeathEffect: 5
   DeathEffect: {fileID: 1561269459470396, guid: 9a2b4141d5a70ae4baebf6e0ac706313,
     type: 3}
   DamagedEffect: {fileID: 0}
@@ -194,23 +200,15 @@ MonoBehaviour:
   onMinChild:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onDeath:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onTakenDamage:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: EazyEngine.Space.UnityEventInt, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   onRevie:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   animDeath: 0
   triggerAnimDeath: 
   listenerDeathAnimFinish: 
@@ -328,8 +326,9 @@ MonoBehaviour:
     onComplete:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: UnityEventGameObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+    onStart:
+      m_PersistentCalls:
+        m_Calls: []
   _parentState:
     isExpaned: 0
     nameState: None
@@ -402,8 +401,9 @@ MonoBehaviour:
       onComplete:
         m_PersistentCalls:
           m_Calls: []
-        m_TypeName: UnityEventGameObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
+      onStart:
+        m_PersistentCalls:
+          m_Calls: []
     attackInfo:
       BaseAI: 0
       infoAI:
@@ -421,8 +421,6 @@ MonoBehaviour:
     onCompleteState:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
     totalDeath: 0
   _manager: {fileID: 0}
   currentStep: 0
@@ -452,6 +450,7 @@ MonoBehaviour:
   _currentWeapons: []
   damageOnTouchExtension: []
   handleChilds: []
+  modelBooster: {fileID: 0}
 --- !u!114 &4440529381941509104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -481,13 +480,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   ignoreOnDamaged: 0
+  autoGetOwnerMainPlane: 0
   DamageCaused: 10
+  factorDamageDecreaseSameObjects: 0
+  factorMinDamageDecrease: 1
   damagedEffect: {fileID: 0}
   durationForNextDame: 0.1
   TakenDamageMask:
     serializedVersion: 2
     m_Bits: 524087
   DamageTakenWithEveryThing: 0
+  onDamageAnother:
+    m_PersistentCalls:
+      m_Calls: []
   parentDamage: {fileID: 0}
   _health: {fileID: 0}
   damageChilds: []
@@ -523,6 +528,19 @@ MonoBehaviour:
   _groupName: 2
   timeLineParent: {fileID: 0}
   timeScale: 1
+--- !u!114 &66942997639685603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270524560222676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c767a88912c38140b6a69e78e2e675e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 
 --- !u!1 &5401190008916180942
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,8 +747,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 8b505950c2f1884459e0c7204beba005, type: 3}
   m_Type: 0
   m_PreserveAspect: 0

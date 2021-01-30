@@ -10,7 +10,7 @@ namespace EazyEngine.Space.UI
 
         public void watchReborn()
         {
-            GameManager.Instance.showRewardAds(itemExchange,delegate(bool pBool){
+            GameManager.Instance.showRewardAds(itemExchange,delegate(ResultStatusAds pBool){
 
             });
         }

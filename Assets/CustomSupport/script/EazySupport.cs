@@ -1278,7 +1278,7 @@ public static class GameObjectExtensions
         // and returns null when the object has been destroyed, but 
         // actually the object is still there but has not been cleaned up yet
         // if we test both we can determine if the object has been destroyed.
-        return mono == null && !ReferenceEquals(mono, null);
+        return mono == null || ReferenceEquals(mono, null);
     }
     
     public static T FindAndClean<T>(this List<T> v, Predicate<T> match, Predicate<T> matchClean) where  T : UnityEngine.Object

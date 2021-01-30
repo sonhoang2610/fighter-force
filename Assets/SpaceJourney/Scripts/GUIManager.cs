@@ -170,8 +170,7 @@ namespace EazyEngine.Space
         }
 
 
-        // Start is called before the first frame update
-        void Start()
+        public void initLevelDone()
         {
             if (PlayerPrefs.GetInt("Handle", 0) == 0)
             {
@@ -193,13 +192,7 @@ namespace EazyEngine.Space
                 LevelManger.Instance.CurrentPlayer.GetComponent<DragObjectAOT>().enabled = false;
             }
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
+        
         public void OnEzEvent(UIMessEvent eventType)
         {
             if (eventType.Event.StartsWith("ChangeSide"))

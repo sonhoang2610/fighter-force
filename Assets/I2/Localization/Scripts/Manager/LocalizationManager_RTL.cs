@@ -10,7 +10,7 @@ namespace I2.Loc
     public static partial class LocalizationManager
     {
         static string[] LanguagesRTL = {"ar-DZ", "ar","ar-BH","ar-EG","ar-IQ","ar-JO","ar-KW","ar-LB","ar-LY","ar-MA","ar-OM","ar-QA","ar-SA","ar-SY","ar-TN","ar-AE","ar-YE",
-                                        "he","ur","ji"};
+                                        "fa", "he","ur","ji"};
 
         public static string ApplyRTLfix(string line) { return ApplyRTLfix(line, 0, true); }
         public static string ApplyRTLfix(string line, int maxCharacters, bool ignoreNumbers)

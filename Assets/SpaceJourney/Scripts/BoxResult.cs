@@ -382,9 +382,9 @@ namespace EazyEngine.Space.UI
                 StopCoroutine(adsCourountine);
             }
 
-            GameManager.Instance.showRewardAds("WatchX2WinGame", delegate (bool pSucess)
+            GameManager.Instance.showRewardAds("WatchX2WinGame", delegate (ResultStatusAds pSucess)
             {
-                if (pSucess)
+                if (pSucess == ResultStatusAds.Success)
                 {
                     #region tinh percent nhan dc trong map
                     btnX2Ads.gameObject.SetActive(false);
@@ -426,13 +426,18 @@ namespace EazyEngine.Space.UI
                 StopCoroutine(adsCourountine);
             }
             btnOpenBoxRewardRandom.gameObject.SetActive(false);
-            GameManager.Instance.showRewardAds("WatchX2WinGame", delegate (bool pSucess)
+            GameManager.Instance.showRewardAds("WatchX2WinGame", delegate (ResultStatusAds pSucess)
             {
-                if (pSucess)
+                if (pSucess == ResultStatusAds.Success)
                 {
+
                     boxRewardRandom.SetTrigger("Open");
                     boxRewardRandom.transform.localPosition = Vector3.zero;
                     boxRewardRandom.transform.localScale *= 1.5f;
+                }
+                else
+                {
+                    btnOpenBoxRewardRandom.gameObject.SetActive(true);
                 }
             });
         }

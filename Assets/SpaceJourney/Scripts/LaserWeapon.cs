@@ -110,6 +110,7 @@ namespace EazyEngine.Space
         }
         public void disableEnpoints()
         {
+            if (GameManager.Instance.IsDestroyed()) return;
             if (!GameManager.Instance.inGame || !LevelManger.InstanceRaw) return;
             for (int i = 0; i < dictEndpoint.Count; ++i)
             {
@@ -167,7 +168,7 @@ namespace EazyEngine.Space
             lineLaser.gameObject.SetActive(false);
             startPoint.gameObject.SetActive(false);
             disableEnpoints();
-            SoundManager.Instance.StopSoundGroupName(sfxLaser, gameObject);
+            SoundManager.Instance?.StopSoundGroupName(sfxLaser, gameObject);
         }
         public float TotalDamage(Health health)
         {

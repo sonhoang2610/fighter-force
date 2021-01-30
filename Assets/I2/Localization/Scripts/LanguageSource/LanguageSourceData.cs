@@ -66,7 +66,7 @@ namespace I2.Loc
         public string Google_Password = "change_this";
 #endif
 
-        public enum eGoogleUpdateFrequency { Always, Never, Daily, Weekly, Monthly, OnlyOnce }
+        public enum eGoogleUpdateFrequency { Always, Never, Daily, Weekly, Monthly, OnlyOnce, EveryOtherDay }
         public eGoogleUpdateFrequency GoogleUpdateFrequency = eGoogleUpdateFrequency.Weekly;
         public eGoogleUpdateFrequency GoogleInEditorCheckFrequency = eGoogleUpdateFrequency.Daily;
 
@@ -76,7 +76,7 @@ namespace I2.Loc
 
         public float GoogleUpdateDelay = 0; // How many second to delay downloading data from google (to avoid lag on the startup)
 
-        public event Action<LanguageSourceData, bool, string> Event_OnSourceUpdateFromGoogle;    // (LanguageSource, bool ReceivedNewData, string errorMsg)
+        public event LanguageSource.fnOnSourceUpdated Event_OnSourceUpdateFromGoogle;    // (LanguageSource, bool ReceivedNewData, string errorMsg)
 
         #endregion
 

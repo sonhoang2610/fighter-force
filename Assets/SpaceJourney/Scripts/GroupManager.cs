@@ -353,7 +353,7 @@ namespace EazyEngine.Space
         }
         private void OnDisable()
         {
-            if (!GameManager.Instance.inGame) return;
+            if (GameManager.Instance.IsDestroyed() || !GameManager.Instance.inGame) return;
             EzEventManager.RemoveListener(this);
         
         }

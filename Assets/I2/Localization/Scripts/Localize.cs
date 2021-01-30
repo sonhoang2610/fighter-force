@@ -391,7 +391,6 @@ namespace I2.Loc
         public void UpdateAssetDictionary()
         {
             TranslatedObjects.RemoveAll(x => x == null);
-            mAssetDictionary = TranslatedObjects.Distinct().ToDictionary(o => o.name);
             mAssetDictionary = TranslatedObjects.Distinct()
                                                 .GroupBy(o => o.name)
                                                 .ToDictionary(g => g.Key, g => g.First());

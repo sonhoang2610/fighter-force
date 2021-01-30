@@ -128,7 +128,7 @@ namespace EazyEngine.Space
                         {
                             foreach (var pWeaponInfo in cacheWeaponData)
                             {
-                                if (pWeaponInfo.target == weaponPaths[pWeapon])
+                                if (pWeaponInfo.targetRef.Asset == weaponPaths[pWeapon])
                                 {
                                     pWeapon.setData(pWeaponInfo);
                                 }
@@ -360,7 +360,7 @@ namespace EazyEngine.Space
                         {
                             foreach (var pWeaponInfo in cacheWeaponData)
                             {
-                                if (pWeaponInfo.target == pWeaponInstanced.IntialWeapon)
+                                if (pWeaponInfo.targetRef.Asset == pWeaponInstanced.IntialWeapon)
                                 {
                                     pWeapon.setData(pWeaponInfo);
                                 }

@@ -49,13 +49,28 @@ namespace EazyEngine.Space.UI
             claimButton.SetActive(false);
             waiting = false;
         }
-        public void OnEzEvent(RewardEvent eventType)
+        IEnumerator OnEzEventQueue(RewardEvent eventType)
         {
             attachmentModel.transform.DestroyChildren();
             GameObject pObjectNew = null;
-            if (eventType.item.item.model)
+            if (!string.IsNullOrEmpty(eventType.item.item.modelRef.runtimeKey))
             {
-                pObjectNew = Instantiate(eventType.item.item.model, attachmentModel.transform);
+                var pAsync = eventType.item.item.modelRef.loadAssetAsync<GameObject>();
+                bool iResult = false;
+                pAsync.completed += delegate (AsyncOperation a)
+                {
+                    eventType.item.item.Model = (GameObject)((ResourceRequest)a).asset;
+                    iResult = true;
+                };
+                while (!iResult)
+                {
+                    yield return new WaitForEndOfFrame();
+                }
+           
+            }
+            if (eventType.item.item.Model)
+            {
+                pObjectNew = Instantiate(eventType.item.item.Model, attachmentModel.transform);
             }
             else
             {
@@ -69,7 +84,7 @@ namespace EazyEngine.Space.UI
             pObjectNew.SetLayerRecursively(attachmentModel.layer);
             if (compareRender)
             {
-                var pRender=  pObjectNew.GetComponentInChildren<RenderQueueModifier>();
+                var pRender = pObjectNew.GetComponentInChildren<RenderQueueModifier>();
                 pRender.setTarget(compareRender);
             }
             nameItem.text = eventType.item.item.displayNameItem.Value;
@@ -98,6 +113,10 @@ namespace EazyEngine.Space.UI
             {
                 layerNormal.SetActive(true);
             }
+        }
+        public void OnEzEvent(RewardEvent eventType)
+        {
+            StartCoroutine(OnEzEventQueue(eventType));
         }
 
         private void OnEnable()

@@ -136,6 +136,8 @@ namespace EazyEngine.Space.UI
                 }
             }
             Resources.UnloadUnusedAssets();
+
+
             //GameManager.Instance.gameObject.SetActive(true);
             // MonoManager.current.gameObject.SetActive(true);
         }
@@ -152,20 +154,38 @@ namespace EazyEngine.Space.UI
             }
             Resources.UnloadUnusedAssets();
         }
-
+        static bool setresolotuon = false;
         public void downResolution()
         {
-            if (Screen.currentResolution.height > Screen.currentResolution.width)
-            {
-                float ratio = (float)Screen.currentResolution.height / (float)Screen.currentResolution.width;
-                Debug.Log("resolution" + 720 + "," + (int)(720.0f * ratio));
-                Screen.SetResolution(720, (int)(720.0f * ratio), false);
-            }
-            else
-            {
-                float ratio = (float)Screen.currentResolution.width / (float)Screen.currentResolution.height;
-                Screen.SetResolution((int)(1280*ratio), 1280, false);
-            }
+            if (setresolotuon) return;
+            setresolotuon = true;
+            //Vector2 pCurrenResolution = FindObjectOfType<UIRoot>().GetComponent<UIPanel>().GetViewSize();
+            //if (Screen.height > 1920 || Screen.width > 1920)
+            //{
+            //    if (pCurrenResolution.x > pCurrenResolution.y)
+            //    {
+            //        float ratio = (float)pCurrenResolution.x / (float)pCurrenResolution.y;
+            //        Screen.SetResolution(1080, (int)(1080.0f * ratio), true);
+            //    }
+            //    else
+            //    {
+            //        float ratio = (float)pCurrenResolution.x / (float)pCurrenResolution.y;
+            //        Screen.SetResolution((int)(1920.0f * ratio), 1920, true);
+            //    }
+            //}
+            //else
+            //{
+            //    if (pCurrenResolution.x > pCurrenResolution.y)
+            //    {
+            //        float ratio = (float)pCurrenResolution.x / (float)pCurrenResolution.y;
+            //        Screen.SetResolution(720, (int)(720.0f * ratio), true);
+            //    }
+            //    else
+            //    {
+            //        float ratio = (float)pCurrenResolution.x / (float)pCurrenResolution.y;
+            //        Screen.SetResolution((int)(1280.0f * ratio), 1280, true);
+            //    }
+            //}
         
         }
 
@@ -395,14 +415,16 @@ namespace EazyEngine.Space.UI
 
         }
 
-        public void freePlay()
+        public void freePlay(UIButton btnDisable)
         {
             GameManager.Instance.isGuide = false;
             GameManager.Instance.isFree = true;
             GameManager.Instance.ConfigLevel = new LevelConfig();
             GameManager.Instance.ChoosedLevel = -1;
             GameManager.Instance.LoadLevel(GameManager.Instance.ChoosedLevel);
-      
+            btnDisable.isEnabled = false;
+
+
         }
         public void freePlayGuide()
         {
@@ -481,15 +503,19 @@ namespace EazyEngine.Space.UI
             int pFirstOpenGoogle = PlayerPrefs.GetInt("FirstOpenGoogle", 0);
             if (pFirstGame != 0 && (SceneManager.Instance.previousScene.Contains("Home") || pFirstOpenGoogle == 0))
             {
+#if !UNITY_STANDALONE
                 GameServices.ManagedInit();
+#endif
                 PlayerPrefs.SetInt("FirstOpenGoogle", 1);
             }
             if (pFirstGame == 0)
             {
+                SceneManager.Instance.markDirtyBloomMK();
                 GameManager.Instance.Database.firstOnline = System.DateTime.Now;
                 GameManager.Instance.SaveGame();
                 EzEventManager.TriggerEvent(new GuideEvent("FirstGame", delegate
                 {
+                    SceneManager.Instance.removeDirtyBloomMK();
                     PlayerPrefs.SetInt("firstGame", 9999);
                     MainScene.Instance.freePlayGuide();
                 }));

@@ -1,5 +1,5 @@
 ﻿using EazyEngine.Space;
-using MK.Glow.Legacy;
+//using MK.Glow.Legacy;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +17,7 @@ public class MKGlowBehavior : MonoBehaviour
     {
         for (int i = 0; i < callBloom; ++i)
         {
-            SceneManager.Instance.removeDirtyBloomMK();
+            SceneManager.Instance?.removeDirtyBloomMK();
         }
         callBloom = 0;
     }

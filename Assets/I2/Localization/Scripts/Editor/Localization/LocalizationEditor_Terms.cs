@@ -73,12 +73,25 @@ namespace I2.Loc
 
 			GUILayout.EndHorizontal();
 
-            TermsListHeight = Mathf.Min(Screen.height, TermsListHeight);
+            /*//if (Event.current.type == EventType.Repaint)
+                TermsListHeight = Screen.height - 400;
+            Debug.Log(Event.current.type + " " + TermsListHeight + " " + Screen.height + " " + GUILayoutUtility.GetLastRect().yMax);
+                
+            //TermsListHeight = Mathf.Min(Screen.height*0.5f, TermsListHeight);
+            mScrollPos_Keys = GUILayout.BeginScrollView(mScrollPos_Keys, false, false, "horizontalScrollbar", "verticalScrollbar", LocalizeInspector.GUIStyle_OldTextArea, GUILayout.Height(TermsListHeight));
+            for (int i = 0; i < 1000; ++i)
+                GUILayout.Label("ahhh" + i);
+            GUILayout.EndScrollView();
+
+            return;*/
+            TermsListHeight = Mathf.Min(Screen.height*0.5f, TermsListHeight);
 
             //--[ Keys List ]-----------------------------------------
-            mScrollPos_Keys = GUILayout.BeginScrollView( mScrollPos_Keys, false, false, "horizontalScrollbar", "verticalScrollbar", EditorStyles.textArea, GUILayout.Height(TermsListHeight)/*GUILayout.MinHeight(Height), GUILayout.MaxHeight(Screen.height), GUILayout.ExpandHeight(false)*/);
+            GUI.backgroundColor = Color.Lerp(GUITools.LightGray, Color.white, 0.5f);
+            mScrollPos_Keys = GUILayout.BeginScrollView( mScrollPos_Keys, false, false, "horizontalScrollbar", "verticalScrollbar", LocalizeInspector.GUIStyle_OldTextArea ,GUILayout.Height(TermsListHeight)/*GUILayout.MinHeight(Height), GUILayout.MaxHeight(Screen.height), GUILayout.ExpandHeight(true)*/);
+            GUI.backgroundColor = Color.white;
 
-			bool bAnyValidUsage = false;
+            bool bAnyValidUsage = false;
 
 			mRowSize = EditorStyles.toolbar.fixedHeight;
 			if (Event.current!=null && Event.current.type == EventType.Layout)
@@ -274,14 +287,14 @@ namespace I2.Loc
 			}
 			else MinX += 3;
 
-            float listWidth = Mathf.Max(Screen.width / EditorGUIUtility.pixelsPerPoint, mTermList_MaxWidth);
+            float listWidth = Mathf.Max(EditorGUIUtility.currentViewWidth / EditorGUIUtility.pixelsPerPoint, mTermList_MaxWidth);
             Rect rectKey = new Rect(MinX, YPosMin+2, listWidth-MinX, mRowSize);
             if (sCategory != LanguageSourceData.EmptyCategory)
                 rectKey.width -= 130;
             if (mKeyToExplore == FullKey) 
 			{
 				GUI.backgroundColor = Color.Lerp (Color.blue, Color.white, 0.8f);
-				if (GUI.Button (rectKey, new GUIContent (sKey, EditorStyles.foldout.onNormal.background), EditorStyles.textArea)) 
+				if (GUI.Button (rectKey, new GUIContent (sKey, EditorStyles.foldout.onNormal.background), LocalizeInspector.GUIStyle_OldTextArea)) 
 				{
 					mKeyToExplore = string.Empty;
                     ScheduleUpdateTermsToShowInList();
@@ -338,7 +351,7 @@ namespace I2.Loc
 
         void CalculateTermsListMaxWidth()
 		{
-            mTermList_MaxWidth = (Screen.width / EditorGUIUtility.pixelsPerPoint) - 120;
+            mTermList_MaxWidth = (EditorGUIUtility.currentViewWidth / EditorGUIUtility.pixelsPerPoint) - 120;
             /*float maxWidth = Screen.width / 18;
 			foreach (KeyValuePair<string, ParsedTerm> kvp in mParsedTerms)
 			{

@@ -14,9 +14,9 @@ namespace I2.Loc
     public class TranslationJob_POST : TranslationJob_WWW
     {
         TranslationDictionary _requests;
-        Action<TranslationDictionary, string> _OnTranslationReady;
+        GoogleTranslation.fnOnTranslationReady _OnTranslationReady;
 
-        public TranslationJob_POST(TranslationDictionary requests, Action<TranslationDictionary, string> OnTranslationReady)
+        public TranslationJob_POST(TranslationDictionary requests, GoogleTranslation.fnOnTranslationReady OnTranslationReady)
         {
             _requests = requests;
             _OnTranslationReady = OnTranslationReady;

@@ -10,7 +10,6 @@ using EazyEngine.Space.UI;
 using I2.Loc;
 using Firebase;
 using Firebase.Analytics;
-using Firebase.Storage;
 using System.Threading.Tasks;
 using MK.Glow.Legacy;
 
@@ -80,6 +79,7 @@ namespace EazyEngine.Space
             isLoading = true;
             if (currentScene.Contains("Zone") && !LoadState)
             {
+                DOTween.To(() => fadeLayout.alpha, a => fadeLayout.alpha = a, 1, 0.25f);
                 LoadState = true;
                 string stringState = GameManager.Instance.isFree ? "Statesfree" : "States" + GameManager.Instance.ChoosedLevel + "_" + GameManager.Instance.ChoosedHard;
                 requestState = LoadAssets.loadAssetAsync<GameObject>(stringState, "Variants/States/");
@@ -139,7 +139,6 @@ namespace EazyEngine.Space
             else if(pState == StateLoadingGame.PoolAfter)
             {
                 tween = DOTween.To(() => process.fillAmount, x => process.fillAmount = x, (1 - (blockScene / maxBlock)) * 0.2f + 0.8f, 0.25f);
-                Debug.Log("blockScene " + blockScene);
                 if (blockScene == 0)
                 {
                     complete();
@@ -171,7 +170,16 @@ namespace EazyEngine.Space
                     camera.GetComponent<CropCamera>().clearRender();
                     SoundManager.Instance.cleanAudio();
                     if (currentScene.Contains("Main"))
-                    {
+                {
+                        if (dirtyBloomMK <= 0)
+                        {
+                            if (mk)
+                            {
+                                mk.enabled = false;
+                                mk.GetComponent<Camera>().allowHDR = false;
+                            }
+                        }
+#if !UNITY_STANDALONE 
                         if (!RuntimeManager.IsInitialized())
                         {
                             RuntimeManager.Init();
@@ -181,6 +189,7 @@ namespace EazyEngine.Space
                         {
                             InAppPurchasing.InitializePurchasing();
                         }
+#endif
                     }
                 });
                 pSeq.Play();
@@ -260,7 +269,7 @@ namespace EazyEngine.Space
             dirtySlowFps--;
             if(dirtySlowFps <= 0)
             {
-                Application.targetFrameRate = 30;
+               // Application.targetFrameRate = 30;
                 Debug.Log("FPS" + Application.targetFrameRate);
             }
         }
@@ -270,7 +279,10 @@ namespace EazyEngine.Space
             dirtyBloomMK++;
             if (dirtyBloomMK >= 1)
             {
-                if(mk)mk.enabled = true;
+                if (mk) {
+                    mk.enabled = true;
+                    mk.GetComponent<Camera>().allowHDR = true;
+                }
             }
         }
         public void removeDirtyBloomMK()
@@ -278,24 +290,29 @@ namespace EazyEngine.Space
             dirtyBloomMK--;
             if (dirtyBloomMK <= 0)
             {
-                if (mk)mk.enabled = false;
+                if (mk)
+                {
+                    mk.enabled = false;
+                    mk.GetComponent<Camera>().allowHDR = false;
+                }
             }
         }
         protected override void Awake()
         {
             base.Awake();
+            MK.Glow.Resources.LoadResourcesAsyncAsset();
 #if UNITY_IOS
             System.Environment.SetEnvironmentVariable("MONO_REFLECTION_SERIALIZER", "yes");
 #endif
-
+#if !UNITY_STANDALONE 
             FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
             {
                 FirebaseAnalytics.SetAnalyticsCollectionEnabled(true);
           
             });
-           
+#endif
             Application.targetFrameRate = 60;
-            Application.backgroundLoadingPriority = ThreadPriority.High;
+            Application.backgroundLoadingPriority = ThreadPriority.Low;
             if (GameManager._instance)
             {
                 if (!GameManager._instance.IsDestroyed())
@@ -335,20 +352,6 @@ namespace EazyEngine.Space
                 boxlostConnection.show();
             }));
             lastAssetLoaded = I2.Loc.LocalizationManager.GetTranslation(pTag) + "assetmanager";
-            //FirebaseStorage storage = Firebase.Storage.FirebaseStorage.DefaultInstance;
-            //var pRefManaget = storage.GetReference("StreamingAssets/PC/assetmanager");
-            //string pLink = "";
-            //pRefManaget.GetDownloadUrlAsync().ContinueWith((Task<Uri> task) => {
-            //    if (!task.IsFaulted && !task.IsCanceled)
-            //    {
-            //        pLink = task.Result.AbsoluteUri;
-            //        Debug.Log(pLink);
-            //    }
-            //});
-            //while (string.IsNullOrEmpty(pLink))
-            //{
-            //    yield return new WaitForEndOfFrame();
-            //}
             yield return loader.DownloadAndCache(I2.Loc.LocalizationManager.GetTranslation(pTag), "assetmanager", pNewVer, (LoadAssetBundleStatus pNew, AssetBundle pBundle) =>
                   {
                       status = pNew;

@@ -72,7 +72,7 @@ public class UIWidget : UIRect
 		}
 		set
 		{
-            if (drawCall.IsDestroyed()) return;
+            if (drawCall.IsDestroyed()) { mOnRender = value; return; }
 #if UNITY_FLASH
 			if (!(mOnRender == value))
 #else

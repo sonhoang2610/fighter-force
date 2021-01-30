@@ -12,79 +12,93 @@ public class EnemyEnviroment : PoolManagerGeneric<EnemyEnviroment>
 {
     // [ShowInInspector,HideInEditorMode]
 
-    public override void onNewCreateObject(GameObject pObject,GameObject pOriginal)
+    public override void onNewCreateObject(GameObject pObject, GameObject pOriginal)
     {
         base.onNewCreateObject(pObject, pOriginal);
-        var pChar =   pObject.GetComponent<Character>();
+        var pChar = pObject.GetComponent<Character>();
         pChar.originalPreb = pOriginal;
         var pAsset = LoadAssets.loadAsset<EazySpaceConfigDatabase>("EnemyConfig", "Variants/Database/");
-        int[] scoreSmall = new int[] { 50,100,180};
-        int[] scoremedium = new int[] {200,350,600 };
-        int[] scoreBoss = new int[] {10000,18000,30000 };
-        if(LevelManger.InstanceRaw && LevelManger.Instance.IsMatching)
+        int[] scoreSmall = new int[] { 50, 100, 180 };
+        int[] scoremedium = new int[] { 200, 350, 600 };
+        int[] scoreBoss = new int[] { 10000, 18000, 30000 };
+        if (LevelManger.InstanceRaw && LevelManger.Instance.IsMatching)
         {
             Debug.Log($"NotEnough_{ pOriginal.name }_Level_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedLevel}_State_{LevelStateManager.currentState}");
             Firebase.Analytics.FirebaseAnalytics.LogEvent($"NotEnough_{ pOriginal.name }_Level_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedLevel}_State_{LevelStateManager.currentState}");
         }
-        foreach (var pEnemy  in pAsset.smallEnemiesObs)
+        string pKey = "";
+        foreach (var pEnemy in pAsset.smallEnemiesObs)
         {
-            if(pEnemy.info.elements[GameManager.Instance.ChoosedHard].target == pOriginal)
+            if (pOriginal.tryGetRuntimeKey(out pKey))
             {
-                pObject.transform.localScale = pOriginal.transform.localScale * 0.9f;
-                var pInfo = pEnemy.info.elements[GameManager.Instance.ChoosedHard];
-                pInfo.score = scoreSmall[GameManager.Instance.ChoosedHard];
-                pChar.setDataConfig(pInfo);
-                pChar.EnemyType = EazyEngine.Space.EnemyType.SMALL;
-                return;
+                if (pEnemy.info.elements[GameManager.Instance.ChoosedHard].targetRef.runtimeKey == pKey)
+                {
+                    pObject.transform.localScale = pOriginal.transform.localScale * 0.9f;
+                    var pInfo = pEnemy.info.elements[GameManager.Instance.ChoosedHard];
+                    pInfo.score = scoreSmall[GameManager.Instance.ChoosedHard];
+                    pChar.setDataConfig(pInfo);
+                    pChar.EnemyType = EazyEngine.Space.EnemyType.SMALL;
+                    return;
+                }
             }
         }
         foreach (var pEnemy in pAsset.mediumEnemiesObs)
         {
-            if (pEnemy.info.elements[GameManager.Instance.ChoosedHard].target == pOriginal)
+            if (pOriginal.tryGetRuntimeKey(out pKey))
             {
-                if (!pOriginal.name.ToLower().Contains("tower"))
+                if (pEnemy.info.elements[GameManager.Instance.ChoosedHard].targetRef.runtimeKey == pKey)
                 {
-                    pObject.transform.localScale = pOriginal.transform.localScale * 0.8f;
+                    if (!pOriginal.name.ToLower().Contains("tower"))
+                    {
+                        pObject.transform.localScale = pOriginal.transform.localScale * 0.8f;
+                    }
+                    else
+                    {
+                        pObject.transform.localScale = pOriginal.transform.localScale * 0.9f;
+                    }
+                    var pInfo = pEnemy.info.elements[GameManager.Instance.ChoosedHard];
+                    pInfo.score = scoremedium[GameManager.Instance.ChoosedHard];
+                    pChar.setDataConfig(pInfo);
+                    pChar.EnemyType = EazyEngine.Space.EnemyType.MEDIUM;
+                    return;
                 }
-                else
-                {
-                    pObject.transform.localScale = pOriginal.transform.localScale * 0.9f;
-                }
-                var pInfo = pEnemy.info.elements[GameManager.Instance.ChoosedHard];
-                pInfo.score = scoremedium[GameManager.Instance.ChoosedHard];
-                pChar.setDataConfig(pInfo);
-                pChar.EnemyType = EazyEngine.Space.EnemyType.MEDIUM;
-                return;
             }
         }
         foreach (var pEnemy in pAsset.bosssObs)
         {
-            if (pEnemy.info.elements[GameManager.Instance.ChoosedHard].target == pOriginal)
+            if (pOriginal.tryGetRuntimeKey(out pKey))
             {
-                var pInfo = pEnemy.info.elements[GameManager.Instance.ChoosedHard];
-                pInfo.score = scoreBoss[GameManager.Instance.ChoosedHard];
-                pChar.setDataConfig(pInfo);
-                pChar.EnemyType = EazyEngine.Space.EnemyType.BOSS;
-                return;
+                if (pEnemy.info.elements[GameManager.Instance.ChoosedHard].targetRef.runtimeKey == pKey)
+                {
+                    var pInfo = pEnemy.info.elements[GameManager.Instance.ChoosedHard];
+                    pInfo.score = scoreBoss[GameManager.Instance.ChoosedHard];
+                    pChar.setDataConfig(pInfo);
+                    pChar.EnemyType = EazyEngine.Space.EnemyType.BOSS;
+                    return;
+                }
             }
         }
         foreach (var pEnemy in pAsset.miniBosssObs)
         {
-            if (pEnemy.info.elements[GameManager.Instance.ChoosedHard].target == pOriginal)
+            if (pOriginal.tryGetRuntimeKey(out pKey))
             {
-                var pInfo = pEnemy.info.elements[GameManager.Instance.ChoosedHard];
-                pInfo.score = scoreBoss[GameManager.Instance.ChoosedHard];
-                pChar.setDataConfig(pInfo);
-                pChar.EnemyType = EazyEngine.Space.EnemyType.MINIBOSS;
-                return;
+                if (pEnemy.info.elements[GameManager.Instance.ChoosedHard].targetRef.runtimeKey == pKey)
+                {
+                    var pInfo = pEnemy.info.elements[GameManager.Instance.ChoosedHard];
+                    pInfo.score = scoreBoss[GameManager.Instance.ChoosedHard];
+                    pChar.setDataConfig(pInfo);
+                    pChar.EnemyType = EazyEngine.Space.EnemyType.MINIBOSS;
+                    return;
+                }
             }
         }
-        if (!GameManager.Instance.objectExcludes.Contains(pOriginal))
+  
+        if (!pOriginal.tryGetRuntimeKey(out pKey))
         {
             Debug.Log($"NotFindData_{ pOriginal.name }_Level_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedLevel}_State_{LevelStateManager.currentState}");
             Firebase.Analytics.FirebaseAnalytics.LogEvent($"NotFindData_{ pOriginal.name }_Level_{GameManager.Instance.ChoosedLevel}_Mode_{GameManager.Instance.ChoosedLevel}_State_{LevelStateManager.currentState}");
         }
-    
+
     }
     public GameObject getEnemyFromPool(GameObject pObject)
     {
@@ -93,17 +107,17 @@ public class EnemyEnviroment : PoolManagerGeneric<EnemyEnviroment>
     [Button("Resolved Preload")]
     public void findNonExistPreload()
     {
-         var pState =  transform.GetComponentInParent<LevelStateManager>();
+        var pState = transform.GetComponentInParent<LevelStateManager>();
         if (pState)
         {
-            for(int i = 0; i < pState.states.Length; ++i)
+            for (int i = 0; i < pState.states.Length; ++i)
             {
-                for(int j = 0; j < pState.states[i].formatInfo.prefabEnemies.Length; ++j)
+                for (int j = 0; j < pState.states[i].formatInfo.prefabEnemies.Length; ++j)
                 {
                     bool exist = false;
-                    for(int g= 0; g< _storage.Count; g++)
+                    for (int g = 0; g < _storage.Count; g++)
                     {
-                        if(_storage[pState.states[i].formatInfo.prefabEnemies[j]] != null)
+                        if (_storage[pState.states[i].formatInfo.prefabEnemies[j]] != null)
                         {
                             exist = true;
                             break;
@@ -160,6 +174,6 @@ public class EnemyEnviroment : PoolManagerGeneric<EnemyEnviroment>
             _storage.Add(pObject, new PrefabInfoMain());
             _storage[pObject].pooler = pooler;
         }
-        
+
     }
 }

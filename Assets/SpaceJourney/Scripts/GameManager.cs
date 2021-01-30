@@ -66,9 +66,9 @@ public static class LoadAssets
             foreach (var pBundle in pListBundle)
             {
                 var pNames = pBundle.GetAllAssetNames();
-                foreach(var pLocalName in pNames)
+                foreach (var pLocalName in pNames)
                 {
-                    if(pLocalName.Contains(pName.ToLower()))
+                    if (pLocalName.Contains(pName.ToLower()))
                     {
                         return pBundle.LoadAssetAsync<T>(pLocalName);
                     }
@@ -76,6 +76,21 @@ public static class LoadAssets
             }
         }
         return null;
+    }
+    public static bool tryGetRuntimeKey(this GameObject pAssetObject, out string pKey)
+    {
+        pKey = "";
+        var pAddress = (pAssetObject).GetComponent<AdressableObject>();
+        if (pAddress)
+        {
+            pKey = pAddress.uniqueID;
+        }
+
+        return !string.IsNullOrEmpty(pKey);
+    }
+    public static AsyncOperation loadAssetAsync<T>(this AssetSelectorRef pObjectRef) where T : UnityEngine.Object
+    {
+        return Resources.LoadAsync<T>(AddressableDatabase.Instance.loadPath(pObjectRef.runtimeKey));
     }
     public static T loadAsset<T>(string pName, string path = "") where T : UnityEngine.Object
     {
@@ -93,7 +108,7 @@ public static class LoadAssets
                 cacheAssets.Remove(pName);
             }
         }
-        if (SceneManager.Instance.isLocal || !Application.isPlaying)
+        if (!Application.isPlaying || SceneManager.Instance.isLocal)
         {
             T pObjectss = Resources.Load<T>(path + pName);
             return pObjectss;
@@ -164,11 +179,11 @@ public static class LoadAssets
 
 public static class SerializeGameDataBase
 {
-    public static void EzSerializeData<T>(this T pInfo, Stream ms,ref BinaryFormatter formatter)
+    public static void EzSerializeData<T>(this T pInfo, Stream ms, ref BinaryFormatter formatter)
     {
         if (formatter == null)
         {
-             formatter = new BinaryFormatter();
+            formatter = new BinaryFormatter();
             SurrogateSelector ss = new SurrogateSelector();
 
             AbilitySerialize ability = new AbilitySerialize();
@@ -219,8 +234,8 @@ public static class SerializeGameDataBase
             formatter.SurrogateSelector = ss;
         }
         // 2. Have the formatter use our surrogate selector
-  
-       formatter.Serialize(ms, pInfo);
+
+        formatter.Serialize(ms, pInfo);
     }
     public static T EzDeSerializeData<T>(this Stream ms, ref BinaryFormatter formatter)
     {
@@ -285,8 +300,8 @@ public static class SerializeGameDataBase
         using (var ms = new MemoryStream())
         {
             BinaryFormatter formatter = null;
-            pInfo.EzSerializeData( ms,ref formatter);
-            return EzDeSerializeData<T>(ms,ref formatter);
+            pInfo.EzSerializeData(ms, ref formatter);
+            return EzDeSerializeData<T>(ms, ref formatter);
         }
     }
 }
@@ -318,11 +333,17 @@ public struct EventTimer
     public TimerState state;
     public string key;
 }
-
+public enum ResultStatusAds
+{
+    Success,
+    Failed,
+    TimeOut
+}
 public class GameManager : PersistentSingleton<GameManager>, EzEventListener<GameDatabaseInventoryEvent>
 {
     public float frameTarget = 60;
-    public List<GameObject> objectExcludes;
+    public List<AssetSelectorRef> objectRefExcludes;
+
     public prefabBulletGroup[] groupPrefabBullet;
     [System.NonSerialized]
     public ScheduleUIMain scehduleUI = ScheduleUIMain.NONE;
@@ -333,7 +354,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     public AudioClip btnSfx;
     public MovingLeader leaderTemplate;
 
-    
+
 
     public prefabBulletGroup getGroupPrefab(GameObject pObject)
     {
@@ -434,12 +455,12 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         base.Awake();
         databaseGame = GameDatabase.Instance;
         Application.targetFrameRate = (int)frameTarget;
-   //     StartCoroutine(delayAction(0.2f, spawnPool));
+        //     StartCoroutine(delayAction(0.2f, spawnPool));
         // Database = Instantiate(Database);
     }
     //public void spawnPool()
     //{
-        
+
     //    while (loadSequences.Count > 0)
     //    {
 
@@ -449,7 +470,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     //            pendingObject = pool.pooler.AddOneObjectToThePoolRemainTime(false);
     //            pool.count--;
     //            loadSequences[loadSequences.Count - 1] = pool;
-  
+
     //            break;
     //        }
     //        else
@@ -514,9 +535,9 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             first = false;
             MissionContainer.Instance.LoadState();
 
-      
+
         }
-        for(int i = 0; i < pendingObjects.Count; ++i)
+        for (int i = 0; i < pendingObjects.Count; ++i)
         {
             if (pendingObjects[i].activeSelf)
             {
@@ -541,7 +562,10 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     }
 
     public LevelConfig ConfigLevel { get => configLevel; set => configLevel = value; }
-    public int Wincount { get => wincount; set {
+    public int Wincount
+    {
+        get => wincount; set
+        {
             GameManager.Instance.Database.collectionDailyInfo.winCount += (value - wincount);
             GameManager.Instance.Database.collectionInfo.winCount += (value - wincount);
             wincount = value;
@@ -645,7 +669,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     {
         FileStream fileSave = null;
         try
-        {  
+        {
             string destination = Application.persistentDataPath + "/GameInfoCache.dat";
             if (File.Exists(destination)) fileSave = File.OpenWrite(destination);
             else fileSave = File.Create(destination);
@@ -796,9 +820,9 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                 {
                     file.Flush();
                     file.Close();
-                  
+
                     LoadGameCache();
-               
+
                     string destinationClone = Application.persistentDataPath + "/GameInfo.dat";
                     if (File.Exists(destinationClone))
                     {
@@ -921,7 +945,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         {
             pData = new T();
         }
- 
+
         try
         {
             BinaryFormatter formatter = null;
@@ -943,7 +967,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         }
 #endif
     }
-    public T LoadFile<T>(string fileName,bool createNew = true) where T : class, new()
+    public T LoadFile<T>(string fileName, bool createNew = true) where T : class, new()
     {
         FileStream file = null;
         T data = null;
@@ -953,7 +977,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             file = File.OpenRead(destination);
             if (file != null)
             {
-             
+
                 try
                 {
                     BinaryFormatter formatter = null;
@@ -976,7 +1000,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
 #endif
             }
         }
-        else if(createNew)
+        else if (createNew)
         {
             SaveFile<T>(fileName, data = new T());
         }
@@ -994,7 +1018,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     }
     public void LoadLevel(int pIndex)
     {
- 
+
         inGame = true;
         LevelManger.InstanceRaw = null;
         GroupManager.clearCache();
@@ -1027,17 +1051,17 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         for (int i = 0; i < ConfigLevel.itemUsed.Count; ++i)
         {
             var pItem = GameManager.Instance.Database.getComonItem(ConfigLevel.itemUsed[i].itemID);
-            if(!((ItemGame)pItem.item).isActive)
+            if (!((ItemGame)pItem.item).isActive)
             {
                 pItem.Quantity--;
-            }           
+            }
         }
         SaveGame();
 
         TopLayer.Instance.block.gameObject.SetActive(true);
         Physics2D.autoSimulation = false;
         Time.timeScale = 1;
-  
+
         StartCoroutine(delayAction(0.75f, delegate
         {
             MidLayer.Instance.boxPrepare.close();
@@ -1071,7 +1095,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             if (timer[i].length <= 0) { timer.RemoveAt(i); continue; }
             var pSec = (System.DateTime.Now - timer[i].lastimeWheelFree).TotalSeconds;
 
-            for (int g = timer[i].LabelTimer.Count - 1; g>= 0; g-- )
+            for (int g = timer[i].LabelTimer.Count - 1; g >= 0; g--)
             {
                 var pLabel = timer[i].LabelTimer[g];
                 if (pLabel.IsDestroyed() || pLabel == null) { timer[i].LabelTimer.RemoveAt(g); continue; }
@@ -1119,7 +1143,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                     if (rewardAds.ContainsKey(timeoutAds[i].placeMent.Name))
                     {
                         TopLayer.Instance.LoadingAds.gameObject.SetActive(false);
-                        rewardAds[timeoutAds[i].placeMent.Name](false);
+                        rewardAds[timeoutAds[i].placeMent.Name](ResultStatusAds.TimeOut);
                         rewardAds.Remove(timeoutAds[i].placeMent.Name);
                     }
                 }
@@ -1131,7 +1155,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         var pTimeCounting = GameManager.Instance.Database.timers.Find(x => x.key == pTime.key);
         if (pTimeCounting == null)
         {
-    
+
             GameManager.Instance.Database.timers.Add(pTime);
             EzEventManager.TriggerEvent(new EventTimer()
             {
@@ -1247,8 +1271,8 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     // Unsubscribe when the game object is disabled
     void OnDisable()
     {
-       
-      //  
+
+        //  
         InAppPurchasing.PurchaseCompleted -= PurchaseCompletedHandler;
         InAppPurchasing.PurchaseFailed -= PurchaseFailedHandler;
         GameServices.UserLoginSucceeded -= OnUserLoginSucceeded;
@@ -1267,7 +1291,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         EzEventManager.TriggerEvent(new MessageGamePlayEvent("MissionDirty"));
         if (rewardAds.ContainsKey(placement.Name))
         {
-            rewardAds[placement.Name](true);
+            rewardAds[placement.Name](ResultStatusAds.Success);
             rewardAds.Remove(placement.Name);
         }
     }
@@ -1275,7 +1299,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     {
         if (rewardAds.ContainsKey(placement.Name))
         {
-            rewardAds[placement.Name](false);
+            rewardAds[placement.Name](ResultStatusAds.Failed);
             rewardAds.Remove(placement.Name);
         }
     }
@@ -1331,7 +1355,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
     }
     private void Start()
     {
-   
+
 
     }
 
@@ -1348,7 +1372,7 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
             Advertising.HideBannerAd();
         }
     }
-    public Dictionary<string, System.Action<bool>> rewardAds = new Dictionary<string, System.Action<bool>>();
+    public Dictionary<string, System.Action<ResultStatusAds>> rewardAds = new Dictionary<string, System.Action<ResultStatusAds>>();
     public struct CountdownAds
     {
         public AdPlacement placeMent;
@@ -1374,10 +1398,10 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         action(www.error == null);
         www.Dispose();
     }
-    public void showRewardAds(string pID, System.Action<bool> onResult)
+    public void showRewardAds(string pID, System.Action<ResultStatusAds> onResult)
     {
 #if UNITY_EDITOR
-        onResult(true);
+        onResult(ResultStatusAds.Success);
         return;
 #endif
         StartCoroutine(checkInternetConnection(delegate (bool pResult)
@@ -1404,13 +1428,13 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
                     Advertising.LoadRewardedAd(placement);
                     if (indexOfads(placement) < 0)
                     {
-                        timeoutAds.Add(new CountdownAds() { placeMent = placement, currentTime = 5 });
+                        timeoutAds.Add(new CountdownAds() { placeMent = placement, currentTime = 10 });
                     }
                 }
             }
             else
             {
-                onResult?.Invoke(false);
+                onResult?.Invoke(ResultStatusAds.TimeOut);
             }
         }));
 
@@ -1468,5 +1492,5 @@ public class GameManager : PersistentSingleton<GameManager>, EzEventListener<Gam
         }
     }
 
- 
+
 }

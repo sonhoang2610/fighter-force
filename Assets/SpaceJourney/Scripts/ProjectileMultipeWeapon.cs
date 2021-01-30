@@ -263,7 +263,7 @@ namespace EazyEngine.Space
                                  {
                                      foreach (var pBulletInfo in data.bullets)
                                      {
-                                         if (pBulletInfo.prefab == pPool.GetLastOriginal())
+                                         if (pBulletInfo.prefabRef.Asset == pPool.GetLastOriginal())
                                          {
                                              proj.setData(pBulletInfo);
                                          }

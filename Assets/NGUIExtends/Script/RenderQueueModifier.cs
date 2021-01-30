@@ -45,17 +45,32 @@ public class RenderQueueModifier : MonoBehaviour
     }
     public void setTarget(UIWidget pTarget)
     {
+        updateAtleatOne = false;
         if (pTarget != null && m_target != pTarget)
         {
             pTarget.onRender += resort;
         }
         m_target = pTarget;
     }
+    
     int index = 0;
+    protected bool updateAtleatOne = false;
     private void OnEnable()
     {
         isStarted = false;
         _lastQueue = 0;
+        updateAtleatOne = false;
+        refreshRender();
+        if (m_target)
+        {
+            m_target.onRender -= resort;
+            m_target.onRender += resort;
+        }
+    }
+
+
+    public void refreshRender()
+    {
         if (m_target == null)
             return;
         if (_renderers == null)
@@ -69,6 +84,7 @@ public class RenderQueueModifier : MonoBehaviour
                 if (!isIncludeChild && r.gameObject != gameObject) continue;
                 if (m_target.drawCall != null)
                 {
+                    updateAtleatOne = true;
                     if (sharedMat)
                     {
                         if (r.sharedMaterials != null)
@@ -97,14 +113,13 @@ public class RenderQueueModifier : MonoBehaviour
         {
             if (m_target.drawCall)
             {
+                updateAtleatOne = true;
                 for (int i = 0; i < mats.Length; ++i)
                 {
                     mats[i].mat.renderQueue = m_target.drawCall.renderQueue + mats[i].delta;
                 }
             }
         }
-        m_target.onRender -= resort;
-        m_target.onRender += resort;
     }
 
     private void OnDisable()
@@ -117,6 +132,7 @@ public class RenderQueueModifier : MonoBehaviour
     {
         _renderers = GetComponentsInChildren<Renderer>(true);
         customMat = GetComponent<SkeletonAnimation>();
+        updateAtleatOne = false;
     }
 
     float currentTime = 0;
@@ -124,7 +140,7 @@ public class RenderQueueModifier : MonoBehaviour
     [ContextMenu("Resort")]
     public void resort(Material mat)
     {
-
+        updateAtleatOne = true;
         if (runOnUpdateObjectRender || index == 0)
         {
             index++;
@@ -189,37 +205,11 @@ public class RenderQueueModifier : MonoBehaviour
         }
 
     }
-    //private void FixedUpdate()
-    //{
-    //    if (m_target == null || m_target.drawCall == null)
-    //        return;
-    //    int queue = m_target.drawCall.renderQueue;
-    //    queue += m_type == RenderType.FRONT ? 1 : (m_type == RenderType.BACK ? -1 : 0);
-    //    //if (_lastQueue != queue)
-    //    //{
-    //    _lastQueue = queue;
-
-    //    foreach (Renderer r in _renderers)
-    //    {
-    //        r.material.renderQueue = _lastQueue;
-    //    }
-    //    //}
-    //}
-    void LateUpdate()
+    private void Update()
     {
-        //if (sharedMat)
-        //{
-        //    foreach (Renderer r in _renderers)
-        //    {
-        //        if (!isIncludeChild && r.gameObject != gameObject) continue;
-        //        r.sharedMaterial.renderQueue = _lastQueue;
-        //    }
-        //}
-        //if (m_target.drawCall != cacheDrawCall)
-        //{
-        //    m_target.onRender -= resort;
-        //    m_target.drawCall.onRender += resort;
-        //    cacheDrawCall = m_target.drawCall;
-        //}
+        if (!updateAtleatOne)
+        {   
+            refreshRender();
+        }
     }
 }

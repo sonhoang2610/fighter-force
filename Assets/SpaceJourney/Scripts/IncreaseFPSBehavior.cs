@@ -18,6 +18,7 @@ public class IncreaseFPSBehavior : MonoBehaviour
     // Update is called once per frame
     private void OnDisable()
     {
+        if (SceneManager.Instance.IsDestroyed()) return;
         for (int i = 0; i < callFps; ++i)
         {
             if (!negative) SceneManager.Instance.removeDirtySlowFps();

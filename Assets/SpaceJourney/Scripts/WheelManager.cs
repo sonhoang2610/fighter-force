@@ -178,9 +178,9 @@ namespace EazyEngine.Space.UI
         {
             if (itemWatchExchange.categoryItem == CategoryItem.WATCH)
             {
-                GameManager.Instance.showRewardAds(itemWatchExchange.ItemID, delegate (bool pBool)
+                GameManager.Instance.showRewardAds(itemWatchExchange.ItemID, delegate (ResultStatusAds pBool)
                 {
-                    if (pBool)
+                    if (pBool == ResultStatusAds.Success)
                     {
                         startRoll();
                     }

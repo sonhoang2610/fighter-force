@@ -39,26 +39,26 @@ namespace I2.Loc
 		void OnGUI_KeyList_ShowKeyDetails()
 		{
 			GUI.backgroundColor = Color.Lerp(Color.blue, Color.white, 0.9f);
-			GUILayout.BeginVertical(EditorStyles.textArea, GUILayout.Height(1));
+            GUILayout.BeginVertical(LocalizeInspector.GUIStyle_OldTextArea, GUILayout.Height(1));
 			OnGUI_Keys_Languages(mKeyToExplore, null);
-			
-			GUILayout.BeginHorizontal();
+
+            GUILayout.BeginHorizontal();
             if (TestButton(eTest_ActionType.Button_DeleteTerm, "Delete", "Button", GUILayout.ExpandWidth(true)))
             {
-                if (mTestAction!=eTest_ActionType.None || EditorUtility.DisplayDialog("Confirm delete", "Are you sure you want to delete term '"+mKeyToExplore+"'", "Yes", "Cancel"))
+                if (mTestAction != eTest_ActionType.None || EditorUtility.DisplayDialog("Confirm delete", "Are you sure you want to delete term '" + mKeyToExplore + "'", "Yes", "Cancel"))
                     EditorApplication.update += DeleteCurrentKey;
             }
-			
-			if (GUILayout.Button("Rename"))
-			{
-				mCurrentViewMode = eViewMode.Tools;
-				mCurrentToolsMode = eToolsMode.Merge;
-				if (!mSelectedKeys.Contains (mKeyToExplore))
-					mSelectedKeys.Add (mKeyToExplore);
-			}
-			GUILayout.EndHorizontal();
-			GUILayout.EndVertical();
-			GUI.backgroundColor = Color.white;
+
+            if (GUILayout.Button("Rename"))
+            {
+                mCurrentViewMode = eViewMode.Tools;
+                mCurrentToolsMode = eToolsMode.Merge;
+                if (!mSelectedKeys.Contains(mKeyToExplore))
+                    mSelectedKeys.Add(mKeyToExplore);
+            }
+            GUILayout.EndHorizontal();
+            GUILayout.EndVertical();
+            GUI.backgroundColor = Color.white;
 		}
 
 		void DeleteTerm( string Term, bool updateStructures = true )
@@ -236,7 +236,7 @@ namespace I2.Loc
 		static void OnGUI_Keys_Languages( string Key, ref TermData termdata, Localize localizeCmp, bool IsPrimaryKey, LanguageSourceData source )
 		{
 			//--[ Languages ]---------------------------
-			GUILayout.BeginVertical(EditorStyles.textArea, GUILayout.Height(1));
+			GUILayout.BeginVertical(LocalizeInspector.GUIStyle_OldTextArea, GUILayout.Height(1));
 
 			OnGUI_Keys_LanguageTranslations(Key, localizeCmp, IsPrimaryKey, ref termdata, source);
 
@@ -290,7 +290,7 @@ namespace I2.Loc
                 int time = (int)((Time.realtimeSinceStartup % 2) * 2.5);
                 string Loading = "Translating" + ".....".Substring(0, time);
                 GUI.color = Color.gray;
-                GUILayout.BeginHorizontal(EditorStyles.textArea);
+                GUILayout.BeginHorizontal(LocalizeInspector.GUIStyle_OldTextArea);
                 GUILayout.Label(Loading, EditorStyles.miniLabel);
                 GUI.color = Color.white;
                 if (GUILayout.Button("Cancel", EditorStyles.toolbarButton, GUILayout.ExpandWidth(false)))
@@ -392,7 +392,7 @@ namespace I2.Loc
 				}
 				GUILayout.BeginHorizontal();
 
-				if (GUILayout.Button(source.mLanguages[i].Name, EditorStyles.label, GUILayout.Width(100)))
+                if (GUILayout.Button(source.mLanguages[i].Name, EditorStyles.label, GUILayout.Width(100)))
 					forcePreview = true;
 
 
@@ -532,7 +532,7 @@ namespace I2.Loc
 					if (bShowTranslationLabel)
 					{
 						GUI.backgroundColor=GUITools.DarkGray;
-						GUILayout.BeginVertical(EditorStyles.textArea, GUILayout.Height(1));
+						GUILayout.BeginVertical(LocalizeInspector.GUIStyle_OldTextArea, GUILayout.Height(1));
 						GUILayout.Space(2);
 						
 						GUI.backgroundColor = Color.white;
@@ -741,8 +741,8 @@ namespace I2.Loc
                 mLanguageSource.Editor_SetDirty();
 			}
 		}
-		
-		static void Translate ( string Key, ref TermData termdata, string TargetLanguageCode, Action<string, string> onTranslated, string overrideSpecialization )
+
+		static void Translate ( string Key, ref TermData termdata, string TargetLanguageCode, GoogleTranslation.fnOnTranslated onTranslated, string overrideSpecialization )
 		{
 			#if UNITY_WEBPLAYER
 			ShowError ("Contacting google translation is not yet supported on WebPlayer" );

@@ -87,7 +87,9 @@ namespace EazyEngine.Space
         public Sprite iconShopDisable;
         public Sprite iconGame;
         public Sprite iconGameDisable;
+        [System.NonSerialized]
         public GameObject model;
+        public AssetSelectorRef modelRef;
         public int score;
         [System.NonSerialized,OdinSerialize]
         public LimitedModule limitModule;
@@ -129,6 +131,8 @@ namespace EazyEngine.Space
 #endif
                 return itemID;
             } set => itemID = value; }
+        [ShowInInspector]
+        public GameObject Model { get => model; set => model = value; }
     }
 
 }

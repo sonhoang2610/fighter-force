@@ -594,7 +594,7 @@ namespace I2.Loc
 
 			bool bChanged = false;
 			GUI.backgroundColor = Color.gray;
-			GUILayout.BeginVertical (EditorStyles.textArea);
+			GUILayout.BeginVertical (LocalizeInspector.GUIStyle_OldTextArea);
 			for (int i = 0, imax = Mathf.Min (nTerms, 3); i < imax; ++i) 
 			{
 				ParsedTerm parsedTerm;
@@ -606,7 +606,7 @@ namespace I2.Loc
 				if (nUses > 0)
 					FoundText = string.Concat ("(", nUses, ") ", FoundText);
 
-				if (GUILayout.Button (FoundText, EditorStyles.miniLabel, GUILayout.MaxWidth(Screen.width - 70))) 
+				if (GUILayout.Button (FoundText, EditorStyles.miniLabel, GUILayout.MaxWidth(EditorGUIUtility.currentViewWidth - 70))) 
 				{
 					if (mTermsArray[i] == "<inferred from text>")
 						mNewKeyName = Term = string.Empty;
@@ -859,8 +859,9 @@ namespace I2.Loc
 			get{
 				if (mGUIStyle_Background==null)
 				{
-					mGUIStyle_Background = new GUIStyle(EditorStyles.textArea);
-					mGUIStyle_Background.overflow.left = 50;
+                    mGUIStyle_Background = new GUIStyle(EditorStyles.textArea);
+                    mGUIStyle_Background.fixedHeight = 0;
+                    mGUIStyle_Background.overflow.left = 50;
 					mGUIStyle_Background.overflow.right = 50;
 					mGUIStyle_Background.overflow.top = -5;
 					mGUIStyle_Background.overflow.bottom = 0;
@@ -869,7 +870,21 @@ namespace I2.Loc
 			}
 		}
 		static GUIStyle mGUIStyle_Background;
-		
-		#endregion
-	}
+
+        public static GUIStyle GUIStyle_OldTextArea
+        {
+            get
+            {
+                if (mGUIStyle_OldTextArea == null)
+                {
+                    mGUIStyle_OldTextArea = new GUIStyle(EditorStyles.textArea);
+                    mGUIStyle_OldTextArea.fixedHeight = 0;
+                }
+                return mGUIStyle_OldTextArea;
+            }
+        }
+        static GUIStyle mGUIStyle_OldTextArea;
+
+        #endregion
+    }
 }

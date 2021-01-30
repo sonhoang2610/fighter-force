@@ -152,9 +152,9 @@ namespace EazyEngine.Space.UI
             GameManager.Instance.showRewardAds(watchItem.ItemID, resultClaimX2);
         }
 
-        public void resultClaimX2(bool pSucess)
+        public void resultClaimX2(ResultStatusAds pSucess)
         {
-            if (pSucess)
+            if (pSucess == ResultStatusAds.Success)
             {
                 if (GameManager.Instance.dailyGiftModule.lastDateAds != Time.DayOfYear)
                 {
